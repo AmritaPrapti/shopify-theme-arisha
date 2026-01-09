@@ -1,0 +1,681 @@
+{% doc %}
+  @prompt
+    Create a testimonial slideshow section with fixed-size slides and theme color scheme integration. Layout order: Section Title, Star rating, Quote title, Quote, Customer name (no pictures). Each testimonial should be on a consistent-sized slide with customizable background colors using the theme's color schemes. Include smooth transitions between slides with navigation controls and auto-rotation functionality that can be toggled on and off.
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-testimonial-slideshow-{{ ai_gen_id }} {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .ai-testimonial-slideshow__header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .ai-testimonial-slideshow__title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    margin: 0;
+    color: rgb(var(--color-foreground));}
+
+  .ai-testimonial-slideshow__container-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    height: {{ block.settings.slide_height }}px;
+    overflow: hidden;
+    border-radius: 12px;}
+
+  .ai-testimonial-slideshow__slides-{{ ai_gen_id }} {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .ai-testimonial-slideshow__slide-{{ ai_gen_id }} {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    box-sizing: border-box;
+  }
+
+  .ai-testimonial-slideshow__stars-{{ ai_gen_id }} {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+
+  .ai-testimonial-slideshow__star-{{ ai_gen_id }} {
+    width: {{ block.settings.star_size }}px;
+    height: {{ block.settings.star_size }}px;
+    fill: {{ block.settings.star_color }};
+  }
+
+  .ai-testimonial-slideshow__quote-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.quote_title_size }}px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    color: rgb(var(--color-foreground));
+  }
+
+  .ai-testimonial-slideshow__quote-{{ ai_gen_id }} {
+    font-size: {{ block.settings.quote_size }}px;
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+    font-style: italic;
+    color: rgb(var(--color-foreground));
+  }
+
+  .ai-testimonial-slideshow__author-{{ ai_gen_id }} {
+    font-size: {{ block.settings.author_size }}px;
+    font-weight: 500;
+    margin: 0;
+    color: rgb(var(--color-foreground));
+  }
+
+  .ai-testimonial-slideshow__navigation-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  .ai-testimonial-slideshow__nav-button-{{ ai_gen_id }} {
+    background: rgb(var(--color-button));
+    color: rgb(var(--color-button-text));
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+  }
+
+  .ai-testimonial-slideshow__nav-button-{{ ai_gen_id }}:hover {
+    opacity: 0.8;
+  }
+
+  .ai-testimonial-slideshow__nav-button-{{ ai_gen_id }}:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .ai-testimonial-slideshow__dots-{{ ai_gen_id }} {
+    display: flex;
+    gap: 8px;
+  }
+
+  .ai-testimonial-slideshow__dot-{{ ai_gen_id }} {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(var(--color-foreground), 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-testimonial-slideshow__dot-{{ ai_gen_id }}.active {
+    background: rgb(var(--color-foreground));
+  }
+
+  .ai-testimonial-slideshow__auto-toggle-{{ ai_gen_id }} {
+    margin-top: 20px;text-align: center;
+  }
+
+  .ai-testimonial-slideshow__auto-button-{{ ai_gen_id }} {
+    background: none;
+    border: 1px solid rgb(var(--color-foreground));
+    color: rgb(var(--color-foreground));
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+
+  .ai-testimonial-slideshow__auto-button-{{ ai_gen_id }}:hover {
+    background: rgb(var(--color-foreground));
+    color: rgb(var(--color-background));
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-testimonial-slideshow__slide-{{ ai_gen_id }} {
+      padding: 20px;
+    }
+    .ai-testimonial-slideshow__container-{{ ai_gen_id }} {
+      height: {{ block.settings.slide_height | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+<testimonial-slideshow-{{ ai_gen_id }}
+  class="ai-testimonial-slideshow-{{ ai_gen_id }} color-{{ block.settings.color_scheme }}"
+  data-auto-rotate="{{ block.settings.auto_rotate }}"
+  data-rotation-speed="{{ block.settings.rotation_speed }}"
+  {{ block.shopify_attributes }}
+>
+  {% if block.settings.section_title != blank %}
+    <div class="ai-testimonial-slideshow__header-{{ ai_gen_id }}">
+      <h2 class="ai-testimonial-slideshow__title-{{ ai_gen_id }}">{{ block.settings.section_title }}</h2>
+    </div>
+  {% endif %}
+
+  <div class="ai-testimonial-slideshow__container-{{ ai_gen_id }}">
+    <div class="ai-testimonial-slideshow__slides-{{ ai_gen_id }}">
+      {% for i in (1..5) %}
+        {% liquid
+          assign testimonial_enabled_key = 'testimonial_' | append: i | append: '_enabled'
+          assign quote_title_key = 'testimonial_' | append: i | append: '_quote_title'
+          assign quote_key = 'testimonial_' | append: i | append: '_quote'
+          assign author_key = 'testimonial_' | append: i | append: '_author'
+          assign rating_key = 'testimonial_' | append: i | append: '_rating'
+
+          assign testimonial_enabled = block.settings[testimonial_enabled_key]
+          assign quote_title = block.settings[quote_title_key]
+          assign quote = block.settings[quote_key]
+          assign author = block.settings[author_key]
+          assign rating = block.settings[rating_key]
+        %}
+
+        {% if testimonial_enabled %}
+          <div class="ai-testimonial-slideshow__slide-{{ ai_gen_id }}">
+            <div class="ai-testimonial-slideshow__stars-{{ ai_gen_id }}">
+              {% for star in (1..5) %}
+                <svg class="ai-testimonial-slideshow__star-{{ ai_gen_id }}" viewBox="0 0 24 24">
+                  {% if star <= rating %}
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  {% else %}
+                    <path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
+                  {% endif %}
+                </svg>
+              {% endfor %}
+            </div>
+
+            {% if quote_title != blank %}
+              <h3 class="ai-testimonial-slideshow__quote-title-{{ ai_gen_id }}">{{ quote_title }}</h3>
+            {% endif %}
+
+            {% if quote != blank %}
+              <blockquote class="ai-testimonial-slideshow__quote-{{ ai_gen_id }}">
+                "{{ quote }}"
+              </blockquote>
+            {% endif %}
+
+            {% if author != blank %}
+              <cite class="ai-testimonial-slideshow__author-{{ ai_gen_id }}">{{ author }}</cite>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="ai-testimonial-slideshow__navigation-{{ ai_gen_id }}">
+    <button class="ai-testimonial-slideshow__nav-button-{{ ai_gen_id }}" data-direction="prev" aria-label="Previous testimonial">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15,18 9,12 15,6"></polyline>
+      </svg>
+    </button>
+
+    <div class="ai-testimonial-slideshow__dots-{{ ai_gen_id }}"></div>
+
+    <button class="ai-testimonial-slideshow__nav-button-{{ ai_gen_id }}" data-direction="next" aria-label="Next testimonial">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9,18 15,12 9,6"></polyline>
+      </svg>
+    </button>
+  </div>
+
+  {% if block.settings.show_auto_toggle %}
+    <div class="ai-testimonial-slideshow__auto-toggle-{{ ai_gen_id }}">
+      <button class="ai-testimonial-slideshow__auto-button-{{ ai_gen_id }}">
+        <span class="auto-text">Pause auto-rotation</span>
+      </button>
+    </div>
+  {% endif %}
+</testimonial-slideshow-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class TestimonialSlideshow{{ai_gen_id}} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentSlide = 0;
+        this.autoRotateInterval = null;
+        this.isAutoRotating = this.dataset.autoRotate === 'true';
+        this.rotationSpeed = parseInt(this.dataset.rotationSpeed) * 1000;
+      }
+
+      connectedCallback() {
+        this.slidesContainer = this.querySelector('.ai-testimonial-slideshow__slides-{{ ai_gen_id }}');
+        this.slides = this.querySelectorAll('.ai-testimonial-slideshow__slide-{{ ai_gen_id }}');
+        this.dotsContainer = this.querySelector('.ai-testimonial-slideshow__dots-{{ ai_gen_id }}');
+        this.prevButton = this.querySelector('[data-direction="prev"]');
+        this.nextButton = this.querySelector('[data-direction="next"]');
+        this.autoToggleButton = this.querySelector('.ai-testimonial-slideshow__auto-button-{{ ai_gen_id }}');
+
+        if (this.slides.length === 0) return;
+
+        this.createDots();
+        this.setupEventListeners();
+        this.updateSlidePosition();
+        this.updateNavigation();
+
+        if (this.isAutoRotating) {
+          this.startAutoRotation();
+        }
+      }
+
+      createDots() {
+        this.slides.forEach((_, index) => {
+          const dot = document.createElement('button');
+          dot.className = 'ai-testimonial-slideshow__dot-{{ ai_gen_id }}';
+          dot.setAttribute('aria-label', `Go to testimonial ${index + 1}`);
+          dot.addEventListener('click', () => this.goToSlide(index));
+          this.dotsContainer.appendChild(dot);
+        });
+        this.dots = this.querySelectorAll('.ai-testimonial-slideshow__dot-{{ ai_gen_id }}');
+      }
+
+      setupEventListeners() {
+        this.prevButton.addEventListener('click', () => this.previousSlide());
+        this.nextButton.addEventListener('click', () => this.nextSlide());
+
+        if (this.autoToggleButton) {
+          this.autoToggleButton.addEventListener('click', () => this.toggleAutoRotation());
+        }
+      }
+
+      goToSlide(index) {
+        this.currentSlide = index;
+        this.updateSlidePosition();
+        this.updateNavigation();
+      }
+
+      nextSlide() {
+        this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+        this.updateSlidePosition();
+        this.updateNavigation();
+      }
+
+      previousSlide() {
+        this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1;
+        this.updateSlidePosition();
+        this.updateNavigation();
+      }
+
+      updateSlidePosition() {
+        const translateX = -this.currentSlide * 100;
+        this.slidesContainer.style.transform = `translateX(${translateX}%)`;
+      }
+
+      updateNavigation() {
+        this.dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === this.currentSlide);
+        });
+
+        this.prevButton.disabled = this.currentSlide === 0;
+        this.nextButton.disabled = this.currentSlide === this.slides.length - 1;
+      }
+
+      startAutoRotation() {
+        this.autoRotateInterval = setInterval(() => {
+          if (this.currentSlide === this.slides.length - 1) {
+            this.goToSlide(0);
+          } else {
+            this.nextSlide();
+          }
+        }, this.rotationSpeed);
+      }
+
+      stopAutoRotation() {
+        if (this.autoRotateInterval) {
+          clearInterval(this.autoRotateInterval);
+          this.autoRotateInterval = null;
+        }
+      }
+
+      toggleAutoRotation() {
+        this.isAutoRotating = !this.isAutoRotating;
+        const textElement = this.autoToggleButton.querySelector('.auto-text');
+
+        if (this.isAutoRotating) {
+          this.startAutoRotation();
+          textElement.textContent = 'Pause auto-rotation';
+        } else {
+          this.stopAutoRotation();
+          textElement.textContent = 'Start auto-rotation';
+        }
+      }
+
+      disconnectedCallback() {
+        this.stopAutoRotation();
+      }
+    }
+
+    customElements.define('testimonial-slideshow-{{ ai_gen_id }}', TestimonialSlideshow{{ai_gen_id}});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Testimonial slideshow",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section title",
+      "default": "What our customers say"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Slideshow settings"
+    },
+    {
+      "type": "range",
+      "id": "slide_height",
+      "min": 300,
+      "max": 600,
+      "step": 20,
+      "unit": "px",
+      "label": "Slide height",
+      "default": 400
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "Auto-rotate slides",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "rotation_speed",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Rotation speed",
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "show_auto_toggle",
+      "label": "Show auto-rotation toggle",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 20,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Section title size",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "quote_title_size",
+      "min": 16,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Quote title size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "quote_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Quote text size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "author_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Author name size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Star rating"
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "min": 16,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Star size",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star color",
+      "default": "#FFD700"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "testimonial_1_enabled",
+      "label": "Enable testimonial 1",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "testimonial_1_rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "label": "Star rating",
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "testimonial_1_quote_title",
+      "label": "Quote title",
+      "default": "Amazing quality!"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_1_quote",
+      "label": "Quote",
+      "default": "This product exceeded my expectations. The quality is outstanding and the customer service was excellent."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_1_author",
+      "label": "Customer name",
+      "default": "Sarah Johnson"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "testimonial_2_enabled",
+      "label": "Enable testimonial 2",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "testimonial_2_rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "label": "Star rating",
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "testimonial_2_quote_title",
+      "label": "Quote title",
+      "default": "Highly recommend"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_2_quote",
+      "label": "Quote",
+      "default": "I've been using this for months now and it's become an essential part of my daily routine. Worth every penny!"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_2_author",
+      "label": "Customer name",
+      "default": "Michael Chen"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 3"
+    },
+    {
+      "type": "checkbox",
+      "id": "testimonial_3_enabled",
+      "label": "Enable testimonial 3",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "testimonial_3_rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "label": "Star rating",
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "testimonial_3_quote_title",
+      "label": "Quote title",
+      "default": "Great experience"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_3_quote",
+      "label": "Quote",
+      "default": "Fast shipping, great packaging, and the product works exactly as described. Will definitely order again."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_3_author",
+      "label": "Customer name",
+      "default": "Emma Davis"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 4"
+    },
+    {
+      "type": "checkbox",
+      "id": "testimonial_4_enabled",
+      "label": "Enable testimonial 4"
+    },
+    {
+      "type": "range",
+      "id": "testimonial_4_rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "label": "Star rating",
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "testimonial_4_quote_title",
+      "label": "Quote title"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_4_quote",
+      "label": "Quote"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_4_author",
+      "label": "Customer name"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 5"
+    },
+    {
+      "type": "checkbox",
+      "id": "testimonial_5_enabled",
+      "label": "Enable testimonial 5"
+    },
+    {
+      "type": "range",
+      "id": "testimonial_5_rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "label": "Star rating",
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "testimonial_5_quote_title",
+      "label": "Quote title"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_5_quote",
+      "label": "Quote"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_5_author",
+      "label": "Customer name"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial slideshow"
+    }
+  ],
+  "tag": null
+}
+{% endschema %}

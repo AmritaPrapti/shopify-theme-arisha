@@ -1,0 +1,11 @@
+<script>
+  var observer = new MutationObserver(() => {
+    const e = document.querySelector("a.smt-plain-text");
+    if (e) {
+      e.setAttribute("href", "https://uc1qpz-gf.myshopify.com/customer_authentication/redirect?locale=en&region_country=US");
+      observer.disconnect();
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+</script>

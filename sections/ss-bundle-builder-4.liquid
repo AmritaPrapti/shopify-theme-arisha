@@ -1,0 +1,3775 @@
+{% comment %}
+---------------------------------------------------------
+Copyright © 2023 Section Store. All rights reserved.
+Unauthorized copying, modification, distribution, or use
+of this code or any portion of it, is strictly prohibited.
+Violators will be prosecuted to the fullest extent of the law.
+For inquiries or permissions, contact daniel@section.store
+---------------------------------------------------------
+{% endcomment %}
+
+
+{%- liquid 
+  assign padding_horizontal = section.settings.padding_horizontal
+  assign padding_horizontal_mobile = section.settings.padding_horizontal_mobile
+  assign padding_top = section.settings.padding_top
+  assign padding_bottom = section.settings.padding_bottom
+  assign border_color = section.settings.border_color
+  assign border_thickness = section.settings.border_thickness
+  assign margin_top = section.settings.margin_top
+  assign margin_bottom = section.settings.margin_bottom
+  assign margin_horizontal_mobile = section.settings.margin_horizontal_mobile
+  assign margin_horizontal = section.settings.margin_horizontal
+  assign background_color = section.settings.background_color
+  assign background_gradient = section.settings.background_gradient
+  assign full_width = section.settings.full_width
+  assign content_width = section.settings.content_width
+  assign lazy = section.settings.lazy
+  assign section_radius = section.settings.section_radius
+
+  assign collection = section.settings.collection
+
+  assign layout_gap = section.settings.layout_gap
+  assign layout_gap_mobile = section.settings.layout_gap_mobile
+
+  assign products_row_mobile = section.settings.products_row_mobile
+  assign products_row = section.settings.products_row
+  assign products_gap_mobile = section.settings.products_gap_mobile
+  assign products_gap = section.settings.products_gap
+
+  assign product_image_radius = section.settings.product_image_radius
+  assign product_image_border_thickness = section.settings.product_image_border_thickness
+  assign product_image_border_color = section.settings.product_image_border_color
+  assign product_image_ratio = section.settings.product_image_ratio
+  assign product_image_ratio_mobile = section.settings.product_image_ratio_mobile
+
+  assign product_content_align_mobile = section.settings.product_content_align_mobile
+  assign product_content_align = section.settings.product_content_align
+
+  assign product_content_horizontal_align = ""
+  if product_content_align == "left"
+    assign product_content_horizontal_align = "start"
+  elsif product_content_align == "center"
+    assign product_content_horizontal_align = "center"
+  else
+    assign product_content_horizontal_align = "end"
+  endif
+
+  assign product_content_horizontal_align_mobile = ""
+  if product_content_align_mobile == "left"
+    assign product_content_horizontal_align_mobile = "start"
+  elsif product_content_align_mobile == "center"
+    assign product_content_horizontal_align_mobile = "center"
+  else
+    assign product_content_horizontal_align_mobile = "end"
+  endif
+
+  assign title_size = section.settings.title_size
+  assign title_size_mobile = section.settings.title_size_mobile
+  assign title_color = section.settings.title_color
+  assign title_custom = section.settings.title_custom
+  assign title_font = section.settings.title_font
+  assign title_height = section.settings.title_height
+  assign title_mt = section.settings.title_mt
+  assign title_mt_mobile = section.settings.title_mt_mobile
+  assign product_title_limit = section.settings.product_title_limit
+  assign product_title_count = section.settings.product_title_count
+
+  assign price_custom = section.settings.price_custom
+  assign price_font = section.settings.price_font
+  assign price_size = section.settings.price_size
+  assign price_size_mobile = section.settings.price_size_mobile
+  assign price_height = section.settings.price_height
+  assign price_color = section.settings.price_color    
+  assign price_original_color = section.settings.price_original_color
+  assign price_mt = section.settings.price_mt
+  assign price_mt_mobile = section.settings.price_mt_mobile
+  assign price_compare = section.settings.price_compare
+
+  assign product_button = section.settings.product_button
+  assign product_button_soldout = section.settings.product_button_soldout
+  assign product_button_size = section.settings.product_button_size
+  assign product_button_size_mobile = section.settings.product_button_size_mobile
+  assign product_button_color = section.settings.product_button_color
+  assign product_button_hover_color = section.settings.product_button_hover_color
+  assign product_button_custom = section.settings.product_button_custom
+  assign product_button_font = section.settings.product_button_font
+  assign product_button_height = section.settings.product_button_height
+  assign product_button_padding_vertical = section.settings.product_button_padding_vertical
+  assign product_button_padding_vertical_mobile = section.settings.product_button_padding_vertical_mobile
+  assign product_button_padding_horizontal = section.settings.product_button_padding_horizontal
+  assign product_button_padding_horizontal_mobile = section.settings.product_button_padding_horizontal_mobile
+  assign product_button_radius = section.settings.product_button_radius
+  assign product_button_border_thickness = section.settings.product_button_border_thickness
+  assign product_button_border_color = section.settings.product_button_border_color
+  assign product_button_border_hover_color = section.settings.product_button_border_hover_color
+  assign product_button_bg_color = section.settings.product_button_bg_color
+  assign product_button_bg_hover_color = section.settings.product_button_bg_hover_color
+  assign product_button_style = section.settings.product_button_style
+  assign product_button_mt = section.settings.product_button_mt
+  assign product_button_mt_mobile = section.settings.product_button_mt_mobile
+
+  assign link_text = section.settings.link_text
+  assign link_size = section.settings.link_size
+  assign link_size_mobile = section.settings.link_size_mobile
+  assign link_color = section.settings.link_color
+  assign link_custom = section.settings.link_custom
+  assign link_font = section.settings.link_font
+  assign link_height = section.settings.link_height
+  assign link_mt = section.settings.link_mt
+  assign link_mt_mobile = section.settings.link_mt_mobile
+  assign in_new_tab = section.settings.in_new_tab
+
+  assign quantity_color = section.settings.quantity_color
+  assign quantity_bg_color = section.settings.quantity_bg_color
+  assign quantity_wrapper_bg_color = section.settings.quantity_wrapper_bg_color
+  assign quantity_controls_color = section.settings.quantity_controls_color
+
+  assign sidebar_width = section.settings.sidebar_width 
+  assign sidebar_radius = section.settings.sidebar_radius
+  assign sidebar_border_thickness = section.settings.sidebar_border_thickness
+  assign sidebar_bg_color = section.settings.sidebar_bg_color
+  assign sidebar_border_color = section.settings.sidebar_border_color
+  assign sidebar_align = section.settings.sidebar_align
+  assign sidebar_align_mobile = section.settings.sidebar_align_mobile
+
+  assign sidebar_horizontal_align = ""
+  if sidebar_align == "left"
+    assign sidebar_horizontal_align = "start"
+  elsif sidebar_align == "center"
+    assign sidebar_horizontal_align = "center"
+  else
+    assign sidebar_horizontal_align = "end"
+  endif
+
+  assign sidebar_horizontal_align_mobile = ""
+  if sidebar_align_mobile == "left"
+    assign sidebar_horizontal_align_mobile = "start"
+  elsif sidebar_align_mobile == "center"
+    assign sidebar_horizontal_align_mobile = "center"
+  else
+    assign sidebar_horizontal_align_mobile = "end"
+  endif
+
+  assign step_circle_size = section.settings.step_circle_size
+  assign step_circle_size_mobile = section.settings.step_circle_size_mobile
+  assign step_circle_bg_color = section.settings.step_circle_bg_color
+  assign step_circle_bg_active_color = section.settings.step_circle_bg_active_color
+  assign step_circle_border_thickness = section.settings.step_circle_border_thickness
+  assign step_circle_border_color = section.settings.step_circle_border_color
+  assign step_circle_border_active_color = section.settings.step_circle_border_active_color
+
+  assign gift_text = section.settings.gift_text
+  assign gift_product = section.settings.gift_product
+  assign gift_product_image_radius = section.settings.gift_product_image_radius
+  assign gift_product_image_border_thickness = section.settings.gift_product_image_border_thickness
+  assign gift_product_image_border_color = section.settings.gift_product_image_border_color
+  assign gift_product_image_ratio = section.settings.gift_product_image_ratio
+  assign gift_product_image_ratio_mobile = section.settings.gift_product_image_ratio_mobile
+
+  assign step_number_custom = section.settings.step_number_custom
+  assign step_number_font = section.settings.step_number_font
+  assign step_number_size = section.settings.step_number_size
+  assign step_number_size_mobile = section.settings.step_number_size_mobile
+  assign step_number_height = section.settings.step_number_height
+  assign step_number_color = section.settings.step_number_color
+  assign step_number_active_color = section.settings.step_number_active_color
+
+  assign first_step = section.settings.first_step
+  assign second_step = section.settings.second_step
+  assign step_text_custom = section.settings.step_text_custom
+  assign step_text_font = section.settings.step_text_font
+  assign step_text_size = section.settings.step_text_size
+  assign step_text_size_mobile = section.settings.step_text_size_mobile
+  assign step_text_height = section.settings.step_text_height
+  assign step_text_color = section.settings.step_text_color
+  assign step_text_accent_color = section.settings.step_text_accent_color
+
+  assign tabs_gap = section.settings.tabs_gap
+  assign tabs_gap_mobile = section.settings.tabs_gap_mobile
+
+  assign tab_size = section.settings.tab_size
+  assign tab_size_mobile = section.settings.tab_size_mobile
+  assign tab_color = section.settings.tab_color
+  assign tab_hover_color = section.settings.tab_hover_color
+  assign tab_custom = section.settings.tab_custom
+  assign tab_font = section.settings.tab_font
+  assign tab_height = section.settings.tab_height
+  assign tab_padding_vertical = section.settings.tab_padding_vertical
+  assign tab_padding_vertical_mobile = section.settings.tab_padding_vertical_mobile
+  assign tab_padding_horizontal = section.settings.tab_padding_horizontal
+  assign tab_padding_horizontal_mobile = section.settings.tab_padding_horizontal_mobile
+  assign tab_radius = section.settings.tab_radius
+  assign tab_border_thickness = section.settings.tab_border_thickness
+  assign tab_border_color = section.settings.tab_border_color
+  assign tab_border_hover_color = section.settings.tab_border_hover_color
+  assign tab_bg_color = section.settings.tab_bg_color
+  assign tab_bg_hover_color = section.settings.tab_bg_hover_color
+  assign tab_text = section.settings.tab_text
+
+  assign empty_icon_border_color = section.settings.empty_icon_border_color
+  assign empty_icon_color = section.settings.empty_icon_color
+
+  assign total_price = section.settings.total_price
+  assign total_price_size = section.settings.total_price_size
+  assign total_price_size_mobile = section.settings.total_price_size_mobile
+  assign total_price_color = section.settings.total_price_color
+  assign total_price_custom = section.settings.total_price_custom
+  assign total_price_font = section.settings.total_price_font
+  assign total_price_height = section.settings.total_price_height
+
+  assign button = section.settings.button
+  assign button_size = section.settings.button_size
+  assign button_size_mobile = section.settings.button_size_mobile
+  assign button_color = section.settings.button_color
+  assign button_hover_color = section.settings.button_hover_color
+  assign button_custom = section.settings.button_custom
+  assign button_font = section.settings.button_font
+  assign button_height = section.settings.button_height
+  assign button_padding_vertical = section.settings.button_padding_vertical
+  assign button_padding_vertical_mobile = section.settings.button_padding_vertical_mobile
+  assign button_padding_horizontal = section.settings.button_padding_horizontal
+  assign button_padding_horizontal_mobile = section.settings.button_padding_horizontal_mobile
+  assign button_radius = section.settings.button_radius
+  assign button_border_thickness = section.settings.button_border_thickness
+  assign button_border_color = section.settings.button_border_color
+  assign button_border_hover_color = section.settings.button_border_hover_color
+  assign button_bg_color = section.settings.button_bg_color
+  assign button_bg_hover_color = section.settings.button_bg_hover_color
+  assign button_style = section.settings.button_style
+  assign button_mt = section.settings.button_mt
+  assign button_mt_mobile = section.settings.button_mt_mobile  
+  
+  assign loading_attribute = 'eager'
+  if lazy
+    assign loading_attribute = 'lazy'
+  endif
+
+  assign sizes = ''
+
+  for block in section.blocks
+    if block.type == 'bundle'
+      if block.settings.sizes_value != blank 
+       unless forloop.first 
+         assign sizes = sizes | append: ',' 
+       endunless 
+       assign sizes = sizes | append: block.settings.sizes_value 
+      endif 
+    endif
+  endfor
+-%}
+
+{%- style -%}
+  {{  title_font | font_face: font_display: 'swap' }}
+  {{  price_font | font_face: font_display: 'swap' }}
+  {{  link_font | font_face: font_display: 'swap' }}
+  {{  product_button_font | font_face: font_display: 'swap' }}
+  {{  button_font | font_face: font_display: 'swap' }}  
+  {{  step_text_font | font_face: font_display: 'swap' }}
+  {{  step_number_font | font_face: font_display: 'swap' }}
+  {{  tab_font | font_face: font_display: 'swap' }}
+  {{  total_price_font | font_face: font_display: 'swap' }}
+  
+  .section-{{ section.id }} {
+    border-top: solid {{ border_color }} {{ border_thickness }}px;
+    border-bottom: solid {{ border_color }} {{ border_thickness }}px;
+    margin-top: {{ margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ margin_bottom | times: 0.75 | round: 0 }}px;
+    margin-left: {{ margin_horizontal_mobile }}rem;
+    margin-right: {{ margin_horizontal_mobile }}rem;
+    border-radius: {{ section_radius | times: 0.6 | round: 0 }}px;
+  }
+  
+  .section-{{ section.id }}-settings {
+    margin: 0 auto;
+    padding-top: {{ padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-left: {{ padding_horizontal_mobile }}rem;
+    padding-right: {{ padding_horizontal_mobile }}rem;
+  }
+
+  .bundle-body-{{ section.id }} {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: {{ layout_gap_mobile }}px;
+  }
+
+  .bundle-products-{{ section.id }} {
+    order: 2;
+    display: grid;
+    grid-template-columns: repeat({{ products_row_mobile }}, 1fr);
+    gap: {{ products_gap_mobile }}px;
+    padding: 2rem;
+    border-radius: {{ sidebar_radius }}px;
+    border: {{ sidebar_border_thickness }}px solid {{ sidebar_border_color }};
+    background-color: {{ sidebar_bg_color }};
+  }
+
+  .bundle-product-{{ section.id }} {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bundle-product-image-{{ section.id }} {
+    border-radius: {{ product_image_radius }}px;
+    border: {{ product_image_border_thickness }}px solid {{ product_image_border_color }};
+    overflow: hidden;
+  }
+
+  .bundle-sidebar-gift-product-{{ section.id }} {
+    margin-top: 27px;
+    border-radius: {{ gift_product_image_radius }}px;
+    border: {{ gift_product_image_border_thickness }}px solid {{ gift_product_image_border_color }};
+    overflow: hidden;
+    width: 100px;
+  }
+  
+  .bundle-sidebar-gift-product-{{ section.id }} img,
+  .bundle-sidebar-gift-product-{{ section.id }} svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .bundle-sidebar-gift-product-{{ section.id }} svg {
+    background-color: #AFAFAF;
+  }
+
+  .bundle-product-image-{{ section.id }} img,
+  .bundle-product-image-{{ section.id }} svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .bundle-product-image-{{ section.id }} svg {
+    background-color: #AFAFAF;
+  }
+
+  .bundle-product-content-{{ section.id }} {
+    width: 100%;
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: {{ product_content_horizontal_align_mobile }};
+  }
+
+  .bundle-product-content-top-{{ section.id }},
+  .bundle-product-content-bottom-{{ section.id }} {
+    width: 100%;
+  }
+
+  .bundle-product-button-{{ section.id }} {
+    margin-top: {{ product_button_mt_mobile }}px;
+  }
+
+  .bundle-product-button-{{ section.id }}.out-of-stock {
+    pointer-events: none;
+  }
+
+  .bundle-product-title-{{ section.id }} {
+    margin: 0;
+    text-align: {{ product_content_align_mobile }};
+    margin-top: {{ title_mt_mobile }}px;
+    font-size: {{ title_size_mobile }}px;
+    color: {{ title_color }};
+    line-height: {{ title_height }}%;
+    text-transform: unset;
+    word-break: break-word;
+    font-weight: 700;
+  }
+
+  .bundle-product-price-{{ section.id }} {
+    margin-top: {{ price_mt_mobile }}px;  
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: {{ product_content_horizontal_align_mobile }};
+  }
+
+  .bundle-product-price-{{ section.id }} * {
+    margin: 0;        
+    text-align: {{ product_content_align_mobile }};
+    font-size: {{ price_size_mobile }}px;
+    color: {{ price_color }};
+    line-height: {{ price_height }}%;
+    text-transform: unset;
+    word-break: break-word;
+    transition: all 0.25s ease 0s;
+  }   
+
+  .bundle-product-compare-price-{{ section.id }} {
+    text-decoration: line-through;
+    color: {{ price_original_color }};
+  }
+
+  .bundle-product-link-{{ section.id }} {
+    margin: 0;
+    display: block;
+    text-align: {{ product_content_align_mobile }};
+    margin-top: {{ link_mt_mobile }}px;
+    font-size: {{ link_size_mobile }}px;
+    color: {{ link_color }};
+    line-height: {{ link_height }}%;
+    text-transform: unset;
+    word-break: break-word;
+    text-decoration: underline;
+    font-weight: 700;
+  }
+
+  .bundle-product-button-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    font-size: {{ product_button_size_mobile }}px;
+    font-weight: 700;
+    color: {{ product_button_color }};
+    line-height: {{ product_button_height }}%;
+    text-align: center;
+    text-transform: unset;
+    text-decoration: none;
+    padding: {{ product_button_padding_vertical_mobile }}px {{ product_button_padding_horizontal_mobile }}px;
+    border-radius: {{ product_button_radius }}px;
+    transition: all 0.25s ease 0s;
+    background-color: transparent;
+    border: 0px;
+    cursor: pointer;
+  }
+
+  .bundle-product-{{ section.id }}.active .bundle-product-button-{{ section.id }} {
+    display: none;
+  }
+
+  .bundle-product-button-{{ section.id }}[disabled] {
+    cursor: no-drop;
+    opacity: .6;
+  }
+
+  .bundle-product-button-inner-{{ section.id }} {
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .bundle-product-button-{{ section.id }}:hover {
+    color: {{ product_button_hover_color }};
+    transition: all 0.25s ease 0s;
+  }
+
+  .bundle-product-button-{{ section.id }} svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .bundle-product-button-{{ section.id }} svg path {
+    fill: {{ product_button_color }};
+    transition: all 0.25s ease 0s;
+  }
+
+  .bundle-product-button-{{ section.id }}:hover svg path {
+    fill: {{ product_button_hover_color }};
+    transition: all 0.25s ease 0s;
+  }
+
+  .bundle-sidebar-wrapper-{{ section.id }} {
+    order: 1;
+  }
+
+  .bundle-sidebar-{{ section.id }} {
+    border-radius: {{ sidebar_radius }}px;
+    border: {{ sidebar_border_thickness }}px solid {{ sidebar_border_color }};
+    overflow: hidden;
+    background-color: {{ sidebar_bg_color }};
+    padding: 24px;
+  }
+
+  .bundle-submit-button-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin: 0;
+    margin-top: {{ button_mt_mobile }}px;
+    font-size: {{ button_size_mobile }}px;
+    font-weight: 700;
+    color: {{ button_color }};
+    line-height: {{ button_height }}%;
+    text-align: center;
+    text-transform: unset;
+    text-decoration: none;
+    padding: {{ button_padding_vertical_mobile }}px {{ button_padding_horizontal_mobile }}px;
+    border-radius: {{ button_radius }}px;
+    transition: all 0.25s ease 0s;
+    background-color: transparent;
+    border: 0px;
+    cursor: pointer;
+  }
+
+  .bundle-submit-button-{{ section.id }}[disabled] {
+    cursor: no-drop;
+    color: {{ button_color | hex_to_rgba: 0.8 }}
+  }
+
+  .bundle-button-inner-{{ section.id }} {
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .bundle-submit-button-{{ section.id }}:not([disabled]):hover {
+    color: {{ button_hover_color }};
+    transition: all 0.25s ease 0s;
+  }
+
+  .bundle-submit-button-{{ section.id }} svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .bundle-submit-button-{{ section.id }} svg path {
+    fill: {{ button_color }};
+    transition: all 0.25s ease 0s;
+  }
+
+  .bundle-submit-button-{{ section.id }}:not([disabled]):hover svg path {
+    fill: {{ button_hover_color }};
+    transition: all 0.25s ease 0s;
+  }
+
+  .bundle-product-quantity-wrapper-{{ section.id }} {
+    display: none;
+    position: relative;
+    justify-content: space-between;
+    border-radius: 50px;
+    width: 100%;
+    margin-top: {{ product_button_mt_mobile }}px;
+    height: calc({{ product_button_padding_vertical_mobile | times: 2 }}px + {{ product_button_size_mobile }}px);
+    background: {{ quantity_wrapper_bg_color }};
+    padding: 0px 10px;
+  }
+
+  .bundle-product-{{ section.id }}.active .bundle-product-quantity-wrapper-{{ section.id }} {
+    display: flex;
+  }
+
+  .bundle-product-quantity-minus-{{ section.id }},
+  .bundle-product-quantity-plus-{{ section.id }} {
+    background-color: transparent;
+    border: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease 0s;
+  }
+
+  .bundle-product-quantity-minus-{{ section.id }} svg path,
+  .bundle-product-quantity-plus-{{ section.id }} svg path {
+    fill: {{ quantity_controls_color }};
+  }
+
+  .bundle-product-quantity-{{ section.id }} {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    max-width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: {{ product_button_size_mobile }}px;
+    color: {{ quantity_color }};
+    border-radius: 50%;
+    background-color: {{ quantity_bg_color }};
+    line-height: {{ product_button_height }}%;
+    text-transform: unset;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 0 transparent,0 0 transparent,0 0 transparent,0 0 transparent,0px 10px 10px rgba(0,0,0,.08);
+    aspect-ratio: 1/1;
+  }
+
+  .bundle-product-quantity-plus-{{ section.id }}[disabled] {
+    cursor: no-drop;
+    opacity: .6;
+    transition: all 0.25s ease 0s;
+  }
+
+  .bundle-sidebar-product-default-{{ section.id }} {
+    display: none;
+  }
+
+  .bundle-step-{{ section.id }} {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: {{ sidebar_horizontal_align_mobile }};
+  }
+
+  .bundle-step-circle-{{ section.id }} {
+    margin: 0;
+    font-size: {{ step_number_size_mobile }}px;
+    color: {{ step_number_color }};
+    line-height: {{ step_number_height }}%;
+    text-transform: unset;
+    text-decoration: none;
+    word-break: break-word;
+    font-weight: 700;
+    border-radius: 50%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: {{ step_circle_size_mobile }}px;
+    height: {{ step_circle_size_mobile }}px;
+    background-color: {{ step_circle_bg_color }};
+    border: {{ step_circle_border_thickness }}px solid {{ step_circle_border_color }};
+    transition: all 0.25s ease 0s;
+  }
+
+  .bundle-step-{{ section.id }}.active .bundle-step-circle-{{ section.id }} {
+    color: {{ step_number_active_color }};
+    background-color: {{ step_circle_bg_active_color }};
+    border-color: {{ step_circle_border_active_color }};
+    transition: all 0.25s ease 0s;
+  }
+
+  .bundle-step-text-{{ section.id }} {
+    margin: 0;
+    text-align: {{ sidebar_align_mobile }};
+    font-size: {{ step_text_size_mobile }}px;
+    color: {{ step_text_color }};
+    line-height: {{ step_text_height }}%;
+    text-transform: unset;
+    text-decoration: none;
+    word-break: break-word;
+    font-weight: 700;
+  }
+  
+  .bundle-tabs-{{ section.id }} {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: {{ tabs_gap_mobile }}px;
+    margin-top: 20px;
+  }
+
+  .bundle-tab-{{ section.id }} {
+    margin: 0;
+    flex: 1 1 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: {{ tab_padding_vertical_mobile }}px {{ tab_padding_horizontal_mobile }}px;
+    background-color: {{ tab_bg_color }};
+    border-radius: {{ tab_radius }}px;
+    border: {{ tab_border_thickness }}px solid {{ tab_border_color }};
+    font-size: {{ tab_size_mobile }}px;
+    color: {{ tab_color }};
+    line-height: {{ tab_height }}%;
+    text-transform: unset;
+    text-decoration: none;
+    font-weight: 700;
+    text-align: center;
+    transition: all 0.25s ease 0s;
+  }
+
+  .bundle-tab-comment-{{ section.id }} {
+    font-size: {{ tab_size_mobile | times: 0.6 }}px;
+    color: {{ tab_color }};
+    line-height: {{ tab_height }}%;
+    text-transform: unset;
+    text-decoration: none;
+    transition: all 0.25s ease 0s;
+  }
+
+  .bundle-tab-comment-{{ section.id }}.hide {
+    display: none;
+  }
+
+  .bundle-tab-{{ section.id }}:hover {
+    border: {{ tab_border_thickness }}px solid {{ tab_border_hover_color }};
+    background-color: {{ tab_bg_hover_color }};
+    color: {{ tab_hover_color }};
+    transition: all 0.25s ease 0s;
+  }
+
+  .bundle-tab-{{ section.id }}:hover  .bundle-tab-comment-{{ section.id }} {
+    color: {{ tab_hover_color }};
+    transition: all 0.25s ease 0s;
+  }  
+
+  .bundle-tab-{{ section.id }}.active {
+    border: {{ tab_border_thickness }}px solid {{ tab_border_hover_color }};
+    background-color: {{ tab_bg_hover_color }};
+    color: {{ tab_hover_color }};
+    transition: all 0.25s ease 0s;
+  }
+
+    .bundle-tab-{{ section.id }}.active  .bundle-tab-comment-{{ section.id }} {
+    color: {{ tab_hover_color }};
+    transition: all 0.25s ease 0s;
+  }
+  
+
+  .bundle-product-block-{{ section.id }} {
+    width: 36px;
+    height: 36px;
+  }
+
+  .bundle-product-block-{{ section.id }} img,
+  .bundle-product-block-{{ section.id }} svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .bundle-product-block-{{ section.id }}.empty {
+    width: 36px;
+    height: 36px;
+  }
+
+  .bundle-product-block-{{ section.id }}.empty svg rect {
+    stroke: {{ empty_icon_border_color }};
+  }
+
+  .bundle-product-block-{{ section.id }}.empty svg path {
+    stroke: {{ empty_icon_color }};
+  }
+
+  .bundle-sidebar-products-{{ section.id }} {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: {{ sidebar_horizontal_align_mobile }};
+  }
+
+  .bundle-total-price-wrapper-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    padding-top: 15px;
+    margin-top: 20px;
+    border-top: 1px solid {{ total_price_color }};
+  }
+
+  .bundle-total-price-text-{{ section.id }},
+  .bundle-total-price-{{ section.id }},
+  .bundle-total-compare-price-{{ section.id }} {
+    margin: 0;
+    font-size: {{ total_price_size_mobile }}px;
+    color: {{ total_price_color }};
+    line-height: {{ total_price_height }}%;
+    text-transform: unset;
+    text-decoration: none;
+    word-break: break-word;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .bundle-total-compare-price-{{ section.id }} {
+    text-decoration: line-through;
+     font-size: {{ total_price_size_mobile | minus: 5 }}px;
+     opacity: 0.5;
+  }
+
+  .bundle-sidebar-products-gift-{{ section.id }} {
+    display: flex;
+    align-items: start;
+    gap: 20px;    
+    justify-content: {{ sidebar_horizontal_align_mobile }};
+  }
+
+  .bundle-sidebar-gift-text-{{ section.id }} {
+    
+    margin-top: 20px;
+  }
+
+  .bundle-second-step-accent-text-{{ section.id }} {
+    color: {{ step_text_accent_color }};
+  }
+
+  .bundle-sidebar-product-image-{{ section.id }} {
+    aspect-ratio: 1/1;
+  }
+
+  @media(min-width: 1024px) {
+
+    .section-{{ section.id }} {
+      margin-top: {{ margin_top }}px;
+      margin-bottom: {{ margin_bottom }}px;
+      margin-left: {{ margin_horizontal }}rem;
+      margin-right: {{ margin_horizontal }}rem;
+      border-radius: {{ section_radius }}px;
+    }
+    
+    .section-{{ section.id }}-settings {
+      padding: 0 5rem;
+      padding-top: {{ padding_top }}px;
+      padding-bottom: {{ padding_bottom }}px;
+      padding-left: {{ padding_horizontal }}rem;
+      padding-right: {{ padding_horizontal }}rem;
+    }
+
+    .bundle-body-{{ section.id }} {
+      grid-template-columns: 1fr {{ sidebar_width }}%;
+      gap: {{ layout_gap }}px;
+    }
+
+    .bundle-products-{{ section.id }} {
+      order: 1;
+      grid-template-columns: repeat({{ products_row }}, 1fr);
+      gap: {{ products_gap }}px;
+    }
+
+    .bundle-product-content-{{ section.id }} {;
+      align-items: {{ product_content_horizontal_align }};
+    }
+
+    .bundle-product-title-{{ section.id }} {
+      text-align: {{ product_content_align }};
+      margin-top: {{ title_mt }}px;
+      font-size: {{ title_size }}px;
+    }
+
+    .bundle-product-price-{{ section.id }} {    
+      margin-top: {{ price_mt }}px;       
+      justify-content: {{ product_content_horizontal_align }};
+    }
+
+    .bundle-product-price-{{ section.id }} * {        
+      text-align: {{ product_content_align }};
+      font-size: {{ price_size }}px;    
+    }   
+
+    .bundle-product-link-{{ section.id }} {    
+      text-align: {{ product_content_align }};
+      margin-top: {{ link_mt }}px;
+      font-size: {{ link_size }}px;    
+    }
+
+    .bundle-product-button-{{ section.id }} {
+      margin-top: {{ product_button_mt }}px;
+    }
+
+    .bundle-product-button-{{ section.id }} {
+      padding: {{ product_button_padding_vertical }}px {{ product_button_padding_horizontal }}px;
+      font-size: {{ product_button_size }}px;
+    }
+
+    .bundle-sidebar-wrapper-{{ section.id }} {
+      order: 2;
+    }
+
+    .bundle-sidebar-products-gift-{{ section.id }} {      
+      justify-content: {{ sidebar_horizontal_align }};
+    }
+    
+    .bundle-step-{{ section.id }} {    
+      justify-content: {{ sidebar_horizontal_align }};
+    }
+
+    .bundle-product-quantity-wrapper-{{ section.id }} {
+      margin-top: {{ product_button_mt }}px;
+      height: calc({{ product_button_padding_vertical | times: 2 }}px + {{ product_button_size }}px);  
+    }
+
+    .bundle-step-circle-{{ section.id }} {
+      width: {{ step_circle_size }}px;
+      height: {{ step_circle_size }}px;
+      font-size: {{ step_number_size }}px;
+    }
+
+    .bundle-step-text-{{ section.id }} {
+      text-align: {{ sidebar_align }};
+      font-size: {{ step_text_size }}px;
+    }
+
+    .bundle-submit-button-{{ section.id }} {
+      margin-top: {{ button_mt }}px;
+      padding: {{ button_padding_vertical }}px {{ button_padding_horizontal }}px;
+      font-size: {{ button_size }}px;
+    }
+
+    .bundle-product-quantity-{{ section.id }} {
+      font-size: {{ product_button_size }}px;
+    }
+
+    .bundle-sidebar-products-gift-{{ section.id }} {
+      flex-wrap: wrap;
+    }
+
+    .bundle-fixed-{{ section.id }} {
+      position: static;
+      padding: 0px;
+      background-color: transparent;
+    }
+
+    .bundle-tabs-{{ section.id }} {     
+      gap: {{ tabs_gap }}px;
+    }
+
+    .bundle-sidebar-products-{{ section.id }} {    
+      justify-content: {{ sidebar_horizontal_align }};
+    }
+
+    .bundle-tab-{{ section.id }} {     
+      padding: {{ tab_padding_vertical }}px {{ tab_padding_horizontal }}px;    
+      font-size: {{ tab_size }}px;     
+    }
+
+    .bundle-tab-comment-{{ section.id }} {
+      display: block !important;
+      font-size: {{ tab_size | times: 0.6 }}px;
+    }
+
+    .bundle-total-price-text-{{ section.id }},
+    .bundle-total-price-{{ section.id }} {   
+      font-size: {{ total_price_size }}px;      
+    }
+
+    .bundle-total-compare-price-{{ section.id }} {
+       font-size: {{ total_price_size | minus: 5 }}px;      
+    }
+  } 
+
+  @media(min-width: 1324px) {
+    .bundle-sidebar-products-gift-{{ section.id }} {
+      flex-wrap: nowrap;
+    }
+  }
+{%- endstyle -%}
+
+{% unless full_width %}
+  <style>
+    .section-{{ section.id }}-settings {
+      max-width: {{ content_width }}px;
+    }
+  </style>
+{% endunless %}
+
+{% if margin_horizontal_mobile > 0 %}
+  <style>
+    .section-{{ section.id }} {
+      border-left: solid {{ border_color }} {{ border_thickness }}px;
+      border-right: solid {{ border_color }} {{ border_thickness }}px;
+    }
+    
+    @media(min-width: 1024px) {
+      .section-{{ section.id }} {
+        border-left: 0px;
+        border-right: 0px;
+      }
+    }
+  </style>
+{% endif %}
+
+{% if margin_horizontal > 0 %}
+  <style>
+    @media(min-width: 1024px) {
+      .section-{{ section.id }} {
+        border-left: solid {{ border_color }} {{ border_thickness }}px;
+        border-right: solid {{ border_color }} {{ border_thickness }}px;
+      }
+    }
+  </style>
+{% endif %}
+
+{% if title_custom %}
+  <style>
+    .bundle-product-title-{{ section.id }} {
+      font-family: {{ title_font.family }}, {{ title_font.fallback_families }};
+      font-weight: {{ title_font.weight }};
+      font-style: {{ title_font.style }};
+    }
+  </style>
+{% endif %}
+
+{% if price_custom %}
+  <style>
+    .bundle-product-price-{{ section.id }} * {
+      font-family: {{ price_font.family }}, {{ price_font.fallback_families }};
+      font-weight: {{ price_font.weight }};
+      font-style: {{ price_font.style }};
+    }
+  </style>
+{% endif %}
+
+{% if product_button_custom %}
+  <style>
+    .bundle-product-button-{{ section.id }},
+    .bundle-product-quantity-{{ section.id }} {
+      font-family: {{ product_button_font.family }}, {{ product_button_font.fallback_families }};
+      font-weight: {{ product_button_font.weight }};
+      font-style: {{ product_button_font.style }};
+    }
+  </style>
+{% endif %}
+
+{% if link_custom %}
+  <style>
+    .bundle-product-link-{{ section.id }} {
+      font-family: {{ link_font.family }}, {{ link_font.fallback_families }};
+      font-weight: {{ link_font.weight }};
+      font-style: {{ link_font.style }};
+    }
+  </style>
+{% endif %}
+
+{% if button_custom %}
+  <style>
+    .bundle-submit-button-{{ section.id }} {
+      font-family: {{ button_font.family }}, {{ button_font.fallback_families }};
+      font-weight: {{ button_font.weight }};
+      font-style: {{ button_font.style }};
+    }
+  </style>
+{% endif %}
+
+{% if step_number_custom %}
+  <style>
+    .bundle-step-circle-{{ section.id }} {
+      font-family: {{ step_number_font.family }}, {{ step_number_font.fallback_families }};
+      font-weight: {{ step_number_font.weight }};
+      font-style: {{ step_number_font.style }};
+    }
+  </style>
+{% endif %}
+
+{% if tab_custom %}
+  <style>
+    .bundle-tab-{{ section.id }},
+    .bundle-tab-comment-{{ section.id }}{
+      font-family: {{ tab_font.family }}, {{ tab_font.fallback_families }};
+      font-weight: {{ tab_font.weight }};
+      font-style: {{ tab_font.style }};
+    }
+  </style>
+{% endif %}
+
+{% if step_text_custom %}
+  <style>
+    .bundle-step-text-{{ section.id }} {
+      font-family: {{ step_text_font.family }}, {{ step_text_font.fallback_families }};
+      font-weight: {{ step_text_font.weight }};
+      font-style: {{ step_text_font.style }};
+    }
+  </style>
+{% endif %}
+
+{% if total_price_custom %}
+  <style>
+    .bundle-total-price-text-{{ section.id }},
+    .bundle-total-price-{{ section.id }},
+    .bundle-total-compare-price-{{ section.id }} {
+      font-family: {{ total_price_font.family }}, {{ total_price_font.fallback_families }};
+      font-weight: {{ total_price_font.weight }};
+      font-style: {{ total_price_font.style }};
+    }
+  </style>
+{% endif %}
+
+{% if product_image_ratio_mobile == "portrait" %}
+  <style>
+    .bundle-product-image-{{ section.id }} {
+     aspect-ratio: 9.6/12; 
+    }
+  </style>
+{% elsif product_image_ratio_mobile == "landscape" %}
+  <style>
+    .bundle-product-image-{{ section.id }}{
+     aspect-ratio: 12/9; 
+    }
+  </style>
+{% elsif product_image_ratio_mobile == "square" %}
+  <style>
+    .bundle-product-image-{{ section.id }} {
+     aspect-ratio: 12/12; 
+    }
+  </style>
+{% endif %}
+
+{% if product_image_ratio == "portrait" %}
+  <style>
+    @media(min-width: 1024px) {
+     .bundle-product-image-{{ section.id }} {
+       aspect-ratio: 9.6/12; 
+      } 
+    }
+  </style>
+{% elsif product_image_ratio == "landscape" %}
+  <style>
+    @media(min-width: 1024px) {
+      .bundle-product-image-{{ section.id }}{
+       aspect-ratio: 12/9; 
+      }
+    }
+  </style>
+{% elsif product_image_ratio == "square" %}
+  <style>
+    @media(min-width: 1024px) {
+      .bundle-product-image-{{ section.id }} {
+       aspect-ratio: 12/12; 
+      }
+    }
+  </style>
+{% endif %}
+
+{% if gift_product_image_ratio_mobile == "portrait" %}
+  <style>
+    .bundle-sidebar-gift-product-{{ section.id }} {
+     aspect-ratio: 9.6/12; 
+    }
+  </style>
+{% elsif gift_product_image_ratio_mobile == "landscape" %}
+  <style>
+    .bundle-sidebar-gift-product-{{ section.id }}{
+     aspect-ratio: 12/9; 
+    }
+  </style>
+{% elsif gift_product_image_ratio_mobile == "square" %}
+  <style>
+    .bundle-sidebar-gift-product-{{ section.id }} {
+     aspect-ratio: 12/12; 
+    }
+  </style>
+{% endif %}
+
+{% if gift_product_image_ratio == "portrait" %}
+  <style>
+    @media(min-width: 1024px) {
+      .bundle-sidebar-gift-product-{{ section.id }} {
+       aspect-ratio: 9.6/12; 
+      } 
+    }
+  </style>
+{% elsif gift_product_image_ratio == "landscape" %}
+  <style>
+    @media(min-width: 1024px) {
+      .bundle-sidebar-gift-product-{{ section.id }} { 
+       aspect-ratio: 12/9; 
+      }
+    }
+  </style>
+{% elsif gift_product_image_ratio == "square" %}
+  <style>
+    @media(min-width: 1024px) {
+      .bundle-sidebar-gift-product-{{ section.id }} {
+       aspect-ratio: 12/12; 
+      }
+    }
+  </style>
+{% endif %}
+
+
+{% if product_button_style == "non_outline" or product_button_style == "non_outline_arrow" %}
+  <style>
+    .bundle-product-button-{{ section.id }} {
+      background-color: {{ product_button_bg_color }};
+    }
+
+    .bundle-product-button-{{ section.id }}:hover {
+      background-color: {{ product_button_bg_hover_color }};
+    }
+  </style>
+{% elsif product_button_style == "outline" or product_button_style == "outline_arrow" %}
+  <style>
+    .bundle-product-button-{{ section.id }} {
+      background-color: {{ product_button_bg_color }};
+      border: {{ product_button_border_thickness }}px solid {{ product_button_border_color }};
+    }
+
+    .bundle-product-button-{{ section.id }}:hover {
+      background-color: {{ product_button_bg_hover_color }};
+      border: {{ product_button_border_thickness }}px solid {{ product_button_border_hover_color }};
+    }
+  </style>
+{% elsif product_button_style == "link" %}
+  <style>
+    .bundle-product-button-{{ section.id }} {
+      padding: 0px !important;
+    }
+  </style>
+{% endif %}
+
+{% if button_style == "non_outline" or button_style == "non_outline_arrow" %}
+  <style>
+    .bundle-submit-button-{{ section.id }} {
+      background-color: {{ button_bg_color }};
+    }
+
+    .bundle-submit-button-{{ section.id }}:not([disabled]):hover {
+      background-color: {{ button_bg_hover_color }};
+    }
+  </style>
+{% elsif button_style == "outline" or button_style == "outline_arrow" %}
+  <style>
+    .bundle-submit-button-{{ section.id }} {
+      background-color: {{ button_bg_color }};
+      border: {{ button_border_thickness }}px solid {{ button_border_color }};
+    }
+
+    .bundle-submit-button-{{ section.id }}:not([disabled]):hover {
+      background-color: {{ button_bg_hover_color }};
+      border: {{ button_border_thickness }}px solid {{ button_border_hover_color }};
+    }
+  </style>
+{% elsif button_style == "link" %}
+  <style>
+    .bundle-submit-button-{{ section.id }} {
+      padding: 0px !important;
+    }
+  </style>
+{% endif %}
+
+{% if sidebar_align_mobile == 'right' %}
+  <style>
+    .bundle-step-{{ section.id }} {
+      flex-direction: row-reverse;
+    }
+  </style>
+{% endif %}
+
+{% if sidebar_align == 'right' %}
+  <style>
+    @media(min-width: 1024px) {
+      .bundle-step-{{ section.id }} {
+        flex-direction: row-reverse;
+      }
+    }          
+  </style>
+{% endif %}
+
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'features' %}
+      <style>
+        {{  block.settings.feature_font | font_face: font_display: 'swap' }}    
+        .bundle-features-{{ section.id }} {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+          margin-top: {{ block.settings.feature_mt_mobile }}px;
+        }
+
+        .bundle-feature-{{ section.id }} {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          justify-content: {{ sidebar_horizontal_align_mobile }};
+        }
+
+        .bundle-feature-{{ section.id }} svg {
+          flex-shrink: 0;
+          display: block;
+          width: 25px;
+          height: 15px;
+          object-fit: cover;
+        }
+
+        .bundle-feature-{{ section.id }} svg path {
+          stroke: {{ block.settings.feature_icon_color }};
+        }
+      
+        .bundle-feature-text-{{ section.id }} {
+          margin: 0;
+          text-align: {{ sidebar_align_mobile }};
+          font-size: {{ block.settings.feature_size_mobile }}px;
+          color: {{ block.settings.feature_color }};
+          line-height: {{ block.settings.feature_height }}%;
+          text-transform: unset;
+          word-break: break-word;
+          font-weight: 700;
+        }
+
+        @media(min-width: 1024px) {          
+          .bundle-features-{{ section.id }} {          
+            margin-top: {{ block.settings.feature_mt }}px;
+          }
+
+          .bundle-feature-{{ section.id }} {
+            justify-content: {{ sidebar_horizontal_align }};
+          }
+
+          .bundle-feature-text-{{ section.id }} {
+            text-align: {{ sidebar_align }};
+            font-size: {{ block.settings.feature_size }}px;
+          }
+        }          
+      </style>
+        
+      {% if block.settings.feature_custom %}
+        <style>
+          .bundle-feature-text-{{ section.id }} {
+            font-family: {{ block.settings.feature_font.family }}, {{ block.settings.feature_font.fallback_families }};
+            font-weight: {{ block.settings.feature_font.weight }};
+            font-style: {{ block.settings.feature_font.style }};
+          }
+        </style>
+      {% endif %}
+
+      {% if sidebar_align_mobile == 'center' %}
+        <style>
+          .bundle-feature-{{ section.id }} {
+            flex-direction: column;
+            align-items: center;
+          }
+        </style>
+      {% endif %}
+
+      {% if sidebar_align_mobile == 'right' %}
+        <style>
+          .bundle-feature-{{ section.id }} {
+            flex-direction: row-reverse;
+          }
+        </style>
+      {% endif %}
+
+      {% if sidebar_align == 'center' %}
+        <style>
+          @media(min-width: 1024px) {
+            .bundle-feature-{{ section.id }} {
+              flex-direction: column;
+              align-items: center;
+            }
+          }
+         
+        </style>
+      {% endif %}
+
+      {% if sidebar_align == 'right' %}
+        <style>
+          @media(min-width: 1024px) {
+            .bundle-feature-{{ section.id }} {
+              flex-direction: row-reverse;
+            }
+          }          
+        </style>
+      {% endif %}
+
+
+    {% else %}
+      
+  {% endcase %}
+{% endfor %}
+
+<div class="section-{{ section.id }} bundle-{{ section.id }}" style="background-color:{{ background_color }}; background-image: {{ background_gradient }};">
+  <div class="section-{{ section.id }}-settings">
+    <div class="bundle-body-{{ section.id }}">
+      <div class="bundle-products-{{ section.id }}">
+        {% if collection != blank %}
+          {% for product in collections[collection].products %}
+            <div class="bundle-product-{{ section.id }}" data-title="{{ product.title }}" data-id="{{ product.selected_or_first_available_variant.id }}"  data-price="{{ product.selected_or_first_available_variant.price }}" data-compare-price="{{ product.selected_or_first_available_variant.compare_at_price | default: product.selected_or_first_available_variant.price }}">
+              <div class="bundle-product-image-{{ section.id }}">
+                {% if product.featured_image != blank %}
+                  {%- liquid assign img_alt = product.featured_image.alt | escape -%}
+                  {%- capture sizes -%}, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2){%- endcapture -%}
+                    {{ product.featured_image | image_url: width: 1000 | image_tag:
+                      loading: loading_attribute,
+                      width: product.featured_image.width,
+                      height: product.featured_image.height,
+                      sizes: sizes,
+                      widths: '450, 535, 750, 1070, 1500',
+                      alt: img_alt
+                    }}
+                {% else %}
+                  {{ 'image' | placeholder_svg_tag }}
+                {% endif %}
+              </div>
+              <div class="bundle-product-content-{{ section.id }}">
+                <div class="bundle-product-content-top-{{ section.id }}">
+                  <h3 class="bundle-product-title-{{ section.id }}">
+                    {% if product_title_limit %}
+                      {{ product.title | truncate: product_title_count }}
+                    {% else %}
+                      {{ product.title }}
+                    {% endif %}
+                  </h3>                 
+                </div>              
+                <div class="bundle-product-content-bottom-{{ section.id }}">
+                  <div class="bundle-product-price-{{ section.id }}">
+                    {% if price_compare and product.compare_at_price != blank %}
+                      <p class="bundle-product-compare-price-{{ section.id }}">{{ product.compare_at_price | money }}</p>
+                    {% endif %}
+                    <p class="bundle-product-regular-price-{{ section.id }}">
+                      {{ product.price | money }}
+                    </p>
+                  </div>
+                  <div class="bundle-product-quantity-wrapper-{{ section.id }}">
+                    <button class="bundle-product-quantity-minus-{{ section.id }}">
+                      <svg width="10" height="3" viewBox="0 0 10 3" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 3H0V0H10V3Z" fill="#432953"></path></svg>
+                    </button>
+                    <p class="bundle-product-quantity-{{ section.id }}">1</p>
+                    <button class="bundle-product-quantity-plus-{{ section.id }}">
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 7.5V12H7.5V7.5H12V4.5H7.5V0H4.5V4.5H0V7.5H4.5Z" fill="#432953"></path></svg>
+                    </button>
+                  </div>
+                  <button class="bundle-product-button-{{ section.id }} {% unless product.available %}out-of-stock{% endunless %}" {% unless product.available %}disabled{% endunless %}>
+                    <p class="bundle-product-button-inner-{{ section.id }}">
+                      {% if product.available %}
+                        {{ product_button }}
+                      {% else %}
+                        {{ product_button_soldout }}
+                      {% endif %}
+                        {% if product_button_style == "non_outline_arrow" or product_button_style == "outline_arrow" %}
+                          <svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M187.827 98.7858C188.123 98.4749 188.123 98.4749 188.123 98.1761C188.419 97.8652 188.419 97.5663 188.704 97.5663C189 96.9566 189 96.6458 189 96.0361C189 95.4263 189 94.8166 188.704 94.5058C188.704 94.195 188.408 93.8961 188.123 93.5852C188.123 93.2744 187.827 93.2744 187.827 92.9755L103.287 4.21945C102.41 3.29889 101.533 3 100.668 3C99.791 3 98.6295 3.31083 98.0488 4.21945C97.1719 5.14 96.8872 6.06058 96.8872 6.96919C96.8872 7.88974 97.1833 9.10918 98.0488 9.7189L175.587 92.0539H6.79206C4.75371 92.0539 3 93.895 3 96.0351C3 98.1751 4.75365 100.016 6.79206 100.016H175.575L97.7543 182.042C96.2967 183.572 96.2967 186.322 97.7543 187.852C99.2119 189.383 101.831 189.383 103.288 187.852L187.827 98.7858Z" fill="black"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M188.607 97.5657C188.432 97.5657 188.365 97.6788 188.27 97.8382C188.211 97.9378 188.141 98.0554 188.027 98.1748C188.027 98.4734 188.027 98.4734 187.731 98.7839L103.281 187.759C101.825 189.287 99.2085 189.287 97.7524 187.759C96.2963 186.23 96.2963 183.483 97.7524 181.954L175.492 100.013L6.88489 100.013C4.8486 100.013 3.09677 98.1739 3.09677 96.036C3.09677 93.8982 4.84866 92.059 6.88489 92.059L175.504 92.059L98.0465 9.80878C97.182 9.19968 96.8862 7.9815 96.8862 7.0619C96.8862 6.15422 97.1706 5.2346 98.0465 4.315C98.6267 3.40732 99.787 3.0968 100.663 3.0968C101.527 3.0968 102.403 3.39539 103.279 4.315L187.731 92.9796C187.731 93.1274 187.804 93.2021 187.877 93.2774C187.952 93.3543 188.027 93.4319 188.027 93.5887C188.046 93.6098 188.066 93.6308 188.085 93.6518C188.338 93.9267 188.584 94.1935 188.606 94.4689C188.607 94.482 188.607 94.4951 188.607 94.5083C188.903 94.8188 188.903 95.4279 188.903 96.037C188.903 96.6461 188.903 96.9566 188.607 97.5657ZM191.489 93.2767C191.79 93.8661 191.89 94.4204 191.934 94.7363C192.001 95.2226 192 95.7194 192 95.9856L192 96.037C192 96.0544 192 96.0729 192 96.0926C192 96.3523 192.001 96.8096 191.924 97.2931C191.828 97.8884 191.64 98.41 191.393 98.9184L190.546 100.663H190.212C190.127 100.759 190.038 100.852 189.988 100.905L189.974 100.92L105.527 189.891C102.85 192.701 98.1865 192.704 95.51 189.895C94.1476 188.464 93.5636 186.587 93.5636 184.857C93.5636 183.128 94.1468 181.252 95.5071 179.822M191.489 93.2767C191.316 92.7908 191.078 92.4357 190.938 92.2406C190.903 92.1912 190.866 92.142 190.828 92.0939V91.7408L105.522 2.17912C104.076 0.661813 102.397 0 100.663 0C99.3914 0 97.0569 0.401401 95.6212 2.37737C94.3151 3.83819 93.7895 5.45521 93.7895 7.0619C93.7895 8.26663 94.1183 10.6061 95.9608 12.111L168.333 88.9622L6.88489 88.9622C2.9981 88.9622 0 92.3316 0 96.036C0 99.7405 2.99801 103.11 6.88489 103.11L168.285 103.11" fill="black"></path>
+                            <path d="M169.5 104L16.5 102.5V90H171L97.5 10.5V7L107.5 4.5C131.167 29.6667 180.2 81.5 187 87.5C193.8 93.5 191.5 99 189.5 101L105.5 184L94 181.5L169.5 104Z" fill="black"></path>
+                          </svg>
+                        {% endif %}
+                    </p>
+                  </button>
+                  {% if link_text != blank %}
+                    <a href="{{ product.url }}" {% if in_new_tab %}target="_blank"{% endif %} class="bundle-product-link-{{ section.id }}">{{ link_text }}</a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          {% for item in (1..8) %}
+            <div class="bundle-product-{{ section.id }}">
+              <div class="bundle-product-image-{{ section.id }}">
+                {{ 'image' | placeholder_svg_tag }}
+              </div>
+              <div class="bundle-product-content-{{ section.id }}">
+                <div class="bundle-product-content-top-{{ section.id }}">
+                  <h3 class="bundle-product-title-{{ section.id }}">Product title</h3>
+                </div>
+                <div class="bundle-product-content-bottom-{{ section.id }}">
+                  <button class="bundle-product-button-{{ section.id }}">{{ product_button }}</button>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+      <div class="bundle-sidebar-wrapper-{{ section.id }}">
+        <div class="bundle-sidebar-{{ section.id }}">
+          <div class="bundle-sidebar-body-{{ section.id }}">
+            <div class="bundle-step-{{ section.id }}" style="margin-top: 0px !important;">
+              <div class="bundle-step-circle-{{ section.id }}">1</div>
+              <p class="bundle-step-text-{{ section.id }}">{{ first_step }}</p>
+            </div>
+            <div class="bundle-tabs-{{ section.id }}">              
+              {% for block in section.blocks %}
+                {% if block.type == 'bundle' %}                  
+                  <p class="bundle-tab-{{ section.id }} {% if forloop.first %}active{% endif %}">{{ block.settings.sizes_value }} {{ tab_text }} {% if block.settings.comment != blank %}<span class="bundle-tab-comment-{{ section.id }} {% if block.settings.hide_comment %}hide{% endif %}">{{ block.settings.comment }}</span>{% endif %}</p>                  
+                {% endif %}
+              {% endfor %}
+            </div>
+            <div class="bundle-sidebar-products-gift-{{ section.id }}">
+              <div class="bundle-sidebar-products-wrap-{{ section.id }}">
+                {% assign limitsWrapper = sizes | strip | split: ',' %}
+                {% assign first_limit_string = limitsWrapper[0] %}                  
+                {% assign num_blocks = first_limit_string | plus: 0 %}
+                <div class="bundle-step-{{ section.id }}">
+                  <div class="bundle-step-circle-{{ section.id }}">2</div>
+                  <p class="bundle-step-text-{{ section.id }} bundle-second-step-text-{{ section.id }}">
+                    {{ second_step }} <span class="bundle-second-step-counter-{{ section.id }}"><span class="bundle-second-step-accent-text-{{ section.id }}">0</span>/{{ num_blocks }}</span>
+                  </p>
+                </div>
+                <div class="bundle-sidebar-products-{{ section.id }}">                  
+                  {% for i in (1..num_blocks) %}
+                    <div class="bundle-product-block-{{ section.id }} empty">
+                      <svg class="bundle-icon build-a-bundle__pack-image-default" data-id="empty" width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="4.5" y="1.30005" width="27" height="27" rx="13.5" stroke="#AFAFAF" stroke-dasharray="1.5 1.5"></rect>
+                            <path d="M18.0005 8.80005V20.8" stroke="#241F21" stroke-width="1.5"></path>
+                            <path d="M24 14.8005L12 14.8005" stroke="#241F21" stroke-width="1.5"></path>
+                      </svg>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>   
+             {% if section.settings.use_gift %}
+               {% if gift_product != blank %}   
+                  <div class="bundle-sidebar-gift-{{ section.id }}">
+                    {% if gift_text != blank %}
+                      <p class="bundle-step-text-{{ section.id }} bundle-sidebar-gift-text-{{ section.id }}">{{ gift_text }}</p>
+                    {% endif %}
+                    <div class="bundle-sidebar-gift-product-{{ section.id }}" data-variant-id="{{ gift_product.selected_or_first_available_variant.id }}">
+                      {% if gift_product.featured_image != blank %}
+                        {%- liquid assign img_alt = gift_product.featured_image.alt | escape -%}
+                          {%- capture sizes -%}, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2){%- endcapture -%}
+                            {{ gift_product.featured_image | image_url: width: 1000 | image_tag:
+                              loading: loading_attribute,
+                              width: gift_product.featured_image.width,
+                              height: gift_product.featured_image.height,
+                              sizes: sizes,
+                              widths: '450, 535, 750, 1070, 1500',
+                              alt: img_alt
+                            }}
+                      {% else %}
+                        {{ 'image' | placeholder_svg_tag }}
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+            </div> 
+            
+            {% for block in section.blocks %}
+              {% if block.type == 'features' %}
+                <div class="bundle-features-{{ section.id }}">
+                  {% if block.settings.first_feature_text != blank %}
+                    <div class="bundle-feature-{{ section.id }}">
+                      <svg width="25" height="16" viewBox="0 0 25 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex flex-shrink-0">
+                        <path d="M2 7.5L8.5 14L24 2" stroke="black" stroke-width="3"></path>
+                      </svg>
+                      <p class="bundle-feature-text-{{ section.id }}">{{ block.settings.first_feature_text }}</p>
+                    </div>
+                  {% endif %}
+                  {% if block.settings.second_feature_text != blank %}
+                    <div class="bundle-feature-{{ section.id }}">
+                      <svg width="25" height="16" viewBox="0 0 25 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex flex-shrink-0">
+                        <path d="M2 7.5L8.5 14L24 2" stroke="black" stroke-width="3"></path>
+                      </svg>
+                      <p class="bundle-feature-text-{{ section.id }}">{{ block.settings.second_feature_text }}</p>
+                    </div>
+                  {% endif %}
+                  {% if block.settings.third_feature_text != blank %}
+                    <div class="bundle-feature-{{ section.id }}">
+                      <svg width="25" height="16" viewBox="0 0 25 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex flex-shrink-0">
+                        <path d="M2 7.5L8.5 14L24 2" stroke="black" stroke-width="3"></path>
+                      </svg>
+                      <p class="bundle-feature-text-{{ section.id }}">{{ block.settings.third_feature_text }}</p>
+                    </div>
+                  {% endif %}
+                    {% if block.settings.fourth_feature_text != blank %}
+                    <div class="bundle-feature-{{ section.id }}">
+                      <svg width="25" height="16" viewBox="0 0 25 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex flex-shrink-0">
+                        <path d="M2 7.5L8.5 14L24 2" stroke="black" stroke-width="3"></path>
+                      </svg>
+                      <p class="bundle-feature-text-{{ section.id }}">{{ block.settings.fourth_feature_text }}</p>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+
+            <div class="bundle-total-price-wrapper-{{ section.id }}">
+              {% if total_price != blank %}
+                <p class="bundle-total-price-text-{{ section.id }}">{{ total_price }}</p>
+              {% endif %}
+              <div style="display: flex; align-items: center; gap: 5px;">
+                <p class="bundle-total-compare-price-{{ section.id }} bundle-compare-price-strikethrough"></p>
+                <p class="bundle-total-price-{{ section.id }}">{{ 0 | money }}</p>
+              </div>            
+            </div>
+          </div>
+        </div>
+        <form class="bundle-form-{{ section.id }}" method="post" action="/cart/add" accept-charset="UTF-8" enctype="multipart/form-data" novalidate="novalidate" data-type="add-to-cart-form">
+          <button type="submit" disabled data-all="{{ button }}" class="bundle-submit-button-{{ section.id }}">
+            <span>{{ button }}</span>
+            {% if button_style == "non_outline_arrow" or button_style == "outline_arrow" %}
+              <svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M187.827 98.7858C188.123 98.4749 188.123 98.4749 188.123 98.1761C188.419 97.8652 188.419 97.5663 188.704 97.5663C189 96.9566 189 96.6458 189 96.0361C189 95.4263 189 94.8166 188.704 94.5058C188.704 94.195 188.408 93.8961 188.123 93.5852C188.123 93.2744 187.827 93.2744 187.827 92.9755L103.287 4.21945C102.41 3.29889 101.533 3 100.668 3C99.791 3 98.6295 3.31083 98.0488 4.21945C97.1719 5.14 96.8872 6.06058 96.8872 6.96919C96.8872 7.88974 97.1833 9.10918 98.0488 9.7189L175.587 92.0539H6.79206C4.75371 92.0539 3 93.895 3 96.0351C3 98.1751 4.75365 100.016 6.79206 100.016H175.575L97.7543 182.042C96.2967 183.572 96.2967 186.322 97.7543 187.852C99.2119 189.383 101.831 189.383 103.288 187.852L187.827 98.7858Z" fill="black"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M188.607 97.5657C188.432 97.5657 188.365 97.6788 188.27 97.8382C188.211 97.9378 188.141 98.0554 188.027 98.1748C188.027 98.4734 188.027 98.4734 187.731 98.7839L103.281 187.759C101.825 189.287 99.2085 189.287 97.7524 187.759C96.2963 186.23 96.2963 183.483 97.7524 181.954L175.492 100.013L6.88489 100.013C4.8486 100.013 3.09677 98.1739 3.09677 96.036C3.09677 93.8982 4.84866 92.059 6.88489 92.059L175.504 92.059L98.0465 9.80878C97.182 9.19968 96.8862 7.9815 96.8862 7.0619C96.8862 6.15422 97.1706 5.2346 98.0465 4.315C98.6267 3.40732 99.787 3.0968 100.663 3.0968C101.527 3.0968 102.403 3.39539 103.279 4.315L187.731 92.9796C187.731 93.1274 187.804 93.2021 187.877 93.2774C187.952 93.3543 188.027 93.4319 188.027 93.5887C188.046 93.6098 188.066 93.6308 188.085 93.6518C188.338 93.9267 188.584 94.1935 188.606 94.4689C188.607 94.482 188.607 94.4951 188.607 94.5083C188.903 94.8188 188.903 95.4279 188.903 96.037C188.903 96.6461 188.903 96.9566 188.607 97.5657ZM191.489 93.2767C191.79 93.8661 191.89 94.4204 191.934 94.7363C192.001 95.2226 192 95.7194 192 95.9856L192 96.037C192 96.0544 192 96.0729 192 96.0926C192 96.3523 192.001 96.8096 191.924 97.2931C191.828 97.8884 191.64 98.41 191.393 98.9184L190.546 100.663H190.212C190.127 100.759 190.038 100.852 189.988 100.905L189.974 100.92L105.527 189.891C102.85 192.701 98.1865 192.704 95.51 189.895C94.1476 188.464 93.5636 186.587 93.5636 184.857C93.5636 183.128 94.1468 181.252 95.5071 179.822M191.489 93.2767C191.316 92.7908 191.078 92.4357 190.938 92.2406C190.903 92.1912 190.866 92.142 190.828 92.0939V91.7408L105.522 2.17912C104.076 0.661813 102.397 0 100.663 0C99.3914 0 97.0569 0.401401 95.6212 2.37737C94.3151 3.83819 93.7895 5.45521 93.7895 7.0619C93.7895 8.26663 94.1183 10.6061 95.9608 12.111L168.333 88.9622L6.88489 88.9622C2.9981 88.9622 0 92.3316 0 96.036C0 99.7405 2.99801 103.11 6.88489 103.11L168.285 103.11" fill="black"></path>
+                <path d="M169.5 104L16.5 102.5V90H171L97.5 10.5V7L107.5 4.5C131.167 29.6667 180.2 81.5 187 87.5C193.8 93.5 191.5 99 189.5 101L105.5 184L94 181.5L169.5 104Z" fill="black"></path>
+              </svg>
+            {% endif %}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var formayMoneyForBuyItWith = function(cents, format) {
+  if (typeof cents == 'string') {
+    cents = cents.replace('.', '');
+  }
+  var value = '';
+  var placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
+  var formatString = format || (typeof Shopify !== 'undefined' && Shopify.money_format);
+
+  if (typeof formatString !== 'string') {
+    return '';
+  }
+
+  function defaultOption(opt, def) {
+    return (typeof opt == 'undefined' ? def : opt);
+  }
+
+  function formatWithDelimiters(number, precision, thousands, decimal) {
+    precision = defaultOption(precision, 2);
+    thousands = defaultOption(thousands, ',');
+    decimal = defaultOption(decimal, '.');
+
+    if (isNaN(number) || number == null) {
+      return 0;
+    }
+
+    number = (number / 100.0).toFixed(precision);
+
+    var parts = number.split('.'),
+      dollars = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + thousands),
+      cents = parts[1] ? (decimal + parts[1]) : '';
+
+    return dollars + cents;
+  }
+
+  const matchResult = formatString.match(placeholderRegex);
+  if (!matchResult || !matchResult[1]) {
+    return formatWithDelimiters(cents, 2);
+  }
+
+  switch (matchResult[1]) {
+    case 'amount':
+      value = formatWithDelimiters(cents, 2);
+      break;
+    case 'amount_no_decimals':
+      value = formatWithDelimiters(cents, 0);
+      break;
+    case 'amount_with_comma_separator':
+      value = formatWithDelimiters(cents, 2, '.', ',');
+      break;
+    case 'amount_no_decimals_with_comma_separator':
+      value = formatWithDelimiters(cents, 0, '.', ',');
+      break;
+  }
+
+  return formatString.replace(placeholderRegex, value);
+};
+
+function initBundle4() {
+  let mainButtonText = document.querySelector('.bundle-submit-button-{{ section.id }} span');
+  let mainButton = document.querySelector('.bundle-submit-button-{{ section.id }}');
+  let products = document.querySelectorAll('.bundle-product-{{ section.id }}');
+  let bundleSidebarProductsContainer = document.querySelector(`.bundle-sidebar-products-{{ section.id }}`);
+  let bundleTabs = document.querySelectorAll('.bundle-tab-{{ section.id }}');
+  let totalValueElement = document.querySelector('.bundle-total-price-{{ section.id }}');
+  let totalComparePriceElement = document.querySelector('.bundle-total-compare-price-{{ section.id }}');
+  let bundleStepTextElement = document.querySelector('.bundle-second-step-text-{{ section.id }}');
+  let initialBundleStepText = bundleStepTextElement ? bundleStepTextElement.textContent.trim() : '';
+  let bundleSecondStepCounterElement = document.querySelector('.bundle-second-step-counter-{{ section.id }}');
+
+  // New: Get gift product variant ID
+  const giftProductElement = document.querySelector('.bundle-sidebar-gift-product-{{ section.id }}');
+  const giftProductVariantId = giftProductElement ? giftProductElement.dataset.variantId : null;
+
+  let selectedProducts = {};
+
+  function updateTotalAndButton() {
+    let total = 0;
+    let totalCompare = 0;
+    let totalSelectedItems = 0;
+
+    for (const productId in selectedProducts) {
+      if (selectedProducts.hasOwnProperty(productId)) {
+        const productCount = selectedProducts[productId].count;
+        const productPrice = selectedProducts[productId].price;
+        const productComparePrice = selectedProducts[productId].comparePrice;
+        total += productCount * productPrice;
+        totalCompare += productCount * productComparePrice;
+        totalSelectedItems += productCount;
+      }
+    }
+
+    totalValueElement.textContent = formayMoneyForBuyItWith(total, "{{ shop.money_format }}");
+
+    if (totalComparePriceElement) {
+        if (totalCompare > total) {
+            totalComparePriceElement.textContent = formayMoneyForBuyItWith(totalCompare, "{{ shop.money_format }}");
+            totalComparePriceElement.style.display = 'inline-block';
+        } else {
+            totalComparePriceElement.textContent = '';
+            totalComparePriceElement.style.display = 'none';
+        }
+    }
+
+    const activeTab = document.querySelector('.bundle-tab-{{ section.id }}.active');
+    const currentLimitMatch = activeTab.textContent.match(/\d+/);
+    const currentLimit = currentLimitMatch ? Number(currentLimitMatch[0]) : 0;
+
+    if (bundleSecondStepCounterElement) {
+      bundleSecondStepCounterElement.innerHTML = `<span class="bundle-second-step-accent-text-{{ section.id }}">${totalSelectedItems}</span>/${currentLimit}`;
+    }
+
+    // New: Logic for gift product and button state
+    if (totalSelectedItems === currentLimit) {
+      mainButton.disabled = false;
+      mainButtonText.textContent = '{{ button }}';
+    } else {
+      mainButton.disabled = true;
+      const remaining = currentLimit - totalSelectedItems;
+      let productWord;
+
+      if (remaining === 1) {
+        productWord = 'product';
+      } else {
+        productWord = 'products';
+      }
+      mainButtonText.textContent = `Add ${remaining} ${productWord}`;
+    }
+
+    const form = document.querySelector('.bundle-form-{{ section.id }}');
+    const oldInputs = form.querySelectorAll('input[name^="items["]');
+    oldInputs.forEach(input => input.remove());
+
+    let itemIndex = 0;
+    for (const productId in selectedProducts) {
+      if (selectedProducts.hasOwnProperty(productId) && selectedProducts[productId].count > 0) {
+        var productIdInput = document.createElement('input');
+        productIdInput.type = 'hidden';
+        productIdInput.name = `items[${itemIndex}][id]`;
+        productIdInput.value = productId;
+        form.appendChild(productIdInput);
+
+        var quantityInput = document.createElement('input');
+        quantityInput.type = 'hidden';
+        quantityInput.name = `items[${itemIndex}][quantity]`;
+        quantityInput.value = selectedProducts[productId].count;
+        form.appendChild(quantityInput);
+        itemIndex++;
+      }
+    }
+
+    // New: Add gift product to form if limit is met
+    if (totalSelectedItems === currentLimit && giftProductVariantId) {
+        var giftIdInput = document.createElement('input');
+        giftIdInput.type = 'hidden';
+        giftIdInput.name = `items[${itemIndex}][id]`;
+        giftIdInput.value = giftProductVariantId;
+        form.appendChild(giftIdInput);
+
+        var giftQuantityInput = document.createElement('input');
+        giftQuantityInput.type = 'hidden';
+        giftQuantityInput.name = `items[${itemIndex}][quantity]`;
+        giftQuantityInput.value = 1; // Always add 1 quantity of the gift
+        form.appendChild(giftQuantityInput);
+    }
+  }
+
+  bundleTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      bundleTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const newLimitMatch = tab.textContent.match(/\d+/);
+      const newLimit = newLimitMatch ? Number(newLimitMatch[0]) : 0;
+
+      selectedProducts = {};
+      products.forEach(el => {
+        el.classList.remove('active');
+        const quantityDisplay = el.querySelector('.bundle-product-quantity-{{ section.id }}');
+        if (quantityDisplay) {
+          quantityDisplay.textContent = '1';
+        }
+      });
+      updateSidebarProducts(newLimit);
+      updateTotalAndButton();
+    });
+  });
+
+  function updateSidebarProducts(targetCount) {
+    while (bundleSidebarProductsContainer.firstChild) {
+      bundleSidebarProductsContainer.removeChild(bundleSidebarProductsContainer.firstChild);
+    }
+
+    for (const productId in selectedProducts) {
+      if (selectedProducts.hasOwnProperty(productId)) {
+        const productInfo = selectedProducts[productId];
+        for (let i = 0; i < productInfo.count; i++) {
+          const newDiv = document.createElement('div');
+          newDiv.className = `bundle-product-block-{{ section.id }}`;
+          newDiv.setAttribute('data-id', productId);
+          newDiv.setAttribute('data-variant-id', productInfo.variantId);
+
+          const imageDiv = document.createElement('div');
+          imageDiv.className = `bundle-sidebar-product-image-{{ section.id }}`;
+
+          const imageElement = document.createElement('img');
+          imageElement.src = productInfo.imageSrc;
+          imageElement.alt = productInfo.imageAlt;
+
+          imageDiv.appendChild(imageElement);
+          newDiv.appendChild(imageDiv); // Changed this line from newDiv.appendChild(newDiv);
+          bundleSidebarProductsContainer.appendChild(newDiv);
+        }
+      }
+    }
+
+    const currentSelectedCount = Object.values(selectedProducts).reduce((sum, prod) => sum + prod.count, 0);
+    const emptyBlocksToAdd = targetCount - currentSelectedCount;
+
+    if (emptyBlocksToAdd > 0) {
+      for (let i = 0; i < emptyBlocksToAdd; i++) {
+        const emptyDiv = document.createElement('div');
+        emptyDiv.className = `bundle-product-block-{{ section.id }} empty`;
+        emptyDiv.innerHTML = `
+          <svg class="bundle-icon build-a-bundle__pack-image-default" data-id="empty" width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4.5" y="1.30005" width="27" height="27" rx="13.5" stroke="#AFAFAF" stroke-dasharray="1.5 1.5"></rect>
+            <path d="M18.0005 8.80005V20.8" stroke="#241F21" stroke-width="1.5"></path>
+            <path d="M24 14.8005L12 14.8005" stroke="#241F21" stroke-width="1.5"></path>
+          </svg>
+        `;
+        bundleSidebarProductsContainer.appendChild(emptyDiv);
+      }
+    }
+    updateTotalAndButton();
+  }
+
+  if (products) {
+    products.forEach(el => {
+      let btn = el.querySelector('.bundle-product-button-{{ section.id }}');
+      let quantityDisplay = el.querySelector('.bundle-product-quantity-{{ section.id }}');
+      let minusButton = el.querySelector('.bundle-product-quantity-minus-{{ section.id }}');
+      let plusButton = el.querySelector('.bundle-product-quantity-plus-{{ section.id }}');
+
+      const dataId = el.getAttribute('data-id');
+      const productPrice = Number(el.getAttribute('data-price'));
+      const productComparePrice = Number(el.getAttribute('data-compare-price'));
+      let image = el.querySelector('.bundle-product-image-{{ section.id }} img');
+      let imageSrc = image ? image.src : '';
+      let imageAlt = image ? image.alt : '';
+
+      if (btn) {
+        btn.addEventListener('click', () => {
+          const activeTab = document.querySelector('.bundle-tab-{{ section.id }}.active');
+          const currentLimitMatch = activeTab.textContent.match(/\d+/);
+          const currentLimit = currentLimitMatch ? Number(currentLimitMatch[0]) : 0;
+          const currentSelectedCount = Object.values(selectedProducts).reduce((sum, prod) => sum + prod.count, 0);
+
+          if (currentSelectedCount < currentLimit) {
+            if (!selectedProducts[dataId]) {
+              selectedProducts[dataId] = {
+                count: 0,
+                price: productPrice,
+                comparePrice: productComparePrice,
+                imageSrc: imageSrc,
+                imageAlt: imageAlt
+              };
+            }
+
+            selectedProducts[dataId].count++;
+            quantityDisplay.textContent = selectedProducts[dataId].count;
+            el.classList.add('active');
+
+            const firstEmptyBlock = document.querySelector(`.bundle-product-block-{{ section.id }}.empty`);
+            if (firstEmptyBlock) {
+              bundleSidebarProductsContainer.removeChild(firstEmptyBlock);
+            }
+
+            const newDiv = document.createElement('div');
+            newDiv.className = `bundle-product-block-{{ section.id }}`;
+            newDiv.setAttribute('data-id', dataId);
+
+            const newImageDiv = document.createElement('div');
+            newImageDiv.className = `bundle-sidebar-product-image-{{ section.id }}`;
+            const newImageElement = document.createElement('img');
+            newImageElement.src = imageSrc;
+            newImageElement.alt = imageAlt;
+            newImageDiv.prepend(newImageElement);
+            newDiv.prepend(newImageDiv);
+            bundleSidebarProductsContainer.prepend(newDiv);
+
+            updateTotalAndButton();
+          }
+        });
+      }
+
+      if (minusButton) {
+        minusButton.addEventListener('click', () => {
+          if (selectedProducts[dataId] && selectedProducts[dataId].count > 0) {
+            selectedProducts[dataId].count--;
+            quantityDisplay.textContent = selectedProducts[dataId].count;
+
+            const productBlocks = document.querySelectorAll(`.bundle-product-block-{{ section.id }}[data-id="${dataId}"]`);
+            if (productBlocks.length > 0) {
+              bundleSidebarProductsContainer.removeChild(productBlocks[productBlocks.length - 1]);
+            }
+
+            const emptyDiv = document.createElement('div');
+            emptyDiv.className = `bundle-product-block-{{ section.id }} empty`;
+            emptyDiv.innerHTML = `
+              <svg class="bundle-icon build-a-bundle__pack-image-default" data-id="empty" width="36" height="29" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4.5" y="1.30005" width="27" height="27" rx="13.5" stroke="#AFAFAF" stroke-dasharray="1.5 1.5"></rect>
+                <path d="M18.0005 8.80005V20.8" stroke="#241F21" stroke-width="1.5"></path>
+                <path d="M24 14.8005L12 14.8005" stroke="#241F21" stroke-width="1.5"></path>
+              </svg>
+            `;
+            bundleSidebarProductsContainer.appendChild(emptyDiv);
+
+            if (selectedProducts[dataId].count === 0) {
+              el.classList.remove('active');
+              delete selectedProducts[dataId];
+            }
+            updateTotalAndButton();
+          }
+        });
+      }
+
+      if (plusButton) {
+        plusButton.addEventListener('click', () => {
+          const activeTab = document.querySelector('.bundle-tab-{{ section.id }}.active');
+          const currentLimitMatch = activeTab.textContent.match(/\d+/);
+          const currentLimit = currentLimitMatch ? Number(currentLimitMatch[0]) : 0;
+          const currentSelectedCount = Object.values(selectedProducts).reduce((sum, prod) => sum + prod.count, 0);
+
+          if (currentSelectedCount < currentLimit) {
+            if (!selectedProducts[dataId]) {
+              selectedProducts[dataId] = {
+                count: 0,
+                price: productPrice,
+                comparePrice: productComparePrice,
+                imageSrc: imageSrc,
+                imageAlt: imageAlt
+              };
+            }
+
+            selectedProducts[dataId].count++;
+            quantityDisplay.textContent = selectedProducts[dataId].count;
+            el.classList.add('active');
+
+            const firstEmptyBlock = document.querySelector(`.bundle-product-block-{{ section.id }}.empty`);
+            if (firstEmptyBlock) {
+              bundleSidebarProductsContainer.removeChild(firstEmptyBlock);
+            }
+
+            const newDiv = document.createElement('div');
+            newDiv.className = `bundle-product-block-{{ section.id }}`;
+            newDiv.setAttribute('data-id', dataId);
+
+            const newImageDiv = document.createElement('div');
+            newImageDiv.className = `bundle-sidebar-product-image-{{ section.id }}`;
+            const newImageElement = document.createElement('img');
+            newImageElement.src = imageSrc;
+            newImageElement.alt = imageAlt;
+            newImageDiv.prepend(newImageElement);
+            newDiv.prepend(newImageDiv);
+            bundleSidebarProductsContainer.prepend(newDiv);
+
+            updateTotalAndButton();
+          }
+        });
+      }
+    });
+  }
+
+  // Initial update
+  const initialTab = document.querySelector('.bundle-tab-{{ section.id }}.active');
+  const initialLimitMatch = initialTab.textContent.match(/\d+/);
+  const initialLimit = initialLimitMatch ? Number(initialLimitMatch[0]) : 0;
+  updateSidebarProducts(initialLimit);
+  updateTotalAndButton();
+}
+
+document.addEventListener('DOMContentLoaded', initBundle4);
+</script>
+
+{% schema %}
+  {
+    "name": "SS - Bundle builder #4",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Products"
+      },
+      {
+        "type": "collection",
+        "label": "Collection",
+        "id": "collection",
+        "info": "Important: Only add products that don't have variations. Customers can't select specific sizes, colors, or other options when adding these products."
+      },
+       {
+        "type": "checkbox",
+        "id": "use_gift",
+        "label": "Add free gift",
+        "default": true
+      },
+      {
+        "type": "product",
+        "id": "gift_product",
+        "label": "Gift product",
+        "info": "To add a free gift to your Shopify bundle section, create a product for the gift with a price of 0."
+      },     
+      {
+        "type": "text",
+        "id": "gift_text",
+        "label": "Gift label",
+        "default": "Free Gift",
+        "visible_if": "{{ section.settings.use_gift }}"
+      },
+      {
+        "type": "header",
+        "content": "Layout"
+      },
+      {
+         "type": "range",
+         "id": "sidebar_radius",
+         "min": 0,
+         "max": 100,
+         "step": 2,
+         "unit": "px",
+         "label": "Roundness",
+         "default": 4
+      },
+      {
+         "type": "range",
+         "id": "sidebar_border_thickness",
+         "min": 0,
+         "max": 10,
+         "step": 1,
+         "unit": "px",
+         "label": "Border thickness",
+         "default": 0
+      },
+      {
+        "type": "range",
+        "id": "layout_gap",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Gap",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "layout_gap_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Gap - mobile",
+        "default": 16
+      },
+      {
+        "type": "header",
+        "content": "Products"
+      },
+      {
+        "type": "range",
+        "id": "products_row",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "label": "Products per row",
+        "default": 4
+      },
+      {
+        "type": "range",
+        "id": "products_row_mobile",
+        "min": 1,
+        "max": 3,
+        "step": 1,
+        "label": "Products per row - mobile",
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "products_gap",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Gap",
+        "default": 32
+      },
+      {
+        "type": "range",
+        "id": "products_gap_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Gap - mobile",
+        "default": 24
+      },    
+      {
+        "type": "header",
+        "content": "Product image"
+      },
+      {
+        "type": "range",
+        "id": "product_image_border_thickness",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "Border thickness",
+        "default": 0
+      },
+      {
+         "type": "range",
+         "id": "product_image_radius",
+         "min": 0,
+         "max": 100,
+         "step": 2,
+         "unit": "px",
+         "label": "Roundness",
+         "default": 4
+      },
+      {
+        "type": "select",
+        "id": "product_image_ratio",
+        "label": "Aspect ratio",
+        "default": "square",
+        "options": [
+          {
+            "label": "Portrait",
+            "value": "portrait"
+          },
+          {
+            "label": "Square",
+            "value": "square"
+          },
+          {
+            "label": "Landscape",
+            "value": "landscape"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "product_image_ratio_mobile",
+        "label": "Aspect ratio - mobile",
+        "default": "square",
+        "options": [
+          {
+            "label": "Portrait",
+            "value": "portrait"
+          },
+          {
+            "label": "Square",
+            "value": "square"
+          },
+          {
+            "label": "Landscape",
+            "value": "landscape"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Product content"
+      },
+      {
+        "type": "text_alignment",
+        "id": "product_content_align",
+        "label": "Alignment",
+        "default": "center"
+      },
+      {
+        "type": "text_alignment",
+        "id": "product_content_align_mobile",
+        "label": "Alignment - mobile",
+        "default": "center"
+      },
+      {
+        "type": "header",
+        "content": "Product title"
+      },
+      {
+        "type": "checkbox",
+        "id": "title_custom",
+        "label": "Use custom font",
+        "default": false
+      },
+      {
+        "type": "font_picker",
+        "id": "title_font",
+        "label": "Font family",
+        "default": "josefin_sans_n4",
+        "visible_if": "{{ section.settings.title_custom }}"
+      },
+      {
+        "type": "range",
+        "id": "title_size",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 14
+      },
+      {
+        "type": "range",
+        "id": "title_size_mobile",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size - mobile",
+        "default": 14
+      },
+      {
+        "type": "range",
+        "id": "title_height",
+        "min": 50,
+        "max": 200,
+        "step": 10,
+        "unit": "%",
+        "label": "Line height",
+        "default": 150
+      },
+      {
+        "type": "range",
+        "id": "title_mt",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Margin top",
+        "default": 12
+      },
+      {
+        "type": "range",
+        "id": "title_mt_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Margin top - mobile",
+        "default": 10
+      }, 
+      {
+        "type": "checkbox",
+        "id": "product_title_limit",
+        "label": "Limit title length",
+        "default": true
+      }, 
+      {
+        "type": "range",
+        "id": "product_title_count",
+        "min": 1,
+        "max": 50,
+        "step": 1,
+        "label": "Maximum characters",
+        "default": 20,
+        "visible_if": "{{ section.settings.product_title_limit }}"
+      },  
+      {
+        "type": "header",
+        "content": "Product price"
+      },
+      {
+        "type": "checkbox",
+        "id": "price_custom",
+        "label": "Use custom font",
+        "default": false
+      },
+      {
+        "type": "font_picker",
+        "id": "price_font",
+        "label": "Font family",
+        "default": "josefin_sans_n4",
+        "visible_if": "{{ section.settings.price_custom }}"
+      },
+      {
+        "type": "range",
+        "id": "price_size",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 12
+      },
+      {
+        "type": "range",
+        "id": "price_size_mobile",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size - mobile",
+        "default": 12
+      },
+      {
+        "type": "range",
+        "id": "price_height",
+        "min": 50,
+        "max": 200,
+        "step": 10,
+        "unit": "%",
+        "label": "Line height",
+        "default": 130
+      },
+      {
+        "type": "range",
+        "id": "price_mt",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Margin top",
+        "default": 4
+      },
+      {
+        "type": "range",
+        "id": "price_mt_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Margin top - mobile",
+        "default": 4
+      },
+      {
+        "type": "checkbox",
+        "id": "price_compare",
+        "label": "Show compare-at price",
+        "default": true
+      },     
+      {
+        "type": "header",
+        "content": "Product button"
+      },
+      {
+        "type": "text",
+        "id": "product_button",
+        "label": "Button label",
+        "default": "+ Add"
+      },
+      {
+        "type": "text",
+        "id": "product_button_soldout",
+        "label": "Sold out button label",
+        "default": "Sold out"
+      },
+      {
+        "type": "select",
+        "id": "product_button_style",
+        "label": "Style",
+        "default": "non_outline",
+        "options": [
+          {
+            "label": "Link",
+            "value": "link"
+          },
+          {
+            "label": "Non-outline",
+            "value": "non_outline"
+          },
+          {
+            "label": "Non-outline & arrow",
+            "value": "non_outline_arrow"
+          },
+          {
+            "label": "Outline",
+            "value": "outline"
+          },
+          {
+            "label": "Outline & arrow",
+            "value": "outline_arrow"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "product_button_custom",
+        "label": "Use custom font",
+        "default": false
+      },
+      {
+        "type": "font_picker",
+        "id": "product_button_font",
+        "label": "Font family",
+        "default": "josefin_sans_n4",
+        "visible_if": "{{ section.settings.product_button_custom }}"
+      },
+      {
+        "type": "range",
+        "id": "product_button_size",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "product_button_size_mobile",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size - mobile",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "product_button_height",
+        "min": 50,
+        "max": 200,
+        "step": 10,
+        "unit": "%",
+        "label": "Line height",
+        "default": 100
+      },
+      {
+        "type": "range",
+        "id": "product_button_padding_horizontal",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding horizontal",
+        "default": 16,
+        "visible_if": "{{ section.settings.product_button_style != 'link' }}"
+      },
+      {
+        "type": "range",
+        "id": "product_button_padding_horizontal_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding horizontal - mobile",
+        "default": 16,
+        "visible_if": "{{ section.settings.product_button_style != 'link' }}"
+      },
+      {
+        "type": "range",
+        "id": "product_button_padding_vertical",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding vertical",
+        "default": 16,
+        "visible_if": "{{ section.settings.product_button_style != 'link' }}"
+      },
+      {
+        "type": "range",
+        "id": "product_button_padding_vertical_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding vertical - mobile",
+        "default": 16,
+        "visible_if": "{{ section.settings.product_button_style != 'link' }}"
+      },
+      {
+        "type": "range",
+        "id": "product_button_radius",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Roundness",
+        "default": 4,
+        "visible_if": "{{ section.settings.product_button_style != 'link' }}"
+      },
+      {
+        "type": "range",
+        "id": "product_button_border_thickness",
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "Border thickness",
+        "default": 1,
+        "visible_if": "{{ section.settings.product_button_style == 'outline' or section.settings.product_button_style == 'outline_arrow' }}"
+      },
+      {
+         "type": "range",
+         "id": "product_button_mt",
+         "min": 0,
+         "max": 100,
+         "step": 2,
+         "unit": "px",
+         "label": "Margin top",
+         "default": 8
+      },
+      {
+         "type": "range",
+         "id": "product_button_mt_mobile",
+         "min": 0,
+         "max": 100,
+         "step": 2,
+         "unit": "px",
+         "label": "Margin top - mobile",
+         "default": 8
+      },
+      {
+        "type": "header",
+        "content": "Link"
+      },
+      {
+        "type": "text",
+        "id": "link_text",
+        "label": "Text",
+        "default": "Product Info"
+      },
+      {
+        "type": "checkbox",
+        "id": "link_custom",
+        "label": "Use custom font",
+        "default": false
+      },
+      {
+        "type": "font_picker",
+        "id": "link_font",
+        "label": "Font family",
+        "default": "josefin_sans_n4",
+        "visible_if": "{{ section.settings.link_custom }}"
+      },
+      {
+        "type": "range",
+        "id": "link_size",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 12
+      },
+      {
+        "type": "range",
+        "id": "link_size_mobile",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size - mobile",
+        "default": 12
+      },
+      {
+        "type": "range",
+        "id": "link_height",
+        "min": 50,
+        "max": 200,
+        "step": 10,
+        "unit": "%",
+        "label": "Line height",
+        "default": 130
+      },
+      {
+        "type": "range",
+        "id": "link_mt",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Margin top",
+        "default": 8
+      },
+      {
+        "type": "range",
+        "id": "link_mt_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Margin top - mobile",
+        "default": 8
+      },
+      {
+        "type": "checkbox",
+        "id": "in_new_tab",
+        "label": "Open link in new tab",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Sidebar"
+      },
+      {
+         "type": "range",
+         "id": "sidebar_width",
+         "min": 30,
+         "max": 50,
+         "step": 1,
+         "unit": "%",
+         "label": "Width",
+         "default": 35
+      },
+      {
+        "type": "text_alignment",
+        "id": "sidebar_align",
+        "label": "Alignment"
+      },
+      {
+        "type": "text_alignment",
+        "id": "sidebar_align_mobile",
+        "label": "Alignment - mobile"
+      },
+      {
+        "type": "header",
+        "content": "Step circle"
+      },
+      {
+        "type": "range",
+        "id": "step_circle_size",
+        "min": 20,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Size",
+        "default": 24
+      },
+      {
+        "type": "range",
+        "id": "step_circle_size_mobile",
+        "min": 20,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Size - mobile",
+        "default": 24
+      },
+      {
+        "type": "range",
+        "id": "step_circle_border_thickness",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "Border thickness",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Step number"
+      },
+      {
+        "type": "checkbox",
+        "id": "step_number_custom",
+        "label": "Use custom font",
+        "default": false
+      },
+      {
+        "type": "font_picker",
+        "id": "step_number_font",
+        "label": "Font family",
+        "default": "josefin_sans_n4",
+        "visible_if": "{{ section.settings.step_number_custom }}"
+      },
+      {
+        "type": "range",
+        "id": "step_number_size",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 12
+      },
+      {
+        "type": "range",
+        "id": "step_number_size_mobile",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size - mobile",
+        "default": 12
+      },
+      {
+        "type": "range",
+        "id": "step_number_height",
+        "min": 50,
+        "max": 200,
+        "step": 10,
+        "unit": "%",
+        "label": "Line height",
+        "default": 130
+      },
+      {
+        "type": "header",
+        "content": "Step text"
+      },
+      {
+        "type": "text",
+        "id": "first_step",
+        "label": "First step",
+        "default": "Select Size"
+      },
+      {
+        "type": "text",
+        "id": "second_step",
+        "label": "Second step",
+        "default": "Choose Products"
+      },
+      {
+        "type": "checkbox",
+        "id": "step_text_custom",
+        "label": "Use custom font",
+        "default": false
+      },
+      {
+        "type": "font_picker",
+        "id": "step_text_font",
+        "label": "Font family",
+        "default": "josefin_sans_n4",
+        "visible_if": "{{ section.settings.step_text_custom }}"
+      },
+      {
+        "type": "range",
+        "id": "step_text_size",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "step_text_size_mobile",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size - mobile",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "step_text_height",
+        "min": 50,
+        "max": 200,
+        "step": 10,
+        "unit": "%",
+        "label": "Line height",
+        "default": 130
+      },
+      {
+        "type": "header",
+        "content": "Tabs"
+      },
+      {
+        "type": "range",
+        "id": "tabs_gap",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Gap",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "tabs_gap_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Gap - mobile",
+        "default": 8
+      },
+      {
+        "type": "header",
+        "content": "Tab"
+      },
+      {
+        "type": "text",
+        "id": "tab_text",
+        "label": "Tab",
+        "default": "Pack"
+      },
+      {
+        "type": "checkbox",
+        "id": "tab_custom",
+        "label": "Use custom font",
+        "default": false
+      },
+      {
+        "type": "font_picker",
+        "id": "tab_font",
+        "label": "Font family",
+        "default": "josefin_sans_n4",
+        "visible_if": "{{ section.settings.tab_custom }}"
+      },
+      {
+        "type": "range",
+        "id": "tab_size",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "tab_size_mobile",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size - mobile",
+        "default": 14
+      },
+      {
+        "type": "range",
+        "id": "tab_height",
+        "min": 50,
+        "max": 200,
+        "step": 10,
+        "unit": "%",
+        "label": "Line height",
+        "default": 130
+      },
+      {
+         "type": "range",
+         "id": "tab_padding_horizontal",
+         "min": 0,
+         "max": 100,
+         "step": 2,
+         "unit": "px",
+         "label": "Padding horizontal",
+         "default": 16
+      },
+      {
+         "type": "range",
+         "id": "tab_padding_horizontal_mobile",
+         "min": 0,
+         "max": 100,
+         "step": 2,
+         "unit": "px",
+         "label": "Padding horizontal - mobile",
+         "default": 16
+      },
+      {
+        "type": "range",
+        "id": "tab_padding_vertical",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding vertical",
+        "default": 12
+      },
+      {
+        "type": "range",
+        "id": "tab_padding_vertical_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding vertical - mobile",
+        "default": 12
+      },
+      {
+         "type": "range",
+         "id": "tab_radius",
+         "min": 0,
+         "max": 100,
+         "step": 2,
+         "unit": "px",
+         "label": "Roundness",
+         "default": 4
+      },
+      {
+         "type": "range",
+         "id": "tab_border_thickness",
+         "min": 0,
+         "max": 10,
+         "step": 1,
+         "unit": "px",
+         "label": "Border thickness",
+         "default": 1
+      },  
+      {
+        "type": "header",
+        "content": "Gift product image",
+        "visible_if": "{{ section.settings.use_gift }}"
+      },
+      {
+        "type": "range",
+        "id": "gift_product_image_radius",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Roundness",
+        "default": 4,
+        "visible_if": "{{ section.settings.use_gift }}"
+      },
+      {
+        "type": "range",
+        "id": "gift_product_image_border_thickness",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "Border thickness",
+        "default": 0,
+        "visible_if": "{{ section.settings.use_gift }}"
+      }, 
+      {
+        "type": "select",
+        "id": "gift_product_image_ratio",
+        "label": "Aspect ratio",
+        "default": "square",
+        "visible_if": "{{ section.settings.use_gift }}",
+        "options": [
+          {
+            "label": "Portrait",
+            "value": "portrait"
+          },
+          {
+            "label": "Square",
+            "value": "square"
+          },
+          {
+            "label": "Landscape",
+            "value": "landscape"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "gift_product_image_ratio_mobile",
+        "label": "Aspect ratio - mobile",
+        "default": "square",
+        "visible_if": "{{ section.settings.use_gift }}",
+        "options": [
+          {
+            "label": "Portrait",
+            "value": "portrait"
+          },
+          {
+            "label": "Square",
+            "value": "square"
+          },
+          {
+            "label": "Landscape",
+            "value": "landscape"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Total price"
+      },
+      {
+        "type": "text",
+        "id": "total_price",
+        "label": "Text",
+        "default": "Total"
+      },
+      {
+        "type": "checkbox",
+        "id": "total_price_custom",
+        "label": "Use custom font",
+        "default": false
+      },
+      {
+        "type": "font_picker",
+        "id": "total_price_font",
+        "label": "Font family",
+        "default": "josefin_sans_n4",
+        "visible_if": "{{ section.settings.total_price_custom }}"
+      },
+      {
+        "type": "range",
+        "id": "total_price_size",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "total_price_size_mobile",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size - mobile",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "total_price_height",
+        "min": 50,
+        "max": 200,
+        "step": 10,
+        "unit": "%",
+        "label": "Line height",
+        "default": 130
+      },
+      {
+        "type": "header",
+        "content": "Sidebar button"
+      },
+      {
+        "type": "text",
+        "id": "button",
+        "label": "Button label",
+        "default": "Add to cart"
+      },
+      {
+        "type": "select",
+        "id": "button_style",
+        "label": "Style",
+        "default": "non_outline",
+        "options": [
+          {
+            "label": "Link",
+            "value": "link"
+          },
+          {
+            "label": "Non-outline",
+            "value": "non_outline"
+          },
+          {
+            "label": "Non-outline & arrow",
+            "value": "non_outline_arrow"
+          },
+          {
+            "label": "Outline",
+            "value": "outline"
+          },
+          {
+            "label": "Outline & arrow",
+            "value": "outline_arrow"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "button_custom",
+        "label": "Use custom font",
+        "default": false
+      },
+      {
+        "type": "font_picker",
+        "id": "button_font",
+        "label": "Font family",
+        "default": "josefin_sans_n4",
+        "visible_if": "{{ section.settings.button_custom }}"
+      },
+      {
+        "type": "range",
+        "id": "button_size",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "button_size_mobile",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size - mobile",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "button_height",
+        "min": 50,
+        "max": 200,
+        "step": 10,
+        "unit": "%",
+        "label": "Line height",
+        "default": 100
+      },
+      {
+        "type": "range",
+        "id": "button_padding_horizontal",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding horizontal",
+        "default": 16,
+        "visible_if": "{{ section.settings.button_style != 'link' }}"
+      },
+      {
+        "type": "range",
+        "id": "button_padding_horizontal_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding horizontal - mobile",
+        "default": 16,
+        "visible_if": "{{ section.settings.button_style != 'link' }}"
+      },
+      {
+        "type": "range",
+        "id": "button_padding_vertical",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding vertical",
+        "default": 16,
+        "visible_if": "{{ section.settings.button_style != 'link' }}"
+      },
+      {
+        "type": "range",
+        "id": "button_padding_vertical_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding vertical - mobile",
+        "default": 16,
+        "visible_if": "{{ section.settings.button_style != 'link' }}"
+      },
+      {
+        "type": "range",
+        "id": "button_radius",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Roundness",
+        "default": 4,
+        "visible_if": "{{ section.settings.button_style != 'link' }}"
+      },
+      {
+        "type": "range",
+        "id": "button_border_thickness",
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "Border thickness",
+        "default": 1,
+        "visible_if": "{{ section.settings.button_style == 'outline' or section.settings.button_style == 'outline_arrow' }}"
+      },
+      {
+        "type": "range",
+        "id": "button_mt",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Margin top",
+        "default": 12
+      },
+      {
+        "type": "range",
+        "id": "button_mt_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Margin top - mobile",
+        "default": 12
+      },
+      {
+        "type": "header",
+        "content": "Product card colors"
+      },
+      {
+        "type": "color",
+        "label": "Image border",
+        "id": "product_image_border_color",
+        "default": "#121212",
+        "visible_if": "{{ section.settings.product_image_border_thickness >= 1 }}"
+      },
+      {
+        "type": "color",
+        "label": "Title",
+        "id": "title_color",
+        "default": "#121212"
+      },
+      {
+        "type": "color",
+        "label": "Price",
+        "id": "price_color",
+        "default": "#121212"
+      },
+      {
+        "type": "color",
+        "label": "Compare-at price",
+        "id": "price_original_color",
+        "default": "#AFAFAF",
+        "visible_if": "{{ section.settings.price_compare }}"
+      },
+      {
+        "type": "color",
+        "label": "Link",
+        "id": "link_color",
+        "default": "#121212"
+      },   
+      {
+        "type": "header",
+        "content": "Product button colors"
+      },
+      {
+        "type": "color",
+        "label": "Text",
+        "id": "product_button_color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "label": "Text hover",
+        "id": "product_button_hover_color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "label": "Background",
+        "id": "product_button_bg_color",
+        "default": "#121212",
+        "visible_if": "{{ section.settings.product_button_style != 'link' }}"
+      },
+      {
+        "type": "color",
+        "label": "Background hover",
+        "id": "product_button_bg_hover_color",
+        "default": "#121212",
+        "visible_if": "{{ section.settings.product_button_style != 'link' }}"
+      },
+      {
+        "type": "color",
+        "label": "Border",
+        "id": "product_button_border_color",
+        "default": "#121212",
+        "visible_if": "{{ section.settings.product_button_style == 'outline' or section.settings.product_button_style == 'outline_arrow' }}"
+      },
+      {
+        "type": "color",
+        "label": "Border hover",
+        "id": "product_button_border_hover_color",
+        "default": "#121212",
+        "visible_if": "{{ section.settings.product_button_style == 'outline' or section.settings.product_button_style == 'outline_arrow' }}"
+      },
+      {
+        "type": "header",
+        "content": "Quantity colors"
+      },
+      {
+        "type": "color",
+        "label": "Number",
+        "id": "quantity_color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "label": "Plus/minus",
+        "id": "quantity_controls_color",
+        "default": "#121212"
+      }, 
+      {
+        "type": "color",
+        "label": "Number background",
+        "id": "quantity_bg_color",
+        "default": "#121212"
+      },
+      {
+        "type": "color",
+        "label": "Control bar background",
+        "id": "quantity_wrapper_bg_color",
+        "default": "#F7F7F7"
+      },
+      {
+        "type": "header",
+        "content": "Sidebar colors"
+      },
+      {
+        "type": "color",
+        "label": "Empty product icon",
+        "id": "empty_icon_color",
+        "default": "#121212"
+      },
+      {
+        "type": "color",
+        "label": "Empty product icon border",
+        "id": "empty_icon_border_color",
+        "default": "#AFAFAF"
+      },      
+      {
+        "type": "color",
+        "label": "Total price",
+        "id": "total_price_color",
+        "default": "#121212"
+      },
+      {
+        "type": "color",
+        "label": "Gift image border",
+        "id": "gift_product_image_border_color",
+        "default": "#121212",
+        "visible_if": "{{ section.settings.use_gift and section.settings.gift_product_image_border_thickness >= 1 }}"
+      },
+      {
+        "type": "header",
+        "content": "Tab colors"
+      },
+      {
+        "type": "color",
+        "label": "Text",
+        "id": "tab_color",
+        "default": "#121212"
+      },
+      {
+        "type": "color",
+        "label": "Text hover",
+        "id": "tab_hover_color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "label": "Background",
+        "id": "tab_bg_color",
+        "default": "transparent"
+      },
+      {
+        "type": "color",
+        "label": "Background hover",
+        "id": "tab_bg_hover_color",
+        "default": "#121212"
+      },
+      {
+        "type": "color",
+        "label": "Border",
+        "id": "tab_border_color",
+        "default": "#121212",
+        "visible_if": "{{ section.settings.tab_border_thickness >= 1 }}"
+      },
+      {
+        "type": "color",
+        "label": "Border hover",
+        "id": "tab_border_hover_color",
+        "default": "#121212",
+        "visible_if": "{{ section.settings.tab_border_thickness >= 1 }}"
+      },
+      {
+        "type": "header",
+        "content": "Steps colors"
+      },
+      {
+        "type": "color",
+        "label": "Text",
+        "id": "step_text_color",
+        "default": "#121212"
+      },
+       {
+        "type": "color",
+        "label": "Text accent",
+        "id": "step_text_accent_color",
+        "default": "#AFAFAF"
+      },
+      {
+        "type": "color",
+        "label": "Number",
+        "id": "step_number_color",
+        "default": "#121212"
+      },
+      {
+        "type": "color",
+        "label": "Circle background",
+        "id": "step_circle_bg_color",
+        "default": "#f2f0ed"
+      },
+      {
+        "type": "color",
+        "label": "Circle border",
+        "id": "step_circle_border_color",
+        "default": "#121212",
+        "visible_if": "{{ section.settings.step_circle_border_thickness >= 1 }}"
+      },
+      {
+        "type": "header",
+        "content": "Sidebar button colors"
+      },
+      {
+        "type": "color",
+        "label": "Text",
+        "id": "button_color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "label": "Text hover",
+        "id": "button_hover_color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "label": "Background",
+        "id": "button_bg_color",
+        "default": "#121212",
+        "visible_if": "{{ section.settings.button_style != 'link' }}"
+      },
+      {
+        "type": "color",
+        "label": "Background hover",
+        "id": "button_bg_hover_color",
+        "default": "#121212",
+        "visible_if": "{{ section.settings.button_style != 'link' }}"
+      },
+      {
+        "type": "color",
+        "label": "Border",
+        "id": "button_border_color",
+        "default": "#121212",
+        "visible_if": "{{ section.settings.button_style == 'outline' or section.settings.button_style == 'outline_arrow' }}"
+      },
+      {
+        "type": "color",
+        "label": "Border hover",
+        "id": "button_border_hover_color",
+        "default": "#121212",
+        "visible_if": "{{ section.settings.button_style == 'outline' or section.settings.button_style == 'outline_arrow' }}"
+      },
+      {
+        "type": "header",
+        "content": "Section colors"
+      },
+      {
+        "type": "color",
+        "label": "Content background",
+        "id": "sidebar_bg_color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "label": "Content border",
+        "id": "sidebar_border_color",
+        "default": "#121212",
+        "visible_if": "{{ section.settings.sidebar_border_thickness >= 1 }}"
+      },
+      {
+        "type": "color",
+        "label": "Section background",
+        "id": "background_color",
+        "default": "#F7F7F7"
+      },
+      {
+        "type": "color_background",
+        "id": "background_gradient",
+        "label": "Section background gradient",
+        "info": "Remove gradient to replace with solid colors"
+      },
+      {
+        "type": "color",
+        "label": "Border",
+        "id": "border_color",
+        "default": "#121212"
+      },
+      {
+        "type": "header",
+        "content": "Section margin (outside)"
+      },
+      {
+        "type": "range",
+        "id": "margin_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Bottom",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "margin_horizontal",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "rem",
+        "label": "Sides",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "margin_horizontal_mobile",
+        "min": 0,
+        "max": 15,
+        "step": 0.5,
+        "unit": "rem",
+        "label": "Sides - mobile",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Section padding (inside)"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Top",
+        "default": 36
+      },
+      {
+         "type": "range",
+         "id": "padding_bottom",
+         "min": 0,
+         "max": 100,
+         "step": 4,
+         "unit": "px",
+         "label": "Bottom",
+         "default": 36
+      },
+      {
+        "type": "range",
+        "id": "padding_horizontal",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "rem",
+        "label": "Sides",
+        "default": 5
+      },
+      {
+        "type": "range",
+        "id": "padding_horizontal_mobile",
+        "min": 0,
+        "max": 15,
+        "step": 0.5,
+        "unit": "rem",
+        "label": "Sides - mobile",
+        "default": 1.5
+      },
+      {
+        "type": "header",
+        "content": "Section"
+      },
+      {
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Full width",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "content_width",
+        "min": 800,
+        "max": 2000,
+        "step": 100,
+        "unit": "px",
+        "label": "Section content width",
+        "default": 1400,
+        "visible_if": "{{ section.settings.full_width == false }}"
+      },
+      {
+        "type": "range",
+        "id": "border_thickness",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Border thickness",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "section_radius",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Section roundness",
+        "default": 0
+      },
+      {
+        "type": "checkbox",
+        "id": "lazy",
+        "label": "Lazy load",
+        "info": "Lazy load images for speed optimisation",
+        "default": true
+      }
+    ],
+    "blocks": [
+       {            
+        "type": "bundle",
+        "name": "Bundle",
+        "settings": [
+          {
+            "type": "text",
+            "id": "sizes_value",
+            "label": "Size",
+            "default": "4",
+          },
+          {
+            "type": "text",
+            "id": "comment",
+            "label": "Comment"
+          },
+          {
+            "type": "checkbox",
+            "id": "hide_comment",
+            "label": "Hide comment on mobile",
+            "default": true
+          }
+        ]
+      },
+      {            
+        "type": "features",
+        "limit": 1,
+        "name": "Features",
+        "settings": [
+          {
+            "type": "text",
+            "id": "first_feature_text",
+            "label": "Feature 1",
+            "default": "Feature 1"
+          },
+           {
+            "type": "text",
+            "id": "second_feature_text",
+            "label": "Feature 2",
+            "default": "Feature 2"
+          },
+           {
+            "type": "text",
+            "id": "third_feature_text",
+            "label": "Feature 3",
+            "default": "Feature 3"
+          },
+           {
+            "type": "text",
+            "id": "fourth_feature_text",
+            "label": "Feature 4",
+            "default": "Feature 4"
+          },
+          {
+            "type": "checkbox",
+            "id": "feature_custom",
+            "label": "Use custom font",
+            "default": false
+          },
+          {
+            "type": "font_picker",
+            "id": "feature_font",
+            "label": "Font family",
+            "default": "josefin_sans_n4",
+            "visible_if": "{{ block.settings.feature_custom }}"
+          },
+          {
+            "type": "range",
+            "id": "feature_size",
+            "min": 0,
+            "max": 40,
+            "step": 1,
+            "unit": "px",
+            "label": "Font size",
+            "default": 12
+          },
+          {
+            "type": "range",
+            "id": "feature_size_mobile",
+            "min": 0,
+            "max": 40,
+            "step": 1,
+            "unit": "px",
+            "label": "Font size - mobile",
+            "default": 12
+          },
+          {
+            "type": "range",
+            "id": "feature_height",
+            "min": 50,
+            "max": 200,
+            "step": 10,
+            "unit": "%",
+            "label": "Line height",
+            "default": 150
+          },    
+           {
+            "type": "range",
+            "id": "feature_mt",
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "px",
+            "label": "Margin top",
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "feature_mt_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "px",
+            "label": "Margin top - mobile",
+            "default": 20
+          },  
+          {
+            "type": "color",
+            "label": "Icon",
+            "id": "feature_icon_color",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "label": "Text",
+            "id": "feature_color",
+            "default": "#121212"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "SS - Bundle builder #4",
+         "blocks": [              
+          {
+            "type": "bundle",
+            "settings": {
+              "sizes_value": "4"
+            }
+          },
+          {
+            "type": "bundle",
+            "settings": {
+              "sizes_value": "6",
+              "comment": "Most popular"
+            }
+          },
+          {
+            "type": "bundle",
+            "settings": {
+              "sizes_value": "8",
+              "comment": "Best value"
+            }
+          },
+          {
+            "type": "features"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
