@@ -226,7 +226,7 @@ details[open]>.header__menu-item,
               settings.logo
               | image_url: width: 600
               | image_tag:
-                class: 'header__heading-logo motion-reduce',
+                class: 'header__heading-logo header-main-logo motion-reduce',
                 widths: widths,
                 height: logo_height,
                 width: settings.logo_width,
@@ -234,6 +234,21 @@ details[open]>.header__menu-item,
                 sizes: sizes,
                 preload: true
             }}
+            {% if settings.inverse_logo != blank %}
+              {{
+              settings.inverse_logo
+              | image_url: width: 600
+              | image_tag:
+                class: 'header__heading-logo header-inverse-logo header-main-logo motion-reduce',
+                widths: widths,
+                height: logo_height,
+                width: settings.logo_width,
+                alt: logo_alt,
+                sizes: sizes,
+                preload: true
+            }}
+            {% endif %}
+           
           </div>
         {%- else -%}
           <span class="h2">{{ shop.name }}</span>
