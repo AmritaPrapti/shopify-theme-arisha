@@ -71,6 +71,9 @@ menu-drawer > details[open] > summary::before {
     height: var(--viewport-height, 100vh);
     position: fixed;
   }
+  .menu-drawer__inner-submenu .menu-drawer__menu {
+    padding-top: 20px !important;
+  }
 }
 
 .js details[open] > .menu-drawer,
@@ -189,7 +192,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 /* Mobile-only close button at top of menu */
-.menu-drawer__close-button {
+.menu-drawer__cross-button {
   position: absolute;
   top: 0;
   display: none;
@@ -198,7 +201,7 @@ details[open].menu-opening > .menu-drawer__submenu {
   border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
 }
 
-.menu-drawer__close-button .svg-wrapper {
+.menu-drawer__cross-button .svg-wrapper {
   transform: none;
   margin: 0;
   width: 2rem;
@@ -206,7 +209,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 @media screen and (max-width: 749px) {
-  .menu-drawer__close-button {
+  .menu-drawer__cross-button {
     display: flex;
   }
 }

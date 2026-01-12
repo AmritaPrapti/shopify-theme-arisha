@@ -438,7 +438,7 @@ class MenuDrawer extends HTMLElement {
       'button:not(.localization-selector):not(.country-selector__close-button):not(.country-filter__reset-button)'
     ).forEach((button) => button.addEventListener('click', this.onCloseButtonClick.bind(this)));
 
-    this.querySelectorAll('.menu-drawer__close-button').forEach((button) =>
+    this.querySelectorAll('.menu-drawer__cross-button').forEach((button) =>
       button.addEventListener('click', this.onCustomCloseButtonClick.bind(this))
     );
   }
