@@ -2903,11 +2903,14 @@ details-disclosure > details {
 }
 
 .overflow-hidden-mobile,
-.overflow-hidden-tablet,
-.overflow-hidden-desktop {
+.overflow-hidden-tablet {
   overflow: hidden;
   position: fixed;
   width: 100%;
+}
+
+.overflow-hidden-desktop {
+  overflow: hidden;
 }
 
 @media screen and (min-width: 750px) {
