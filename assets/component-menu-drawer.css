@@ -53,6 +53,9 @@ menu-drawer > details[open] > summary::before {
       var(--drawer-shadow-blur-radius)
       rgba(var(--color-shadow), var(--drawer-shadow-opacity))
   );
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .js .menu-drawer {
@@ -74,6 +77,13 @@ menu-drawer > details[open] > summary::before {
 .js details[open] > .menu-drawer__submenu {
   transition: transform var(--duration-long) ease,
     visibility var(--duration-long) ease;
+}
+
+@media screen and (max-width: 749px) {
+  .js details[open] > .menu-drawer {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      visibility 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
 }
 
 .js details[open].menu-opening > .menu-drawer,
