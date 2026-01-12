@@ -49,6 +49,14 @@ menu-drawer > details[open] > summary::before {
   height: calc(var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%)));
 }
 
+@media screen and (max-width: 749px) {
+  .js .menu-drawer {
+    height: 100vh;
+    height: var(--viewport-height, 100vh);
+    position: fixed;
+  }
+}
+
 .js details[open] > .menu-drawer,
 .js details[open] > .menu-drawer__submenu {
   transition: transform var(--duration-long) ease, visibility var(--duration-long) ease;
