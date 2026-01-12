@@ -1,25 +1,28 @@
-{% if template.name == 'index' %}
+{% if template.name == 'index' and section.settings.transparent_header %}
 <style>
-.header-wrapper {
+.header-wrapper.header-transparent {
     position: absolute;
     width: 100%;
     background: transparent;
-    color: white;
+    color: {{ section.settings.color_trasparent | default: 'rgba(255, 255, 255, 1)' }};
 }
 
-.header-wrapper .list-menu span,
-details[open]>.header__menu-item,
-.header-wrapper summary svg,
-.header-wrapper a svg,
-.header-wrapper h1.header__heading span.h2,
-.header-wrapper details>span,
-.header-wrapper .disclosure__button>span,
-.header-wrapper .disclosure__button svg {
-    color: white !important;
+.section-header:not(.shopify-section-header-sticky):not(:hover) .header-transparent .header__menu-item--top, .section-header:not(.shopify-section-header-sticky):not(:hover) .header-transparent .header__icon, .section-header:not(.shopify-section-header-sticky):not(:hover) .header-transparent .header__heading-link .h2 {
+    color: {{ section.settings.color_trasparent | default: 'rgba(255, 255, 255, 1)' }};
 }
 
-.header-localization .disclosure .localization-form__select:hover {
-    text-decoration-color: white;
+.section-header:hover .header-transparent .header::before {
+    transform: translateY(0) !important;
+}
+
+/* Hide on scroll down */
+.section-header:not(.shopify-section-header-sticky):hover .header-transparent .header-main-logo,
+.section-header.shopify-section-header-sticky .header-transparent .header-main-logo {
+  display: none;
+}
+.section-header:not(.shopify-section-header-sticky):hover .header-transparent .header-inverse-logo,
+.section-header.shopify-section-header-sticky .header-transparent .header-inverse-logo {
+  display: block;
 }
 
 .section-header {
@@ -27,16 +30,27 @@ details[open]>.header__menu-item,
 }
 
 .header-wrapper--border-bottom {
-    border-bottom: .1rem solid rgba(255, 255, 255, .08);
+  border-bottom: .1rem solid {{ section.settings.color_trasparent | default: 'rgba(255, 255, 255, 1)' }};
+  opacity: 0.75;
 }
 
 .overflow-hidden-desktop .header-wrapper,
 .overflow-hidden-tablet .header-wrapper {
-    position: initial;
-    width: initial;
-    background: initial;
-    color: initial;
-    background: var(--gradient-background);
+  position: initial;
+  width: initial;
+  background: initial;
+  color: initial;
+  background: var(--gradient-background);
+}
+
+.overflow-hidden-desktop .header-wrapper .header-main-logo,
+.overflow-hidden-tablet .header-wrapper .header-main-logo {
+  display: none;
+}
+
+.overflow-hidden-desktop .header-wrapper .header-inverse-logo,
+.overflow-hidden-tablet .header-wrapper .header-inverse-logo {
+  display: block;
 }
 
 .header-wrapper summary.header__menu-item+ul span,
@@ -59,6 +73,18 @@ details[open]>.header__menu-item,
 .overflow-hidden-tablet .header-wrapper .disclosure__button svg {
     color: rgba(var(--color-foreground), .75) !important
 }
+</style>
+{% endif %}
+
+{% if template.name != 'index' %}
+<style>
+      /* Hide on scroll down */
+  .header-main-logo {
+    display: none;
+  }
+  .header-inverse-logo {
+    display: block;
+  }
 </style>
 {% endif %}
 
@@ -150,6 +176,10 @@ details[open]>.header__menu-item,
     margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
   }
 
+  .shopify-section-group-header-group:not(.shopify-section-header-sticky) .header-transparent .header::before {
+    transform: translateY(-100%);
+  }
+
   @media screen and (min-width: 750px) {
     .section-header {
       margin-bottom: {{ section.settings.margin_bottom }}px;
@@ -186,7 +216,7 @@ details[open]>.header__menu-item,
   {% if header_tag == 'sticky-header' %}
     data-sticky-type="{{ section.settings.sticky_header_type }}"
   {% endif %}
-  class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
+  class="header-wrapper {% if template.name == 'index' and section.settings.transparent_header %} header-transparent {% endif %} color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
 >
   {%- liquid
     assign social_links = false
@@ -644,6 +674,13 @@ details[open]>.header__menu-item,
     },
     {
       "type": "checkbox",
+      "id": "transparent_header",
+      "default": true,
+      "label": "Make header transparent on homepage",
+      "visible_if": "{{ section.settings.sticky_header_type == 'on-scroll-up' }}"
+    },
+    {
+      "type": "checkbox",
       "id": "show_line_separator",
       "default": true,
       "label": "t:sections.header.settings.show_line_separator.label"
@@ -657,6 +694,12 @@ details[open]>.header__menu-item,
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "color_trasparent",
+      "label": "Foreground color for transparent header",
+      "default": "rgba(255, 255, 255, 1)"
     },
     {
       "type": "color_scheme",

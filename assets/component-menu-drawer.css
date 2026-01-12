@@ -49,7 +49,7 @@ menu-drawer > details[open] > summary::before {
 
 .js details[open] > .menu-drawer,
 .js details[open] > .menu-drawer__submenu {
-  transition: transform var(--duration-default) ease, visibility var(--duration-default) ease;
+  transition: transform var(--duration-long) ease, visibility var(--duration-long) ease;
 }
 
 .js details[open].menu-opening > .menu-drawer,
