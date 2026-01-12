@@ -2925,6 +2925,13 @@ details-disclosure > details {
   }
 }
 
+@media screen and (max-width: 749px) {
+  .overflow-hidden-desktop {
+    position: fixed;
+    width: 100%;
+}
+}
+
 .badge {
   border: 1px solid transparent;
   border-radius: var(--badge-corner-radius);
