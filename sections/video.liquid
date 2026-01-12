@@ -54,31 +54,34 @@
     <deferred-media
       class="video-section__media deferred-media gradient global-media-settings{% if section.settings.full_width %} global-media-settings--full-width{% endif %}{% if fix_ratio %} media-fit-cover{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
       data-media-id="{{ video_id }}"
+      {% if section.settings.enable_autoplay %}data-autoplay="true"{% endif %}
       {% if poster != null %}
         style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
       {% endif %}
     >
-      <button
-        id="Deferred-Poster-Modal-{{ video_id }}"
-        class="video-section__poster media deferred-media__poster media--landscape"
-        type="button"
-        aria-label="{{ alt }}"
-      >
-        {%- if poster != null -%}
-          {{
-            poster
-            | image_url: width: 3840
-            | image_tag: sizes: sizes, widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840', alt: alt
-          }}
-        {%- else -%}
-          {{ 'hero-apparel-3' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
-        {%- endif -%}
-        <span class="deferred-media__poster-button motion-reduce">
-          <span class="svg-wrapper">
-            {{- 'icon-play.svg' | inline_asset_content -}}
+      {% unless section.settings.enable_autoplay %}
+        <button
+          id="Deferred-Poster-Modal-{{ video_id }}"
+          class="video-section__poster media deferred-media__poster media--landscape"
+          type="button"
+          aria-label="{{ alt }}"
+        >
+          {%- if poster != null -%}
+            {{
+              poster
+              | image_url: width: 3840
+              | image_tag: sizes: sizes, widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840', alt: alt
+            }}
+          {%- else -%}
+            {{ 'hero-apparel-3' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+          {%- endif -%}
+          <span class="deferred-media__poster-button motion-reduce">
+            <span class="svg-wrapper">
+              {{- 'icon-play.svg' | inline_asset_content -}}
+            </span>
           </span>
-        </span>
-      </button>
+        </button>
+      {% endunless %}
       <template>
         {%- if section.settings.video == null and section.settings.video_url != null -%}
           {%- liquid
@@ -89,7 +92,7 @@
           -%}
           {%- if section.settings.video_url.type == 'youtube' -%}
             <iframe
-              src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&autoplay=1{{ loop }}"
+              src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&autoplay=1{{ loop }}{% if section.settings.enable_autoplay %}&mute=1{% endif %}{% unless section.settings.show_controls %}&controls=0&modestbranding=1&showinfo=0{% endunless %}"
               class="js-youtube"
               allow="autoplay; encrypted-media"
               allowfullscreen
@@ -97,7 +100,7 @@
             ></iframe>
           {%- else -%}
             <iframe
-              src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1{{ loop }}"
+              src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1{{ loop }}{% if section.settings.enable_autoplay %}&muted=1{% endif %}{% unless section.settings.show_controls %}&controls=0&title=0&byline=0&portrait=0{% endunless %}"
               class="js-vimeo"
               allow="autoplay; encrypted-media"
               allowfullscreen
@@ -111,8 +114,8 @@
               image_size: '1100x',
               autoplay: true,
               loop: section.settings.enable_video_looping,
-              controls: true,
-              muted: false
+              controls: section.settings.show_controls,
+              muted: section.settings.enable_autoplay
           }}
         {%- endif -%}
       </template>
@@ -168,6 +171,20 @@
       "id": "enable_video_looping",
       "label": "t:sections.video.settings.enable_video_looping.label",
       "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "Enable autoplay",
+      "default": false,
+      "info": "Video will play automatically when the page loads (muted for best browser compatibility)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_controls",
+      "label": "Show video controls",
+      "default": true,
+      "info": "Display progress bar, volume, and playback controls"
     },
     {
       "type": "header",

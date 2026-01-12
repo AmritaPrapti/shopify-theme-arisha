@@ -695,8 +695,16 @@ class DeferredMedia extends HTMLElement {
   constructor() {
     super();
     const poster = this.querySelector('[id^="Deferred-Poster-"]');
-    if (!poster) return;
-    poster.addEventListener('click', this.loadContent.bind(this));
+    
+    // Check if autoplay is enabled
+    if (this.hasAttribute('data-autoplay')) {
+      // Delay autoplay slightly to ensure page is loaded
+      setTimeout(() => {
+        this.loadContent(false);
+      }, 100);
+    } else if (poster) {
+      poster.addEventListener('click', this.loadContent.bind(this));
+    }
   }
 
   loadContent(focus = true) {
