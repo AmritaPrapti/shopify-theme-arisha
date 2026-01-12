@@ -18,14 +18,13 @@
     </summary>
     <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
       <div class="menu-drawer__inner-container">
-        <div class="menu-drawer__navigation-container">
-          <button class="menu-drawer__close-button link link--text focus-inset" aria-label="{{ 'accessibility.close' | t }}" >
-                <span class="svg-wrapper">
-                  {{- 'icon-close.svg' | inline_asset_content -}}
-                </span>
-              </button>
-          <nav class="menu-drawer__navigation">
-            
+        <button class="menu-drawer__close-button link link--text focus-inset" aria-label="{{ 'accessibility.close' | t }}" >
+          <span class="svg-wrapper">
+            {{- 'icon-close.svg' | inline_asset_content -}}
+          </span>
+        </button>
+        <div class="menu-drawer__navigation-container">        
+          <nav class="menu-drawer__navigation">  
             <ul class="menu-drawer__menu has-submenu list-menu" role="list">
               {%- for link in section.settings.menu.links -%}
                 <li>

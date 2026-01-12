@@ -26,7 +26,7 @@ menu-drawer > details[open] > summary::before {
 }
 
 .menu-drawer {
-  position: fixed;
+  position: absolute;
   transform: translateX(-100%);
   visibility: hidden;
   z-index: 3;
@@ -82,10 +82,11 @@ details[open].menu-opening > .menu-drawer__submenu {
 
 .menu-drawer__navigation-container {
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 1fr auto;
   align-content: space-between;
   overflow-y: auto;
   height: 100%;
+  padding-top: 50px;
 }
 
 .menu-drawer__navigation {
@@ -174,14 +175,17 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 /* Mobile-only close button at top of menu */
-.menu-drawer__navigation-container > .menu-drawer__close-button {
+ .menu-drawer__close-button {
+  position: absolute;
+  top: 0;
   display: none;
   margin: 0;
   padding: 2rem 3rem;
   border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+  
 }
 
-.menu-drawer__navigation-container > .menu-drawer__close-button .svg-wrapper {
+ .menu-drawer__close-button .svg-wrapper {
   transform: none;
   margin: 0;
   width: 2rem;
@@ -189,9 +193,11 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 @media screen and (max-width: 749px) {
-  .menu-drawer__navigation-container > .menu-drawer__close-button {
+   .menu-drawer__close-button {
     display: flex;
   }
+
+
 }
 
 .menu-drawer__utility-links {
@@ -271,39 +277,3 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 
-/* Fix for mobile viewport height issues */
-.menu-drawer {
-  height: 100%;
-  min-height: 100%;
-  max-height: calc(var(--viewport-height, 100vh) - var(--header-bottom-position, 0px));
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-/* Prevent body scroll when menu is open */
-body.overflow-hidden-tablet,
-body.overflow-hidden-mobile {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-/* Fix navigation container to fill available space without scrolling past content */
-.menu-drawer__navigation-container {
-  min-height: 100%;
-  max-height: 100%;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* On mobile, make drawer take full viewport minus header */
-@media screen and (max-width: 749px) {
-  .menu-drawer {
-    position: fixed;
-    top: var(--header-bottom-position, 0);
-    left: 0;
-    height: calc(100dvh - var(--header-bottom-position, 0px));
-    max-height: calc(100dvh - var(--header-bottom-position, 0px));
-  }
-}
