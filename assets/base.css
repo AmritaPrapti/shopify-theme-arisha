@@ -2566,7 +2566,7 @@ input[type='checkbox'] {
 
 .header__icon--menu[aria-expanded='true']::before {
   content: '';
-  top: 100%;
+  top: 0;
   left: 0;
   height: calc(var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%)));
   width: 100%;
@@ -3614,7 +3614,7 @@ details-disclosure > details {
 }
 
 .overflow-hidden-desktop #MainContent, .overflow-hidden-desktop .shopify-section-group-footer-group {
-    transform: translate(4rem);
+    transform: translateX(4rem);
 }
 
 .header-wrapper > .header::before {
