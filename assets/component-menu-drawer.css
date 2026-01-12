@@ -79,13 +79,6 @@ menu-drawer > details[open] > summary::before {
     visibility var(--duration-long) ease;
 }
 
-@media screen and (max-width: 749px) {
-  .js details[open] > .menu-drawer {
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-      visibility 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-}
-
 .js details[open].menu-opening > .menu-drawer,
 details[open].menu-opening > .menu-drawer__submenu {
   transform: translateX(0);
