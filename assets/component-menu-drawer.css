@@ -26,13 +26,15 @@ menu-drawer > details[open] > summary::before {
 }
 
 .menu-drawer {
-  position: absolute;
+  position: fixed;
   transform: translateX(-100%);
   visibility: hidden;
   z-index: 3;
   left: 0;
-  top: 100%;
-  width: 100%;
+  top: 0;
+  width: calc(100vw - 4rem);
+  max-width: 100%; /* Ensures it never goes over */
+  box-sizing: border-box;
   padding: 0;
   background-color: rgb(var(--color-background));
   overflow-x: hidden;
@@ -64,6 +66,8 @@ details[open].menu-opening > .menu-drawer__submenu {
 
 @media screen and (min-width: 750px) {
   .menu-drawer {
+    position: absolute;
+    top: 100%;
     width: 40rem;
     border-width: 0 var(--drawer-border-width) 0 0;
     border-style: solid;
@@ -78,7 +82,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 
 .menu-drawer__navigation-container {
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto 1fr auto;
   align-content: space-between;
   overflow-y: auto;
   height: 100%;
@@ -169,6 +173,27 @@ details[open].menu-opening > .menu-drawer__submenu {
   width: 15px;
 }
 
+/* Mobile-only close button at top of menu */
+.menu-drawer__navigation-container > .menu-drawer__close-button {
+  display: none;
+  margin: 0;
+  padding: 2rem 3rem;
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+}
+
+.menu-drawer__navigation-container > .menu-drawer__close-button .svg-wrapper {
+  transform: none;
+  margin: 0;
+  width: 2rem;
+  height: 2rem;
+}
+
+@media screen and (max-width: 749px) {
+  .menu-drawer__navigation-container > .menu-drawer__close-button {
+    display: flex;
+  }
+}
+
 .menu-drawer__utility-links {
   padding: 0;
   background-color: rgba(var(--color-foreground), 0.03);
@@ -176,12 +201,15 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 .header--has-social .menu-drawer__utility-links {
-  padding: 2rem 3rem;
+  padding: 1.5rem 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @media screen and (max-width: 749px) {
   .header--has-account:where(:not(.header--has-social):not(.header--has-localizations)) .menu-drawer__utility-links {
-    padding: 2rem 3rem;
+    padding: 1.5rem 3rem;
   }
 }
 
@@ -239,5 +267,43 @@ details[open].menu-opening > .menu-drawer__submenu {
     transform: none !important;
     filter: none !important;
     transition: none !important;
+  }
+}
+
+
+/* Fix for mobile viewport height issues */
+.menu-drawer {
+  height: 100%;
+  min-height: 100%;
+  max-height: calc(var(--viewport-height, 100vh) - var(--header-bottom-position, 0px));
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Prevent body scroll when menu is open */
+body.overflow-hidden-tablet,
+body.overflow-hidden-mobile {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Fix navigation container to fill available space without scrolling past content */
+.menu-drawer__navigation-container {
+  min-height: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* On mobile, make drawer take full viewport minus header */
+@media screen and (max-width: 749px) {
+  .menu-drawer {
+    position: fixed;
+    top: var(--header-bottom-position, 0);
+    left: 0;
+    height: calc(100dvh - var(--header-bottom-position, 0px));
+    max-height: calc(100dvh - var(--header-bottom-position, 0px));
   }
 }

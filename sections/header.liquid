@@ -11,10 +11,6 @@
     color: {{ section.settings.color_trasparent | default: 'rgba(255, 255, 255, 1)' }};
 }
 
-.section-header:hover .header-transparent .header::before {
-    transform: translateY(0) !important;
-}
-
 /* Hide on scroll down */
 .section-header:not(.shopify-section-header-sticky):hover .header-transparent .header-main-logo,
 .section-header.shopify-section-header-sticky .header-transparent .header-main-logo {
@@ -51,6 +47,12 @@
 .overflow-hidden-desktop .header-wrapper .header-inverse-logo,
 .overflow-hidden-tablet .header-wrapper .header-inverse-logo {
   display: block;
+}
+
+@media screen and (min-width: 750px) {
+ .section-header:hover .header-transparent .header::before {
+    transform: translateY(0) !important;
+  }
 }
 
 .header-wrapper summary.header__menu-item+ul span,

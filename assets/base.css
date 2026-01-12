@@ -3638,3 +3638,7 @@ details-disclosure > details {
 .header-inverse-logo {
   display: none;
 }
+
+body {
+  overflow-x: hidden;
+}
