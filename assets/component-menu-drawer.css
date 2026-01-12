@@ -4,12 +4,14 @@
 
 .js menu-drawer > details > summary::before,
 .js menu-drawer > details[open]:not(.menu-opening) > summary::before {
-  content: '';
+  content: "";
   position: absolute;
   cursor: default;
   width: 100%;
   height: calc(100vh - 100%);
-  height: calc(var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%)));
+  height: calc(
+    var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%))
+  );
   top: 0;
   left: 0;
   background: rgba(var(--color-foreground), 0.5);
@@ -19,10 +21,18 @@
   transition: opacity 0s, visibility 0s;
 }
 
+@media screen and (min-width: 990px) {
+  .js menu-drawer > details > summary::before,
+  .js menu-drawer > details[open]:not(.menu-opening) > summary::before {
+    top: 100%;
+  }
+}
+
 menu-drawer > details[open] > summary::before {
   visibility: visible;
   opacity: 1;
-  transition: opacity var(--duration-default) ease, visibility var(--duration-default) ease;
+  transition: opacity var(--duration-default) ease,
+    visibility var(--duration-default) ease;
 }
 
 .menu-drawer {
@@ -39,14 +49,17 @@ menu-drawer > details[open] > summary::before {
   background-color: rgb(var(--color-background));
   overflow-x: hidden;
   filter: drop-shadow(
-    var(--drawer-shadow-horizontal-offset) var(--drawer-shadow-vertical-offset) var(--drawer-shadow-blur-radius)
+    var(--drawer-shadow-horizontal-offset) var(--drawer-shadow-vertical-offset)
+      var(--drawer-shadow-blur-radius)
       rgba(var(--color-shadow), var(--drawer-shadow-opacity))
   );
 }
 
 .js .menu-drawer {
   height: calc(100vh - 100%);
-  height: calc(var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%)));
+  height: calc(
+    var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%))
+  );
 }
 
 @media screen and (max-width: 749px) {
@@ -59,7 +72,8 @@ menu-drawer > details[open] > summary::before {
 
 .js details[open] > .menu-drawer,
 .js details[open] > .menu-drawer__submenu {
-  transition: transform var(--duration-long) ease, visibility var(--duration-long) ease;
+  transition: transform var(--duration-long) ease,
+    visibility var(--duration-long) ease;
 }
 
 .js details[open].menu-opening > .menu-drawer,
@@ -70,17 +84,6 @@ details[open].menu-opening > .menu-drawer__submenu {
 
 .js .menu-drawer__navigation .submenu-open {
   visibility: hidden; /* hide menus from screen readers when hidden by submenu */
-}
-
-@media screen and (min-width: 750px) {
-  .menu-drawer {
-    position: absolute;
-    top: 100%;
-    width: 40rem;
-    border-width: 0 var(--drawer-border-width) 0 0;
-    border-style: solid;
-    border-color: rgba(var(--color-foreground), var(--drawer-border-opacity));
-  }
 }
 
 .menu-drawer__inner-container {
@@ -183,17 +186,16 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 /* Mobile-only close button at top of menu */
- .menu-drawer__close-button {
+.menu-drawer__close-button {
   position: absolute;
   top: 0;
   display: none;
   margin: 0;
   padding: 2rem 3rem;
   border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
-  
 }
 
- .menu-drawer__close-button .svg-wrapper {
+.menu-drawer__close-button .svg-wrapper {
   transform: none;
   margin: 0;
   width: 2rem;
@@ -201,11 +203,9 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 @media screen and (max-width: 749px) {
-   .menu-drawer__close-button {
+  .menu-drawer__close-button {
     display: flex;
   }
-
-
 }
 
 .menu-drawer__utility-links {
@@ -222,13 +222,17 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 @media screen and (max-width: 749px) {
-  .header--has-account:where(:not(.header--has-social):not(.header--has-localizations)) .menu-drawer__utility-links {
+  .header--has-account:where(
+      :not(.header--has-social):not(.header--has-localizations)
+    )
+    .menu-drawer__utility-links {
     padding: 1.5rem 3rem;
   }
 }
 
 @media screen and (max-width: 989px) {
-  .header--has-localizations:where(:not(.header--has-social)) .menu-drawer__utility-links {
+  .header--has-localizations:where(:not(.header--has-social))
+    .menu-drawer__utility-links {
     padding: 2rem 3rem;
   }
 }
@@ -243,7 +247,8 @@ details[open].menu-opening > .menu-drawer__submenu {
   margin-bottom: 0;
 }
 
-.menu-drawer__utility-links:has(.menu-drawer__localization) .menu-drawer__account {
+.menu-drawer__utility-links:has(.menu-drawer__localization)
+  .menu-drawer__account {
   margin: 0;
 }
 
@@ -284,4 +289,16 @@ details[open].menu-opening > .menu-drawer__submenu {
   }
 }
 
-
+@media screen and (min-width: 750px) {
+  .menu-drawer {
+    position: absolute;
+    top: 100%;
+    width: 40rem;
+    border-width: 0 var(--drawer-border-width) 0 0;
+    border-style: solid;
+    border-color: rgba(var(--color-foreground), var(--drawer-border-opacity));
+  }
+  .menu-drawer__navigation-container {
+    padding-top: 0;
+  }
+}
