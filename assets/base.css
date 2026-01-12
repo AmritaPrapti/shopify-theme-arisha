@@ -2639,10 +2639,7 @@ menu-drawer + .header__search {
     display: inline-flex;
   }
 
-  .header:not(.header--top-center) > .header__search,
-  .header--top-center * > .header__search {
-    display: none;
-  }
+  
 }
 
 details[open] > .search-modal {
