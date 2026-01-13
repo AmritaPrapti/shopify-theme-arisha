@@ -177,11 +177,10 @@
         "buy_buttons_eKHMqy",
         "share_7aTwz6"
       ],
-      "disabled": true,
       "name": "t:sections.featured-product.presets.name",
       "settings": {
         "product": "mini-bundle",
-        "color_scheme": "scheme-3",
+        "color_scheme": "scheme-1",
         "secondary_background": false,
         "media_size": "medium",
         "constrain_to_viewport": true,
@@ -245,11 +244,10 @@
         "buy_buttons_AXktLR",
         "share_RLVcdM"
       ],
-      "disabled": true,
       "name": "t:sections.featured-product.presets.name",
       "settings": {
         "product": "essentials-bundle",
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-1",
         "secondary_background": false,
         "media_size": "medium",
         "constrain_to_viewport": true,
@@ -313,11 +311,10 @@
         "buy_buttons_VVV6jT",
         "share_PVDab4"
       ],
-      "disabled": true,
       "name": "t:sections.featured-product.presets.name",
       "settings": {
         "product": "full-care-bundle",
-        "color_scheme": "scheme-3",
+        "color_scheme": "scheme-1",
         "secondary_background": false,
         "media_size": "medium",
         "constrain_to_viewport": true,

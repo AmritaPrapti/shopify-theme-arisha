@@ -1,1 +1,406 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"settings":{"padding_top":36,"padding_bottom":36}},"image_banner_9dgbPH":{"type":"image-banner","blocks":{"heading_PhWtQG":{"type":"heading","settings":{"heading":"Recipe Lineup","heading_size":"h1"}}},"block_order":["heading_PhWtQG"],"custom_css":[".banner__box {background-color: transparent;}"],"name":"t:sections.image-banner.presets.name","settings":{"image":"shopify:\/\/shop_images\/230329_860.jpg","image_overlay_opacity":30,"image_height":"large","image_behavior":"none","desktop_content_position":"middle-center","desktop_content_alignment":"center","show_text_box":true,"color_scheme":"scheme-2","stack_images_on_mobile":false,"mobile_content_alignment":"center","show_text_below":false}},"rich_text_MfmBAz":{"type":"rich-text","blocks":{"heading_h4mGY7":{"type":"heading","settings":{"heading":"Each soup in our lineup was created with a specific intention in mind.","heading_size":"h2"}},"text_DTDCVp":{"type":"text","settings":{"text":"<p>Guided by Yakuzen principles and developed alongside culinary experts who are also mothers, our recipes focus on warmth, digestibility, and steady nourishment. Rather than offering endless options, we curated a small lineup of foods designed to support the body through different moments of postpartum recovery.<\/p><p>Below, you’ll find more about each recipe and the role it plays in our lineup.<\/p>"}}},"block_order":["heading_h4mGY7","text_DTDCVp"],"custom_css":["@media (max-width: 1024px) {h2 {font-size: 20px; }}"],"name":"t:sections.rich-text.presets.name","settings":{"desktop_content_position":"center","content_alignment":"center","color_scheme":"","full_width":true,"padding_top":40,"padding_bottom":52}},"featured_collection_DddeHf":{"type":"featured-collection","custom_css":["h2 {color: #c37e78;}",".price {display: none;}"],"name":"t:sections.featured-collection.presets.name","settings":{"collection":"recipe-lineup","products_to_show":3,"title":"","heading_size":"h2","description":"","show_description":false,"description_style":"body","columns_desktop":3,"enable_desktop_slider":true,"full_width":true,"show_view_all":true,"view_all_style":"solid","color_scheme":"scheme-1","image_ratio":"adapt","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":true,"quick_add":"none","columns_mobile":"2","swipe_on_mobile":true,"padding_top":36,"padding_bottom":36}},"rich_text_J4FLiF":{"type":"rich-text","blocks":{"heading_dpNMn3":{"type":"heading","settings":{"heading":"Build a Box.","heading_size":"h1"}},"text_Nm3BtA":{"type":"text","disabled":true,"settings":{"text":"<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"}},"button_7xRjBR":{"type":"button","disabled":true,"settings":{"button_label":"Button label","button_link":"","button_style_secondary":false,"button_label_2":"","button_link_2":"","button_style_secondary_2":false}}},"block_order":["heading_dpNMn3","text_Nm3BtA","button_7xRjBR"],"disabled":true,"custom_css":["h2 {color: #cc858f;}"],"name":"t:sections.rich-text.presets.name","settings":{"desktop_content_position":"center","content_alignment":"center","color_scheme":"scheme-3","full_width":true,"padding_top":100,"padding_bottom":0}},"ss_bundle_builder_4_MaCRie":{"type":"ss-bundle-builder-4","blocks":{"bundle_Dy3ekc":{"type":"bundle","settings":{"sizes_value":"8","comment":"","hide_comment":false}},"bundle_yRBqzR":{"type":"bundle","settings":{"sizes_value":"16","comment":"","hide_comment":false}},"bundle_TCmeEY":{"type":"bundle","settings":{"sizes_value":"24","comment":"Free shipping","hide_comment":false}},"features_fa3zh7":{"type":"features","disabled":true,"settings":{"first_feature_text":"Feature 1","second_feature_text":"Feature 2","third_feature_text":"Feature 3","fourth_feature_text":"Feature 4","feature_custom":false,"feature_font":"josefin_sans_n4","feature_size":12,"feature_size_mobile":12,"feature_height":150,"feature_mt":20,"feature_mt_mobile":20,"feature_icon_color":"#121212","feature_color":"#121212"}}},"block_order":["bundle_Dy3ekc","bundle_yRBqzR","bundle_TCmeEY","features_fa3zh7"],"disabled":true,"name":"SS - Bundle builder #4","settings":{"collection":"recipe-lineup","use_gift":false,"gift_product":"","gift_text":"Free Gift","sidebar_radius":4,"sidebar_border_thickness":0,"layout_gap":16,"layout_gap_mobile":16,"products_row":3,"products_row_mobile":1,"products_gap":32,"products_gap_mobile":24,"product_image_border_thickness":0,"product_image_radius":4,"product_image_ratio":"portrait","product_image_ratio_mobile":"square","product_content_align":"center","product_content_align_mobile":"center","title_custom":true,"title_font":"montserrat_n7","title_size":14,"title_size_mobile":14,"title_height":150,"title_mt":12,"title_mt_mobile":10,"product_title_limit":true,"product_title_count":50,"price_custom":true,"price_font":"montserrat_n4","price_size":12,"price_size_mobile":12,"price_height":130,"price_mt":4,"price_mt_mobile":4,"price_compare":true,"product_button":"+ Add","product_button_soldout":"Sold out","product_button_style":"non_outline","product_button_custom":true,"product_button_font":"montserrat_n4","product_button_size":16,"product_button_size_mobile":16,"product_button_height":100,"product_button_padding_horizontal":16,"product_button_padding_horizontal_mobile":16,"product_button_padding_vertical":16,"product_button_padding_vertical_mobile":16,"product_button_radius":4,"product_button_border_thickness":1,"product_button_mt":8,"product_button_mt_mobile":8,"link_text":"Product Info","link_custom":true,"link_font":"montserrat_n4","link_size":12,"link_size_mobile":12,"link_height":130,"link_mt":8,"link_mt_mobile":8,"in_new_tab":true,"sidebar_width":30,"sidebar_align":"left","sidebar_align_mobile":"left","step_circle_size":24,"step_circle_size_mobile":24,"step_circle_border_thickness":0,"step_number_custom":true,"step_number_font":"montserrat_n4","step_number_size":12,"step_number_size_mobile":12,"step_number_height":130,"first_step":"Select Size","second_step":"Choose Products","step_text_custom":true,"step_text_font":"montserrat_n4","step_text_size":16,"step_text_size_mobile":16,"step_text_height":130,"tabs_gap":16,"tabs_gap_mobile":8,"tab_text":"Pack","tab_custom":true,"tab_font":"montserrat_n4","tab_size":16,"tab_size_mobile":14,"tab_height":130,"tab_padding_horizontal":16,"tab_padding_horizontal_mobile":16,"tab_padding_vertical":12,"tab_padding_vertical_mobile":12,"tab_radius":4,"tab_border_thickness":1,"gift_product_image_radius":4,"gift_product_image_border_thickness":0,"gift_product_image_ratio":"square","gift_product_image_ratio_mobile":"square","total_price":"Total","total_price_custom":true,"total_price_font":"montserrat_n4","total_price_size":20,"total_price_size_mobile":20,"total_price_height":130,"button":"Add to cart","button_style":"non_outline","button_custom":true,"button_font":"montserrat_n4","button_size":20,"button_size_mobile":20,"button_height":100,"button_padding_horizontal":16,"button_padding_horizontal_mobile":16,"button_padding_vertical":16,"button_padding_vertical_mobile":16,"button_radius":4,"button_border_thickness":1,"button_mt":12,"button_mt_mobile":12,"product_image_border_color":"#121212","title_color":"#cc858f","price_color":"#736d66","price_original_color":"#afafaf","link_color":"#736d66","product_button_color":"#ffffff","product_button_hover_color":"#ffffff","product_button_bg_color":"#cc858f","product_button_bg_hover_color":"#cc858f","product_button_border_color":"#121212","product_button_border_hover_color":"#121212","quantity_color":"#ffffff","quantity_controls_color":"#cc858f","quantity_bg_color":"#cc858f","quantity_wrapper_bg_color":"#ffffff","empty_icon_color":"#cc858f","empty_icon_border_color":"#afafaf","total_price_color":"#736d66","gift_product_image_border_color":"#121212","tab_color":"#736d66","tab_hover_color":"#ffffff","tab_bg_color":"rgba(0,0,0,0)","tab_bg_hover_color":"#cc858f","tab_border_color":"#cc858f","tab_border_hover_color":"#cc858f","step_text_color":"#736d66","step_text_accent_color":"#afafaf","step_number_color":"#121212","step_circle_bg_color":"#f4e9e8","step_circle_border_color":"#121212","button_color":"#ffffff","button_hover_color":"#ffffff","button_bg_color":"#cc858f","button_bg_hover_color":"#cc858f","button_border_color":"#121212","button_border_hover_color":"#121212","sidebar_bg_color":"#ffffff","sidebar_border_color":"#121212","background_color":"#f4e9e8","background_gradient":"","border_color":"rgba(0,0,0,0)","margin_top":0,"margin_bottom":0,"margin_horizontal":0,"margin_horizontal_mobile":0,"padding_top":36,"padding_bottom":100,"padding_horizontal":5,"padding_horizontal_mobile":1.5,"full_width":true,"content_width":1400,"border_thickness":0,"section_radius":0,"lazy":true}}},"order":["main","image_banner_9dgbPH","rich_text_MfmBAz","featured_collection_DddeHf","rich_text_J4FLiF","ss_bundle_builder_4_MaCRie"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_9dgbPH": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_PhWtQG": {
+          "type": "heading",
+          "settings": {
+            "heading": "A La Carte",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_PhWtQG"
+      ],
+      "custom_css": [
+        ".banner__box {background-color: transparent;}"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/230329_860.jpg",
+        "image_overlay_opacity": 30,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "scheme-2",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "rich_text_MfmBAz": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_h4mGY7": {
+          "type": "heading",
+          "settings": {
+            "heading": "Each recipe in our lineup was created with a specific intention in mind.",
+            "heading_size": "h2"
+          }
+        },
+        "text_DTDCVp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Guided by Yakuzen principles and developed alongside culinary experts who are also mothers, our recipes focus on warmth, digestibility, and steady nourishment. Rather than offering endless options, we curated a small lineup of foods designed to support the body through different moments of postpartum recovery.</p><p>Below, you’ll find more about each recipe and the role it plays in our lineup.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_h4mGY7",
+        "text_DTDCVp"
+      ],
+      "custom_css": [
+        "@media (max-width: 1024px) {h2 {font-size: 20px; }}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "featured_collection_DddeHf": {
+      "type": "featured-collection",
+      "custom_css": [
+        "h2 {color: #c37e78;}",
+        ".price {display: none;}"
+      ],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "recipe-lineup",
+        "products_to_show": 10,
+        "title": "",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 3,
+        "enable_desktop_slider": true,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_J4FLiF": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_dpNMn3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Build a Box.",
+            "heading_size": "h1"
+          }
+        },
+        "text_Nm3BtA": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+          }
+        },
+        "button_7xRjBR": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_dpNMn3",
+        "text_Nm3BtA",
+        "button_7xRjBR"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "h2 {color: #cc858f;}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 0
+      }
+    },
+    "ss_bundle_builder_4_MaCRie": {
+      "type": "ss-bundle-builder-4",
+      "blocks": {
+        "bundle_Dy3ekc": {
+          "type": "bundle",
+          "settings": {
+            "sizes_value": "8",
+            "comment": "",
+            "hide_comment": false
+          }
+        },
+        "bundle_yRBqzR": {
+          "type": "bundle",
+          "settings": {
+            "sizes_value": "16",
+            "comment": "",
+            "hide_comment": false
+          }
+        },
+        "bundle_TCmeEY": {
+          "type": "bundle",
+          "settings": {
+            "sizes_value": "24",
+            "comment": "Free shipping",
+            "hide_comment": false
+          }
+        },
+        "features_fa3zh7": {
+          "type": "features",
+          "disabled": true,
+          "settings": {
+            "first_feature_text": "Feature 1",
+            "second_feature_text": "Feature 2",
+            "third_feature_text": "Feature 3",
+            "fourth_feature_text": "Feature 4",
+            "feature_custom": false,
+            "feature_font": "josefin_sans_n4",
+            "feature_size": 12,
+            "feature_size_mobile": 12,
+            "feature_height": 150,
+            "feature_mt": 20,
+            "feature_mt_mobile": 20,
+            "feature_icon_color": "#121212",
+            "feature_color": "#121212"
+          }
+        }
+      },
+      "block_order": [
+        "bundle_Dy3ekc",
+        "bundle_yRBqzR",
+        "bundle_TCmeEY",
+        "features_fa3zh7"
+      ],
+      "disabled": true,
+      "name": "SS - Bundle builder #4",
+      "settings": {
+        "collection": "recipe-lineup",
+        "use_gift": false,
+        "gift_product": "",
+        "gift_text": "Free Gift",
+        "sidebar_radius": 4,
+        "sidebar_border_thickness": 0,
+        "layout_gap": 16,
+        "layout_gap_mobile": 16,
+        "products_row": 3,
+        "products_row_mobile": 1,
+        "products_gap": 32,
+        "products_gap_mobile": 24,
+        "product_image_border_thickness": 0,
+        "product_image_radius": 4,
+        "product_image_ratio": "portrait",
+        "product_image_ratio_mobile": "square",
+        "product_content_align": "center",
+        "product_content_align_mobile": "center",
+        "title_custom": true,
+        "title_font": "montserrat_n7",
+        "title_size": 14,
+        "title_size_mobile": 14,
+        "title_height": 150,
+        "title_mt": 12,
+        "title_mt_mobile": 10,
+        "product_title_limit": true,
+        "product_title_count": 50,
+        "price_custom": true,
+        "price_font": "montserrat_n4",
+        "price_size": 12,
+        "price_size_mobile": 12,
+        "price_height": 130,
+        "price_mt": 4,
+        "price_mt_mobile": 4,
+        "price_compare": true,
+        "product_button": "+ Add",
+        "product_button_soldout": "Sold out",
+        "product_button_style": "non_outline",
+        "product_button_custom": true,
+        "product_button_font": "montserrat_n4",
+        "product_button_size": 16,
+        "product_button_size_mobile": 16,
+        "product_button_height": 100,
+        "product_button_padding_horizontal": 16,
+        "product_button_padding_horizontal_mobile": 16,
+        "product_button_padding_vertical": 16,
+        "product_button_padding_vertical_mobile": 16,
+        "product_button_radius": 4,
+        "product_button_border_thickness": 1,
+        "product_button_mt": 8,
+        "product_button_mt_mobile": 8,
+        "link_text": "Product Info",
+        "link_custom": true,
+        "link_font": "montserrat_n4",
+        "link_size": 12,
+        "link_size_mobile": 12,
+        "link_height": 130,
+        "link_mt": 8,
+        "link_mt_mobile": 8,
+        "in_new_tab": true,
+        "sidebar_width": 30,
+        "sidebar_align": "left",
+        "sidebar_align_mobile": "left",
+        "step_circle_size": 24,
+        "step_circle_size_mobile": 24,
+        "step_circle_border_thickness": 0,
+        "step_number_custom": true,
+        "step_number_font": "montserrat_n4",
+        "step_number_size": 12,
+        "step_number_size_mobile": 12,
+        "step_number_height": 130,
+        "first_step": "Select Size",
+        "second_step": "Choose Products",
+        "step_text_custom": true,
+        "step_text_font": "montserrat_n4",
+        "step_text_size": 16,
+        "step_text_size_mobile": 16,
+        "step_text_height": 130,
+        "tabs_gap": 16,
+        "tabs_gap_mobile": 8,
+        "tab_text": "Pack",
+        "tab_custom": true,
+        "tab_font": "montserrat_n4",
+        "tab_size": 16,
+        "tab_size_mobile": 14,
+        "tab_height": 130,
+        "tab_padding_horizontal": 16,
+        "tab_padding_horizontal_mobile": 16,
+        "tab_padding_vertical": 12,
+        "tab_padding_vertical_mobile": 12,
+        "tab_radius": 4,
+        "tab_border_thickness": 1,
+        "gift_product_image_radius": 4,
+        "gift_product_image_border_thickness": 0,
+        "gift_product_image_ratio": "square",
+        "gift_product_image_ratio_mobile": "square",
+        "total_price": "Total",
+        "total_price_custom": true,
+        "total_price_font": "montserrat_n4",
+        "total_price_size": 20,
+        "total_price_size_mobile": 20,
+        "total_price_height": 130,
+        "button": "Add to cart",
+        "button_style": "non_outline",
+        "button_custom": true,
+        "button_font": "montserrat_n4",
+        "button_size": 20,
+        "button_size_mobile": 20,
+        "button_height": 100,
+        "button_padding_horizontal": 16,
+        "button_padding_horizontal_mobile": 16,
+        "button_padding_vertical": 16,
+        "button_padding_vertical_mobile": 16,
+        "button_radius": 4,
+        "button_border_thickness": 1,
+        "button_mt": 12,
+        "button_mt_mobile": 12,
+        "product_image_border_color": "#121212",
+        "title_color": "#cc858f",
+        "price_color": "#736d66",
+        "price_original_color": "#afafaf",
+        "link_color": "#736d66",
+        "product_button_color": "#ffffff",
+        "product_button_hover_color": "#ffffff",
+        "product_button_bg_color": "#cc858f",
+        "product_button_bg_hover_color": "#cc858f",
+        "product_button_border_color": "#121212",
+        "product_button_border_hover_color": "#121212",
+        "quantity_color": "#ffffff",
+        "quantity_controls_color": "#cc858f",
+        "quantity_bg_color": "#cc858f",
+        "quantity_wrapper_bg_color": "#ffffff",
+        "empty_icon_color": "#cc858f",
+        "empty_icon_border_color": "#afafaf",
+        "total_price_color": "#736d66",
+        "gift_product_image_border_color": "#121212",
+        "tab_color": "#736d66",
+        "tab_hover_color": "#ffffff",
+        "tab_bg_color": "rgba(0,0,0,0)",
+        "tab_bg_hover_color": "#cc858f",
+        "tab_border_color": "#cc858f",
+        "tab_border_hover_color": "#cc858f",
+        "step_text_color": "#736d66",
+        "step_text_accent_color": "#afafaf",
+        "step_number_color": "#121212",
+        "step_circle_bg_color": "#f4e9e8",
+        "step_circle_border_color": "#121212",
+        "button_color": "#ffffff",
+        "button_hover_color": "#ffffff",
+        "button_bg_color": "#cc858f",
+        "button_bg_hover_color": "#cc858f",
+        "button_border_color": "#121212",
+        "button_border_hover_color": "#121212",
+        "sidebar_bg_color": "#ffffff",
+        "sidebar_border_color": "#121212",
+        "background_color": "#f4e9e8",
+        "background_gradient": "",
+        "border_color": "rgba(0,0,0,0)",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 36,
+        "padding_bottom": 100,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "full_width": true,
+        "content_width": 1400,
+        "border_thickness": 0,
+        "section_radius": 0,
+        "lazy": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_9dgbPH",
+    "rich_text_MfmBAz",
+    "featured_collection_DddeHf",
+    "rich_text_J4FLiF",
+    "ss_bundle_builder_4_MaCRie"
+  ]
+}
