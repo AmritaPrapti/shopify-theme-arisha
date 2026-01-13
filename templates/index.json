@@ -9,28 +9,8 @@
  */
 {
   "sections": {
-    "video_mYqXpb": {
-      "type": "video",
-      "name": "t:sections.video.presets.name",
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "enable_video_looping": true,
-        "enable_autoplay": true,
-        "show_controls": false,
-        "video": "shopify://files/videos/230329-30_forher_23MAR_FLM_T112_H264_4K_ddc07e4d-b299-481a-919b-39aeda5a6bab.mp4",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "cover_image": "shopify://shop_images/250324_TsS_4069_1st.jpg",
-        "description": "",
-        "full_width": true,
-        "color_scheme": "",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
     "custom_liquid_3D8Tqh": {
       "type": "custom-liquid",
-      "disabled": true,
       "custom_css": [
         "video {width: 100%; height: auto; display: block; margin: 0 auto;}",
         "@media screen and (max-width: 749px) {video {width: 100%; height: 100vh; object-fit: cover; object-position: center center; } {display: grid; grid-template-columns: auto; align-items: center; justify-content: center; }}"
@@ -609,7 +589,6 @@
     }
   },
   "order": [
-    "video_mYqXpb",
     "custom_liquid_3D8Tqh",
     "image_banner_XxAF78",
     "image_with_text_ALULxa",
