@@ -260,10 +260,9 @@
         "heading_r6AckQ",
         "text_GEHcey"
       ],
-      "disabled": true,
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
-        "image": "shopify://shop_images/IMG_3018_1.jpg",
+        "image": "shopify://shop_images/IMG_6972.jpg",
         "height": "adapt",
         "desktop_image_width": "small",
         "layout": "text_first",
