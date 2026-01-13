@@ -1,1 +1,291 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"settings":{"padding_top":36,"padding_bottom":36}},"image_banner_9dgbPH":{"type":"image-banner","blocks":{"heading_PhWtQG":{"type":"heading","settings":{"heading":"Behind the Recipes","heading_size":"h1"}},"text_ebiTVL":{"type":"text","settings":{"text":"Our products were developed through a collaborative process led by a small group of culinary experts, all of whom are mothers, who shaped the recipes and approach behind the food.","text_style":"body"}}},"block_order":["heading_PhWtQG","text_ebiTVL"],"custom_css":[".banner__box {background-color: transparent;}"],"name":"t:sections.image-banner.presets.name","settings":{"image":"shopify:\/\/shop_images\/250324_TsS_4172_1st.jpg","image_overlay_opacity":30,"image_height":"large","image_behavior":"none","desktop_content_position":"middle-center","desktop_content_alignment":"center","show_text_box":true,"color_scheme":"scheme-2","stack_images_on_mobile":false,"mobile_content_alignment":"center","show_text_below":false}},"rich_text_CCEMg4":{"type":"rich-text","blocks":{"heading_amgzUL":{"type":"heading","settings":{"heading":"Meet Our Culinary Team","heading_size":"h2"}}},"block_order":["heading_amgzUL"],"custom_css":["h2 {color: #cc858f;}"],"name":"t:sections.rich-text.presets.name","settings":{"desktop_content_position":"center","content_alignment":"center","color_scheme":"scheme-1","full_width":true,"padding_top":40,"padding_bottom":0}},"image_with_text_gq4jUH":{"type":"image-with-text","blocks":{"caption_arFJ8H":{"type":"caption","settings":{"caption":"Postpartum doula and chef","text_style":"caption-with-letter-spacing","text_size":"small"}},"heading_yk3kKz":{"type":"heading","settings":{"heading":"Rachael Hollinger","heading_size":"h2"}},"text_mP8h68":{"type":"text","settings":{"text":"<p>Rachael is a US-based postpartum doula and chef whose work centers on supporting mothers through nourishment during recovery.<\/p><p>She developed the original soup recipes for for her. by Arisa, grounding them in postpartum needs, comfort, and ease of digestion. Her approach shaped the foundation of how our soups are meant to feel during the early postpartum period.<\/p>","text_style":"body"}}},"block_order":["caption_arFJ8H","heading_yk3kKz","text_mP8h68"],"custom_css":[],"name":"t:sections.image-with-text.presets.name","settings":{"image":"shopify:\/\/shop_images\/Screenshot_2023-05-09_104926.png","height":"adapt","desktop_image_width":"small","layout":"image_first","image_behavior":"none","content_layout":"overlap","desktop_content_position":"middle","desktop_content_alignment":"left","mobile_content_alignment":"center","section_color_scheme":"","color_scheme":"scheme-5","padding_top":36,"padding_bottom":36}},"image_with_text_A9fQFB":{"type":"image-with-text","blocks":{"caption_3HEGPa":{"type":"caption","settings":{"caption":"Yakuzen and Chinese medicine culinary expert","text_style":"caption-with-letter-spacing","text_size":"small"}},"heading_RmnrLT":{"type":"heading","settings":{"heading":"Yumiko Izawa","heading_size":"h2"}},"text_P7cf97":{"type":"text","settings":{"text":"<p>Yumiko Izawa is a Tokyo-based culinary expert specializing in Chinese medicine and Yakuzen cooking. Her work focuses on balance, seasonality, and how ingredients support the body through food.<\/p><p>She worked closely with the recipes, bringing Yakuzen principles and traditional Japanese ingredients into the development process. Her perspective adds cultural depth, intention, and care to how the soups are composed.<\/p>","text_style":"body"}}},"block_order":["caption_3HEGPa","heading_RmnrLT","text_P7cf97"],"name":"t:sections.image-with-text.presets.name","settings":{"image":"shopify:\/\/shop_images\/06C61B05-D489-413D-949D-8856880A2967.jpg","height":"adapt","desktop_image_width":"small","layout":"text_first","image_behavior":"none","content_layout":"overlap","desktop_content_position":"middle","desktop_content_alignment":"left","mobile_content_alignment":"center","section_color_scheme":"","color_scheme":"scheme-5","padding_top":36,"padding_bottom":36}},"image_with_text_34A8pX":{"type":"image-with-text","blocks":{"caption_NKJ8kh":{"type":"caption","settings":{"caption":"Chef specializing in holistic wellness","text_style":"caption-with-letter-spacing","text_size":"small"}},"heading_PQqmDG":{"type":"heading","settings":{"heading":"Seiko Odashima","heading_size":"h2"}},"text_HANiyB":{"type":"text","settings":{"text":"<p>Seiko is a Los Angeles-based chef with a background in holistic wellness and Japanese fermentation.<\/p><p>She played a key role in adapting the recipes for American mothers, ensuring the soups remained true to their original intention while fitting local ingredients, tastes, and everyday needs. Her work helps the soups feel both nourishing and approachable.<\/p>","text_style":"body"}}},"block_order":["caption_NKJ8kh","heading_PQqmDG","text_HANiyB"],"name":"t:sections.image-with-text.presets.name","settings":{"image":"shopify:\/\/shop_images\/IMG_1126.jpg","height":"adapt","desktop_image_width":"small","layout":"image_first","image_behavior":"none","content_layout":"overlap","desktop_content_position":"middle","desktop_content_alignment":"left","mobile_content_alignment":"center","section_color_scheme":"","color_scheme":"scheme-5","padding_top":36,"padding_bottom":36}},"image_with_text_E3gY4f":{"type":"image-with-text","blocks":{"caption_EyGKMi":{"type":"caption","settings":{"caption":"R&D Chef & Lead Production Cook","text_style":"caption-with-letter-spacing","text_size":"small"}},"heading_r6AckQ":{"type":"heading","settings":{"heading":"Sarah Kurobe","heading_size":"h2"}},"text_GEHcey":{"type":"text","settings":{"text":"<p>Sarah is a culinary professional with a Master’s in Gastronomy and over a decade of experience in cooking and recipe development. Raised between Japanese and American cultures and fluent in Japanese, her approach to food is shaped by tradition, balance, and care.<\/p><p>At <em>for her. by Arisa<\/em>, Sarah developed our snack menu using her bicultural perspective. She now serves as our Lead Production Cook in the Fullerton kitchen, ensuring quality and consistency in every recipe we share.<\/p><p>As a mother of two, Sarah is closely connected to our mission of supporting mothers, bringing both professional expertise and lived experience to the food we make.<\/p>","text_style":"body"}}},"block_order":["caption_EyGKMi","heading_r6AckQ","text_GEHcey"],"disabled":true,"name":"t:sections.image-with-text.presets.name","settings":{"image":"shopify:\/\/shop_images\/IMG_1126.jpg","height":"adapt","desktop_image_width":"small","layout":"text_first","image_behavior":"none","content_layout":"overlap","desktop_content_position":"middle","desktop_content_alignment":"left","mobile_content_alignment":"center","section_color_scheme":"","color_scheme":"scheme-5","padding_top":36,"padding_bottom":36}}},"order":["main","image_banner_9dgbPH","rich_text_CCEMg4","image_with_text_gq4jUH","image_with_text_A9fQFB","image_with_text_34A8pX","image_with_text_E3gY4f"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_9dgbPH": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_PhWtQG": {
+          "type": "heading",
+          "settings": {
+            "heading": "Behind the Recipes",
+            "heading_size": "h1"
+          }
+        },
+        "text_ebiTVL": {
+          "type": "text",
+          "settings": {
+            "text": "Our products were developed through a collaborative process led by a small group of culinary experts, all of whom are mothers, who shaped the recipes and approach behind the food.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_PhWtQG",
+        "text_ebiTVL"
+      ],
+      "custom_css": [
+        ".banner__box {background-color: transparent;}"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/250324_TsS_4172_1st.jpg",
+        "image_overlay_opacity": 30,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "scheme-2",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "rich_text_CCEMg4": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_amgzUL": {
+          "type": "heading",
+          "settings": {
+            "heading": "Meet Our Culinary Team",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_amgzUL"
+      ],
+      "custom_css": [
+        "h2 {color: #cc858f;}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_gq4jUH": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_arFJ8H": {
+          "type": "caption",
+          "settings": {
+            "caption": "Postpartum doula and chef",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "small"
+          }
+        },
+        "heading_yk3kKz": {
+          "type": "heading",
+          "settings": {
+            "heading": "Rachael Hollinger",
+            "heading_size": "h2"
+          }
+        },
+        "text_mP8h68": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Rachael is a US-based postpartum doula and chef whose work centers on supporting mothers through nourishment during recovery.</p><p>She developed the original soup recipes for for her. by Arisa, grounding them in postpartum needs, comfort, and ease of digestion. Her approach shaped the foundation of how our soups are meant to feel during the early postpartum period.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "caption_arFJ8H",
+        "heading_yk3kKz",
+        "text_mP8h68"
+      ],
+      "custom_css": [],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Screenshot_2023-05-09_104926.png",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-5",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_A9fQFB": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_3HEGPa": {
+          "type": "caption",
+          "settings": {
+            "caption": "Yakuzen and Chinese medicine culinary expert",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "small"
+          }
+        },
+        "heading_RmnrLT": {
+          "type": "heading",
+          "settings": {
+            "heading": "Yumiko Izawa",
+            "heading_size": "h2"
+          }
+        },
+        "text_P7cf97": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Yumiko Izawa is a Tokyo-based culinary expert specializing in Chinese medicine and Yakuzen cooking. Her work focuses on balance, seasonality, and how ingredients support the body through food.</p><p>She worked closely with the recipes, bringing Yakuzen principles and traditional Japanese ingredients into the development process. Her perspective adds cultural depth, intention, and care to how the soups are composed.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "caption_3HEGPa",
+        "heading_RmnrLT",
+        "text_P7cf97"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/06C61B05-D489-413D-949D-8856880A2967.jpg",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-5",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_34A8pX": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_NKJ8kh": {
+          "type": "caption",
+          "settings": {
+            "caption": "Chef specializing in holistic wellness",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "small"
+          }
+        },
+        "heading_PQqmDG": {
+          "type": "heading",
+          "settings": {
+            "heading": "Seiko Odashima",
+            "heading_size": "h2"
+          }
+        },
+        "text_HANiyB": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Seiko is a Los Angeles-based chef with a background in holistic wellness and Japanese fermentation.</p><p>She played a key role in adapting the recipes for American mothers, ensuring the soups remained true to their original intention while fitting local ingredients, tastes, and everyday needs. Her work helps the soups feel both nourishing and approachable.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "caption_NKJ8kh",
+        "heading_PQqmDG",
+        "text_HANiyB"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/IMG_1126.jpg",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-5",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_E3gY4f": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_EyGKMi": {
+          "type": "caption",
+          "settings": {
+            "caption": "R&D Chef & Lead Production Cook",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "small"
+          }
+        },
+        "heading_r6AckQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Sarah Kurobe",
+            "heading_size": "h2"
+          }
+        },
+        "text_GEHcey": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Sarah is a culinary professional with a Master’s in Gastronomy and over a decade of experience in cooking and recipe development. Raised between Japanese and American cultures and fluent in Japanese, her approach to food is shaped by tradition, balance, and care.</p><p>At <em>for her. by Arisa</em>, Sarah developed our snack menu using her bicultural perspective. She now serves as our Lead Production Cook in the Fullerton kitchen, ensuring quality and consistency in every recipe we share.</p><p>As a mother of two, Sarah is closely connected to our mission of supporting mothers, bringing both professional expertise and lived experience to the food we make.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "caption_EyGKMi",
+        "heading_r6AckQ",
+        "text_GEHcey"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/IMG_3018_1.jpg",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-5",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_9dgbPH",
+    "rich_text_CCEMg4",
+    "image_with_text_gq4jUH",
+    "image_with_text_A9fQFB",
+    "image_with_text_34A8pX",
+    "image_with_text_E3gY4f"
+  ]
+}
