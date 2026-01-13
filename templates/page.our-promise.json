@@ -262,7 +262,7 @@
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
-        "image": "shopify://shop_images/IMG_6972.jpg",
+        "image": "shopify://shop_images/IMG_1052.jpg",
         "height": "adapt",
         "desktop_image_width": "small",
         "layout": "text_first",
