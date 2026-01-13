@@ -126,6 +126,210 @@
         "padding_bottom": 36
       }
     },
+    "featured_product_8MhRnz": {
+      "type": "featured-product",
+      "blocks": {
+        "title_iwELfp": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "judge_me_reviews_preview_badge_7EQbDf": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "price_HKKV47": {
+          "type": "price",
+          "settings": {}
+        },
+        "text_FCEEMR": {
+          "type": "text",
+          "settings": {
+            "text": "A gentle introduction to postpartum nourishment. Ideal for first-time customers or lighter support. Also a great option to bring to the hospital for the first days after birth.",
+            "text_style": "body"
+          }
+        },
+        "quantity_selector_fw3MVa": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_eKHMqy": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_7aTwz6": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title_iwELfp",
+        "judge_me_reviews_preview_badge_7EQbDf",
+        "price_HKKV47",
+        "text_FCEEMR",
+        "quantity_selector_fw3MVa",
+        "buy_buttons_eKHMqy",
+        "share_7aTwz6"
+      ],
+      "disabled": true,
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "mini-bundle",
+        "color_scheme": "scheme-3",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_product_yFRxXE": {
+      "type": "featured-product",
+      "blocks": {
+        "title_VJDRtx": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "judge_me_reviews_preview_badge_WdfHNt": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "price_TyABTD": {
+          "type": "price",
+          "settings": {}
+        },
+        "text_RHNXAz": {
+          "type": "text",
+          "settings": {
+            "text": "Our core bundle for the early postpartum period. Designed for consistent, everyday nourishment.",
+            "text_style": "body"
+          }
+        },
+        "quantity_selector_CUVgbN": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_AXktLR": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_RLVcdM": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title_VJDRtx",
+        "judge_me_reviews_preview_badge_WdfHNt",
+        "price_TyABTD",
+        "text_RHNXAz",
+        "quantity_selector_CUVgbN",
+        "buy_buttons_AXktLR",
+        "share_RLVcdM"
+      ],
+      "disabled": true,
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "essentials-bundle",
+        "color_scheme": "scheme-5",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "right",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_product_aFKBY4": {
+      "type": "featured-product",
+      "blocks": {
+        "title_8FrMTX": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "judge_me_reviews_preview_badge_qDFzga": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "price_JdqTLc": {
+          "type": "price",
+          "settings": {}
+        },
+        "text_daHrFz": {
+          "type": "text",
+          "settings": {
+            "text": "Our most comprehensive bundle. For those who want extended support and a more intentional approach to postpartum food.",
+            "text_style": "body"
+          }
+        },
+        "quantity_selector_dgMRQd": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_VVV6jT": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_PVDab4": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title_8FrMTX",
+        "judge_me_reviews_preview_badge_qDFzga",
+        "price_JdqTLc",
+        "text_daHrFz",
+        "quantity_selector_dgMRQd",
+        "buy_buttons_VVV6jT",
+        "share_PVDab4"
+      ],
+      "disabled": true,
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "full-care-bundle",
+        "color_scheme": "scheme-3",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "rich_text_HdgHzH": {
       "type": "rich-text",
       "blocks": {
@@ -592,6 +796,9 @@
     "custom_liquid_3D8Tqh",
     "image_banner_XxAF78",
     "image_with_text_ALULxa",
+    "featured_product_8MhRnz",
+    "featured_product_yFRxXE",
+    "featured_product_aFKBY4",
     "rich_text_HdgHzH",
     "ss_bundle_builder_4_iHxBbg",
     "image_with_text_NRaG6K",
