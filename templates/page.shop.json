@@ -77,6 +77,7 @@
     },
     "featured_collection_Czymf4": {
       "type": "featured-collection",
+      "disabled": true,
       "custom_css": [
         "h2,p {text-align: center;}",
         "p {color: #736d66;}",
@@ -158,6 +159,7 @@
         "quantity_selector_6h48pg",
         "buy_buttons_3N4KcY"
       ],
+      "disabled": true,
       "custom_css": [
         "h2 {color: #c37e78;}"
       ],
@@ -223,6 +225,7 @@
         "quantity_selector_bJECJJ",
         "buy_buttons_CBJ8QK"
       ],
+      "disabled": true,
       "custom_css": [
         "h2 {color: #c37e78;}"
       ],
@@ -288,6 +291,7 @@
         "quantity_selector_NhDP6J",
         "buy_buttons_WKW7Yg"
       ],
+      "disabled": true,
       "custom_css": [
         "h2 {color: #c37e78;}"
       ],
@@ -581,6 +585,78 @@
         "lazy": true
       }
     },
+    "featured_product_C36N6y": {
+      "type": "featured-product",
+      "blocks": {
+        "title_7GrANb": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "judge_me_reviews_preview_badge_homepage_wRihia": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge_homepage/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "product": "digital-gift-card"
+          }
+        },
+        "text_ciFGnH": {
+          "type": "text",
+          "settings": {
+            "text": "Looking for a meaningful postpartum gift? Our foods are chosen by partners, family, and friends who want to offer real care through food rather than something temporary.",
+            "text_style": "body"
+          }
+        },
+        "price_VfTBxj": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_WDGxVt": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "buy_buttons_Dyt7cQ": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_jnzdfT": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title_7GrANb",
+        "judge_me_reviews_preview_badge_homepage_wRihia",
+        "text_ciFGnH",
+        "price_VfTBxj",
+        "variant_picker_WDGxVt",
+        "buy_buttons_Dyt7cQ",
+        "share_jnzdfT"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "digital-gift-card",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "1766116811201973c2": {
       "type": "_blocks",
       "blocks": {
@@ -679,78 +755,6 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "featured_product_C36N6y": {
-      "type": "featured-product",
-      "blocks": {
-        "title_7GrANb": {
-          "type": "title",
-          "settings": {
-            "heading_size": "h1"
-          }
-        },
-        "judge_me_reviews_preview_badge_homepage_wRihia": {
-          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge_homepage/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "product": "digital-gift-card"
-          }
-        },
-        "text_ciFGnH": {
-          "type": "text",
-          "settings": {
-            "text": "Looking for a meaningful postpartum gift? Our foods are chosen by partners, family, and friends who want to offer real care through food rather than something temporary.",
-            "text_style": "body"
-          }
-        },
-        "price_VfTBxj": {
-          "type": "price",
-          "settings": {}
-        },
-        "variant_picker_WDGxVt": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
-        "buy_buttons_Dyt7cQ": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
-          }
-        },
-        "share_jnzdfT": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
-        }
-      },
-      "block_order": [
-        "title_7GrANb",
-        "judge_me_reviews_preview_badge_homepage_wRihia",
-        "text_ciFGnH",
-        "price_VfTBxj",
-        "variant_picker_WDGxVt",
-        "buy_buttons_Dyt7cQ",
-        "share_jnzdfT"
-      ],
-      "name": "t:sections.featured-product.presets.name",
-      "settings": {
-        "product": "digital-gift-card",
-        "color_scheme": "",
-        "secondary_background": false,
-        "media_size": "medium",
-        "constrain_to_viewport": true,
-        "media_fit": "contain",
-        "media_position": "left",
-        "image_zoom": "lightbox",
-        "hide_variants": false,
-        "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
@@ -763,8 +767,8 @@
     "featured_product_V8L9P8",
     "rich_text_A4meRM",
     "ss_bundle_builder_4_GyCwrA",
+    "featured_product_C36N6y",
     "1766116811201973c2",
-    "multicolumn_bQbxUe",
-    "featured_product_C36N6y"
+    "multicolumn_bQbxUe"
   ]
 }
