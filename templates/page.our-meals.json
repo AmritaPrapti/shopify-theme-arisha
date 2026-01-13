@@ -49,40 +49,6 @@
         "show_text_below": false
       }
     },
-    "rich_text_MfmBAz": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_h4mGY7": {
-          "type": "heading",
-          "settings": {
-            "heading": "Each recipe in our lineup was created with a specific intention in mind.",
-            "heading_size": "h2"
-          }
-        },
-        "text_DTDCVp": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Guided by Yakuzen principles and developed alongside culinary experts who are also mothers, our recipes focus on warmth, digestibility, and steady nourishment. Rather than offering endless options, we curated a small lineup of foods designed to support the body through different moments of postpartum recovery.</p><p>Below, you’ll find more about each recipe and the role it plays in our lineup.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_h4mGY7",
-        "text_DTDCVp"
-      ],
-      "custom_css": [
-        "@media (max-width: 1024px) {h2 {font-size: 20px; }}"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "featured_collection_DddeHf": {
       "type": "featured-collection",
       "custom_css": [
@@ -398,7 +364,6 @@
   "order": [
     "main",
     "image_banner_9dgbPH",
-    "rich_text_MfmBAz",
     "featured_collection_DddeHf",
     "rich_text_J4FLiF",
     "ss_bundle_builder_4_MaCRie"
