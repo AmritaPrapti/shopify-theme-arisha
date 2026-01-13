@@ -1,1 +1,770 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"settings":{"padding_top":36,"padding_bottom":36}},"image_banner_9dgbPH":{"type":"image-banner","blocks":{"heading_PhWtQG":{"type":"heading","settings":{"heading":"Shop","heading_size":"h1"}},"text_9EwnjD":{"type":"text","settings":{"text":"Postpartum nourishment bundles designed for expecting and new mothers. Freezer-friendly, easy to heat, and thoughtfully made to support recovery through food.","text_style":"body"}}},"block_order":["heading_PhWtQG","text_9EwnjD"],"custom_css":[".banner__box {background-color: transparent;}"],"name":"t:sections.image-banner.presets.name","settings":{"image":"shopify:\/\/shop_images\/230329_SO52427_1066_2nd_sRGB4000.jpg","image_overlay_opacity":40,"image_height":"large","image_behavior":"none","desktop_content_position":"middle-center","desktop_content_alignment":"center","show_text_box":true,"color_scheme":"scheme-2","stack_images_on_mobile":false,"mobile_content_alignment":"center","show_text_below":false}},"custom_liquid_Hejckb":{"type":"custom-liquid","disabled":true,"custom_css":["@media screen and (max-width: 1023px) {.button {display: block; width: 80%; margin-bottom: 10px; text-align: center; margin: 10px auto; } .button {display: flex; align-items: center; justify-content: center; }}","@media screen and (min-width: 1024px) {.custom-button-container {display: flex; justify-content: space-evenly; }}",".button {background-color: #c37e78;}",".color-scheme-1 {--color-button: #c37e78;}"," {scroll-behavior: smooth;}"],"name":"t:sections.custom-liquid.presets.name","settings":{"custom_liquid":"<div class=\"custom-button-container\">\n     <a href=\"#shopify-section-template--20612661772523__featured_product_3WeycR\" class=\"button\">Try Each of Our Soups<\/a>\n    <a href=\"#shopify-section-template--20612661772523__rich_text_A4meRM\" class=\"button\">Bundle and Save<\/a>\n    <a href=\"#shopify-section-template--20612661772523__featured_collection_Czymf4\" class=\"button\">Larger Portions to Share<\/a>\n<\/div>","color_scheme":"scheme-1","padding_top":40,"padding_bottom":52}},"featured_product_3WeycR":{"type":"featured-product","blocks":{"title_EQx6mW":{"type":"title","settings":{"heading_size":"h1"}},"text_JQCnJN":{"type":"text","settings":{"text":"Before committing to a full month or more of nourishment, begin with a taste. This small taster set includes one of each of our core soups and stews—the Golden Chicken & Turmeric Stew, 5 Mushroom and Ume Plum Soup, and Traditional Korean Seaweed Soup. Together, they offer a gentle sampling of our approach to postpartum nourishment: rooted in Eastern medicine tradition, designed for modern motherhood. This set lets you experience the flavors, comfort, and philosophy that define our kitchen.","text_style":"body"}},"price_JKWfCN":{"type":"price","settings":{}},"buy_buttons_3N4KcY":{"type":"buy_buttons","settings":{"show_dynamic_checkout":true,"show_gift_card_recipient":true}}},"block_order":["title_EQx6mW","text_JQCnJN","price_JKWfCN","buy_buttons_3N4KcY"],"disabled":true,"custom_css":["h2 {color: #c37e78;}"],"name":"t:sections.featured-product.presets.name","settings":{"product":"starter-sample-set","color_scheme":"scheme-1","secondary_background":false,"media_size":"small","constrain_to_viewport":true,"media_fit":"contain","media_position":"left","image_zoom":"lightbox","hide_variants":false,"enable_video_looping":false,"padding_top":52,"padding_bottom":52}},"rich_text_A4meRM":{"type":"rich-text","blocks":{"heading_bxdyjf":{"type":"heading","settings":{"heading":"Build a Bundle.","heading_size":"h1"}},"text_wKCCei":{"type":"text","settings":{"text":""}},"button_nRdBVn":{"type":"button","disabled":true,"settings":{"button_label":"Button label","button_link":"","button_style_secondary":false,"button_label_2":"","button_link_2":"","button_style_secondary_2":false}}},"block_order":["heading_bxdyjf","text_wKCCei","button_nRdBVn"],"custom_css":["h2 {color: #505655;}"],"name":"t:sections.rich-text.presets.name","settings":{"desktop_content_position":"center","content_alignment":"center","color_scheme":"scheme-1","full_width":true,"padding_top":100,"padding_bottom":0}},"ss_bundle_builder_4_GyCwrA":{"type":"ss-bundle-builder-4","blocks":{"bundle_c8pgiL":{"type":"bundle","settings":{"sizes_value":"8","comment":"","hide_comment":false}},"bundle_ieedGU":{"type":"bundle","settings":{"sizes_value":"14","comment":"10% OFF","hide_comment":false}},"bundle_kRjAGk":{"type":"bundle","settings":{"sizes_value":"22","comment":"15% OFF","hide_comment":false}},"features_zrVyhX":{"type":"features","settings":{"first_feature_text":"","second_feature_text":"","third_feature_text":"","fourth_feature_text":"","feature_custom":true,"feature_font":"montserrat_n4","feature_size":12,"feature_size_mobile":12,"feature_height":150,"feature_mt":20,"feature_mt_mobile":20,"feature_icon_color":"#cc858f","feature_color":"#2c332f"}}},"block_order":["bundle_c8pgiL","bundle_ieedGU","bundle_kRjAGk","features_zrVyhX"],"name":"SS - Bundle builder #4","settings":{"collection":"recipe-lineup","use_gift":false,"gift_product":"","gift_text":"Includes: Cashback Survey Pamphlets","sidebar_radius":4,"sidebar_border_thickness":0,"layout_gap":16,"layout_gap_mobile":16,"products_row":3,"products_row_mobile":1,"products_gap":32,"products_gap_mobile":24,"product_image_border_thickness":0,"product_image_radius":4,"product_image_ratio":"portrait","product_image_ratio_mobile":"square","product_content_align":"center","product_content_align_mobile":"center","title_custom":true,"title_font":"montserrat_n7","title_size":14,"title_size_mobile":14,"title_height":150,"title_mt":12,"title_mt_mobile":10,"product_title_limit":true,"product_title_count":50,"price_custom":true,"price_font":"montserrat_n4","price_size":12,"price_size_mobile":12,"price_height":130,"price_mt":4,"price_mt_mobile":4,"price_compare":true,"product_button":"+ Add","product_button_soldout":"Sold out","product_button_style":"non_outline","product_button_custom":true,"product_button_font":"montserrat_n4","product_button_size":16,"product_button_size_mobile":16,"product_button_height":100,"product_button_padding_horizontal":16,"product_button_padding_horizontal_mobile":16,"product_button_padding_vertical":16,"product_button_padding_vertical_mobile":16,"product_button_radius":4,"product_button_border_thickness":1,"product_button_mt":8,"product_button_mt_mobile":8,"link_text":"Product Info","link_custom":true,"link_font":"montserrat_n4","link_size":12,"link_size_mobile":12,"link_height":130,"link_mt":8,"link_mt_mobile":8,"in_new_tab":true,"sidebar_width":30,"sidebar_align":"left","sidebar_align_mobile":"left","step_circle_size":24,"step_circle_size_mobile":24,"step_circle_border_thickness":0,"step_number_custom":true,"step_number_font":"montserrat_n4","step_number_size":12,"step_number_size_mobile":12,"step_number_height":130,"first_step":"Select Size","second_step":"Choose Products","step_text_custom":true,"step_text_font":"montserrat_n4","step_text_size":16,"step_text_size_mobile":16,"step_text_height":130,"tabs_gap":16,"tabs_gap_mobile":8,"tab_text":"Pack","tab_custom":true,"tab_font":"montserrat_n4","tab_size":16,"tab_size_mobile":14,"tab_height":130,"tab_padding_horizontal":16,"tab_padding_horizontal_mobile":16,"tab_padding_vertical":12,"tab_padding_vertical_mobile":12,"tab_radius":4,"tab_border_thickness":1,"gift_product_image_radius":4,"gift_product_image_border_thickness":0,"gift_product_image_ratio":"square","gift_product_image_ratio_mobile":"square","total_price":"Total","total_price_custom":true,"total_price_font":"montserrat_n4","total_price_size":20,"total_price_size_mobile":20,"total_price_height":130,"button":"Add to cart","button_style":"non_outline","button_custom":true,"button_font":"montserrat_n4","button_size":20,"button_size_mobile":20,"button_height":100,"button_padding_horizontal":16,"button_padding_horizontal_mobile":16,"button_padding_vertical":16,"button_padding_vertical_mobile":16,"button_radius":4,"button_border_thickness":1,"button_mt":12,"button_mt_mobile":12,"product_image_border_color":"#121212","title_color":"#cc858f","price_color":"#505655","price_original_color":"#afafaf","link_color":"#505655","product_button_color":"#ffffff","product_button_hover_color":"#ffffff","product_button_bg_color":"#cc858f","product_button_bg_hover_color":"#cc858f","product_button_border_color":"#121212","product_button_border_hover_color":"#121212","quantity_color":"#ffffff","quantity_controls_color":"#cc858f","quantity_bg_color":"#cc858f","quantity_wrapper_bg_color":"#ffffff","empty_icon_color":"#cc858f","empty_icon_border_color":"#afafaf","total_price_color":"#505655","gift_product_image_border_color":"#121212","tab_color":"#505655","tab_hover_color":"#ffffff","tab_bg_color":"rgba(0,0,0,0)","tab_bg_hover_color":"#cc858f","tab_border_color":"#cc858f","tab_border_hover_color":"#cc858f","step_text_color":"#505655","step_text_accent_color":"#afafaf","step_number_color":"#505655","step_circle_bg_color":"#f4e9e8","step_circle_border_color":"#121212","button_color":"#ffffff","button_hover_color":"#ffffff","button_bg_color":"#cc858f","button_bg_hover_color":"#cc858f","button_border_color":"#121212","button_border_hover_color":"#121212","sidebar_bg_color":"#f2f1eb","sidebar_border_color":"#121212","background_color":"#f2f1eb","background_gradient":"","border_color":"rgba(0,0,0,0)","margin_top":0,"margin_bottom":0,"margin_horizontal":0,"margin_horizontal_mobile":0,"padding_top":52,"padding_bottom":100,"padding_horizontal":5,"padding_horizontal_mobile":1.5,"full_width":true,"content_width":1400,"border_thickness":0,"section_radius":0,"lazy":true}},"featured_collection_Czymf4":{"type":"featured-collection","disabled":true,"custom_css":["h2,p {text-align: center;}","p {color: #736d66;}",".color-scheme-1 {background-color: #ffffff;}",".card {border: 0.5px solid #c37e78;}",".button--secondary {background-color: #c37e78; border: none; --color-button-text: #ffffff;}",".button {color: #ffffff;}"],"name":"t:sections.featured-collection.presets.name","settings":{"collection":"for-families-and-groups","products_to_show":4,"title":"For Families and Groups.","heading_size":"h1","description":"","show_description":true,"description_style":"body","columns_desktop":3,"enable_desktop_slider":true,"full_width":false,"show_view_all":true,"view_all_style":"solid","color_scheme":"scheme-f3281bbe-308c-442f-aae1-fea6754f621d","image_ratio":"adapt","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"quick_add":"standard","columns_mobile":"2","swipe_on_mobile":true,"padding_top":52,"padding_bottom":52}},"1766116811201973c2":{"type":"_blocks","blocks":{"ai_gen_block_114d5d5_yYdABj":{"type":"ai_gen_block_114d5d5","settings":{"header_text":"What to Expect","header_size":32,"header_weight":"400","header_color":"#c37e78","header_spacing":30,"text_alignment":"center","max_width":800,"section_padding":40,"background_color":"#f2f1eb","item_spacing":20,"icon_size":24,"icon_color":"#c37e78","icon_text_gap":16,"text_size":16,"text_color":"#505655","item_1_enabled":true,"item_1_text":"Suitable for pregnancy and postpartum","item_1_icon_type":"custom","item_1_preset_icon":"heart","item_1_custom_icon":"shopify:\/\/shop_images\/1.png","item_2_enabled":true,"item_2_text":"Soups arrive frozen and should be placed in the freezer upon delivery","item_2_icon_type":"custom","item_2_preset_icon":"plus","item_2_custom_icon":"shopify:\/\/shop_images\/7.png","item_3_enabled":true,"item_3_text":"Simple heating instructions are included with every order","item_3_icon_type":"custom","item_3_preset_icon":"checkmark","item_3_custom_icon":"shopify:\/\/shop_images\/9bada81ccef07b0ca00fcc62d00729e7.png","item_4_enabled":false,"item_4_text":"Fast and free shipping","item_4_icon_type":"preset","item_4_preset_icon":"checkmark","item_5_enabled":false,"item_5_text":"30-day money back guarantee","item_5_icon_type":"preset","item_5_preset_icon":"checkmark"},"blocks":{}}},"block_order":["ai_gen_block_114d5d5_yYdABj"],"settings":{}},"multicolumn_bQbxUe":{"type":"multicolumn","blocks":{"column_EE8Y6e":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/values04.png","title":"","text":"<p>Developed alongside postpartum professionals and mothers.<\/p>","link_label":"","link":""}},"column_aGCMHj":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/values01.png","title":"","text":"<p>Inspired by Japanese culinary philosophy and made with care.<\/p>","link_label":"","link":""}}},"block_order":["column_EE8Y6e","column_aGCMHj"],"name":"t:sections.multicolumn.presets.name","settings":{"title":"","heading_size":"h2","image_width":"third","image_ratio":"adapt","button_label":"","button_link":"","columns_desktop":2,"column_alignment":"center","background_style":"none","color_scheme":"scheme-1","columns_mobile":"2","swipe_on_mobile":false,"padding_top":36,"padding_bottom":36}},"featured_product_C36N6y":{"type":"featured-product","blocks":{"text_CV4zmQ":{"type":"text","disabled":true,"settings":{"text":"{{ section.settings.product.vendor }}","text_style":"uppercase"}},"title_7GrANb":{"type":"title","settings":{"heading_size":"h1"}},"judge_me_reviews_preview_badge_homepage_wRihia":{"type":"shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge_homepage\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","settings":{"product":"digital-gift-card"}},"price_VfTBxj":{"type":"price","settings":{}},"variant_picker_WDGxVt":{"type":"variant_picker","settings":{"picker_type":"button","swatch_shape":"circle"}},"buy_buttons_Dyt7cQ":{"type":"buy_buttons","settings":{"show_dynamic_checkout":true,"show_gift_card_recipient":true}},"share_jnzdfT":{"type":"share","settings":{"share_label":"Share"}}},"block_order":["text_CV4zmQ","title_7GrANb","judge_me_reviews_preview_badge_homepage_wRihia","price_VfTBxj","variant_picker_WDGxVt","buy_buttons_Dyt7cQ","share_jnzdfT"],"name":"t:sections.featured-product.presets.name","settings":{"product":"digital-gift-card","color_scheme":"","secondary_background":false,"media_size":"medium","constrain_to_viewport":true,"media_fit":"contain","media_position":"left","image_zoom":"lightbox","hide_variants":false,"enable_video_looping":false,"padding_top":36,"padding_bottom":36}}},"order":["main","image_banner_9dgbPH","custom_liquid_Hejckb","featured_product_3WeycR","rich_text_A4meRM","ss_bundle_builder_4_GyCwrA","featured_collection_Czymf4","1766116811201973c2","multicolumn_bQbxUe","featured_product_C36N6y"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_9dgbPH": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_PhWtQG": {
+          "type": "heading",
+          "settings": {
+            "heading": "Shop",
+            "heading_size": "h1"
+          }
+        },
+        "text_9EwnjD": {
+          "type": "text",
+          "settings": {
+            "text": "Postpartum nourishment designed for expecting and new mothers. Freezer-friendly, easy to heat, and thoughtfully made to support recovery through food.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_PhWtQG",
+        "text_9EwnjD"
+      ],
+      "custom_css": [
+        ".banner__box {background-color: transparent;}"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/230329_SO52427_1066_2nd_sRGB4000.jpg",
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "scheme-2",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "custom_liquid_Hejckb": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "custom_css": [
+        "@media screen and (max-width: 1023px) {.button {display: block; width: 80%; margin-bottom: 10px; text-align: center; margin: 10px auto; } .button {display: flex; align-items: center; justify-content: center; }}",
+        "@media screen and (min-width: 1024px) {.custom-button-container {display: flex; justify-content: space-evenly; }}",
+        ".button {background-color: #c37e78;}",
+        ".color-scheme-1 {--color-button: #c37e78;}",
+        " {scroll-behavior: smooth;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"custom-button-container\">\n     <a href=\"#shopify-section-template--20612661772523__featured_product_3WeycR\" class=\"button\">Try Each of Our Soups</a>\n    <a href=\"#shopify-section-template--20612661772523__rich_text_A4meRM\" class=\"button\">Bundle and Save</a>\n    <a href=\"#shopify-section-template--20612661772523__featured_collection_Czymf4\" class=\"button\">Larger Portions to Share</a>\n</div>",
+        "color_scheme": "scheme-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "featured_collection_Czymf4": {
+      "type": "featured-collection",
+      "custom_css": [
+        "h2,p {text-align: center;}",
+        "p {color: #736d66;}",
+        ".color-scheme-1 {background-color: #ffffff;}",
+        ".card {border: 0.5px solid #c37e78;}",
+        ".button--secondary {background-color: #c37e78; border: none; --color-button-text: #ffffff;}",
+        ".button {color: #ffffff;}"
+      ],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "bundles",
+        "products_to_show": 4,
+        "title": "Curated Bundles",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 3,
+        "enable_desktop_slider": true,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-f3281bbe-308c-442f-aae1-fea6754f621d",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "featured_product_3WeycR": {
+      "type": "featured-product",
+      "blocks": {
+        "title_EQx6mW": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "judge_me_reviews_preview_badge_homepage_CcE6Ri": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge_homepage/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "product": "mini-bundle"
+          }
+        },
+        "text_JQCnJN": {
+          "type": "text",
+          "settings": {
+            "text": "A gentle introduction to postpartum nourishment. Ideal for first-time customers or lighter support. Also a great option to bring to the hospital for the first days after birth.Includes a smaller selection of our soups, designed to be warming, comforting, and easy to digest.",
+            "text_style": "body"
+          }
+        },
+        "price_JKWfCN": {
+          "type": "price",
+          "settings": {}
+        },
+        "quantity_selector_6h48pg": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_3N4KcY": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        }
+      },
+      "block_order": [
+        "title_EQx6mW",
+        "judge_me_reviews_preview_badge_homepage_CcE6Ri",
+        "text_JQCnJN",
+        "price_JKWfCN",
+        "quantity_selector_6h48pg",
+        "buy_buttons_3N4KcY"
+      ],
+      "custom_css": [
+        "h2 {color: #c37e78;}"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "mini-bundle",
+        "color_scheme": "scheme-1",
+        "secondary_background": false,
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "featured_product_TzYKR9": {
+      "type": "featured-product",
+      "blocks": {
+        "title_LjhExc": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "judge_me_reviews_preview_badge_homepage_RBhFJ6": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge_homepage/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "product": "essentials-bundle"
+          }
+        },
+        "text_4g4RKQ": {
+          "type": "text",
+          "settings": {
+            "text": "Our core bundle for the early postpartum period. Designed for consistent, everyday nourishment during recovery. This bundle offers a balanced rotation of soups to support energy, warmth, and replenishment when your body needs steady care.",
+            "text_style": "body"
+          }
+        },
+        "price_j38tdJ": {
+          "type": "price",
+          "settings": {}
+        },
+        "quantity_selector_bJECJJ": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_CBJ8QK": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        }
+      },
+      "block_order": [
+        "title_LjhExc",
+        "judge_me_reviews_preview_badge_homepage_RBhFJ6",
+        "text_4g4RKQ",
+        "price_j38tdJ",
+        "quantity_selector_bJECJJ",
+        "buy_buttons_CBJ8QK"
+      ],
+      "custom_css": [
+        "h2 {color: #c37e78;}"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "essentials-bundle",
+        "color_scheme": "scheme-1",
+        "secondary_background": false,
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "right",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "featured_product_V8L9P8": {
+      "type": "featured-product",
+      "blocks": {
+        "title_A7Fj8h": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "judge_me_reviews_preview_badge_homepage_CKjfw9": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge_homepage/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "product": "essentials-bundle"
+          }
+        },
+        "text_BJDTLG": {
+          "type": "text",
+          "settings": {
+            "text": "Our most comprehensive bundle. For those who want extended support and a more intentional approach to postpartum food. Ideal for mothers who want to prioritize nourishment over a longer period or for families planning ahead.",
+            "text_style": "body"
+          }
+        },
+        "price_hxNQbe": {
+          "type": "price",
+          "settings": {}
+        },
+        "quantity_selector_NhDP6J": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_WKW7Yg": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        }
+      },
+      "block_order": [
+        "title_A7Fj8h",
+        "judge_me_reviews_preview_badge_homepage_CKjfw9",
+        "text_BJDTLG",
+        "price_hxNQbe",
+        "quantity_selector_NhDP6J",
+        "buy_buttons_WKW7Yg"
+      ],
+      "custom_css": [
+        "h2 {color: #c37e78;}"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "full-care-bundle",
+        "color_scheme": "scheme-1",
+        "secondary_background": false,
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_A4meRM": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_bxdyjf": {
+          "type": "heading",
+          "settings": {
+            "heading": "Build a Bundle.",
+            "heading_size": "h1"
+          }
+        },
+        "text_wKCCei": {
+          "type": "text",
+          "settings": {
+            "text": ""
+          }
+        },
+        "button_nRdBVn": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_bxdyjf",
+        "text_wKCCei",
+        "button_nRdBVn"
+      ],
+      "custom_css": [
+        "h2 {color: #505655;}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 0
+      }
+    },
+    "ss_bundle_builder_4_GyCwrA": {
+      "type": "ss-bundle-builder-4",
+      "blocks": {
+        "bundle_c8pgiL": {
+          "type": "bundle",
+          "settings": {
+            "sizes_value": "8",
+            "comment": "",
+            "hide_comment": false
+          }
+        },
+        "bundle_ieedGU": {
+          "type": "bundle",
+          "settings": {
+            "sizes_value": "14",
+            "comment": "10% OFF",
+            "hide_comment": false
+          }
+        },
+        "bundle_kRjAGk": {
+          "type": "bundle",
+          "settings": {
+            "sizes_value": "22",
+            "comment": "15% OFF",
+            "hide_comment": false
+          }
+        },
+        "features_zrVyhX": {
+          "type": "features",
+          "settings": {
+            "first_feature_text": "",
+            "second_feature_text": "",
+            "third_feature_text": "",
+            "fourth_feature_text": "",
+            "feature_custom": true,
+            "feature_font": "montserrat_n4",
+            "feature_size": 12,
+            "feature_size_mobile": 12,
+            "feature_height": 150,
+            "feature_mt": 20,
+            "feature_mt_mobile": 20,
+            "feature_icon_color": "#cc858f",
+            "feature_color": "#2c332f"
+          }
+        }
+      },
+      "block_order": [
+        "bundle_c8pgiL",
+        "bundle_ieedGU",
+        "bundle_kRjAGk",
+        "features_zrVyhX"
+      ],
+      "name": "SS - Bundle builder #4",
+      "settings": {
+        "collection": "recipe-lineup",
+        "use_gift": false,
+        "gift_product": "",
+        "gift_text": "Includes: Cashback Survey Pamphlets",
+        "sidebar_radius": 4,
+        "sidebar_border_thickness": 0,
+        "layout_gap": 16,
+        "layout_gap_mobile": 16,
+        "products_row": 3,
+        "products_row_mobile": 1,
+        "products_gap": 32,
+        "products_gap_mobile": 24,
+        "product_image_border_thickness": 0,
+        "product_image_radius": 4,
+        "product_image_ratio": "portrait",
+        "product_image_ratio_mobile": "square",
+        "product_content_align": "center",
+        "product_content_align_mobile": "center",
+        "title_custom": true,
+        "title_font": "montserrat_n7",
+        "title_size": 14,
+        "title_size_mobile": 14,
+        "title_height": 150,
+        "title_mt": 12,
+        "title_mt_mobile": 10,
+        "product_title_limit": true,
+        "product_title_count": 50,
+        "price_custom": true,
+        "price_font": "montserrat_n4",
+        "price_size": 12,
+        "price_size_mobile": 12,
+        "price_height": 130,
+        "price_mt": 4,
+        "price_mt_mobile": 4,
+        "price_compare": true,
+        "product_button": "+ Add",
+        "product_button_soldout": "Sold out",
+        "product_button_style": "non_outline",
+        "product_button_custom": true,
+        "product_button_font": "montserrat_n4",
+        "product_button_size": 16,
+        "product_button_size_mobile": 16,
+        "product_button_height": 100,
+        "product_button_padding_horizontal": 16,
+        "product_button_padding_horizontal_mobile": 16,
+        "product_button_padding_vertical": 16,
+        "product_button_padding_vertical_mobile": 16,
+        "product_button_radius": 4,
+        "product_button_border_thickness": 1,
+        "product_button_mt": 8,
+        "product_button_mt_mobile": 8,
+        "link_text": "Product Info",
+        "link_custom": true,
+        "link_font": "montserrat_n4",
+        "link_size": 12,
+        "link_size_mobile": 12,
+        "link_height": 130,
+        "link_mt": 8,
+        "link_mt_mobile": 8,
+        "in_new_tab": true,
+        "sidebar_width": 30,
+        "sidebar_align": "left",
+        "sidebar_align_mobile": "left",
+        "step_circle_size": 24,
+        "step_circle_size_mobile": 24,
+        "step_circle_border_thickness": 0,
+        "step_number_custom": true,
+        "step_number_font": "montserrat_n4",
+        "step_number_size": 12,
+        "step_number_size_mobile": 12,
+        "step_number_height": 130,
+        "first_step": "Select Size",
+        "second_step": "Choose Products",
+        "step_text_custom": true,
+        "step_text_font": "montserrat_n4",
+        "step_text_size": 16,
+        "step_text_size_mobile": 16,
+        "step_text_height": 130,
+        "tabs_gap": 16,
+        "tabs_gap_mobile": 8,
+        "tab_text": "Pack",
+        "tab_custom": true,
+        "tab_font": "montserrat_n4",
+        "tab_size": 16,
+        "tab_size_mobile": 14,
+        "tab_height": 130,
+        "tab_padding_horizontal": 16,
+        "tab_padding_horizontal_mobile": 16,
+        "tab_padding_vertical": 12,
+        "tab_padding_vertical_mobile": 12,
+        "tab_radius": 4,
+        "tab_border_thickness": 1,
+        "gift_product_image_radius": 4,
+        "gift_product_image_border_thickness": 0,
+        "gift_product_image_ratio": "square",
+        "gift_product_image_ratio_mobile": "square",
+        "total_price": "Total",
+        "total_price_custom": true,
+        "total_price_font": "montserrat_n4",
+        "total_price_size": 20,
+        "total_price_size_mobile": 20,
+        "total_price_height": 130,
+        "button": "Add to cart",
+        "button_style": "non_outline",
+        "button_custom": true,
+        "button_font": "montserrat_n4",
+        "button_size": 20,
+        "button_size_mobile": 20,
+        "button_height": 100,
+        "button_padding_horizontal": 16,
+        "button_padding_horizontal_mobile": 16,
+        "button_padding_vertical": 16,
+        "button_padding_vertical_mobile": 16,
+        "button_radius": 4,
+        "button_border_thickness": 1,
+        "button_mt": 12,
+        "button_mt_mobile": 12,
+        "product_image_border_color": "#121212",
+        "title_color": "#cc858f",
+        "price_color": "#505655",
+        "price_original_color": "#afafaf",
+        "link_color": "#505655",
+        "product_button_color": "#ffffff",
+        "product_button_hover_color": "#ffffff",
+        "product_button_bg_color": "#cc858f",
+        "product_button_bg_hover_color": "#cc858f",
+        "product_button_border_color": "#121212",
+        "product_button_border_hover_color": "#121212",
+        "quantity_color": "#ffffff",
+        "quantity_controls_color": "#cc858f",
+        "quantity_bg_color": "#cc858f",
+        "quantity_wrapper_bg_color": "#ffffff",
+        "empty_icon_color": "#cc858f",
+        "empty_icon_border_color": "#afafaf",
+        "total_price_color": "#505655",
+        "gift_product_image_border_color": "#121212",
+        "tab_color": "#505655",
+        "tab_hover_color": "#ffffff",
+        "tab_bg_color": "rgba(0,0,0,0)",
+        "tab_bg_hover_color": "#cc858f",
+        "tab_border_color": "#cc858f",
+        "tab_border_hover_color": "#cc858f",
+        "step_text_color": "#505655",
+        "step_text_accent_color": "#afafaf",
+        "step_number_color": "#505655",
+        "step_circle_bg_color": "#f4e9e8",
+        "step_circle_border_color": "#121212",
+        "button_color": "#ffffff",
+        "button_hover_color": "#ffffff",
+        "button_bg_color": "#cc858f",
+        "button_bg_hover_color": "#cc858f",
+        "button_border_color": "#121212",
+        "button_border_hover_color": "#121212",
+        "sidebar_bg_color": "#f2f1eb",
+        "sidebar_border_color": "#121212",
+        "background_color": "#f2f1eb",
+        "background_gradient": "",
+        "border_color": "rgba(0,0,0,0)",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 52,
+        "padding_bottom": 100,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "full_width": true,
+        "content_width": 1400,
+        "border_thickness": 0,
+        "section_radius": 0,
+        "lazy": true
+      }
+    },
+    "1766116811201973c2": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_114d5d5_yYdABj": {
+          "type": "ai_gen_block_114d5d5",
+          "settings": {
+            "header_text": "What to Expect",
+            "header_size": 32,
+            "header_weight": "400",
+            "header_color": "#c37e78",
+            "header_spacing": 30,
+            "text_alignment": "center",
+            "max_width": 800,
+            "section_padding": 40,
+            "background_color": "#f2f1eb",
+            "item_spacing": 20,
+            "icon_size": 24,
+            "icon_color": "#c37e78",
+            "icon_text_gap": 16,
+            "text_size": 16,
+            "text_color": "#505655",
+            "item_1_enabled": true,
+            "item_1_text": "Suitable for pregnancy and postpartum",
+            "item_1_icon_type": "custom",
+            "item_1_preset_icon": "heart",
+            "item_1_custom_icon": "shopify://shop_images/1.png",
+            "item_2_enabled": true,
+            "item_2_text": "Soups arrive frozen and should be placed in the freezer upon delivery",
+            "item_2_icon_type": "custom",
+            "item_2_preset_icon": "plus",
+            "item_2_custom_icon": "shopify://shop_images/7.png",
+            "item_3_enabled": true,
+            "item_3_text": "Simple heating instructions are included with every order",
+            "item_3_icon_type": "custom",
+            "item_3_preset_icon": "checkmark",
+            "item_3_custom_icon": "shopify://shop_images/9bada81ccef07b0ca00fcc62d00729e7.png",
+            "item_4_enabled": false,
+            "item_4_text": "Fast and free shipping",
+            "item_4_icon_type": "preset",
+            "item_4_preset_icon": "checkmark",
+            "item_5_enabled": false,
+            "item_5_text": "30-day money back guarantee",
+            "item_5_icon_type": "preset",
+            "item_5_preset_icon": "checkmark"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_114d5d5_yYdABj"
+      ],
+      "settings": {}
+    },
+    "multicolumn_bQbxUe": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_EE8Y6e": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/values04.png",
+            "title": "",
+            "text": "<p>Developed alongside postpartum professionals and mothers.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_aGCMHj": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/values01.png",
+            "title": "",
+            "text": "<p>Inspired by Japanese culinary philosophy and made with care.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_EE8Y6e",
+        "column_aGCMHj"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_product_C36N6y": {
+      "type": "featured-product",
+      "blocks": {
+        "title_7GrANb": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "judge_me_reviews_preview_badge_homepage_wRihia": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge_homepage/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "product": "digital-gift-card"
+          }
+        },
+        "text_ciFGnH": {
+          "type": "text",
+          "settings": {
+            "text": "Looking for a meaningful postpartum gift?Our foods are chosen by partners, family, and friends who want to offer real care through food rather than something temporary.",
+            "text_style": "body"
+          }
+        },
+        "price_VfTBxj": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_WDGxVt": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "buy_buttons_Dyt7cQ": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_jnzdfT": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title_7GrANb",
+        "judge_me_reviews_preview_badge_homepage_wRihia",
+        "text_ciFGnH",
+        "price_VfTBxj",
+        "variant_picker_WDGxVt",
+        "buy_buttons_Dyt7cQ",
+        "share_jnzdfT"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "digital-gift-card",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_9dgbPH",
+    "custom_liquid_Hejckb",
+    "featured_collection_Czymf4",
+    "featured_product_3WeycR",
+    "featured_product_TzYKR9",
+    "featured_product_V8L9P8",
+    "rich_text_A4meRM",
+    "ss_bundle_builder_4_GyCwrA",
+    "1766116811201973c2",
+    "multicolumn_bQbxUe",
+    "featured_product_C36N6y"
+  ]
+}
