@@ -1411,12 +1411,16 @@ For inquiries or permissions, contact daniel@section.store
                 </div>              
                 <div class="bundle-product-content-bottom-{{ section.id }}">
                   <div class="bundle-product-price-{{ section.id }}">
+                    
                     {% if price_compare and product.compare_at_price != blank %}
                       <p class="bundle-product-compare-price-{{ section.id }}">{{ product.compare_at_price | money }}</p>
                     {% endif %}
                     <p class="bundle-product-regular-price-{{ section.id }}">
                       {{ product.price | money }}
                     </p>
+                    {% if product.compare_at_price > product.price  and section.settings.show_sale_amount_badge %}
+                      {% render 'product-sale-amount', product_resource: product, display_type: section.settings.sale_display_type %}
+                    {% endif %}
                   </div>
                   <div class="bundle-product-quantity-wrapper-{{ section.id }}">
                     <button class="bundle-product-quantity-minus-{{ section.id }}">
@@ -2337,7 +2341,29 @@ document.addEventListener('DOMContentLoaded', initBundle4);
         "id": "price_compare",
         "label": "Show compare-at price",
         "default": true
-      },     
+      },  
+      {
+        "type": "checkbox",
+        "id": "show_sale_amount_badge",
+        "label": "Show sale amount badge",
+        "default": false
+      }, 
+      {
+        "type": "select",
+        "id": "sale_display_type",
+        "default": "amount",
+        "label": "Sale Amount Display Type",
+        "options": [
+          {
+            "value": "amount",
+            "label": "Net Amount"
+          },
+          {
+            "value": "percentage",
+            "label": "Percentage"
+          }
+        ]
+      },
       {
         "type": "header",
         "content": "Product button"
