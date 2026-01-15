@@ -3658,3 +3658,12 @@ details-disclosure > details {
 body {
   overflow-x: hidden;
 }
+
+.media > *:not(.zoom):not(.deferred-media__poster-button).section_url, .image-with-text__content .section_url {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
