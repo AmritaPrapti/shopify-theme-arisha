@@ -132,6 +132,8 @@
         "show_vendor": false,
         "show_rating": true,
         "quick_add": "standard",
+        "show_sale_amount": true,
+        "sale_display_type": "percentage",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 36,
@@ -162,6 +164,8 @@
         "show_vendor": false,
         "show_rating": true,
         "quick_add": "standard",
+        "show_sale_amount": true,
+        "sale_display_type": "percentage",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 52,
@@ -192,7 +196,11 @@
         },
         "price_JKWfCN": {
           "type": "price",
-          "settings": {}
+          "settings": {
+            "show_sale_badge": true,
+            "show_sale_amount": false,
+            "sale_display_type": "amount"
+          }
         },
         "quantity_selector_6h48pg": {
           "type": "quantity_selector",
@@ -305,7 +313,11 @@
         },
         "price_j38tdJ": {
           "type": "price",
-          "settings": {}
+          "settings": {
+            "show_sale_badge": true,
+            "show_sale_amount": false,
+            "sale_display_type": "amount"
+          }
         },
         "quantity_selector_bJECJJ": {
           "type": "quantity_selector",
@@ -371,7 +383,11 @@
         },
         "price_hxNQbe": {
           "type": "price",
-          "settings": {}
+          "settings": {
+            "show_sale_badge": true,
+            "show_sale_amount": false,
+            "sale_display_type": "amount"
+          }
         },
         "quantity_selector_NhDP6J": {
           "type": "quantity_selector",
@@ -503,6 +519,8 @@
         "price_mt": 4,
         "price_mt_mobile": 4,
         "price_compare": true,
+        "show_sale_amount_badge": false,
+        "sale_display_type": "amount",
         "product_button": "+ Add",
         "product_button_soldout": "Sold out",
         "product_button_style": "non_outline",
@@ -665,7 +683,11 @@
         },
         "price_VfTBxj": {
           "type": "price",
-          "settings": {}
+          "settings": {
+            "show_sale_badge": true,
+            "show_sale_amount": false,
+            "sale_display_type": "amount"
+          }
         },
         "variant_picker_WDGxVt": {
           "type": "variant_picker",

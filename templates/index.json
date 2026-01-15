@@ -150,6 +150,8 @@
         "show_vendor": false,
         "show_rating": true,
         "quick_add": "standard",
+        "show_sale_amount": true,
+        "sale_display_type": "percentage",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -171,7 +173,11 @@
         },
         "price_HKKV47": {
           "type": "price",
-          "settings": {}
+          "settings": {
+            "show_sale_badge": true,
+            "show_sale_amount": false,
+            "sale_display_type": "amount"
+          }
         },
         "text_FCEEMR": {
           "type": "text",
@@ -239,7 +245,11 @@
         },
         "price_TyABTD": {
           "type": "price",
-          "settings": {}
+          "settings": {
+            "show_sale_badge": true,
+            "show_sale_amount": false,
+            "sale_display_type": "amount"
+          }
         },
         "text_RHNXAz": {
           "type": "text",
@@ -307,7 +317,11 @@
         },
         "price_JdqTLc": {
           "type": "price",
-          "settings": {}
+          "settings": {
+            "show_sale_badge": true,
+            "show_sale_amount": false,
+            "sale_display_type": "amount"
+          }
         },
         "text_daHrFz": {
           "type": "text",
@@ -476,6 +490,8 @@
         "price_mt": 4,
         "price_mt_mobile": 4,
         "price_compare": true,
+        "show_sale_amount_badge": false,
+        "sale_display_type": "amount",
         "product_button": "+ Add",
         "product_button_soldout": "Sold out",
         "product_button_style": "non_outline",
