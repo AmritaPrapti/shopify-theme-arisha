@@ -45,7 +45,9 @@
               show_secondary_image: section.settings.show_secondary_image,
               show_vendor: section.settings.show_vendor,
               show_rating: section.settings.show_rating,
-              skip_styles: skip_card_product_styles
+              skip_styles: skip_card_product_styles,
+              show_sale_amount: section.settings.show_sale_amount,
+              sale_display_type: section.settings.sale_display_type
             %}
           </li>
           {%- assign skip_card_product_styles = true -%}
@@ -225,6 +227,33 @@
       "default": false,
       "label": "t:sections.related-products.settings.show_rating.label",
       "info": "t:sections.related-products.settings.show_rating.info"
+    },
+    {
+      "type": "header",
+      "content": "Sale Amount Badge Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sale_amount",
+      "default": false,
+      "label": "Show Sale Amount Badge",
+      "info": "Displays a badge indicating the amount saved on sale items."
+    },
+    {
+      "type": "select",
+      "id": "sale_display_type",
+      "default": "amount",
+      "label": "Sale Amount Display Type",
+      "options": [
+        {
+          "value": "amount",
+          "label": "Net Amount"
+        },
+        {
+          "value": "percentage",
+          "label": "Percentage"
+        }
+      ]
     },
     {
       "type": "header",

@@ -127,7 +127,9 @@
                   show_rating: section.settings.show_rating,
                   skip_styles: skip_card_product_styles,
                   section_id: section.id,
-                  quick_add: section.settings.quick_add
+                  quick_add: section.settings.quick_add,
+                  show_sale_amount: section.settings.show_sale_amount,
+                  sale_display_type: section.settings.sale_display_type
                 %}
               </li>
               {%- assign skip_card_product_styles = true -%}
@@ -465,6 +467,33 @@
         {
           "value": "bulk",
           "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_3"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Sale Amount Badge Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sale_amount",
+      "default": false,
+      "label": "Show Sale Amount Badge",
+      "info": "Displays a badge indicating the amount saved on sale items."
+    },
+    {
+      "type": "select",
+      "id": "sale_display_type",
+      "default": "amount",
+      "label": "Sale Amount Display Type",
+      "options": [
+        {
+          "value": "amount",
+          "label": "Net Amount"
+        },
+        {
+          "value": "percentage",
+          "label": "Percentage"
         }
       ]
     },

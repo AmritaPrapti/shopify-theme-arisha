@@ -119,8 +119,10 @@
                       product: product,
                       placeholder: placeholder,
                       use_variant: true,
-                      show_badges: true,
-                      price_class: 'price--large'
+                      show_badges: block.settings.show_sale_badge,
+                      price_class: 'price--large',
+                      show_sale_amount: block.settings.show_sale_amount, 
+                      sale_display_type: block.settings.sale_display_type
                     -%}
                   </div>
                   {%- if product.quantity_price_breaks_configured? -%}
@@ -583,7 +585,39 @@
     {
       "type": "price",
       "name": "t:sections.featured-product.blocks.price.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_sale_badge",
+          "default": true,
+          "label": "Show Badge for Sale/Sold Out",
+          "info": "Displays a badge indicating that the product is on sale or sold out."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_sale_amount",
+          "default": false,
+          "label": "Show Sale Amount Badge",
+          "info": "Displays a badge indicating the amount saved on sale items."
+        },
+        {
+          "type": "select",
+          "id": "sale_display_type",
+          "default": "amount",
+          "label": "Sale Amount Display Type",
+          "options": [
+            {
+              "value": "amount",
+              "label": "Net Amount"
+            },
+            {
+              "value": "percentage",
+              "label": "Percentage"
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "sku",

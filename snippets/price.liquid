@@ -8,6 +8,7 @@
   - show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
   - price_class: {String} Adds a price class to the price element (optional)
   - show_compare_at_price: {Boolean} Renders the compare at price if the product matches the condition (optional)
+  - show_sale_amount: {Boolean} Renders the sale amount if the product matches the condition (optional)
 
   Usage:
   {% render 'price', product: product %}
@@ -120,6 +121,9 @@
       <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
         {{ 'products.product.sold_out' | t }}
       </span>
+    {%- endif -%}
+    {%- if show_sale_amount and compare_at_price > price -%}
+      {% render 'product-sale-amount', product_resource: product, display_type: sale_display_type %}
     {%- endif -%}
   </div>
 {% endunless %}

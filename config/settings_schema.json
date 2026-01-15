@@ -1268,7 +1268,24 @@
         "id": "sold_out_badge_color_scheme",
         "label": "t:settings_schema.badges.settings.sold_out_badge_color_scheme.label",
         "default": "scheme-3"
-      }
+      },
+      {
+        "type": "color_scheme",
+        "id": "sale_amount_badge_color_scheme",
+        "label": "Sale Amount Badge Color Scheme",
+        "default": "scheme-1"
+      },
+       {
+        "type": "range",
+        "id": "sale_amount_badge_corner_radius",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "label": "Border Radius for Sale Amount Badge",
+        "default": 6
+      },
+
     ]
   },
   {
