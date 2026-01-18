@@ -66,6 +66,7 @@
       "name": "t:sections.image-banner.presets.name",
       "settings": {
         "image": "shopify://shop_images/230329_888_f758ef56-4dd5-4f5b-9975-9bfd86d2fb67.jpg",
+        "section_url": "shopify://pages/shop",
         "image_overlay_opacity": 30,
         "image_height": "medium",
         "image_behavior": "none",
@@ -111,6 +112,8 @@
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
+        "section_url": "shopify://pages/about-yakuzen",
+        "enable_text_link": false,
         "image": "shopify://shop_images/Untitled_design_3.jpg",
         "height": "adapt",
         "desktop_image_width": "medium",
@@ -664,6 +667,8 @@
       "custom_css": [],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
+        "section_url": "shopify://pages/why-for-her-by-arisa-exists",
+        "enable_text_link": true,
         "image": "shopify://shop_images/maxwellartphotography-swissphotographer-switzerland-familyphotoshoot-swissalps-familymomoi-101_Original.jpg",
         "height": "adapt",
         "desktop_image_width": "medium",
@@ -720,6 +725,7 @@
       "name": "t:sections.image-banner.presets.name",
       "settings": {
         "image": "shopify://shop_images/230330_SO52427_1931_2nd_sRGB4000.jpg",
+        "section_url": "shopify://pages/partnerships",
         "image_overlay_opacity": 20,
         "image_height": "large",
         "image_behavior": "none",
