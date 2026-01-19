@@ -468,7 +468,7 @@
 
   <script src="{{ 'gift-card-product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'gift-card-product-form.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'gift-card-bundle.js' | asset_url }}" defer="defer"></script>
+  {% comment %} <script src="{{ 'gift-card-bundle.js' | asset_url }}" defer="defer"></script> {% endcomment %}
   {%- if product.quantity_price_breaks_configured? -%}
     <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
@@ -569,6 +569,22 @@
                   {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
                   {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
                     <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                    {%- comment -%} Add Gift Type property only if a bundle variant is selected {%- endcomment -%}
+                    {%- assign bundles = product.metafields.custom.giftcard_bundles.value -%}
+                    {%- assign current_variant = product.selected_or_first_available_variant -%}
+                    {%- assign current_bundle_title = '' -%}
+                    {%- if bundles != blank -%}
+                      {%- for b in bundles -%}
+                        {%- assign v = b.variant.value -%}
+                        {%- if v.id == current_variant.id -%}
+                          {%- assign current_bundle_title = b.title -%}
+                          {%- break -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+                    {%- endif -%}
+                    {%- if current_bundle_title != blank -%}
+                      <input type="hidden" name="properties[Gift Type]" value="{{ current_bundle_title | escape }}">
+                    {%- endif -%}
                     {{ form | payment_terms }}
                   {%- endform -%}
                 </div>

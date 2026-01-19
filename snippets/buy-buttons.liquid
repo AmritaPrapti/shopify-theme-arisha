@@ -56,6 +56,27 @@
           class="product-variant-id"
         >
 
+        {%- comment -%} Add Gift Type property only if a bundle variant is selected {%- endcomment -%}
+        {%- assign bundles = product.metafields.custom.giftcard_bundles.value -%}
+        {%- assign current_variant = product.selected_or_first_available_variant -%}
+        {%- assign current_bundle_title = '' -%}
+        {%- if bundles != blank -%}
+          {%- for b in bundles -%}
+            {%- assign v = b.variant.value -%}
+            {%- if v.id == current_variant.id -%}
+              {%- assign current_bundle_title = b.title -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+        {%- if current_bundle_title != blank -%}
+          <input
+            type="hidden"
+            name="properties[Gift Type]"
+            value="{{ current_bundle_title | escape }}"
+          >
+        {%- endif -%}
+
         {%- if gift_card_recipient_feature_active -%}
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}

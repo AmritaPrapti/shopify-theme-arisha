@@ -15,6 +15,8 @@ if (!customElements.get('product-info')) {
         super();
 
         this.quantityInput = this.querySelector('.quantity__input');
+        this._bundleInitialized = false;
+        this._bundleObserver = null;
       }
 
       connectedCallback() {
@@ -26,6 +28,7 @@ if (!customElements.get('product-info')) {
         );
 
         this.initQuantityHandlers();
+        this.initializeBundleIntegration();
         this.dispatchEvent(new CustomEvent('product-info:loaded', { bubbles: true }));
       }
 
@@ -48,6 +51,7 @@ if (!customElements.get('product-info')) {
       disconnectedCallback() {
         this.onVariantChangeUnsubscriber();
         this.cartUpdateUnsubscriber?.();
+        this._bundleObserver?.disconnect();
       }
 
       initializeProductSwapUtility() {
@@ -63,6 +67,16 @@ if (!customElements.get('product-info')) {
       handleOptionValueChange({ data: { event, target, selectedOptionValues } }) {
         if (!this.contains(event.target)) return;
 
+        // if a variant option was chosen, ensure any bundle selection is cleared
+        const globalBundle = this.getBundleSelects(this.sectionId);
+        if (globalBundle) {
+          this.deselectAllBundles(globalBundle);
+          if (this._defaultProductDescription) this.updateProductDescription(this._defaultProductDescription);
+        }
+
+        // clear Gift Type property when regular variant is selected
+        this.clearGiftTypeProperty(this.sectionId);
+
         this.resetProductFormState();
 
         const productUrl = target.dataset.productUrl || this.pendingRequestUrl || this.dataset.url;
@@ -77,6 +91,16 @@ if (!customElements.get('product-info')) {
             ? this.handleSwapProduct(productUrl, shouldFetchFullPage)
             : this.handleUpdateProductInfo(productUrl),
         });
+      }
+
+      getBundleSelects(sectionId) {
+        return (
+          this.querySelector('bundle-selects') ||
+          document.querySelector(`bundle-selects#bundle-selects-${sectionId}`) ||
+          document.querySelector(`bundle-selects[data-section="${sectionId}"]`) ||
+          document.querySelector('bundle-selects') ||
+          null
+        );
       }
 
       resetProductFormState() {
@@ -176,6 +200,12 @@ if (!customElements.get('product-info')) {
           }
 
           this.updateMedia(html, variant?.featured_media?.id);
+          // Update product description from fetched HTML (bundle descriptions are rendered server-side)
+          const sourceDescription = html.querySelector('[data-product-description]');
+          const destinationDescription = this.querySelector('[data-product-description]');
+          if (sourceDescription && destinationDescription) {
+            destinationDescription.innerHTML = sourceDescription.innerHTML;
+          }
 
           const updateSourceFromDestination = (id, shouldHide = (source) => false) => {
             const source = html.getElementById(`${id}-${this.sectionId}`);
@@ -387,6 +417,309 @@ if (!customElements.get('product-info')) {
             }
           }
         }
+      }
+
+      initializeBundleIntegration() {
+        // ensure this runs only once
+        if (this._bundleInitialized) return;
+
+        // try finding bundle-selects inside this component first, then globally by section id or data-section
+        let bundleSelects = this.querySelector('bundle-selects');
+        if (!bundleSelects) {
+          bundleSelects = document.querySelector(`bundle-selects#bundle-selects-${this.sectionId}`) ||
+            document.querySelector(`bundle-selects[data-section="${this.sectionId}"]`) ||
+            document.querySelector('bundle-selects');
+        }
+
+        // If bundle markup isn't yet in DOM, observe the document and retry
+        if (!bundleSelects) {
+          if (!this._bundleObserver) {
+            this._bundleObserver = new MutationObserver((mutations, obs) => {
+              const found = document.querySelector(`bundle-selects#bundle-selects-${this.sectionId}`) ||
+                document.querySelector(`bundle-selects[data-section="${this.sectionId}"]`) ||
+                document.querySelector('bundle-selects');
+              if (found) {
+                obs.disconnect();
+                this._bundleObserver = null;
+                this.initializeBundleIntegration();
+              }
+            });
+            this._bundleObserver.observe(document.body, { childList: true, subtree: true });
+          }
+          return;
+        }
+
+        // mark initialized to avoid double-binding
+        if (bundleSelects.dataset.bundleInitialized === 'true') return;
+
+        // store default description if provided by bundle markup
+        const defaultDescScript = bundleSelects.querySelector('script[data-default-product-description]');
+        if (defaultDescScript) {
+          try {
+            this._defaultProductDescription = JSON.parse(defaultDescScript.textContent);
+          } catch (e) {
+            console.error('Failed to parse default description:', e);
+          }
+        }
+
+        const bundleVariantIds = this.getBundleVariantIds(bundleSelects);
+
+        if (this.variantSelectors && bundleVariantIds.length > 0) {
+          this.hideBundleVariantsFromPicker(bundleVariantIds);
+        }
+
+        this._bundleVariantsData = this.getBundleVariantsData(bundleSelects);
+        this.setupBundleSelection(bundleSelects);
+        // also listen to interactions on the variant picker so that selecting variants deselects bundles
+        if (this.variantSelectors) this.setupVariantSelection(this.variantSelectors, bundleSelects);
+
+        bundleSelects.dataset.bundleInitialized = 'true';
+        this._bundleInitialized = true;
+      }
+
+      getBundleVariantIds(bundleSelects) {
+        const inputs = bundleSelects.querySelectorAll('input[data-bundle-variant-id]');
+        return Array.from(inputs).map((input) => input.dataset.bundleVariantId);
+      }
+
+      hideBundleVariantsFromPicker(bundleVariantIds) {
+        const variantSelects = this.variantSelectors;
+        bundleVariantIds.forEach((variantId) => {
+          const input = variantSelects.querySelector(`input[data-option-value-id="${variantId}"]`);
+          if (input) {
+            const label = variantSelects.querySelector(`label[for="${input.id}"]`);
+            input.style.display = 'none';
+            if (label) label.style.display = 'none';
+          }
+
+          const option = variantSelects.querySelector(`option[data-option-value-id="${variantId}"]`);
+          if (option) {
+            option.style.display = 'none';
+            option.disabled = true;
+          }
+        });
+
+        variantSelects.querySelectorAll('fieldset').forEach((fieldset) => {
+          const visibleInputs = Array.from(fieldset.querySelectorAll('input')).filter(
+            (inp) => inp.style.display !== 'none'
+          );
+          if (visibleInputs.length === 0) {
+            fieldset.style.display = 'none';
+          }
+        });
+      }
+
+      getBundleVariantsData(bundleSelects) {
+        const dataScript = bundleSelects.querySelector('script[data-bundle-variants]');
+        if (dataScript) {
+          try {
+            return JSON.parse(dataScript.textContent);
+          } catch (e) {
+            console.error('Failed to parse bundle variants:', e);
+          }
+        }
+        return [];
+      }
+
+      setupBundleSelection(bundleSelects) {
+        const inputs = bundleSelects.querySelectorAll('input[type="radio"]');
+        const sectionId = bundleSelects.dataset.section || this.dataset.section;
+        const bundleVariantsData = this._bundleVariantsData || [];
+
+        inputs.forEach((input) => {
+          input.addEventListener(
+            'change',
+            (event) => {
+              event.stopPropagation();
+              if (!event.target.checked) return;
+
+              const variantId = event.target.dataset.bundleVariantId;
+              const variantData = bundleVariantsData.find((v) => String(v.id) === String(variantId));
+
+              if (!variantData) {
+                console.error('Bundle variant not found:', variantId);
+                return;
+              }
+              // Deselect variant picker and update variant inputs locally first
+              if (this.variantSelectors) this.deselectAllVariants(this.variantSelectors);
+              this.updateVariantInputs(variantId);
+
+              // set gift type property on product form so cart receives bundle title
+              const bundleTitle = event.target.dataset.bundleTitle || variantData.title || '';
+              this.setGiftTypeProperty(sectionId, bundleTitle);
+
+              // Fetch full product HTML and run the same update flow as variant selects
+              // This ensures media, option values, quantity rules, and other UI are updated consistently
+              this.renderProductInfo({
+                requestUrl: `${this.dataset.url}?variant=${variantId}&section_id=${this.sectionId}`,
+                targetId: event.target.id,
+                callback: this.handleUpdateProductInfo(this.dataset.url),
+              });
+
+              // mark bundle UI active (will also be reconciled by the full update)
+              bundleSelects.classList.add('is-active');
+              bundleSelects.classList.remove('is-deselected');
+
+              // publish variantChange for any subscribers
+              if (typeof publish !== 'undefined' && typeof PUB_SUB_EVENTS !== 'undefined') {
+                publish(PUB_SUB_EVENTS.variantChange, {
+                  data: {
+                    sectionId: sectionId,
+                    variant: variantData,
+                  },
+                });
+              }
+            },
+            true
+          );
+        });
+      }
+
+      setGiftTypeProperty(sectionId, title) {
+        if (!sectionId) sectionId = this.sectionId;
+        this.querySelectorAll(`#product-form-${sectionId}, #product-form-installment-${sectionId}`).forEach((productForm) => {
+          const formNode = productForm.querySelector('form') || productForm;
+          if (!formNode) return;
+          let input = formNode.querySelector('input[name="properties[Gift Type]"]');
+          if (!input) {
+            input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'properties[Gift Type]';
+            formNode.appendChild(input);
+          }
+          input.value = title ?? '';
+        });
+      }
+
+      clearGiftTypeProperty(sectionId) {
+        if (!sectionId) sectionId = this.sectionId;
+        this.querySelectorAll(`#product-form-${sectionId}, #product-form-installment-${sectionId}`).forEach((productForm) => {
+          const formNode = productForm.querySelector('form') || productForm;
+          if (!formNode) return;
+          const input = formNode.querySelector('input[name="properties[Gift Type]"]');
+          if (input) {
+            // remove the input entirely so the property is not sent to cart
+            input.remove();
+          }
+        });
+      }
+
+      setupVariantSelection(variantSelects, bundleSelects) {
+        const inputs = variantSelects.querySelectorAll('input[type="radio"]');
+        const dropdowns = variantSelects.querySelectorAll('select');
+
+        inputs.forEach((input) => {
+          input.addEventListener('change', () => {
+            if (input.checked) {
+              this.deselectAllBundles(bundleSelects);
+              // restore default product description if available
+              if (this._defaultProductDescription) this.updateProductDescription(this._defaultProductDescription);
+
+              variantSelects.classList.remove('is-deselected');
+              variantSelects.classList.add('is-active');
+            }
+          });
+        });
+
+        dropdowns.forEach((select) => {
+          select.addEventListener('change', () => {
+            this.deselectAllBundles(bundleSelects);
+            if (this._defaultProductDescription) this.updateProductDescription(this._defaultProductDescription);
+
+            variantSelects.classList.remove('is-deselected');
+            variantSelects.classList.add('is-active');
+          });
+        });
+      }
+
+      deselectAllBundles(bundleSelects) {
+        const inputs = bundleSelects.querySelectorAll('input[type="radio"]');
+        inputs.forEach((input) => {
+          input.checked = false;
+          const label = bundleSelects.querySelector(`label[for="${input.id}"]`);
+          if (label) label.classList.remove('active', 'selected');
+        });
+        // also remove any checked attributes on options/buttons
+        bundleSelects.querySelectorAll('input[checked]').forEach((el) => el.removeAttribute('checked'));
+        bundleSelects.classList.add('is-deselected');
+        bundleSelects.classList.remove('is-active');
+      }
+
+      deselectAllVariants(variantSelects) {
+        if (!variantSelects) return;
+        const allInputs = variantSelects.querySelectorAll('input[type="radio"]');
+        allInputs.forEach((input) => {
+          input.checked = false;
+          const label = variantSelects.querySelector(`label[for="${input.id}"]`);
+          if (label) label.classList.remove('active', 'selected');
+        });
+
+        const dropdowns = variantSelects.querySelectorAll('select');
+        dropdowns.forEach((select) => {
+          select.querySelectorAll('option').forEach((option) => {
+            option.removeAttribute('selected');
+          });
+        });
+
+        variantSelects.classList.add('is-deselected');
+        variantSelects.classList.remove('is-active');
+      }
+
+      updatePriceDisplay(sectionId, variantData) {
+        const priceContainer = document.querySelector(`#price-${sectionId}`);
+        if (priceContainer && variantData?.price) {
+          const formattedPrice =
+            typeof Shopify !== 'undefined' && Shopify.formatMoney
+              ? Shopify.formatMoney(variantData.price)
+              : '$' + (variantData.price / 100).toFixed(2);
+          const priceElement = priceContainer.querySelector('.price-item--regular');
+          if (priceElement) priceElement.textContent = formattedPrice;
+        }
+      }
+
+      updateAddToCartButton(sectionId, variantData) {
+        const productForm = document.querySelector(`product-form[data-section="${sectionId}"]`);
+        if (!productForm) return;
+
+        const submitButton = productForm.querySelector('[type="submit"]');
+        if (!submitButton) return;
+
+        const buttonText = submitButton.querySelector('span');
+        if (variantData.available) {
+          submitButton.disabled = false;
+          if (buttonText) buttonText.textContent = window.variantStrings?.addToCart || 'Add to cart';
+        } else {
+          submitButton.disabled = true;
+          if (buttonText) buttonText.textContent = window.variantStrings?.soldOut || 'Sold out';
+        }
+      }
+
+      updateProductDescription(description) {
+        const descriptionEl = document.querySelector('[data-product-description]');
+        if (!descriptionEl) return;
+
+        let descriptionHTML = '';
+        if (typeof description === 'string') descriptionHTML = description;
+        else if (description && typeof description === 'object') {
+          if (description.value) descriptionHTML = description.value;
+          else if (description.html) descriptionHTML = description.html;
+          else descriptionHTML = JSON.stringify(description);
+        }
+
+        descriptionEl.innerHTML = descriptionHTML || descriptionEl.innerHTML;
+      }
+
+      updateDefaultVariantPickerSelection() {
+        const variantSelects = this.variantSelectors;
+        if (!variantSelects) return;
+        const allInputs = Array.from(variantSelects.querySelectorAll('input[type="radio"]'));
+        allInputs.forEach((input) => {
+          input.checked = false;
+          const label = variantSelects.querySelector(`label[for="${input.id}"]`);
+          if (label) label.classList.remove('active', 'selected');
+        });
+        variantSelects.classList.add('is-deselected');
+        variantSelects.classList.remove('is-active');
       }
 
       get productForm() {
