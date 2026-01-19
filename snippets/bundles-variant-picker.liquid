@@ -1,0 +1,103 @@
+{% comment %}
+  Renders bundle variant-picker as custom HTML element
+
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} passing the block information.
+  - product_form_id: {String} Id of the product form to which the bundle picker is associated.
+  Usage:
+  {% render 'bundles-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+{% endcomment %}
+{% assign bundles = product.metafields.custom.giftcard_bundles.value %}
+
+{% if bundles != blank %}
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  
+  {%- comment -%} Check if current variant is a bundle variant {%- endcomment -%}
+  {%- assign current_is_bundle = false -%}
+  {%- assign current_bundle_description = '' -%}
+  {%- for b in bundles -%}
+    {%- assign v = b.variant.value -%}
+    {%- if v.id == current_variant.id -%}
+      {%- assign current_is_bundle = true -%}
+      {%- assign current_bundle_description = b.description -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  <bundle-selects
+    id="bundle-selects-{{ section.id }}"
+    class="giftcard-bundle-ui{% if current_is_bundle %} is-active{% else %} is-deselected{% endif %}"
+    data-section="{{ section.id }}"
+    {{ block.shopify_attributes }}
+  >
+    <fieldset class="js product-form__input product-form__input--pill">
+      <legend class="form__label">Bundle Options</legend>
+      <div class="giftcard-bundle-buttons" data-giftcard-bundle-buttons>
+        {% for b in bundles %}
+          {%- assign v = b.variant.value -%}
+          {%- assign input_id = 'bundle-' | append: section.id | append: '-' | append: forloop.index0 -%}
+          {%- assign input_name = 'bundle-option-' | append: section.id -%}
+          
+          {%- comment -%} Check if this bundle's variant matches the current selected variant {%- endcomment -%}
+          {%- assign is_selected = false -%}
+          {%- if v.id == current_variant.id -%}
+            {%- assign is_selected = true -%}
+          {%- endif -%}
+          
+          <input
+            type="radio"
+            id="{{ input_id }}"
+            name="{{ input_name }}"
+            value="{{ b.title | escape }}"
+            form="{{ product_form_id }}"
+            {% if is_selected %}checked{% endif %}
+            data-bundle-variant-id="{{ v.id }}"
+            data-bundle-option-value="{{ v.option1 | escape }}"
+            data-bundle-title="{{ b.title | escape }}"
+            data-bundle-description="{{ b.description | escape }}"
+            data-option-value-id="{{ v.id }}"
+          >
+          <label for="{{ input_id }}">
+            {{ b.title }}
+          </label>
+        {% endfor %}
+      </div>
+    </fieldset>
+
+    <script type="application/json" data-bundle-variants>
+      [
+        {%- for b in bundles -%}
+          {%- assign v = b.variant.value -%}
+          {%- comment -%} Handle description - check if it's a metafield object or string {%- endcomment -%}
+          {%- capture bundle_desc -%}
+            {%- if b.description.value -%}
+              {{ b.description.value }}
+            {%- elsif b.description -%}
+              {{ b.description }}
+            {%- else -%}
+              
+            {%- endif -%}
+          {%- endcapture -%}
+          {
+            "id": {{ v.id | json }},
+            "title": {{ b.title | json }},
+            "description": {{ bundle_desc | strip | json }},
+            "option1": {{ v.option1 | json }},
+            "price": {{ v.price | json }},
+            "available": {{ v.available | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    </script>
+    
+    {%- comment -%} Store the default product description for restoration {%- endcomment -%}
+    <script type="application/json" data-default-product-description>
+      {{ product.description | json }}
+    </script>
+    
+    <script type="application/json" data-selected-variant>
+      {{ product.selected_or_first_available_variant | json }}
+    </script>
+  </bundle-selects>
+{% endif %}
