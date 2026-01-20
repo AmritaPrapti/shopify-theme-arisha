@@ -31,8 +31,7 @@
 
   assign padding_top = section.settings.padding_top
   assign padding_bottom = section.settings.padding_bottom
-  assign padding_horizontal = section.settings.padding_horizontal
-  assign padding_horizontal_mobile = section.settings.padding_horizontal_mobile
+ 
   assign margin_top = section.settings.margin_top
   assign margin_bottom = section.settings.margin_bottom
   assign margin_horizontal_mobile = section.settings.margin_horizontal_mobile
@@ -44,6 +43,7 @@
   assign title_size = section.settings.title_size
   assign title_size_mobile = section.settings.title_size_mobile
   assign title_color = section.settings.title_color
+  assign title_color_mobile = section.settings.title_color_mobile
   assign title_custom = section.settings.title_custom
   assign title_font = section.settings.title_font
   assign title_height = section.settings.title_height
@@ -51,6 +51,7 @@
   assign subtitle_size = section.settings.subtitle_size
   assign subtitle_size_mobile = section.settings.subtitle_size_mobile
   assign subtitle_color = section.settings.subtitle_color
+  assign subtitle_color_mobile = section.settings.subtitle_color_mobile
   assign subtitle_custom = section.settings.subtitle_custom
   assign subtitle_font = section.settings.subtitle_font
   assign subtitle_height = section.settings.subtitle_height
@@ -172,7 +173,7 @@
   .ab-banner-content-{{ section.id }} {
     width: 100%;
     max-width: 100%;
-    margin: 0 auto;
+    margin: 0;
     height: 100%;
     position: relative;
     z-index: 1;
@@ -182,8 +183,6 @@
     align-items: {{ horizontal_alignment }};
     padding-top: {{ padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ padding_bottom | times: 0.75 | round: 0 }}px;
-    padding-left: {{ padding_horizontal_mobile }}rem;
-    padding-right: {{ padding_horizontal_mobile }}rem;
     line-height: 1;
   }
 
@@ -194,7 +193,7 @@
   .ab-banner-title-{{ section.id }} * {
     margin: 0;
     font-size: {{ title_size_mobile }}px;
-    color: {{ title_color }};
+    color: {{ title_color_mobile }};
     line-height: {{ title_height }}%;
     text-transform: unset;
   }
@@ -207,7 +206,7 @@
   .ab-banner-subtitle-{{ section.id }} * {
     margin: 0;
     font-size: {{ subtitle_size_mobile }}px;
-    color: {{ subtitle_color }};
+    color: {{ subtitle_color_mobile }};
     line-height: {{ subtitle_height }}%;
     text-transform: unset;
   }
@@ -327,12 +326,16 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
     background-color: {{ overlay_color }};
     opacity: {{ overlay_opacity }}%;
     pointer-events: none;
     z-index: 1;
+    height: 98%;
   }
+
+  {% comment %} .ab-banner-slide-{{ section.id }} .ab-banner-overlay-{{ section.id }} {
+    height: auto;
+  } {% endcomment %}
 
   .ab-banner-video-wrapper-{{ section.id }} {
     position: absolute;
@@ -434,6 +437,34 @@
   .ab-banner-action-{{ section.id }}.active .ab-banner-pause-icon-{{ section.id }} {
     display: none !important;
   }
+  .video-banner-content {
+    width: 100%;
+    height: 100%;
+  }
+
+  .ab-banner-slide-{{ section.id }} {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ab-banner-video-wrapper-{{ section.id }} {
+    position: relative;
+    order: 1;
+  }
+
+  .ab-banner-image-wrapper-{{ section.id }} {
+    position: relative;
+  }
+
+  .video-banner-content {
+    order: 2;
+    height: auto;
+  }
+
+  .ab-banner-content-{{ section.id }} {
+    height: auto;
+    min-height: auto;
+  }
 
   @media screen and (min-width: 750px) {
 
@@ -443,6 +474,37 @@
       margin-left: {{ margin_horizontal }}rem;
       margin-right: {{ margin_horizontal }}rem;
       border-radius: {{ section_radius }}px;
+    }
+
+    .ab-banner-slide-{{ section.id }} {
+      position: relative;
+      display: block;
+    }
+
+    .ab-banner-video-wrapper-{{ section.id }} {
+      position: absolute;
+      order: unset;
+      z-index: 1;
+      top: 0;
+      left: 0;
+    }
+
+    .ab-banner-image-wrapper-{{ section.id }} {
+      position: absolute;
+    }
+
+    .video-banner-content {
+      width: 100%;
+      height: 100%;
+      order: unset;
+    }
+
+    .ab-banner-content-{{ section.id }} {
+      height: 100%;
+    }
+
+    .ab-banner-overlay-{{ section.id }} {
+      height: 100%;
     }
 
     .section-{{ section.id }}-padding {
@@ -461,8 +523,6 @@
     .ab-banner-content-{{ section.id }} {
       padding-top: {{ padding_top }}px;
       padding-bottom: {{ padding_bottom }}px;
-      padding-left: {{ padding_horizontal }}rem;
-      padding-right: {{ padding_horizontal }}rem;
     }
 
     .ab-banner-button-wrapper-{{ section.id }} {
@@ -473,15 +533,17 @@
     .ab-banner-title-{{ section.id }} * {
       margin: 0;
       font-size: {{ title_size }}px;
+      color: {{ title_color }};
     }
 
     .ab-banner-subtitle-{{ section.id }} {
-      margin-top: {{ subtitle_mt }}px;
+      margin-top: {{ subtitle_mt }}px;  
     }
 
     .ab-banner-subtitle-{{ section.id }} * {
       margin: 0;
       font-size: {{ subtitle_size }}px;
+      color: {{ subtitle_color }};
     }
 
     .ab-banner-play-button-{{ section.id }} {
@@ -512,15 +574,21 @@
 </style>
 
 {% if width == 'custom' %}
+  
   <style>
     .section-{{ section.id }}-settings {
       max-width: {{ content_width }}px;
+      width: 100%;
+      height: 100%;
     }
   </style>
 {% elsif width == 'page' %}
   <style>
     .section-{{ section.id }}-settings {
       max-width: var(--page-width);
+      width: 100%;
+      height: 100%;
+
     }
   </style>
 {% endif %}
@@ -559,10 +627,10 @@
 {% if layout_height == 'fixed_height' %}
   <style>
     .section-{{ section.id }}-padding {
-      height: {{ height_mobile }}px;
+      height: 100%;
     }
 
-    @media(min-width: 1024px) {
+    @media(min-width: 750px) {
       .section-{{ section.id }}-padding {
         height: {{ height }}px;
       }
@@ -730,82 +798,83 @@
             data-autoplay="true"
           {% endif %}
         >
-          {% assign video = block.settings.video %}
-          <div class="ab-banner-video-wrapper-{{ section.id }}">
-            {% if block.settings.source == 'uploaded' %}
-              {% if video != blank %}
-                <video
-                  data-src="{{ video.sources[1].url }}"
-                  {% if block.settings.autoplay %}
-                    autoplay
-                  {% endif %}
-                  muted
-                  playsinline
-                  preload="none"
-                  loop
-                  poster="{{ block.settings.image }}"
-                  class="lazy {{ 'ab-banner-video-' | append: section.id }}"
-                ></video>
+          <div>
+            {% assign video = block.settings.video %}
+            <div class="ab-banner-video-wrapper-{{ section.id }}">
+              <span class="ab-banner-overlay-{{ section.id }}"></span>
+              {% if block.settings.source == 'uploaded' %}
+                {% if video != blank %}
+                  <video
+                    data-src="{{ video.sources[1].url }}"
+                    {% if block.settings.autoplay %}
+                      autoplay
+                    {% endif %}
+                    muted
+                    playsinline
+                    preload="none"
+                    loop
+                    poster="{{ block.settings.image }}"
+                    class="lazy {{ 'ab-banner-video-' | append: section.id }}"
+                  ></video>
+                {% endif %}
               {% endif %}
-            {% endif %}
-            {% if block.settings.source == 'external_url' %}
-              {% if block.settings.video_url.id != blank %}
-                <template data-youtube-template>
-                  <div
-                    class="ab-banner-video-{{ section.id }}"
-                    data-video-id="{{ block.settings.video_url.id }}"
-                    poster="{{ block.settings.image | image_url }}"
-                  ></div>
-                </template>
+              {% if block.settings.source == 'external_url' %}
+                {% if block.settings.video_url.id != blank %}
+                  <template data-youtube-template>
+                    <div
+                      class="ab-banner-video-{{ section.id }}"
+                      data-video-id="{{ block.settings.video_url.id }}"
+                      poster="{{ block.settings.image | image_url }}"
+                    ></div>
+                  </template>
+                {% endif %}
               {% endif %}
-            {% endif %}
+            </div>
+            <div class="ab-banner-image-wrapper-{{ section.id }}">
+              <span class="ab-banner-overlay-{{ section.id }}"></span>
+              {% assign image = block.settings.image %}
+              {% if image == blank %}
+                {% assign svg_class = 'ab-svg-placeholder ab-banner-image-' | append: section.id %}
+                {{ 'image' | placeholder_svg_tag: svg_class }}
+              {% else %}
+                <img
+                  class="
+                    ab-banner-image-{{ section.id }}
+                    {% if block.settings.image_mobile != blank %}
+                      ab-banner-image-{{ section.id }}--desktop
+                    {% endif %}
+                  "
+                  src="{{ image | img_url: '500x' }}"
+                  srcset="
+                    {{ image | img_url: '500x' }} 500w,
+                    {{ image | img_url: '800x' }} 800w,
+                    {{ image | img_url: '1200x' }} 1200w,
+                    {{ image | img_url: '1600x' }} 1600w,
+                    {{ image | img_url: '2000x' }} 2000w,
+                    {{ image | img_url: 'master' }} 2400w
+                  "
+                  alt="{{ image.alt }}"
+                >
+              {% endif %}
+              {% if block.settings.image_mobile != blank %}
+                {% assign image = block.settings.image_mobile %}
+                <img
+                  class="ab-banner-image-{{ section.id }} ab-banner-image-{{ section.id }}--mobile"
+                  src="{{ image | img_url: '500x' }}"
+                  srcset="
+                    {{ image | img_url: '500x' }} 500w,
+                    {{ image | img_url: '800x' }} 800w,
+                    {{ image | img_url: '1200x' }} 1200w,
+                    {{ image | img_url: '1600x' }} 1600w,
+                    {{ image | img_url: '2000x' }} 2000w,
+                    {{ image | img_url: 'master' }} 2400w
+                  "
+                  alt="{{ image.alt }}"
+                >
+              {% endif %}
+            </div>
+            
           </div>
-
-          <div class="ab-banner-image-wrapper-{{ section.id }}">
-            {% assign image = block.settings.image %}
-            {% if image == blank %}
-              {% assign svg_class = 'ab-svg-placeholder ab-banner-image-' | append: section.id %}
-              {{ 'image' | placeholder_svg_tag: svg_class }}
-            {% else %}
-              <img
-                class="
-                  ab-banner-image-{{ section.id }}
-                  {% if block.settings.image_mobile != blank %}
-                    ab-banner-image-{{ section.id }}--desktop
-                  {% endif %}
-                "
-                src="{{ image | img_url: '500x' }}"
-                srcset="
-                  {{ image | img_url: '500x' }} 500w,
-                  {{ image | img_url: '800x' }} 800w,
-                  {{ image | img_url: '1200x' }} 1200w,
-                  {{ image | img_url: '1600x' }} 1600w,
-                  {{ image | img_url: '2000x' }} 2000w,
-                  {{ image | img_url: 'master' }} 2400w
-                "
-                alt="{{ image.alt }}"
-              >
-            {% endif %}
-
-            {% if block.settings.image_mobile != blank %}
-              {% assign image = block.settings.image_mobile %}
-              <img
-                class="ab-banner-image-{{ section.id }} ab-banner-image-{{ section.id }}--mobile"
-                src="{{ image | img_url: '500x' }}"
-                srcset="
-                  {{ image | img_url: '500x' }} 500w,
-                  {{ image | img_url: '800x' }} 800w,
-                  {{ image | img_url: '1200x' }} 1200w,
-                  {{ image | img_url: '1600x' }} 1600w,
-                  {{ image | img_url: '2000x' }} 2000w,
-                  {{ image | img_url: 'master' }} 2400w
-                "
-                alt="{{ image.alt }}"
-              >
-            {% endif %}
-          </div>
-
-          <span class="ab-banner-overlay-{{ section.id }}"></span>
           {% if use_action and has_video %}
             <div class="ab-banner-action-{{ section.id }} {% unless block.settings.autoplay %}active{% endunless %}">
               {% if play_button_image != blank %}
@@ -864,70 +933,72 @@
             </div>
           {% endif %}
 
-          <div class="ab-banner-content-{{ section.id }}">
-            {% if block.settings.title != blank %}
-              <div class="ab-banner-title-{{ section.id }}">
-                {{ block.settings.title }}
-              </div>
-            {% endif %}
-            {% if block.settings.subtitle != blank %}
-              <div class="ab-banner-subtitle-{{ section.id }}">
-                {{ block.settings.subtitle }}
-              </div>
-            {% endif %}
-            <div class="ab-banner-button-wrapper-{{ section.id }}">
-              {% if block.settings.button != blank %}
-                <a
-                  href="{{ block.settings.button_url }}"
-                  class="ab-banner-button-{{ section.id }}"
-                  {% if open_in_new_tab %}
-                    target="_blank"
-                  {% endif %}
-                >
-                  <p class="ab-banner-button-inner-{{ section.id }}">
-                    {{ block.settings.button }}
-                    {% if button_style == 'non_outline_arrow' or button_style == 'outline_arrow' %}
-                      <svg
-                        width="192"
-                        height="192"
-                        viewBox="0 0 192 192"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M187.827 98.7858C188.123 98.4749 188.123 98.4749 188.123 98.1761C188.419 97.8652 188.419 97.5663 188.704 97.5663C189 96.9566 189 96.6458 189 96.0361C189 95.4263 189 94.8166 188.704 94.5058C188.704 94.195 188.408 93.8961 188.123 93.5852C188.123 93.2744 187.827 93.2744 187.827 92.9755L103.287 4.21945C102.41 3.29889 101.533 3 100.668 3C99.791 3 98.6295 3.31083 98.0488 4.21945C97.1719 5.14 96.8872 6.06058 96.8872 6.96919C96.8872 7.88974 97.1833 9.10918 98.0488 9.7189L175.587 92.0539H6.79206C4.75371 92.0539 3 93.895 3 96.0351C3 98.1751 4.75365 100.016 6.79206 100.016H175.575L97.7543 182.042C96.2967 183.572 96.2967 186.322 97.7543 187.852C99.2119 189.383 101.831 189.383 103.288 187.852L187.827 98.7858Z" fill="black"></path>
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M188.607 97.5657C188.432 97.5657 188.365 97.6788 188.27 97.8382C188.211 97.9378 188.141 98.0554 188.027 98.1748C188.027 98.4734 188.027 98.4734 187.731 98.7839L103.281 187.759C101.825 189.287 99.2085 189.287 97.7524 187.759C96.2963 186.23 96.2963 183.483 97.7524 181.954L175.492 100.013L6.88489 100.013C4.8486 100.013 3.09677 98.1739 3.09677 96.036C3.09677 93.8982 4.84866 92.059 6.88489 92.059L175.504 92.059L98.0465 9.80878C97.182 9.19968 96.8862 7.9815 96.8862 7.0619C96.8862 6.15422 97.1706 5.2346 98.0465 4.315C98.6267 3.40732 99.787 3.0968 100.663 3.0968C101.527 3.0968 102.403 3.39539 103.279 4.315L187.731 92.9796C187.731 93.1274 187.804 93.2021 187.877 93.2774C187.952 93.3543 188.027 93.4319 188.027 93.5887C188.046 93.6098 188.066 93.6308 188.085 93.6518C188.338 93.9267 188.584 94.1935 188.606 94.4689C188.607 94.482 188.607 94.4951 188.607 94.5083C188.903 94.8188 188.903 95.4279 188.903 96.037C188.903 96.6461 188.903 96.9566 188.607 97.5657ZM191.489 93.2767C191.79 93.8661 191.89 94.4204 191.934 94.7363C192.001 95.2226 192 95.7194 192 95.9856L192 96.037C192 96.0544 192 96.0729 192 96.0926C192 96.3523 192.001 96.8096 191.924 97.2931C191.828 97.8884 191.64 98.41 191.393 98.9184L190.546 100.663H190.212C190.127 100.759 190.038 100.852 189.988 100.905L189.974 100.92L105.527 189.891C102.85 192.701 98.1865 192.704 95.51 189.895C94.1476 188.464 93.5636 186.587 93.5636 184.857C93.5636 183.128 94.1468 181.252 95.5071 179.822M191.489 93.2767C191.316 92.7908 191.078 92.4357 190.938 92.2406C190.903 92.1912 190.866 92.142 190.828 92.0939V91.7408L105.522 2.17912C104.076 0.661813 102.397 0 100.663 0C99.3914 0 97.0569 0.401401 95.6212 2.37737C94.3151 3.83819 93.7895 5.45521 93.7895 7.0619C93.7895 8.26663 94.1183 10.6061 95.9608 12.111L168.333 88.9622L6.88489 88.9622C2.9981 88.9622 0 92.3316 0 96.036C0 99.7405 2.99801 103.11 6.88489 103.11L168.285 103.11" fill="black"></path>
-                        <path d="M169.5 104L16.5 102.5V90H171L97.5 10.5V7L107.5 4.5C131.167 29.6667 180.2 81.5 187 87.5C193.8 93.5 191.5 99 189.5 101L105.5 184L94 181.5L169.5 104Z" fill="black"></path>
-                      </svg>
-                    {% endif %}
-                  </p>
-                </a>
+          <div class="page-width video-banner-content">
+            <div class="ab-banner-content-{{ section.id }} section-{{ section.id }}-settings">
+              {% if block.settings.title != blank %}
+                <div class="ab-banner-title-{{ section.id }}">
+                  {{ block.settings.title }}
+                </div>
               {% endif %}
-              {% if block.settings.second_button != blank %}
-                <a
-                  href="{{ block.settings.second_button_url }}"
-                  class="ab-banner-button-second-{{ section.id }}"
-                  {% if open_in_new_tab %}
-                    target="_blank"
-                  {% endif %}
-                >
-                  <p class="ab-banner-button-second-inner-{{ section.id }}">
-                    {{ block.settings.second_button }}
-                    {% if button_style == 'non_outline_arrow' or button_style == 'outline_arrow' %}
-                      <svg
-                        width="192"
-                        height="192"
-                        viewBox="0 0 192 192"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M187.827 98.7858C188.123 98.4749 188.123 98.4749 188.123 98.1761C188.419 97.8652 188.419 97.5663 188.704 97.5663C189 96.9566 189 96.6458 189 96.0361C189 95.4263 189 94.8166 188.704 94.5058C188.704 94.195 188.408 93.8961 188.123 93.5852C188.123 93.2744 187.827 93.2744 187.827 92.9755L103.287 4.21945C102.41 3.29889 101.533 3 100.668 3C99.791 3 98.6295 3.31083 98.0488 4.21945C97.1719 5.14 96.8872 6.06058 96.8872 6.96919C96.8872 7.88974 97.1833 9.10918 98.0488 9.7189L175.587 92.0539H6.79206C4.75371 92.0539 3 93.895 3 96.0351C3 98.1751 4.75365 100.016 6.79206 100.016H175.575L97.7543 182.042C96.2967 183.572 96.2967 186.322 97.7543 187.852C99.2119 189.383 101.831 189.383 103.288 187.852L187.827 98.7858Z" fill="black"></path>
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M188.607 97.5657C188.432 97.5657 188.365 97.6788 188.27 97.8382C188.211 97.9378 188.141 98.0554 188.027 98.1748C188.027 98.4734 188.027 98.4734 187.731 98.7839L103.281 187.759C101.825 189.287 99.2085 189.287 97.7524 187.759C96.2963 186.23 96.2963 183.483 97.7524 181.954L175.492 100.013L6.88489 100.013C4.8486 100.013 3.09677 98.1739 3.09677 96.036C3.09677 93.8982 4.84866 92.059 6.88489 92.059L175.504 92.059L98.0465 9.80878C97.182 9.19968 96.8862 7.9815 96.8862 7.0619C96.8862 6.15422 97.1706 5.2346 98.0465 4.315C98.6267 3.40732 99.787 3.0968 100.663 3.0968C101.527 3.0968 102.403 3.39539 103.279 4.315L187.731 92.9796C187.731 93.1274 187.804 93.2021 187.877 93.2774C187.952 93.3543 188.027 93.4319 188.027 93.5887C188.046 93.6098 188.066 93.6308 188.085 93.6518C188.338 93.9267 188.584 94.1935 188.606 94.4689C188.607 94.482 188.607 94.4951 188.607 94.5083C188.903 94.8188 188.903 95.4279 188.903 96.037C188.903 96.6461 188.903 96.9566 188.607 97.5657ZM191.489 93.2767C191.79 93.8661 191.89 94.4204 191.934 94.7363C192.001 95.2226 192 95.7194 192 95.9856L192 96.037C192 96.0544 192 96.0729 192 96.0926C192 96.3523 192.001 96.8096 191.924 97.2931C191.828 97.8884 191.64 98.41 191.393 98.9184L190.546 100.663H190.212C190.127 100.759 190.038 100.852 189.988 100.905L189.974 100.92L105.527 189.891C102.85 192.701 98.1865 192.704 95.51 189.895C94.1476 188.464 93.5636 186.587 93.5636 184.857C93.5636 183.128 94.1468 181.252 95.5071 179.822M191.489 93.2767C191.316 92.7908 191.078 92.4357 190.938 92.2406C190.903 92.1912 190.866 92.142 190.828 92.0939V91.7408L105.522 2.17912C104.076 0.661813 102.397 0 100.663 0C99.3914 0 97.0569 0.401401 95.6212 2.37737C94.3151 3.83819 93.7895 5.45521 93.7895 7.0619C93.7895 8.26663 94.1183 10.6061 95.9608 12.111L168.333 88.9622L6.88489 88.9622C2.9981 88.9622 0 92.3316 0 96.036C0 99.7405 2.99801 103.11 6.88489 103.11L168.285 103.11" fill="black"></path>
-                        <path d="M169.5 104L16.5 102.5V90H171L97.5 10.5V7L107.5 4.5C131.167 29.6667 180.2 81.5 187 87.5C193.8 93.5 191.5 99 189.5 101L105.5 184L94 181.5L169.5 104Z" fill="black"></path>
-                      </svg>
-                    {% endif %}
-                  </p>
-                </a>
+              {% if block.settings.subtitle != blank %}
+                <div class="ab-banner-subtitle-{{ section.id }}">
+                  {{ block.settings.subtitle }}
+                </div>
               {% endif %}
+              <div class="ab-banner-button-wrapper-{{ section.id }}">
+                {% if block.settings.button != blank %}
+                  <a
+                    href="{{ block.settings.button_url }}"
+                    class="ab-banner-button-{{ section.id }}"
+                    {% if open_in_new_tab %}
+                      target="_blank"
+                    {% endif %}
+                  >
+                    <p class="ab-banner-button-inner-{{ section.id }}">
+                      {{ block.settings.button }}
+                      {% if button_style == 'non_outline_arrow' or button_style == 'outline_arrow' %}
+                        <svg
+                          width="192"
+                          height="192"
+                          viewBox="0 0 192 192"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M187.827 98.7858C188.123 98.4749 188.123 98.4749 188.123 98.1761C188.419 97.8652 188.419 97.5663 188.704 97.5663C189 96.9566 189 96.6458 189 96.0361C189 95.4263 189 94.8166 188.704 94.5058C188.704 94.195 188.408 93.8961 188.123 93.5852C188.123 93.2744 187.827 93.2744 187.827 92.9755L103.287 4.21945C102.41 3.29889 101.533 3 100.668 3C99.791 3 98.6295 3.31083 98.0488 4.21945C97.1719 5.14 96.8872 6.06058 96.8872 6.96919C96.8872 7.88974 97.1833 9.10918 98.0488 9.7189L175.587 92.0539H6.79206C4.75371 92.0539 3 93.895 3 96.0351C3 98.1751 4.75365 100.016 6.79206 100.016H175.575L97.7543 182.042C96.2967 183.572 96.2967 186.322 97.7543 187.852C99.2119 189.383 101.831 189.383 103.288 187.852L187.827 98.7858Z" fill="black"></path>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M188.607 97.5657C188.432 97.5657 188.365 97.6788 188.27 97.8382C188.211 97.9378 188.141 98.0554 188.027 98.1748C188.027 98.4734 188.027 98.4734 187.731 98.7839L103.281 187.759C101.825 189.287 99.2085 189.287 97.7524 187.759C96.2963 186.23 96.2963 183.483 97.7524 181.954L175.492 100.013L6.88489 100.013C4.8486 100.013 3.09677 98.1739 3.09677 96.036C3.09677 93.8982 4.84866 92.059 6.88489 92.059L175.504 92.059L98.0465 9.80878C97.182 9.19968 96.8862 7.9815 96.8862 7.0619C96.8862 6.15422 97.1706 5.2346 98.0465 4.315C98.6267 3.40732 99.787 3.0968 100.663 3.0968C101.527 3.0968 102.403 3.39539 103.279 4.315L187.731 92.9796C187.731 93.1274 187.804 93.2021 187.877 93.2774C187.952 93.3543 188.027 93.4319 188.027 93.5887C188.046 93.6098 188.066 93.6308 188.085 93.6518C188.338 93.9267 188.584 94.1935 188.606 94.4689C188.607 94.482 188.607 94.4951 188.607 94.5083C188.903 94.8188 188.903 95.4279 188.903 96.037C188.903 96.6461 188.903 96.9566 188.607 97.5657ZM191.489 93.2767C191.79 93.8661 191.89 94.4204 191.934 94.7363C192.001 95.2226 192 95.7194 192 95.9856L192 96.037C192 96.0544 192 96.0729 192 96.0926C192 96.3523 192.001 96.8096 191.924 97.2931C191.828 97.8884 191.64 98.41 191.393 98.9184L190.546 100.663H190.212C190.127 100.759 190.038 100.852 189.988 100.905L189.974 100.92L105.527 189.891C102.85 192.701 98.1865 192.704 95.51 189.895C94.1476 188.464 93.5636 186.587 93.5636 184.857C93.5636 183.128 94.1468 181.252 95.5071 179.822M191.489 93.2767C191.316 92.7908 191.078 92.4357 190.938 92.2406C190.903 92.1912 190.866 92.142 190.828 92.0939V91.7408L105.522 2.17912C104.076 0.661813 102.397 0 100.663 0C99.3914 0 97.0569 0.401401 95.6212 2.37737C94.3151 3.83819 93.7895 5.45521 93.7895 7.0619C93.7895 8.26663 94.1183 10.6061 95.9608 12.111L168.333 88.9622L6.88489 88.9622C2.9981 88.9622 0 92.3316 0 96.036C0 99.7405 2.99801 103.11 6.88489 103.11L168.285 103.11" fill="black"></path>
+                          <path d="M169.5 104L16.5 102.5V90H171L97.5 10.5V7L107.5 4.5C131.167 29.6667 180.2 81.5 187 87.5C193.8 93.5 191.5 99 189.5 101L105.5 184L94 181.5L169.5 104Z" fill="black"></path>
+                        </svg>
+                      {% endif %}
+                    </p>
+                  </a>
+                {% endif %}
+                {% if block.settings.second_button != blank %}
+                  <a
+                    href="{{ block.settings.second_button_url }}"
+                    class="ab-banner-button-second-{{ section.id }}"
+                    {% if open_in_new_tab %}
+                      target="_blank"
+                    {% endif %}
+                  >
+                    <p class="ab-banner-button-second-inner-{{ section.id }}">
+                      {{ block.settings.second_button }}
+                      {% if button_style == 'non_outline_arrow' or button_style == 'outline_arrow' %}
+                        <svg
+                          width="192"
+                          height="192"
+                          viewBox="0 0 192 192"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M187.827 98.7858C188.123 98.4749 188.123 98.4749 188.123 98.1761C188.419 97.8652 188.419 97.5663 188.704 97.5663C189 96.9566 189 96.6458 189 96.0361C189 95.4263 189 94.8166 188.704 94.5058C188.704 94.195 188.408 93.8961 188.123 93.5852C188.123 93.2744 187.827 93.2744 187.827 92.9755L103.287 4.21945C102.41 3.29889 101.533 3 100.668 3C99.791 3 98.6295 3.31083 98.0488 4.21945C97.1719 5.14 96.8872 6.06058 96.8872 6.96919C96.8872 7.88974 97.1833 9.10918 98.0488 9.7189L175.587 92.0539H6.79206C4.75371 92.0539 3 93.895 3 96.0351C3 98.1751 4.75365 100.016 6.79206 100.016H175.575L97.7543 182.042C96.2967 183.572 96.2967 186.322 97.7543 187.852C99.2119 189.383 101.831 189.383 103.288 187.852L187.827 98.7858Z" fill="black"></path>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M188.607 97.5657C188.432 97.5657 188.365 97.6788 188.27 97.8382C188.211 97.9378 188.141 98.0554 188.027 98.1748C188.027 98.4734 188.027 98.4734 187.731 98.7839L103.281 187.759C101.825 189.287 99.2085 189.287 97.7524 187.759C96.2963 186.23 96.2963 183.483 97.7524 181.954L175.492 100.013L6.88489 100.013C4.8486 100.013 3.09677 98.1739 3.09677 96.036C3.09677 93.8982 4.84866 92.059 6.88489 92.059L175.504 92.059L98.0465 9.80878C97.182 9.19968 96.8862 7.9815 96.8862 7.0619C96.8862 6.15422 97.1706 5.2346 98.0465 4.315C98.6267 3.40732 99.787 3.0968 100.663 3.0968C101.527 3.0968 102.403 3.39539 103.279 4.315L187.731 92.9796C187.731 93.1274 187.804 93.2021 187.877 93.2774C187.952 93.3543 188.027 93.4319 188.027 93.5887C188.046 93.6098 188.066 93.6308 188.085 93.6518C188.338 93.9267 188.584 94.1935 188.606 94.4689C188.607 94.482 188.607 94.4951 188.607 94.5083C188.903 94.8188 188.903 95.4279 188.903 96.037C188.903 96.6461 188.903 96.9566 188.607 97.5657ZM191.489 93.2767C191.79 93.8661 191.89 94.4204 191.934 94.7363C192.001 95.2226 192 95.7194 192 95.9856L192 96.037C192 96.0544 192 96.0729 192 96.0926C192 96.3523 192.001 96.8096 191.924 97.2931C191.828 97.8884 191.64 98.41 191.393 98.9184L190.546 100.663H190.212C190.127 100.759 190.038 100.852 189.988 100.905L189.974 100.92L105.527 189.891C102.85 192.701 98.1865 192.704 95.51 189.895C94.1476 188.464 93.5636 186.587 93.5636 184.857C93.5636 183.128 94.1468 181.252 95.5071 179.822M191.489 93.2767C191.316 92.7908 191.078 92.4357 190.938 92.2406C190.903 92.1912 190.866 92.142 190.828 92.0939V91.7408L105.522 2.17912C104.076 0.661813 102.397 0 100.663 0C99.3914 0 97.0569 0.401401 95.6212 2.37737C94.3151 3.83819 93.7895 5.45521 93.7895 7.0619C93.7895 8.26663 94.1183 10.6061 95.9608 12.111L168.333 88.9622L6.88489 88.9622C2.9981 88.9622 0 92.3316 0 96.036C0 99.7405 2.99801 103.11 6.88489 103.11L168.285 103.11" fill="black"></path>
+                          <path d="M169.5 104L16.5 102.5V90H171L97.5 10.5V7L107.5 4.5C131.167 29.6667 180.2 81.5 187 87.5C193.8 93.5 191.5 99 189.5 101L105.5 184L94 181.5L169.5 104Z" fill="black"></path>
+                        </svg>
+                      {% endif %}
+                    </p>
+                  </a>
+                {% endif %}
+              </div>
             </div>
           </div>
         </div>
@@ -1843,11 +1914,25 @@
       "id": "title_color",
       "default": "#FFFFFF"
     },
+
     {
       "type": "color",
       "label": "Subtitle",
       "id": "subtitle_color",
       "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "label": "Title",
+      "id": "title_color_mobile",
+      "default": "#000"
+    },
+    
+    {
+      "type": "color",
+      "label": "Subtitle",
+      "id": "subtitle_color_mobile",
+      "default": "#000"
     },
     {
       "type": "color",
@@ -1928,26 +2013,6 @@
       "unit": "px",
       "label": "Bottom",
       "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_horizontal",
-      "min": 0,
-      "max": 30,
-      "step": 0.5,
-      "unit": "rem",
-      "label": "Sides",
-      "default": 5
-    },
-    {
-      "type": "range",
-      "id": "padding_horizontal_mobile",
-      "min": 0,
-      "max": 15,
-      "step": 0.5,
-      "unit": "rem",
-      "label": "Sides - mobile",
-      "default": 1.5
     },
     {
       "type": "header",
