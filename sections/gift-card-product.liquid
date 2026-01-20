@@ -664,7 +664,7 @@
                   {{ block.shopify_attributes }}
                 >
                   {%- if show_bundle_description and bundle_description_content != blank -%}
-                    {{ bundle_description_content }}
+                    {{ bundle_description_content | raw }}
                   {%- else -%}
                     {{ product.description }}
                   {%- endif -%}
