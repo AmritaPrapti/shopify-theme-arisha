@@ -592,7 +592,7 @@
         "quantity_controls_color": "#cc858f",
         "quantity_bg_color": "#cc858f",
         "quantity_wrapper_bg_color": "#ffffff",
-        "empty_icon_color": "#cc858f",
+        "empty_icon_color": "#ffffff",
         "empty_icon_border_color": "#afafaf",
         "total_price_color": "#736d66",
         "gift_product_image_border_color": "#121212",
