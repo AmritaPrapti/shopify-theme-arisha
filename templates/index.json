@@ -11,6 +11,7 @@
   "sections": {
     "custom_liquid_3D8Tqh": {
       "type": "custom-liquid",
+      "disabled": true,
       "custom_css": [
         "video {width: 100%; display: block; margin: 0 auto;}",
         "@media screen and (max-width: 749px) {video {width: 100%; height: 100vh; object-fit: cover; object-position: center center; } {display: grid; grid-template-columns: auto; align-items: center; justify-content: center; }}"
@@ -31,6 +32,7 @@
           "settings": {
             "source": "uploaded",
             "video": "shopify://files/videos/230329-30_forher_23MAR_FLM_T112_H264_4K_ddc07e4d-b299-481a-919b-39aeda5a6bab.mp4",
+            "video_url": "",
             "autoplay": true,
             "title": "<p>Postpartum nourishment, made simple.</p>",
             "subtitle": "<p>Japanese-inspired postpartum food delivery created to support expecting and new mothers through recovery and replenishment.</p>",
@@ -44,7 +46,9 @@
       "block_order": [
         "slide_gJicxE"
       ],
-      "disabled": true,
+      "custom_css": [
+        "@media screen and (max-width: 749px) {.section-template--21523402293483__ss_video_banner_g4W4Pf-padding {display: flex; flex-direction: column; } .ab-banner-video-wrapper-template--21523402293483__ss_video_banner_g4W4Pf {order: 1; } .ab-banner-content-template--21523402293483__ss_video_banner_g4W4Pf {order: 2; }}"
+      ],
       "name": "SS - Video banner",
       "settings": {
         "layout_height": "fixed_height",
@@ -59,7 +63,7 @@
         "action_size_mobile": 40,
         "action_border_thickness": 0,
         "horizontal_alignment": "flex-start",
-        "vertical_alignment": "flex-end",
+        "vertical_alignment": "center",
         "title_custom": true,
         "title_font": "montserrat_n4",
         "title_size": 32,
@@ -89,27 +93,27 @@
         "button_radius": 6,
         "button_border_thickness": 1,
         "button_color": "#ffffff",
-        "button_hover_color": "#FFFFFF",
+        "button_hover_color": "#ffffff",
         "button_bg_color": "#c37e78",
         "button_bg_hover_color": "#c37e78",
         "button_border_color": "#121212",
         "button_border_hover_color": "#121212",
         "second_button_color": "#121212",
-        "second_button_hover_color": "#FFFFFF",
-        "second_button_bg_color": "#FFFFFF",
+        "second_button_hover_color": "#ffffff",
+        "second_button_bg_color": "#ffffff",
         "second_button_bg_hover_color": "#121212",
         "second_button_border_color": "#121212",
         "second_button_border_hover_color": "#121212",
-        "action_color": "#FFFFFF",
-        "action_hover_color": "#FFFFFF",
+        "action_color": "#ffffff",
+        "action_hover_color": "#ffffff",
         "action_bg_color": "#121212",
-        "action_bg_hover_color": "#FFFFFF",
-        "action_border_color": "#FFFFFF",
-        "action_border_hover_color": "#FFFFFF",
-        "title_color": "#FFFFFF",
-        "subtitle_color": "#FFFFFF",
+        "action_bg_hover_color": "#ffffff",
+        "action_border_color": "#ffffff",
+        "action_border_hover_color": "#ffffff",
+        "title_color": "#ffffff",
+        "subtitle_color": "#ffffff",
         "overlay_color": "#000000",
-        "background_color": "#E5E5E5",
+        "background_color": "#e5e5e5",
         "margin_top": 0,
         "margin_bottom": 0,
         "margin_horizontal": 0,
@@ -158,6 +162,7 @@
         "text_mnkn9K",
         "buttons_MDtUq6"
       ],
+      "disabled": true,
       "custom_css": [
         "h2 {color: #ffffff;}",
         "p {color: #ffffff;}",
