@@ -589,7 +589,7 @@
         "product_button_border_color": "#121212",
         "product_button_border_hover_color": "#121212",
         "quantity_color": "#ffffff",
-        "quantity_controls_color": "#ffffff",
+        "quantity_controls_color": "#cc858f",
         "quantity_bg_color": "#cc858f",
         "quantity_wrapper_bg_color": "#ffffff",
         "empty_icon_color": "#cc858f",
