@@ -1,0 +1,81 @@
+/* Bundle Selector - Styled to match variant picker */
+bundle-selects {
+  display: block;
+}
+
+bundle-selects .giftcard-bundle-ui {
+  margin-top: 1.5rem;
+}
+
+bundle-selects .product-form__input--pill {
+  margin-bottom: 1.5rem;
+}
+
+bundle-selects .product-form__input--pill .form__label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+bundle-selects .giftcard-bundle-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+bundle-selects .giftcard-bundle-buttons input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+bundle-selects .giftcard-bundle-buttons label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.55);
+  border-radius: var(--buttons-radius);
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  cursor: pointer;
+  font-size: 1.4rem;
+  line-height: 1;
+  transition: all 0.2s ease;
+  text-align: center;
+  white-space: nowrap;
+}
+
+bundle-selects .giftcard-bundle-buttons label:hover {
+  border-color: rgb(var(--color-foreground));
+  background-color: rgba(var(--color-foreground), 0.04);
+}
+
+bundle-selects .giftcard-bundle-buttons input[type="radio"]:checked + label {
+  border-color: rgb(var(--color-foreground));
+  background-color: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+}
+
+bundle-selects .giftcard-bundle-buttons input[type="radio"]:focus-visible + label {
+  outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+  outline-offset: 0.3rem;
+  box-shadow: 0 0 0 0.3rem rgb(var(--color-background)),
+    0 0 0 0.5rem rgba(var(--color-foreground), 0.3);
+}
+
+bundle-selects .giftcard-bundle-buttons input[type="radio"]:disabled + label {
+  opacity: 0.4;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 749px) {
+  bundle-selects .giftcard-bundle-buttons label {
+    min-width: 4rem;
+    min-height: 4rem;
+    padding: 0.8rem 1.6rem;
+    font-size: 1.3rem;
+  }
+}

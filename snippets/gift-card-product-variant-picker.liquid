@@ -1,0 +1,147 @@
+{% comment %}
+  Renders product variant-picker
+
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} passing the block information.
+  - product_form_id: {String} Id of the product form to which the variant picker is associated.
+  Usage:
+  {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+{% endcomment %}
+
+{% comment %}
+  Get bundle variant IDs to exclude - store as array
+{% endcomment %}
+{%- assign bundles = product.metafields.custom.giftcard_bundles.value -%}
+{%- assign bundle_variant_ids = '' -%}
+{%- assign bundle_option_values = '' -%}
+
+{%- if bundles != blank -%}
+  {%- for b in bundles -%}
+    {%- assign v = b.variant.value -%}
+    {%- comment %} Build comma-separated list with commas on both ends for exact matching {% endcomment %}
+    {%- if bundle_variant_ids == '' -%}
+      {%- assign bundle_variant_ids = ',' | append: v.id | append: ',' -%}
+      {%- assign bundle_option_values = ',' | append: v.option1 | append: ',' -%}
+    {%- else -%}
+      {%- assign bundle_variant_ids = bundle_variant_ids | append: v.id | append: ',' -%}
+      {%- assign bundle_option_values = bundle_option_values | append: v.option1 | append: ',' -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{% comment %} Debug output - remove in production {% endcomment %}
+<!-- Bundle Variant IDs: {{ bundle_variant_ids }} -->
+<!-- Bundle Option Values: {{ bundle_option_values }} -->
+
+{%- unless product.has_only_default_variant -%}
+  <variant-selects
+    id="variant-selects-{{ section.id }}"
+    data-section="{{ section.id }}"
+    data-bundle-variant-ids="{{ bundle_variant_ids }}"
+    {{ block.shopify_attributes }}
+  >
+    {%- for option in product.options_with_values -%}
+      {%- liquid
+        # Check if this option contains any non-bundle values
+        assign option_has_non_bundle_values = false
+        assign non_bundle_values_count = 0
+        
+        for value in option.values
+          # Create searchable string with commas for exact match
+          assign search_value = ',' | append: value | append: ','
+          
+          # Check if this value is NOT in bundle options
+          if bundle_option_values contains search_value
+            # This is a bundle value, skip it
+          else
+            assign option_has_non_bundle_values = true
+            assign non_bundle_values_count = non_bundle_values_count | plus: 1
+          endif
+        endfor
+      -%}
+
+      <!-- Option: {{ option.name }}, Has non-bundle values: {{ option_has_non_bundle_values }}, Count: {{ non_bundle_values_count }} -->
+
+      {%- if option_has_non_bundle_values -%}
+        {%- liquid
+          assign swatch_count = option.values | map: 'swatch' | compact | size
+          assign picker_type = block.settings.picker_type
+
+          if swatch_count > 0 and block.settings.swatch_shape != 'none'
+            if block.settings.picker_type == 'dropdown'
+              assign picker_type = 'swatch_dropdown'
+            else
+              assign picker_type = 'swatch'
+            endif
+          endif
+        -%}
+
+        {%- if picker_type == 'swatch' -%}
+          <fieldset class="js product-form__input product-form__input--swatch">
+            <legend class="form__label">
+              {{ option.name }}:
+              <span data-selected-value>
+                {{- option.selected_value -}}
+              </span>
+            </legend>
+            {% render 'gift-card-product-variant-option',
+              product: product,
+              option: option,
+              block: block,
+              picker_type: picker_type,
+              bundle_option_values: bundle_option_values
+            %}
+          </fieldset>
+
+        {%- elsif picker_type == 'button' -%}
+          <fieldset class="js product-form__input product-form__input--pill">
+            <legend class="form__label">{{ option.name }}</legend>
+            {% render 'gift-card-product-variant-option',
+              product: product,
+              option: option,
+              block: block,
+              picker_type: picker_type,
+              bundle_option_values: bundle_option_values
+            %}
+          </fieldset>
+
+        {%- else -%}
+          <div class="product-form__input product-form__input--dropdown">
+            <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+              {{ option.name }}
+            </label>
+            <div class="select">
+              {%- if picker_type == 'swatch_dropdown' -%}
+                <span data-selected-value class="dropdown-swatch">
+                  {% render 'swatch', swatch: option.selected_value.swatch, shape: block.settings.swatch_shape %}
+                </span>
+              {%- endif -%}
+              <select
+                id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                class="select__select"
+                name="options[{{ option.name | escape }}]"
+                form="{{ product_form_id }}"
+              >
+                {% render 'gift-card-product-variant-option',
+                  product: product,
+                  option: option,
+                  block: block,
+                  picker_type: picker_type,
+                  bundle_option_values: bundle_option_values
+                %}
+              </select>
+              <span class="svg-wrapper">
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </span>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    <script type="application/json" data-selected-variant>
+      {{ product.selected_or_first_available_variant | json }}
+    </script>
+  </variant-selects>
+{%- endunless -%}
