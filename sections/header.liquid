@@ -7,7 +7,9 @@
     color: {{ section.settings.color_trasparent | default: 'rgba(255, 255, 255, 1)' }};
 }
 
-.section-header:not(.shopify-section-header-sticky):not(:hover) .header-transparent .header__menu-item--top, .section-header:not(.shopify-section-header-sticky):not(:hover) .header-transparent .header__icon, .section-header:not(.shopify-section-header-sticky):not(:hover) .header-transparent .header__heading-link .h2 {
+.section-header:not(.shopify-section-header-sticky):not(:hover) .header-transparent .header__menu-item--top, .section-header:not(.shopify-section-header-sticky):not(:hover) .header-transparent .header__icon, .section-header:not(.shopify-section-header-sticky):not(:hover) .header-transparent .header__heading-link .h2, 
+.section-header:not(.shopify-section-header-sticky):not(:hover) .header-transparent .header__menu-item,
+.section-header:not(.shopify-section-header-sticky):not(:hover) .header-transparent .header__active-menu-item {
     color: {{ section.settings.color_trasparent | default: 'rgba(255, 255, 255, 1)' }};
 }
 
@@ -307,6 +309,9 @@
         endif
       endif
     %}
+    {% if section.settings.logo_position == 'top-center' %}
+      {% render 'header-search', input_id: 'Search-In-Modal' %}
+    {% endif %}
 
     {%- if section.settings.logo_position == 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
@@ -365,7 +370,9 @@
           </localization-form>
         {%- endif -%}
       </div>
-      {% render 'header-search', input_id: 'Search-In-Modal' %}
+       {% if section.settings.logo_position != 'top-center' %}
+          {% render 'header-search', input_id: 'Search-In-Modal' %}
+        {% endif %}
 
       {%- if shop.customer_accounts_enabled -%}
         <a
