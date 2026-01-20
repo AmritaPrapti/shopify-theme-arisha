@@ -40,10 +40,10 @@
       "type": "header",
       "custom_css": [],
       "settings": {
-        "logo_position": "middle-left",
+        "logo_position": "top-center",
         "mobile_logo_position": "center",
         "menu": "main-menu",
-        "menu_type_desktop": "dropdown",
+        "menu_type_desktop": "drawer",
         "sticky_header_type": "on-scroll-up",
         "transparent_header": true,
         "show_line_separator": false,
