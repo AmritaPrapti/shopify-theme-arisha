@@ -291,11 +291,38 @@
       >
     {%- endif -%}
 
+    {% comment %} for google sitelink  {% endcomment %}
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "for her. by Arisa",
+        "url": "https://forherbyarisa.com/"
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SiteNavigationElement",
+        "name": ["Shop", "Gifting", "Why We Exist", "Yakuzen"],
+        "url": [
+          "https://forherbyarisa.com/pages/shop",
+          "https://forherbyarisa.com/products/digital-gift-card",
+          "https://forherbyarisa.com/pages/why-for-her-by-arisa-exists",
+          "https://forherbyarisa.com/pages/about-yakuzen"
+        ]
+      }
+    </script>
+    {% comment %} for google sitelink  {% endcomment %}
     <script>
       if (Shopify.designMode) {
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
+
+
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
