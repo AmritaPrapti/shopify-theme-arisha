@@ -106,6 +106,16 @@
     "1766043704ae99325d": {
       "type": "apps",
       "blocks": {
+        "image_ktYcDj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/FullSizeRender_VSCO_1.jpg",
+            "custom_height": true,
+            "height": 700,
+            "height_mobile": 560,
+            "corner_radius": 4
+          }
+        },
         "forms_inline_LbJfaG": {
           "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
           "settings": {
@@ -125,6 +135,7 @@
         }
       },
       "block_order": [
+        "image_ktYcDj",
         "forms_inline_LbJfaG"
       ],
       "custom_css": [
