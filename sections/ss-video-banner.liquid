@@ -192,6 +192,7 @@
 
   .ab-banner-title-{{ section.id }} * {
     margin: 0;
+    margin-top: 20px;
     font-size: {{ title_size_mobile }}px;
     color: {{ title_color_mobile }};
     line-height: {{ title_height }}%;
@@ -330,7 +331,7 @@
     opacity: {{ overlay_opacity }}%;
     pointer-events: none;
     z-index: 1;
-    height: 98%;
+    height: 100%;
   }
 
   {% comment %} .ab-banner-slide-{{ section.id }} .ab-banner-overlay-{{ section.id }} {
@@ -448,8 +449,8 @@
   }
 
   .ab-banner-video-wrapper-{{ section.id }} {
-    position: relative;
-    order: 1;
+    {% comment %} position: relative;
+    order: 1; {% endcomment %}
   }
 
   .ab-banner-image-wrapper-{{ section.id }} {
@@ -466,6 +467,13 @@
     min-height: auto;
   }
 
+  .video-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: {{ height_mobile }}px;
+  }
+
   @media screen and (min-width: 750px) {
 
     .section-{{ section.id }} {
@@ -479,6 +487,13 @@
     .ab-banner-slide-{{ section.id }} {
       position: relative;
       display: block;
+    }
+
+    .video-image-wrapper {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      min-height: {{ height }}px;
     }
 
     .ab-banner-video-wrapper-{{ section.id }} {
@@ -798,7 +813,7 @@
             data-autoplay="true"
           {% endif %}
         >
-          <div>
+          <div class="video-image-wrapper">
             {% assign video = block.settings.video %}
             <div class="ab-banner-video-wrapper-{{ section.id }}">
               <span class="ab-banner-overlay-{{ section.id }}"></span>
