@@ -5,13 +5,16 @@
   }
 
   .section-{{ section.id }}-padding .image_wrapper_app {
-    height: var(--mobile-height, 600px);
     width: 100%;
     overflow: hidden;
     position: relative;
   }
 
-  .section-{{ section.id }}-padding .image_wrapper_app img {
+  .section-{{ section.id }}-padding .image_wrapper_app.custom-height {
+    height: var(--mobile-height, 600px);
+  }
+
+  .section-{{ section.id }}-padding .image_wrapper_app.custom-height img {
     position: absolute;
     top: 0;
     left: 0;
@@ -20,13 +23,20 @@
     object-fit: cover;
   }
 
+  .section-{{ section.id }}-padding .image_wrapper_app:not(.custom-height) img {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+  }
+
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
 
-    .section-{{ section.id }}-padding .image_wrapper_app {
+    .section-{{ section.id }}-padding .image_wrapper_app.custom-height {
       height: var(--desktop-height, 700px);
     }
   }
@@ -36,7 +46,7 @@
   <div class="app-block-wrapper">
     {%- for block in section.blocks -%}
       {% if block.type == 'image' %}
-        <div class="image_wrapper_app" style="{% if block.settings.custom_height == true %} --desktop-height: {{ block.settings.height }}px; --mobile-height: {{ block.settings.height_mobile }}px; {% endif %} border-radius: {{ block.settings.corner_radius }}px;">
+        <div class="image_wrapper_app {% if block.settings.custom_height == true %}custom-height{% endif %}" style="{% if block.settings.custom_height == true %} --desktop-height: {{ block.settings.height }}px; --mobile-height: {{ block.settings.height_mobile }}px; {% endif %} border-radius: {{ block.settings.corner_radius }}px;">
           {%- if block.settings.image != blank -%}
             {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
             {%- assign fetch_priority = 'auto' -%}
