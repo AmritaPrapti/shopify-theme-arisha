@@ -111,8 +111,8 @@
           "settings": {
             "image": "shopify://shop_images/FullSizeRender_VSCO_1.jpg",
             "custom_height": true,
-            "height": 580,
-            "height_mobile": 460,
+            "height": 700,
+            "height_mobile": 560,
             "corner_radius": 4
           }
         },
