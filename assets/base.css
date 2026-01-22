@@ -3667,3 +3667,34 @@ body {
   height: 100%;
   z-index: 3;
 }
+
+
+.app-block-wrapper {
+  display: flex;
+  align-items: center;
+ 
+}
+
+.app-block-wrapper .shopify-block {
+  flex: 1 1 auto;
+  margin: 0.5rem;
+  width: 100%;
+}
+
+.app-block-wrapper img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  flex: 1 1 auto;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+@media screen and (max-width: 768px) {
+  .app-block-wrapper {
+    flex-direction: column;
+  }
+}
