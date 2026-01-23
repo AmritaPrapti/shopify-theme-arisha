@@ -752,7 +752,7 @@
         "text_ix7Erw": {
           "type": "text",
           "settings": {
-            "text": "<p>for her. by Arisa was created to support mothers through food.</p><p>Founded by Arisa and developed alongside fellow mothers and postpartum professionals, for her. exists to bring intention, warmth, and nourishment back into postpartum care in a way that feels approachable and modern.</p><p>We apply these principles to postpartum care, creating soups that are comforting, gentle, and easy to receive when energy is low.</p>",
+            "text": "<p>for her. by Arisa was created to support mothers through food.</p><p>Founded by Arisa and developed alongside fellow mothers and postpartum professionals, for her. exists to bring intention, warmth, and nourishment back into postpartum care in a way that feels approachable and modern.</p><p>We apply these principles to postpartum care, creating foods that are comforting, gentle, and easy to receive when energy is low.</p>",
             "text_style": "body"
           }
         },
@@ -888,7 +888,9 @@
         ".jdgm-product-name {color: #ffffff;}"
       ],
       "settings": {
-        "include_margins": false
+        "include_margins": false,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "17574620113f87d666": {
