@@ -36,9 +36,12 @@
             "sale_display_type": "percentage"
           }
         },
+        "quantity_selector_6CqRM6": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
         "buy_buttons": {
           "type": "buy_buttons",
-          "disabled": true,
           "settings": {
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": true
@@ -60,6 +63,7 @@
         "title",
         "judge_me_reviews_preview_badge_C33zyg",
         "price",
+        "quantity_selector_6CqRM6",
         "buy_buttons",
         "description",
         "share"
@@ -221,7 +225,9 @@
         "judge_me_reviews_review_widget_bcw6Hj"
       ],
       "settings": {
-        "include_margins": true
+        "include_margins": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "rich_text_iUrf7i": {
