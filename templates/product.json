@@ -36,6 +36,10 @@
             "sale_display_type": "percentage"
           }
         },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
         "quantity_selector_wUgbAb": {
           "type": "quantity_selector",
           "settings": {}
@@ -46,10 +50,6 @@
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": true
           }
-        },
-        "description": {
-          "type": "description",
-          "settings": {}
         },
         "share": {
           "type": "share",
@@ -108,9 +108,9 @@
         "title",
         "judge_me_reviews_preview_badge_C33zyg",
         "price",
+        "description",
         "quantity_selector_wUgbAb",
         "buy_buttons",
-        "description",
         "share",
         "collapsible_tab_RKzFR6",
         "collapsible_tab_Fyca3P",
@@ -223,7 +223,7 @@
           "settings": {
             "heading": "How does shipping work?",
             "icon": "none",
-            "row_content": "<p>All orders placed <strong>before Monday at noon (PST)</strong> will ship on <strong>Wednesday</strong>. We currently deliver only to certain areas in <strong>Los Angeles and Orange County</strong>. Orders arrive by the end of Wednesday.</p><p>Please be available to receive your order the day of delivery to prevent thawing. If no one answers, we’ll leave the insulated delivery bag—packed with dry ice and/or ice packs—in a shaded area when possible. We cannot re-attempt delivery due to the nature of our products, so if your address is an office address with specific hours, please notify us upon ordering, via email. While we do our best to ensure items stay frozen, we cannot guarantee product quality once the delivery has been completed.</p><p>If you’re planning ahead for postpartum, we recommend ordering <strong>at least one month before your due date</strong>.</p>",
+            "row_content": "<p>All orders placed <strong>before Monday at noon (PST)</strong> will ship out on <strong>Wednesday</strong>.<br/><br/>We currently deliver only within <strong>California State</strong>. <br/>Local delivery orders will arrive within the same day, on <strong>Wednesday</strong>.<br/>FedEx deliveries will arrive on <strong>Thursday or Friday</strong>.<br/>You can select your preferred method of delivery at checkout after inputting your delivery address. Please note that we are only able to do local delivery in certain areas in LA and Orange counties.</p><p>Please be available to receive your order the day of delivery to prevent thawing. If no one answers, we will leave your delivery at the door. We cannot re-attempt delivery due to the nature of our products, so if your address is an office address with specific hours, please notify us upon ordering, via email. While we do our best to ensure items stay frozen, we cannot guarantee product quality once the delivery has been completed.</p><p>If you’re planning ahead for postpartum, we recommend ordering <strong>at least one month before your due date</strong>.</p>",
             "page": ""
           }
         }
