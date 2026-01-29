@@ -36,7 +36,7 @@
         "image": "shopify://shop_images/230330_SO52427_1600_2nd_sRGB4000.jpg",
         "section_url": "",
         "image_overlay_opacity": 30,
-        "image_height": "large",
+        "image_height": "small",
         "image_behavior": "none",
         "desktop_content_position": "middle-center",
         "desktop_content_alignment": "center",
