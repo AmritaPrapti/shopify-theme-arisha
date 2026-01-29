@@ -725,6 +725,7 @@
         "buy_buttons_Dyt7cQ",
         "share_jnzdfT"
       ],
+      "disabled": true,
       "name": "t:sections.featured-product.presets.name",
       "settings": {
         "product": "digital-gift-card",
