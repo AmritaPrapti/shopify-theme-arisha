@@ -1,1 +1,118 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"settings":{"padding_top":36,"padding_bottom":36}},"image_banner_9dgbPH":{"type":"image-banner","blocks":{"heading_PhWtQG":{"type":"heading","settings":{"heading":"About Yakuzen","heading_size":"h1"}}},"block_order":["heading_PhWtQG"],"custom_css":[".banner__box {background-color: transparent;}"],"name":"t:sections.image-banner.presets.name","settings":{"image":"shopify:\/\/shop_images\/230329_888_f758ef56-4dd5-4f5b-9975-9bfd86d2fb67.jpg","image_overlay_opacity":30,"image_height":"large","image_behavior":"none","desktop_content_position":"middle-center","desktop_content_alignment":"center","show_text_box":true,"color_scheme":"scheme-2","stack_images_on_mobile":false,"mobile_content_alignment":"center","show_text_below":false}},"multirow_PGRxMC":{"type":"multirow","blocks":{"row_6t7BWH":{"type":"row","settings":{"image":"shopify:\/\/shop_images\/230329_292.jpg","caption":"","heading":"A Different Approach to Japanese Cuisine","text":"<p>Japanese cuisine in recent years has become closely associated with wellness and quality. From the matcha craze to omakase dining, Japanese food is often seen as refined and thoughtfully prepared.<\/p><p>Alongside this well-known side of Japanese cuisine, there exists a more specific approach that focuses on how food supports the body through seasonality, balance, and preparation.<br\/><\/p>","button_label":"","button_link":""}},"row_gDtXmw":{"type":"row","settings":{"image":"shopify:\/\/shop_images\/250324_TsS_4069_1st.jpg","caption":"","heading":"What Is Yakuzen","text":"<p>Yakuzen is a form of Japanese seasonal cooking that draws from the principles of Traditional Chinese Medicine.<\/p><p>It treats food as medicine, using everyday ingredients to support the body through warmth, digestion, and balance. Rather than relying on supplements or strict rules, Yakuzen applies this knowledge through cooking that is intentional, simple, and grounded in seasonality.<\/p>","button_label":"","button_link":""}},"row_8q6Pcj":{"type":"row","settings":{"image":"shopify:\/\/shop_images\/230330_SO52427_1793_1st.png","caption":"","heading":"Why It Is Supportive Postpartum","text":"<p>After birth, the body is often sensitive and depleted. Digestion can feel slower, energy lower, and recovery ongoing.<\/p><p>Yakuzen naturally aligns with postpartum needs by emphasizing foods that are warm, easy to digest, and gently nourishing. This approach supports recovery in a way that feels calming and realistic during a time when the body needs steady care.<\/p>","button_label":"","button_link":""}}},"block_order":["row_6t7BWH","row_gDtXmw","row_8q6Pcj"],"name":"t:sections.multirow.presets.name","settings":{"image_height":"medium","desktop_image_width":"small","image_layout":"alternate-left","heading_size":"h2","text_style":"body","button_style":"secondary","desktop_content_position":"middle","desktop_content_alignment":"left","mobile_content_alignment":"left","section_color_scheme":"","row_color_scheme":"","padding_top":36,"padding_bottom":36}}},"order":["main","image_banner_9dgbPH","multirow_PGRxMC"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_9dgbPH": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_PhWtQG": {
+          "type": "heading",
+          "settings": {
+            "heading": "About Yakuzen",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_PhWtQG"
+      ],
+      "custom_css": [
+        ".banner__box {background-color: transparent;}"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/230329_888_f758ef56-4dd5-4f5b-9975-9bfd86d2fb67.jpg",
+        "section_url": "",
+        "image_overlay_opacity": 30,
+        "image_height": "small",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "scheme-2",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "multirow_PGRxMC": {
+      "type": "multirow",
+      "blocks": {
+        "row_6t7BWH": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/230329_292.jpg",
+            "caption": "",
+            "heading": "A Different Approach to Japanese Cuisine",
+            "text": "<p>Japanese cuisine in recent years has become closely associated with wellness and quality. From the matcha craze to omakase dining, Japanese food is often seen as refined and thoughtfully prepared.</p><p>Alongside this well-known side of Japanese cuisine, there exists a more specific approach that focuses on how food supports the body through seasonality, balance, and preparation.<br/></p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "row_gDtXmw": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/250324_TsS_4069_1st.jpg",
+            "caption": "",
+            "heading": "What Is Yakuzen",
+            "text": "<p>Yakuzen is a form of Japanese seasonal cooking that draws from the principles of Traditional Chinese Medicine.</p><p>It treats food as medicine, using everyday ingredients to support the body through warmth, digestion, and balance. Rather than relying on supplements or strict rules, Yakuzen applies this knowledge through cooking that is intentional, simple, and grounded in seasonality.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "row_8q6Pcj": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/230330_SO52427_1793_1st.png",
+            "caption": "",
+            "heading": "Why It Is Supportive Postpartum",
+            "text": "<p>After birth, the body is often sensitive and depleted. Digestion can feel slower, energy lower, and recovery ongoing.</p><p>Yakuzen naturally aligns with postpartum needs by emphasizing foods that are warm, easy to digest, and gently nourishing. This approach supports recovery in a way that feels calming and realistic during a time when the body needs steady care.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_6t7BWH",
+        "row_gDtXmw",
+        "row_8q6Pcj"
+      ],
+      "name": "t:sections.multirow.presets.name",
+      "settings": {
+        "image_height": "medium",
+        "desktop_image_width": "small",
+        "image_layout": "alternate-left",
+        "heading_size": "h2",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_9dgbPH",
+    "multirow_PGRxMC"
+  ]
+}

@@ -52,7 +52,7 @@
       "name": "SS - Video banner",
       "settings": {
         "layout_height": "fixed_height",
-        "height": 670,
+        "height": 500,
         "height_mobile": 460,
         "overlay_opacity": 20,
         "interval": 5,
