@@ -237,6 +237,7 @@
     },
     "featured_collection_Tkzidq": {
       "type": "featured-collection",
+      "disabled": true,
       "custom_css": [],
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
@@ -497,6 +498,7 @@
       "block_order": [
         "heading_KNJhFq"
       ],
+      "disabled": true,
       "custom_css": [],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
@@ -562,6 +564,7 @@
         "bundle_TtJqTe",
         "features_KtzMdt"
       ],
+      "disabled": true,
       "name": "SS - Bundle builder #4",
       "settings": {
         "collection": "recipe-lineup",
@@ -776,7 +779,7 @@
         "section_url": "shopify://pages/why-for-her-by-arisa-exists",
         "enable_text_link": true,
         "image": "shopify://shop_images/maxwellartphotography-swissphotographer-switzerland-familyphotoshoot-swissalps-familymomoi-101_Original.jpg",
-        "height": "adapt",
+        "height": "medium",
         "desktop_image_width": "medium",
         "layout": "text_first",
         "image_behavior": "none",
