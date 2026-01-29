@@ -23,12 +23,13 @@
         "heading_PhWtQG": {
           "type": "heading",
           "settings": {
-            "heading": "Shop",
+            "heading": "Custom Bundles",
             "heading_size": "h1"
           }
         },
         "text_9EwnjD": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "Each recipe in our lineup was created with a specific intention in mind. Guided by Yakuzen principles and developed alongside culinary experts who are also mothers, our recipes focus on warmth, digestibility, and steady nourishment. Rather than offering endless options, we curated a small lineup of foods designed to support the body through different moments of postpartum recovery.Below, you’ll find more about each recipe and the role it plays in our lineup.",
             "text_style": "body"
@@ -39,6 +40,7 @@
         "heading_PhWtQG",
         "text_9EwnjD"
       ],
+      "disabled": true,
       "custom_css": [
         ".banner__box {background-color: transparent;}"
       ],
@@ -113,6 +115,7 @@
     },
     "featured_collection_UfKBBB": {
       "type": "featured-collection",
+      "disabled": true,
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "collection": "recipe-lineup",
@@ -144,6 +147,7 @@
     },
     "featured_collection_Czymf4": {
       "type": "featured-collection",
+      "disabled": true,
       "custom_css": [],
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
@@ -250,7 +254,7 @@
         "heading_bxdyjf": {
           "type": "heading",
           "settings": {
-            "heading": "Bundle and Save.",
+            "heading": "Custom Bundles",
             "heading_size": "h1"
           }
         },
@@ -283,8 +287,8 @@
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
-        "desktop_content_position": "left",
-        "content_alignment": "left",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
         "color_scheme": "scheme-1",
         "full_width": true,
         "padding_top": 100,
