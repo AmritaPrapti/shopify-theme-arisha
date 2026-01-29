@@ -1,1 +1,298 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"settings":{"padding_top":36,"padding_bottom":36}},"image_banner_9dgbPH":{"type":"image-banner","blocks":{"heading_PhWtQG":{"type":"heading","settings":{"heading":"Why for her. by Arisa Exists","heading_size":"h1"}},"text_h4xLTU":{"type":"text","settings":{"text":"for her. by Arisa was created out of a desire to better support mothers during postpartum through food delivery.","text_style":"body"}}},"block_order":["heading_PhWtQG","text_h4xLTU"],"custom_css":[".banner__box {background-color: transparent;}"],"name":"t:sections.image-banner.presets.name","settings":{"image":"shopify:\/\/shop_images\/230329_SO52427_1291_1st.png","image_overlay_opacity":30,"image_height":"large","image_behavior":"none","desktop_content_position":"middle-center","desktop_content_alignment":"center","show_text_box":true,"color_scheme":"scheme-2","stack_images_on_mobile":false,"mobile_content_alignment":"center","show_text_below":false}},"rich_text_r8Vh6r":{"type":"rich-text","blocks":{"heading_FnF4Xf":{"type":"heading","settings":{"heading":"Why for her. by Arisa Exists","heading_size":"h2"}},"text_RzcMbT":{"type":"text","settings":{"text":"<p>for her. by Arisa was created out of a desire to better support mothers during postpartum through food.<\/p>"}}},"block_order":["heading_FnF4Xf","text_RzcMbT"],"disabled":true,"custom_css":[],"name":"t:sections.rich-text.presets.name","settings":{"desktop_content_position":"left","content_alignment":"left","color_scheme":"","full_width":true,"padding_top":40,"padding_bottom":0}},"multirow_ayKPm9":{"type":"multirow","blocks":{"row_ApaBQh":{"type":"row","settings":{"image":"shopify:\/\/shop_images\/Photo_2023-04-27_15_57_03.jpg","caption":"","heading":"A Postpartum Moment I Couldn’t Forget","text":"<p>I gave birth in 2021 in California and was fortunate to have the support of wonderful postpartum doulas. Even so, I remember many long nights after the final feed, when my baby was finally asleep and I would open the refrigerator to find it nearly empty. A few ingredients here and there, but nothing that felt ready, nourishing, or supportive of what my body needed in that moment.<\/p><p>I remember wishing that a magic genie would appear and prepare meals that were safe, clean, delicious, and restorative enough to carry me through the night as I cared for my baby.<\/p>","button_label":"","button_link":""}},"row_MMV9wr":{"type":"row","settings":{"image":"shopify:\/\/shop_images\/250324_TsS_4018_1st.jpg","caption":"","heading":"Becoming the Support I Once Needed","text":"<p>Eleven months later, I decided to become that magic genie for future mothers who might find themselves standing in front of an empty fridge, just as I once did.<\/p>","button_label":"","button_link":""}},"row_VeJGdL":{"type":"row","settings":{"image":"shopify:\/\/shop_images\/230329_SO52427_1073_2nd_sRGB4000.jpg","caption":"","heading":"Why Food","text":"<p>My passion has always been centered on empowering women and creating something meaningful. Starting with food felt natural.<\/p><p>My family has been in the food business for generations. My grandfather founded MOS Burger in Japan in 1972, which would later become one of the leading burger chains in the country, with innovations such as the Teriyaki Burger and Rice Burger. He was guided by a belief that food should be both high quality and thoughtfully adapted to local culture. That philosophy has always stayed with me.<\/p><p>Food is fundamental fuel, yet it is often overlooked during postpartum, when mothers are busy caring for everyone else. I knew that the first way I wanted to support postpartum women was through nourishment.<\/p>","button_label":"","button_link":""}},"row_X8pBF7":{"type":"row","settings":{"image":"shopify:\/\/shop_images\/230330_SO52427_2558_2nd_sRGB4000_43989325-1856-4604-a520-ccde845c6f03.jpg","caption":"","heading":"Our Approach","text":"<p>We believe postpartum care should be thoughtful, supportive, and grounded in everyday nourishment.<\/p><p>At for her. by Arisa, we focus on food that is:<\/p><ul><li>Warming<\/li><li>Easy to digest<\/li><li>Thoughtfully prepared<\/li><li>Rooted in intention<\/li><\/ul><p>Our products are created to support recovery in a way that feels approachable and realistic for modern mothers.<\/p>","button_label":"","button_link":""}},"row_BfGKBU":{"type":"row","settings":{"image":"shopify:\/\/shop_images\/Untitled_design_3.jpg","caption":"薬膳","heading":"Yakuzen","text":"<p>The philosophy behind our food is Yakuzen, a Japanese culinary approach that blends principles of Traditional Chinese Medicine with seasonal Japanese ingredients, emphasizing balance and nourishment through everyday meals.<\/p><p>Yakuzen informs how we think about ingredients, preparation, and how food supports the body over time.<br\/><\/p>","button_label":"Learn more about Yakuzen","button_link":"shopify:\/\/pages\/about-yakuzen"}},"row_k7JkDp":{"type":"row","settings":{"image":"shopify:\/\/shop_images\/230330_SO52427_2006_2nd_sRGB4000.jpg","caption":"","heading":"Our Hope","text":"<p>Our hope is simple. To mother the mothers, so they feel supported and cared for when they need it most.<\/p>","button_label":"","button_link":""}}},"block_order":["row_ApaBQh","row_MMV9wr","row_VeJGdL","row_X8pBF7","row_BfGKBU","row_k7JkDp"],"name":"t:sections.multirow.presets.name","settings":{"image_height":"adapt","desktop_image_width":"medium","image_layout":"alternate-left","heading_size":"h2","text_style":"body","button_style":"secondary","desktop_content_position":"middle","desktop_content_alignment":"left","mobile_content_alignment":"left","section_color_scheme":"","row_color_scheme":"scheme-1","padding_top":36,"padding_bottom":36}},"image_with_text_BTWbRp":{"type":"image-with-text","blocks":{"heading_haXbTM":{"type":"heading","settings":{"heading":"Image with text","heading_size":"h1"}},"text_xHhAnU":{"type":"text","settings":{"text":"<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>","text_style":"body"}},"button_tBQDTT":{"type":"button","settings":{"button_label":"Button label","button_link":"","button_style_secondary":false}}},"block_order":["heading_haXbTM","text_xHhAnU","button_tBQDTT"],"disabled":true,"name":"t:sections.image-with-text.presets.name","settings":{"height":"adapt","desktop_image_width":"medium","layout":"image_first","image_behavior":"none","content_layout":"no-overlap","desktop_content_position":"top","desktop_content_alignment":"left","mobile_content_alignment":"left","section_color_scheme":"","color_scheme":"","padding_top":36,"padding_bottom":36}},"image_banner_A8CCdF":{"type":"image-banner","blocks":{"heading_dafTXN":{"type":"heading","settings":{"heading":"Image banner","heading_size":"h1"}},"text_Xd7GJd":{"type":"text","settings":{"text":"Give customers details about the banner image(s) or content on the template.","text_style":"body"}},"buttons_aw9RNC":{"type":"buttons","settings":{"button_label_1":"Button label","button_link_1":"","button_style_secondary_1":false,"button_label_2":"Button label","button_link_2":"","button_style_secondary_2":false}}},"block_order":["heading_dafTXN","text_Xd7GJd","buttons_aw9RNC"],"disabled":true,"name":"t:sections.image-banner.presets.name","settings":{"image_overlay_opacity":0,"image_height":"medium","image_behavior":"none","desktop_content_position":"middle-center","desktop_content_alignment":"center","show_text_box":true,"color_scheme":"","stack_images_on_mobile":true,"mobile_content_alignment":"center","show_text_below":true}}},"order":["main","image_banner_9dgbPH","rich_text_r8Vh6r","multirow_ayKPm9","image_with_text_BTWbRp","image_banner_A8CCdF"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_9dgbPH": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_PhWtQG": {
+          "type": "heading",
+          "settings": {
+            "heading": "Why for her. by Arisa Exists",
+            "heading_size": "h1"
+          }
+        },
+        "text_h4xLTU": {
+          "type": "text",
+          "settings": {
+            "text": "for her. by Arisa was created out of a desire to better support mothers during postpartum through food delivery.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_PhWtQG",
+        "text_h4xLTU"
+      ],
+      "custom_css": [
+        ".banner__box {background-color: transparent;}"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/230329_SO52427_1291_1st.png",
+        "section_url": "",
+        "image_overlay_opacity": 30,
+        "image_height": "small",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "scheme-2",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "rich_text_r8Vh6r": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_FnF4Xf": {
+          "type": "heading",
+          "settings": {
+            "heading": "Why for her. by Arisa Exists",
+            "heading_size": "h2"
+          }
+        },
+        "text_RzcMbT": {
+          "type": "text",
+          "settings": {
+            "text": "<p>for her. by Arisa was created out of a desire to better support mothers during postpartum through food.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_FnF4Xf",
+        "text_RzcMbT"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "multirow_ayKPm9": {
+      "type": "multirow",
+      "blocks": {
+        "row_ApaBQh": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/Photo_2023-04-27_15_57_03.jpg",
+            "caption": "",
+            "heading": "A Postpartum Moment I Couldn’t Forget",
+            "text": "<p>I gave birth in 2021 in California and was fortunate to have the support of wonderful postpartum doulas. Even so, I remember many long nights after the final feed, when my baby was finally asleep and I would open the refrigerator to find it nearly empty. A few ingredients here and there, but nothing that felt ready, nourishing, or supportive of what my body needed in that moment.</p><p>I remember wishing that a magic genie would appear and prepare meals that were safe, clean, delicious, and restorative enough to carry me through the night as I cared for my baby.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "row_MMV9wr": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/250324_TsS_4018_1st.jpg",
+            "caption": "",
+            "heading": "Becoming the Support I Once Needed",
+            "text": "<p>Eleven months later, I decided to become that magic genie for future mothers who might find themselves standing in front of an empty fridge, just as I once did.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "row_VeJGdL": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/230329_SO52427_1073_2nd_sRGB4000.jpg",
+            "caption": "",
+            "heading": "Why Food",
+            "text": "<p>My passion has always been centered on empowering women and creating something meaningful. Starting with food felt natural.</p><p>My family has been in the food business for generations. My grandfather founded MOS Burger in Japan in 1972, which would later become one of the leading burger chains in the country, with innovations such as the Teriyaki Burger and Rice Burger. He was guided by a belief that food should be both high quality and thoughtfully adapted to local culture. That philosophy has always stayed with me.</p><p>Food is fundamental fuel, yet it is often overlooked during postpartum, when mothers are busy caring for everyone else. I knew that the first way I wanted to support postpartum women was through nourishment.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "row_X8pBF7": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/230330_SO52427_2558_2nd_sRGB4000_43989325-1856-4604-a520-ccde845c6f03.jpg",
+            "caption": "",
+            "heading": "Our Approach",
+            "text": "<p>We believe postpartum care should be thoughtful, supportive, and grounded in everyday nourishment.</p><p>At for her. by Arisa, we focus on food that is:</p><ul><li>Warming</li><li>Easy to digest</li><li>Thoughtfully prepared</li><li>Rooted in intention</li></ul><p>Our products are created to support recovery in a way that feels approachable and realistic for modern mothers.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "row_BfGKBU": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_3.jpg",
+            "caption": "薬膳",
+            "heading": "Yakuzen",
+            "text": "<p>The philosophy behind our food is Yakuzen, a Japanese culinary approach that blends principles of Traditional Chinese Medicine with seasonal Japanese ingredients, emphasizing balance and nourishment through everyday meals.</p><p>Yakuzen informs how we think about ingredients, preparation, and how food supports the body over time.<br/></p>",
+            "button_label": "Learn more about Yakuzen",
+            "button_link": "shopify://pages/about-yakuzen"
+          }
+        },
+        "row_k7JkDp": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/230330_SO52427_2006_2nd_sRGB4000.jpg",
+            "caption": "",
+            "heading": "Our Hope",
+            "text": "<p>Our hope is simple. To mother the mothers, so they feel supported and cared for when they need it most.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_ApaBQh",
+        "row_MMV9wr",
+        "row_VeJGdL",
+        "row_X8pBF7",
+        "row_BfGKBU",
+        "row_k7JkDp"
+      ],
+      "name": "t:sections.multirow.presets.name",
+      "settings": {
+        "image_height": "adapt",
+        "desktop_image_width": "medium",
+        "image_layout": "alternate-left",
+        "heading_size": "h2",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "row_color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_BTWbRp": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_haXbTM": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "heading_size": "h1"
+          }
+        },
+        "text_xHhAnU": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_tBQDTT": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_haXbTM",
+        "text_xHhAnU",
+        "button_tBQDTT"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_url": "",
+        "enable_text_link": false,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_A8CCdF": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_dafTXN": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1"
+          }
+        },
+        "text_Xd7GJd": {
+          "type": "text",
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "buttons_aw9RNC": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_dafTXN",
+        "text_Xd7GJd",
+        "buttons_aw9RNC"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "section_url": "",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_9dgbPH",
+    "rich_text_r8Vh6r",
+    "multirow_ayKPm9",
+    "image_with_text_BTWbRp",
+    "image_banner_A8CCdF"
+  ]
+}
