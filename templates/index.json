@@ -793,6 +793,55 @@
         "padding_bottom": 36
       }
     },
+    "176610496544f20ae1": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_testimonials_carousel_CwCGKh": {
+          "type": "shopify://apps/judge-me-reviews/blocks/testimonials_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": true,
+            "reviews_selection": "all",
+            "products": [],
+            "star_rating": "5_star",
+            "max_reviews": 20,
+            "quote_marks_size": "small",
+            "product_name_text_size": "small",
+            "verified_badge_style": "icon",
+            "card_height": "medium",
+            "text_size": "extra_small",
+            "stars_size": "small",
+            "arrows_position": "bottom",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "quote_marks_style": "serif",
+            "card_color": "#c37e78",
+            "stars_and_quote_marks_color": "#ffffff",
+            "text_color": "#c37e78",
+            "arrows_color": "#afafaf",
+            "show_border": false,
+            "border_color": "#108474",
+            "show_drop_shadow": false,
+            "transition_speed": 5,
+            "header_text": "Testimonials",
+            "show_average_rating": true
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_testimonials_carousel_CwCGKh"
+      ],
+      "custom_css": [
+        "p {color: #ffffff;}",
+        ".jdgm-reviewer-name {color: #ffffff;}",
+        ".jdgm-reviewer-verified-icon {color: #ffffff;}",
+        ".jdgm-product-name {color: #ffffff;}"
+      ],
+      "settings": {
+        "include_margins": false,
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
     "image_banner_AWGaxM": {
       "type": "image-banner",
       "blocks": {
@@ -845,55 +894,6 @@
         "stack_images_on_mobile": true,
         "mobile_content_alignment": "center",
         "show_text_below": false
-      }
-    },
-    "176610496544f20ae1": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_testimonials_carousel_CwCGKh": {
-          "type": "shopify://apps/judge-me-reviews/blocks/testimonials_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "show_sample_reviews": true,
-            "reviews_selection": "all",
-            "products": [],
-            "star_rating": "5_star",
-            "max_reviews": 20,
-            "quote_marks_size": "small",
-            "product_name_text_size": "small",
-            "verified_badge_style": "icon",
-            "card_height": "medium",
-            "text_size": "extra_small",
-            "stars_size": "small",
-            "arrows_position": "bottom",
-            "max_width": 1100,
-            "corner_styling": "soft",
-            "quote_marks_style": "serif",
-            "card_color": "#c37e78",
-            "stars_and_quote_marks_color": "#ffffff",
-            "text_color": "#c37e78",
-            "arrows_color": "#afafaf",
-            "show_border": false,
-            "border_color": "#108474",
-            "show_drop_shadow": false,
-            "transition_speed": 5,
-            "header_text": "Testimonials",
-            "show_average_rating": true
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_testimonials_carousel_CwCGKh"
-      ],
-      "custom_css": [
-        "p {color: #ffffff;}",
-        ".jdgm-reviewer-name {color: #ffffff;}",
-        ".jdgm-reviewer-verified-icon {color: #ffffff;}",
-        ".jdgm-product-name {color: #ffffff;}"
-      ],
-      "settings": {
-        "include_margins": false,
-        "padding_top": 32,
-        "padding_bottom": 32
       }
     },
     "17574620113f87d666": {
@@ -968,8 +968,8 @@
     "rich_text_HdgHzH",
     "ss_bundle_builder_4_iHxBbg",
     "image_with_text_NRaG6K",
-    "image_banner_AWGaxM",
     "176610496544f20ae1",
+    "image_banner_AWGaxM",
     "17574620113f87d666"
   ]
 }
