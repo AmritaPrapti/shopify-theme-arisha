@@ -1,0 +1,98 @@
+{{ 'build-own-bundle.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="color-{{ section.settings.color_scheme }} ">
+    <div class="section-{{ section.id }}-padding">
+        <div class="bundle-tabs-wrapper">
+            {% for block in section.blocks %}
+                {% comment %} make a tab for bundle name  {% endcomment %}
+                <div class="bundle-tab">
+                    <h2>{{ block.settings.tab_name }}</h2>
+                    <p>{{ block.settings.discount_text }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</section>
+
+{% schema %}
+    {
+        "name": "Build Your Own Bundle",
+        "settings": [
+            {
+                "type": "color_scheme",
+                "id": "color_scheme",
+                "label": "t:sections.all.colors.label",
+                "default": "scheme-1"
+            },
+            {
+                "type": "range",
+                "id": "padding_top",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "px",
+                "label": "Padding Top",
+                "default": 20
+            },
+            {
+                "type": "range",
+                "id": "padding_bottom",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "px",
+                "label": "Padding Bottom",
+                "default": 20
+            }
+        ],
+        "blocks": [
+            {
+                "name": "bundle",
+                "type": "bundle",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "tab_name",
+                        "label": "Bundle Tab Name",
+                        "default": "14 Pack",
+                        "info": "This is the name of the bundle that will appear on the storefront. For example, if you are creating a bundle of 14 products, you might name this '14 Pack'."
+                    },
+                    {
+                        "type": "text",
+                        "id": "discount_text",
+                        "label": "Discount Text for Bundle",
+                        "default": "10% off",
+                        "info": "This is the discount text that will appear on the storefront for this bundle. For example, if you are offering a 10% discount for this bundle, you might enter '10% off' here."
+                    },
+                    {
+                        "type": "collection",
+                        "id": "collection",
+                        "label": "Collection",
+                        "info": "Choose a collection to pull products from for this bundle."
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Build Your Own Bundle",
+                "category": "Product"
+            }
+        ]
+    }
+{% endschema %}
