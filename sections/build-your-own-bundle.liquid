@@ -1,4 +1,7 @@
 {{ 'build-own-bundle.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'build-own-bundle.js' | asset_url }}" defer></script>
+
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -14,85 +17,174 @@
   }
 {%- endstyle -%}
 
-<section class="color-{{ section.settings.color_scheme }} ">
-    <div class="section-{{ section.id }}-padding">
-        <div class="bundle-tabs-wrapper">
-            {% for block in section.blocks %}
-                {% comment %} make a tab for bundle name  {% endcomment %}
-                <div class="bundle-tab">
-                    <h2>{{ block.settings.tab_name }}</h2>
-                    <p>{{ block.settings.discount_text }}</p>
-                </div>
-            {% endfor %}
+<section class="color-{{ section.settings.color_scheme }} " style="--quantity-button:{{ section.settings.quantity_button_color}}">
+  <div class="section-{{ section.id }}-padding page-width">
+    <div
+      class="bundle-tabs-wrapper"
+      style="background-color: {{ section.settings.tab_background_color }}; color: {{ section.settings.tab_text_color }};"
+    >
+      {% for block in section.blocks %}
+        {% comment %} make a tab for bundle name  {% endcomment %}
+        <div
+          class="bundle-tab bundle-tab-{{ forloop.index }} {% if forloop.first %} active{% endif %}"
+          style="--tab-bg-color: {{ section.settings.active_tab_bg }}; --tab-text-color: {{ section.settings.active_tab_color }}"
+          data-product-limit="{{ block.settings.product_limit }}"
+          data-discount-text="{{ block.settings.discount_text }}"
+        >
+          <h2 class="bundle-name">{{ block.settings.tab_name }}</h2>
+          <p class="discount-info">{{ block.settings.discount_text }}</p>
         </div>
+      {% endfor %}
     </div>
 
+    <div class="bundle-products-container">
+        <div class="bundle-products-wrapper">
+          {% for block in section.blocks %}
+            <div class="bundle-products bundle-products-{{ forloop.index }} {% if forloop.first %} active{% endif %}">
+              {% assign collection = block.settings.collection %}
+              {% if collection != blank %}
+                {% paginate collection.products by 20 %}
+                  <div class="bundle-product-grid">
+                    {% for product in collection.products %}
+                      {% render 'bundle-product-card', card_product: product, settings: section.settings %}
+                    {% endfor %}
+                  </div>
+                {% endpaginate %}
+              {% else %}
+                <p>Please select a collection for this bundle.</p>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+        <div class="selected-product-summary-wrapper">
+          <div class="selected-product-summary">
+            <!-- Summary content will be populated by JavaScript -->
+          </div>
+        </div>
+    </div>
+  </div>
 </section>
 
 {% schema %}
+{
+  "name": "Build Your Own Bundle",
+  "settings": [
     {
-        "name": "Build Your Own Bundle",
-        "settings": [
-            {
-                "type": "color_scheme",
-                "id": "color_scheme",
-                "label": "t:sections.all.colors.label",
-                "default": "scheme-1"
-            },
-            {
-                "type": "range",
-                "id": "padding_top",
-                "min": 0,
-                "max": 100,
-                "step": 1,
-                "unit": "px",
-                "label": "Padding Top",
-                "default": 20
-            },
-            {
-                "type": "range",
-                "id": "padding_bottom",
-                "min": 0,
-                "max": 100,
-                "step": 1,
-                "unit": "px",
-                "label": "Padding Bottom",
-                "default": 20
-            }
-        ],
-        "blocks": [
-            {
-                "name": "bundle",
-                "type": "bundle",
-                "settings": [
-                    {
-                        "type": "text",
-                        "id": "tab_name",
-                        "label": "Bundle Tab Name",
-                        "default": "14 Pack",
-                        "info": "This is the name of the bundle that will appear on the storefront. For example, if you are creating a bundle of 14 products, you might name this '14 Pack'."
-                    },
-                    {
-                        "type": "text",
-                        "id": "discount_text",
-                        "label": "Discount Text for Bundle",
-                        "default": "10% off",
-                        "info": "This is the discount text that will appear on the storefront for this bundle. For example, if you are offering a 10% discount for this bundle, you might enter '10% off' here."
-                    },
-                    {
-                        "type": "collection",
-                        "id": "collection",
-                        "label": "Collection",
-                        "info": "Choose a collection to pull products from for this bundle."
-                    }
-                ]
-            }
-        ],
-        "presets": [
-            {
-                "name": "Build Your Own Bundle",
-                "category": "Product"
-            }
-        ]
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "tab_background_color",
+      "label": "Tab Background Color",
+      "default": "#E6C9C7",
+      "info": "Set the background color for the tabs."
+    },
+    {
+      "type": "color",
+      "id": "tab_text_color",
+      "label": "Tab Text Color",
+      "default": "#666666",
+      "info": "Set the text color for the tabs."
+    },
+    {
+      "type": "color",
+      "id": "active_tab_bg",
+      "label": "Active Tab Background Color",
+      "default": "#CC858F",
+      "info": "Set the background color for the active tab."
+    },
+    {
+      "type": "color",
+      "id": "active_tab_color",
+      "label": "Active Tab Text Color",
+      "default": "#FFFFFF",
+      "info": "Set the text color for the active tab."
+    },
+    {
+        "type": "color",
+        "id": "button_background",
+        "label": "Button Background",
+        "default": "#CC858F"
+    },
+    {
+        "type": "color",
+        "id": "button_text_color",
+        "label": "Button Text Color",
+        "default": "#FFFFFF",
+        "info": "Set the text color for the button."
+    },
+    {
+        "type": "color",
+        "id": "quantity_button_color",
+        "label": "Quantity Button Color",
+        "default": "#CC858F",
+        "info": "Set the color for the quantity buttons."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 20
     }
+  ],
+  "blocks": [
+    {
+      "name": "bundle",
+      "type": "bundle",
+      "settings": [
+        {
+            "type": "number",
+            "id": "product_limit",
+            "label": "Maximum Products Allowed in Bundle",
+            "default": 14,
+            "info": "Set the maximum number of products that customers can add to this bundle."
+        },
+        {
+          "type": "text",
+          "id": "tab_name",
+          "label": "Bundle Tab Name",
+          "default": "14 Pack",
+          "info": "This is the name of the bundle that will appear on the storefront. For example, if you are creating a bundle of 14 products, you might name this '14 Pack'."
+        },
+        {
+          "type": "text",
+          "id": "discount_text",
+          "label": "Discount Text for Bundle",
+          "default": "10% off",
+          "info": "This is the discount text that will appear on the storefront for this bundle. For example, if you are offering a 10% discount for this bundle, you might enter '10% off' here."
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection",
+          "info": "Choose a collection to pull products from for this bundle."
+        }
+        
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Build Your Own Bundle",
+      "category": "Product"
+    }
+  ]
+}
 {% endschema %}
