@@ -414,16 +414,13 @@ section:has(.bundle-products-container) .page-width {
 
 .progress-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #cc858f, #b8727c);
   border-radius: 10px;
   transition:
     width 0.4s ease,
     background 0.3s ease;
 }
 
-.progress-bar-fill.complete {
-  background: linear-gradient(90deg, #4caf50, #45a049);
-}
+
 
 .bundle-progress-info {
   margin-top: 16px;
@@ -1032,9 +1029,12 @@ section:has(.bundle-products-container) > *,
 }
 
 /* Responsive Design */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1366px) {
   .bundle-product-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .progress-count {
+    display: none;
   }
 }
 
