@@ -29,7 +29,7 @@
     data-add-to-cart-text="{{ section.settings.add_to_cart_text }}"
     data-discount-tiers='[{% for block in section.blocks %}{% if forloop.first == false %},{% endif %}{"minQuantity":{{ block.settings.min_quantity }},"discountText":"{{ block.settings.discount_text }}"}{% endfor %}]'>
 
-    <div>
+    <div class="bundle-header">
       {% if section.settings.heading != blank %}
         <h2 class="bundle-heading">{{ section.settings.heading }}</h2>
       {% endif %}

@@ -476,6 +476,11 @@ section:has(.bundle-products-container) .page-width {
   gap: 12px;
 }
 
+.bundle-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 .remove-all-btn {
   display: flex;
   align-items: center;
