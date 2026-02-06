@@ -491,7 +491,7 @@ class BundleBuilder {
         <div class="bundle-progress-container">
           <div class="progress-text">
             <span class="progress-label">${this.getProgressMessage(totalItems)}</span>
-            <span class="progress-count">${totalItems} ${currentTier ? `(${currentTier.discountText})` : ''}</span>
+            <span class="progress-count">${totalItems}</span>
           </div>
           <div class="progress-bar">
             <div class="progress-bar-fill" style="width: ${progressPercentage}%; background-color: ${this.settings.progressBarColor}"></div>
