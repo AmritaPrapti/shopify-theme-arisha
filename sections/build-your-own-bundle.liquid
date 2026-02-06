@@ -2,6 +2,8 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'build-own-bundle.js' | asset_url }}" defer></script>
 
+  {% assign title_font = section.settings.font_family_heading %}
+  {% assign body_font = section.settings.font_family_body %}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -15,9 +17,47 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  {{  title_font | font_face: font_display: 'swap' }}
+  {{  body_font | font_face: font_display: 'swap' }}
+
+  .section-{{ section.id }}-padding,
+  .section-{{ section.id }}-padding * {
+    --font-heading-family: {{ title_font.family }}, {{ title_font.fallback_families }};
+    --font-body-family: {{ body_font.family }}, {{ body_font.fallback_families }};
+  }
+
+  .section-{{ section.id }}-padding .bundle-heading,
+  .section-{{ section.id }}-padding .tier-step-label,
+  .section-{{ section.id }}-padding .tier-step-discount,
+  .section-{{ section.id }}-padding .summary-header h3,
+  .section-{{ section.id }}-padding .bundle-product-card h3,
+  .section-{{ section.id }}-padding h1,
+  .section-{{ section.id }}-padding h2,
+  .section-{{ section.id }}-padding h3,
+  .section-{{ section.id }}-padding h4,
+  .section-{{ section.id }}-padding h5,
+  .section-{{ section.id }}-padding h6 {
+    font-family: {{ title_font.family }}, {{ title_font.fallback_families }};
+  }
+
+  .section-{{ section.id }}-padding .bundle-details,
+  .section-{{ section.id }}-padding .summary-product-title,
+  .section-{{ section.id }}-padding .summary-product-price,
+  .section-{{ section.id }}-padding .bundle-product-card p,
+  .section-{{ section.id }}-padding .compact-selection-count,
+  .section-{{ section.id }}-padding .compact-next-tier-message,
+  .section-{{ section.id }}-padding p,
+  .section-{{ section.id }}-padding span,
+  .section-{{ section.id }}-padding div,
+  .section-{{ section.id }}-padding button {
+    font-family: {{ body_font.family }}, {{ body_font.fallback_families }};
+  }
 {%- endstyle -%}
 
-<section class="color-{{ section.settings.color_scheme }} " style="--quantity-button:{{ section.settings.quantity_button_color}}; --font-body-family: {{ section.settings.font_family_body }}; --font-heading-family: {{ section.settings.font_family_heading }}; ">
+
+
+<section class="color-{{ section.settings.color_scheme }} " style="--quantity-button:{{ section.settings.quantity_button_color}};">
   <div class="section-{{ section.id }}-padding page-width" 
     data-progress-bar-color="{{ section.settings.progress_bar_color }}"
     data-success-color="{{ section.settings.success_message_color }}"
