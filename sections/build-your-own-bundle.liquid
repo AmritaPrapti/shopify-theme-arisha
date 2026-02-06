@@ -17,7 +17,7 @@
   }
 {%- endstyle -%}
 
-<section class="color-{{ section.settings.color_scheme }} " style="--quantity-button:{{ section.settings.quantity_button_color}}; --font-family: {{ section.settings.font_family }};">
+<section class="color-{{ section.settings.color_scheme }} " style="--quantity-button:{{ section.settings.quantity_button_color}}; --font-body-family: {{ section.settings.font_family_body }}; --font-heading-family: {{ section.settings.font_family_heading }}; ">
   <div class="section-{{ section.id }}-padding page-width" 
     data-progress-bar-color="{{ section.settings.progress_bar_color }}"
     data-success-color="{{ section.settings.success_message_color }}"
@@ -95,8 +95,14 @@
     },
     {
       "type": "font_picker",
-      "id": "font_family",
-      "label": "Choose a font family for the section",
+      "id": "font_family_body",
+      "label": "Choose a font family for the body text in the section",
+      "default": "quattrocento_sans_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "font_family_heading",
+      "label": "Choose a font family for headings in the section",
       "default": "quattrocento_sans_n4"
     },
     {
