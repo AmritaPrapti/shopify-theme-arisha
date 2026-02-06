@@ -347,6 +347,11 @@ section:has(.bundle-products-container) .page-width {
   background-color: transparent;
 }
 
+.custom-quantity-selector input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
 /* Selected Product Summary Styles */
 .selected-product-summary-wrapper {
   position: relative;
@@ -649,8 +654,25 @@ section:has(.bundle-products-container) .page-width {
 .summary-qty-value {
   font-size: 14px;
   font-weight: 600;
-  min-width: 20px;
+  min-width: 30px;
+  width: 40px;
   text-align: center;
+  border: none;
+  background: transparent;
+  padding: 0;
+  -moz-appearance: textfield;
+}
+
+.summary-qty-value::-webkit-inner-spin-button,
+.summary-qty-value::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.summary-qty-value:focus {
+  outline: none;
+  background: #f5f5f5;
+  border-radius: 4px;
 }
 
 .summary-remove-btn {

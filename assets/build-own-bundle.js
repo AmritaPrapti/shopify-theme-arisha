@@ -170,6 +170,35 @@ class BundleBuilder {
           this.updateProductQuantityFromCard(card, currentValue + 1);
         });
       }
+
+      // Handle manual input changes
+      if (quantityInput) {
+        quantityInput.addEventListener('change', (e) => {
+          let newValue = parseInt(e.target.value) || 1;
+          
+          // Ensure minimum value is 1
+          if (newValue < 1) {
+            newValue = 1;
+            e.target.value = 1;
+          }
+          
+          // Check if product is already in bundle
+          const variantId = card.querySelector('.add-bundle')?.dataset.variantId || card.querySelector('.custom-quantity-selector')?.dataset.variantId;
+          const existingProductIndex = this.selectedProducts.findIndex(p => p.variantId === variantId);
+          
+          if (existingProductIndex >= 0) {
+            // Update existing product quantity
+            this.updateProductQuantityFromCard(card, newValue);
+          }
+        });
+
+        // Prevent typing non-numeric characters
+        quantityInput.addEventListener('keypress', (e) => {
+          if (!/[0-9]/.test(e.key) && e.key !== 'Enter') {
+            e.preventDefault();
+          }
+        });
+      }
     });
   }
 
@@ -362,9 +391,9 @@ class BundleBuilder {
         <div class="summary-product-details">
           <h4 class="summary-product-title">${product.title}</h4>
           <p class="summary-product-price">${product.price}</p>
-          <div class="summary-quantity-controls">
+          <div class="summary-quantity-controls" data-index="${index}">
             <button class="summary-qty-btn minus" data-index="${index}">−</button>
-            <span class="summary-qty-value">${product.quantity}</span>
+            <input type="number" class="summary-qty-value" value="${product.quantity}" min="1" data-index="${index}">
             <button class="summary-qty-btn plus" data-index="${index}">+</button>
           </div>
         </div>
@@ -560,6 +589,32 @@ class BundleBuilder {
         
         this.updateProductQuantity(index, this.selectedProducts[index].quantity + 1);
       });
+    });
+
+    // Handle manual input changes in summary
+    document.querySelectorAll('.summary-qty-value').forEach(input => {
+      // Check if it's actually an input element (not a span)
+      if (input.tagName === 'INPUT') {
+        input.addEventListener('change', (e) => {
+          const index = parseInt(e.target.closest('.summary-quantity-controls').dataset.index || e.target.dataset.index);
+          let newValue = parseInt(e.target.value) || 1;
+          
+          // Ensure minimum value is 1
+          if (newValue < 1) {
+            newValue = 1;
+            e.target.value = 1;
+          }
+          
+          this.updateProductQuantity(index, newValue);
+        });
+
+        // Prevent typing non-numeric characters
+        input.addEventListener('keypress', (e) => {
+          if (!/[0-9]/.test(e.key) && e.key !== 'Enter') {
+            e.preventDefault();
+          }
+        });
+      }
     });
 
     // Add to cart button
