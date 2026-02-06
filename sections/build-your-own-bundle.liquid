@@ -17,44 +17,53 @@
   }
 {%- endstyle -%}
 
-<section class="color-{{ section.settings.color_scheme }} " style="--quantity-button:{{ section.settings.quantity_button_color}}">
-  <div class="section-{{ section.id }}-padding page-width">
-    <div
-      class="bundle-tabs-wrapper"
-      style="background-color: {{ section.settings.tab_background_color }}; color: {{ section.settings.tab_text_color }};"
-    >
+<section class="color-{{ section.settings.color_scheme }} " style="--quantity-button:{{ section.settings.quantity_button_color}}; --font-family: {{ section.settings.font_family }};">
+  <div class="section-{{ section.id }}-padding page-width" 
+    data-progress-bar-color="{{ section.settings.progress_bar_color }}"
+    data-success-color="{{ section.settings.success_message_color }}"
+    data-empty-heading-color="{{ section.settings.empty_heading_color }}"
+    data-empty-subtitle-color="{{ section.settings.empty_subtitle_color }}"
+    data-empty-heading-text="{{ section.settings.empty_heading_text }}"
+    data-empty-subtitle-text="{{ section.settings.empty_subtitle_text }}"
+    data-add-to-cart-bg="{{ section.settings.add_to_cart_bg }}"
+    data-add-to-cart-text="{{ section.settings.add_to_cart_text }}"
+    data-discount-tiers='[{% for block in section.blocks %}{% if forloop.first == false %},{% endif %}{"minQuantity":{{ block.settings.min_quantity }},"discountText":"{{ block.settings.discount_text }}"}{% endfor %}]'>
+
+    <!-- Discount Tiers Steps -->
+    {% if section.blocks.size > 0 %}
+    <div class="discount-tiers-steps" id="discount-tiers-steps">
+      <div class="tier-step tier-start active">
+        <div class="tier-step-circle">0</div>
+        <div class="tier-step-label">Start</div>
+        <div class="tier-step-discount">No discount</div>
+      </div>
       {% for block in section.blocks %}
-        {% comment %} make a tab for bundle name  {% endcomment %}
-        <div
-          class="bundle-tab bundle-tab-{{ forloop.index }} {% if forloop.first %} active{% endif %}"
-          style="--tab-bg-color: {{ section.settings.active_tab_bg }}; --tab-text-color: {{ section.settings.active_tab_color }}"
-          data-product-limit="{{ block.settings.product_limit }}"
-          data-discount-text="{{ block.settings.discount_text }}"
-        >
-          <h2 class="bundle-name">{{ block.settings.tab_name }}</h2>
-          <p class="discount-info">{{ block.settings.discount_text }}</p>
+        <div class="tier-step-connector"></div>
+        <div class="tier-step" data-min-quantity="{{ block.settings.min_quantity }}">
+          <div class="tier-step-circle">{{ block.settings.min_quantity }}</div>
+          <div class="tier-step-label">{{ block.settings.min_quantity }}+ Products</div>
+          <div class="tier-step-discount">{{ block.settings.discount_text }}</div>
         </div>
       {% endfor %}
     </div>
+    {% endif %}
 
     <div class="bundle-products-container">
         <div class="bundle-products-wrapper">
-          {% for block in section.blocks %}
-            <div class="bundle-products bundle-products-{{ forloop.index }} {% if forloop.first %} active{% endif %}">
-              {% assign collection = block.settings.collection %}
-              {% if collection != blank %}
-                {% paginate collection.products by 20 %}
-                  <div class="bundle-product-grid">
-                    {% for product in collection.products %}
-                      {% render 'bundle-product-card', card_product: product, settings: section.settings %}
-                    {% endfor %}
-                  </div>
-                {% endpaginate %}
-              {% else %}
-                <p>Please select a collection for this bundle.</p>
-              {% endif %}
-            </div>
-          {% endfor %}
+          <div class="bundle-products active">
+            {% assign collection = section.settings.collection %}
+            {% if collection != blank %}
+              {% paginate collection.products by 50 %}
+                <div class="bundle-product-grid">
+                  {% for product in collection.products %}
+                    {% render 'bundle-product-card', card_product: product, settings: section.settings %}
+                  {% endfor %}
+                </div>
+              {% endpaginate %}
+            {% else %}
+              <p>Please select a collection for the bundle.</p>
+            {% endif %}
+          </div>
         </div>
         <div class="selected-product-summary-wrapper">
           <div class="selected-product-summary">
@@ -76,32 +85,20 @@
       "default": "scheme-1"
     },
     {
-      "type": "color",
-      "id": "tab_background_color",
-      "label": "Tab Background Color",
-      "default": "#E6C9C7",
-      "info": "Set the background color for the tabs."
+      "type": "font_picker",
+      "id": "font_family",
+      "label": "Choose a font family for the section",
+      "default": "quattrocento_sans_n4"
     },
     {
-      "type": "color",
-      "id": "tab_text_color",
-      "label": "Tab Text Color",
-      "default": "#666666",
-      "info": "Set the text color for the tabs."
+      "type": "collection",
+      "id": "collection",
+      "label": "Product Collection",
+      "info": "Choose a collection to pull products from for the bundle."
     },
     {
-      "type": "color",
-      "id": "active_tab_bg",
-      "label": "Active Tab Background Color",
-      "default": "#CC858F",
-      "info": "Set the background color for the active tab."
-    },
-    {
-      "type": "color",
-      "id": "active_tab_color",
-      "label": "Active Tab Text Color",
-      "default": "#FFFFFF",
-      "info": "Set the text color for the active tab."
+      "type": "header",
+      "content": "Color settings"
     },
     {
         "type": "color",
@@ -122,6 +119,78 @@
         "label": "Quantity Button Color",
         "default": "#CC858F",
         "info": "Set the color for the quantity buttons."
+    },
+    {
+        "type": "color",
+        "id": "progress_bar_color",
+        "label": "Progress Bar Color",
+        "default": "#4caf50",
+        "info": "Set the color for the bundle progress bar."
+    },
+    {
+        "type": "color",
+        "id": "success_message_color",
+        "label": "Success Message Color",
+        "default": "#4caf50",
+        "info": "Set the color for success messages."
+    },
+    {
+        "type": "color",
+        "id": "empty_heading_color",
+        "label": "Empty State Heading Color",
+        "default": "#333333",
+        "info": "Set the heading color for empty bundle state."
+    },
+    {
+        "type": "color",
+        "id": "empty_subtitle_color",
+        "label": "Empty State Subtitle Color",
+        "default": "#666666",
+        "info": "Set the subtitle color for empty bundle state."
+    },
+    {
+        "type": "color",
+        "id": "add_to_cart_bg",
+        "label": "Add to Cart Button Background",
+        "default": "#CC858F",
+        "info": "Set the background color for add to cart button."
+    },
+    {
+        "type": "color",
+        "id": "add_to_cart_text",
+        "label": "Add to Cart Button Text Color",
+        "default": "#FFFFFF",
+        "info": "Set the text color for add to cart button."
+    },
+    {
+      "type": "header",
+      "content": "Custom text settings"
+    },
+    {
+        "type": "text",
+        "id": "empty_heading_text",
+        "label": "Empty State Heading",
+        "default": "Your Bundle is Empty",
+        "info": "The heading text shown when bundle is empty."
+    },
+    {
+        "type": "text",
+        "id": "empty_subtitle_text",
+        "label": "Empty State Subtitle",
+        "default": "Start adding products to build your custom bundle",
+        "info": "The subtitle text shown when bundle is empty."
+    },
+    {
+      "type": "text",
+      "id": "add_to_cart_label",
+      "label": "Add to Cart Button Label",
+      "default": "Add bundle to Cart",
+      "info": "The label text shown on the add to cart button.",
+      "placeholder": "Add to Cart"
+    },
+    {
+      "type": "header",
+      "content": "Spacing settings"
     },
     {
       "type": "range",
@@ -146,44 +215,46 @@
   ],
   "blocks": [
     {
-      "name": "bundle",
-      "type": "bundle",
+      "name": "Discount Tier",
+      "type": "discount_tier",
       "settings": [
         {
-            "type": "number",
-            "id": "product_limit",
-            "label": "Maximum Products Allowed in Bundle",
-            "default": 14,
-            "info": "Set the maximum number of products that customers can add to this bundle."
-        },
-        {
-          "type": "text",
-          "id": "tab_name",
-          "label": "Bundle Tab Name",
-          "default": "14 Pack",
-          "info": "This is the name of the bundle that will appear on the storefront. For example, if you are creating a bundle of 14 products, you might name this '14 Pack'."
+          "type": "number",
+          "id": "min_quantity",
+          "label": "Minimum Quantity",
+          "default": 14,
+          "info": "Minimum number of products required for this discount tier."
         },
         {
           "type": "text",
           "id": "discount_text",
-          "label": "Discount Text for Bundle",
+          "label": "Discount Text",
           "default": "10% off",
-          "info": "This is the discount text that will appear on the storefront for this bundle. For example, if you are offering a 10% discount for this bundle, you might enter '10% off' here."
-        },
-        {
-          "type": "collection",
-          "id": "collection",
-          "label": "Collection",
-          "info": "Choose a collection to pull products from for this bundle."
+          "info": "The discount text to display (e.g., '10% off', '15% discount')."
         }
-        
       ]
     }
   ],
   "presets": [
     {
       "name": "Build Your Own Bundle",
-      "category": "Product"
+      "category": "Product",
+      "blocks": [
+        {
+          "type": "discount_tier",
+          "settings": {
+            "min_quantity": 14,
+            "discount_text": "10% off"
+          }
+        },
+        {
+          "type": "discount_tier",
+          "settings": {
+            "min_quantity": 22,
+            "discount_text": "15% off"
+          }
+        }
+      ]
     }
   ]
 }
