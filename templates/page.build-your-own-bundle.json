@@ -33,7 +33,8 @@
       ],
       "settings": {
         "color_scheme": "",
-        "font_family": "quattrocento_sans_n4",
+        "font_family_body": "montserrat_n4",
+        "font_family_heading": "montserrat_n4",
         "collection": "recipe-lineup",
         "heading": "Build Your own bundle",
         "details": "",
