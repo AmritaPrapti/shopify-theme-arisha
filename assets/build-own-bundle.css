@@ -478,7 +478,7 @@ section:has(.bundle-products-container) .page-width {
 
 .bundle-header {
   text-align: center;
-  margin-bottom: 30px;
+  margin: 40px 0;
 }
 
 .remove-all-btn {
