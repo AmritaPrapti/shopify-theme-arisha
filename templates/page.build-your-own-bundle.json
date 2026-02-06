@@ -11,10 +11,30 @@
   "sections": {
     "main": {
       "type": "build-your-own-bundle",
+      "blocks": {
+        "discount_tier_eDtJiJ": {
+          "type": "discount_tier",
+          "settings": {
+            "min_quantity": 14,
+            "discount_text": "10% off"
+          }
+        },
+        "discount_tier_t4DVVp": {
+          "type": "discount_tier",
+          "settings": {
+            "min_quantity": 22,
+            "discount_text": "15% off"
+          }
+        }
+      },
+      "block_order": [
+        "discount_tier_eDtJiJ",
+        "discount_tier_t4DVVp"
+      ],
       "settings": {
         "color_scheme": "",
         "font_family": "quattrocento_sans_n4",
-        "collection": "",
+        "collection": "recipe-lineup",
         "heading": "Build Your own bundle",
         "details": "",
         "button_background": "#cc858f",
