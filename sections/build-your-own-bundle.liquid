@@ -29,6 +29,15 @@
     data-add-to-cart-text="{{ section.settings.add_to_cart_text }}"
     data-discount-tiers='[{% for block in section.blocks %}{% if forloop.first == false %},{% endif %}{"minQuantity":{{ block.settings.min_quantity }},"discountText":"{{ block.settings.discount_text }}"}{% endfor %}]'>
 
+    <div>
+      {% if section.settings.heading != blank %}
+        <h2 class="bundle-heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.details != blank %}
+        <div class="bundle-details">{{ section.settings.details }}</div>
+      {% endif %}
+    </div>
+
     <!-- Discount Tiers Steps -->
     {% if section.blocks.size > 0 %}
     <div class="discount-tiers-steps" id="discount-tiers-steps">
@@ -95,6 +104,18 @@
       "id": "collection",
       "label": "Product Collection",
       "info": "Choose a collection to pull products from for the bundle."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "info": "The heading text for the section."
+    },
+    {
+      "type": "richtext",
+      "id": "details",
+      "label": "Section Details",
+      "default": "<p></p>"
     },
     {
       "type": "header",
