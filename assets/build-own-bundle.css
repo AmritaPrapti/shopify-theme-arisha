@@ -148,6 +148,7 @@ section:has(.bundle-products-container) .page-width {
   .discount-tiers-steps {
     padding: 15px 10px;
     gap: 0;
+    margin-bottom: 20px;
   }
   
   .tier-step {
@@ -494,6 +495,7 @@ section:has(.bundle-products-container) .page-width {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .remove-all-btn:hover {
@@ -513,6 +515,7 @@ section:has(.bundle-products-container) .page-width {
   border-radius: 20px;
   font-size: 13px;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .summary-empty {
@@ -1144,6 +1147,7 @@ section:has(.bundle-products-container) > *,
   }
   .bundle-product-grid {
     grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 20px;
   }
 
   .bundle-tab {
@@ -1163,6 +1167,10 @@ section:has(.bundle-products-container) > *,
   }
   .summary-products-list {
     max-height: 300px;
+  }
+  .summary-header{
+    flex-wrap: wrap;
+    gap: 20px;
   }
 }
 
