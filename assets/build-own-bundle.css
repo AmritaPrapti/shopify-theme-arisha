@@ -1474,4 +1474,13 @@ section:has(.bundle-products-container) > *,
   .quick-view-modal__price {
     font-size: 20px;
   }
+
+  .quick-view-modal__media {
+    max-height: 300px;
+  }
+
+  .quick-view-modal__media img {
+    object-fit: contain;
+    height: 100%;
+  }
 }
