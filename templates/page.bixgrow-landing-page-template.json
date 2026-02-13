@@ -17,6 +17,77 @@
         "padding_bottom": 0
       }
     },
+    "image_banner_h7P6Nw": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_wM9Hh4": {
+          "type": "heading",
+          "settings": {
+            "heading": "Partnerships",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_wM9Hh4"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/230330_SO52427_1931_2nd_sRGB4000.jpg",
+        "section_url": "",
+        "image_overlay_opacity": 30,
+        "image_height": "small",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "scheme-2",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "image_with_text_6Xeyby": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_4pCgTA": {
+          "type": "heading",
+          "settings": {
+            "heading": "For Postpartum Professionals",
+            "heading_size": "h1"
+          }
+        },
+        "text_DDzQMt": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At for her. by Arisa, we work closely with postpartum professionals who support mothers through recovery.</p><p>We see our food as a complement to the care you already provide, offering nourishment that feels thoughtful, practical, and aligned with postpartum needs.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_4pCgTA",
+        "text_DDzQMt"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_url": "",
+        "enable_text_link": false,
+        "image": "shopify://shop_images/07.13.25_ForHer-130_cropped.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "17709459170cb97989": {
       "type": "apps",
       "blocks": {
@@ -39,6 +110,8 @@
   },
   "order": [
     "main",
+    "image_banner_h7P6Nw",
+    "image_with_text_6Xeyby",
     "17709459170cb97989"
   ]
 }
