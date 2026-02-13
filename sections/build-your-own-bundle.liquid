@@ -67,6 +67,8 @@
     data-empty-subtitle-text="{{ section.settings.empty_subtitle_text }}"
     data-add-to-cart-bg="{{ section.settings.add_to_cart_bg }}"
     data-add-to-cart-text="{{ section.settings.add_to_cart_text }}"
+    data-review-box-text="{{ section.settings.review_box_text }}"
+    data-add-bundle-cart-text="{{ section.settings.add_bundle_cart_text }}"
     data-discount-tiers='[{% for block in section.blocks %}{% if forloop.first == false %},{% endif %}{"minQuantity":{{ block.settings.min_quantity }},"discountText":"{{ block.settings.discount_text }}"}{% endfor %}]'>
 
     <div class="bundle-header">
@@ -79,7 +81,7 @@
     </div>
 
     <!-- Discount Tiers Steps -->
-    {% if section.blocks.size > 0 %}
+    {% if section.settings.enable_progress_stepper and section.blocks.size > 0 %}
     <div class="discount-tiers-steps" id="discount-tiers-steps">
       <div class="tier-step tier-start active">
         <div class="tier-step-circle">0</div>
@@ -150,6 +152,13 @@
       "id": "collection",
       "label": "Product Collection",
       "info": "Choose a collection to pull products from for the bundle."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_progress_stepper",
+      "label": "Enable Progress Stepper",
+      "default": false,
+      "info": "Toggle to enable or disable the progress stepper."
     },
     {
       "type": "text",
@@ -255,6 +264,20 @@
       "default": "Add bundle to Cart",
       "info": "The label text shown on the add to cart button.",
       "placeholder": "Add to Cart"
+    },
+    {
+      "type": "text",
+      "id": "review_box_text",
+      "label": "Review Box Button Text",
+      "default": "Review Your Care Box",
+      "info": "Mobile review button text"
+    },
+    {
+      "type": "text",
+      "id": "add_bundle_cart_text",
+      "label": "Add Bundle to Cart Text",
+      "default": "Add Bundle to Cart",
+      "info": "Add to cart button text in summary"
     },
     {
       "type": "header",

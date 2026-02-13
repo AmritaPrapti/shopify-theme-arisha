@@ -644,6 +644,7 @@ section:has(.bundle-products-container) .page-width {
   font-size: 16px;
   font-weight: 600;
   transition: all 0.2s ease;
+  line-height: 1;
 }
 
 .summary-qty-btn:hover {
@@ -795,6 +796,7 @@ section:has(.bundle-products-container) .page-width {
   padding: 12px 20px;
   background: #fff;
   border-bottom: 1px solid #f0f0f0;
+  gap: 30px;
 }
 
 .compact-info-section {
@@ -802,26 +804,44 @@ section:has(.bundle-products-container) .page-width {
 }
 
 .compact-selection-count {
-  font-size: 15px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.count-value {
-  font-size: 18px;
+.compact-progress-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.compact-progress-text .progress-label {
+  font-weight: 600;
+  color: #666;
+  flex: 1;
+}
+
+.compact-progress-text .progress-count {
+  font-size: 16px;
   font-weight: 700;
   color: #cc858f;
+  margin-left: 8px;
 }
 
-.count-label {
-  font-weight: 400;
-  color: #666;
+.compact-progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.compact-next-tier-message {
-  font-size: 12px;
-  color: #666;
+.compact-progress-bar-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+  border-radius: 10px;
+  display: block !important;
 }
 
 .mobile-expand-toggle {
