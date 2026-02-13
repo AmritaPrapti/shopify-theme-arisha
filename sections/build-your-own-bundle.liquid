@@ -104,7 +104,7 @@
           <div class="bundle-products active">
             {% assign collection = section.settings.collection %}
             {% if collection != blank %}
-              {% paginate collection.products by 50 %}
+              {% paginate collection.products by 250 %}
                 <div class="bundle-product-grid">
                   {% for product in collection.products %}
                     {% render 'bundle-product-card', card_product: product, settings: section.settings %}

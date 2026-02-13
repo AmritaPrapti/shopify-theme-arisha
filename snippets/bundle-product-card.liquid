@@ -105,6 +105,16 @@
                 >
               {%- endif -%}
             </div>
+            <button
+              class="quick-view-overlay"
+              data-modal="#QuickView-{{ card_product.id }}"
+              aria-label="Quick view {{ card_product.title }}"
+            >
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
           </div>
         {%- endif -%}
       </div>
@@ -198,6 +208,66 @@
               {{- 'icon-plus.svg' | inline_asset_content -}}
             </span>
           </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Quick View Modal -->
+    <div id="QuickView-{{ card_product.id }}" class="quick-view-modal" style="display: none;">
+      <div class="quick-view-modal__overlay"></div>
+      <div class="quick-view-modal__content">
+        <button class="quick-view-modal__close" aria-label="Close">
+          {{- 'icon-close.svg' | inline_asset_content -}}
+        </button>
+        <div class="quick-view-modal__inner">
+          <div class="quick-view-modal__media">
+            {%- if card_product.featured_media -%}
+              <img
+                src="{{ card_product.featured_media | image_url: width: 600 }}"
+                alt="{{ card_product.featured_media.alt | escape }}"
+                width="600"
+                height="{{ 600 | divided_by: card_product.featured_media.aspect_ratio | ceil }}"
+              >
+            {%- endif -%}
+          </div>
+          <div class="quick-view-modal__details">
+            <h2 class="quick-view-modal__title">{{ card_product.title | escape }}</h2>
+            
+            <div class="quick-view-modal__price">
+              {% render 'price',
+                product: card_product,
+                price_class: '',
+                show_compare_at_price: true
+              %}
+            </div>
+            
+            {%- if card_product.description != blank -%}
+              <div class="quick-view-modal__description">
+                {{ card_product.description }}
+              </div>
+            {%- endif -%}
+            
+            {%- if card_product.has_only_default_variant == false -%}
+              <div class="quick-view-modal__variants">
+                {% for option in card_product.options_with_values %}
+                  <div class="product-option">
+                    <label>{{ option.name }}</label>
+                    <div class="option-values">
+                      {% for value in option.values %}
+                        <span class="option-value">{{ value }}</span>
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            {%- endif -%}
+            
+            {%- if card_product.vendor != blank -%}
+              <div class="quick-view-modal__vendor">
+                <strong>Vendor:</strong> {{ card_product.vendor }}
+              </div>
+            {%- endif -%}
+          </div>
         </div>
       </div>
     </div>

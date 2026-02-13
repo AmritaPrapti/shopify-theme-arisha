@@ -1239,3 +1239,239 @@ section:has(.bundle-products-container) > *,
     margin-bottom: 4px;
   }
 }
+
+/* Quick View Overlay on Image Hover */
+.card__media {
+  position: relative;
+}
+
+.quick-view-overlay {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.quick-view-overlay svg {
+  width: 20px;
+  height: 20px;
+  stroke: white;
+}
+
+.card__inner:hover .quick-view-overlay, .card:hover .quick-view-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.bundle-product-grid .card__heading a::after {
+ display: none;
+}
+
+.bundle-product-grid .card__information {
+  padding-top: 8px;
+}
+
+
+/* .quick-view-btn {
+  flex: 0 0 40px;
+  height: 44px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quick-view-btn:hover {
+  background: #e8e8e8;
+  border-color: #cc858f;
+}
+
+.quick-view-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: #333;
+} */
+
+.bundle-card-actions .add-bundle {
+  flex: 1;
+  margin: 0;
+}
+
+/* Quick View Modal */
+.quick-view-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.quick-view-modal__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+
+.quick-view-modal__content {
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+  max-width: 900px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 1;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.quick-view-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.quick-view-modal__close:hover {
+  background: #f5f5f5;
+  transform: rotate(90deg);
+}
+
+.quick-view-modal__close svg {
+  width: 20px;
+  height: 20px;
+}
+
+.quick-view-modal__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 40px;
+}
+
+.quick-view-modal__media {
+  position: relative;
+}
+
+.quick-view-modal__media img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.quick-view-modal__details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.quick-view-modal__title {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+  line-height: 1.3;
+}
+
+.quick-view-modal__price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #cc858f;
+}
+
+.quick-view-modal__description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #666;
+}
+
+.quick-view-modal__variants {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.product-option label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 14px;
+}
+
+.option-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.option-value {
+  padding: 8px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 14px;
+  background: #f9f9f9;
+  color: #333;
+}
+
+.quick-view-modal__vendor {
+  font-size: 14px;
+  color: #666;
+  padding-top: 12px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.quick-view-modal__vendor strong {
+  color: #333;
+}
+
+@media screen and (max-width: 768px) {
+  .quick-view-modal__inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .quick-view-modal__title {
+    font-size: 22px;
+  }
+
+  .quick-view-modal__price {
+    font-size: 20px;
+  }
+}

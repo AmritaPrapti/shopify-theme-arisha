@@ -854,7 +854,59 @@ class BundleBuilder {
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     new BundleBuilder();
+    initQuickViewModals();
   });
 } else {
   new BundleBuilder();
+  initQuickViewModals();
+}
+
+// Quick View Modal Functionality
+function initQuickViewModals() {
+  // Handle quick view overlay clicks
+  document.querySelectorAll('.quick-view-overlay').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const modalId = btn.dataset.modal;
+      const modal = document.querySelector(modalId);
+      if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  // Handle modal close buttons
+  document.querySelectorAll('.quick-view-modal__close').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const modal = btn.closest('.quick-view-modal');
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    });
+  });
+
+  // Handle modal overlay clicks
+  document.querySelectorAll('.quick-view-modal__overlay').forEach(overlay => {
+    overlay.addEventListener('click', () => {
+      const modal = overlay.closest('.quick-view-modal');
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    });
+  });
+
+  // Handle ESC key to close modal
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const openModal = document.querySelector('.quick-view-modal[style*="display: flex"]');
+      if (openModal) {
+        openModal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    }
+  });
 }
