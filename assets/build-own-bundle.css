@@ -345,6 +345,23 @@ section:has(.bundle-products-container) .page-width {
   font-size: 16px;
   padding: 6px 0;
   background-color: transparent;
+  -webkit-appearance: none !important; /* For Chrome, Safari, Edge */
+  -moz-appearance: none !important;    /* For Firefox */
+  appearance: none !important;         /* Standard property */
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+.custom-quantity-selector input[type="number"]::-webkit-outer-spin-button,
+.custom-quantity-selector input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+
+/* Firefox */
+.custom-quantity-selector input[type="number"] {
+  -moz-appearance: textfield !important;
+  appearance: textfield !important;
 }
 
 .custom-quantity-selector input:focus-visible {
