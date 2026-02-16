@@ -1071,10 +1071,13 @@ section:has(.bundle-products-container) > *,
 }
 
 /* Responsive Design */
-@media screen and (max-width: 1366px) {
+@media screen and (max-width: 1440px) {
   .bundle-product-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+@media screen and (max-width: 1366px) {
   .progress-count {
     display: none;
   }
