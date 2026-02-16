@@ -384,7 +384,7 @@ section:has(.bundle-products-container) .page-width {
 }
 
 .bundle-progress-container {
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   padding: 16px;
   background: #f9f9f9;
   border-radius: 8px;
@@ -546,9 +546,9 @@ section:has(.bundle-products-container) .page-width {
 .summary-products-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-bottom: 20px;
-  max-height: 400px;
+  gap: 12px;
+  margin-bottom: 16px;
+  max-height: 350px;
   overflow-y: auto;
   padding-right: 8px;
 }
