@@ -297,7 +297,7 @@
       "remove_title": "Remove {{ title }}",
       "estimated_total": "Estimated total",
       "new_estimated_total": "New estimated total",
-      "note": "Order special instructions",
+      "note": "Earliest delivery date will appear after you enter your address at checkout (order cutoff: Monday, 12 PM PST). If you prefer a later date, please note it below. Deliveries are available only on Wednesdays or Thursdays based on your delivery address. Please check your delivery weekday at checkout.",
       "checkout": "Check out",
       "empty": "Your cart is empty",
       "cart_error": "There was an error while updating your cart. Please try again.",
