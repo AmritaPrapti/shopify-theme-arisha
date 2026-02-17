@@ -58,6 +58,7 @@ class BundleBuilder {
   init() {
     this.discountTiers = this.settings.discountTiers;
     this.setupProductListeners();
+    this.setupQuickViewListeners(); 
     this.renderSummary();
     this.updateTierSteps(0);
   }
@@ -1066,16 +1067,95 @@ class BundleBuilder {
         btn.classList.remove("disabled");
       });
   }
+
+  setupQuickViewListeners() {
+    document.querySelectorAll(".quick-view-modal").forEach((modal) => {
+      const addBtn = modal.querySelector(".quick-view-add-bundle");
+      const qtySelector = modal.querySelector(".quick-view-quantity-selector");
+      const qtyInput = modal.querySelector(".quick-view-quantity-selector input");
+      const minusBtn = modal.querySelector(".quick-view-quantity-selector button:first-child");
+      const plusBtn = modal.querySelector(".quick-view-quantity-selector button:last-child");
+
+      if (!addBtn) return;
+
+      const variantId = addBtn.dataset.variantId;
+
+      // Find the corresponding card in the product grid
+      const card = document.querySelector(
+        `.card-wrapper [data-variant-id="${variantId}"].add-bundle`
+      )?.closest(".card-wrapper");
+
+      addBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (!card) return;
+
+        this.addProductToBundle(card, qtyInput?.value || 1);
+        addBtn.classList.add("hidden");
+        qtySelector?.classList.remove("hidden");
+
+        // Sync the card
+        const cardAddBtn = card.querySelector(".add-bundle");
+        const cardQtySelector = card.querySelector(".custom-quantity-selector");
+        const cardQtyInput = card.querySelector(".custom-quantity-selector input");
+        cardAddBtn?.classList.add("hidden");
+        cardQtySelector?.classList.remove("hidden");
+        if (cardQtyInput && qtyInput) cardQtyInput.value = qtyInput.value;
+      });
+
+      minusBtn?.addEventListener("click", (e) => {
+        e.preventDefault();
+        const current = parseInt(qtyInput?.value) || 1;
+        if (current > 1) {
+          if (qtyInput) qtyInput.value = current - 1;
+          if (card) this.updateProductQuantityFromCard(card, current - 1);
+          // Sync card input
+          const cardQtyInput = card?.querySelector(".custom-quantity-selector input");
+          if (cardQtyInput) cardQtyInput.value = current - 1;
+        } else {
+          // Remove from bundle
+          if (card) this.removeProductFromCard(card);
+          addBtn.classList.remove("hidden");
+          qtySelector?.classList.add("hidden");
+          if (qtyInput) qtyInput.value = 1;
+          // Sync card
+          const cardAddBtn = card?.querySelector(".add-bundle");
+          const cardQtySelector = card?.querySelector(".custom-quantity-selector");
+          const cardQtyInput = card?.querySelector(".custom-quantity-selector input");
+          cardAddBtn?.classList.remove("hidden");
+          cardQtySelector?.classList.add("hidden");
+          if (cardQtyInput) cardQtyInput.value = 1;
+        }
+      });
+
+      plusBtn?.addEventListener("click", (e) => {
+        e.preventDefault();
+        const current = parseInt(qtyInput?.value) || 1;
+        if (qtyInput) qtyInput.value = current + 1;
+        if (card) this.updateProductQuantityFromCard(card, current + 1);
+        // Sync card input
+        const cardQtyInput = card?.querySelector(".custom-quantity-selector input");
+        if (cardQtyInput) cardQtyInput.value = current + 1;
+      });
+
+      qtyInput?.addEventListener("change", (e) => {
+        let val = parseInt(e.target.value) || 1;
+        if (val < 1) { val = 1; e.target.value = 1; }
+        if (card) this.updateProductQuantityFromCard(card, val);
+        const cardQtyInput = card?.querySelector(".custom-quantity-selector input");
+        if (cardQtyInput) cardQtyInput.value = val;
+      });
+    });
+  }
 }
 
 // Initialize when DOM is ready
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => {
-    new BundleBuilder();
+    window._bundleBuilder = new BundleBuilder(); // ← store globally
     initQuickViewModals();
   });
 } else {
-  new BundleBuilder();
+  window._bundleBuilder = new BundleBuilder(); // ← store globally
   initQuickViewModals();
 }
 
@@ -1091,6 +1171,7 @@ function initQuickViewModals() {
       if (modal) {
         modal.style.display = "flex";
         document.body.style.overflow = "hidden";
+        syncModalWithCard(modal);
       }
     });
   });
@@ -1130,3 +1211,28 @@ function initQuickViewModals() {
     }
   });
 }
+
+
+function syncModalWithCard(modal) {
+  const variantId = modal.querySelector(".quick-view-add-bundle")?.dataset.variantId;
+  if (!variantId || !window._bundleBuilder) return;
+
+  const builder = window._bundleBuilder;
+  const product = builder.selectedProducts.find(p => p.variantId === variantId);
+
+  const addBtn = modal.querySelector(".quick-view-add-bundle");
+  const qtySelector = modal.querySelector(".quick-view-quantity-selector");
+  const qtyInput = modal.querySelector(".quick-view-quantity-selector input");
+
+  if (product) {
+    addBtn?.classList.add("hidden");
+    qtySelector?.classList.remove("hidden");
+    if (qtyInput) qtyInput.value = product.quantity;
+  } else {
+    addBtn?.classList.remove("hidden");
+    qtySelector?.classList.add("hidden");
+    if (qtyInput) qtyInput.value = 1;
+  }
+}
+
+
