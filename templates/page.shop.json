@@ -149,7 +149,7 @@
       "settings": {
         "collection": "soups-and-meals",
         "products_to_show": 8,
-        "title": "Soups and Meals",
+        "title": "Signature Soups",
         "heading_size": "h1",
         "description": "",
         "show_description": false,
@@ -180,7 +180,7 @@
       "settings": {
         "collection": "snacks",
         "products_to_show": 8,
-        "title": "Snacks",
+        "title": "Nourishing Snacks",
         "heading_size": "h1",
         "description": "",
         "show_description": false,
@@ -211,7 +211,7 @@
       "settings": {
         "collection": "teas",
         "products_to_show": 8,
-        "title": "Teas",
+        "title": "Functional Teas",
         "heading_size": "h1",
         "description": "",
         "show_description": false,
