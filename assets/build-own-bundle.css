@@ -264,7 +264,7 @@ section:has(.bundle-products-container) .page-width {
 
 .bundle-product-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 15px;
   margin-top: 24px;
 }
@@ -1128,9 +1128,9 @@ section:has(.bundle-products-container) > *,
 /* Compact Tier Progress Section - Desktop */
 .compact-tier-progress {
   margin-bottom: 20px;
-  padding: 16px;
+  /* padding: 16px;
   background: #f9f9f9;
-  border-radius: 12px;
+  border-radius: 12px; */
 }
 
 /* Status Row */
@@ -1166,10 +1166,119 @@ section:has(.bundle-products-container) > *,
 }
 
 .next-tier-status {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  text-align: center;
+}
+
+.next-tier-status.first {
+  display: block;
+  position: relative;
+  animation: shake 3s ease-in-out infinite;
+}
+
+.next-tier {
   font-size: 11px;
   font-weight: 600;
   color: #666;
-  text-align: right;
+}
+
+.next-tier-status:empty {
+  display: none;
+}
+
+.current-tier{
+  color: var(--quantity-button);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+@keyframes shake {
+  0%, 85%, 100% { transform: rotate(0deg); }
+  88% { transform: rotate(-2deg); }
+  91% { transform: rotate(2deg); }
+  94% { transform: rotate(-1.5deg); }
+  97% { transform: rotate(1.5deg); }
+}
+
+/* ── Tier message shared base ── */
+.tier-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  padding: 6px 10px;
+  border-radius: 8px;
+  /* animation: fadeSlideIn 0.4s ease; */
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Middle tier: unlocked + nudge to next ── */
+.tier-message--middle {
+  background: linear-gradient(135deg, rgba(204,133,143,0.08), rgba(204,133,143,0.14));
+  border: 1px solid rgba(204,133,143,0.25);
+}
+
+.tier-message--middle .tier-message__unlocked {
+  color: var(--quantity-button);
+  font-size: 14px;
+}
+
+.tier-message--middle .tier-message__divider {
+  color: #ccc;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.tier-message--middle .tier-message__nudge {
+  color: #666;
+  font-size: 13px;
+  animation: shake 3s ease-in-out infinite;
+}
+
+/* ── Max tier: crown celebration ── */
+.tier-message--max {
+  background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(204,133,143,0.12));
+  border: 1px solid rgba(255,200,0,0.3);
+  gap: 8px;
+}
+
+.tier-message__crown {
+  font-size: 18px;
+  animation: crownBounce 1.8s ease-in-out infinite;
+}
+
+.tier-message__max-text {
+  color: var(--quantity-button);
+  font-size: 14px;
+}
+
+.tier-message__max-text strong {
+  font-size: 15px;
+}
+
+.tier-message__sparkles {
+  font-size: 16px;
+  animation: sparklePulse 2s ease-in-out infinite;
+}
+
+@keyframes crownBounce {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50%       { transform: translateY(-4px) rotate(5deg); }
+}
+
+@keyframes sparklePulse {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.85); }
 }
 
 /* Progress Bars Row - Side by Side - No Box Design */
@@ -1376,7 +1485,7 @@ section:has(.bundle-products-container) > *,
 
 @media screen and (max-width: 768px) {
   .compact-tier-progress {
-    padding: 12px;
+    /* padding: 12px; */
     margin-bottom: 16px;
   }
 

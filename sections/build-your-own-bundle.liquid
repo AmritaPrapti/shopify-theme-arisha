@@ -69,7 +69,7 @@
     data-add-to-cart-text="{{ section.settings.add_to_cart_text }}"
     data-review-box-text="{{ section.settings.review_box_text }}"
     data-add-bundle-cart-text="{{ section.settings.add_bundle_cart_text }}"
-    data-discount-tiers='[{% for block in section.blocks %}{% if forloop.first == false %},{% endif %}{"minQuantity":{{ block.settings.min_quantity }},"discountText":"{{ block.settings.discount_text }}"}{% endfor %}]'>
+    data-discount-tiers='{% assign first_discount = true %}[{% for block in section.blocks %}{% if block.type == 'discount_tier' %}{% if first_discount == false %},{% endif %}{"minQuantity":{{ block.settings.min_quantity }},"discountText":"{{ block.settings.discount_text }}"}{% assign first_discount = false %}{% endif %}{% endfor %}]'>
 
     <div class="bundle-header">
       {% if section.settings.heading != blank %}
@@ -89,12 +89,14 @@
         <div class="tier-step-discount">No discount</div>
       </div>
       {% for block in section.blocks %}
-        <div class="tier-step-connector"></div>
-        <div class="tier-step" data-min-quantity="{{ block.settings.min_quantity }}">
-          <div class="tier-step-circle">{{ block.settings.min_quantity }}</div>
-          <div class="tier-step-label">{{ block.settings.min_quantity }}+ Products</div>
-          <div class="tier-step-discount">{{ block.settings.discount_text }}</div>
-        </div>
+          {% if block.type == 'discount_tier' %}
+            <div class="tier-step-connector"></div>
+            <div class="tier-step" data-min-quantity="{{ block.settings.min_quantity }}">
+              <div class="tier-step-circle">{{ block.settings.min_quantity }}</div>
+              <div class="tier-step-label">{{ block.settings.min_quantity }}+ Products</div>
+              <div class="tier-step-discount">{{ block.settings.discount_text }}</div>
+            </div>
+          {% endif %}
       {% endfor %}
     </div>
     {% endif %}
@@ -102,7 +104,30 @@
     <div class="bundle-products-container">
         <div class="bundle-products-wrapper">
           <div class="bundle-products active">
-            {% assign collection = section.settings.collection %}
+            {% for block in section.blocks %}
+              {% if block.type == 'collection' %}
+                {% assign collection = block.settings.collection %}
+                  {% if collection != blank %}
+                    <h2>
+                      {% if block.settings.custom_title != blank %}
+                        {{ block.settings.custom_title }}
+                      {% else %}
+                          {{ collection.title }}
+                      {% endif %} 
+                    </h2>
+                    {% paginate collection.products by 250 %}
+                      <div class="bundle-product-grid">
+                        {% for product in collection.products %}
+                          {% render 'bundle-product-card', card_product: product, settings: section.settings %}
+                        {% endfor %}
+                      </div>
+                    {% endpaginate %}
+                  {% else %}
+                    <p>Please select a collection for the bundle.</p>
+                  {% endif %}
+              {% endif %}
+            {% endfor %}
+            {% comment %} {% assign collection = section.settings.collection %}
             {% if collection != blank %}
               {% paginate collection.products by 250 %}
                 <div class="bundle-product-grid">
@@ -113,7 +138,7 @@
               {% endpaginate %}
             {% else %}
               <p>Please select a collection for the bundle.</p>
-            {% endif %}
+            {% endif %} {% endcomment %}
           </div>
         </div>
         <div class="selected-product-summary-wrapper">
@@ -323,6 +348,24 @@
           "default": "10% off",
           "info": "The discount text to display (e.g., '10% off', '15% discount')."
         }
+      ]
+    },
+    {
+      "name": "collection",
+      "type": "collection",
+      "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Product Collection",
+            "info": "Choose a collection to pull products from for the bundle."
+          },
+          {
+            "type": "text",
+            "id": "custom_title",
+            "label": "Custom Title",
+            "info": "Optionally enter a custom title for this collection. If left blank, the collection title will be used."
+          }
       ]
     }
   ],

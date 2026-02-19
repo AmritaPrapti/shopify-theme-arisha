@@ -419,10 +419,24 @@ class BundleBuilder {
       : "No discount";
 
     // Find next tier
+    console.log("totalItems:", allTiers);
+
+    let hideMesage = true;
+    // if we are at first tier and remaining item less than 5 then hide message
+    let remainQuantity = allTiers[1].minQuantity - totalItems;
+
+    if (remainQuantity <= 5) {
+      hideMesage = false;
+    }
+
+    console.log("hideMesage:", hideMesage);
+    
     const nextTier = this.getNextTier(totalItems);
-    const addMoreText = nextTier
-      ? `Add ${nextTier.minQuantity - totalItems} more for ${nextTier.discountText}`
-      : "Maximum discount reached!";
+    let addMoreText = '';
+    
+    if (!hideMesage) {
+      addMoreText = this.getProgressMessage(totalItems);
+    }
 
     // Generate progress bars for display (limit to 3 tiers max for UI)
     const progressBarsHTML = allTiers
@@ -486,18 +500,13 @@ class BundleBuilder {
 
     return `
       <div class="compact-tier-progress">
-        <div class="tier-status-row">
-          <div class="current-tier-status">
-            <span class="status-label">Current:</span>
-            <span class="status-value">${currentDiscountText}</span>
-          </div>
-          <div class="next-tier-status">
-            ${addMoreText}
-          </div>
-        </div>
+        
         <div class="tier-bars-row">
           ${progressBarsHTML}
         </div>
+        <div class="next-tier-status ${hideMesage ? "hidden" : "visible"}">
+            ${addMoreText}
+          </div>
       </div>
     `;
   }
@@ -891,6 +900,8 @@ class BundleBuilder {
     return currentTier;
   }
 
+
+
   getNextTier(quantity) {
     if (this.discountTiers.length === 0) return null;
 
@@ -903,28 +914,46 @@ class BundleBuilder {
     return null; // Already at highest tier
   }
 
-  getProgressMessage(quantity) {
+getProgressMessage(quantity) {
     const currentTier = this.getCurrentTier(quantity);
     const nextTier = this.getNextTier(quantity);
 
     if (currentTier && nextTier) {
-      // At a tier but there's a higher tier available
+      // ✅ MIDDLE TIER — unlocked one, more to go
       const remaining = nextTier.minQuantity - quantity;
-      return `You got ${currentTier.discountText}! Add ${remaining} for ${nextTier.discountText}`;
+      return `
+        <span class="tier-message tier-message--middle">
+          <span class="tier-message__unlocked">
+            🎉 <strong>${currentTier.discountText}</strong> unlocked!
+          </span>
+          <span class="tier-message__divider">·</span>
+          <span class="tier-message__nudge">
+            🔥 Add <strong>${remaining}</strong> more for <strong>${nextTier.discountText}</strong>
+          </span>
+        </span>`;
+
     } else if (nextTier) {
-      // Not at any tier yet, show next tier
+      // First tier — not unlocked yet
       const remaining = nextTier.minQuantity - quantity;
-      return `Next: Add ${remaining} more for ${nextTier.discountText}`;
+      return `<span class="next-tier-status first"> 🔥 Add ${remaining} more for ${nextTier.discountText}</span>`;
+
     } else if (currentTier) {
-      // At highest tier
-      return `🎉 You're getting ${currentTier.discountText}!`;
+      // ✅ HIGHEST TIER — max discount achieved
+      return `
+        <span class="tier-message tier-message--max">
+          <span class="tier-message__crown">👑</span>
+          <span class="tier-message__max-text">
+            Max discount! You're getting <strong>${currentTier.discountText}</strong>
+          </span>
+        </span>`;
+
     } else {
       if (this.discountTiers.length > 0) {
         const firstTier = this.discountTiers[0];
         const remaining = firstTier.minQuantity - quantity;
-        return `Next: Add ${remaining} more for ${firstTier.discountText}`;
+        return `<span class="next-tier-status first"> 🔥 Add ${remaining} more for ${firstTier.discountText}</span>`;
       }
-      return "Build your bundle";
+      return "<span>Build your bundle</span>";
     }
   }
 
