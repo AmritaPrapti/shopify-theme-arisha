@@ -1963,6 +1963,16 @@ section:has(.bundle-products-container) > *,
   border-top: 1px solid #e0e0e0;
 }
 
+.quick-view-modal__full-details a {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 14px;
+  color: inherit;
+  text-decoration: underline;
+}
+
+
+
 .quick-view-modal__vendor strong {
   color: #333;
 }

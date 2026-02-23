@@ -293,11 +293,16 @@
               </div>
             </div>
             
-            {%- if card_product.vendor != blank -%}
+            <div class="quick-view-modal__full-details">
+              <a href="{{ card_product.url }}">
+                View Full Product Details
+              </a>
+            </div>
+            {% comment %} {%- if card_product.vendor != blank -%}
               <div class="quick-view-modal__vendor">
-                <strong>Vendor:</strong> {{ card_product.vendor }}
+                See 
               </div>
-            {%- endif -%}
+            {%- endif -%} {% endcomment %}
           </div>
         </div>
       </div>

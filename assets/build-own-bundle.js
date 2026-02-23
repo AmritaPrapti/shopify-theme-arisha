@@ -605,6 +605,7 @@ class BundleBuilder {
           </svg>
           <h3 style="color: ${this.settings.emptyHeadingColor}">${this.settings.emptyHeadingText}</h3>
           <p style="color: ${this.settings.emptySubtitleColor}">${this.settings.emptySubtitleText}</p>
+          <p style="color: ${this.settings.emptySubtitleColor}; font-size: 12px; margin-top: 8px;">${this.discountTiers.length > 0 ? `Add at least ${this.discountTiers[0].minQuantity} item${this.discountTiers[0].minQuantity > 1 ? "s" : ""} to get ${this.discountTiers[0].discountText}!` : ""}</p>
         </div>
       `;
       this.updateTierSteps(0);
