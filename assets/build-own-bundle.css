@@ -305,6 +305,10 @@ section:has(.bundle-products-container) .page-width {
   z-index: 3;
 }
 
+.quick-view-quantity-selector_inner {
+  margin-bottom: 20px;
+}
+
 .quick-view-quantity-selector.quick-view-quantity-selector {
   display: block;
   border: none;
@@ -386,6 +390,7 @@ section:has(.bundle-products-container) .page-width {
   position: relative;
   height: auto;
   overflow: visible;
+ 
 }
 
 .selected-product-summary {
@@ -915,6 +920,7 @@ section:has(.bundle-products-container) .page-width {
   font-size: 14px;
   flex-shrink: 0;
   transition: background 0.2s ease;
+
 }
 
 .mobile-expand-toggle:active {
@@ -932,9 +938,8 @@ section:has(.bundle-products-container) .page-width {
 
 /* Compact Products Section */
 .compact-products-section {
-  padding: 12px 20px;
+  padding: 12px 20px 5px;
   background: #fff;
-  border-bottom: 1px solid #f0f0f0;
 }
 
 .compact-products-header {
@@ -1054,8 +1059,10 @@ section:has(.bundle-products-container) .page-width {
 
 /* Mobile Review Section */
 .mobile-review-section {
-  padding: 16px 20px;
+  padding: 0px 20px 12px;
   background: #fff;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .mobile-review-btn {
@@ -1093,6 +1100,10 @@ section:has(.bundle-products-container) .page-width {
 
 .mobile-close-btn:hover {
   background: #e0e0e0;
+}
+
+.bundle-products h2 {
+  margin-top: 0;
 }
 
 /* Make sure ALL parent containers allow sticky */
@@ -1355,10 +1366,8 @@ section:has(.bundle-products-container) > *,
 
 .mobile-tier-status-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 12px;
-  gap: 10px;
   flex-wrap: wrap;
 }
 
@@ -1469,6 +1478,10 @@ section:has(.bundle-products-container) > *,
   max-width: 300px;
 }
 
+.selected-product-summary.expanded .expand-arrow {
+  transform: rotate(180deg);
+}
+
 /* Desktop - Hide mobile tier progress */
 @media screen and (min-width: 991px) {
   .mobile-tier-progress {
@@ -1572,8 +1585,16 @@ section:has(.bundle-products-container) > *,
   }
 
   /* Hide summary wrapper on mobile when empty */
-  .selected-product-summary-wrapper.summary-empty-state {
+  /* .selected-product-summary-wrapper.summary-empty-state {
     display: none !important;
+  } */
+
+  .selected-product-summary-wrapper.summary-empty-state svg {
+    display: none !important;
+  }
+
+  .summary-empty {
+    padding: 20px 10px 10px;
   }
 
   .selected-product-summary-wrapper {
@@ -1647,6 +1668,7 @@ section:has(.bundle-products-container) > *,
     position: relative;
     height: auto;
     overflow: visible;
+    margin-top: 57px;
   }
 
   .selected-product-summary {
@@ -1997,7 +2019,7 @@ section:has(.bundle-products-container) > *,
   }
 
   .quick-view-modal__media img {
-    object-fit: contain;
+    object-fit: cover;
     height: 100%;
   }
 }

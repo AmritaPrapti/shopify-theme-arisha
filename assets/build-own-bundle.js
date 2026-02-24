@@ -485,7 +485,7 @@ class BundleBuilder {
         return `
         <div class="tier-bar-item ${isCurrentTier ? "active" : ""} ${isCompleted ? "completed" : ""}">
           <div class="tier-bar-header">
-            <span class="tier-bar-range">${displayRange}</span>
+            <span class="tier-bar-range">${displayRange} items</span>
           </div>
           <div class="tier-bar-wrapper">
             <div class="tier-bar-fill" style="width: ${progressPercentage}%; background-color: ${this.settings.progressBarColor}"></div>
@@ -562,7 +562,7 @@ class BundleBuilder {
 
         return `
         <div class="mobile-tier-bar ${isCurrentTier ? "active" : ""} ${isCompleted ? "completed" : ""}">
-          <span class="mobile-tier-range">${displayRange}</span>
+          <span class="mobile-tier-range">${displayRange} items</span>
           <div class="mobile-tier-bar-bg">
             <div class="mobile-tier-bar-fill" style="width: ${progressPercentage}%; background-color: ${this.settings.progressBarColor}"></div>
           </div>
@@ -605,7 +605,7 @@ class BundleBuilder {
           </svg>
           <h3 style="color: ${this.settings.emptyHeadingColor}">${this.settings.emptyHeadingText}</h3>
           <p style="color: ${this.settings.emptySubtitleColor}">${this.settings.emptySubtitleText}</p>
-          <p style="color: ${this.settings.emptySubtitleColor}; font-size: 12px; margin-top: 8px;">${this.discountTiers.length > 0 ? `Add at least ${this.discountTiers[0].minQuantity} item${this.discountTiers[0].minQuantity > 1 ? "s" : ""} to get ${this.discountTiers[0].discountText}!` : ""}</p>
+          
         </div>
       `;
       this.updateTierSteps(0);
@@ -668,16 +668,16 @@ class BundleBuilder {
       <div class="summary-mobile-compact">
         <!-- Mobile Progress Section -->
         <div class="mobile-tier-progress">
-          <div class="mobile-tier-status-row">
-            <div class="mobile-current-status">
-              <span class="mobile-status-label">Current:</span>
-              <span class="mobile-status-value">${currentTier ? currentTier.discountText : "No discount"}</span>
-            </div>
-            <div class="mobile-next-status">
-              ${nextTier ? `Add ${nextTier.minQuantity - totalItems} more for ${nextTier.discountText}` : "🎉 Max discount!"}
-            </div>
-          </div>
           ${this.generateMobileTierBars(totalItems)}
+          <div class="mobile-tier-status-row">
+            ${(() => {
+              if (this.discountTiers.length === 0) return '';
+              const remaining = this.discountTiers[0].minQuantity - totalItems;
+              const hide = remaining > 5;
+              return `<div class="next-tier-status ${hide ? 'hidden' : 'visible'}">${this.getProgressMessage(totalItems)}</div>`;
+            })()}
+          </div>
+          
         </div>
         
         <div class="compact-header">
@@ -686,12 +686,7 @@ class BundleBuilder {
               <span class="compact-count">${totalItems} item${totalItems !== 1 ? "s" : ""}</span>
             </div>
           </div>
-          <button class="mobile-expand-toggle" aria-label="Expand bundle summary">
-            <span class="expand-count">${totalItems}</span>
-            <svg class="expand-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="18 15 12 9 6 15"></polyline>
-            </svg>
-          </button>
+          
         </div>
 
         <div class="compact-products-section">
@@ -711,8 +706,11 @@ class BundleBuilder {
         </div>
 
         <div class="mobile-review-section">
-          <button class="mobile-review-btn" style="background-color: ${this.settings.addToCartBg}; color: ${this.settings.addToCartText}">
-            ${this.settings.reviewBoxText}
+          <button class="mobile-expand-toggle" aria-label="Expand bundle summary">
+            <span class="expand-count">${totalItems}</span>
+            <svg class="expand-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
           </button>
         </div>
       </div>
@@ -858,35 +856,23 @@ class BundleBuilder {
     }
   }
 
-  setupMobileExpand() {
-    const reviewBtn = document.querySelector(".mobile-review-btn");
-    const expandToggle = document.querySelector(".mobile-expand-toggle");
-    const closeBtn = document.querySelector(".mobile-close-btn");
-    const summaryContainer = document.querySelector(
-      ".selected-product-summary",
-    );
+setupMobileExpand() {
+  const expandToggle = document.querySelector(".mobile-expand-toggle");
+  const closeBtn = document.querySelector(".mobile-close-btn");
+  const summaryContainer = document.querySelector(".selected-product-summary");
 
-    // Toggle expand/collapse with header button
-    if (expandToggle && summaryContainer) {
-      expandToggle.addEventListener("click", () => {
-        summaryContainer.classList.toggle("expanded");
-      });
-    }
-
-    // Review button also expands
-    if (reviewBtn && summaryContainer) {
-      reviewBtn.addEventListener("click", () => {
-        summaryContainer.classList.add("expanded");
-      });
-    }
-
-    // Close button collapses
-    if (closeBtn && summaryContainer) {
-      closeBtn.addEventListener("click", () => {
-        summaryContainer.classList.remove("expanded");
-      });
-    }
+  if (expandToggle && summaryContainer) {
+    expandToggle.addEventListener("click", () => {
+      summaryContainer.classList.toggle("expanded");
+    });
   }
+
+  if (closeBtn && summaryContainer) {
+    closeBtn.addEventListener("click", () => {
+      summaryContainer.classList.remove("expanded");
+    });
+  }
+}
 
   getCurrentTier(quantity) {
     if (this.discountTiers.length === 0) return null;
@@ -1099,83 +1085,67 @@ getProgressMessage(quantity) {
   }
 
   setupQuickViewListeners() {
-    document.querySelectorAll(".quick-view-modal").forEach((modal) => {
-      const addBtn = modal.querySelector(".quick-view-add-bundle");
-      const qtySelector = modal.querySelector(".quick-view-quantity-selector");
-      const qtyInput = modal.querySelector(".quick-view-quantity-selector input");
-      const minusBtn = modal.querySelector(".quick-view-quantity-selector button:first-child");
-      const plusBtn = modal.querySelector(".quick-view-quantity-selector button:last-child");
+  document.querySelectorAll(".quick-view-modal").forEach((modal) => {
+    const addBtn = modal.querySelector(".quick-view-add-bundle");
+    const qtySelector = modal.querySelector(".quick-view-quantity-selector");
+    const qtyInput = modal.querySelector(".quick-view-quantity-selector input");
+    const minusBtn = qtySelector?.querySelector("button:first-child");
+    const plusBtn = qtySelector?.querySelector("button:last-child");
 
-      if (!addBtn) return;
+    if (!addBtn) return;
 
-      const variantId = addBtn.dataset.variantId;
+    const variantId = addBtn.dataset.variantId;
+    const card = document.querySelector(
+      `.card-wrapper [data-variant-id="${variantId}"].add-bundle`
+    )?.closest(".card-wrapper");
 
-      // Find the corresponding card in the product grid
-      const card = document.querySelector(
-        `.card-wrapper [data-variant-id="${variantId}"].add-bundle`
-      )?.closest(".card-wrapper");
-
-      addBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (!card) return;
-
-        this.addProductToBundle(card, qtyInput?.value || 1);
-        addBtn.classList.add("hidden");
-        qtySelector?.classList.remove("hidden");
-
-        // Sync the card
-        const cardAddBtn = card.querySelector(".add-bundle");
-        const cardQtySelector = card.querySelector(".custom-quantity-selector");
-        const cardQtyInput = card.querySelector(".custom-quantity-selector input");
-        cardAddBtn?.classList.add("hidden");
-        cardQtySelector?.classList.remove("hidden");
-        if (cardQtyInput && qtyInput) cardQtyInput.value = qtyInput.value;
-      });
-
-      minusBtn?.addEventListener("click", (e) => {
-        e.preventDefault();
-        const current = parseInt(qtyInput?.value) || 1;
-        if (current > 1) {
-          if (qtyInput) qtyInput.value = current - 1;
-          if (card) this.updateProductQuantityFromCard(card, current - 1);
-          // Sync card input
-          const cardQtyInput = card?.querySelector(".custom-quantity-selector input");
-          if (cardQtyInput) cardQtyInput.value = current - 1;
-        } else {
-          // Remove from bundle
-          if (card) this.removeProductFromCard(card);
-          addBtn.classList.remove("hidden");
-          qtySelector?.classList.add("hidden");
-          if (qtyInput) qtyInput.value = 1;
-          // Sync card
-          const cardAddBtn = card?.querySelector(".add-bundle");
-          const cardQtySelector = card?.querySelector(".custom-quantity-selector");
-          const cardQtyInput = card?.querySelector(".custom-quantity-selector input");
-          cardAddBtn?.classList.remove("hidden");
-          cardQtySelector?.classList.add("hidden");
-          if (cardQtyInput) cardQtyInput.value = 1;
-        }
-      });
-
-      plusBtn?.addEventListener("click", (e) => {
-        e.preventDefault();
-        const current = parseInt(qtyInput?.value) || 1;
-        if (qtyInput) qtyInput.value = current + 1;
-        if (card) this.updateProductQuantityFromCard(card, current + 1);
-        // Sync card input
-        const cardQtyInput = card?.querySelector(".custom-quantity-selector input");
-        if (cardQtyInput) cardQtyInput.value = current + 1;
-      });
-
-      qtyInput?.addEventListener("change", (e) => {
-        let val = parseInt(e.target.value) || 1;
-        if (val < 1) { val = 1; e.target.value = 1; }
-        if (card) this.updateProductQuantityFromCard(card, val);
-        const cardQtyInput = card?.querySelector(".custom-quantity-selector input");
-        if (cardQtyInput) cardQtyInput.value = val;
-      });
+    // Minus only adjusts the input (min 1), no hiding
+    minusBtn?.addEventListener("click", (e) => {
+      e.preventDefault();
+      const current = parseInt(qtyInput?.value) || 1;
+      if (qtyInput && current > 1) qtyInput.value = current - 1;
     });
-  }
+
+    // Plus only adjusts the input
+    plusBtn?.addEventListener("click", (e) => {
+      e.preventDefault();
+      const current = parseInt(qtyInput?.value) || 1;
+      if (qtyInput) qtyInput.value = current + 1;
+    });
+
+    // Clamp manual input
+    qtyInput?.addEventListener("change", (e) => {
+      let val = parseInt(e.target.value) || 1;
+      if (val < 1) { val = 1; e.target.value = 1; }
+    });
+
+    // Add button uses whatever quantity is in the input
+    addBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (!card) return;
+
+      const qty = parseInt(qtyInput?.value) || 1;
+      this.addProductToBundle(card, qty);
+
+      // Sync the card quantity selector
+      const cardAddBtn = card.querySelector(".add-bundle");
+      const cardQtySelector = card.querySelector(".custom-quantity-selector");
+      const cardQtyInput = card.querySelector(".custom-quantity-selector input");
+
+      cardAddBtn?.classList.add("hidden");
+      cardQtySelector?.classList.remove("hidden");
+      if (cardQtyInput) cardQtyInput.value = qty;
+
+      // Visual feedback on the add button
+      addBtn.textContent = "✓ Added!";
+      // addBtn.style.backgroundColor = this.settings.successColor;
+      setTimeout(() => {
+        addBtn.textContent = "Add To Bundle";
+        addBtn.style.backgroundColor = "";
+      }, 1500);
+    });
+  });
+}
 }
 
 // Initialize when DOM is ready
@@ -1244,25 +1214,35 @@ function initQuickViewModals() {
 
 
 function syncModalWithCard(modal) {
-  const variantId = modal.querySelector(".quick-view-add-bundle")?.dataset.variantId;
-  if (!variantId || !window._bundleBuilder) return;
 
-  const builder = window._bundleBuilder;
-  const product = builder.selectedProducts.find(p => p.variantId === variantId);
-
+   const qtyInput = modal.querySelector(".quick-view-quantity-selector input");
   const addBtn = modal.querySelector(".quick-view-add-bundle");
-  const qtySelector = modal.querySelector(".quick-view-quantity-selector");
-  const qtyInput = modal.querySelector(".quick-view-quantity-selector input");
 
-  if (product) {
-    addBtn?.classList.add("hidden");
-    qtySelector?.classList.remove("hidden");
-    if (qtyInput) qtyInput.value = product.quantity;
-  } else {
-    addBtn?.classList.remove("hidden");
-    qtySelector?.classList.add("hidden");
-    if (qtyInput) qtyInput.value = 1;
-  }
+  // Always reset to defaults when modal opens
+  if (qtyInput) qtyInput.value = 1;
+  if (addBtn) addBtn.textContent = "Add To Bundle";
+
 }
+
+// function syncModalWithCard(modal) {
+//   const variantId = modal.querySelector(".quick-view-add-bundle")?.dataset.variantId;
+//   if (!variantId || !window._bundleBuilder) return;
+
+//   const builder = window._bundleBuilder;
+//   const product = builder.selectedProducts.find(p => p.variantId === variantId);
+
+//   const addBtn = modal.querySelector(".quick-view-add-bundle");
+//   const qtyInput = modal.querySelector(".quick-view-quantity-selector input");
+
+//   if (product) {
+//     // Already in bundle — show current quantity and update button label
+//     if (qtyInput) qtyInput.value = product.quantity;
+//     if (addBtn) addBtn.textContent = "Update Bundle";
+//   } else {
+//     // Not in bundle — reset to 1 and default label
+//     if (qtyInput) qtyInput.value = 1;
+//     if (addBtn) addBtn.textContent = "Add To Bundle";
+//   }
+// }
 
 

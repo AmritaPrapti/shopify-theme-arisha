@@ -265,18 +265,11 @@
             {%- comment %} Inside .quick-view-modal__details, after the vendor block {%- endcomment %}
 
             <div class="quick-view-modal__bundle-actions">
-              <button
-                class="button add-bundle quick-view-add-bundle"
-                style="--color-button: {{ settings.button_background }}; --color-button-text: {{ settings.button_text_color }}; border-color: {{ settings.button_background }};"
-                data-product-id="{{ card_product.id }}"
-                data-variant-id="{{ card_product.selected_or_first_available_variant.id }}"
-              >
-                Add To Bundle
-              </button>
-              <div class="custom-quantity-selector quick-view-quantity-selector hidden"
+              <!-- Quantity selector always visible -->
+              <div class="custom-quantity-selector quick-view-quantity-selector"
                 data-product-id="{{ card_product.id }}"
                 data-variant-id="{{ card_product.selected_or_first_available_variant.id }}">
-                <p>Selected quantity</p>
+                <p>Quantity</p>
                 <div class="quick-view-quantity-selector_inner">
                   <button>
                     <span class="svg-wrapper">
@@ -291,6 +284,16 @@
                   </button>
                 </div>
               </div>
+
+              <!-- Add button always visible -->
+              <button
+                class="button add-bundle quick-view-add-bundle"
+                style="--color-button: {{ settings.button_background }}; --color-button-text: {{ settings.button_text_color }}; border-color: {{ settings.button_background }};"
+                data-product-id="{{ card_product.id }}"
+                data-variant-id="{{ card_product.selected_or_first_available_variant.id }}"
+              >
+                Add To Bundle
+              </button>
             </div>
             
             <div class="quick-view-modal__full-details">
