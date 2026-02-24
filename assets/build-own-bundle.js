@@ -61,6 +61,7 @@ class BundleBuilder {
     this.setupQuickViewListeners(); 
     this.renderSummary();
     this.updateTierSteps(0);
+    this.setupSummaryVisibilityObserver();
   }
 
   updateTierSteps(totalItems) {
@@ -1085,67 +1086,96 @@ getProgressMessage(quantity) {
   }
 
   setupQuickViewListeners() {
-  document.querySelectorAll(".quick-view-modal").forEach((modal) => {
-    const addBtn = modal.querySelector(".quick-view-add-bundle");
-    const qtySelector = modal.querySelector(".quick-view-quantity-selector");
-    const qtyInput = modal.querySelector(".quick-view-quantity-selector input");
-    const minusBtn = qtySelector?.querySelector("button:first-child");
-    const plusBtn = qtySelector?.querySelector("button:last-child");
+    document.querySelectorAll(".quick-view-modal").forEach((modal) => {
+      const addBtn = modal.querySelector(".quick-view-add-bundle");
+      const qtySelector = modal.querySelector(".quick-view-quantity-selector");
+      const qtyInput = modal.querySelector(".quick-view-quantity-selector input");
+      const minusBtn = qtySelector?.querySelector("button:first-child");
+      const plusBtn = qtySelector?.querySelector("button:last-child");
 
-    if (!addBtn) return;
+      if (!addBtn) return;
 
-    const variantId = addBtn.dataset.variantId;
-    const card = document.querySelector(
-      `.card-wrapper [data-variant-id="${variantId}"].add-bundle`
-    )?.closest(".card-wrapper");
+      const variantId = addBtn.dataset.variantId;
+      const card = document.querySelector(
+        `.card-wrapper [data-variant-id="${variantId}"].add-bundle`
+      )?.closest(".card-wrapper");
 
-    // Minus only adjusts the input (min 1), no hiding
-    minusBtn?.addEventListener("click", (e) => {
-      e.preventDefault();
-      const current = parseInt(qtyInput?.value) || 1;
-      if (qtyInput && current > 1) qtyInput.value = current - 1;
+      // Minus only adjusts the input (min 1), no hiding
+      minusBtn?.addEventListener("click", (e) => {
+        e.preventDefault();
+        const current = parseInt(qtyInput?.value) || 1;
+        if (qtyInput && current > 1) qtyInput.value = current - 1;
+      });
+
+      // Plus only adjusts the input
+      plusBtn?.addEventListener("click", (e) => {
+        e.preventDefault();
+        const current = parseInt(qtyInput?.value) || 1;
+        if (qtyInput) qtyInput.value = current + 1;
+      });
+
+      // Clamp manual input
+      qtyInput?.addEventListener("change", (e) => {
+        let val = parseInt(e.target.value) || 1;
+        if (val < 1) { val = 1; e.target.value = 1; }
+      });
+
+      // Add button uses whatever quantity is in the input
+      addBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (!card) return;
+
+        const qty = parseInt(qtyInput?.value) || 1;
+        this.addProductToBundle(card, qty);
+
+        // Sync the card quantity selector
+        const cardAddBtn = card.querySelector(".add-bundle");
+        const cardQtySelector = card.querySelector(".custom-quantity-selector");
+        const cardQtyInput = card.querySelector(".custom-quantity-selector input");
+
+        cardAddBtn?.classList.add("hidden");
+        cardQtySelector?.classList.remove("hidden");
+        if (cardQtyInput) cardQtyInput.value = qty;
+
+        // Visual feedback on the add button
+        addBtn.textContent = "✓ Added!";
+        // addBtn.style.backgroundColor = this.settings.successColor;
+        setTimeout(() => {
+          addBtn.textContent = "Add To Bundle";
+          addBtn.style.backgroundColor = "";
+        }, 1500);
+      });
     });
+  }
+  setupSummaryVisibilityObserver() {
+    const footer = document.querySelector("footer");
+    const summaryWrapper = document.querySelector(".selected-product-summary-wrapper");
 
-    // Plus only adjusts the input
-    plusBtn?.addEventListener("click", (e) => {
-      e.preventDefault();
-      const current = parseInt(qtyInput?.value) || 1;
-      if (qtyInput) qtyInput.value = current + 1;
+    if (!footer || !summaryWrapper) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (window.innerWidth < 750) {
+            if (entry.isIntersecting) {
+              summaryWrapper.classList.add("summary-wrapper--hidden");
+            } else {
+              summaryWrapper.classList.remove("summary-wrapper--hidden");
+            }
+          }
+        });
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(footer);
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 750) {
+        summaryWrapper.classList.remove("summary-wrapper--hidden");
+      }
     });
-
-    // Clamp manual input
-    qtyInput?.addEventListener("change", (e) => {
-      let val = parseInt(e.target.value) || 1;
-      if (val < 1) { val = 1; e.target.value = 1; }
-    });
-
-    // Add button uses whatever quantity is in the input
-    addBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (!card) return;
-
-      const qty = parseInt(qtyInput?.value) || 1;
-      this.addProductToBundle(card, qty);
-
-      // Sync the card quantity selector
-      const cardAddBtn = card.querySelector(".add-bundle");
-      const cardQtySelector = card.querySelector(".custom-quantity-selector");
-      const cardQtyInput = card.querySelector(".custom-quantity-selector input");
-
-      cardAddBtn?.classList.add("hidden");
-      cardQtySelector?.classList.remove("hidden");
-      if (cardQtyInput) cardQtyInput.value = qty;
-
-      // Visual feedback on the add button
-      addBtn.textContent = "✓ Added!";
-      // addBtn.style.backgroundColor = this.settings.successColor;
-      setTimeout(() => {
-        addBtn.textContent = "Add To Bundle";
-        addBtn.style.backgroundColor = "";
-      }, 1500);
-    });
-  });
-}
+  }
 }
 
 // Initialize when DOM is ready
