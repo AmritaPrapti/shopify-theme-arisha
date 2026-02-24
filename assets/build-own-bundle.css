@@ -267,6 +267,7 @@ section:has(.bundle-products-container) .page-width {
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
   margin-top: 24px;
+  margin-bottom: 80px;
 }
 
 .add-bundle {
@@ -1658,7 +1659,7 @@ section:has(.bundle-products-container) > *,
 
   .bundle-product-grid {
     grid-template-columns: repeat(3, 1fr);
-    margin-bottom: 120px;
+    margin-bottom: 60px;
   }
 }
 
@@ -1686,7 +1687,7 @@ section:has(.bundle-products-container) > *,
   }
   .bundle-product-grid {
     grid-template-columns: repeat(2, 1fr);
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
 
   .bundle-tab {
