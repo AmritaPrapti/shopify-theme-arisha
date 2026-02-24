@@ -15,7 +15,21 @@
         "collection_ijKbe3": {
           "type": "collection",
           "settings": {
-            "collection": "recipe-lineup",
+            "collection": "soups-and-meals",
+            "custom_title": ""
+          }
+        },
+        "collection_rnm8xF": {
+          "type": "collection",
+          "settings": {
+            "collection": "snacks",
+            "custom_title": ""
+          }
+        },
+        "collection_LTrPjK": {
+          "type": "collection",
+          "settings": {
+            "collection": "teas",
             "custom_title": ""
           }
         },
@@ -36,6 +50,8 @@
       },
       "block_order": [
         "collection_ijKbe3",
+        "collection_rnm8xF",
+        "collection_LTrPjK",
         "discount_tier_eDtJiJ",
         "discount_tier_t4DVVp"
       ],
