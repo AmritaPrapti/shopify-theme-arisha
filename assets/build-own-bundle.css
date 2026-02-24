@@ -2021,7 +2021,9 @@ section:has(.bundle-products-container) > *,
   }
 
   .quick-view-modal__media {
-    max-height: 270px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
   }
 
   .quick-view-modal__media img {
