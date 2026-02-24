@@ -907,17 +907,18 @@ getProgressMessage(quantity) {
     const nextTier = this.getNextTier(quantity);
 
     if (currentTier && nextTier) {
-      // ✅ MIDDLE TIER — unlocked one, more to go
       const remaining = nextTier.minQuantity - quantity;
+      const showNudge = remaining <= 5;
       return `
         <span class="tier-message tier-message--middle">
           <span class="tier-message__unlocked">
             🎉 <strong>${currentTier.discountText}</strong> unlocked!
           </span>
+          ${showNudge ? `
           <span class="tier-message__divider">·</span>
           <span class="tier-message__nudge">
             🔥 Add <strong>${remaining}</strong> more for <strong>${nextTier.discountText}</strong>
-          </span>
+          </span>` : ''}
         </span>`;
 
     } else if (nextTier) {
