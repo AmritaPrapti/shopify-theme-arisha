@@ -1165,7 +1165,10 @@ getProgressMessage(quantity) {
           }
         });
       },
-      { threshold: 0 }
+      { 
+        threshold: 0,
+        rootMargin: "0px 0px -50% 0px"
+       }
     );
 
     observer.observe(footer);
