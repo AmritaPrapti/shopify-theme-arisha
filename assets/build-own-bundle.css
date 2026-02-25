@@ -1483,6 +1483,10 @@ section:has(.bundle-products-container) > *,
   transform: rotate(180deg);
 }
 
+.next-tier-status.first {
+  text-align: center;
+}
+
 /* Desktop - Hide mobile tier progress */
 @media screen and (min-width: 991px) {
   .mobile-tier-progress {
@@ -1567,6 +1571,27 @@ section:has(.bundle-products-container) > *,
   .progress-count {
     display: none;
   }
+}
+
+@media screen and (max-width: 1250px) {
+  .tier-message {
+    padding: 6px 8px;
+  }
+  .tier-message__crown{
+    font-size: 16px;
+  }
+   .tier-message__max-text {
+    font-size: 12px;
+  }
+   .tier-message__sparkles {
+    font-size: 14px;
+  }
+   .tier-message__unlocked {
+    font-size: 12px;  
+   }
+   .tier-message__nudge {
+    font-size: 11px;
+   }
 }
 
 /* Responsive Design */
