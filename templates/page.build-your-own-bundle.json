@@ -1,14 +1,88 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "main": {
-            "type": "build-your-own-bundle",
-            "settings": {
-                "padding_top": 36,
-                "padding_bottom": 36
-            }
+  "sections": {
+    "main": {
+      "type": "build-your-own-bundle",
+      "blocks": {
+        "collection_ijKbe3": {
+          "type": "collection",
+          "settings": {
+            "collection": "soups-and-meals",
+            "custom_title": ""
+          }
+        },
+        "collection_rnm8xF": {
+          "type": "collection",
+          "settings": {
+            "collection": "snacks",
+            "custom_title": ""
+          }
+        },
+        "collection_LTrPjK": {
+          "type": "collection",
+          "settings": {
+            "collection": "teas",
+            "custom_title": ""
+          }
+        },
+        "discount_tier_eDtJiJ": {
+          "type": "discount_tier",
+          "settings": {
+            "min_quantity": 14,
+            "discount_text": "10% off"
+          }
+        },
+        "discount_tier_t4DVVp": {
+          "type": "discount_tier",
+          "settings": {
+            "min_quantity": 22,
+            "discount_text": "15% off"
+          }
         }
-    },
-    "order": [
-        "main"
-    ]
+      },
+      "block_order": [
+        "collection_ijKbe3",
+        "collection_rnm8xF",
+        "collection_LTrPjK",
+        "discount_tier_eDtJiJ",
+        "discount_tier_t4DVVp"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "font_family_body": "montserrat_n4",
+        "font_family_heading": "montserrat_n4",
+        "collection": "recipe-lineup",
+        "enable_progress_stepper": false,
+        "heading": "Build Your Own Bundle",
+        "details": "",
+        "button_background": "#cc858f",
+        "button_text_color": "#ffffff",
+        "quantity_button_color": "#cc858f",
+        "progress_bar_color": "#cc858f",
+        "success_message_color": "#4caf50",
+        "empty_heading_color": "#333333",
+        "empty_subtitle_color": "#666666",
+        "add_to_cart_bg": "#cc858f",
+        "add_to_cart_text": "#ffffff",
+        "empty_heading_text": "Your Bundle is Empty",
+        "empty_subtitle_text": "Add 14 items or more for 10% off, and 22 items or more for 15% off",
+        "add_to_cart_label": "Add bundle to Cart",
+        "review_box_text": "Review Your Care Box",
+        "add_bundle_cart_text": "Add Bundle to Cart",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
 }
