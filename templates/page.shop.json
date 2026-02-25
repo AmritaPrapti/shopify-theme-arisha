@@ -306,51 +306,76 @@
         "padding_bottom": 52
       }
     },
-    "rich_text_A4meRM": {
-      "type": "rich-text",
+    "build_your_own_bundle_DWypMF": {
+      "type": "build-your-own-bundle",
       "blocks": {
-        "heading_bxdyjf": {
-          "type": "heading",
+        "collection_CWhcqx": {
+          "type": "collection",
           "settings": {
-            "heading": "Custom Bundles",
-            "heading_size": "h1"
+            "collection": "soups-and-meals",
+            "custom_title": ""
           }
         },
-        "text_wKCCei": {
-          "type": "text",
+        "collection_CedMTP": {
+          "type": "collection",
           "settings": {
-            "text": ""
+            "collection": "snacks",
+            "custom_title": ""
           }
         },
-        "button_nRdBVn": {
-          "type": "button",
-          "disabled": true,
+        "collection_mxbD6W": {
+          "type": "collection",
           "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "collection": "teas",
+            "custom_title": ""
+          }
+        },
+        "discount_tier_dmq7KW": {
+          "type": "discount_tier",
+          "settings": {
+            "min_quantity": 14,
+            "discount_text": "10% off"
+          }
+        },
+        "discount_tier_fBpwCF": {
+          "type": "discount_tier",
+          "settings": {
+            "min_quantity": 22,
+            "discount_text": "15% off"
           }
         }
       },
       "block_order": [
-        "heading_bxdyjf",
-        "text_wKCCei",
-        "button_nRdBVn"
+        "collection_CWhcqx",
+        "collection_CedMTP",
+        "collection_mxbD6W",
+        "discount_tier_dmq7KW",
+        "discount_tier_fBpwCF"
       ],
-      "custom_css": [
-        "h2 {color: #505655;}"
-      ],
-      "name": "t:sections.rich-text.presets.name",
       "settings": {
-        "desktop_content_position": "left",
-        "content_alignment": "left",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 100,
-        "padding_bottom": 0
+        "color_scheme": "",
+        "font_family_body": "montserrat_n4",
+        "font_family_heading": "montserrat_n4",
+        "collection": "recipe-lineup",
+        "enable_progress_stepper": false,
+        "heading": "Build Your Own Bundle",
+        "details": "",
+        "button_background": "#cc858f",
+        "button_text_color": "#ffffff",
+        "quantity_button_color": "#cc858f",
+        "progress_bar_color": "#cc858f",
+        "success_message_color": "#4caf50",
+        "empty_heading_color": "#333333",
+        "empty_subtitle_color": "#666666",
+        "add_to_cart_bg": "#cc858f",
+        "add_to_cart_text": "#ffffff",
+        "empty_heading_text": "Your Bundle is Empty",
+        "empty_subtitle_text": "Add 14 items or more for 10% off, and 22 items or more for 15% off",
+        "add_to_cart_label": "Add bundle to Cart",
+        "review_box_text": "Review Your Care Box",
+        "add_bundle_cart_text": "Add Bundle to Cart",
+        "padding_top": 0,
+        "padding_bottom": 36
       }
     },
     "featured_product_TzYKR9": {
@@ -546,6 +571,7 @@
         "bundle_kRjAGk",
         "features_zrVyhX"
       ],
+      "disabled": true,
       "name": "SS - Bundle builder #4",
       "settings": {
         "collection": "recipe-lineup",
@@ -909,7 +935,7 @@
     "featured_collection_UfKBBB",
     "featured_collection_649weC",
     "featured_product_3WeycR",
-    "rich_text_A4meRM",
+    "build_your_own_bundle_DWypMF",
     "featured_product_TzYKR9",
     "featured_product_V8L9P8",
     "ss_bundle_builder_4_GyCwrA",
