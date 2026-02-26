@@ -13,9 +13,9 @@
     "inverse_logo": "shopify://shop_images/Pink_for_her__by_Arisa_png_1b8379ba-577c-4806-98f5-04e30e8e14b9.png",
     "logo_width": 100,
     "favicon": "shopify://shop_images/Pink_for_her__by_Arisa_png.jpg",
-    "type_header_font": "montserrat_n4",
+    "type_header_font": "cormorant_n4",
     "heading_scale": 110,
-    "type_body_font": "montserrat_n4",
+    "type_body_font": "inter_n4",
     "body_scale": 100,
     "page_width": 1600,
     "spacing_sections": 0,
@@ -25,11 +25,11 @@
     "animations_hover_elements": "none",
     "buttons_border_thickness": 1,
     "buttons_border_opacity": 100,
-    "buttons_radius": 6,
+    "buttons_radius": 0,
     "buttons_shadow_opacity": 0,
     "buttons_shadow_horizontal_offset": 0,
     "buttons_shadow_vertical_offset": 4,
-    "buttons_shadow_blur": 5,
+    "buttons_shadow_blur": 0,
     "variant_pills_border_thickness": 1,
     "variant_pills_border_opacity": 55,
     "variant_pills_radius": 40,
@@ -180,12 +180,12 @@
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#f2f1eb",
+          "background": "#ffffff",
           "background_gradient": "",
-          "text": "#505655",
-          "button": "#505655",
+          "text": "#111111",
+          "button": "#111111",
           "button_label": "#ffffff",
-          "secondary_button_label": "#505655",
+          "secondary_button_label": "#111111",
           "shadow": "rgba(0,0,0,0)"
         }
       },
@@ -202,18 +202,18 @@
       },
       "scheme-3": {
         "settings": {
-          "background": "#f4e9e8",
+          "background": "#f3e7e4",
           "background_gradient": "",
-          "text": "#736d66",
-          "button": "#cc858f",
+          "text": "#111111",
+          "button": "#b07a72",
           "button_label": "#ffffff",
-          "secondary_button_label": "#cc858f",
+          "secondary_button_label": "#b07a72",
           "shadow": "#ffffff"
         }
       },
       "scheme-4": {
         "settings": {
-          "background": "#cc858f",
+          "background": "#b07a72",
           "background_gradient": "",
           "text": "#ffffff",
           "button": "#ffffff",
@@ -237,10 +237,10 @@
         "settings": {
           "background": "#ffffff",
           "background_gradient": "",
-          "text": "#c37e78",
+          "text": "#b07a72",
           "button": "#ffffff",
-          "button_label": "#c37e78",
-          "secondary_button_label": "#c37e78",
+          "button_label": "#b07a72",
+          "secondary_button_label": "#b07a72",
           "shadow": "#ffffff"
         }
       },
@@ -248,10 +248,10 @@
         "settings": {
           "background": "#ffffff",
           "background_gradient": "",
-          "text": "#cc858f",
+          "text": "#b07a72",
           "button": "#ffffff",
-          "button_label": "#cc858f",
-          "secondary_button_label": "#cc858f",
+          "button_label": "#b07a72",
+          "secondary_button_label": "#b07a72",
           "shadow": "rgba(0,0,0,0)"
         }
       },
