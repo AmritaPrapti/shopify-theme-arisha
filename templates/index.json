@@ -15,16 +15,16 @@
         "caption_fwNaVg": {
           "type": "caption",
           "settings": {
-            "caption": "Add a tagline",
+            "caption": "For Her. By Arisa",
             "text_style": "caption-with-letter-spacing",
             "text_size": "medium",
-            "caption_color": ""
+            "caption_color": "#b07a72"
           }
         },
         "heading_WVmjPE": {
           "type": "heading",
           "settings": {
-            "heading": "Image with text",
+            "heading": "Postpartum nourishment,<em>made simple.</em>",
             "heading_size": "h1"
           }
         },
