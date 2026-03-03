@@ -9,180 +9,78 @@
  */
 {
   "sections": {
-    "custom_liquid_3D8Tqh": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "custom_css": [
-        "video {width: 100%; display: block; margin: 0 auto;}",
-        "@media screen and (max-width: 749px) {video {width: 100%; height: 100vh; object-fit: cover; object-position: center center; } {display: grid; grid-template-columns: auto; align-items: center; justify-content: center; }}"
-      ],
-      "name": "t:sections.custom-liquid.presets.name",
+    "hero_image_banner_iQgyV8": {
+      "type": "hero-image-banner",
+      "name": "Hero Image Banner",
       "settings": {
-        "custom_liquid": "<video muted autoplay playsinline loop>\n    <source src=\"https://cdn.shopify.com/videos/c/o/v/4df537ef3e5f478a8e7d80280e08ced2.mp4\"\n                  type=\"video/mp4\">\n    <source src=\"https://cdn.shopify.com/videos/c/o/v/4df537ef3e5f478a8e7d80280e08ced2.mp4\"\n                  type=\"video/mp4\">\n</video>",
+        "subheading": "",
+        "heading": "",
+        "details": "",
+        "link_1": "",
+        "button_label_1": "Shop Starter Bundle",
+        "link_2": "",
+        "button_label_2": "Shop All Products",
         "color_scheme": "",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
-    "ss_video_banner_g4W4Pf": {
-      "type": "ss-video-banner",
+    "image_with_text_nXe8UN": {
+      "type": "image-with-text",
       "blocks": {
-        "slide_gJicxE": {
-          "type": "slide",
+        "caption_fwNaVg": {
+          "type": "caption",
           "settings": {
-            "source": "uploaded",
-            "video": "shopify://files/videos/230329-30_forher_23MAR_FLM_T112_H264_4K_ddc07e4d-b299-481a-919b-39aeda5a6bab.mp4",
-            "video_url": "",
-            "autoplay": true,
-            "title": "<p>Postpartum nourishment, made simple.</p>",
-            "subtitle": "<p>Japanese-inspired postpartum food delivery created to support expecting and new mothers through recovery and replenishment.</p>",
-            "button": "Shop",
-            "button_url": "shopify://pages/shop",
-            "second_button": "",
-            "second_button_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_gJicxE"
-      ],
-      "custom_css": [
-        "@media screen and (max-width: 749px) {.section-template--21523402293483__ss_video_banner_g4W4Pf-padding {display: flex; flex-direction: column; } .ab-banner-video-wrapper-template--21523402293483__ss_video_banner_g4W4Pf {order: 1; } .ab-banner-content-template--21523402293483__ss_video_banner_g4W4Pf {order: 2; }}"
-      ],
-      "name": "SS - Video banner",
-      "settings": {
-        "layout_height": "fixed_height",
-        "height": 500,
-        "height_mobile": 460,
-        "overlay_opacity": 20,
-        "interval": 5,
-        "image_object_fit": "cover",
-        "use_action": false,
-        "controls_position": "bottom_right",
-        "action_size": 40,
-        "action_size_mobile": 40,
-        "action_border_thickness": 0,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "title_custom": true,
-        "title_font": "cormorant_n4",
-        "title_size": 32,
-        "title_size_mobile": 24,
-        "title_height": 130,
-        "subtitle_custom": true,
-        "subtitle_font": "inter_n4",
-        "subtitle_size": 16,
-        "subtitle_size_mobile": 14,
-        "subtitle_advanced": false,
-        "subtitle_height": 150,
-        "subtitle_mt": 20,
-        "buttons_mt": 32,
-        "buttons_gap": 20,
-        "open_in_new_tab": false,
-        "button_style": "non_outline_arrow",
-        "button_custom": true,
-        "button_font": "montserrat_n4",
-        "button_size": 14,
-        "button_size_mobile": 14,
-        "button_padding_advanced": false,
-        "button_height": 100,
-        "button_padding_horizontal": 32,
-        "button_padding_horizontal_mobile": 32,
-        "button_padding_vertical": 16,
-        "button_padding_vertical_mobile": 16,
-        "button_radius": 0,
-        "button_border_thickness": 1,
-        "button_color": "#ffffff",
-        "button_hover_color": "#ffffff",
-        "button_bg_color": "#111111",
-        "button_bg_hover_color": "#111111",
-        "button_border_color": "#121212",
-        "button_border_hover_color": "#121212",
-        "second_button_color": "#111111",
-        "second_button_hover_color": "#ffffff",
-        "second_button_bg_color": "#ffffff",
-        "second_button_bg_hover_color": "#111111",
-        "second_button_border_color": "#121212",
-        "second_button_border_hover_color": "#121212",
-        "action_color": "#ffffff",
-        "action_hover_color": "#ffffff",
-        "action_bg_color": "#121212",
-        "action_bg_hover_color": "#ffffff",
-        "action_border_color": "#ffffff",
-        "action_border_hover_color": "#ffffff",
-        "title_color": "#ffffff",
-        "subtitle_color": "#ffffff",
-        "title_color_mobile": "#111111",
-        "subtitle_color_mobile": "#7a746f",
-        "overlay_color": "#111111",
-        "background_color": "#ffffff",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_horizontal": 0,
-        "margin_horizontal_mobile": 0,
-        "padding_top": 0,
-        "padding_bottom": 36,
-        "width": "custom",
-        "content_width": 800,
-        "section_radius": 0,
-        "lazy": true
-      }
-    },
-    "image_banner_XxAF78": {
-      "type": "image-banner",
-      "blocks": {
-        "heading_CFGcn6": {
-          "type": "heading",
-          "settings": {
-            "heading": "Postpartum nourishment, made simple.",
-            "heading_size": "h2"
+            "caption": "Add a tagline",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
           }
         },
-        "text_mnkn9K": {
+        "heading_WVmjPE": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "heading_size": "h1"
+          }
+        },
+        "text_e4n4Cz": {
           "type": "text",
           "settings": {
-            "text": "Japanese-inspired postpartum food delivery created to support expecting and new mothers through recovery and replenishment.",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "text_style": "body"
           }
         },
-        "buttons_MDtUq6": {
-          "type": "buttons",
+        "button_tcwyx6": {
+          "type": "button",
           "settings": {
-            "button_label_1": "Shop",
-            "button_link_1": "shopify://pages/shop",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
           }
         }
       },
       "block_order": [
-        "heading_CFGcn6",
-        "text_mnkn9K",
-        "buttons_MDtUq6"
+        "caption_fwNaVg",
+        "heading_WVmjPE",
+        "text_e4n4Cz",
+        "button_tcwyx6"
       ],
-      "disabled": true,
-      "custom_css": [
-        "h2 {color: #ffffff;}",
-        "p {color: #ffffff;}",
-        " {margin: 10%;}",
-        "@media only screen and (min-width: 1024px) {{margin: 5% 25%; }}"
-      ],
-      "name": "t:sections.image-banner.presets.name",
+      "name": "t:sections.image-with-text.presets.name",
       "settings": {
-        "image": "shopify://shop_images/230329_888_f758ef56-4dd5-4f5b-9975-9bfd86d2fb67.jpg",
-        "section_url": "shopify://pages/shop",
-        "image_overlay_opacity": 30,
-        "image_height": "medium",
+        "section_url": "",
+        "enable_text_link": false,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
         "image_behavior": "none",
-        "desktop_content_position": "middle-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": false
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "image_with_text_ALULxa": {
@@ -957,9 +855,8 @@
     }
   },
   "order": [
-    "custom_liquid_3D8Tqh",
-    "ss_video_banner_g4W4Pf",
-    "image_banner_XxAF78",
+    "hero_image_banner_iQgyV8",
+    "image_with_text_nXe8UN",
     "image_with_text_ALULxa",
     "featured_collection_Tkzidq",
     "featured_product_8MhRnz",
