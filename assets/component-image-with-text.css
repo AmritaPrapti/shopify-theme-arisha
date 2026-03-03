@@ -51,6 +51,14 @@
   font-weight: 600;
 }
 
+.image-with-text__heading p {
+  margin: 0;
+}
+
+.image-with-text__heading  span {
+  color: var(--color-highlight);
+}
+
 @media screen and (min-width: 750px) {
   .image-with-text__media--small {
     height: 31.4rem;
