@@ -79,7 +79,8 @@
             assign background_color_contrast = background_color | color_darken: 25
           endif
         %}
-
+        --color-headline: {{ scheme.settings.headline_color.red }},{{ scheme.settings.headline_color.green }},{{ scheme.settings.headline_color.blue }};
+        --color-highlight: {{ scheme.settings.highlight }};
         --color-foreground: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
         --color-background-contrast: {{ background_color_contrast.red }},{{ background_color_contrast.green }},{{ background_color_contrast.blue }};
         --color-shadow: {{ scheme.settings.shadow.red }},{{ scheme.settings.shadow.green }},{{ scheme.settings.shadow.blue }};
@@ -96,7 +97,7 @@
       {% endfor %}
 
       {{ scheme_classes | prepend: 'body' }} {
-        color: rgba(var(--color-foreground), 0.75);
+        color: rgba(var(--color-foreground));
         background-color: rgb(var(--color-background));
       }
 

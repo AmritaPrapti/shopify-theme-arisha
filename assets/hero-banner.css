@@ -1,0 +1,38 @@
+:root {
+    --page-padding: 5rem; /* your 0 0.5rem shorthand = 0 top/bottom, 0.5rem left/right */
+  }
+
+.banner-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.hbanner-image {
+    width: 100%;
+    height: auto;
+}
+
+.hbanner-image img {
+    width: 100%;
+    height: auto;
+}
+
+.hbanner-content.page-width {
+    max-width: 100%;
+    padding-left: max(var(--page-padding),calc((100vw - var(--page-width)) / 2 + var(--page-padding))
+  );
+}
+
+.hbanner-subheading {
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    color: var(--color-highlight);
+}
+
+.hbanner-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}

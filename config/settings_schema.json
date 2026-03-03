@@ -59,9 +59,21 @@
           },
           {
             "type": "color",
+            "id": "headline_color",
+            "label": "Headline Color",
+            "default": "#111111"
+          },
+          {
+            "type": "color",
             "id": "text",
             "label": "t:settings_schema.colors.settings.text.label",
             "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "highlight",
+            "label": "Highlight Color",
+            "default": "#E0E0E0"
           },
           {
             "type": "color",
