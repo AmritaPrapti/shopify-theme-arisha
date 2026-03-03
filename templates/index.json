@@ -9,22 +9,6 @@
  */
 {
   "sections": {
-    "hero_image_banner_iQgyV8": {
-      "type": "hero-image-banner",
-      "name": "Hero Image Banner",
-      "settings": {
-        "subheading": "",
-        "heading": "",
-        "details": "",
-        "link_1": "",
-        "button_label_1": "Shop Starter Bundle",
-        "link_2": "",
-        "button_label_2": "Shop All Products",
-        "color_scheme": "",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
     "image_with_text_nXe8UN": {
       "type": "image-with-text",
       "blocks": {
@@ -33,7 +17,8 @@
           "settings": {
             "caption": "Add a tagline",
             "text_style": "caption-with-letter-spacing",
-            "text_size": "medium"
+            "text_size": "medium",
+            "caption_color": ""
           }
         },
         "heading_WVmjPE": {
@@ -53,9 +38,12 @@
         "button_tcwyx6": {
           "type": "button",
           "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false
+            "button_label": "Shop Starter Bundle",
+            "button_link": "shopify://pages/build-your-own-bundle",
+            "button_style_secondary": false,
+            "button_label2": "Shop All Products ",
+            "button_link2": "shopify://pages/shop",
+            "button_style_secondary2": true
           }
         }
       },
@@ -74,6 +62,7 @@
         "desktop_image_width": "medium",
         "layout": "text_first",
         "image_behavior": "none",
+        "enable_full_width": true,
         "content_layout": "no-overlap",
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
@@ -106,7 +95,10 @@
           "settings": {
             "button_label": "Learn more",
             "button_link": "shopify://pages/about-yakuzen",
-            "button_style_secondary": false
+            "button_style_secondary": false,
+            "button_label2": "Button label",
+            "button_link2": "",
+            "button_style_secondary2": false
           }
         }
       },
@@ -124,6 +116,7 @@
         "desktop_image_width": "medium",
         "layout": "image_first",
         "image_behavior": "none",
+        "enable_full_width": false,
         "content_layout": "no-overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
@@ -663,7 +656,10 @@
           "settings": {
             "button_label": "Learn more",
             "button_link": "shopify://pages/why-for-her-by-arisa-exists",
-            "button_style_secondary": true
+            "button_style_secondary": true,
+            "button_label2": "Button label",
+            "button_link2": "",
+            "button_style_secondary2": false
           }
         }
       },
@@ -682,6 +678,7 @@
         "desktop_image_width": "medium",
         "layout": "text_first",
         "image_behavior": "none",
+        "enable_full_width": false,
         "content_layout": "overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "center",
@@ -856,7 +853,6 @@
     }
   },
   "order": [
-    "hero_image_banner_iQgyV8",
     "image_with_text_nXe8UN",
     "image_with_text_ALULxa",
     "featured_collection_Tkzidq",
