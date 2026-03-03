@@ -350,7 +350,7 @@ h5,
 
 h6,
 .h6 {
-  color: rgba(var(--color-headline));
+  color: rgb(var(--color-headline));
   margin-block-start: 1.67em;
   margin-block-end: 1.67em;
 }

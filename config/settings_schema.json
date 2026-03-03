@@ -73,7 +73,7 @@
             "type": "color",
             "id": "highlight",
             "label": "Highlight Color",
-            "default": "#E0E0E0"
+            "default": "#b07a72"
           },
           {
             "type": "color",
