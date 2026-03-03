@@ -9,10 +9,10 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/Pink_for_her__by_Arisa_png_1b8379ba-577c-4806-98f5-04e30e8e14b9.png",
-    "inverse_logo": "shopify://shop_images/Pink_for_her__by_Arisa_png_1b8379ba-577c-4806-98f5-04e30e8e14b9.png",
+    "logo": "shopify://shop_images/Logo_b07a72_color.png",
+    "inverse_logo": "shopify://shop_images/Logo_b07a72_color.png",
     "logo_width": 100,
-    "favicon": "shopify://shop_images/Pink_for_her__by_Arisa_png.jpg",
+    "favicon": "shopify://shop_images/Logo_b07a72_color.png",
     "type_header_font": "cormorant_n4",
     "heading_scale": 120,
     "type_body_font": "inter_n4",
@@ -25,7 +25,7 @@
     "animations_hover_elements": "none",
     "buttons_border_thickness": 1,
     "buttons_border_opacity": 100,
-    "buttons_radius": 0,
+    "buttons_radius": 4,
     "buttons_shadow_opacity": 0,
     "buttons_shadow_horizontal_offset": 0,
     "buttons_shadow_vertical_offset": 4,
@@ -229,11 +229,11 @@
       },
       "scheme-5": {
         "settings": {
-          "background": "#ccb39b",
+          "background": "#111111",
           "background_gradient": "",
           "text": "#ffffff",
           "button": "#ffffff",
-          "button_label": "#ccb39b",
+          "button_label": "#111111",
           "secondary_button_label": "#ffffff",
           "shadow": "rgba(0,0,0,0)"
         }
