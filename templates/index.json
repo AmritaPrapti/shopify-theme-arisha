@@ -11,6 +11,7 @@
   "sections": {
     "hero_image_banner_iQgyV8": {
       "type": "hero-image-banner",
+      "disabled": true,
       "name": "Hero Image Banner",
       "settings": {
         "subheading": "",
