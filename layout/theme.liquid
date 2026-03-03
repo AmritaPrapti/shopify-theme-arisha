@@ -27,6 +27,7 @@
     {% endif %}
 
     {% render 'meta-tags' %}
+    
     <meta name="google-site-verification" content="Q2Ra5RWgVnXXz409Uokj-0mwERuKTvugtflpW82hJtU" />
 
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
@@ -79,7 +80,7 @@
             assign background_color_contrast = background_color | color_darken: 25
           endif
         %}
-        
+
         --color-headline: {{ scheme.settings.headline_color.red }},{{ scheme.settings.headline_color.green }},{{ scheme.settings.headline_color.blue }};
         --color-highlight: {{ scheme.settings.highlight }};
         --color-foreground: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
