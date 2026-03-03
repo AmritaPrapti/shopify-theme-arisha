@@ -1,3 +1,7 @@
+:root {
+    --page-padding: 1.5rem; /* your 0 0.5rem shorthand = 0 top/bottom, 0.5rem left/right */
+  }
+
 .image-with-text .grid {
   margin-bottom: 0;
 }
@@ -6,9 +10,23 @@
   position: relative;
 }
 
+.full-width .image-with-text__content {
+  padding-left: max(var(--page-padding), calc((100vw - var(--page-width)) / 2 + var(--page-padding)));
+  /* padding-right: max(var(--page-padding), calc((100vw - var(--page-width)) / 2 + var(--page-padding))); */
+}
+
+.banner-button-wrap {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
 @media screen and (min-width: 750px) {
   .image-with-text__grid--reverse {
     flex-direction: row-reverse;
+  }
+  :root {
+    --page-padding: 5rem; /* your 0 0.5rem shorthand = 0 top/bottom, 0.5rem left/right */
   }
 }
 

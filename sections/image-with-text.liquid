@@ -25,7 +25,7 @@
 -%}
 
 <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.section_color_scheme }}">
-  <div class="page-width">
+  <div class="{% if section.settings.enable_full_width == true %}full-width{% else %}page-width{% endif %}">
     <div class="image-with-text image-with-text--{{ section.settings.content_layout }} isolate{% if settings.text_boxes_border_thickness > 0 and settings.text_boxes_border_opacity > 0 and settings.media_border_thickness > 0 and settings.media_border_opacity > 0 %} collapse-borders{% endif %}{% unless section.settings.color_scheme == section.settings.section_color_scheme and settings.media_border_thickness > 0 and settings.text_boxes_shadow_opacity == 0 and settings.text_boxes_border_thickness == 0 or settings.text_boxes_border_opacity == 0 %} collapse-corners{% endunless %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <div class="image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %}">
         <div class="image-with-text__media-item image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }} grid__item">
@@ -79,8 +79,9 @@
                   </h2>
                 {%- when 'caption' -%}
                   <p
-                    class="image-with-text__text image-with-text__text--caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }} {{ block.settings.text_style }}"
+                    class="image-with-text__text image-with-text__text--caption {{ block.settings.text_style }}--{{ block.settings.text_size }} {{ block.settings.text_style }}"
                     {{ block.shopify_attributes }}
+                    style="color: {{ block.settings.caption_color }};"
                   >
                     {{ block.settings.caption | escape }}
                   </p>
@@ -89,7 +90,8 @@
                     {{ block.settings.text }}
                   </div>
                 {%- when 'button' -%}
-                  {%- if block.settings.button_label != blank -%}
+                  <div class="banner-button-wrap">
+                    {%- if block.settings.button_label != blank -%}
                     <a
                       {% if block.settings.button_link == blank %}
                         role="link" aria-disabled="true"
@@ -102,6 +104,21 @@
                       {{ block.settings.button_label | escape }}
                     </a>
                   {%- endif -%}
+                    {%- if block.settings.button_label2 != blank -%}
+                    <a
+                      {% if block.settings.button_link2 == blank %}
+                        role="link" aria-disabled="true"
+                      {% else %}
+                        href="{{ block.settings.button_link2 }}"
+                      {% endif %}
+                      class="button{% if block.settings.button_style_secondary2 %} button--secondary{% else %} button--primary{% endif %}"
+                      {{ block.shopify_attributes }}
+                    >
+                      {{ block.settings.button_label2 | escape }}
+                    </a>
+                  {%- endif -%}
+                  </div>
+                  
               {%- endcase -%}
             {%- endfor -%}
           </div>
@@ -222,6 +239,13 @@
       "type": "header",
       "content": "t:sections.image-with-text.settings.header.content"
     }, 
+    {
+      "type": "checkbox",
+      "id": "enable_full_width",
+      "label": "Enable full width content",
+      "default": false,
+      "info": "When enabled, the content will stretch to the edges of the screen and the image will be contained within the page width."
+    },
     {
       "type": "select",
       "id": "content_layout",
@@ -427,6 +451,11 @@
           ],
           "default": "medium",
           "label": "t:sections.image-with-text.blocks.caption.settings.caption_size.label"
+        },
+        {
+          "type": "color",
+          "id": "caption_color",
+          "label": "Custom Caption Color"
         }
       ]
     },
@@ -481,6 +510,24 @@
           "id": "button_style_secondary",
           "default": false,
           "label": "t:sections.image-with-text.blocks.button.settings.outline_button.label"
+        },
+        {
+          "type": "text",
+          "id": "button_label2",
+          "default": "t:sections.image-with-text.blocks.button.settings.button_label.default",
+          "label": "Button 2 Label",
+          "info": "t:sections.image-with-text.blocks.button.settings.button_label.info"
+        },
+        {
+          "type": "url",
+          "id": "button_link2",
+          "label": "Button 2 Link URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary2",
+          "default": false,
+          "label": "Outline Style for Button 2"
         }
       ]
     }
