@@ -64,11 +64,11 @@
         "image_behavior": "none",
         "enable_full_width": true,
         "content_layout": "no-overlap",
-        "desktop_content_position": "top",
+        "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "mobile_content_alignment": "left",
         "section_color_scheme": "",
-        "color_scheme": "",
+        "color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
         "padding_top": 0,
         "padding_bottom": 0
       }
