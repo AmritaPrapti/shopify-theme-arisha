@@ -145,8 +145,10 @@
       "settings": {
         "title": "Designed for Postpartum Recovery",
         "heading_size": "h1",
-        "image_width": "third",
+        "title_alignment": "center",
+        "image_width": "small",
         "image_ratio": "circle",
+        "image_background": "#f7efee",
         "button_label": "Shop Stater Bundle",
         "button_link": "shopify://pages/build-your-own-bundle",
         "columns_desktop": 3,
