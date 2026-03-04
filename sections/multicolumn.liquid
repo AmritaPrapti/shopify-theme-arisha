@@ -32,7 +32,7 @@
   >
     {%- unless section.settings.title == blank -%}
       <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin multicolumn__title">
-        <h2 class="title inline-richtext {{ section.settings.heading_size }}">
+        <h2 class="title inline-richtext {{ section.settings.heading_size }}" style="text-align: {{ section.settings.title_alignment }}; width: 100%;">
           {{ section.settings.title }}
         </h2>
         {%- if section.settings.button_label != blank and show_mobile_slider -%}
@@ -80,12 +80,17 @@
                 {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
                   {% assign spaced_image = true %}
                 {% endif %}
-                <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width{% if section.settings.image_width != 'full' or spaced_image %} multicolumn-card-spacing{% endif %}">
+                <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width {% if section.settings.image_width != 'full' or spaced_image %} multicolumn-card-spacing{% endif %}"
+                {% if section.settings.image_background != blank %}
+                      style="--media-bg: {{ section.settings.image_background }};"
+                    {% endif %}>
                   <div
-                    class="media media--transparent media--{{ section.settings.image_ratio }}"
+                    class="media media--transparent media--{{ section.settings.image_ratio }} {% if section.settings.image_background != blank  %} media--background{% endif %}"
+                    
                     {% if section.settings.image_ratio == 'adapt' %}
-                      style="padding-bottom: {{ 1 | divided_by: highest_ratio | times: 100 }}%;"
+                      style="padding-bottom: {{ 1 | divided_by: highest_ratio | times: 100 }}%; "
                     {% endif %}
+                    
                   >
                     {%- liquid
                       assign number_of_columns = section.settings.columns_desktop
@@ -234,6 +239,26 @@
       "label": "t:sections.all.heading_size.label"
     },
     {
+      "type": "select",
+      "id": "title_alignment",
+      "label": "Title Alignment",
+      "options": [
+        {
+        "value": "left",
+        "label": "Left"
+        },
+        {
+        "value": "center",
+        "label": "Center"
+        },
+        {
+        "value": "right",
+        "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
       "type": "header",
       "content": "t:sections.multicolumn.settings.header_image.content"
     },    
@@ -241,6 +266,10 @@
       "type": "select",
       "id": "image_width",
       "options": [
+        {
+          "label": "Small",
+          "value": "small"
+        },
         {
           "value": "third",
           "label": "t:sections.multicolumn.settings.image_width.options__1.label"
@@ -280,6 +309,12 @@
       ],
       "default": "adapt",
       "label": "t:sections.multicolumn.settings.image_ratio.label"
+    },
+    {
+      "type": "color",
+      "id": "image_background",
+      "label": "Image Background Color",
+      "info": "This color will be applied to the background of the image."
     },
     {
       "type": "header",

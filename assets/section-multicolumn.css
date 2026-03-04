@@ -10,6 +10,23 @@
   margin-top: 0;
 }
 
+.multicolumn-card__image-wrapper--small-width {
+  width: 60px;
+  height: 60px;
+}
+
+.media--background {
+  background-color: var(--media-bg);
+  padding: 8px;
+}
+
+.media--background img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  position: relative !important;
+}
+
 @media screen and (max-width: 749px) {
   .multicolumn .title-wrapper-with-link {
     margin-bottom: 3rem;
