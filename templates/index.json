@@ -182,7 +182,7 @@
             "button_label": "Learn more",
             "button_link": "shopify://pages/about-yakuzen",
             "button_style_secondary": false,
-            "button_label2": "Button label",
+            "button_label2": "",
             "button_link2": "",
             "button_style_secondary2": false
           }
@@ -237,7 +237,7 @@
             "button_label": "Learn more",
             "button_link": "shopify://pages/why-for-her-by-arisa-exists",
             "button_style_secondary": true,
-            "button_label2": "Button label",
+            "button_label2": "",
             "button_link2": "",
             "button_style_secondary2": false
           }
