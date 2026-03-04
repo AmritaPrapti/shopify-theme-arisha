@@ -11,13 +11,13 @@
 }
 
 .multicolumn-card__image-wrapper--small-width {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
 }
 
 .media--background {
   background-color: var(--media-bg);
-  padding: 8px;
+  padding: 22px;
 }
 
 .media--background img {
