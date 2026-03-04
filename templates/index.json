@@ -373,6 +373,55 @@
         "mobile_content_alignment": "center",
         "show_text_below": false
       }
+    },
+    "how_it_works_xiQ8ay": {
+      "type": "how-it-works",
+      "blocks": {
+        "list_4DGD3t": {
+          "type": "list",
+          "settings": {
+            "list_title": "Start with Our Starter Bundle",
+            "list_description": "<p>Our curated starter bundle is the easiest and best-value way to begin. You can also customize your own bundle.</p>"
+          }
+        },
+        "list_jweUiY": {
+          "type": "list",
+          "settings": {
+            "list_title": "Submit Your Order",
+            "list_description": "<p>Orders received by 3pm on Monday for delivery Wednesday or Thursday of the same week.</p>"
+          }
+        },
+        "list_Y9xbqg": {
+          "type": "list",
+          "settings": {
+            "list_title": "Relax at Home",
+            "list_description": "<p>We'll deliver your meals to your doorstep. They come in individual servings, frozen and delivered in dry ice for maximum freshness.</p>"
+          }
+        },
+        "list_QA4V6q": {
+          "type": "list",
+          "settings": {
+            "list_title": "Cook and Enjoy",
+            "list_description": "<p>Heat in under 5 minutes. Savor nourishing, chef-crafted meals designed for your recovery.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "list_4DGD3t",
+        "list_jweUiY",
+        "list_Y9xbqg",
+        "list_QA4V6q"
+      ],
+      "name": "How it works",
+      "settings": {
+        "title": "How It Works",
+        "subtitle": "From order to table in four simple steps",
+        "image": "shopify://shop_images/Untitled_design_3.jpg",
+        "image_position": "second",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -382,6 +431,7 @@
     "image_with_text_ALULxa",
     "image_with_text_NRaG6K",
     "176610496544f20ae1",
-    "image_banner_AWGaxM"
+    "image_banner_AWGaxM",
+    "how_it_works_xiQ8ay"
   ]
 }
