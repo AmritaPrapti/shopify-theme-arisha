@@ -80,10 +80,10 @@
       "name": "Trust Bar",
       "settings": {
         "show_check": true,
-        "check_color": "#cc859a",
+        "check_color": "#b07a72",
         "title": "<p>The Postpartum Promise</p>",
         "details": "<p>Try your first order risk-free. If you're not satisfied, request a refund within 30 days (up to $100).<a href=\"https://forherbyarisa.com/pages/faq\" target=\"_blank\">Learn More</a></p>",
-        "link_color": "#cc859a",
+        "link_color": "#b07a72",
         "coloumn": "2",
         "section_color_scheme": "scheme-5",
         "padding_top": 36,
