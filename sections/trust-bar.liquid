@@ -1,0 +1,129 @@
+{{ 'trust-bar.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+
+<section class="gradient color-{{ section.settings.section_color_scheme }} ">
+    <div class="section-{{ section.id }}-padding page-width">
+        <div class="trust-bar trust-bar--{{ section.settings.coloumn }}-column">
+            <div class="trust-bar__content">
+                {% if section.settings.show_check %}
+                    <span class="trust-bar__check" style="--color-check: {{ section.settings.check_color.red }}, {{ section.settings.check_color.green }}, {{ section.settings.check_color.blue }} ;">
+                        {% render 'check-mark' %}
+                    </span>
+                {% endif %}
+                <div class="trust-bar__title">{{ section.settings.title }}</div>
+            </div>
+            <div class="trust-bar__details rte" style="--color-link: {{ section.settings.link_color }}">
+                {{ section.settings.details }}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% schema %}
+    {
+        "name": "Trust Bar",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "show_check",
+                "label": "Show check icon beside the title",
+                "default": true
+            },
+            {
+                "type": "color",
+                "id": "check_color",
+                "label": "Check mark Color",
+                "default": "#CC859A",
+                "info": "This color will be applied to the check mark icon."
+            },
+            {
+                "type": "richtext",
+                "id": "title",
+                "label": "Title",
+                "default": "<p>The Postpartum Promise</p>",
+            },
+            {
+                "type": "richtext",
+                "id": "details",
+                "label": "Description"
+            },
+            {
+                "type": "color",
+                "id": "link_color",
+                "label": "Link Color",
+                "default": "#CC859A",
+                "info": "This color will be applied to any links within the description text."
+            },
+            {
+                "type": "select",
+                "id": "coloumn",
+                "label": "Column layout",
+                "options": [
+                    {
+                    "value": "1",
+                    "label": "One Column"
+                    },
+                    {
+                    "value": "2",
+                    "label": "Two Column"
+                    }
+                ],
+                "default": "2",
+                "info": "If you want to show text and title side by side, select two column layout. If you want to show text below the title, select one column layout."
+            },
+
+            {
+                "type": "color_scheme",
+                "id": "section_color_scheme",
+                "label": "t:sections.all.colors.label",
+                "default": "scheme-1"
+            },
+            {
+                "type": "header",
+                "content": "t:sections.all.padding.section_padding_heading"
+            },
+            {
+                "type": "range",
+                "id": "padding_top",
+                "min": 0,
+                "max": 100,
+                "step": 4,
+                "unit": "px",
+                "label": "t:sections.all.padding.padding_top",
+                "default": 36
+            },
+            {
+                "type": "range",
+                "id": "padding_bottom",
+                "min": 0,
+                "max": 100,
+                "step": 4,
+                "unit": "px",
+                "label": "t:sections.all.padding.padding_bottom",
+                "default": 36
+            }
+
+        ],
+        "presets": [
+            {
+                "name": "Trust Bar",
+                "category": "Text"
+            }
+        ]
+    }
+{% endschema %}
