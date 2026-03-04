@@ -24,7 +24,7 @@
         "heading_WVmjPE": {
           "type": "heading",
           "settings": {
-            "heading": "Postpartum nourishment,<em>made simple.</em>",
+            "heading": "Postpartum <br> nourishment, <br> <span>made simple.<em></em></span>",
             "heading_size": "h1"
           }
         },
@@ -107,6 +107,7 @@
         "text_WMMMVe",
         "button_YyYD3L"
       ],
+      "custom_css": [],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "section_url": "shopify://pages/about-yakuzen",

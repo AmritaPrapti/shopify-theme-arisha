@@ -13,7 +13,7 @@
     "inverse_logo": "shopify://shop_images/Logo_b07a72_color.png",
     "logo_width": 100,
     "favicon": "shopify://shop_images/Logo_b07a72_color.png",
-    "type_header_font": "cormorant_n4",
+    "type_header_font": "cormorant_n6",
     "heading_scale": 120,
     "type_body_font": "inter_n4",
     "body_scale": 100,
@@ -289,7 +289,7 @@
       },
       "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c": {
         "settings": {
-          "background": "#f6f4f2",
+          "background": "#ffffff",
           "background_gradient": "",
           "headline_color": "#111111",
           "text": "#7a746f",
