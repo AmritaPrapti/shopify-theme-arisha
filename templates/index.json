@@ -47,13 +47,25 @@
             "button_link2": "shopify://pages/shop",
             "button_style_secondary2": true
           }
+        },
+        "caption_YLNArL": {
+          "type": "caption",
+          "settings": {
+            "caption": "<span>★★★★★ </span> Loved by Postpartum Mothers",
+            "text_style": "subtitle",
+            "text_size": "small",
+            "font_weight": "400",
+            "caption_color": "#7a746f",
+            "caption_highlight": "#d18901"
+          }
         }
       },
       "block_order": [
         "caption_fwNaVg",
         "heading_WVmjPE",
         "text_e4n4Cz",
-        "button_tcwyx6"
+        "button_tcwyx6",
+        "caption_YLNArL"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
