@@ -102,6 +102,63 @@
         "padding_bottom": 36
       }
     },
+    "multicolumn_3ABAmn": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_NydbTx": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/clock_b4783c17-a555-4787-ac9b-2e3d478b58e0.svg",
+            "title": "Quick, Easy Prep",
+            "text": "<p>Ready in under 5 minutes. Nourishing support, even on your most exhausted days.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_NJDwfG": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/chef_49f2be4e-7c8b-4a44-8753-0a5da8b6dc16.svg",
+            "title": "Tasty & Filling",
+            "text": "<p>Chef-developed recipes that feel comforting, balanced, and deeply satisfying.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_aBx6aR": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/like_3899a206-ba61-41b5-8dd5-b63de4eb48cf.svg",
+            "title": "Healing Nutrition",
+            "text": "<p>Rooted in Yakuzen principles to gently support recovery and postpartum healing.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_NydbTx",
+        "column_NJDwfG",
+        "column_aBx6aR"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Designed for Postpartum Recovery",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "circle",
+        "button_label": "Shop Stater Bundle",
+        "button_link": "shopify://pages/build-your-own-bundle",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "image_with_text_ALULxa": {
       "type": "image-with-text",
       "blocks": {
@@ -154,63 +211,6 @@
         "section_color_scheme": "scheme-3",
         "color_scheme": "scheme-3",
         "padding_top": 52,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn_3ABAmn": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_NydbTx": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/clock.svg",
-            "title": "Quick, Easy Prep",
-            "text": "<p>Ready in under 5 minutes. Nourishing support, even on your most exhausted days.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_NJDwfG": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/chef.svg",
-            "title": "Tasty & Filling",
-            "text": "<p>Chef-developed recipes that feel comforting, balanced, and deeply satisfying.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_aBx6aR": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/like.svg",
-            "title": "Healing Nutrition",
-            "text": "<p>Rooted in Yakuzen principles to gently support recovery and postpartum healing.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_NydbTx",
-        "column_NJDwfG",
-        "column_aBx6aR"
-      ],
-      "name": "t:sections.multicolumn.presets.name",
-      "settings": {
-        "title": "Designed for Postpartum Recovery",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "circle",
-        "button_label": "Shop Stater Bundle",
-        "button_link": "shopify://pages/build-your-own-bundle",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "color_scheme": "",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
         "padding_bottom": 36
       }
     },
