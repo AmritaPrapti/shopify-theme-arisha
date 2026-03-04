@@ -17,7 +17,7 @@
 <section class="gradiant color-{{ section.settings.color_scheme }}">
 
     <div class="page-width section-{{ section.id }}-padding">
-        <div class="how-it-works__header">
+        <div class="how-it-works__header text-align-{{ section.settings.header_alignment }}">
             {% if section.settings.title != blank %}
                 <h2 class="how-it-works__title">{{ section.settings.title }}</h2>
             {% endif %}
@@ -34,8 +34,8 @@
             <div class="how-it-works__content">
                 {% for block in section.blocks %}
                     <div class="how-it-works__block">
-                        <div>{{ forloop.index }}</div>
-                        <div>
+                        <div class="loop_counter">{{ forloop.index }}</div>
+                        <div class="list-de">
                             {% if block.settings.list_title != blank %}
                                 <h3 class="how-it-works__block-title">{{ block.settings.list_title }}</h3>
                             {% endif %}
@@ -68,6 +68,26 @@
                 "id": "subtitle",
                 "label": "Subtitle",
                 "default": "From order to table in four simple steps"
+            },
+            {
+                "type": "select",
+                "id": "header_alignment",
+                "label": "Header Alignment",
+                "options": [
+                    {
+                    "value": "left",
+                    "label": "Left"
+                    },
+                    {
+                    "value": "center",
+                    "label": "Center"
+                    },
+                    {
+                    "value": "right",
+                    "label": "Right"
+                    }
+                ],
+                "default": "center"
             },
             {
                 "type": "image_picker",
