@@ -48,8 +48,10 @@
   height: 43.5rem;
 }
 
-.image-with-text__text--caption {
-  font-weight: 600;
+
+
+.image-with-text__text--caption span {
+  color: var(--caption-highlight);
 }
 
 .image-with-text__heading {

@@ -81,9 +81,9 @@
                   <p
                     class="image-with-text__text image-with-text__text--caption {{ block.settings.text_style }}--{{ block.settings.text_size }} {{ block.settings.text_style }}"
                     {{ block.shopify_attributes }}
-                    style="color: {{ block.settings.caption_color }};"
+                    style="color: {{ block.settings.caption_color }}; --caption-highlight: {{ block.settings.caption_highlight }}; font-weight: {{ block.settings.font_weight }};"
                   >
-                    {{ block.settings.caption | escape }}
+                    {{ block.settings.caption }}
                   </p>
                 {%- when 'text' -%}
                   <div class="image-with-text__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
@@ -408,13 +408,13 @@
     {
       "type": "caption",
       "name": "t:sections.image-with-text.blocks.caption.name",
-      "limit": 1,
       "settings": [
         {
-          "type": "text",
+          "type": "textarea",
           "id": "caption",
           "default": "t:sections.image-with-text.blocks.caption.settings.text.default",
-          "label": "t:sections.image-with-text.blocks.caption.settings.text.label"
+          "label": "t:sections.image-with-text.blocks.caption.settings.text.label",
+          "info": "Supports <span> tags for highlighting specific words."
         },
         {
           "type": "select",
@@ -453,9 +453,35 @@
           "label": "t:sections.image-with-text.blocks.caption.settings.caption_size.label"
         },
         {
+          "type": "select",
+          "id": "font_weight",
+          "label": "Font Weight",
+          "options": [
+            {
+            "value": "400",
+            "label": "Normal"
+            },
+            {
+            "value": "500",
+            "label": "Medium"
+            },
+            {
+            "value": "600",
+            "label": "Semi Bold"
+            }
+          ],
+          "default": "400"
+        },
+        {
           "type": "color",
           "id": "caption_color",
           "label": "Custom Caption Color"
+        },
+        {
+          "type": "color",
+          "id": "caption_highlight",
+          "label": "Caption Highlight Color",
+          "info": "This color will be used for any text wrapped in a <span> within the caption."
         }
       ]
     },
