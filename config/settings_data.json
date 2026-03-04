@@ -237,14 +237,14 @@
       },
       "scheme-5": {
         "settings": {
-          "background": "#111111",
+          "background": "#e8ede5",
           "background_gradient": "",
-          "headline_color": "#ffffff",
-          "text": "#ffffff",
+          "headline_color": "#111111",
+          "text": "#7a746f",
           "highlight": "#b07a72",
-          "button": "#ffffff",
-          "button_label": "#111111",
-          "secondary_button_label": "#ffffff",
+          "button": "#111111",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#111111",
           "shadow": "rgba(0,0,0,0)"
         }
       },

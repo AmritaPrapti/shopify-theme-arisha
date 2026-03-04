@@ -18,7 +18,9 @@
             "caption": "For Her. By Arisa",
             "text_style": "caption-with-letter-spacing",
             "text_size": "medium",
-            "caption_color": "#b07a72"
+            "font_weight": "400",
+            "caption_color": "#b07a72",
+            "caption_highlight": ""
           }
         },
         "heading_WVmjPE": {
@@ -125,6 +127,21 @@
         "section_color_scheme": "scheme-3",
         "color_scheme": "scheme-3",
         "padding_top": 52,
+        "padding_bottom": 36
+      }
+    },
+    "trust_bar_CD8bzz": {
+      "type": "trust-bar",
+      "name": "Trust Bar",
+      "settings": {
+        "show_check": true,
+        "check_color": "#CC859A",
+        "title": "<p>The Postpartum Promise</p>",
+        "details": "<p>Try your first order risk-free. If you're not satisfied, request a refund within 30 days (up to $100).<a href=\"https://forherbyarisa.com/pages/faq\" target=\"_blank\">Learn More</a></p>",
+        "link_color": "#CC859A",
+        "coloumn": "2",
+        "section_color_scheme": "",
+        "padding_top": 36,
         "padding_bottom": 36
       }
     },
@@ -856,6 +873,7 @@
   "order": [
     "image_with_text_nXe8UN",
     "image_with_text_ALULxa",
+    "trust_bar_CD8bzz",
     "featured_collection_Tkzidq",
     "featured_product_8MhRnz",
     "featured_product_yFRxXE",
