@@ -446,7 +446,7 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
+        "quick_add": "standard",
         "show_sale_amount": false,
         "sale_display_type": "amount",
         "columns_mobile": "2",
