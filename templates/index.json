@@ -217,19 +217,25 @@
         "featured_collection_YFkA9h": {
           "type": "featured_collection",
           "settings": {
-            "collection": "teas"
+            "collection": "teas",
+            "custom_description": "Nourishing broths and hearty stews designed to support postpartum healing.",
+            "button_label": "Shop Now"
           }
         },
         "featured_collection_pzN9Va": {
           "type": "featured_collection",
           "settings": {
-            "collection": "soups-and-meals"
+            "collection": "soups-and-meals",
+            "custom_description": "Wholesome, energizing bites to keep you nourished throughout the day.",
+            "button_label": "Shop Now"
           }
         },
         "featured_collection_hDTcEV": {
           "type": "featured_collection",
           "settings": {
-            "collection": "recipe-lineup"
+            "collection": "recipe-lineup",
+            "custom_description": "Calming herbal blends to support recovery and relaxation.",
+            "button_label": "Shop Now"
           }
         }
       },
@@ -242,7 +248,11 @@
       "settings": {
         "title": "Collections",
         "heading_size": "h1",
+        "show_title_center": false,
         "image_ratio": "square",
+        "show_description": true,
+        "show_button": true,
+        "button_style": "primary",
         "columns_desktop": 3,
         "color_scheme": "",
         "show_view_all": false,
