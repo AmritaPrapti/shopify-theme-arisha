@@ -161,32 +161,42 @@
         "padding_bottom": 36
       }
     },
-    "featured_collection_CUW9tb": {
-      "type": "featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
+    "collection_list_8VzpRY": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_YFkA9h": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "teas"
+          }
+        },
+        "featured_collection_pzN9Va": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "soups-and-meals"
+          }
+        },
+        "featured_collection_hDTcEV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "recipe-lineup"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_YFkA9h",
+        "featured_collection_pzN9Va",
+        "featured_collection_hDTcEV"
+      ],
+      "name": "t:sections.collection-list.presets.name",
       "settings": {
-        "collection": "teas",
-        "products_to_show": 3,
-        "title": "Featured collection",
+        "title": "Collections",
         "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 3,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-f3281bbe-308c-442f-aae1-fea6754f621d",
         "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "standard",
-        "show_sale_amount": false,
-        "sale_display_type": "amount",
-        "columns_mobile": "2",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
@@ -460,7 +470,7 @@
     "image_with_text_nXe8UN",
     "trust_bar_CD8bzz",
     "multicolumn_3ABAmn",
-    "featured_collection_CUW9tb",
+    "collection_list_8VzpRY",
     "image_with_text_ALULxa",
     "image_with_text_NRaG6K",
     "176610496544f20ae1",
