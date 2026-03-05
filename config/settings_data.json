@@ -190,7 +190,7 @@
           "headline_color": "#111111",
           "text": "#7a746f",
           "highlight": "#b07a72",
-          "button": "#111111",
+          "button": "#b07a72",
           "button_label": "#ffffff",
           "secondary_button_label": "#111111",
           "shadow": "rgba(0,0,0,0)"
