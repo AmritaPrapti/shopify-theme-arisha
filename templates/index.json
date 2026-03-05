@@ -161,6 +161,37 @@
         "padding_bottom": 36
       }
     },
+    "featured_collection_CUW9tb": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "teas",
+        "products_to_show": 3,
+        "title": "Featured collection",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 3,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-f3281bbe-308c-442f-aae1-fea6754f621d",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "show_sale_amount": false,
+        "sale_display_type": "amount",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "image_with_text_ALULxa": {
       "type": "image-with-text",
       "blocks": {
@@ -423,48 +454,17 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "featured_collection_CUW9tb": {
-      "type": "featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
-      "settings": {
-        "collection": "teas",
-        "products_to_show": 3,
-        "title": "Featured collection",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 3,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-f3281bbe-308c-442f-aae1-fea6754f621d",
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "standard",
-        "show_sale_amount": false,
-        "sale_display_type": "amount",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
     "image_with_text_nXe8UN",
     "trust_bar_CD8bzz",
     "multicolumn_3ABAmn",
+    "featured_collection_CUW9tb",
     "image_with_text_ALULxa",
     "image_with_text_NRaG6K",
     "176610496544f20ae1",
     "image_banner_AWGaxM",
-    "how_it_works_xiQ8ay",
-    "featured_collection_CUW9tb"
+    "how_it_works_xiQ8ay"
   ]
 }
