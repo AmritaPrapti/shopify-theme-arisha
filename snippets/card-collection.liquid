@@ -8,6 +8,11 @@
   - extend_height: {Boolean} Card height extends to available container space. Default: false (optional)
   - wrapper_class: {String} Wrapper class for card (optional)
   - placeholder_image: {String} Placeholder image when collection is empty (optional)
+  - show_description: {Boolean} Show collection description (optional)
+  - show_button: {Boolean} Show button on card (optional)
+  - button_style: {String} Button style for card (optional)
+  - custom_description: {String} Custom description for collection (optional)
+  - button_label: {String} Custom label for button (optional)
 
   Usage:
   {% render 'card-collection' %}
@@ -83,7 +88,7 @@
       {%- else -%}
         <div class="card__content">
           <div class="card__information">
-            <h3 class="card__heading">
+            <h3 class="card__heading {{ show_button }}">
               <a
                 {% if card_collection == blank %}
                   role="link" aria-disabled="true"
@@ -97,14 +102,15 @@
                 {%- else -%}
                   {{ 'onboarding.collection_title' | t }}
                 {%- endif -%}
-                {%- if card_collection.description == blank -%}
+                {%- if card_collection.description == blank and show_button == false -%}
                   <span class="icon-wrap">
                     {{- 'icon-arrow.svg' | inline_asset_content -}}
                   </span>
                 {%- endif %}
               </a>
             </h3>
-            {%- if card_collection.description != blank -%}
+            {% if show_description %}
+               {%- if card_collection.description != blank or custom_description != blank -%}
               <p class="card__caption">
                 {{- card_collection.description | strip_html | truncatewords: 12 -}}
                 <span class="icon-wrap">
@@ -112,6 +118,13 @@
                 </span>
               </p>
             {%- endif -%}
+            {% endif %}
+            {% if show_button %}
+              <a href="{{ card_collection.url }}" class="button button--{{ button_style }} card__button">
+                {{ button_label | default: 'View Collection' }}
+              </a>
+            {% endif %}
+           
           </div>
         </div>
       {%- endif -%}
@@ -133,21 +146,31 @@
               {%- else -%}
                 {{ 'onboarding.collection_title' | t }}
               {%- endif -%}
-              {%- if card_collection.featured_image or card_collection.description == blank -%}
+              {%- if card_collection.description == blank and show_button == false -%}
                 <span class="icon-wrap">
                   {{- 'icon-arrow.svg' | inline_asset_content -}}
                 </span>
               {%- endif %}
             </a>
           </h3>
-          {%- if card_collection.featured_image == null and card_collection.description != blank -%}
-            <p class="card__caption">
-              {{- card_collection.description | strip_html | truncatewords: 12 -}}
-              <span class="icon-wrap">
-                {{- 'icon-arrow.svg' | inline_asset_content -}}
-              </span>
+          {%- if card_collection.description != blank or custom_description != blank -%}
+            <p class="card__caption ">
+              {% if custom_description != blank %}
+                {{ custom_description | strip_html | truncatewords: 12 }}
+                {% else %}
+                  {{- card_collection.description | strip_html | truncatewords: 12 -}}
+              {% endif %}
             </p>
           {%- endif -%}
+
+           {% if show_button %}
+              <a href="{{ card_collection.url }}" class="button button--{{ button_style }} card-collection__button">
+                {{ button_label | default: 'View Collection' }}
+                 <span class="icon-wrap">
+                  {{- 'icon-arrow.svg' | inline_asset_content -}}
+                </span>
+              </a>
+            {% endif %}
         </div>
       </div>
     {%- endif -%}

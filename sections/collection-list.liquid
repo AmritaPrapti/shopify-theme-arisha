@@ -31,6 +31,9 @@
         <h2
           id="SectionHeading-{{ section.id }}"
           class="collection-list-title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if section.settings.show_title_center %}
+            style="text-align: center;"
+          {% endif %}
         >
           {{ section.settings.title }}
         </h2>
@@ -76,7 +79,12 @@
               card_collection: block.settings.collection,
               media_aspect_ratio: section.settings.image_ratio,
               columns: columns,
-              placeholder_image: placeholder_image
+              placeholder_image: placeholder_image,
+              show_description: section.settings.show_description,
+              show_button: section.settings.show_button,
+              button_style: section.settings.button_style,
+              custom_description: block.settings.custom_description,
+              button_label: block.settings.button_label
             %}
           </li>
         {%- endfor -%}
@@ -178,6 +186,12 @@
       "label": "t:sections.all.heading_size.label"
     },
     {
+      "type": "checkbox",
+      "id": "show_title_center",
+      "label": "Center align section title",
+      "default": false
+    },
+    {
       "type": "header",
       "content": "t:sections.collection-list.settings.header_layout.content"
     },    
@@ -200,6 +214,36 @@
       ],
       "default": "square",
       "label": "t:sections.collection-list.settings.image_ratio.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "Show description",
+      "default": false,
+      "info": "If enabled, the collection description will show on the card below the collection title."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show Shop Button",
+      "default": false,
+      "info": "If enabled, the shop now button will visible below the description"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Select Card Button Style",
+      "options": [
+        {
+        "value": "primary",
+        "label": "Solid"
+        },
+        {
+        "value": "secondary",
+        "label": "Outline"
+        }
+      ],
+      "default": "primary"
     },
     {
       "type": "range",
@@ -284,6 +328,19 @@
           "type": "collection",
           "id": "collection",
           "label": "t:sections.collection-list.blocks.featured_collection.settings.collection.label"
+        },
+        {
+          "type": "textarea",
+          "id": "custom_description",
+          "label": "Custom Description",
+          "info": "If provided, this description will override the collection's default description."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Shop Now",
+          "info": "If provided, this label will override the default button text.",
         }
       ]
     }

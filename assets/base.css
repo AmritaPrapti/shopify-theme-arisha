@@ -587,6 +587,8 @@ details > * {
   --duration-extended: 3s;
   --ease-out-slow: cubic-bezier(0, 0, 0.3, 1);
   --animation-slide-in: slideIn var(--duration-extra-long) var(--ease-out-slow) forwards;
+  --animation-slide-in-left: slideInLeft var(--duration-extra-long) var(--ease-out-slow) forwards;
+  --animation-slide-in-right: slideInRight var(--duration-extra-long) var(--ease-out-slow) forwards;
   --animation-fade-in: fadeIn var(--duration-extra-long) var(--ease-out-slow);
 }
 
@@ -3290,12 +3292,22 @@ details-disclosure > details {
   }
 
   .scroll-trigger.animate--fade-in,
-  .scroll-trigger.animate--slide-in {
+  .scroll-trigger.animate--slide-in,
+  .scroll-trigger.animate--slide-in-left,
+  .scroll-trigger.animate--slide-in-right {
     opacity: 0.01;
   }
 
   .scroll-trigger.animate--slide-in {
     transform: translateY(2rem);
+  }
+
+  .scroll-trigger.animate--slide-in-left {
+    transform: translateX(-2rem);
+  }
+
+  .scroll-trigger.animate--slide-in-right {
+    transform: translateX(2rem);
   }
 
   .scroll-trigger:not(.scroll-trigger--offscreen).animate--fade-in {
@@ -3308,8 +3320,20 @@ details-disclosure > details {
     animation-delay: calc(var(--animation-order) * 75ms);
   }
 
+  .scroll-trigger:not(.scroll-trigger--offscreen).animate--slide-in-left {
+    animation: var(--animation-slide-in-left);
+    animation-delay: calc(var(--animation-order) * 75ms);
+  }
+
+  .scroll-trigger:not(.scroll-trigger--offscreen).animate--slide-in-right {
+    animation: var(--animation-slide-in-right);
+    animation-delay: calc(var(--animation-order) * 75ms);
+  }
+
   .scroll-trigger.scroll-trigger--design-mode.animate--fade-in,
   .scroll-trigger.scroll-trigger--design-mode.animate--slide-in,
+  .scroll-trigger.scroll-trigger--design-mode.animate--slide-in-left,
+  .scroll-trigger.scroll-trigger--design-mode.animate--slide-in-right,
   .scroll-trigger.scroll-trigger--design-mode .slider,
   .scroll-trigger:not(.scroll-trigger--offscreen).scroll-trigger--cancel {
     opacity: 1;
@@ -3322,6 +3346,11 @@ details-disclosure > details {
     transform: translateY(0);
   }
 
+  .scroll-trigger.scroll-trigger--design-mode.animate--slide-in-left,
+  .scroll-trigger.scroll-trigger--design-mode.animate--slide-in-right {
+    transform: translateX(0);
+  }
+
   @keyframes slideIn {
     from {
       transform: translateY(2rem);
@@ -3329,6 +3358,28 @@ details-disclosure > details {
     }
     to {
       transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-2rem);
+      opacity: 0.01;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      transform: translateX(2rem);
+      opacity: 0.01;
+    }
+    to {
+      transform: translateX(0);
       opacity: 1;
     }
   }
