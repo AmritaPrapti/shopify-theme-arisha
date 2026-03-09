@@ -56,7 +56,7 @@
             "text_size": "small",
             "font_weight": "400",
             "caption_color": "#7a746f",
-            "caption_highlight": "#d18901"
+            "caption_highlight": "#b07a72"
           }
         }
       },
@@ -141,6 +141,9 @@
         "column_NJDwfG",
         "column_aBx6aR"
       ],
+      "custom_css": [
+        "h3 {font-family: inter; font-weight: normal;}"
+      ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
         "title": "Designed for postpartum recovery",
@@ -148,7 +151,7 @@
         "title_alignment": "center",
         "image_width": "small",
         "image_ratio": "circle",
-        "image_background": "#f3e7e4",
+        "image_background": "rgba(0,0,0,0)",
         "button_label": "SHOP DISCOVERY SET",
         "button_link": "shopify://products/discovery-set",
         "columns_desktop": 3,
@@ -200,7 +203,8 @@
         "list_QA4V6q"
       ],
       "custom_css": [
-        "h2 {font-size: 48px;}"
+        "h2 {font-size: 48px;}",
+        "h3 {font-family: inter; font-weight: normal;}"
       ],
       "name": "How it works",
       "settings": {
