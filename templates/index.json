@@ -262,6 +262,73 @@
         "padding_bottom": 76
       }
     },
+    "image_with_text_NRaG6K": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_BnjUrp": {
+          "type": "caption",
+          "settings": {
+            "caption": "Our Story",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium",
+            "font_weight": "400",
+            "caption_color": "",
+            "caption_highlight": ""
+          }
+        },
+        "heading_3cGrHN": {
+          "type": "heading",
+          "settings": {
+            "heading": "Who We Are",
+            "heading_size": "h1"
+          }
+        },
+        "text_ix7Erw": {
+          "type": "text",
+          "settings": {
+            "text": "<p>for her. by Arisa was created to support mothers through food. Founded by Arisa, whose Japanese heritage deeply informs our approach, for her. exists to bring intention, warmth, and nourishment back into postpartum care.</p><p>We apply Yakuzen principles to postpartum care, creating foods that are comforting, gentle, and easy to receive when energy is low — in a way that feels approachable and modern.</p><p>Developed alongside postpartum professionals and rooted in traditional Japanese nourishment practices.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_gBatXN": {
+          "type": "button",
+          "settings": {
+            "button_label": "LEARN OUR STORY",
+            "button_link": "shopify://pages/why-for-her-by-arisa-exists",
+            "button_style_secondary": false,
+            "button_label2": "",
+            "button_link2": "",
+            "button_style_secondary2": false
+          }
+        }
+      },
+      "block_order": [
+        "caption_BnjUrp",
+        "heading_3cGrHN",
+        "text_ix7Erw",
+        "button_gBatXN"
+      ],
+      "custom_css": [],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_url": "shopify://pages/why-for-her-by-arisa-exists",
+        "enable_text_link": true,
+        "image": "shopify://shop_images/maxwellartphotography-swissphotographer-switzerland-familyphotoshoot-swissalps-familymomoi-101_Original.jpg",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "enable_full_width": false,
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
+        "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
+        "padding_top": 76,
+        "padding_bottom": 76
+      }
+    },
     "image_with_text_ALULxa": {
       "type": "image-with-text",
       "blocks": {
@@ -296,6 +363,7 @@
         "text_WMMMVe",
         "button_YyYD3L"
       ],
+      "disabled": true,
       "custom_css": [],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
@@ -314,61 +382,6 @@
         "section_color_scheme": "scheme-3",
         "color_scheme": "scheme-3",
         "padding_top": 52,
-        "padding_bottom": 36
-      }
-    },
-    "image_with_text_NRaG6K": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_3cGrHN": {
-          "type": "heading",
-          "settings": {
-            "heading": "Who We Are",
-            "heading_size": "h2"
-          }
-        },
-        "text_ix7Erw": {
-          "type": "text",
-          "settings": {
-            "text": "<p>for her. by Arisa was created to support mothers through food.</p><p>Founded by Arisa and developed alongside fellow mothers and postpartum professionals, for her. exists to bring intention, warmth, and nourishment back into postpartum care in a way that feels approachable and modern.</p><p>We apply these principles to postpartum care, creating foods that are comforting, gentle, and easy to receive when energy is low.</p>",
-            "text_style": "body"
-          }
-        },
-        "button_gBatXN": {
-          "type": "button",
-          "settings": {
-            "button_label": "Learn more",
-            "button_link": "shopify://pages/why-for-her-by-arisa-exists",
-            "button_style_secondary": true,
-            "button_label2": "",
-            "button_link2": "",
-            "button_style_secondary2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_3cGrHN",
-        "text_ix7Erw",
-        "button_gBatXN"
-      ],
-      "custom_css": [],
-      "name": "t:sections.image-with-text.presets.name",
-      "settings": {
-        "section_url": "shopify://pages/why-for-her-by-arisa-exists",
-        "enable_text_link": true,
-        "image": "shopify://shop_images/maxwellartphotography-swissphotographer-switzerland-familyphotoshoot-swissalps-familymomoi-101_Original.jpg",
-        "height": "medium",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "image_behavior": "none",
-        "enable_full_width": false,
-        "content_layout": "overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "center",
-        "mobile_content_alignment": "center",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-4",
-        "padding_top": 36,
         "padding_bottom": 36
       }
     },
@@ -482,8 +495,8 @@
     "multicolumn_3ABAmn",
     "how_it_works_xiQ8ay",
     "collection_list_8VzpRY",
-    "image_with_text_ALULxa",
     "image_with_text_NRaG6K",
+    "image_with_text_ALULxa",
     "176610496544f20ae1",
     "image_banner_AWGaxM"
   ]
