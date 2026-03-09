@@ -15,7 +15,7 @@
   }
 {%- endstyle -%}
 
-<div class="newsletter center {% if section.settings.full_width == false %}newsletter--narrow page-width{% endif %}">
+<div class="newsletter newsletter-section center {% if section.settings.full_width == false %}newsletter--narrow page-width{% endif %}">
   <div class="newsletter__wrapper color-{{ section.settings.color_scheme }} gradient content-container isolate{% if section.settings.full_width %} content-container--full-width{% endif %} section-{{ section.id }}-padding">
     {%- for block in section.blocks -%}
       {%- case block.type -%}
@@ -48,48 +48,67 @@
             {% form 'customer', class: 'newsletter-form' %}
               <input type="hidden" name="contact[tags]" value="newsletter">
               <div
-                class="newsletter-form__field-wrapper{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                class="{% if block.settings.button_layout != 'default' %} newsletter-arrow-layout {% endif %} newsletter-form__field-wrapper{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                 {% if settings.animations_reveal_on_scroll %}
                   data-cascade
                   style="--animation-order: {{ forloop.index }};"
                 {% endif %}
               >
-                <div class="field">
-                  <input
-                    id="NewsletterForm--{{ section.id }}"
-                    type="email"
-                    name="contact[email]"
-                    class="field__input"
-                    value="{{ form.email }}"
-                    aria-required="true"
-                    autocorrect="off"
-                    autocapitalize="off"
-                    autocomplete="email"
-                    {% if form.errors %}
-                      autofocus
-                      aria-invalid="true"
-                      aria-describedby="Newsletter-error--{{ section.id }}"
-                    {% elsif form.posted_successfully? %}
-                      aria-describedby="Newsletter-success--{{ section.id }}"
+                <div class="field-wrapper">
+                  <div class="field">
+                    <input
+                      id="NewsletterForm--{{ section.id }}"
+                      type="email"
+                      name="contact[email]"
+                      class="field__input"
+                      value="{{ form.email }}"
+                      aria-required="true"
+                      autocorrect="off"
+                      autocapitalize="off"
+                      autocomplete="email"
+                      {% if form.errors %}
+                        autofocus
+                        aria-invalid="true"
+                        aria-describedby="Newsletter-error--{{ section.id }}"
+                      {% elsif form.posted_successfully? %}
+                        aria-describedby="Newsletter-success--{{ section.id }}"
+                      {% endif %}
+                      placeholder="{{ 'newsletter.label' | t }}"
+                      required
+                    >
+                    <label class="field__label" for="NewsletterForm--{{ section.id }}">
+                      {{ 'newsletter.label' | t }}
+                    </label>
+                    {% if block.settings.button_layout != 'default' %}
+                    <button
+                      type="submit"
+                      class="newsletter-form__button field__button "
+                      name="commit"
+                      id="Subscribe"
+                      aria-label="{{ 'newsletter.button_label' | t }}"
+                    >
+                      <span class="svg-wrapper">
+                        {{- 'icon-arrow.svg' | inline_asset_content -}}
+                      </span>
+                    </button>
                     {% endif %}
-                    placeholder="{{ 'newsletter.label' | t }}"
-                    required
-                  >
-                  <label class="field__label" for="NewsletterForm--{{ section.id }}">
-                    {{ 'newsletter.label' | t }}
-                  </label>
-                  <button
-                    type="submit"
-                    class="newsletter-form__button field__button"
-                    name="commit"
-                    id="Subscribe"
-                    aria-label="{{ 'newsletter.button_label' | t }}"
-                  >
-                    <span class="svg-wrapper">
-                      {{- 'icon-arrow.svg' | inline_asset_content -}}
-                    </span>
-                  </button>
+                  
+                  </div>
+                  {% if block.settings.button_layout == 'default' %}
+                      <button
+                      type="submit"
+                      class="button newsletter-button {% if block.settings.button_style == 'outline' %}  button--secondary{% endif %}"
+                      name="commit"
+                      id="Subscribe"
+                      aria-label="{{ 'newsletter.button_label' | t }}"
+                    >
+                      {{ block.settings.button_label }}
+                     
+                    </button>
+                  {% endif %}
                 </div>
+
+
                 {%- if form.errors -%}
                   <small class="newsletter-form__message form__message" id="Newsletter-error--{{ section.id }}">
                     <span class="svg-wrapper">
@@ -115,6 +134,7 @@
               {%- endif -%}
             {% endform %}
           </div>
+          <div class="discalimer-text">{{ block.settings.text }}</div>
       {%- endcase -%}
     {%- endfor -%}
   </div>
@@ -228,7 +248,55 @@
     {
       "type": "email_form",
       "name": "t:sections.newsletter.blocks.email_form.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "button_layout",
+          "label": "Submit Button Layout",
+          "options": [
+            {
+            "value": "arrow_icon",
+            "label": "Use Arrow Icon"
+            },
+            {
+              "value": "default",
+              "label": "Use Button Style"
+            }
+          ],
+          "default": "default"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Get 10% off",
+          "visible_if": "{{ block.settings.button_layout == 'default' }}"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Submit Button Style",
+          "options": [
+            {
+            "value": "primary",
+            "label": "Solid Primary Color"
+            },
+            {
+              "value": "outline",
+              "label": "Outline Style"
+            }
+          ],
+          "default": "outline",
+          "visible_if": "{{ block.settings.button_layout == 'default' }}"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Excludes Starter Bundle. Applies to full-priced items only.</p>",
+          "label": "Additional Text Below Form"
+        }
+      ]
     },
     {
       "type": "@app"
