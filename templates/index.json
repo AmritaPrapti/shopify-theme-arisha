@@ -18,8 +18,8 @@
             "caption": "For Her. By Arisa",
             "text_style": "caption-with-letter-spacing",
             "text_size": "medium",
-            "font_weight": "600",
-            "caption_color": "#b07a72",
+            "font_weight": "400",
+            "caption_color": "#6b6662",
             "caption_highlight": ""
           }
         },
@@ -27,7 +27,7 @@
           "type": "heading",
           "settings": {
             "heading": "Postpartum <br> nourishment, <br> <span><em>made simple.</em></span>",
-            "heading_size": "h1"
+            "heading_size": "h0"
           }
         },
         "text_e4n4Cz": {
@@ -40,10 +40,10 @@
         "button_tcwyx6": {
           "type": "button",
           "settings": {
-            "button_label": "Shop Starter Bundle",
-            "button_link": "shopify://pages/build-your-own-bundle",
+            "button_label": "SHOP DISCOVERY SET",
+            "button_link": "shopify://products/discovery-set",
             "button_style_secondary": false,
-            "button_label2": "Shop All Products ",
+            "button_label2": "SHOP ALL PRODUCTS",
             "button_link2": "shopify://pages/shop",
             "button_style_secondary2": true
           }
@@ -82,7 +82,7 @@
         "desktop_content_alignment": "left",
         "mobile_content_alignment": "left",
         "section_color_scheme": "",
-        "color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
+        "color_scheme": "scheme-1",
         "padding_top": 0,
         "padding_bottom": 0
       }
@@ -92,9 +92,9 @@
       "name": "Trust Bar",
       "settings": {
         "show_check": true,
-        "check_color": "#b07a72",
-        "title": "<p>The Postpartum Promise</p>",
-        "details": "<p>Try your first order risk-free. If you're not satisfied, request a refund within 30 days (up to $100).<a href=\"https://forherbyarisa.com/pages/faq\" target=\"_blank\">Learn More</a></p>",
+        "check_color": "#111111",
+        "title": "<p>First Taste Promise</p>",
+        "details": "<p>Try your first order risk-free. If you're not satisfied, request a refund within 15 days (up to $100). <a href=\"https://forherbyarisa.com/pages/faq\" target=\"_blank\">Learn More</a></p>",
         "link_color": "#b07a72",
         "coloumn": "2",
         "section_color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
@@ -143,22 +143,22 @@
       ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
-        "title": "Designed for Postpartum Recovery",
+        "title": "Designed for postpartum recovery",
         "heading_size": "h1",
         "title_alignment": "center",
         "image_width": "small",
         "image_ratio": "circle",
-        "image_background": "#f7efee",
-        "button_label": "Shop Stater Bundle",
-        "button_link": "shopify://pages/build-your-own-bundle",
+        "image_background": "#f3e7e4",
+        "button_label": "SHOP DISCOVERY SET",
+        "button_link": "shopify://products/discovery-set",
         "columns_desktop": 3,
         "column_alignment": "center",
         "background_style": "none",
         "color_scheme": "",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 76,
+        "padding_bottom": 76
       }
     },
     "how_it_works_xiQ8ay": {
@@ -167,28 +167,28 @@
         "list_4DGD3t": {
           "type": "list",
           "settings": {
-            "list_title": "Start with Our Starter Bundle",
+            "list_title": "Start with our Discovery Set",
             "list_description": "<p>Our curated starter bundle is the easiest and best-value way to begin. You can also customize your own bundle.</p>"
           }
         },
         "list_jweUiY": {
           "type": "list",
           "settings": {
-            "list_title": "Submit Your Order",
-            "list_description": "<p>Orders received by 3pm on Monday for delivery Wednesday or Thursday of the same week.</p>"
+            "list_title": "Submit your order",
+            "list_description": "<p>Orders received by noon on Monday will be delivered on Wednesday or Thursday of the same week.</p>"
           }
         },
         "list_Y9xbqg": {
           "type": "list",
           "settings": {
-            "list_title": "Relax at Home",
-            "list_description": "<p>We'll deliver your meals to your doorstep. They come in individual servings, frozen and delivered in dry ice for maximum freshness.</p>"
+            "list_title": "Relax at home",
+            "list_description": "<p>We'll deliver your meals to your doorstep. They come in individual servings, frozen and delivered with dry ice for maximum freshness.</p>"
           }
         },
         "list_QA4V6q": {
           "type": "list",
           "settings": {
-            "list_title": "Cook and Enjoy",
+            "list_title": "Cook and enjoy",
             "list_description": "<p>Heat in under 5 minutes. Savor nourishing, chef-crafted meals designed for your recovery.</p>"
           }
         }
@@ -199,54 +199,57 @@
         "list_Y9xbqg",
         "list_QA4V6q"
       ],
+      "custom_css": [
+        "h2 {font-size: 48px;}"
+      ],
       "name": "How it works",
       "settings": {
-        "title": "How It Works",
+        "title": "How it works",
         "subtitle": "From order to table in four simple steps",
         "header_alignment": "center",
         "image": "shopify://shop_images/Untitled_design_3.jpg",
         "image_position": "second",
         "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 76,
+        "padding_bottom": 76
       }
     },
     "collection_list_8VzpRY": {
       "type": "collection-list",
       "blocks": {
-        "featured_collection_YFkA9h": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "teas",
-            "custom_description": "Nourishing broths and hearty stews designed to support postpartum healing.",
-            "button_label": "Shop Now"
-          }
-        },
         "featured_collection_pzN9Va": {
           "type": "featured_collection",
           "settings": {
             "collection": "soups-and-meals",
-            "custom_description": "Wholesome, energizing bites to keep you nourished throughout the day.",
-            "button_label": "Shop Now"
+            "custom_description": "Nourishing broths and hearty stews designed to support postpartum healing.",
+            "button_label": "SHOP SOUPS"
           }
         },
         "featured_collection_hDTcEV": {
           "type": "featured_collection",
           "settings": {
-            "collection": "recipe-lineup",
+            "collection": "snacks",
+            "custom_description": "Wholesome, energizing bites to keep you nourished throughout the day.",
+            "button_label": "SHOP SNACKS"
+          }
+        },
+        "featured_collection_YFkA9h": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "teas",
             "custom_description": "Calming herbal blends to support recovery and relaxation.",
-            "button_label": "Shop Now"
+            "button_label": "SHOP TEAS"
           }
         }
       },
       "block_order": [
-        "featured_collection_YFkA9h",
         "featured_collection_pzN9Va",
-        "featured_collection_hDTcEV"
+        "featured_collection_hDTcEV",
+        "featured_collection_YFkA9h"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
-        "title": "Collections",
+        "title": "Shop by category",
         "heading_size": "h1",
         "show_title_center": true,
         "image_ratio": "square",
@@ -258,8 +261,75 @@
         "show_view_all": false,
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 76,
+        "padding_bottom": 76
+      }
+    },
+    "image_with_text_NRaG6K": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_BnjUrp": {
+          "type": "caption",
+          "settings": {
+            "caption": "Our Story",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium",
+            "font_weight": "400",
+            "caption_color": "",
+            "caption_highlight": ""
+          }
+        },
+        "heading_3cGrHN": {
+          "type": "heading",
+          "settings": {
+            "heading": "Who We Are",
+            "heading_size": "h1"
+          }
+        },
+        "text_ix7Erw": {
+          "type": "text",
+          "settings": {
+            "text": "<p>for her. by Arisa was created to support mothers through food. Founded by Arisa, whose Japanese heritage deeply informs our approach, for her. exists to bring intention, warmth, and nourishment back into postpartum care.</p><p>We apply Yakuzen principles to postpartum care, creating foods that are comforting, gentle, and easy to receive when energy is low — in a way that feels approachable and modern.</p><p>Developed alongside postpartum professionals and rooted in traditional Japanese nourishment practices.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_gBatXN": {
+          "type": "button",
+          "settings": {
+            "button_label": "LEARN OUR STORY",
+            "button_link": "shopify://pages/why-for-her-by-arisa-exists",
+            "button_style_secondary": false,
+            "button_label2": "",
+            "button_link2": "",
+            "button_style_secondary2": false
+          }
+        }
+      },
+      "block_order": [
+        "caption_BnjUrp",
+        "heading_3cGrHN",
+        "text_ix7Erw",
+        "button_gBatXN"
+      ],
+      "custom_css": [],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_url": "shopify://pages/why-for-her-by-arisa-exists",
+        "enable_text_link": true,
+        "image": "shopify://shop_images/maxwellartphotography-swissphotographer-switzerland-familyphotoshoot-swissalps-familymomoi-101_Original.jpg",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "enable_full_width": false,
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
+        "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
+        "padding_top": 76,
+        "padding_bottom": 76
       }
     },
     "image_with_text_ALULxa": {
@@ -296,6 +366,7 @@
         "text_WMMMVe",
         "button_YyYD3L"
       ],
+      "disabled": true,
       "custom_css": [],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
@@ -314,61 +385,6 @@
         "section_color_scheme": "scheme-3",
         "color_scheme": "scheme-3",
         "padding_top": 52,
-        "padding_bottom": 36
-      }
-    },
-    "image_with_text_NRaG6K": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_3cGrHN": {
-          "type": "heading",
-          "settings": {
-            "heading": "Who We Are",
-            "heading_size": "h2"
-          }
-        },
-        "text_ix7Erw": {
-          "type": "text",
-          "settings": {
-            "text": "<p>for her. by Arisa was created to support mothers through food.</p><p>Founded by Arisa and developed alongside fellow mothers and postpartum professionals, for her. exists to bring intention, warmth, and nourishment back into postpartum care in a way that feels approachable and modern.</p><p>We apply these principles to postpartum care, creating foods that are comforting, gentle, and easy to receive when energy is low.</p>",
-            "text_style": "body"
-          }
-        },
-        "button_gBatXN": {
-          "type": "button",
-          "settings": {
-            "button_label": "Learn more",
-            "button_link": "shopify://pages/why-for-her-by-arisa-exists",
-            "button_style_secondary": true,
-            "button_label2": "",
-            "button_link2": "",
-            "button_style_secondary2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_3cGrHN",
-        "text_ix7Erw",
-        "button_gBatXN"
-      ],
-      "custom_css": [],
-      "name": "t:sections.image-with-text.presets.name",
-      "settings": {
-        "section_url": "shopify://pages/why-for-her-by-arisa-exists",
-        "enable_text_link": true,
-        "image": "shopify://shop_images/maxwellartphotography-swissphotographer-switzerland-familyphotoshoot-swissalps-familymomoi-101_Original.jpg",
-        "height": "medium",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "image_behavior": "none",
-        "enable_full_width": false,
-        "content_layout": "overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "center",
-        "mobile_content_alignment": "center",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-4",
-        "padding_top": 36,
         "padding_bottom": 36
       }
     },
@@ -393,9 +409,9 @@
             "max_width": 1100,
             "corner_styling": "square",
             "quote_marks_style": "serif",
-            "card_color": "#b07a72",
-            "stars_and_quote_marks_color": "#ffffff",
-            "text_color": "#b07a72",
+            "card_color": "#f3e7e4",
+            "stars_and_quote_marks_color": "#111111",
+            "text_color": "#111111",
             "arrows_color": "#7a746f",
             "show_border": false,
             "border_color": "#108474",
@@ -410,15 +426,49 @@
         "judge_me_reviews_testimonials_carousel_CwCGKh"
       ],
       "custom_css": [
-        "p {color: #ffffff;}",
-        ".jdgm-reviewer-name {color: #ffffff;}",
-        ".jdgm-reviewer-verified-icon {color: #ffffff;}",
-        ".jdgm-product-name {color: #ffffff;}"
+        "p {color: #333333;}",
+        ".jdgm-reviewer-name {color: #333333;}",
+        ".jdgm-reviewer-verified-icon {color: #333333;}",
+        ".jdgm-product-name {color: #333333;}"
       ],
       "settings": {
         "include_margins": false,
         "padding_top": 32,
         "padding_bottom": 32
+      }
+    },
+    "newsletter_rqn7fa": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_P7HdDU": {
+          "type": "heading",
+          "settings": {
+            "heading": "New to for her. by Arisa?",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_dEPTNw": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Join our community for nourishing postpartum guidance — and receive 10% off your first order.*</p>"
+          }
+        },
+        "email_form_wYy6Wm": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_P7HdDU",
+        "paragraph_dEPTNw",
+        "email_form_wYy6Wm"
+      ],
+      "name": "t:sections.newsletter.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "image_banner_AWGaxM": {
@@ -428,20 +478,20 @@
           "type": "heading",
           "settings": {
             "heading": "Partnerships",
-            "heading_size": "h2"
+            "heading_size": "h1"
           }
         },
         "text_6DaqMY": {
           "type": "text",
           "settings": {
-            "text": "We work closely with postpartum professionals who support mothers every day. From limited discovery sets to affiliate and wholesale partnerships, we collaborate with doulas and practitioners who align with our values and approach to care.",
+            "text": "We collaborate with postpartum professionals who support mothers daily. From discovery sets to wholesale partnerships, we work with doulas and practitioners who share our values.",
             "text_style": "body"
           }
         },
         "buttons_EYffyG": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Learn about Partnerships",
+            "button_label_1": "PARTNER WITH US",
             "button_link_1": "shopify://pages/partnerships",
             "button_style_secondary_1": false,
             "button_label_2": "",
@@ -463,7 +513,7 @@
       "settings": {
         "image": "shopify://shop_images/230330_SO52427_1931_2nd_sRGB4000.jpg",
         "section_url": "shopify://pages/partnerships",
-        "image_overlay_opacity": 20,
+        "image_overlay_opacity": 30,
         "image_height": "large",
         "image_behavior": "none",
         "desktop_content_position": "middle-center",
@@ -482,9 +532,10 @@
     "multicolumn_3ABAmn",
     "how_it_works_xiQ8ay",
     "collection_list_8VzpRY",
-    "image_with_text_ALULxa",
     "image_with_text_NRaG6K",
+    "image_with_text_ALULxa",
     "176610496544f20ae1",
+    "newsletter_rqn7fa",
     "image_banner_AWGaxM"
   ]
 }
