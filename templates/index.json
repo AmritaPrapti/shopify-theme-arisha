@@ -441,20 +441,20 @@
           "type": "heading",
           "settings": {
             "heading": "Partnerships",
-            "heading_size": "h2"
+            "heading_size": "h1"
           }
         },
         "text_6DaqMY": {
           "type": "text",
           "settings": {
-            "text": "We work closely with postpartum professionals who support mothers every day. From limited discovery sets to affiliate and wholesale partnerships, we collaborate with doulas and practitioners who align with our values and approach to care.",
+            "text": "We collaborate with postpartum professionals who support mothers daily. From discovery sets to wholesale partnerships, we work with doulas and practitioners who share our values.",
             "text_style": "body"
           }
         },
         "buttons_EYffyG": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Learn about Partnerships",
+            "button_label_1": "PARTNER WITH US",
             "button_link_1": "shopify://pages/partnerships",
             "button_style_secondary_1": false,
             "button_label_2": "",
