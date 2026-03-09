@@ -248,7 +248,7 @@
       "settings": {
         "title": "Collections",
         "heading_size": "h1",
-        "show_title_center": false,
+        "show_title_center": true,
         "image_ratio": "square",
         "show_description": true,
         "show_button": true,
