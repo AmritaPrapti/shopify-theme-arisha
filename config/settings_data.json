@@ -289,10 +289,10 @@
       },
       "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c": {
         "settings": {
-          "background": "#f5ede7",
+          "background": "#eee9e5",
           "background_gradient": "",
           "headline_color": "#111111",
-          "text": "#7a746f",
+          "text": "#333333",
           "highlight": "#b07a72",
           "button": "#111111",
           "button_label": "#ffffff",
