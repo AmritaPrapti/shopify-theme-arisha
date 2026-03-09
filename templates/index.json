@@ -199,6 +199,9 @@
         "list_Y9xbqg",
         "list_QA4V6q"
       ],
+      "custom_css": [
+        "h2 {font-size: 48px;}"
+      ],
       "name": "How it works",
       "settings": {
         "title": "How it works",
@@ -447,7 +450,7 @@
         "paragraph_dEPTNw": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>Join our community for nourishing postpartum guidance.</p>"
+            "text": "<p>Join our community for nourishing postpartum guidance — and receive 10% off your first order.*</p>"
           }
         },
         "email_form_wYy6Wm": {
