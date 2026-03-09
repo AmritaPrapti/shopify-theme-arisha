@@ -434,6 +434,40 @@
         "padding_bottom": 32
       }
     },
+    "newsletter_rqn7fa": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_P7HdDU": {
+          "type": "heading",
+          "settings": {
+            "heading": "New to for her. by Arisa?",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_dEPTNw": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Join our community for nourishing postpartum guidance.</p>"
+          }
+        },
+        "email_form_wYy6Wm": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_P7HdDU",
+        "paragraph_dEPTNw",
+        "email_form_wYy6Wm"
+      ],
+      "name": "t:sections.newsletter.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "image_banner_AWGaxM": {
       "type": "image-banner",
       "blocks": {
@@ -476,7 +510,7 @@
       "settings": {
         "image": "shopify://shop_images/230330_SO52427_1931_2nd_sRGB4000.jpg",
         "section_url": "shopify://pages/partnerships",
-        "image_overlay_opacity": 20,
+        "image_overlay_opacity": 30,
         "image_height": "large",
         "image_behavior": "none",
         "desktop_content_position": "middle-center",
@@ -498,6 +532,7 @@
     "image_with_text_NRaG6K",
     "image_with_text_ALULxa",
     "176610496544f20ae1",
+    "newsletter_rqn7fa",
     "image_banner_AWGaxM"
   ]
 }
