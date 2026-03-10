@@ -142,7 +142,8 @@
         "column_aBx6aR"
       ],
       "custom_css": [
-        "h3 {font-family: inter; font-weight: normal;}"
+        "h3 {font-family: inter; font-weight: normal;}",
+        ".multicolumn-card__info {padding: 0;}"
       ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
