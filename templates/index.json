@@ -322,7 +322,7 @@
         "enable_text_link": true,
         "image": "shopify://shop_images/maxwellartphotography-swissphotographer-switzerland-familyphotoshoot-swissalps-familymomoi-101_Original.jpg",
         "height": "medium",
-        "desktop_image_width": "medium",
+        "desktop_image_width": "small",
         "layout": "text_first",
         "image_behavior": "none",
         "enable_full_width": false,
@@ -441,6 +441,34 @@
         "padding_bottom": 32
       }
     },
+    "rich_text_kPEzrU": {
+      "type": "rich-text",
+      "blocks": {
+        "button_NYfjcQ": {
+          "type": "button",
+          "settings": {
+            "button_label": "TRY THE DISCOVERY SET",
+            "button_link": "shopify://products/discovery-set",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "button_NYfjcQ"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 72
+      }
+    },
     "newsletter_rqn7fa": {
       "type": "newsletter",
       "blocks": {
@@ -523,7 +551,7 @@
         "image": "shopify://shop_images/230330_SO52427_1931_2nd_sRGB4000.jpg",
         "section_url": "shopify://pages/partnerships",
         "image_overlay_opacity": 30,
-        "image_height": "large",
+        "image_height": "medium",
         "image_behavior": "none",
         "desktop_content_position": "middle-center",
         "desktop_content_alignment": "center",
@@ -544,6 +572,7 @@
     "image_with_text_NRaG6K",
     "image_with_text_ALULxa",
     "176610496544f20ae1",
+    "rich_text_kPEzrU",
     "newsletter_rqn7fa",
     "image_banner_AWGaxM"
   ]
