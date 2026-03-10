@@ -430,6 +430,7 @@
         "judge_me_reviews_testimonials_carousel_CwCGKh"
       ],
       "custom_css": [
+        "h2 {font-size: 48px; font-weight: bold;}",
         "p {color: #333333;}",
         ".jdgm-reviewer-name {color: #333333;}",
         ".jdgm-reviewer-verified-icon {color: #333333;}",
@@ -437,8 +438,8 @@
       ],
       "settings": {
         "include_margins": false,
-        "padding_top": 32,
-        "padding_bottom": 32
+        "padding_top": 76,
+        "padding_bottom": 28
       }
     },
     "rich_text_kPEzrU": {
@@ -504,8 +505,8 @@
       "settings": {
         "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
         "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
+        "padding_top": 76,
+        "padding_bottom": 76
       }
     },
     "image_banner_AWGaxM": {
