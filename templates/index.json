@@ -461,8 +461,8 @@
           "type": "email_form",
           "settings": {
             "button_layout": "default",
-            "button_label": "Get 10% off",
-            "button_style": "outline",
+            "button_label": "GET 10% OFF",
+            "button_style": "primary",
             "text": "<p>*Excludes Discovery Set. Applies to full-priced items only.</p>"
           }
         }
