@@ -463,7 +463,7 @@
             "button_layout": "default",
             "button_label": "Get 10% off",
             "button_style": "outline",
-            "text": "<p>Excludes Starter Bundle. Applies to full-priced items only.</p>"
+            "text": "<p>*Excludes Discovery Set. Applies to full-priced items only.</p>"
           }
         }
       },
@@ -493,7 +493,7 @@
         "text_6DaqMY": {
           "type": "text",
           "settings": {
-            "text": "We collaborate with postpartum professionals who support mothers daily. From discovery sets to wholesale partnerships, we work with doulas and practitioners who share our values.",
+            "text": "We collaborate with postpartum professionals who support mothers daily. From Discovery Sets to wholesale partnerships, we work with doulas and practitioners who share our values.",
             "text_style": "body"
           }
         },
