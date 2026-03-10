@@ -143,7 +143,7 @@
       ],
       "custom_css": [
         "h3 {font-family: inter; font-weight: normal;}",
-        ".multicolumn-card__info {padding: 0;}"
+        ".multicolumn-card__info {padding: 0px 15px 25px;}"
       ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
