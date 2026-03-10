@@ -71,8 +71,8 @@
       "settings": {
         "section_url": "",
         "enable_text_link": false,
-        "image": "shopify://shop_images/230330_SO52427_1931_2nd_sRGB4000.jpg",
-        "height": "adapt",
+        "image": "shopify://shop_images/230330_SO52427_2009_2nd_sRGB4000.jpg",
+        "height": "large",
         "desktop_image_width": "medium",
         "layout": "text_first",
         "image_behavior": "none",
@@ -459,7 +459,12 @@
         },
         "email_form_wYy6Wm": {
           "type": "email_form",
-          "settings": {}
+          "settings": {
+            "button_layout": "default",
+            "button_label": "Get 10% off",
+            "button_style": "outline",
+            "text": "<p>Excludes Starter Bundle. Applies to full-priced items only.</p>"
+          }
         }
       },
       "block_order": [
