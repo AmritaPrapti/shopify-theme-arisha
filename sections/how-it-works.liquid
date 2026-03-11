@@ -39,7 +39,7 @@
             <div class="how-it-works__content">
                 {% for block in section.blocks %}
                     <div class="how-it-works__block {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in-left{% endif %}">
-                        <div class="loop_counter">{{ forloop.index }}</div>
+                        <div class="loop_counter h3 {% if section.settings.list_style == 'numbered' %} numbered {% endif %}">{{ forloop.index }}{% if section.settings.list_style == 'numbered' %}. {% endif %}</div>
                         <div class="list-de">
                             {% if block.settings.list_title != blank %}
                                 <h3 class="how-it-works__block-title">{{ block.settings.list_title }}</h3>
@@ -143,6 +143,23 @@
                 ],
                 "default": "second",
                 "info": "Choose whether the image appears before or after the text content on desktop."
+            },
+            {
+                "type": "select",
+                "id": "list_style",
+                "label": "List Style",
+                "options": [
+                    {
+                    "value": "rounded",
+                    "label": "Rounded Background"
+                    },
+                    {
+                    "value": "numbered",
+                    "label": "Numbered"
+                    }
+                ],
+                "default": "rounded",
+                "info": "Choose a style for the list blocks. This will apply to all blocks within this section."
             },
             {
                 "type": "color_scheme",

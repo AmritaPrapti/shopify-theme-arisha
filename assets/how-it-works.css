@@ -59,6 +59,15 @@
     justify-content: center;
     font-weight: 600;
     flex-shrink: 0;
+    font-family: inter;
+}
+
+.loop_counter.numbered {
+    background-color: transparent;
+    color: var(--color-highlight);
+    border: none;
+    width: fit-content;
+    height: fit-content;
 }
 
 .how-it-works__block-title {

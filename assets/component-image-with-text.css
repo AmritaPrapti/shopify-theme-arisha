@@ -199,6 +199,9 @@
   .image-with-text.collapse-borders:not(.image-with-text--overlap) .image-with-text__content {
     border-top: 0;
   }
+  .image-with-text__content--mobile-center .banner-button-wrap {
+  justify-content: center;
+}
 }
 
 .image-with-text__content--mobile-right > * {
@@ -211,9 +214,7 @@
   text-align: center;
 }
 
-.image-with-text__content--mobile-center .banner-button-wrap {
-  justify-content: center;
-}
+
 
 .image-with-text--overlap .image-with-text__content {
   width: 90%;
