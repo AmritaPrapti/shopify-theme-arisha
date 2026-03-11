@@ -70,6 +70,8 @@
             {%- if section.settings.section_url != blank and section.settings.enable_text_link -%}<a class="section_url" href="{{ section.settings.section_url }}"> &nbsp </a>{%- endif -%}
             {%- for block in section.blocks -%}
               {% case block.type %}
+                  {%- when '@app' -%}
+                  {% render block %}
                 {%- when 'heading' -%}
                   <h2
                     class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}"
@@ -364,6 +366,9 @@
     }
   ],
   "blocks": [
+    {
+      "type": "@app"
+    },
     {
       "type": "heading",
       "name": "t:sections.image-with-text.blocks.heading.name",
