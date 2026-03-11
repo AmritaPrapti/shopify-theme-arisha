@@ -56,7 +56,7 @@
             "text_size": "small",
             "font_weight": "400",
             "caption_color": "#7a746f",
-            "caption_highlight": "#d18901"
+            "caption_highlight": "#b07a72"
           }
         }
       },
@@ -71,8 +71,8 @@
       "settings": {
         "section_url": "",
         "enable_text_link": false,
-        "image": "shopify://shop_images/230330_SO52427_1931_2nd_sRGB4000.jpg",
-        "height": "adapt",
+        "image": "shopify://shop_images/230330_SO52427_1893_2nd_sRGB4000.jpg",
+        "height": "large",
         "desktop_image_width": "medium",
         "layout": "text_first",
         "image_behavior": "none",
@@ -97,7 +97,7 @@
         "details": "<p>Try your first order risk-free. If you're not satisfied, request a refund within 15 days (up to $100). <a href=\"https://forherbyarisa.com/pages/faq\" target=\"_blank\">Learn More</a></p>",
         "link_color": "#b07a72",
         "coloumn": "2",
-        "section_color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
+        "section_color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -141,14 +141,18 @@
         "column_NJDwfG",
         "column_aBx6aR"
       ],
+      "custom_css": [
+        "h3 {font-family: inter; font-weight: normal;}",
+        ".multicolumn-card__info {padding: 0px 15px 25px;}"
+      ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
-        "title": "Designed for postpartum recovery",
+        "title": "Designed for Postpartum Recovery",
         "heading_size": "h1",
         "title_alignment": "center",
         "image_width": "small",
         "image_ratio": "circle",
-        "image_background": "#f3e7e4",
+        "image_background": "rgba(0,0,0,0)",
         "button_label": "SHOP DISCOVERY SET",
         "button_link": "shopify://products/discovery-set",
         "columns_desktop": 3,
@@ -200,11 +204,12 @@
         "list_QA4V6q"
       ],
       "custom_css": [
-        "h2 {font-size: 48px;}"
+        "h2 {font-size: 48px;}",
+        "h3 {font-family: inter; font-weight: normal;}"
       ],
       "name": "How it works",
       "settings": {
-        "title": "How it works",
+        "title": "How It Works",
         "subtitle": "From order to table in four simple steps",
         "header_alignment": "center",
         "image": "shopify://shop_images/Untitled_design_3.jpg",
@@ -249,7 +254,7 @@
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
-        "title": "Shop by category",
+        "title": "Shop by Category",
         "heading_size": "h1",
         "show_title_center": true,
         "image_ratio": "square",
@@ -318,7 +323,7 @@
         "enable_text_link": true,
         "image": "shopify://shop_images/maxwellartphotography-swissphotographer-switzerland-familyphotoshoot-swissalps-familymomoi-101_Original.jpg",
         "height": "medium",
-        "desktop_image_width": "medium",
+        "desktop_image_width": "small",
         "layout": "text_first",
         "image_behavior": "none",
         "enable_full_width": false,
@@ -426,6 +431,7 @@
         "judge_me_reviews_testimonials_carousel_CwCGKh"
       ],
       "custom_css": [
+        "h2 {font-size: 48px; font-weight: bold;}",
         "p {color: #333333;}",
         ".jdgm-reviewer-name {color: #333333;}",
         ".jdgm-reviewer-verified-icon {color: #333333;}",
@@ -433,8 +439,36 @@
       ],
       "settings": {
         "include_margins": false,
-        "padding_top": 32,
-        "padding_bottom": 32
+        "padding_top": 76,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_kPEzrU": {
+      "type": "rich-text",
+      "blocks": {
+        "button_NYfjcQ": {
+          "type": "button",
+          "settings": {
+            "button_label": "TRY THE DISCOVERY SET",
+            "button_link": "shopify://products/discovery-set",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "button_NYfjcQ"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 72
       }
     },
     "newsletter_rqn7fa": {
@@ -455,7 +489,12 @@
         },
         "email_form_wYy6Wm": {
           "type": "email_form",
-          "settings": {}
+          "settings": {
+            "button_layout": "default",
+            "button_label": "GET 10% OFF",
+            "button_style": "primary",
+            "text": "<p>*Excludes Discovery Set. Applies to full-priced items only.</p>"
+          }
         }
       },
       "block_order": [
@@ -465,10 +504,10 @@
       ],
       "name": "t:sections.newsletter.presets.name",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
         "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
+        "padding_top": 76,
+        "padding_bottom": 76
       }
     },
     "image_banner_AWGaxM": {
@@ -484,7 +523,7 @@
         "text_6DaqMY": {
           "type": "text",
           "settings": {
-            "text": "We collaborate with postpartum professionals who support mothers daily. From discovery sets to wholesale partnerships, we work with doulas and practitioners who share our values.",
+            "text": "We collaborate with postpartum professionals who support mothers daily. From Discovery Sets to wholesale partnerships, we work with doulas and practitioners who share our values.",
             "text_style": "body"
           }
         },
@@ -514,7 +553,7 @@
         "image": "shopify://shop_images/230330_SO52427_1931_2nd_sRGB4000.jpg",
         "section_url": "shopify://pages/partnerships",
         "image_overlay_opacity": 30,
-        "image_height": "large",
+        "image_height": "medium",
         "image_behavior": "none",
         "desktop_content_position": "middle-center",
         "desktop_content_alignment": "center",
@@ -535,6 +574,7 @@
     "image_with_text_NRaG6K",
     "image_with_text_ALULxa",
     "176610496544f20ae1",
+    "rich_text_kPEzrU",
     "newsletter_rqn7fa",
     "image_banner_AWGaxM"
   ]

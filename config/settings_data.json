@@ -9,10 +9,10 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/Logo_b07a72_color.png",
-    "inverse_logo": "shopify://shop_images/Logo_b07a72_color.png",
-    "logo_width": 100,
-    "favicon": "shopify://shop_images/Logo_b07a72_color.png",
+    "logo": "shopify://shop_images/Untitled_design_2.png",
+    "inverse_logo": "shopify://shop_images/Untitled_design_2.png",
+    "logo_width": 80,
+    "favicon": "shopify://shop_images/Copy_of_Logo_with_TM.png",
     "type_header_font": "cormorant_n6",
     "heading_scale": 120,
     "type_body_font": "inter_n4",
@@ -230,7 +230,7 @@
           "text": "#ffffff",
           "highlight": "#b07a72",
           "button": "#ffffff",
-          "button_label": "#ffffff",
+          "button_label": "#111111",
           "secondary_button_label": "#ffffff",
           "shadow": "#252525"
         }
@@ -289,10 +289,10 @@
       },
       "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c": {
         "settings": {
-          "background": "#f5ede7",
+          "background": "#eee9e5",
           "background_gradient": "",
           "headline_color": "#111111",
-          "text": "#7a746f",
+          "text": "#333333",
           "highlight": "#b07a72",
           "button": "#111111",
           "button_label": "#ffffff",
@@ -303,6 +303,19 @@
       "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a": {
         "settings": {
           "background": "#f3e7e4",
+          "background_gradient": "",
+          "headline_color": "#111111",
+          "text": "#333333",
+          "highlight": "#b07a72",
+          "button": "#111111",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#b07a72",
+          "shadow": "rgba(0,0,0,0)"
+        }
+      },
+      "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e": {
+        "settings": {
+          "background": "#f2f2f2",
           "background_gradient": "",
           "headline_color": "#111111",
           "text": "#333333",
