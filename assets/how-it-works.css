@@ -71,7 +71,5 @@
         grid-template-columns: 1fr;
     }
 
-    .how-it-works__image-wrapper--second {
-        order: 0;
-    }
+  
 }
