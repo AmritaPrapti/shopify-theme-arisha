@@ -12,16 +12,23 @@
     "main": {
       "type": "discovery-hero",
       "blocks": {
+        "caption_DFz3zx": {
+          "type": "caption",
+          "settings": {
+            "text": "For Her. By Arisa Discovery Set"
+          }
+        },
         "title_GGRjyh": {
           "type": "title",
           "settings": {
+            "custom_title": "The effortless path to postpartum nourishment",
             "heading_size": "h1"
           }
         },
         "text_cX4ihw": {
           "type": "text",
           "settings": {
-            "text": "Text block",
+            "text": "Try one of each soup, snack, and tea — and discover what supports your recovery best.",
             "text_style": "body"
           }
         },
@@ -35,6 +42,7 @@
         }
       },
       "block_order": [
+        "caption_DFz3zx",
         "title_GGRjyh",
         "text_cX4ihw",
         "price_HmtFrP"
