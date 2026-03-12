@@ -13,8 +13,8 @@
       "type": "discovery-hero",
       "settings": {
         "product": "discovery-set",
-        "color_scheme": "",
-        "secondary_background": false,
+        "color_scheme": "scheme-2",
+        "secondary_background": true,
         "media_size": "medium",
         "constrain_to_viewport": false,
         "media_fit": "cover",
