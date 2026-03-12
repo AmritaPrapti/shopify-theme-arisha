@@ -11,10 +11,22 @@
   "sections": {
     "main": {
       "type": "discovery-hero",
+      "blocks": {
+        "text_cX4ihw": {
+          "type": "text",
+          "settings": {
+            "text": "Text block",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "text_cX4ihw"
+      ],
       "settings": {
         "product": "discovery-set",
-        "color_scheme": "scheme-2",
-        "secondary_background": true,
+        "color_scheme": "scheme-1",
+        "secondary_background": false,
         "media_size": "medium",
         "constrain_to_viewport": false,
         "media_fit": "cover",
