@@ -12,6 +12,12 @@
     "main": {
       "type": "discovery-hero",
       "blocks": {
+        "title_GGRjyh": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
         "text_cX4ihw": {
           "type": "text",
           "settings": {
@@ -21,6 +27,7 @@
         }
       },
       "block_order": [
+        "title_GGRjyh",
         "text_cX4ihw"
       ],
       "settings": {
