@@ -47,6 +47,13 @@
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": false
           }
+        },
+        "text_ztn6zM": {
+          "type": "text",
+          "settings": {
+            "text": "<span>Expert formulated<span> <span> · </span><span>All natural ingredients<span> <span> · </span><span>Flash frozen for freshness<span></span></span></span></span></span></span>",
+            "text_style": "small"
+          }
         }
       },
       "block_order": [
@@ -54,7 +61,8 @@
         "title_GGRjyh",
         "text_cX4ihw",
         "welcomeprice_RJbxGU",
-        "buy_buttons_fmfCqF"
+        "buy_buttons_fmfCqF",
+        "text_ztn6zM"
       ],
       "settings": {
         "product": "discovery-set",
