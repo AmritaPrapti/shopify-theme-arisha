@@ -32,12 +32,20 @@
             "text_style": "body"
           }
         },
-        "price_HmtFrP": {
-          "type": "price",
+        "welcomeprice_RJbxGU": {
+          "type": "welcomeprice",
           "settings": {
-            "show_sale_badge": true,
-            "show_sale_amount": false,
-            "sale_display_type": "amount"
+            "price_text": "Special Welcome Price",
+            "sale_price": "$85",
+            "regular_price": "$100"
+          }
+        },
+        "buy_buttons_fmfCqF": {
+          "type": "buy_buttons",
+          "settings": {
+            "buy_buttons_text": "Add to Cart",
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
           }
         }
       },
@@ -45,7 +53,8 @@
         "caption_DFz3zx",
         "title_GGRjyh",
         "text_cX4ihw",
-        "price_HmtFrP"
+        "welcomeprice_RJbxGU",
+        "buy_buttons_fmfCqF"
       ],
       "settings": {
         "product": "discovery-set",
