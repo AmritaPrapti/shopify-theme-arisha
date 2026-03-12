@@ -69,7 +69,7 @@
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
 
   <section class="color-{{ section.settings.color_scheme }} {% if section.settings.secondary_background %}background-secondary{% else %}gradient{% endif %}">
-    <div class="page-width section-{{ section.id }}-padding{% if section.settings.secondary_background %} isolate{% endif %}">
+    <div class="page-width discovery-hero section-{{ section.id }}-padding{% if section.settings.secondary_background %} isolate{% endif %}">
       <div class="featured-product product product--{{ section.settings.media_size }} grid grid--1-col gradient color-{{ section.settings.color_scheme }} product--{{ section.settings.media_position }}{% if section.settings.secondary_background == false %} isolate{% endif %} {% if product.media.size > 0 or section.settings.product == blank %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
         <div class="grid__item product__media-wrapper">
           {%- unless placeholder -%}
@@ -98,24 +98,44 @@
               {%- case block.type -%}
                 {%- when '@app' -%}
                   {% render block %}
+                {%- when 'caption' -%}
+                  <p class="product__caption caption" {{ block.shopify_attributes }}>
+                    {{- block.settings.text -}}
+                  </p>
                 {%- when 'text' -%}
                   <p
-                    class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                    class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle {% elsif block.settings.text_style == 'small' %} small-text{% endif %}"
                     {{ block.shopify_attributes }}
                   >
                     {{- block.settings.text -}}
                   </p>
                 {%- when 'title' -%}
                   <h2 class="product__title {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
-                    {%- unless placeholder -%}
+                    {% if block.settings.custom_title != blank %}
+                      {{ block.settings.custom_title }}
+                      {% else %}
+                        {%- unless placeholder -%}
                       {{ product.title | escape }}
                     {%- else -%}
                       {{ 'onboarding.product_title' | t }}
                     {%- endunless -%}
+                    {% endif %}
+                    
                   </h2>
+                  {%- when 'welcomeprice' -%}
+                    <div>
+                      <p class="price-header">{{ block.settings.price_text }}</p>
+                      <p class="price-value"><span class="sale-price">{{ block.settings.sale_price }}</span> <span class="regular-price">{{ block.settings.regular_price }}</span></p>
+                    </div>
+                  
                 {%- when 'price' -%}
                   <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
-                    {%- render 'price',
+                    {% if block.settings.custom_price != blank %}
+                      <div>
+                      {{ block.settings.custom_price }}
+                      </div>
+                    {% else %}
+                       {%- render 'price',
                       product: product,
                       placeholder: placeholder,
                       use_variant: true,
@@ -124,6 +144,9 @@
                       show_sale_amount: block.settings.show_sale_amount, 
                       sale_display_type: block.settings.sale_display_type
                     -%}
+                    {% endif %}
+                    
+                   
                   </div>
                   {%- if product.quantity_price_breaks_configured? -%}
                     <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
@@ -154,7 +177,7 @@
                   {%- endunless -%}
                 {%- when 'sku' -%}
                   <p
-                    class="product__sku{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
+                    class="product__sku{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle {% elsif block.settings.text_style == 'small' %} small-text {% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
                     id="Sku-{{ section.id }}"
                     role="status"
                     {{ block.shopify_attributes }}
@@ -406,7 +429,8 @@
                     block: block,
                     product: product,
                     product_form_id: product_form_id,
-                    section_id: section.id
+                    section_id: section.id,
+                    custom_label: block.settings.buy_buttons_text
                   -%}
                 {%- when 'custom_liquid' -%}
                   {{ block.settings.custom_liquid }}
@@ -452,17 +476,7 @@
                   {% render 'icon-with-text', block: block %}
               {%- endcase -%}
             {%- endfor -%}
-            <a
-              {% if product == blank %}
-                role="link" aria-disabled="true"
-              {% else %}
-                href="{{ product.url }}"
-              {% endif %}
-              class="link product__view-details animate-arrow"
-            >
-              {{ 'products.product.view_full_details' | t }}
-              {{- 'icon-arrow.svg' | inline_asset_content -}}
-            </a>
+            
           </section>
         </div>
       </div>
@@ -516,11 +530,24 @@
       "type": "@app"
     },
     {
+      "type": "caption",
+      "name": "Caption",
+      "limit": 1,
+      "settings": [
+         {
+          "type": "inline_richtext",
+          "id": "text",
+          "default": "For Her. By Arisa Discovery Set",
+          "label": "Caption"
+        }
+      ]
+    },
+    {
       "type": "text",
       "name": "t:sections.featured-product.blocks.text.name",
       "settings": [
         {
-          "type": "inline_richtext",
+          "type": "textarea",
           "id": "text",
           "default": "t:sections.featured-product.blocks.text.settings.text.default",
           "label": "t:sections.featured-product.blocks.text.settings.text.label"
@@ -532,6 +559,10 @@
             {
               "value": "body",
               "label": "t:sections.featured-product.blocks.text.settings.text_style.options__1.label"
+            },
+            {
+              "value": "small",
+              "label": "Small"
             },
             {
               "value": "subtitle",
@@ -552,6 +583,12 @@
       "name": "t:sections.featured-product.blocks.title.name",
       "limit": 1,
       "settings": [
+        {
+          "type": "text",
+          "id": "custom_title",
+          "default": "The effortless path to postpartum nourishment",
+          "label": "Custom Title"
+        },
         {
           "type": "select",
           "id": "heading_size",
@@ -580,6 +617,31 @@
           "default": "h1",
           "label": "t:sections.all.heading_size.label"
         }
+      ]
+    },
+    {
+      "type": "welcomeprice",
+      "name": "Welcome Price",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "price_text",
+          "default": "Special Welcome Price",
+          "label": "Custom Price"
+        },
+        {
+          "type": "text",
+          "id": "sale_price",
+          "default": "$85",
+          "label": "Sale Price"
+        },
+         {
+          "type": "text",
+          "id": "regular_price",
+          "default": "$100",
+          "label": "Regular Price"
+        },
       ]
     },
     {
@@ -704,7 +766,7 @@
           "type": "text",
           "id": "buy_buttons_text",
           "label": "Buy Buttons Label",
-          "default": "Shop Now"
+          "default": "Add to Cart"
         },
         {
           "type": "checkbox",
@@ -758,6 +820,7 @@
         }
       ]
     },
+    
     {
       "type": "icon-with-text",
       "name": "t:sections.main-product.blocks.icon_with_text.name",

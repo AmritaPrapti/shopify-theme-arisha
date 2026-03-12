@@ -73,3 +73,37 @@
     z-index: 1;
   }
 }
+
+
+.product__caption {
+  text-transform: uppercase;
+  color: var(--color-highlight);
+}
+
+.price-header {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: var(--color-highlight);
+  margin-bottom: 0;
+}
+
+.price-value {
+  margin: 0;
+}
+
+.price-value .sale-price {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--color-highlight);
+}
+
+.price-value .regular-price {
+  font-size: 1.4rem;
+  text-decoration: line-through;
+  color: var(--color-muted);
+  margin-left: 0.5rem;
+}
+
+.discovery-hero .slider-buttons {
+  display: none;
+}
