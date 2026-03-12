@@ -24,11 +24,20 @@
             "text": "Text block",
             "text_style": "body"
           }
+        },
+        "price_HmtFrP": {
+          "type": "price",
+          "settings": {
+            "show_sale_badge": true,
+            "show_sale_amount": false,
+            "sale_display_type": "amount"
+          }
         }
       },
       "block_order": [
         "title_GGRjyh",
-        "text_cX4ihw"
+        "text_cX4ihw",
+        "price_HmtFrP"
       ],
       "settings": {
         "product": "discovery-set",
