@@ -21,7 +21,7 @@
         "title_GGRjyh": {
           "type": "title",
           "settings": {
-            "custom_title": "The effortless path to postpartum nourishment",
+            "custom_title": "The Effortless Path to Postpartum Nourishment",
             "heading_size": "h1"
           }
         },
@@ -43,8 +43,8 @@
         "buy_buttons_fmfCqF": {
           "type": "buy_buttons",
           "settings": {
-            "buy_buttons_text": "Get Your Discovery Set",
-            "show_dynamic_checkout": false,
+            "buy_buttons_text": "GET YOUR DISCOVERY SET",
+            "show_dynamic_checkout": true,
             "show_gift_card_recipient": false
           }
         },
@@ -64,11 +64,14 @@
         "buy_buttons_fmfCqF",
         "text_ztn6zM"
       ],
+      "custom_css": [
+        ".small-text {color: #7a746f;}"
+      ],
       "settings": {
         "product": "discovery-set",
         "custom_image": "shopify://shop_images/230330_SO52427_1793_1st.png",
         "image_position": "center",
-        "color_scheme": "scheme-3",
+        "color_scheme": "scheme-1",
         "media_size": "medium",
         "constrain_to_viewport": false,
         "media_fit": "cover",
@@ -82,14 +85,14 @@
       "name": "Trust Bar",
       "settings": {
         "show_check": true,
-        "check_color": "#cc859a",
+        "check_color": "#111111",
         "title": "<p><strong>First Taste Promise:</strong></p>",
         "details": "<p>Try your first order risk-free. If you're not satisfied, request a refund within 30 days (up to $100).<a href=\"https://forherbyarisa.com/pages/faq\" target=\"_blank\">Learn More</a></p>",
-        "link_color": "#cc859a",
+        "link_color": "#b07a72",
         "coloumn": "2",
         "position": "center",
         "column_gap": 0,
-        "section_color_scheme": "",
+        "section_color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -107,7 +110,7 @@
         "text_qtPHRU": {
           "type": "text",
           "settings": {
-            "text": "<p>For Her by Arisa was created to support new mothers during the often-overlooked postpartum period. After birth, your body is healing, rebuilding, and adjusting — and your nutritional needs shift dramatically.</p><p>Our soups, snacks, and teas are thoughtfully formulated to nourish recovery, support energy, and make it easier to care for yourself during early motherhood.</p><p><strong>Because postpartum care shouldn't be an afterthought.</strong></p>",
+            "text": "<p><em>for her. by Arisa</em> was created to support new mothers during the often-overlooked postpartum period. After birth, your body is healing, rebuilding, and adjusting — and your nutritional needs shift dramatically.</p><p>Our soups, snacks, and teas are thoughtfully formulated to nourish recovery, support energy, and make it easier to care for yourself during early motherhood.</p><p><em><strong>Because postpartum care shouldn't be an afterthought.</strong></em></p>",
             "text_style": "body"
           }
         }
@@ -120,7 +123,7 @@
       "settings": {
         "section_url": "",
         "enable_text_link": false,
-        "image": "shopify://shop_images/4b67b17e9_ChatGPTImageFeb23202607_23_05PM.png",
+        "image": "shopify://shop_images/CHR_-281_2.jpg",
         "height": "custom",
         "custom_media_height": 700,
         "custom_media_height_mobile": 700,
@@ -188,6 +191,9 @@
         "column_RJn7H6",
         "column_yagJhb",
         "column_9fhHN7"
+      ],
+      "custom_css": [
+        "h3 {font-family: inter; font-weight: normal !important;}"
       ],
       "name": "Multicolumn Horizontal",
       "settings": {
