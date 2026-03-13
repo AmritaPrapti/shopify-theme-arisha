@@ -230,7 +230,7 @@
           "text": "#ffffff",
           "highlight": "#b07a72",
           "button": "#ffffff",
-          "button_label": "#111111",
+          "button_label": "#b07a72",
           "secondary_button_label": "#ffffff",
           "shadow": "#252525"
         }
