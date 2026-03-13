@@ -93,10 +93,56 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "image_with_text_WVP8Rr": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_RP6Btb": {
+          "type": "heading",
+          "settings": {
+            "heading": "Nutrition designed for the fourth trimester",
+            "heading_size": "h1"
+          }
+        },
+        "text_qtPHRU": {
+          "type": "text",
+          "settings": {
+            "text": "<p>For Her by Arisa was created to support new mothers during the often-overlooked postpartum period. After birth, your body is healing, rebuilding, and adjusting — and your nutritional needs shift dramatically.</p><p>Our soups, snacks, and teas are thoughtfully formulated to nourish recovery, support energy, and make it easier to care for yourself during early motherhood.</p><p><strong>Because postpartum care shouldn't be an afterthought.</strong></p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_RP6Btb",
+        "text_qtPHRU"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_url": "",
+        "enable_text_link": false,
+        "image": "shopify://shop_images/4b67b17e9_ChatGPTImageFeb23202607_23_05PM.png",
+        "height": "custom",
+        "custom_media_height": 700,
+        "custom_media_height_mobile": 700,
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "mobile_layout": "image_first",
+        "image_behavior": "none",
+        "enable_full_width": false,
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
-    "trust_bar_HC8pRL"
+    "trust_bar_HC8pRL",
+    "image_with_text_WVP8Rr"
   ]
 }
