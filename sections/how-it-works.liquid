@@ -46,7 +46,7 @@
             <div class="how-it-works__content">
                 {% for block in section.blocks %}
                     <div class="how-it-works__block {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in-left{% endif %}">
-                        <div class="loop_counter h3 loop-counter-{{ section.settings.font_size }} {% if section.settings.list_style == 'numbered' %} numbered {% endif %}">{{ forloop.index }}{% if section.settings.list_style == 'numbered' %}. {% endif %}</div>
+                        <div class="loop_counter h3 loop-counter-{{ section.settings.font_size }} {% if section.settings.list_style == 'numbered' %} numbered {% endif %}">{{ forloop.index }}</div>
                         <div class="list-de">
                             {% if block.settings.list_title != blank %}
                                 <h3 class="how-it-works__block-title">{{ block.settings.list_title }}</h3>
