@@ -209,12 +209,60 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "collections_set_HGmwqa": {
+      "type": "collections-set",
+      "blocks": {
+        "collection_iTWcjd": {
+          "type": "collection",
+          "settings": {
+            "title": "<h3>Signature Soups</h3>",
+            "description": "<p>Mineral-rich broths designed for warming postpartum nourishment.</p>",
+            "collection": "soups-and-meals"
+          }
+        },
+        "collection_pahkEy": {
+          "type": "collection",
+          "settings": {
+            "title": "<h3>Nourishing Snacks</h3>",
+            "description": "<p>Energy-dense bites to sustain you through long days.</p>",
+            "collection": "snacks"
+          }
+        },
+        "collection_rxKEBJ": {
+          "type": "collection",
+          "settings": {
+            "title": "<h3>Functional Teas</h3>",
+            "description": "<p>Herbal blends crafted to support balance and recovery.</p>",
+            "collection": "teas"
+          }
+        }
+      },
+      "block_order": [
+        "collection_iTWcjd",
+        "collection_pahkEy",
+        "collection_rxKEBJ"
+      ],
+      "name": "Collections Set",
+      "settings": {
+        "title": "What's included",
+        "text": "<p>Try one of each soup, snack, and tea — everything you need to discover what supports your recovery best. All ready in minutes — no cooking required.</p>",
+        "heading_size": "h1",
+        "header_alignment": "center",
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "block_background": "#ffffff",
+        "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
     "trust_bar_HC8pRL",
     "image_with_text_WVP8Rr",
-    "multicolumn_horizontal_TFnVBW"
+    "multicolumn_horizontal_TFnVBW",
+    "collections_set_HGmwqa"
   ]
 }
