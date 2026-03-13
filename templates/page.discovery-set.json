@@ -193,6 +193,7 @@
       "settings": {
         "title": "Your body needs different support after birth",
         "heading_size": "h1",
+        "text": "",
         "title_alignment": "center",
         "image_width": "small",
         "image_ratio": "circle",
@@ -293,7 +294,7 @@
         "column_tV7naX": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/clock_b4783c17-a555-4787-ac9b-2e3d478b58e0.svg",
+            "image": "shopify://shop_images/check-mark.svg",
             "title": "<strong>Built for busy, sleep-deprived days</strong>",
             "text": "<p>Whether it's 6am or midnight, nourishment should be simple and accessible.</p>",
             "link_label": "",
@@ -311,6 +312,7 @@
       "settings": {
         "title": "Designed for real postpartum life",
         "heading_size": "h1",
+        "text": "<p>Nourishment shouldn't require planning, shopping, or extra effort.</p>",
         "title_alignment": "center",
         "image_width": "small",
         "image_ratio": "circle",
