@@ -58,6 +58,11 @@
             "caption_color": "#7a746f",
             "caption_highlight": "#b07a72"
           }
+        },
+        "judge_me_reviews_all_reviews_text_FkEHx4": {
+          "type": "shopify://apps/judge-me-reviews/blocks/all_reviews_text/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {}
         }
       },
       "block_order": [
@@ -65,7 +70,8 @@
         "heading_WVmjPE",
         "text_e4n4Cz",
         "button_tcwyx6",
-        "caption_YLNArL"
+        "caption_YLNArL",
+        "judge_me_reviews_all_reviews_text_FkEHx4"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
@@ -209,7 +215,6 @@
         "list_QA4V6q"
       ],
       "custom_css": [
-        "h2 {font-size: 48px;}",
         "h3 {font-family: inter; font-weight: normal;}"
       ],
       "name": "How it works",
