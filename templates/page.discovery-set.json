@@ -82,10 +82,10 @@
       "name": "Trust Bar",
       "settings": {
         "show_check": true,
-        "check_color": "#CC859A",
+        "check_color": "#cc859a",
         "title": "<p><strong>First Taste Promise:</strong></p>",
         "details": "<p>Try your first order risk-free. If you're not satisfied, request a refund within 30 days (up to $100).<a href=\"https://forherbyarisa.com/pages/faq\" target=\"_blank\">Learn More</a></p>",
-        "link_color": "#CC859A",
+        "link_color": "#cc859a",
         "coloumn": "2",
         "position": "center",
         "column_gap": 0,
@@ -138,11 +138,83 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "multicolumn_horizontal_TFnVBW": {
+      "type": "multicolumn-horizontal",
+      "blocks": {
+        "column_UA33wY": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/like_3899a206-ba61-41b5-8dd5-b63de4eb48cf.svg",
+            "title": "<strong>Your body is actively healing and rebuilding</strong>",
+            "text": "<p>Recovery requires targeted nourishment, not generic \"healthy\" food.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_RJn7H6": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/power.svg",
+            "title": "<strong>Energy demands are higher than during pregnancy</strong>",
+            "text": "<p>Especially if you're breastfeeding or waking throughout the night.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_yagJhb": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/leaf.svg",
+            "title": "<strong>Digestion can feel different (and sensitive)</strong>",
+            "text": "<p>Gentle, easy-to-digest meals matter more than ever.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_9fhHN7": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/clock_b4783c17-a555-4787-ac9b-2e3d478b58e0.svg",
+            "title": "<strong>Time and capacity are limited</strong>",
+            "text": "<p>You need nourishment that's quick, simple, and ready in minutes.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_UA33wY",
+        "column_RJn7H6",
+        "column_yagJhb",
+        "column_9fhHN7"
+      ],
+      "name": "Multicolumn Horizontal",
+      "settings": {
+        "title": "Multicolumn",
+        "heading_size": "h1",
+        "title_alignment": "left",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "image_background": "",
+        "button_label": "Button label",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "block_background": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
     "trust_bar_HC8pRL",
-    "image_with_text_WVP8Rr"
+    "image_with_text_WVP8Rr",
+    "multicolumn_horizontal_TFnVBW"
   ]
 }
