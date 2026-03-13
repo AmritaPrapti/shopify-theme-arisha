@@ -458,7 +458,8 @@
         "p {color: #333333;}",
         ".jdgm-reviewer-name {color: #333333;}",
         ".jdgm-reviewer-verified-icon {color: #333333;}",
-        ".jdgm-product-name {color: #333333;}"
+        ".jdgm-product-name {color: #333333;}",
+        ".jdgm-widget.jdgm-widget {padding-top: 0;}"
       ],
       "settings": {
         "include_margins": false,
