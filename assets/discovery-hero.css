@@ -5,3 +5,13 @@
     object-position: var(--object-position);
     border-radius: 5px;
 }
+
+@media screen and (max-width: 749px) {
+    .discovery-hero .product__info-container {
+        text-align: center;
+    }
+
+    .discovery-hero .product-form__buttons {
+        margin: auto;
+    }
+}

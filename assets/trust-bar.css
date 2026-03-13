@@ -51,4 +51,7 @@
         flex-wrap: wrap;
         gap: 1rem;
     }
+   .trust-bar {
+    text-align: center;
+   }
 }

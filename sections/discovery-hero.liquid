@@ -33,13 +33,25 @@
       padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
       padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
     }
+    .discovery-hero .featured-product {
+      gap: 2rem;
+    }
 
     @media screen and (min-width: 750px) {
       .section-{{ section.id }}-padding {
         padding-top: {{ section.settings.padding_top }}px;
         padding-bottom: {{ section.settings.padding_bottom }}px;
       }
+      .discovery-hero .featured-product:not(.product--no-media)>.product__info-wrapper {
+      padding-left: 0;
+      padding-right: 2rem;
     }
+    .discovery-hero .featured-product {
+      gap: 0rem;
+    }
+    }
+
+    
   {%- endstyle -%}
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
