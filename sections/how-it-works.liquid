@@ -1,4 +1,5 @@
 {{ 'how-it-works.css' | asset_url | stylesheet_tag }}
+{% assign number_font = section.settings.number_font %}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -6,12 +7,18 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
+  {{  number_font | font_face: font_display: 'swap' }}
+
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+   .loop_counter {
+    --counter-font: {{ number_font.family }}, {{ number_font.fallback_families }};
+
+   }
 {%- endstyle -%}
 
 <section class="gradiant color-{{ section.settings.color_scheme }}">
@@ -39,7 +46,7 @@
             <div class="how-it-works__content">
                 {% for block in section.blocks %}
                     <div class="how-it-works__block {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in-left{% endif %}">
-                        <div class="loop_counter h3 {% if section.settings.list_style == 'numbered' %} numbered {% endif %}">{{ forloop.index }}{% if section.settings.list_style == 'numbered' %}. {% endif %}</div>
+                        <div class="loop_counter h3 loop-counter-{{ section.settings.font_size }} {% if section.settings.list_style == 'numbered' %} numbered {% endif %}">{{ forloop.index }}{% if section.settings.list_style == 'numbered' %}. {% endif %}</div>
                         <div class="list-de">
                             {% if block.settings.list_title != blank %}
                                 <h3 class="how-it-works__block-title">{{ block.settings.list_title }}</h3>
@@ -161,6 +168,35 @@
                 "default": "rounded",
                 "info": "Choose a style for the list blocks. This will apply to all blocks within this section."
             },
+            {
+                "type": "font_picker",
+                "id": "number_font",
+                "label": "Number Font",
+                "visible_if": "{{ section.settings.list_style == 'numbered' }}",
+                "default": "quattrocento_sans_n4",
+            },
+           {
+            "type": "select",
+            "id": "font_size",
+            "label": "Font Size for Number",
+            "visible_if": "{{ section.settings.list_style == 'numbered' }}",
+            "options": [
+                {
+                "value": "small",
+                "label": "Small"
+                },
+                {
+                "value": "medium",
+                "label": "Medium"
+                },
+                {
+                "value": "large",
+                "label": "Large"
+                }
+            ],
+            "default": "medium",
+            "info": "Choose the font size for the numbers in the list."
+           },
             {
                 "type": "color_scheme",
                 "id": "color_scheme",

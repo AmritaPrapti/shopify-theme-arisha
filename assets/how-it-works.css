@@ -43,8 +43,8 @@
 
 .how-it-works__block {
     display: flex;
-    align-items: baseline;
-    gap: 1rem;
+    align-items: center;
+    gap: 1.5rem;
     margin-bottom: 2.5rem;
 }
 
@@ -59,7 +59,7 @@
     justify-content: center;
     font-weight: 600;
     flex-shrink: 0;
-    font-family: inter;
+    font-family: var(--counter-font);
 }
 
 .loop_counter.numbered {
@@ -68,6 +68,19 @@
     border: none;
     width: fit-content;
     height: fit-content;
+
+}
+
+.loop-counter-small {
+    font-size: 24px;
+}
+
+.loop-counter-medium {
+    font-size: 40px;
+}
+
+.loop-counter-large {
+    font-size: 65px;
 }
 
 .how-it-works__block-title {
