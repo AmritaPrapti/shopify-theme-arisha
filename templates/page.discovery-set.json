@@ -43,7 +43,7 @@
         "buy_buttons_fmfCqF": {
           "type": "buy_buttons",
           "settings": {
-            "buy_buttons_text": "Add to Cart",
+            "buy_buttons_text": "Get Your Discovery Set",
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": false
           }
