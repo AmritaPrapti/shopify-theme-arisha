@@ -445,7 +445,7 @@
             "border_color": "#108474",
             "show_drop_shadow": false,
             "transition_speed": 5,
-            "header_text": "Testimonials",
+            "header_text": "",
             "show_average_rating": true
           }
         }
