@@ -38,6 +38,10 @@
     .image-with-text__grid-mob--reverse .image-with-text__content {
       padding-top: 0;
     }
+    .full-width .image-with-text__content {
+      padding-left: var(--page-padding);
+      padding-right: var(--page-padding);
+    }
   }
 
 .image-with-text__media {
@@ -62,6 +66,13 @@
 .image-with-text__text--caption span {
   color: var(--caption-highlight);
 }
+
+.image-with-text__text--caption a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+
 
 .image-with-text__heading {
   margin: 0;

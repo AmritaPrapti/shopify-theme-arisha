@@ -923,6 +923,9 @@ summary::-webkit-details-marker {
     width: 100%;
     max-width: none;
   }
+  .header__heading-logo {
+    width: 60px;
+  }
 }
 
 .grid--1-col .grid__item {

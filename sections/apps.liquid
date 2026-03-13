@@ -44,7 +44,10 @@
 
 <div class="section-{{ section.id }}-padding {% if section.settings.include_margins %} page-width{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
   <div class="app-block-wrapper">
+    
     {%- for block in section.blocks -%}
+      
+                 
       {% if block.type == 'image' %}
         <div class="image_wrapper_app {% if block.settings.custom_height == true %}custom-height{% endif %}" style="{% if block.settings.custom_height == true %} --desktop-height: {{ block.settings.height }}px; --mobile-height: {{ block.settings.height_mobile }}px; {% endif %} border-radius: {{ block.settings.corner_radius }}px;">
           {%- if block.settings.image != blank -%}
@@ -64,7 +67,15 @@
           {%- endif -%}
         </div>
       {% else %}
-        {% render block %}
+         <div>
+           <h2 class="image-with-text__heading inline-richtext {{ section.settings.heading_size }}"
+                      {{ section.shopify_attributes }}
+                      style="text-align: center;"
+                    >
+                      {{ section.settings.heading }}
+                   </h2>
+                   {% render block %}
+         </div>
       {% endif %}
     {%- endfor -%}
   </div>
@@ -81,6 +92,40 @@
       "id": "include_margins",
       "default": true,
       "label": "t:sections.apps.settings.include_margins.label"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "default": "Testimonials",
+      "label": "t:sections.image-with-text.blocks.heading.settings.heading.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
     },
     {
       "type": "header",
@@ -111,6 +156,7 @@
     {
       "type": "@app"
     },
+
     {
       "type": "image",
       "name": "Image",

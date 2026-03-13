@@ -100,7 +100,7 @@
                     {{ block.shopify_attributes }}
                     style="color: {{ block.settings.caption_color }}; --caption-highlight: {{ block.settings.caption_highlight }}; font-weight: {{ block.settings.font_weight }};"
                   >
-                    {{ block.settings.caption }}
+                   <a href="{{ block.settings.link }}">{{ block.settings.caption }}</a>  
                   </p>
                 {%- when 'text' -%}
                   <div class="image-with-text__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
@@ -471,6 +471,11 @@
       "type": "caption",
       "name": "t:sections.image-with-text.blocks.caption.name",
       "settings": [
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Caption Link URL",
+        },
         {
           "type": "textarea",
           "id": "caption",

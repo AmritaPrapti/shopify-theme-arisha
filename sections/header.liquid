@@ -91,6 +91,44 @@
 </style>
 {% endif %}
 
+{% if template.name == 'index' and section.settings.transparent_header_mobile %}
+<style>
+@media screen and (max-width: 749px) {
+  .header-wrapper.header-transparent-mobile {
+    position: absolute;
+    width: 100%;
+    background: transparent;
+  }
+
+  .section-header:not(.shopify-section-header-sticky):not(:hover) .header-transparent-mobile .header__icon {
+    color: {{ section.settings.color_trasparent | default: 'rgba(255, 255, 255, 1)' }};
+  }
+
+  .header-wrapper--border-bottom.header-transparent-mobile {
+    border-bottom: .1rem solid {{ section.settings.color_trasparent | default: 'rgba(255, 255, 255, 1)' }};
+    opacity: 0.75;
+  }
+
+  .section-header.shopify-section-header-sticky .header-transparent-mobile .header-main-logo {
+    display: none;
+  }
+
+  .section-header.shopify-section-header-sticky .header-transparent-mobile .header-inverse-logo {
+    display: block;
+  }
+
+  .shopify-section-group-header-group:not(.shopify-section-header-sticky) .header-transparent-mobile .header::before {
+    transform: translateY(-100%);
+  }
+
+
+  .section-header:hover .header-transparent-mobile .header::before {
+    transform: translateY(0) !important;
+  }
+}
+</style>
+{% endif %}
+
 {% if template.name != 'index' %}
 <style>
       /* Hide on scroll down */
@@ -231,7 +269,7 @@
   {% if header_tag == 'sticky-header' %}
     data-sticky-type="{{ section.settings.sticky_header_type }}"
   {% endif %}
-  class="header-wrapper {% if template.name == 'index' and section.settings.transparent_header %} header-transparent {% endif %} color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
+  class="header-wrapper {% if template.name == 'index' and section.settings.transparent_header %} header-transparent {% endif %} {% if template.name == 'index' and section.settings.transparent_header_mobile %} header-transparent-mobile {% endif %} color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
 >
   {%- liquid
     assign social_links = false
@@ -697,6 +735,13 @@
       "id": "transparent_header",
       "default": true,
       "label": "Make header transparent on homepage",
+      "visible_if": "{{ section.settings.sticky_header_type == 'on-scroll-up' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "transparent_header_mobile",
+      "default": false,
+      "label": "Make header transparent on mobile only",
       "visible_if": "{{ section.settings.sticky_header_type == 'on-scroll-up' }}"
     },
     {

@@ -66,8 +66,8 @@
     background-color: transparent;
     color: var(--color-highlight);
     border: none;
-    width: fit-content;
-    height: fit-content;
+    width: auto;
+    height: auto;
 
 }
 
@@ -83,6 +83,10 @@
     font-size: 65px;
 }
 
+.loop-counter-extra-large {
+    font-size: 110px;
+}
+
 .how-it-works__block-title {
     margin-bottom: 10px;
     margin-top: 0;
@@ -93,5 +97,7 @@
         grid-template-columns: 1fr;
     }
 
-  
+  .how-it-works__image-wrapper--second {
+   order: 0;
+}
 }
