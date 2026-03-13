@@ -54,4 +54,8 @@
    .trust-bar {
     text-align: center;
    }
+
+   .trust-bar.trust-bar--2-column.trust-bar--position-space-between {
+    justify-content: center;
+   }
 }
