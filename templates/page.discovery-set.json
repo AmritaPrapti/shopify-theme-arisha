@@ -256,6 +256,77 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "multicolumn_horizontal_wmBYqH": {
+      "type": "multicolumn-horizontal",
+      "blocks": {
+        "column_cxR6TD": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/clock_b4783c17-a555-4787-ac9b-2e3d478b58e0.svg",
+            "title": "<strong>Ready in minutes — not another task</strong>",
+            "text": "<p>Just add water and heat. No chopping, planning, or cleanup required.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_i3Kd3m": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/like_3899a206-ba61-41b5-8dd5-b63de4eb48cf.svg",
+            "title": "<strong>Gentle on digestion</strong>",
+            "text": "<p>Formulated to be comforting, easy to digest, and supportive during recovery.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_NCdyT3": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/leaf.svg",
+            "title": "<strong>Made with whole-food ingredients</strong>",
+            "text": "<p>Thoughtfully selected ingredients designed to nourish, not overwhelm.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_tV7naX": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/clock_b4783c17-a555-4787-ac9b-2e3d478b58e0.svg",
+            "title": "<strong>Built for busy, sleep-deprived days</strong>",
+            "text": "<p>Whether it's 6am or midnight, nourishment should be simple and accessible.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_cxR6TD",
+        "column_i3Kd3m",
+        "column_NCdyT3",
+        "column_tV7naX"
+      ],
+      "name": "Multicolumn Horizontal",
+      "settings": {
+        "title": "Designed for real postpartum life",
+        "heading_size": "h1",
+        "title_alignment": "center",
+        "image_width": "small",
+        "image_ratio": "circle",
+        "image_background": "#f3e7e4",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "custom",
+        "block_background": "#f0eae5",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -263,6 +334,7 @@
     "trust_bar_HC8pRL",
     "image_with_text_WVP8Rr",
     "multicolumn_horizontal_TFnVBW",
-    "collections_set_HGmwqa"
+    "collections_set_HGmwqa",
+    "multicolumn_horizontal_wmBYqH"
   ]
 }
