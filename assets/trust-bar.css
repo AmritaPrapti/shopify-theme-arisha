@@ -22,6 +22,13 @@
 
 .trust-bar.trust-bar--2-column{
   flex-direction: row;
+}
+
+.trust-bar.trust-bar--2-column.trust-bar--position-center {
+  justify-content: center;
+}
+
+.trust-bar.trust-bar--2-column.trust-bar--position-space-between {
   justify-content: space-between;
 }
 
@@ -30,7 +37,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: var(--gap-column);
 }
 
 .trust-bar__details a {

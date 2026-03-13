@@ -14,6 +14,7 @@
     data-zoom-on-hover
   {% endif %}
 >
+  {{ 'discovery-hero.css' | asset_url | stylesheet_tag }}
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
   {{ 'section-featured-product.css' | asset_url | stylesheet_tag }}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
@@ -71,9 +72,14 @@
   <section class="color-{{ section.settings.color_scheme }} {% if section.settings.secondary_background %}background-secondary{% else %}gradient{% endif %}">
     <div class="page-width discovery-hero section-{{ section.id }}-padding{% if section.settings.secondary_background %} isolate{% endif %}">
       <div class="featured-product product product--{{ section.settings.media_size }} grid grid--1-col gradient color-{{ section.settings.color_scheme }} product--{{ section.settings.media_position }}{% if section.settings.secondary_background == false %} isolate{% endif %} {% if product.media.size > 0 or section.settings.product == blank %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
-        <div class="grid__item product__media-wrapper">
+        <div class="grid__item product__media-wrapper" style="--object-position: {{ section.settings.image_position }}">
           {%- unless placeholder -%}
-            {% render 'product-media-gallery', product: product, variant_images: variant_images, limit: 1 %}
+            {% if section.settings.custom_image != blank %}
+              {% render 'image', image: section.settings.custom_image %}
+              {% else %}
+                {% render 'product-media-gallery', product: product, variant_images: variant_images, limit: 1 %}
+            {% endif %}
+            
           {%- else -%}
             <div class="product__media-item">
               <div
@@ -1444,16 +1450,36 @@
       "label": "t:sections.featured-product.settings.product.label"
     },
     {
+      "type": "image_picker",
+      "id": "custom_image",
+      "label": "Custom Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Object Position",
+      "options": [
+        {
+        "value": "center",
+        "label": "Center"
+        },
+        {
+        "value": "left",
+        "label": "Left"
+        },
+        {
+        "value": "right",
+        "label": "Right"
+        }
+      ],
+      "default": "center",
+      "info": "Controls how the image is aligned within its container."
+    },
+    {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
-    },
-    {
-      "type": "checkbox",
-      "id": "secondary_background",
-      "default": false,
-      "label": "t:sections.featured-product.settings.secondary_background.label"
     },
     {
       "type": "header",
@@ -1474,11 +1500,17 @@
         {
           "value": "large",
           "label": "t:sections.main-product.settings.media_size.options__3.label"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
         }
+
       ],
       "default": "medium",
       "label": "t:sections.main-product.settings.media_size.label"
     },
+   
     {
       "type": "checkbox",
       "id": "constrain_to_viewport",
@@ -1516,38 +1548,6 @@
       ],
       "default": "left",
       "label": "t:sections.featured-product.settings.media_position.label"
-    },
-    {
-      "type": "select",
-      "id": "image_zoom",
-      "options": [
-        {
-          "value": "lightbox",
-          "label": "t:sections.main-product.settings.image_zoom.options__1.label"
-        },
-        {
-          "value": "hover",
-          "label": "t:sections.main-product.settings.image_zoom.options__2.label"
-        },
-        {
-          "value": "none",
-          "label": "t:sections.main-product.settings.image_zoom.options__3.label"
-        }
-      ],
-      "default": "lightbox",
-      "label": "t:sections.main-product.settings.image_zoom.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "hide_variants",
-      "default": false,
-      "label": "t:sections.main-product.settings.hide_variants.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_video_looping",
-      "default": false,
-      "label": "t:sections.featured-product.settings.enable_video_looping.label"
     },
     {
       "type": "header",

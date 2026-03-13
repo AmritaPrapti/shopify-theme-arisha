@@ -17,7 +17,7 @@
 
 <section class="gradient color-{{ section.settings.section_color_scheme }} ">
     <div class="section-{{ section.id }}-padding page-width">
-        <div class="trust-bar trust-bar--{{ section.settings.coloumn }}-column">
+        <div class="trust-bar trust-bar--{{ section.settings.coloumn }}-column trust-bar--position-{{ section.settings.position }} " style="--gap-column: {{ section.settings.column_gap }}px;">
             <div class="trust-bar__content">
                 {% if section.settings.show_check %}
                     <span class="trust-bar__check" style="--color-check: {{ section.settings.check_color.red }}, {{ section.settings.check_color.green }}, {{ section.settings.check_color.blue }} ;">
@@ -86,7 +86,34 @@
                 "default": "2",
                 "info": "If you want to show text and title side by side, select two column layout. If you want to show text below the title, select one column layout."
             },
-
+             {
+                "type": "select",
+                "id": "position",
+                "label": "Column Position",
+                "options": [
+                    {
+                    "value": "center",
+                    "label": "Center"
+                    },
+                    {
+                    "value": "space-between",
+                    "label": "Space Between"
+                    }
+                ],
+                "default": "space-between",
+                "info": "This setting will only work if you have selected two column layout. If you want to show text and title centered, select center. If you want to show text and title on the edges, select space between.",
+                "visible_if": "{{ section.settings.coloumn == '2' }}"
+            },
+            {
+                "type": "range",
+                "id": "column_gap",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "px",
+                "label": "Column Gap",
+                "default": 16
+            },
             {
                 "type": "color_scheme",
                 "id": "section_color_scheme",
