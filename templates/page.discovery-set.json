@@ -327,6 +327,49 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "rich_text_7aimyY": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_FrD8ka": {
+          "type": "heading",
+          "settings": {
+            "heading": "Discover what supports your recovery",
+            "heading_size": "h1"
+          }
+        },
+        "text_XUW7PU": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A simple, risk-free way to begin nourishing your body and soul.</p>"
+          }
+        },
+        "button_c6P7DF": {
+          "type": "button",
+          "settings": {
+            "button_label": "Get Your Discovery Set",
+            "button_link": "shopify://products/discovery-set",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_FrD8ka",
+        "text_XUW7PU",
+        "button_c6P7DF"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-2fa3a363-95b8-4d07-9e42-14be7562f72f",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
@@ -335,6 +378,7 @@
     "image_with_text_WVP8Rr",
     "multicolumn_horizontal_TFnVBW",
     "collections_set_HGmwqa",
-    "multicolumn_horizontal_wmBYqH"
+    "multicolumn_horizontal_wmBYqH",
+    "rich_text_7aimyY"
   ]
 }
