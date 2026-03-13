@@ -58,11 +58,9 @@
         <h2 class="title inline-richtext {{ section.settings.heading_size }}" style="text-align: {{ section.settings.title_alignment }}; width: 100%;">
           {{ section.settings.title }}
         </h2>
-        {%- if section.settings.button_label != blank and show_mobile_slider -%}
-          <a href="{{ section.settings.button_link }}" class="link underlined-link large-up-hide">
-            {{- section.settings.button_label | escape -}}
-          </a>
-        {%- endif -%}
+       <div class="image-with-text__text rte " {{ section.shopify_attributes }} style="text-align: {{ section.settings.title_alignment }}; width: 100%;">
+          {{ section.settings.text }}
+        </div>
       </div>
     {%- endunless -%}
     <slider-component class="slider-mobile-gutter">
@@ -261,10 +259,15 @@
       "default": "h1",
       "label": "t:sections.all.heading_size.label"
     },
+     {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text"
+      },
     {
       "type": "select",
       "id": "title_alignment",
-      "label": "Title Alignment",
+      "label": "Header Alignment",
       "options": [
         {
         "value": "left",
