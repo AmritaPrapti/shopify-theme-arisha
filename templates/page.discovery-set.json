@@ -203,7 +203,7 @@
         "column_alignment": "left",
         "background_style": "custom",
         "block_background": "#ffffff",
-        "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
+        "color_scheme": "scheme-2fa3a363-95b8-4d07-9e42-14be7562f72f",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -252,7 +252,7 @@
         "columns_desktop": 3,
         "columns_mobile": "1",
         "block_background": "#ffffff",
-        "color_scheme": "scheme-2fa3a363-95b8-4d07-9e42-14be7562f72f",
+        "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
         "padding_top": 36,
         "padding_bottom": 36
       }
