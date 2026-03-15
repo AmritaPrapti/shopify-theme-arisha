@@ -44,7 +44,7 @@
             "button_label": "SHOP DISCOVERY SET",
             "button_link": "shopify://products/discovery-set",
             "button_style_secondary": false,
-            "button_label2": "SHOP ALL PRODUCTS",
+            "button_label2": "SHOP ALL",
             "button_link2": "shopify://pages/shop",
             "button_style_secondary2": true
           }
