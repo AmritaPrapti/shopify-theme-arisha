@@ -454,7 +454,6 @@
         "judge_me_reviews_testimonials_carousel_CwCGKh"
       ],
       "custom_css": [
-        "h2 {font-size: 48px; font-weight: bold;}",
         "p {color: #333333;}",
         ".jdgm-reviewer-name {color: #333333;}",
         ".jdgm-reviewer-verified-icon {color: #333333;}",
