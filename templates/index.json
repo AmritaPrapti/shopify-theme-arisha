@@ -27,7 +27,7 @@
         "heading_WVmjPE": {
           "type": "heading",
           "settings": {
-            "heading": "Postpartum <br> nourishment, <br> <span><em>made simple.</em></span>",
+            "heading": "Postpartum nourishment, <br> <span><em>made simple.</em></span>",
             "heading_size": "h0"
           }
         },
@@ -74,6 +74,9 @@
         "button_tcwyx6",
         "caption_YLNArL",
         "judge_me_reviews_all_reviews_text_FkEHx4"
+      ],
+      "custom_css": [
+        "@media screen and (max-width: 600px) {h2 {font-size: 28px; }}"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
