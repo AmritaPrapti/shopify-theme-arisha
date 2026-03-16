@@ -44,7 +44,7 @@
           "type": "buy_buttons",
           "settings": {
             "buy_buttons_text": "GET YOUR DISCOVERY SET",
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "show_gift_card_recipient": false
           }
         },
@@ -86,8 +86,8 @@
       "settings": {
         "show_check": true,
         "check_color": "#111111",
-        "title": "<p><strong>First Taste Promise:</strong></p>",
-        "details": "<p>Try your first order risk-free. If you're not satisfied, request a refund within 30 days (up to $100).<a href=\"https://forherbyarisa.com/pages/faq\" target=\"_blank\">Learn More</a></p>",
+        "title": "<p><strong>First Taste Promise: </strong></p>",
+        "details": "<p>Try your first order risk-free. If you're not satisfied, request a refund within 15 days (up to $100). <a href=\"https://forherbyarisa.com/pages/faq\" target=\"_blank\">Learn More</a></p>",
         "link_color": "#b07a72",
         "coloumn": "2",
         "position": "center",
@@ -203,18 +203,18 @@
         "title_alignment": "center",
         "image_width": "small",
         "image_ratio": "circle",
-        "image_background": "#f3e7e4",
+        "image_background": "rgba(0,0,0,0)",
         "button_label": "",
         "button_link": "",
         "columns_desktop": 2,
         "column_alignment": "left",
-        "background_style": "custom",
+        "background_style": "primary",
         "block_background": "#ffffff",
-        "color_scheme": "scheme-2fa3a363-95b8-4d07-9e42-14be7562f72f",
+        "color_scheme": "scheme-1",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 76,
+        "padding_bottom": 76
       }
     },
     "collections_set_HGmwqa": {
@@ -261,7 +261,7 @@
         "block_background": "#ffffff",
         "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 72
       }
     },
     "multicolumn_horizontal_wmBYqH": {
@@ -314,6 +314,9 @@
         "column_NCdyT3",
         "column_tV7naX"
       ],
+      "custom_css": [
+        "h3 {font-family: inter; font-weight: normal !important;}"
+      ],
       "name": "Multicolumn Horizontal",
       "settings": {
         "title": "Designed for real postpartum life",
@@ -328,12 +331,12 @@
         "columns_desktop": 2,
         "column_alignment": "left",
         "background_style": "custom",
-        "block_background": "#f0eae5",
+        "block_background": "#f6f4f2",
         "color_scheme": "",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 76,
+        "padding_bottom": 76
       }
     },
     "rich_text_7aimyY": {
@@ -355,7 +358,7 @@
         "button_c6P7DF": {
           "type": "button",
           "settings": {
-            "button_label": "Get Your Discovery Set",
+            "button_label": "GET YOUR DISCOVERY SET",
             "button_link": "shopify://products/discovery-set",
             "button_style_secondary": false,
             "button_label_2": "",
@@ -373,7 +376,7 @@
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "scheme-2fa3a363-95b8-4d07-9e42-14be7562f72f",
+        "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 52
