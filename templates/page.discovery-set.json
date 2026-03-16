@@ -86,12 +86,12 @@
       "settings": {
         "show_check": true,
         "check_color": "#111111",
-        "title": "<p><strong>First Taste Promise: </strong></p>",
+        "title": "<p>First Taste Promise</p>",
         "details": "<p>Try your first order risk-free. If you're not satisfied, request a refund within 15 days (up to $100). <a href=\"https://forherbyarisa.com/pages/faq\" target=\"_blank\">Learn More</a></p>",
         "link_color": "#b07a72",
         "coloumn": "2",
         "position": "center",
-        "column_gap": 0,
+        "column_gap": 16,
         "section_color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
         "padding_top": 36,
         "padding_bottom": 36
@@ -223,7 +223,7 @@
         "collection_iTWcjd": {
           "type": "collection",
           "settings": {
-            "title": "<h3>Signature Soups</h3>",
+            "title": "<h2>Signature Soups</h2>",
             "description": "<p>Mineral-rich broths designed for warming postpartum nourishment.</p>",
             "collection": "soups-and-meals"
           }
@@ -231,7 +231,7 @@
         "collection_pahkEy": {
           "type": "collection",
           "settings": {
-            "title": "<h3>Nourishing Snacks</h3>",
+            "title": "<h2>Nourishing Snacks</h2>",
             "description": "<p>Energy-dense bites to sustain you through long days.</p>",
             "collection": "snacks"
           }
@@ -239,7 +239,7 @@
         "collection_rxKEBJ": {
           "type": "collection",
           "settings": {
-            "title": "<h3>Functional Teas</h3>",
+            "title": "<h2>Functional Teas</h2>",
             "description": "<p>Herbal blends crafted to support balance and recovery.</p>",
             "collection": "teas"
           }
@@ -378,8 +378,8 @@
         "content_alignment": "center",
         "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
         "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
+        "padding_top": 60,
+        "padding_bottom": 72
       }
     }
   },
