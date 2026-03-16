@@ -2,6 +2,25 @@
     --page-padding: 1.5rem; /* your 0 0.5rem shorthand = 0 top/bottom, 0.5rem left/right */
   }
 
+/* Mobile/Desktop image visibility controls */
+.image-with-text__media img.hide-mobile {
+  display: block !important;
+}
+
+.image-with-text__media img.hide-desktop {
+  display: none !important;
+}
+
+@media screen and (max-width: 749px) {
+  .image-with-text__media img.hide-mobile {
+    display: none !important;
+  }
+  
+  .image-with-text__media img.hide-desktop {
+    display: block !important;
+  }
+}
+
 .image-with-text .grid {
   margin-bottom: 0;
 }

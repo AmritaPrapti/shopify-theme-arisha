@@ -27,16 +27,25 @@
 {% if section.settings.height == 'custom' %}
   <style>
     .image-with-text__media--custom {
-      height: {{ section.settings.custom_media_height }}px;
+      height: {{ section.settings.custom_media_height }}px !important;
     }
 
     @media screen and (max-width: 749px) {
       .image-with-text__media--custom {
-        height: {{ section.settings.custom_media_height_mobile }}px;
+        height: {{ section.settings.custom_media_height_mobile }}px !important;
       }
     }
   </style>
-  
+{% endif %}
+
+{% if section.settings.height_mobile == 'custom' %}
+  <style>
+    @media screen and (max-width: 749px) {
+      .image-with-text__media--custom-mobile {
+        height: {{ section.settings.custom_media_height_mobile }}px !important;
+      }
+    }
+  </style>
 {% endif %}
 
 <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.section_color_scheme }}">
@@ -45,13 +54,23 @@
       <div class="image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %} {% if section.settings.mobile_layout == 'text_first' %} image-with-text__grid-mob--reverse{% endif %}">
         <div class="image-with-text__media-item image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }} grid__item">
           <div
-            class="image-with-text__media image-with-text__media--{{ section.settings.height }}  global-media-settings{% unless remove_color_classes %} gradient color-{{ section.settings.color_scheme }}{% else %} background-transparent{% endunless %}{% if section.settings.image != blank %} media{% else %} image-with-text__media--placeholder placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}"
+            class="image-with-text__media image-with-text__media--{{ section.settings.height }} {% if section.settings.height_mobile != 'adapt' and section.settings.height_mobile != section.settings.height %}image-with-text__media--{{ section.settings.height_mobile }}-mobile{% endif %} global-media-settings{% unless remove_color_classes %} gradient color-{{ section.settings.color_scheme }}{% else %} background-transparent{% endunless %}{% if section.settings.image != blank %} media{% else %} image-with-text__media--placeholder placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}"
             {% if section.settings.height == 'adapt' and section.settings.image != blank %}
               style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"
             {% endif %}
           >
             {%- if section.settings.section_url != blank -%}<a class="section_url" href="{{ section.settings.section_url }}"> &nbsp </a>{%- endif -%}
-            {%- if section.settings.image != blank -%}
+            
+            {%- liquid
+              assign desktop_image = section.settings.image
+              assign mobile_image = section.settings.mobile-image
+              assign has_mobile_image = false
+              if mobile_image != blank
+                assign has_mobile_image = true
+              endif
+            -%}
+            
+            {%- if desktop_image != blank -%}
               {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
                 {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
                 {%- capture sizes -%}
@@ -65,11 +84,29 @@
               (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
             {%- endcapture -%}
               {%- endif -%}
-              {{
-                section.settings.image
-                | image_url: width: 1500
-                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority
-              }}
+              
+              {%- if has_mobile_image -%}
+                {%- comment -%} Desktop image - hidden on mobile {%- endcomment -%}
+                {{
+                  desktop_image
+                  | image_url: width: 1500
+                  | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority, class: 'hide-mobile'
+                }}
+                
+                {%- comment -%} Mobile image - shown only on mobile {%- endcomment -%}
+                {{
+                  mobile_image
+                  | image_url: width: 750
+                  | image_tag: sizes: '100vw', widths: '360, 535, 750', fetchpriority: fetch_priority, class: 'hide-desktop'
+                }}
+              {%- else -%}
+                {%- comment -%} Single image for all devices {%- endcomment -%}
+                {{
+                  desktop_image
+                  | image_url: width: 1500
+                  | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority
+                }}
+              {%- endif -%}
             {%- else -%}
               {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
             {%- endif -%}
@@ -173,6 +210,12 @@
       "label": "t:sections.image-with-text.settings.image.label"
     },
     {
+      "type": "image_picker",
+      "id": "mobile-image",
+      "label": "Image for Mobile (optional)",
+      "info": "Upload a separate image optimized for mobile devices. If left blank, the desktop image will be used on mobile as well."
+    },
+    {
       "type": "select",
       "id": "height",
       "options": [
@@ -200,6 +243,35 @@
       "default": "adapt",
       "label": "t:sections.image-with-text.settings.height.label"
     },
+    {
+      "type": "select",
+      "id": "height_mobile",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.image-with-text.settings.height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.image-with-text.settings.height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.image-with-text.settings.height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.image-with-text.settings.height.options__4.label"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "medium",
+      "label": "Height for Mobile (optional)",
+      "info": "Choose a different height for mobile devices. If 'Custom' is selected, you can set a specific height in pixels. If left as 'Adapt', the height will adjust based on the image's aspect ratio."
+    },
      {
       "type": "range",
       "id": "custom_media_height",
@@ -220,7 +292,7 @@
       "unit": "px",
       "label": "Custom Media height (Mobile)",
       "default": 700,
-      "visible_if": "{{ section.settings.height == 'custom' }}"
+      "visible_if": "{{ section.settings.height_mobile == 'custom' }}"
     },
     {
       "type": "select",

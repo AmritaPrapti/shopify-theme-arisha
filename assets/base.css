@@ -3732,8 +3732,9 @@ body {
 
 .app-block-wrapper .shopify-block {
   flex: 1 1 auto;
-  margin: 0.5rem;
+  margin: 0;
   width: 100%;
+  padding: 0 15px;
 }
 
 .app-block-wrapper img {
