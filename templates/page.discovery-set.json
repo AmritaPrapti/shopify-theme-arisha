@@ -150,7 +150,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/like_3899a206-ba61-41b5-8dd5-b63de4eb48cf.svg",
-            "title": "<strong>Your body is actively healing and rebuilding</strong>",
+            "title": "Your body is healing",
             "text": "<p>Recovery requires targeted nourishment, not generic \"healthy\" food.</p>",
             "link_label": "",
             "link": ""
@@ -160,7 +160,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/power.svg",
-            "title": "<strong>Energy demands are higher than during pregnancy</strong>",
+            "title": "Energy needs are high",
             "text": "<p>Especially if you're breastfeeding or waking throughout the night.</p>",
             "link_label": "",
             "link": ""
@@ -170,7 +170,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/leaf.svg",
-            "title": "<strong>Digestion can feel different (and sensitive)</strong>",
+            "title": "Digestion is sensitive",
             "text": "<p>Gentle, easy-to-digest meals matter more than ever.</p>",
             "link_label": "",
             "link": ""
@@ -180,7 +180,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/clock_b4783c17-a555-4787-ac9b-2e3d478b58e0.svg",
-            "title": "<strong>Time and capacity are limited</strong>",
+            "title": "Time is limited",
             "text": "<p>You need nourishment that's quick, simple, and ready in minutes.</p>",
             "link_label": "",
             "link": ""
@@ -194,7 +194,8 @@
         "column_9fhHN7"
       ],
       "custom_css": [
-        "h3 {font-family: inter; font-weight: normal !important;}"
+        "h3 {font-family: inter; font-weight: normal !important;}",
+        "@media screen and (max-width: 600px) {h3 {font-size: 18px; }}"
       ],
       "name": "Multicolumn Horizontal",
       "settings": {
@@ -272,7 +273,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/clock_b4783c17-a555-4787-ac9b-2e3d478b58e0.svg",
-            "title": "<strong>Ready in minutes — not another task</strong>",
+            "title": "Ready in minutes — not another task",
             "text": "<p>Just add water and heat. No chopping, planning, or cleanup required.</p>",
             "link_label": "",
             "link": ""
@@ -282,7 +283,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/like_3899a206-ba61-41b5-8dd5-b63de4eb48cf.svg",
-            "title": "<strong>Gentle on digestion</strong>",
+            "title": "Gentle on digestion",
             "text": "<p>Formulated to be comforting, easy to digest, and supportive during recovery.</p>",
             "link_label": "",
             "link": ""
@@ -292,7 +293,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/leaf.svg",
-            "title": "<strong>Made with whole-food ingredients</strong>",
+            "title": "Made with whole-food ingredients",
             "text": "<p>Thoughtfully selected ingredients designed to nourish, not overwhelm.</p>",
             "link_label": "",
             "link": ""
@@ -302,7 +303,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/check-mark.svg",
-            "title": "<strong>Built for busy, sleep-deprived days</strong>",
+            "title": "Built for busy, sleep-deprived days",
             "text": "<p>Whether it's 6am or midnight, nourishment should be simple and accessible.</p>",
             "link_label": "",
             "link": ""
@@ -316,7 +317,8 @@
         "column_tV7naX"
       ],
       "custom_css": [
-        "h3 {font-family: inter; font-weight: normal !important;}"
+        "h3 {font-family: inter; font-weight: normal !important;}",
+        "@media screen and (max-width: 600px) {h3 {font-size: 18px; }}"
       ],
       "name": "Multicolumn Horizontal",
       "settings": {
