@@ -52,7 +52,7 @@
         "desktop_content_position": "middle-center",
         "desktop_content_alignment": "center",
         "show_text_box": true,
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-5",
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
         "show_text_below": false
@@ -91,9 +91,13 @@
         "caption_arFJ8H": {
           "type": "caption",
           "settings": {
+            "link": "",
             "caption": "Postpartum doula and chef",
             "text_style": "caption-with-letter-spacing",
-            "text_size": "small"
+            "text_size": "small",
+            "font_weight": "400",
+            "caption_color": "",
+            "caption_highlight": ""
           }
         },
         "heading_yk3kKz": {
@@ -123,9 +127,14 @@
         "enable_text_link": false,
         "image": "shopify://shop_images/Screenshot_2023-05-09_104926.png",
         "height": "adapt",
+        "height_mobile": "medium",
+        "custom_media_height": 700,
+        "custom_media_height_mobile": 700,
         "desktop_image_width": "small",
         "layout": "image_first",
+        "mobile_layout": "image_first",
         "image_behavior": "none",
+        "enable_full_width": false,
         "content_layout": "overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
@@ -142,9 +151,13 @@
         "caption_3HEGPa": {
           "type": "caption",
           "settings": {
+            "link": "",
             "caption": "Yakuzen and Chinese medicine culinary expert",
             "text_style": "caption-with-letter-spacing",
-            "text_size": "small"
+            "text_size": "small",
+            "font_weight": "400",
+            "caption_color": "",
+            "caption_highlight": ""
           }
         },
         "heading_RmnrLT": {
@@ -173,9 +186,14 @@
         "enable_text_link": false,
         "image": "shopify://shop_images/06C61B05-D489-413D-949D-8856880A2967.jpg",
         "height": "adapt",
+        "height_mobile": "medium",
+        "custom_media_height": 700,
+        "custom_media_height_mobile": 700,
         "desktop_image_width": "small",
         "layout": "text_first",
+        "mobile_layout": "image_first",
         "image_behavior": "none",
+        "enable_full_width": false,
         "content_layout": "overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
@@ -192,9 +210,13 @@
         "caption_NKJ8kh": {
           "type": "caption",
           "settings": {
+            "link": "",
             "caption": "Chef specializing in holistic wellness",
             "text_style": "caption-with-letter-spacing",
-            "text_size": "small"
+            "text_size": "small",
+            "font_weight": "400",
+            "caption_color": "",
+            "caption_highlight": ""
           }
         },
         "heading_PQqmDG": {
@@ -223,9 +245,14 @@
         "enable_text_link": false,
         "image": "shopify://shop_images/IMG_1126.jpg",
         "height": "adapt",
+        "height_mobile": "medium",
+        "custom_media_height": 700,
+        "custom_media_height_mobile": 700,
         "desktop_image_width": "small",
         "layout": "image_first",
+        "mobile_layout": "image_first",
         "image_behavior": "none",
+        "enable_full_width": false,
         "content_layout": "overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
@@ -242,9 +269,13 @@
         "caption_EyGKMi": {
           "type": "caption",
           "settings": {
+            "link": "",
             "caption": "R&D Chef & Lead Production Cook",
             "text_style": "caption-with-letter-spacing",
-            "text_size": "small"
+            "text_size": "small",
+            "font_weight": "400",
+            "caption_color": "",
+            "caption_highlight": ""
           }
         },
         "heading_r6AckQ": {
@@ -273,9 +304,14 @@
         "enable_text_link": false,
         "image": "shopify://shop_images/IMG_1052.jpg",
         "height": "adapt",
+        "height_mobile": "medium",
+        "custom_media_height": 700,
+        "custom_media_height_mobile": 700,
         "desktop_image_width": "small",
         "layout": "text_first",
+        "mobile_layout": "image_first",
         "image_behavior": "none",
+        "enable_full_width": false,
         "content_layout": "overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
