@@ -83,9 +83,11 @@
         "section_url": "",
         "enable_text_link": false,
         "image": "shopify://shop_images/230330_SO52427_1893_2nd_sRGB4000.jpg",
+        "mobile-image": "shopify://shop_images/230330_SO52427_1893_2nd_sRGB4000.jpg",
         "height": "large",
+        "height_mobile": "custom",
         "custom_media_height": 700,
-        "custom_media_height_mobile": 700,
+        "custom_media_height_mobile": 300,
         "desktop_image_width": "medium",
         "layout": "text_first",
         "mobile_layout": "image_first",
@@ -220,7 +222,8 @@
         "list_QA4V6q"
       ],
       "custom_css": [
-        "h3 {font-family: inter; font-weight: normal;}"
+        "h3 {font-family: inter; font-weight: normal;}",
+        ".loop_counter.numbered {color: #e8e6e3;}"
       ],
       "name": "How it works",
       "settings": {
@@ -231,8 +234,8 @@
         "image": "shopify://shop_images/Untitled_design_3.jpg",
         "image_position": "second",
         "list_style": "numbered",
-        "number_font": "cormorant_n4",
-        "font_size": "extra-large",
+        "number_font": "bodoni_moda_i4",
+        "font_size": "large",
         "color_scheme": "",
         "padding_top": 76,
         "padding_bottom": 76
@@ -343,6 +346,7 @@
         "enable_text_link": true,
         "image": "shopify://shop_images/maxwellartphotography-swissphotographer-switzerland-familyphotoshoot-swissalps-familymomoi-101_Original.jpg",
         "height": "medium",
+        "height_mobile": "medium",
         "custom_media_height": 700,
         "custom_media_height_mobile": 700,
         "desktop_image_width": "small",
@@ -402,6 +406,7 @@
         "enable_text_link": false,
         "image": "shopify://shop_images/Untitled_design_3.jpg",
         "height": "adapt",
+        "height_mobile": "medium",
         "custom_media_height": 700,
         "custom_media_height_mobile": 700,
         "desktop_image_width": "medium",
