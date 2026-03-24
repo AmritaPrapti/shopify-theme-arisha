@@ -9,261 +9,46 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "discovery-hero",
+    "rich_text_7aimyY": {
+      "type": "rich-text",
       "blocks": {
-        "caption_DFz3zx": {
-          "type": "caption",
-          "settings": {
-            "text": "For Her. By Arisa Discovery Set"
-          }
-        },
-        "title_GGRjyh": {
-          "type": "title",
-          "settings": {
-            "custom_title": "An Elevated Beginning to Motherhood.",
-            "heading_size": "h1"
-          }
-        },
-        "text_cX4ihw": {
-          "type": "text",
-          "settings": {
-            "text": "Try one of each of our soups, snacks, and teas, thoughtfully crafted with Japanese food wisdom — and discover what supports your recovery best.",
-            "text_style": "body"
-          }
-        },
-        "welcomeprice_RJbxGU": {
-          "type": "welcomeprice",
-          "settings": {
-            "price_text": "Special Welcome Price",
-            "sale_price": "$85",
-            "regular_price": "$100"
-          }
-        },
-        "buy_buttons_fmfCqF": {
-          "type": "buy_buttons",
-          "settings": {
-            "buy_buttons_text": "GET YOUR DISCOVERY SET",
-            "show_dynamic_checkout": false,
-            "show_gift_card_recipient": false
-          }
-        },
-        "text_ztn6zM": {
-          "type": "text",
-          "settings": {
-            "text": "<span>Expert formulated<span> <span> · </span><span>Thoughtfully sourced <span> <span> · </span><span>Freshly frozen<span></span></span></span></span></span></span>",
-            "text_style": "small"
-          }
-        }
-      },
-      "block_order": [
-        "caption_DFz3zx",
-        "title_GGRjyh",
-        "text_cX4ihw",
-        "welcomeprice_RJbxGU",
-        "buy_buttons_fmfCqF",
-        "text_ztn6zM"
-      ],
-      "custom_css": [
-        ".small-text {color: #7a746f;}",
-        "@media screen and (max-width: 600px) {h2 {font-size: 28px; }}"
-      ],
-      "settings": {
-        "product": "discovery-set",
-        "custom_image": "shopify://shop_images/230330_SO52427_1793_1st.png",
-        "image_position": "center",
-        "color_scheme": "scheme-1",
-        "media_size": "medium",
-        "constrain_to_viewport": false,
-        "media_fit": "cover",
-        "media_position": "right",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "trust_bar_HC8pRL": {
-      "type": "trust-bar",
-      "name": "Trust Bar",
-      "settings": {
-        "show_check": true,
-        "check_color": "#111111",
-        "title": "<p>First Taste Promise</p>",
-        "details": "<p>Try your first order risk-free. If you're not satisfied, request a refund within 15 days (up to $100). <a href=\"/pages/first-taste-promise-policy\" target=\"_blank\" title=\"First Taste Promise Policy\">Learn More</a></p>",
-        "link_color": "#b07a72",
-        "coloumn": "2",
-        "position": "center",
-        "column_gap": 16,
-        "section_color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "image_with_text_WVP8Rr": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_RP6Btb": {
+        "heading_FrD8ka": {
           "type": "heading",
           "settings": {
-            "heading": "Nutrition designed for the fourth trimester",
-            "heading_size": "h1"
+            "heading": "Our First Taste Promise",
+            "heading_size": "h0"
           }
         },
-        "text_qtPHRU": {
+        "button_c6P7DF": {
+          "type": "button",
+          "settings": {
+            "button_label": "START A REFUND",
+            "button_link": "https://forherbyarisa.com/pages/contact",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        },
+        "text_bDJAEQ": {
           "type": "text",
           "settings": {
-            "text": "<p><em>for her. by Arisa</em> was created to support new mothers during the often-overlooked postpartum period. After birth, the body is healing, rebuilding, and adjusting —and its needs begin to shift.</p><p>Our soups, snacks, and teas are thoughtfully prepared to support recovery, restore energy, and offer nourishment that feels easy to receive during early motherhood.</p><p><em><strong>Because mothers deserve to be cared for, too.</strong></em></p>",
-            "text_style": "body"
+            "text": "<p>Your first experience matters.<br/>If it’s not right for you, we’ll make it right.</p>"
           }
         }
       },
       "block_order": [
-        "heading_RP6Btb",
-        "text_qtPHRU"
+        "heading_FrD8ka",
+        "button_c6P7DF",
+        "text_bDJAEQ"
       ],
-      "name": "t:sections.image-with-text.presets.name",
+      "name": "t:sections.rich-text.presets.name",
       "settings": {
-        "section_url": "",
-        "enable_text_link": false,
-        "image": "shopify://shop_images/CHR_-281_2.jpg",
-        "height": "custom",
-        "height_mobile": "medium",
-        "custom_media_height": 700,
-        "custom_media_height_mobile": 330,
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "mobile_layout": "image_first",
-        "image_behavior": "none",
-        "enable_full_width": false,
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "center",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "padding_top": 72,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn_horizontal_TFnVBW": {
-      "type": "multicolumn-horizontal",
-      "blocks": {
-        "column_UA33wY": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/like_3899a206-ba61-41b5-8dd5-b63de4eb48cf.svg",
-            "title": "Your body is healing",
-            "text": "<p>Warm, easy-to-digest foods are needed — not “healthy” food.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_RJn7H6": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/power.svg",
-            "title": "Energy needs are high",
-            "text": "<p>Especially during long days and interrupted nights.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_yagJhb": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/leaf.svg",
-            "title": "Digestion is sensitive",
-            "text": "<p>Gentle, easy-to-receive meals can make a real difference.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_9fhHN7": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/clock_b4783c17-a555-4787-ac9b-2e3d478b58e0.svg",
-            "title": "Time is limited",
-            "text": "<p>Nourishment should be easy and ready when you need it.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_UA33wY",
-        "column_RJn7H6",
-        "column_yagJhb",
-        "column_9fhHN7"
-      ],
-      "custom_css": [
-        "h3 {font-family: inter; font-weight: normal !important;}",
-        "@media screen and (max-width: 600px) {h3 {font-size: 18px; }}"
-      ],
-      "name": "Multicolumn Horizontal",
-      "settings": {
-        "title": "Your body needs different support after birth",
-        "heading_size": "h1",
-        "text": "",
-        "title_alignment": "center",
-        "image_width": "small",
-        "image_ratio": "circle",
-        "image_background": "rgba(0,0,0,0)",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 2,
-        "column_alignment": "left",
-        "background_style": "primary",
-        "block_background": "#ffffff",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
         "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 76,
-        "padding_bottom": 76
-      }
-    },
-    "collections_set_HGmwqa": {
-      "type": "collections-set",
-      "blocks": {
-        "collection_iTWcjd": {
-          "type": "collection",
-          "settings": {
-            "title": "<h2>Signature Soups</h2>",
-            "description": "<p>Mineral-rich broths designed for warming postpartum nourishment.</p>",
-            "collection": "soups-and-meals"
-          }
-        },
-        "collection_pahkEy": {
-          "type": "collection",
-          "settings": {
-            "title": "<h2>Nourishing Snacks</h2>",
-            "description": "<p>Energy-dense bites to sustain you through long days.</p>",
-            "collection": "snacks"
-          }
-        },
-        "collection_rxKEBJ": {
-          "type": "collection",
-          "settings": {
-            "title": "<h2>Functional Teas</h2>",
-            "description": "<p>Herbal blends crafted to support balance and recovery.</p>",
-            "collection": "teas"
-          }
-        }
-      },
-      "block_order": [
-        "collection_iTWcjd",
-        "collection_pahkEy",
-        "collection_rxKEBJ"
-      ],
-      "name": "Collections Set",
-      "settings": {
-        "title": "What's included",
-        "text": "<p>Try one of each soups, snacks, and teas — thoughtfully selected to help you discover what feels most supportive during recovery. All ready in minutes — no preparation needed.</p>",
-        "heading_size": "h1",
-        "header_alignment": "center",
-        "columns_desktop": 3,
-        "columns_mobile": "1",
-        "block_background": "#ffffff",
-        "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
-        "padding_top": 36,
+        "full_width": true,
+        "padding_top": 60,
         "padding_bottom": 72
       }
     },
@@ -274,8 +59,8 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/clock_b4783c17-a555-4787-ac9b-2e3d478b58e0.svg",
-            "title": "Ready in minutes — not another task",
-            "text": "<p>Just heat and enjoy. No chopping, planning, or cleanup.</p>",
+            "title": "Try Our Products Without Stress",
+            "text": "<p>Whether you’re preparing for postpartum, in the thick of it, or somewhere in between, we understand how much you’re holding as a mother.</p><p>You don’t need one more thing to worry about. Trying something new should feel simple, supportive, and completely pressure-free.</p><p>If it’s not what you hoped for, you’re covered by our <strong>First Taste Promise</strong>.</p>",
             "link_label": "",
             "link": ""
           }
@@ -284,8 +69,8 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/like_3899a206-ba61-41b5-8dd5-b63de4eb48cf.svg",
-            "title": "Gentle on digestion",
-            "text": "<p>Made to be comforting, easy to digest, and supportive during recovery.</p>",
+            "title": "Not Quite What You Expected?",
+            "text": "<p>Maybe the taste wasn’t for you. Maybe your body needs something different. Or maybe it didn’t fit into your routine.</p><p>That’s okay.</p><p>Every postpartum journey is different—and we honor yours.</p>",
             "link_label": "",
             "link": ""
           }
@@ -294,18 +79,8 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/leaf.svg",
-            "title": "Made with whole-food ingredients",
-            "text": "<p>Thoughtfully sourced ingredients to nourish — without overwhelming.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_tV7naX": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/check-mark.svg",
-            "title": "Built for long, sleep-deprived days",
-            "text": "<p>Whether it’s early morning or in the middle of the night, nourishment should feel simple.</p>",
+            "title": "We’ll Make It Right",
+            "text": "<p>If your first experience didn’t feel right, we’re here to help.</p><p>Receive a refund of up to $100 on your first order—just email us and share your experience.</p><p>Our goal isn’t just satisfaction—it’s helping you find what truly supports you.</p>",
             "link_label": "",
             "link": ""
           }
@@ -314,8 +89,7 @@
       "block_order": [
         "column_cxR6TD",
         "column_i3Kd3m",
-        "column_NCdyT3",
-        "column_tV7naX"
+        "column_NCdyT3"
       ],
       "custom_css": [
         "h3 {font-family: inter; font-weight: normal !important;}",
@@ -323,9 +97,9 @@
       ],
       "name": "Multicolumn Horizontal",
       "settings": {
-        "title": "Designed for real postpartum life",
+        "title": "",
         "heading_size": "h1",
-        "text": "<p>Nourishment shouldn't require planning, shopping, or extra effort.</p>",
+        "text": "",
         "title_alignment": "center",
         "image_width": "small",
         "image_ratio": "circle",
@@ -339,61 +113,37 @@
         "color_scheme": "",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 76,
+        "padding_top": 0,
         "padding_bottom": 76
       }
     },
-    "rich_text_7aimyY": {
+    "rich_text_XVLkF6": {
       "type": "rich-text",
       "blocks": {
-        "heading_FrD8ka": {
-          "type": "heading",
-          "settings": {
-            "heading": "Discover what supports your recovery",
-            "heading_size": "h1"
-          }
-        },
-        "text_XUW7PU": {
+        "text_XP3gAn": {
           "type": "text",
           "settings": {
-            "text": "<p>A gentle, risk-free way to begin — and see what feels right for you.</p>"
-          }
-        },
-        "button_c6P7DF": {
-          "type": "button",
-          "settings": {
-            "button_label": "GET YOUR DISCOVERY SET",
-            "button_link": "shopify://products/discovery-set",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "text": "<p>Please refer to our <a href=\"/pages/first-taste-promise-policy\" target=\"_blank\" title=\"First Taste Promise Policy\">Policy</a> for additional details on the First Taste Promise.</p>"
           }
         }
       },
       "block_order": [
-        "heading_FrD8ka",
-        "text_XUW7PU",
-        "button_c6P7DF"
+        "text_XP3gAn"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
+        "color_scheme": "",
         "full_width": true,
-        "padding_top": 60,
-        "padding_bottom": 72
+        "padding_top": 0,
+        "padding_bottom": 52
       }
     }
   },
   "order": [
-    "main",
-    "trust_bar_HC8pRL",
-    "image_with_text_WVP8Rr",
-    "multicolumn_horizontal_TFnVBW",
-    "collections_set_HGmwqa",
+    "rich_text_7aimyY",
     "multicolumn_horizontal_wmBYqH",
-    "rich_text_7aimyY"
+    "rich_text_XVLkF6"
   ]
 }
