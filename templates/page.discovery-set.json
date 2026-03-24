@@ -21,14 +21,14 @@
         "title_GGRjyh": {
           "type": "title",
           "settings": {
-            "custom_title": "The Effortless Path to Postpartum Nourishment",
+            "custom_title": "An Elevated Beginning to Motherhood.",
             "heading_size": "h1"
           }
         },
         "text_cX4ihw": {
           "type": "text",
           "settings": {
-            "text": "Try one of each soup, snack, and tea — and discover what supports your recovery best.",
+            "text": "Try one of each of our soups, snacks, and teas, thoughtfully crafted with Japanese food wisdom — and discover what supports your recovery best.",
             "text_style": "body"
           }
         },
@@ -88,7 +88,7 @@
         "show_check": true,
         "check_color": "#111111",
         "title": "<p>First Taste Promise</p>",
-        "details": "<p>Try your first order risk-free. If you're not satisfied, request a refund within 15 days (up to $100). <a href=\"https://forherbyarisa.com/pages/faq\" target=\"_blank\">Learn More</a></p>",
+        "details": "<p>Try your first order risk-free. If you're not satisfied, request a refund within 15 days (up to $100). <a href=\"/pages/first-taste-promise-policy\" target=\"_blank\" title=\"First Taste Promise Policy\">Learn More</a></p>",
         "link_color": "#b07a72",
         "coloumn": "2",
         "position": "center",
@@ -126,6 +126,7 @@
         "enable_text_link": false,
         "image": "shopify://shop_images/CHR_-281_2.jpg",
         "height": "custom",
+        "height_mobile": "medium",
         "custom_media_height": 700,
         "custom_media_height_mobile": 330,
         "desktop_image_width": "medium",
