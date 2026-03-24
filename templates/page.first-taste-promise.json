@@ -139,11 +139,55 @@
         "padding_top": 0,
         "padding_bottom": 52
       }
+    },
+    "rich_text_cBwmQ7": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_jREzzJ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Discover what supports your recovery",
+            "heading_size": "h1"
+          }
+        },
+        "text_FLK8NB": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A gentle, risk-free way to begin — and see what feels right for you.</p>"
+          }
+        },
+        "button_83fPXH": {
+          "type": "button",
+          "settings": {
+            "button_label": "GET YOUR DISCOVERY SET",
+            "button_link": "shopify://products/discovery-set",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_jREzzJ",
+        "text_FLK8NB",
+        "button_83fPXH"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 72
+      }
     }
   },
   "order": [
     "rich_text_7aimyY",
     "multicolumn_horizontal_wmBYqH",
-    "rich_text_XVLkF6"
+    "rich_text_XVLkF6",
+    "rich_text_cBwmQ7"
   ]
 }
