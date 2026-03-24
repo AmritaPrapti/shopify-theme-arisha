@@ -117,7 +117,7 @@
         "details": "",
         "button_background": "#111111",
         "button_text_color": "#ffffff",
-        "quantity_button_color": "#cc858f",
+        "quantity_button_color": "#111111",
         "progress_bar_color": "#cc858f",
         "success_message_color": "#4caf50",
         "empty_heading_color": "#333333",
