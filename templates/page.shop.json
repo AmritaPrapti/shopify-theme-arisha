@@ -39,6 +39,7 @@
         "heading_PhWtQG",
         "text_9EwnjD"
       ],
+      "disabled": true,
       "custom_css": [
         ".banner__box {background-color: transparent;}"
       ],
@@ -56,6 +57,47 @@
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
         "show_text_below": false
+      }
+    },
+    "rich_text_htyQiq": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_8QHQRc": {
+          "type": "heading",
+          "settings": {
+            "heading": "Shop",
+            "heading_size": "h1"
+          }
+        },
+        "caption_eGatpK": {
+          "type": "caption",
+          "settings": {
+            "caption": "",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "text_W48tTx": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p><br/>for her. by Arisa was created out of a desire to better support mothers during postpartum through food delivery.<br/><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8QHQRc",
+        "caption_eGatpK",
+        "text_W48tTx"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "custom_liquid_Hejckb": {
@@ -910,8 +952,10 @@
       "settings": {
         "title": "",
         "heading_size": "h2",
+        "title_alignment": "left",
         "image_width": "third",
         "image_ratio": "adapt",
+        "image_background": "",
         "button_label": "",
         "button_link": "",
         "columns_desktop": 2,
@@ -928,6 +972,7 @@
   "order": [
     "main",
     "image_banner_9dgbPH",
+    "rich_text_htyQiq",
     "custom_liquid_Hejckb",
     "rich_text_LJKtKG",
     "featured_collection_Czymf4",
