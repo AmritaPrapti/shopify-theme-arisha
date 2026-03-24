@@ -335,7 +335,7 @@
         "columns_desktop": 2,
         "column_alignment": "left",
         "background_style": "custom",
-        "block_background": "#f6f4f2",
+        "block_background": "rgba(0,0,0,0)",
         "color_scheme": "",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
