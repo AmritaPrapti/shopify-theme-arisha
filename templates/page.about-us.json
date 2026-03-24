@@ -39,6 +39,7 @@
         "heading_PhWtQG",
         "text_h4xLTU"
       ],
+      "disabled": true,
       "custom_css": [
         ".banner__box {background-color: transparent;}"
       ],
@@ -56,6 +57,47 @@
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
         "show_text_below": false
+      }
+    },
+    "rich_text_e47ttz": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_DnkEkA": {
+          "type": "heading",
+          "settings": {
+            "heading": "Why for her. by Arisa Exists",
+            "heading_size": "h1"
+          }
+        },
+        "caption_EqYcMy": {
+          "type": "caption",
+          "settings": {
+            "caption": "for her. by Arisa was created out of a desire to better support mothers during postpartum through food delivery.",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "text_QRWPJV": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p><br/>for her. by Arisa was created out of a desire to better support mothers during postpartum through food delivery.<br/><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_DnkEkA",
+        "caption_EqYcMy",
+        "text_QRWPJV"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "rich_text_r8Vh6r": {
@@ -208,7 +250,10 @@
           "settings": {
             "button_label": "Button label",
             "button_link": "",
-            "button_style_secondary": false
+            "button_style_secondary": false,
+            "button_label2": "",
+            "button_link2": "",
+            "button_style_secondary2": false
           }
         }
       },
@@ -223,9 +268,14 @@
         "section_url": "",
         "enable_text_link": false,
         "height": "adapt",
+        "height_mobile": "medium",
+        "custom_media_height": 700,
+        "custom_media_height_mobile": 700,
         "desktop_image_width": "medium",
         "layout": "image_first",
+        "mobile_layout": "image_first",
         "image_behavior": "none",
+        "enable_full_width": false,
         "content_layout": "no-overlap",
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
@@ -290,6 +340,7 @@
   "order": [
     "main",
     "image_banner_9dgbPH",
+    "rich_text_e47ttz",
     "rich_text_r8Vh6r",
     "multirow_ayKPm9",
     "image_with_text_BTWbRp",
