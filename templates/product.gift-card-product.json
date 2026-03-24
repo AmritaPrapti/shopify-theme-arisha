@@ -72,9 +72,7 @@
         "description",
         "share"
       ],
-      "custom_css": [
-        "h1 {color: #c37e78;}"
-      ],
+      "custom_css": [],
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
@@ -108,7 +106,11 @@
         "judge_me_reviews_review_widget_bcw6Hj"
       ],
       "settings": {
-        "include_margins": true
+        "include_margins": true,
+        "heading": "Testimonials",
+        "heading_size": "h1",
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "rich_text_iUrf7i": {
