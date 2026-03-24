@@ -39,6 +39,7 @@
         "heading_PhWtQG",
         "text_ebiTVL"
       ],
+      "disabled": true,
       "custom_css": [
         ".banner__box {background-color: transparent;}"
       ],
@@ -58,6 +59,47 @@
         "show_text_below": false
       }
     },
+    "rich_text_GDam7x": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_dDbqt3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Behind the Recipes",
+            "heading_size": "h1"
+          }
+        },
+        "caption_erd9kk": {
+          "type": "caption",
+          "settings": {
+            "caption": "Our products were developed through a collaborative process led by a small group of culinary experts, all of whom are mothers, who shaped the recipes and approach behind the food.",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "text_TYfH8j": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p><br/>for her. by Arisa was created out of a desire to better support mothers during postpartum through food delivery.<br/><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_dDbqt3",
+        "caption_erd9kk",
+        "text_TYfH8j"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "rich_text_CCEMg4": {
       "type": "rich-text",
       "blocks": {
@@ -72,6 +114,7 @@
       "block_order": [
         "heading_amgzUL"
       ],
+      "disabled": true,
       "custom_css": [
         "h2 {color: #cc858f;}"
       ],
@@ -140,7 +183,7 @@
         "desktop_content_alignment": "left",
         "mobile_content_alignment": "center",
         "section_color_scheme": "",
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -199,7 +242,7 @@
         "desktop_content_alignment": "left",
         "mobile_content_alignment": "center",
         "section_color_scheme": "",
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -258,7 +301,7 @@
         "desktop_content_alignment": "left",
         "mobile_content_alignment": "center",
         "section_color_scheme": "",
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -317,7 +360,7 @@
         "desktop_content_alignment": "left",
         "mobile_content_alignment": "center",
         "section_color_scheme": "",
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -326,6 +369,7 @@
   "order": [
     "main",
     "image_banner_9dgbPH",
+    "rich_text_GDam7x",
     "rich_text_CCEMg4",
     "image_with_text_gq4jUH",
     "image_with_text_A9fQFB",
