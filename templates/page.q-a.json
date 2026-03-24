@@ -31,6 +31,7 @@
       "block_order": [
         "heading_VEtTQe"
       ],
+      "disabled": true,
       "name": "t:sections.image-banner.presets.name",
       "settings": {
         "image": "shopify://shop_images/230330_SO52427_1600_2nd_sRGB4000.jpg",
@@ -45,6 +46,38 @@
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
         "show_text_below": false
+      }
+    },
+    "rich_text_9z4FTK": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_KqjR4y": {
+          "type": "heading",
+          "settings": {
+            "heading": "Frequently Asked Questions",
+            "heading_size": "h1"
+          }
+        },
+        "text_W7a4np": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p><br/>for her. by Arisa was created out of a desire to better support mothers during postpartum through food delivery.<br/><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_KqjR4y",
+        "text_W7a4np"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "collapsible_content_exC6PH": {
@@ -251,6 +284,7 @@
   "order": [
     "main",
     "image_banner_kyabQz",
+    "rich_text_9z4FTK",
     "collapsible_content_exC6PH",
     "collapsible_content_ycfFVG"
   ]
