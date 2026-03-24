@@ -111,7 +111,7 @@
         "text_qtPHRU": {
           "type": "text",
           "settings": {
-            "text": "<p><em>for her. by Arisa</em> was created to support new mothers during the often-overlooked postpartum period. After birth, your body is healing, rebuilding, and adjusting — and your nutritional needs shift dramatically.</p><p>Our soups, snacks, and teas are thoughtfully formulated to nourish recovery, support energy, and make it easier to care for yourself during early motherhood.</p><p><em><strong>Because postpartum care shouldn't be an afterthought.</strong></em></p>",
+            "text": "<p><em>for her. by Arisa</em> was created to support new mothers during the often-overlooked postpartum period. After birth, the body is healing, rebuilding, and adjusting —and its needs begin to shift.</p><p>Our soups, snacks, and teas are thoughtfully prepared to support recovery, restore energy, and offer nourishment that feels easy to receive during early motherhood.</p><p><em><strong>Because mothers deserve to be cared for, too.</strong></em></p>",
             "text_style": "body"
           }
         }
@@ -152,7 +152,7 @@
           "settings": {
             "image": "shopify://shop_images/like_3899a206-ba61-41b5-8dd5-b63de4eb48cf.svg",
             "title": "Your body is healing",
-            "text": "<p>Recovery requires targeted nourishment, not generic \"healthy\" food.</p>",
+            "text": "<p>Warm, easy-to-digest foods are needed — not “healthy” food.</p>",
             "link_label": "",
             "link": ""
           }
@@ -162,7 +162,7 @@
           "settings": {
             "image": "shopify://shop_images/power.svg",
             "title": "Energy needs are high",
-            "text": "<p>Especially if you're breastfeeding or waking throughout the night.</p>",
+            "text": "<p>Especially during long days and interrupted nights.</p>",
             "link_label": "",
             "link": ""
           }
@@ -172,7 +172,7 @@
           "settings": {
             "image": "shopify://shop_images/leaf.svg",
             "title": "Digestion is sensitive",
-            "text": "<p>Gentle, easy-to-digest meals matter more than ever.</p>",
+            "text": "<p>Gentle, easy-to-receive meals can make a real difference.</p>",
             "link_label": "",
             "link": ""
           }
@@ -182,7 +182,7 @@
           "settings": {
             "image": "shopify://shop_images/clock_b4783c17-a555-4787-ac9b-2e3d478b58e0.svg",
             "title": "Time is limited",
-            "text": "<p>You need nourishment that's quick, simple, and ready in minutes.</p>",
+            "text": "<p>Nourishment should be easy and ready when you need it.</p>",
             "link_label": "",
             "link": ""
           }
@@ -256,7 +256,7 @@
       "name": "Collections Set",
       "settings": {
         "title": "What's included",
-        "text": "<p>Try one of each soup, snack, and tea — everything you need to discover what supports your recovery best. All ready in minutes — no cooking required.</p>",
+        "text": "<p>Try one of each soups, snacks, and teas — thoughtfully selected to help you discover what feels most supportive during recovery. All ready in minutes — no preparation needed.</p>",
         "heading_size": "h1",
         "header_alignment": "center",
         "columns_desktop": 3,
@@ -275,7 +275,7 @@
           "settings": {
             "image": "shopify://shop_images/clock_b4783c17-a555-4787-ac9b-2e3d478b58e0.svg",
             "title": "Ready in minutes — not another task",
-            "text": "<p>Just add water and heat. No chopping, planning, or cleanup required.</p>",
+            "text": "<p>Just heat and enjoy. No chopping, planning, or cleanup.</p>",
             "link_label": "",
             "link": ""
           }
@@ -285,7 +285,7 @@
           "settings": {
             "image": "shopify://shop_images/like_3899a206-ba61-41b5-8dd5-b63de4eb48cf.svg",
             "title": "Gentle on digestion",
-            "text": "<p>Formulated to be comforting, easy to digest, and supportive during recovery.</p>",
+            "text": "<p>Made to be comforting, easy to digest, and supportive during recovery.</p>",
             "link_label": "",
             "link": ""
           }
@@ -295,7 +295,7 @@
           "settings": {
             "image": "shopify://shop_images/leaf.svg",
             "title": "Made with whole-food ingredients",
-            "text": "<p>Thoughtfully selected ingredients designed to nourish, not overwhelm.</p>",
+            "text": "<p>Thoughtfully sourced ingredients to nourish — without overwhelming.</p>",
             "link_label": "",
             "link": ""
           }
@@ -304,8 +304,8 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/check-mark.svg",
-            "title": "Built for busy, sleep-deprived days",
-            "text": "<p>Whether it's 6am or midnight, nourishment should be simple and accessible.</p>",
+            "title": "Built for long, sleep-deprived days",
+            "text": "<p>Whether it’s early morning or in the middle of the night, nourishment should feel simple.</p>",
             "link_label": "",
             "link": ""
           }
