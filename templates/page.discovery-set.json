@@ -293,7 +293,7 @@
         "column_NCdyT3": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/leaves.svg",
+            "image": "shopify://shop_images/leaf_2.svg",
             "title": "Made with whole-food ingredients",
             "text": "<p>Thoughtfully sourced ingredients to nourish — without overwhelming.</p>",
             "link_label": "",
