@@ -160,7 +160,7 @@
         "column_RJn7H6": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/power.svg",
+            "image": "shopify://shop_images/thunderbolt_1.svg",
             "title": "Energy needs are high",
             "text": "<p>Especially during long days and interrupted nights.</p>",
             "link_label": "",
