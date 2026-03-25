@@ -303,7 +303,7 @@
         "column_tV7naX": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/moon.svg",
+            "image": "shopify://shop_images/half-moon.svg",
             "title": "Built for long, sleep-deprived days",
             "text": "<p>Whether it’s early morning or in the middle of the night, nourishment should feel simple.</p>",
             "link_label": "",
