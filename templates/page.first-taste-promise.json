@@ -1,0 +1,193 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rich_text_7aimyY": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_FrD8ka": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our First Taste Promise",
+            "heading_size": "h0"
+          }
+        },
+        "button_c6P7DF": {
+          "type": "button",
+          "settings": {
+            "button_label": "START A REFUND",
+            "button_link": "https://forherbyarisa.com/pages/contact",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        },
+        "text_bDJAEQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Your first experience matters.<br/>If it’s not right for you, we’ll make it right.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_FrD8ka",
+        "button_c6P7DF",
+        "text_bDJAEQ"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 72
+      }
+    },
+    "multicolumn_horizontal_wmBYqH": {
+      "type": "multicolumn-horizontal",
+      "blocks": {
+        "column_cxR6TD": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/clock_b4783c17-a555-4787-ac9b-2e3d478b58e0.svg",
+            "title": "Try Our Products Without Stress",
+            "text": "<p>Whether you’re preparing for postpartum, in the thick of it, or somewhere in between, we understand how much you’re holding as a mother.</p><p>You don’t need one more thing to worry about. Trying something new should feel simple, supportive, and completely pressure-free.</p><p>If it’s not what you hoped for, you’re covered by our <strong>First Taste Promise</strong>.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_i3Kd3m": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/like_3899a206-ba61-41b5-8dd5-b63de4eb48cf.svg",
+            "title": "Not Quite What You Expected?",
+            "text": "<p>Maybe the taste wasn’t for you. Maybe your body needs something different. Or maybe it didn’t fit into your routine.</p><p>That’s okay.</p><p>Every postpartum journey is different—and we honor yours.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_NCdyT3": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/leaf.svg",
+            "title": "We’ll Make It Right",
+            "text": "<p>If your first experience didn’t feel right, we’re here to help.</p><p>Receive a refund of up to $100 on your first order—just email us and share your experience.</p><p>Our goal isn’t just satisfaction—it’s helping you find what truly supports you.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_cxR6TD",
+        "column_i3Kd3m",
+        "column_NCdyT3"
+      ],
+      "custom_css": [
+        "h3 {font-family: inter; font-weight: normal !important;}",
+        "@media screen and (max-width: 600px) {h3 {font-size: 18px; }}"
+      ],
+      "name": "Multicolumn Horizontal",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "text": "",
+        "title_alignment": "center",
+        "image_width": "small",
+        "image_ratio": "circle",
+        "image_background": "rgba(0,0,0,0)",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "custom",
+        "block_background": "rgba(0,0,0,0)",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 76
+      }
+    },
+    "rich_text_XVLkF6": {
+      "type": "rich-text",
+      "blocks": {
+        "text_XP3gAn": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Please refer to our <a href=\"/pages/first-taste-promise-policy\" target=\"_blank\" title=\"First Taste Promise Policy\">Policy</a> for additional details on the First Taste Promise.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_XP3gAn"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_cBwmQ7": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_jREzzJ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Discover what supports your recovery",
+            "heading_size": "h1"
+          }
+        },
+        "text_FLK8NB": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A gentle, risk-free way to begin — and see what feels right for you.</p>"
+          }
+        },
+        "button_83fPXH": {
+          "type": "button",
+          "settings": {
+            "button_label": "GET YOUR DISCOVERY SET",
+            "button_link": "shopify://products/discovery-set",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_jREzzJ",
+        "text_FLK8NB",
+        "button_83fPXH"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 72
+      }
+    }
+  },
+  "order": [
+    "rich_text_7aimyY",
+    "multicolumn_horizontal_wmBYqH",
+    "rich_text_XVLkF6",
+    "rich_text_cBwmQ7"
+  ]
+}

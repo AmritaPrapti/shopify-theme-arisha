@@ -31,6 +31,7 @@
       "block_order": [
         "heading_PhWtQG"
       ],
+      "disabled": true,
       "custom_css": [
         ".banner__box {background-color: transparent;}"
       ],
@@ -48,6 +49,38 @@
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
         "show_text_below": false
+      }
+    },
+    "rich_text_9YAwFa": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_KmhcfN": {
+          "type": "heading",
+          "settings": {
+            "heading": "About Yakuzen",
+            "heading_size": "h1"
+          }
+        },
+        "text_dFQQEw": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p><br/>for her. by Arisa was created out of a desire to better support mothers during postpartum through food delivery.<br/><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_KmhcfN",
+        "text_dFQQEw"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "multirow_PGRxMC": {
@@ -113,6 +146,7 @@
   "order": [
     "main",
     "image_banner_9dgbPH",
+    "rich_text_9YAwFa",
     "multirow_PGRxMC"
   ]
 }

@@ -55,3 +55,10 @@
     padding: 15px;
     padding-top: 0px;
 }
+
+@media screen and (max-width: 749px) {
+    .product-image-wrapper {
+        padding-top: 65%;
+    }
+    
+}

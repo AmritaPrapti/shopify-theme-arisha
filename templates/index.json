@@ -27,7 +27,7 @@
         "heading_WVmjPE": {
           "type": "heading",
           "settings": {
-            "heading": "Postpartum <br> nourishment, <br> <span><em>made simple.</em></span>",
+            "heading": "Postpartum nourishment, <br> <span><em>made simple.</em></span>",
             "heading_size": "h0"
           }
         },
@@ -44,7 +44,7 @@
             "button_label": "SHOP DISCOVERY SET",
             "button_link": "shopify://products/discovery-set",
             "button_style_secondary": false,
-            "button_label2": "SHOP ALL PRODUCTS",
+            "button_label2": "SHOP ALL",
             "button_link2": "shopify://pages/shop",
             "button_style_secondary2": true
           }
@@ -52,7 +52,7 @@
         "caption_YLNArL": {
           "type": "caption",
           "settings": {
-            "link": "",
+            "link": "https://judge.me/reviews/stores/uc1qpz-gf.myshopify.com",
             "caption": "<span>★★★★★ </span> Loved by Postpartum Mothers",
             "text_style": "subtitle",
             "text_size": "small",
@@ -75,14 +75,19 @@
         "caption_YLNArL",
         "judge_me_reviews_all_reviews_text_FkEHx4"
       ],
+      "custom_css": [
+        "@media screen and (max-width: 600px) {h2 {font-size: 28px; }}"
+      ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "section_url": "",
         "enable_text_link": false,
         "image": "shopify://shop_images/230330_SO52427_1893_2nd_sRGB4000.jpg",
+        "mobile-image": "shopify://shop_images/230330_SO52427_1893_2nd_sRGB4000.jpg",
         "height": "large",
+        "height_mobile": "medium",
         "custom_media_height": 700,
-        "custom_media_height_mobile": 700,
+        "custom_media_height_mobile": 300,
         "desktop_image_width": "medium",
         "layout": "text_first",
         "mobile_layout": "image_first",
@@ -105,10 +110,10 @@
         "show_check": true,
         "check_color": "#111111",
         "title": "<p>First Taste Promise</p>",
-        "details": "<p>Try your first order risk-free. If you're not satisfied, request a refund within 15 days (up to $100). <a href=\"https://forherbyarisa.com/pages/faq\" target=\"_blank\">Learn More</a></p>",
+        "details": "<p>Try your first order risk-free. If you're not satisfied, request a refund within 15 days (up to $100). <a href=\"/pages/first-taste-promise-policy\" target=\"_blank\" title=\"First Taste Promise Policy\">Learn More</a></p>",
         "link_color": "#b07a72",
         "coloumn": "2",
-        "position": "space-between",
+        "position": "center",
         "column_gap": 16,
         "section_color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
         "padding_top": 36,
@@ -217,7 +222,8 @@
         "list_QA4V6q"
       ],
       "custom_css": [
-        "h3 {font-family: inter; font-weight: normal;}"
+        "h3 {font-family: inter; font-weight: normal;}",
+        ".loop_counter.numbered {color: #e8e6e3;}"
       ],
       "name": "How it works",
       "settings": {
@@ -228,8 +234,8 @@
         "image": "shopify://shop_images/Untitled_design_3.jpg",
         "image_position": "second",
         "list_style": "numbered",
-        "number_font": "cormorant_n4",
-        "font_size": "extra-large",
+        "number_font": "bodoni_moda_i4",
+        "font_size": "large",
         "color_scheme": "",
         "padding_top": 76,
         "padding_bottom": 76
@@ -340,6 +346,7 @@
         "enable_text_link": true,
         "image": "shopify://shop_images/maxwellartphotography-swissphotographer-switzerland-familyphotoshoot-swissalps-familymomoi-101_Original.jpg",
         "height": "medium",
+        "height_mobile": "medium",
         "custom_media_height": 700,
         "custom_media_height_mobile": 700,
         "desktop_image_width": "small",
@@ -399,6 +406,7 @@
         "enable_text_link": false,
         "image": "shopify://shop_images/Untitled_design_3.jpg",
         "height": "adapt",
+        "height_mobile": "medium",
         "custom_media_height": 700,
         "custom_media_height_mobile": 700,
         "desktop_image_width": "medium",
@@ -454,7 +462,6 @@
         "judge_me_reviews_testimonials_carousel_CwCGKh"
       ],
       "custom_css": [
-        "h2 {font-size: 48px; font-weight: bold;}",
         "p {color: #333333;}",
         ".jdgm-reviewer-name {color: #333333;}",
         ".jdgm-reviewer-verified-icon {color: #333333;}",
