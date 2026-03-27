@@ -1,0 +1,21 @@
+.curated-subheading {
+    text-transform: uppercase;
+    color: var(--color-highlight);
+}
+
+.curated-product-block {
+    padding: 15px;
+    border-radius: var(--border-radius);
+    position: relative;
+    height: auto;
+}
+
+.curated-heading {
+    margin: 0;
+}
+
+.curated-description ul {
+    padding-left: 20px;
+    margin: 10px 0;
+    list-style: none;
+}
