@@ -75,10 +75,68 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "curated_product_blocks_GaEcHW": {
+      "type": "curated-product-blocks",
+      "blocks": {
+        "curated_product_block_7i4Lcq": {
+          "type": "curated_product_block",
+          "settings": {
+            "product": "mini-bundle",
+            "color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
+            "heading": "Essential Care",
+            "subheading": "6 soups, plus a snack and tea",
+            "description": "<p>Best For</p><p>Hospital stays, light recovery, or smaller households.</p><p>Includes</p><p>Soups</p><ul><li>2 × Golden Chicken Turmeric Stew</li><li>2 × 5 Mushroom & Ume Plum Soup</li><li>2 × Signature Korean Seaweed Soup</li></ul><p>Snacks</p><ul><li>1 × Rejuvenating Bites</li></ul><p>Teas</p><ul><li>1 × Recovery & Relax Blend</li></ul>",
+            "badge": "",
+            "bg_color": "#CC858F",
+            "color_text": "#fff"
+          }
+        },
+        "curated_product_block_AXLV3k": {
+          "type": "curated_product_block",
+          "settings": {
+            "product": "essentials-bundle",
+            "color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
+            "heading": "Complete Care",
+            "subheading": "9 soups, plus snacks and teas",
+            "description": "<p>Best For</p><p>Balanced nourishment and variety during the early weeks postpartum.</p><p>Includes</p><p>Soups</p><ul><li>3 × Golden Chicken Turmeric Stew</li><li>3 × 5 Mushroom & Ume Plum Soup</li><li>3 × Signature Korean Seaweed Soup</li></ul><p>Snacks</p><ul><li>1 × Mother's Glow Brownies</li><li>1 × Rejuvenating Bites</li></ul><p>Teas</p><ul><li>1 × Mother's Chai Blend</li><li>1 × Recovery & Relax Blend</li><li>1 × Protect & Balance Blend</li></ul>",
+            "badge": "Most Popular",
+            "bg_color": "#CC858F",
+            "color_text": "#fff"
+          }
+        },
+        "curated_product_block_g96eQW": {
+          "type": "curated_product_block",
+          "settings": {
+            "product": "full-care-bundle",
+            "color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
+            "heading": "Signature Care",
+            "subheading": "15 soups, plus snacks and teas",
+            "description": "<p>Best For</p><p>Maximum support through the first month of postpartum recovery.</p><p>Includes</p><p>Soups</p><ul><li>5 × Golden Chicken Turmeric Stew</li><li>5 × 5 Mushroom & Ume Plum Soup</li><li>5 × Signature Korean Seaweed Soup</li></ul><p>Snacks</p><ul><li>2 × Mother's Glow Brownies</li><li>2 × Rejuvenating Bites</li></ul><p>Teas</p><ul><li>1 × Mother's Chai Blend</li><li>1 × Recovery & Relax Blend</li><li>1 × Protect & Balance Blend</li></ul>",
+            "badge": "Best Value",
+            "bg_color": "#8b7d74",
+            "color_text": "#fff"
+          }
+        }
+      },
+      "block_order": [
+        "curated_product_block_7i4Lcq",
+        "curated_product_block_AXLV3k",
+        "curated_product_block_g96eQW"
+      ],
+      "name": "Curated Bundle Blocks",
+      "settings": {
+        "columns_desktop": 3,
+        "columns_mobile": "2",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
-    "image_with_text_TWYh8Q"
+    "image_with_text_TWYh8Q",
+    "curated_product_blocks_GaEcHW"
   ]
 }
