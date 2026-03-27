@@ -14,6 +14,8 @@
   }
 {%- endstyle -%}
 
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
 <div
   class="color-{{ section.settings.color_scheme }} isolate gradient"
 >
@@ -23,11 +25,18 @@
             {% assign product = block.settings.product %}
             {% assign product_form_id = 'quick-add-' | append: section.id | append: product.id %}
             {% if product %}
-                <div class="curated-product-block color-{{ block.settings.color_scheme }} card">
-                    <h2 class="curated-heading">{{ block.settings.heading }}</h2>
+                <div class="curated-product-block grid__item color-{{ block.settings.color_scheme }} card">
+                    <div class="curated-header" style="--badge-bg: {{ block.settings.bg_color }}; --badge-text: {{ block.settings.color_text }}">
+                        <h2 class="curated-heading">{{ block.settings.heading }}</h2>
+                        {% if block.settings.badge != blank %}
+                            <span class="curated-badge">{{ block.settings.badge }}</span>
+                        {% endif %}
+                    </div>
                     <p class="curated-subheading">{{ block.settings.subheading }}</p>
-                    <p class="curated-description">{{ block.settings.description }}</p>
-                    <span class="curated-badge">{{ block.settings.badge }}</span>
+                    <div class="curated-description">{{ block.settings.description }}</div>
+                    <div class="curated-price">
+                        {% render 'price', product: product, show_sale_amount: true %}
+                    </div>
                     <product-form data-section-id="{{ section.id }}">
                         {%- form 'product',
                             product,

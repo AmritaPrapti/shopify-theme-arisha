@@ -1,13 +1,16 @@
 .curated-subheading {
     text-transform: uppercase;
     color: var(--color-highlight);
+    margin: 10px 0;
+    font-weight: 600;
+    font-size: 14px;
 }
 
 .curated-product-block {
-    padding: 15px;
-    border-radius: var(--border-radius);
+    padding: 20px;
+    border-radius: 8px;
     position: relative;
-    height: auto;
+    height: max-content;
 }
 
 .curated-heading {
@@ -18,4 +21,48 @@
     padding-left: 20px;
     margin: 10px 0;
     list-style: none;
+}
+
+.curated-description p {
+    margin: 10px 0;
+}
+
+.curated-description h5, .curated-description h6, .curated-description h4, .curated-description h3, .curated-description h2, .curated-description h1 {
+    margin: 10px 0;
+}
+
+.curated-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.curated-badge {
+    background-color: var(--badge-bg);
+    color: var(--badge-text);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.curated-price {
+    margin: 25px 0;
+}
+
+.curated-price .price--on-sale .price__container .price__sale {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-direction: row-reverse;
+}
+
+.curated-price .price--on-sale .price-item--regular {
+    font-size: 1.6rem;
+}
+
+.curated-price .price {
+    font-size: 2.4rem;
+    color: rgba(var(--color-foreground), 1.0);
 }
