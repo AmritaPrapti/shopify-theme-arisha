@@ -178,7 +178,7 @@
         "column_iWiwax": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/box.svg",
+            "image": "shopify://shop_images/menu.svg",
             "title": "<strong>Individually Portioned</strong>",
             "text": "<p>Heat only what you need — no waste, no extra prep.</p>",
             "link_label": "",
