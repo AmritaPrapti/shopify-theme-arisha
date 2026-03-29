@@ -88,8 +88,8 @@
             "subheading": "6 soups, plus a snack and tea",
             "description": "<p>BEST FOR</p><p>Hospital stays, light recovery, or smaller households.</p><p>INCLUDES</p><h5>Soups</h5><ul><li>2 × Golden Chicken Turmeric Stew</li><li>2 × 5 Mushroom & Ume Plum Soup</li><li>2 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>1 × Rejuvenating Bites</li></ul><h5>Teas</h5><ul><li>1 × Recovery & Relax Blend</li></ul>",
             "badge": "",
-            "bg_color": "#CC858F",
-            "color_text": "#fff"
+            "bg_color": "#cc858f",
+            "color_text": "#ffffff"
           }
         },
         "curated_product_block_AXLV3k": {
@@ -101,8 +101,8 @@
             "subheading": "9 soups, plus snacks and teas",
             "description": "<p>BEST FOR</p><p>Balanced nourishment and variety during the early weeks postpartum.</p><p>INCLUDES</p><h5>Soups</h5><ul><li>3 × Golden Chicken Turmeric Stew</li><li>3 × 5 Mushroom & Ume Plum Soup</li><li>3 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>1 × Mother's Glow Brownies</li><li>1 × Rejuvenating Bites</li></ul><h5>Teas</h5><ul><li>1 × Mother's Chai Blend</li><li>1 × Recovery & Relax Blend</li><li>1 × Protect & Balance Blend</li></ul>",
             "badge": "Most Popular",
-            "bg_color": "#CC858F",
-            "color_text": "#fff"
+            "bg_color": "#cc858f",
+            "color_text": "#ffffff"
           }
         },
         "curated_product_block_g96eQW": {
@@ -115,7 +115,7 @@
             "description": "<p>BEST FOR</p><p>Maximum support through the first month of postpartum recovery.</p><p>INCLUDES</p><h5>Soups</h5><ul><li>5 × Golden Chicken Turmeric Stew</li><li>5 × 5 Mushroom & Ume Plum Soup</li><li>5 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>2 × Mother's Glow Brownies</li><li>2 × Rejuvenating Bites</li></ul><h5>Teas</h5><ul><li>1 × Mother's Chai Blend</li><li>1 × Recovery & Relax Blend</li><li>1 × Protect & Balance Blend</li></ul>",
             "badge": "Best Value",
             "bg_color": "#8b7d74",
-            "color_text": "#fff"
+            "color_text": "#ffffff"
           }
         }
       },
@@ -132,11 +132,43 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "featured_collection_HhPPNe": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "bundles",
+        "products_to_show": 4,
+        "title": "Featured collection",
+        "heading_size": "h1",
+        "description": "<p>Each bundle includes our signature soups, nourishing snacks, and functional teas — thoughtfully crafted to support postpartum recovery.</p>",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "show_sale_amount": false,
+        "sale_display_type": "amount",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
     "image_with_text_TWYh8Q",
-    "curated_product_blocks_GaEcHW"
+    "curated_product_blocks_GaEcHW",
+    "featured_collection_HhPPNe"
   ]
 }
