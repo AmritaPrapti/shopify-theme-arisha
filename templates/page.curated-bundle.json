@@ -156,8 +156,8 @@
         "header_alignment": "center",
         "columns_desktop": 3,
         "columns_mobile": "1",
-        "block_background": "",
-        "color_scheme": "",
+        "block_background": "#ffffff",
+        "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
         "padding_top": 36,
         "padding_bottom": 36
       }
