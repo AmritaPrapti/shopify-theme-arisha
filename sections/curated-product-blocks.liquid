@@ -69,7 +69,7 @@
                             >
                                 <span>
                                 {%- if product.selected_or_first_available_variant.available -%}
-                                    {{ 'products.product.add_to_cart' | t }}
+                                    Choose {{ block.settings.heading | default: product.title }}
                                 {%- else -%}
                                     {{ 'products.product.sold_out' | t }}
                                 {%- endif -%}
@@ -161,6 +161,7 @@
                         "id": "product",
                         "label": "Curated Product"
                     },
+                   
                     {
                         "type": "color_scheme",
                         "id": "color_scheme",
@@ -200,6 +201,7 @@
                         "label": "Badge Text Color",
                         "default": "#fff"
                     }
+                    
                     
                 ]
             }

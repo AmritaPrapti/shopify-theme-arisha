@@ -1185,6 +1185,8 @@ deferred-media {
   --color-button-text: var(--color-secondary-button-text);
 }
 
+
+
 .button--tertiary {
   --alpha-button-background: 0;
   --alpha-button-border: 0.2;
@@ -1319,6 +1321,11 @@ button.shopify-payment-button__button--unbranded {
 
 .button--small {
   padding: 1.2rem 2.6rem;
+}
+
+.button--secondary:hover {
+  background-color: rgba(var(--color-secondary-button-text), var(--alpha-button-background));
+  color: white;
 }
 
 /* Shopify Accelerated Checkout */
