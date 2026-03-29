@@ -65,7 +65,7 @@
         "layout": "text_first",
         "mobile_layout": "image_first",
         "image_behavior": "none",
-        "enable_full_width": true,
+        "enable_full_width": false,
         "content_layout": "no-overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
