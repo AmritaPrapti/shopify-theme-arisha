@@ -133,33 +133,31 @@
         "padding_bottom": 36
       }
     },
-    "featured_collection_HhPPNe": {
-      "type": "featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
+    "collections_set_CJaarA": {
+      "type": "collections-set",
+      "blocks": {
+        "collection_EcYJ4Y": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "description": "",
+            "collection": "bundles"
+          }
+        }
+      },
+      "block_order": [
+        "collection_EcYJ4Y"
+      ],
+      "name": "Collections Set",
       "settings": {
-        "collection": "bundles",
-        "products_to_show": 4,
-        "title": "Featured collection",
+        "title": "What's inside every bundle",
+        "text": "<p>Each bundle includes our signature soups, nourishing snacks, and functional teas — thoughtfully crafted to support postpartum recovery.</p>",
         "heading_size": "h1",
-        "description": "<p>Each bundle includes our signature soups, nourishing snacks, and functional teas — thoughtfully crafted to support postpartum recovery.</p>",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
+        "header_alignment": "center",
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "block_background": "",
         "color_scheme": "",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "show_sale_amount": false,
-        "sale_display_type": "amount",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -169,6 +167,6 @@
     "main",
     "image_with_text_TWYh8Q",
     "curated_product_blocks_GaEcHW",
-    "featured_collection_HhPPNe"
+    "collections_set_CJaarA"
   ]
 }
