@@ -19,8 +19,13 @@
     height: 60px;
   }
 
+  .section-{{ section.id }}-padding .multicolumn-card__image-wrapper--custom-width {
+    width: {{ section.settings.custom_width }}px;
+    height: {{ section.settings.custom_width }}px;
+  }
+
   .section-{{ section.id }}-padding .multicolumn-card-spacing {
-        margin-left: 1.5rem;
+    margin-left: 1.5rem;
     margin-right: 1.5rem;
   }
 
@@ -35,6 +40,9 @@
     padding-left: 0;
     width: calc(100% - 60px);
   }
+
+  
+
   .section-{{ section.id }}-padding .multicolumn-card-spacing {
     padding: 0px;
   }
@@ -42,6 +50,16 @@
     background: {{ section.settings.block_background }};
   }
 {%- endstyle -%}
+
+{% if section.settings.image_width == 'custom' %}
+  <style>
+  .section-{{ section.id }}-padding .multicolumn-card__info {
+    padding-left: 0;
+    width: calc(100% - {{ section.settings.custom_width }}px);
+  }
+</style>
+  
+{% endif %}
 
 {%- liquid
   assign columns_mobile_int = section.settings.columns_mobile | plus: 0
@@ -151,7 +169,7 @@
               {%- endif -%}
               <div class="multicolumn-card__info">
                 {%- if block.settings.title != blank -%}
-                  <h3 class="inline-richtext">{{ block.settings.title }}</h3>
+                  <h3 class="inline-richtext ">{{ block.settings.title }}</h3>
                 {%- endif -%}
                 {%- if block.settings.text != blank -%}
                   <div class="rte">{{ block.settings.text }}</div>
@@ -298,6 +316,10 @@
       "id": "image_width",
       "options": [
         {
+          "value": "custom",
+          "label": "Custom"
+        },
+        {
           "label": "Small",
           "value": "small"
         },
@@ -316,6 +338,14 @@
       ],
       "default": "full",
       "label": "t:sections.multicolumn.settings.image_width.label"
+    },
+    {
+      "type": "text",
+      "id": "custom_width",
+      "label": "Custom Width",
+      "default": "40",
+      "info": "Enter a fixed width for the image in pixels (e.g. 100). This setting is only applied if 'Custom' is selected for Image Width.",
+      "visible_if": "{{ section.settings.image_width == 'custom' }}"
     },
     {
       "type": "select",
