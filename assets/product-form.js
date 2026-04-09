@@ -89,12 +89,18 @@ if (!customElements.get('product-form')) {
                 },
                 { once: true }
               );
-              quickAddModal.hide(true);
+              quickAddModal.hide(true);            
             } else {
               CartPerformance.measure("add:paint-updated-sections", () => {
                 this.cart.renderContents(response);
               });
             }
+
+             const quickView = this.closest('.quick-view-modal');
+              console.log(quickView);
+              if (quickView){
+                quickView.style.display = 'none';
+              };
           })
           .catch((e) => {
             console.error(e);

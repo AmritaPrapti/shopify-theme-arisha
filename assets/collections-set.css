@@ -85,6 +85,8 @@
   visibility: visible;
 }
 
+
+
 @media screen and (max-width: 749px) {
     .product-image-wrapper {
         padding-top: 65%;

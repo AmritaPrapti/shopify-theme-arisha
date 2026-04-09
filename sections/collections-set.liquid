@@ -13,6 +13,14 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+  
+  .section-{{ section.id }}-padding .button--secondary {
+    background-color: {{ section.settings.block_background }};
+  }
+
+  .section-{{ section.id }}-padding .button--secondary:hover {
+   background-color: rgba(var(--color-secondary-button-text), var(--alpha-button-background));
+  }
 {%- endstyle -%}
 
 <section class="collections-set color-{{ section.settings.color_scheme }} gradient">
@@ -38,7 +46,7 @@
                     <div class="products-wrapper grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down ">
                         {% for product in block.settings.collection.products %}
                                 
-                                    <div class="product-card grid__item {% if section.settings.block_background != blank %}has-background{% endif %}" style="background: {{ section.settings.block_background }};">
+                                    <div class="product-card discovery-product grid__item {% if section.settings.block_background != blank %}has-background{% endif %}" style="background: {{ section.settings.block_background }};">
                                         <div class="product-image-wrapper">
                                           {% if section.settings.enable_quick_view %}
 
@@ -66,116 +74,117 @@
                                     
                                         </div>
                                         {% if section.settings.enable_quick_view %}
-                                          <div id="QuickView-{{ product.id }}" class="quick-view-modal" style="display: none;">
-                                            <div class="quick-view-modal__overlay"></div>
-                                            <div class="quick-view-modal__content">
-                                              <button class="quick-view-modal__close" aria-label="Close">
-                                                {{- 'icon-close.svg' | inline_asset_content -}}
-                                              </button>
-                                              <div class="quick-view-modal__inner">
-                                                <div class="quick-view-modal__media">
-                                                  {%- if product.featured_media -%}
-                                                    <img
-                                                      src="{{ product.featured_media | image_url: width: 600 }}"
-                                                      alt="{{ product.featured_media.alt | escape }}"
-                                                      width="600"
-                                                      height="{{ 600 | divided_by: product.featured_media.aspect_ratio | ceil }}"
-                                                    >
-                                                  {%- endif -%}
-                                                </div>
-                                                <div class="quick-view-modal__details">
-                                                  <h2 class="quick-view-modal__title">{{ product.title | escape }}</h2>
-                                                  
-                                                  <div class="quick-view-modal__price">
-                                                    {% render 'price',
-                                                      product: product,
-                                                      price_class: '',
-                                                      show_compare_at_price: true
-                                                    %}
-                                                  </div>
-                                                  
-                                                  {%- if product.description != blank -%}
-                                                    <div class="quick-view-modal__description">
-                                                      {{ product.description }}
-                                                    </div>
-                                                  {%- endif -%}
-                                                  
-                                                  {%- if product.has_only_default_variant == false -%}
-                                                    <div class="quick-view-modal__variants">
-                                                      {% for option in product.options_with_values %}
-                                                        <div class="product-option">
-                                                          <label>{{ option.name }}</label>
-                                                          <div class="option-values">
-                                                            {% for value in option.values %}
-                                                              <span class="option-value">{{ value }}</span>
-                                                            {% endfor %}
-                                                          </div>
-                                                        </div>
-                                                      {% endfor %}
-                                                    </div>
-                                                  {%- endif -%}
-
-                                                  {%- comment %} Inside .quick-view-modal__details, after the vendor block {%- endcomment %}
-                                                  {% assign product_form_id = 'product-form-' | append: section.id %}
-                                                  {% if section.settings.enable_add_to_cart %}
-                                                    <product-form data-section-id="{{ section.id }}">
-                                                      {%- form 'product',
-                                                        product,
-                                                        id: product_form_id,
-                                                        class: 'form',
-                                                        novalidate: 'novalidate',
-                                                        data-type: 'add-to-cart-form'
-                                                      -%}
-                                                        <input
-                                                          type="hidden"
-                                                          name="id"
-                                                          value="{{ product.selected_or_first_available_variant.id }}"
-                                                          class="product-variant-id"
-                                                          {% if product.selected_or_first_available_variant.available == false %}
-                                                            disabled
-                                                          {% endif %}
-                                                        >
-                                                        <button
-                                                          id="{{ product_form_id }}-submit"
-                                                          type="submit"
-                                                          name="add"
-                                                          class="quick-add__submit button button--full-width button--secondary{% if horizontal_quick_add %} card--horizontal__quick-add{% endif %}"
-                                                          aria-haspopup="dialog"
-                                                          aria-labelledby="{{ product_form_id }}-submit title-{{ section.id }}-{{ product.id }}"
-                                                          aria-live="polite"
-                                                          data-sold-out-message="true"
-                                                          {% if product.selected_or_first_available_variant.available == false %}
-                                                            disabled
-                                                          {% endif %}
-                                                        >
-                                                          <span>
-                                                            {%- if product.selected_or_first_available_variant.available -%}
-                                                              {{ 'products.product.add_to_cart' | t }}
-                                                            {%- else -%}
-                                                              {{ 'products.product.sold_out' | t }}
-                                                            {%- endif -%}
-                                                          </span>
-                                                          <span class="sold-out-message hidden">
-                                                            {{ 'products.product.sold_out' | t }}
-                                                          </span>
-                        
-                                                          {%- render 'loading-spinner' -%}
-                                                        </button>
-                                                      {%- endform -%}
-                                                    </product-form>
-                                                    
-                                                  {% endif %}
-                                                  
-                                                  <div class="quick-view-modal__full-details">
-                                                    <a href="{{ product.url }}">
-                                                      View Full Product Details
-                                                    </a>
-                                                  </div>
+                                        <div id="QuickView-{{ product.id }}" class="quick-view-modal" style="display: none;">
+                                          <div class="quick-view-modal__overlay"></div>
+                                          <div class="quick-view-modal__content">
+                                            <button class="quick-view-modal__close" aria-label="Close">
+                                              {{- 'icon-close.svg' | inline_asset_content -}}
+                                            </button>
+                                            <div class="quick-view-modal__inner">
+                                              <div class="quick-view-modal__media">
+                                                {%- if product.featured_media -%}
+                                                  <img
+                                                    src="{{ product.featured_media | image_url: width: 600 }}"
+                                                    alt="{{ product.featured_media.alt | escape }}"
+                                                    width="600"
+                                                    height="{{ 600 | divided_by: product.featured_media.aspect_ratio | ceil }}"
+                                                  >
+                                                {%- endif -%}
+                                              </div>
+                                              <div class="quick-view-modal__details">
+                                                <h2 class="quick-view-modal__title">{{ product.title | escape }}</h2>
                                                 
+                                                <div class="quick-view-modal__price">
+                                                  {% render 'price',
+                                                    product: product,
+                                                    price_class: '',
+                                                    show_compare_at_price: true
+                                                  %}
                                                 </div>
+                                                
+                                                {%- if product.description != blank -%}
+                                                  <div class="quick-view-modal__description">
+                                                    {{ product.description }}
+                                                  </div>
+                                                {%- endif -%}
+                                                
+                                                {%- if product.has_only_default_variant == false -%}
+                                                  <div class="quick-view-modal__variants">
+                                                    {% for option in product.options_with_values %}
+                                                      <div class="product-option">
+                                                        <label>{{ option.name }}</label>
+                                                        <div class="option-values">
+                                                          {% for value in option.values %}
+                                                            <span class="option-value">{{ value }}</span>
+                                                          {% endfor %}
+                                                        </div>
+                                                      </div>
+                                                    {% endfor %}
+                                                  </div>
+                                                {%- endif -%}
+
+                                                {%- comment %} Inside .quick-view-modal__details, after the vendor block {%- endcomment %}
+                                                {% assign product_form_id = 'product-form-' | append: section.id %}
+                                                {% if section.settings.enable_add_to_cart %}
+                                                  <product-form data-section-id="{{ section.id }}">
+                                                    {%- form 'product',
+                                                      product,
+                                                      id: product_form_id,
+                                                      class: 'form',
+                                                      novalidate: 'novalidate',
+                                                      data-type: 'add-to-cart-form'
+                                                    -%}
+                                                      <input
+                                                        type="hidden"
+                                                        name="id"
+                                                        value="{{ product.selected_or_first_available_variant.id }}"
+                                                        class="product-variant-id"
+                                                        {% if product.selected_or_first_available_variant.available == false %}
+                                                          disabled
+                                                        {% endif %}
+                                                      >
+                                                      <button
+                                                        id="{{ product_form_id }}-submit"
+                                                        type="submit"
+                                                        name="add"
+                                                        class="quick-add__submit button button--full-width button--secondary"
+                                                        
+                                                        aria-haspopup="dialog"
+                                                        aria-labelledby="{{ product_form_id }}-submit title-{{ section.id }}-{{ product.id }}"
+                                                        aria-live="polite"
+                                                        data-sold-out-message="true"
+                                                        {% if product.selected_or_first_available_variant.available == false %}
+                                                          disabled
+                                                        {% endif %}
+                                                      >
+                                                        <span>
+                                                          {%- if product.selected_or_first_available_variant.available -%}
+                                                            {{ 'products.product.add_to_cart' | t }}
+                                                          {%- else -%}
+                                                            {{ 'products.product.sold_out' | t }}
+                                                          {%- endif -%}
+                                                        </span>
+                                                        <span class="sold-out-message hidden">
+                                                          {{ 'products.product.sold_out' | t }}
+                                                        </span>
+                      
+                                                        {%- render 'loading-spinner' -%}
+                                                      </button>
+                                                    {%- endform -%}
+                                                  </product-form>
+                                                  
+                                                {% endif %}
+                                                
+                                                <div class="quick-view-modal__full-details">
+                                                  <a href="{{ product.url }}">
+                                                    View Full Product Details
+                                                  </a>
+                                                </div>
+                                              
                                               </div>
                                             </div>
                                           </div>
+                                        </div>
                                         {% endif %}
                                     </div>
 
