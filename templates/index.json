@@ -42,7 +42,7 @@
           "type": "button",
           "settings": {
             "button_label": "SHOP DISCOVERY SET",
-            "button_link": "shopify://products/discovery-set",
+            "button_link": "shopify://pages/discovery-set",
             "button_style_secondary": false,
             "button_label2": "SHOP ALL",
             "button_link2": "shopify://pages/shop",
