@@ -1951,7 +1951,7 @@ section:has(.bundle-products-container) > *,
 .quick-view-modal__media img {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+
 }
 
 .quick-view-modal__details {
