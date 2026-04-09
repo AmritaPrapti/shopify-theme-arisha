@@ -21,7 +21,7 @@
         "title_GGRjyh": {
           "type": "title",
           "settings": {
-            "custom_title": "An Elevated Beginning to Motherhood.",
+            "custom_title": "An elevated beginning to motherhood.",
             "heading_size": "h1"
           }
         },
@@ -205,6 +205,7 @@
         "text": "",
         "title_alignment": "center",
         "image_width": "small",
+        "custom_width": "40",
         "image_ratio": "circle",
         "image_background": "rgba(0,0,0,0)",
         "button_label": "",
@@ -328,6 +329,7 @@
         "text": "<p>Nourishment shouldn't require planning, shopping, or extra effort.</p>",
         "title_alignment": "center",
         "image_width": "small",
+        "custom_width": "40",
         "image_ratio": "circle",
         "image_background": "rgba(0,0,0,0)",
         "button_label": "",
@@ -363,7 +365,7 @@
           "type": "button",
           "settings": {
             "button_label": "GET YOUR DISCOVERY SET",
-            "button_link": "shopify://products/discovery-set",
+            "button_link": "https://forherbyarisa.com/cart/46942346150123:1",
             "button_style_secondary": false,
             "button_label_2": "",
             "button_link_2": "",
