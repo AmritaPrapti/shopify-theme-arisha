@@ -264,6 +264,8 @@
         "columns_mobile": "1",
         "block_background": "#ffffff",
         "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
+        "enable_quick_view": true,
+        "enable_add_to_cart": false,
         "padding_top": 36,
         "padding_bottom": 72
       }
