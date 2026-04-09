@@ -1,4 +1,5 @@
 {{ 'collections-set.css' | asset_url | stylesheet_tag }}
+{{ 'build-own-bundle.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -39,7 +40,22 @@
                                 
                                     <div class="product-card grid__item {% if section.settings.block_background != blank %}has-background{% endif %}" style="background: {{ section.settings.block_background }};">
                                         <div class="product-image-wrapper">
-                                            <a class="product-url" href="{{ product.url }}">&nbsp;</a>
+                                          {% if section.settings.enable_quick_view %}
+
+                                            <button
+                                              class="quick-view-overlay"
+                                              data-modal="#QuickView-{{ product.id }}"
+                                              aria-label="Quick view {{ product.title }}"
+                                            >
+                                              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                              </svg>
+                                            </button>
+                                          {% else %}
+                                             <a class="product-url" href="{{ product.url }}">&nbsp;</a>
+                                          {% endif %}
+                                            {% comment %} <a class="product-url" href="{{ product.url }}">&nbsp;</a> {% endcomment %}
                                             {% render 'image', image: product.featured_image, alt: product.title, class: 'product-image' %}
                                         </div>
                                         <div class="product-info">
@@ -49,7 +65,121 @@
                                             {% endif %}
                                     
                                         </div>
+                                        {% if section.settings.enable_quick_view %}
+                                          <div id="QuickView-{{ product.id }}" class="quick-view-modal" style="display: none;">
+                                            <div class="quick-view-modal__overlay"></div>
+                                            <div class="quick-view-modal__content">
+                                              <button class="quick-view-modal__close" aria-label="Close">
+                                                {{- 'icon-close.svg' | inline_asset_content -}}
+                                              </button>
+                                              <div class="quick-view-modal__inner">
+                                                <div class="quick-view-modal__media">
+                                                  {%- if product.featured_media -%}
+                                                    <img
+                                                      src="{{ product.featured_media | image_url: width: 600 }}"
+                                                      alt="{{ product.featured_media.alt | escape }}"
+                                                      width="600"
+                                                      height="{{ 600 | divided_by: product.featured_media.aspect_ratio | ceil }}"
+                                                    >
+                                                  {%- endif -%}
+                                                </div>
+                                                <div class="quick-view-modal__details">
+                                                  <h2 class="quick-view-modal__title">{{ product.title | escape }}</h2>
+                                                  
+                                                  <div class="quick-view-modal__price">
+                                                    {% render 'price',
+                                                      product: product,
+                                                      price_class: '',
+                                                      show_compare_at_price: true
+                                                    %}
+                                                  </div>
+                                                  
+                                                  {%- if product.description != blank -%}
+                                                    <div class="quick-view-modal__description">
+                                                      {{ product.description }}
+                                                    </div>
+                                                  {%- endif -%}
+                                                  
+                                                  {%- if product.has_only_default_variant == false -%}
+                                                    <div class="quick-view-modal__variants">
+                                                      {% for option in product.options_with_values %}
+                                                        <div class="product-option">
+                                                          <label>{{ option.name }}</label>
+                                                          <div class="option-values">
+                                                            {% for value in option.values %}
+                                                              <span class="option-value">{{ value }}</span>
+                                                            {% endfor %}
+                                                          </div>
+                                                        </div>
+                                                      {% endfor %}
+                                                    </div>
+                                                  {%- endif -%}
+
+                                                  {%- comment %} Inside .quick-view-modal__details, after the vendor block {%- endcomment %}
+                                                  {% assign product_form_id = 'product-form-' | append: section.id %}
+                                                  {% if section.settings.enable_add_to_cart %}
+                                                    <product-form data-section-id="{{ section.id }}">
+                                                      {%- form 'product',
+                                                        product,
+                                                        id: product_form_id,
+                                                        class: 'form',
+                                                        novalidate: 'novalidate',
+                                                        data-type: 'add-to-cart-form'
+                                                      -%}
+                                                        <input
+                                                          type="hidden"
+                                                          name="id"
+                                                          value="{{ product.selected_or_first_available_variant.id }}"
+                                                          class="product-variant-id"
+                                                          {% if product.selected_or_first_available_variant.available == false %}
+                                                            disabled
+                                                          {% endif %}
+                                                        >
+                                                        <button
+                                                          id="{{ product_form_id }}-submit"
+                                                          type="submit"
+                                                          name="add"
+                                                          class="quick-add__submit button button--full-width button--secondary{% if horizontal_quick_add %} card--horizontal__quick-add{% endif %}"
+                                                          aria-haspopup="dialog"
+                                                          aria-labelledby="{{ product_form_id }}-submit title-{{ section.id }}-{{ product.id }}"
+                                                          aria-live="polite"
+                                                          data-sold-out-message="true"
+                                                          {% if product.selected_or_first_available_variant.available == false %}
+                                                            disabled
+                                                          {% endif %}
+                                                        >
+                                                          <span>
+                                                            {%- if product.selected_or_first_available_variant.available -%}
+                                                              {{ 'products.product.add_to_cart' | t }}
+                                                            {%- else -%}
+                                                              {{ 'products.product.sold_out' | t }}
+                                                            {%- endif -%}
+                                                          </span>
+                                                          <span class="sold-out-message hidden">
+                                                            {{ 'products.product.sold_out' | t }}
+                                                          </span>
+                        
+                                                          {%- render 'loading-spinner' -%}
+                                                        </button>
+                                                      {%- endform -%}
+                                                    </product-form>
+                                                    
+                                                  {% endif %}
+                                                  
+                                                  <div class="quick-view-modal__full-details">
+                                                    <a href="{{ product.url }}">
+                                                      View Full Product Details
+                                                    </a>
+                                                  </div>
+                                                
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        {% endif %}
                                     </div>
+
+                                    
                                 
                         
                         {% endfor %}
@@ -60,6 +190,37 @@
     </div>
   </div>
 </section>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.quick-view-overlay').forEach((overlay) => {
+      overlay.addEventListener('click', () => {
+        console.log('Overlay clicked');
+
+        const modalSelector = overlay.dataset.modal;
+        const modal = document.querySelector(modalSelector);
+
+        console.log('Found modal:', modal);
+
+        if (modal) {
+          modal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    document.querySelectorAll('.quick-view-modal__close, .quick-view-modal__overlay').forEach((el) => {
+      el.addEventListener('click', () => {
+        const modal = el.closest('.quick-view-modal');
+        if (modal) {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  });
+</script>
 
 
 {% schema %}
@@ -162,7 +323,24 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
-    },   
+    },  
+    {
+      "type": "header",
+      "content": "Card Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_quick_view",
+      "label": "Enable Quick View",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_add_to_cart",
+      "label": "Enable Add to Cart Inside Quick View",
+      "default": false
+    },
+    
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"

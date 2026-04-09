@@ -1389,6 +1389,10 @@ shopify-accelerated-checkout-cart {
   stroke: rgb(var(--color-button-text));
 }
 
+.button--secondary:hover .loading__spinner .path {
+  stroke: #fff;
+}
+
 /* Button - social share */
 
 .share-button {
