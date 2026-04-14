@@ -133,20 +133,38 @@
         "padding_bottom": 36
       }
     },
-    "collections_set_CJaarA": {
+    "collections_set_yFWX36": {
       "type": "collections-set",
       "blocks": {
-        "collection_EcYJ4Y": {
+        "collection_ng8hq9": {
           "type": "collection",
           "settings": {
-            "title": "",
-            "description": "",
-            "collection": "bundles"
+            "title": "<h2>Signature Soups</h2>",
+            "description": "<p>Mineral-rich broths designed for warming postpartum nourishment.</p>",
+            "collection": "soups-and-meals"
+          }
+        },
+        "collection_a9JVQh": {
+          "type": "collection",
+          "settings": {
+            "title": "<h2>Nourishing Snacks</h2>",
+            "description": "<p>Energy-dense bites to sustain you through long days.</p>",
+            "collection": "snacks"
+          }
+        },
+        "collection_6CfbGE": {
+          "type": "collection",
+          "settings": {
+            "title": "<h2>Functional Teas</h2>",
+            "description": "<p>Herbal blends crafted to support balance and recovery.</p>",
+            "collection": "teas"
           }
         }
       },
       "block_order": [
-        "collection_EcYJ4Y"
+        "collection_ng8hq9",
+        "collection_a9JVQh",
+        "collection_6CfbGE"
       ],
       "name": "Collections Set",
       "settings": {
@@ -158,10 +176,10 @@
         "columns_mobile": "1",
         "block_background": "#ffffff",
         "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
-        "enable_quick_view": false,
+        "enable_quick_view": true,
         "enable_add_to_cart": false,
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 72
       }
     },
     "multicolumn_horizontal_nNVFhU": {
@@ -242,7 +260,7 @@
     "main",
     "image_with_text_TWYh8Q",
     "curated_product_blocks_GaEcHW",
-    "collections_set_CJaarA",
+    "collections_set_yFWX36",
     "multicolumn_horizontal_nNVFhU"
   ]
 }
