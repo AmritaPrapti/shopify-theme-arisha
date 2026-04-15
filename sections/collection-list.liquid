@@ -38,10 +38,10 @@
           >
             {{ section.settings.title }}
           </h2>
-          {%- if section.settings.description != blank -%}
-            <div class="collection-list__description {% if section.settings.show_title_center %} text-center {% endif %} {{ section.settings.description_style }} rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          {%- if section.settings.header_description != blank -%}
+            <div class="collection-list__description {% if section.settings.show_title_center %} text-center {% endif %} rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
           
-                {{ section.settings.description -}}
+                {{ section.settings.header_description -}}
           
             </div>
           {%- endif -%}
@@ -196,7 +196,7 @@
     },
     {
       "type": "richtext",
-      "id": "description",
+      "id": "header_description",
       "label": "Description"
     },
     {
