@@ -83,6 +83,7 @@
           "type": "curated_product_block",
           "settings": {
             "product": "mini-bundle",
+            "make_it_selected": false,
             "color_scheme": "scheme-2fa3a363-95b8-4d07-9e42-14be7562f72f",
             "heading": "Essentials",
             "subheading": "6 soups, plus a snack and tea",
@@ -96,6 +97,7 @@
           "type": "curated_product_block",
           "settings": {
             "product": "essentials-bundle",
+            "make_it_selected": true,
             "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
             "heading": "Complete",
             "subheading": "9 soups, plus snacks and teas",
@@ -109,6 +111,7 @@
           "type": "curated_product_block",
           "settings": {
             "product": "full-care-bundle",
+            "make_it_selected": false,
             "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
             "heading": "Signature",
             "subheading": "15 soups, plus extra snacks and teas",
