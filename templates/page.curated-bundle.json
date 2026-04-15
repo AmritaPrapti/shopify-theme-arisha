@@ -52,9 +52,7 @@
         "heading_qpmjAt",
         "text_M3taJW"
       ],
-      "custom_css": [
-        ".image-with-text__content {padding-left: 0;}"
-      ],
+      "custom_css": [],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "section_url": "",
