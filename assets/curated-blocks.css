@@ -1,7 +1,7 @@
 .curated-subheading {
     text-transform: uppercase;
     color: var(--color-highlight);
-    margin: 10px 0;
+    margin: 10px 0 20px;
     font-weight: 600;
     font-size: 14px;
 }
@@ -29,6 +29,7 @@
 
 .curated-description h5, .curated-description h6, .curated-description h4, .curated-description h3, .curated-description h2, .curated-description h1 {
     margin: 10px 0;
+    font-weight: 600;
 }
 
 .curated-header {
@@ -65,4 +66,56 @@
 .curated-price .price {
     font-size: 2.4rem;
     color: rgba(var(--color-foreground), 1.0);
+}
+
+.des_toggle_btn {
+    color: var(--color-highlight);
+    display: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    margin: 20px 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.des_toggle_btn .svg-wrapper {
+    width: 14px;
+    height: 14px;
+    display: inline-flex;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.button-label {
+    text-transform: uppercase;
+    font-weight: 600;
+    display: inline-flex;
+}
+
+.description_heading {
+    text-transform: uppercase;
+    margin: 5px 0;
+    font-weight: 600;
+    line-height: 1;
+}
+
+@media (max-width: 749px) {
+    .des_toggle_btn {
+        display: flex;
+    }
+    .des_toggle_content {
+        display: none;
+    }
+    .des_toggle_content.active {
+        display: block;
+    }
+    .description_heading-2 {
+        display: none;
+    }
 }

@@ -33,7 +33,17 @@
                         {% endif %}
                     </div>
                     <p class="curated-subheading">{{ block.settings.subheading }}</p>
-                    <div class="curated-description">{{ block.settings.description }}</div>
+                    <p class="description_heading">{{ block.settings.des_heading_1 }}</p>
+                    <div class="curated-description">{{ block.settings.description_1 }}</div>
+                    <p class="description_heading description_heading-2">{{ block.settings.des_heading_2 }}</p>
+                    <button class="include-button des_toggle_btn" aria-expanded="false" aria-controls="description-{{ block.id }}" data-default-label="{{ block.settings.include_button_label }}">
+                       <span class="button-label">{{ block.settings.include_button_label }} </span> 
+                        <span class="svg-wrapper">
+                            {{- 'icon-caret.svg' | inline_asset_content -}}
+                        </span>
+                    </button>
+                    
+                    <div class="curated-description des_toggle_content" id="description-{{ block.id }}">{{ block.settings.description_2 }}</div>
                     <div class="curated-price">
                         {% render 'price', product: product, show_sale_amount: true %}
                     </div>
@@ -89,7 +99,32 @@
     </div>
 </div>
 
-
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleButtons = document.querySelectorAll('.des_toggle_btn');
+        
+    
+        toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const contentId = this.getAttribute('aria-controls');
+            const content = document.getElementById(contentId);
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            const defaultLabel = this.getAttribute('data-default-label') || this.querySelector('.button-label').textContent.trim();
+    
+            this.setAttribute('aria-expanded', !isExpanded);
+            // change the text content and rotate the icon            
+            if (!isExpanded) {
+                this.querySelector('.button-label').textContent = 'Hide included items';
+                this.querySelector('.svg-wrapper').style.transform = 'rotate(180deg)';
+            } else {                
+                this.querySelector('.button-label').textContent = defaultLabel;
+                this.querySelector('.svg-wrapper').style.transform = 'rotate(0deg)';
+            }
+            content.classList.toggle('active');
+        });
+        });
+    });
+</script>
 
 {% schema %}
     {
@@ -186,9 +221,33 @@
                         "label": "Subheading"
                     },
                     {
+                        "type": "text",
+                        "id": "des_heading_1",
+                        "label": "Description Heading 1",
+                        "default": "BEST FOR",
+                    },
+                    {
                         "type": "richtext",
-                        "id": "description",
-                        "label": "Description"
+                        "id": "description_1",
+                        "label": "Description 1"
+                    },
+                     {
+                        "type": "text",
+                        "id": "des_heading_2",
+                        "label": "Description Heading 2",
+                        "default": "INCLUDES",
+                    },
+                    {
+                        "type": "text",
+                        "id": "include_button_label",
+                        "label": "Include Button Label",
+                        "default": "See included items",
+                        "info": "This button will visible only on mobile Screen"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "description_2",
+                        "label": "Description 2"
                     },
                     {
                         "type": "text",
