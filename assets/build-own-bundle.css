@@ -1801,7 +1801,7 @@ section:has(.bundle-products-container) > *,
 }
 
 /* Quick View Overlay on Image Hover */
-.card__media {
+.bundle-product-card  .card__media {
   position: relative;
 }
 

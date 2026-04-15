@@ -60,3 +60,14 @@
 .collection-list-view-all {
   margin-top: 2rem;
 }
+
+
+.collection-list__description {
+  max-width: 650px;
+}
+
+.collection-list__description.text-center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}

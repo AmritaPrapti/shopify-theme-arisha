@@ -1,129 +1,142 @@
 .curated-subheading {
-    text-transform: uppercase;
-    color: var(--color-highlight);
-    margin: 10px 0 20px;
-    font-weight: 600;
-    font-size: 14px;
+  text-transform: uppercase;
+  color: var(--color-highlight);
+  margin: 10px 0 20px;
+  font-weight: 600;
+  font-size: 14px;
 }
 
 .curated-product-block {
-    padding: 20px;
-    border-radius: 8px;
-    position: relative;
-    height: max-content;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  height: max-content;
+}
+
+.curated-product-block.selected {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 25px 0px;
 }
 
 .curated-heading {
-    margin: 0;
+  margin: 0;
 }
 
 .curated-description {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .curated-description ul {
-    padding-left: 20px;
-    margin: 10px 0;
-    list-style: none;
+  padding-left: 20px;
+  margin: 10px 0;
+  list-style: none;
 }
 
 .curated-description p {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
-.curated-description h5, .curated-description h6, .curated-description h4, .curated-description h3, .curated-description h2, .curated-description h1 {
-    margin: 10px 0;
-    font-weight: 600;
+.curated-description h5,
+.curated-description h6,
+.curated-description h4,
+.curated-description h3,
+.curated-description h2,
+.curated-description h1 {
+  margin: 10px 0;
+  font-weight: 600;
 }
 
 .curated-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .curated-badge {
-    background-color: var(--badge-bg);
-    color: var(--badge-text);
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
+  background-color: var(--badge-bg);
+  color: var(--badge-text);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .curated-price {
-    margin: 25px 0;
+  margin: 25px 0;
 }
 
 .curated-price .price--on-sale .price__container .price__sale {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
 }
 
 .curated-price .price--on-sale .price-item--regular {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
 }
 
 .curated-price .price {
-    font-size: 2.4rem;
-    color: rgba(var(--color-foreground), 1.0);
+  font-size: 2.4rem;
+  color: rgba(var(--color-foreground), 1);
 }
 
 .des_toggle_btn {
-    color: var(--color-highlight);
-    display: none;
-    border: none;
-    background: none;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 0;
-    margin: 20px 0;
-    text-transform: uppercase;
-    font-weight: 600;
-    align-items: center;
-    gap: 5px;
+  color: var(--color-highlight);
+  display: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0;
+  margin: 20px 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  align-items: center;
+  gap: 5px;
 }
 
 .des_toggle_btn .svg-wrapper {
-    width: 14px;
-    height: 14px;
-    display: inline-flex;
-    position: relative;
-    transition: transform 0.3s ease;
+  width: 14px;
+  height: 14px;
+  display: inline-flex;
+  position: relative;
+  transition: transform 0.3s ease;
 }
 
 .button-label {
-    text-transform: uppercase;
-    font-weight: 600;
-    display: inline-flex;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: inline-flex;
 }
 
 .description_heading {
-    text-transform: uppercase;
-    margin: 10px 0;
-    font-weight: 600;
-    line-height: 1;
-    font-size: 16px;
+  text-transform: uppercase;
+  margin: 10px 0;
+  font-weight: 600;
+  line-height: 1;
+  font-size: 16px;
 }
 
 @media (max-width: 749px) {
-    .des_toggle_btn {
-        display: flex;
-    }
-    .des_toggle_content {
-        display: none;
-    }
-    .des_toggle_content.active {
-        display: block;
-    }
-    .description_heading-2 {
-        display: none;
-    }
-    .curated-price .price--on-sale .price__container .price__sale {
-        gap: 0px;
-    }
+  .des_toggle_btn {
+    display: flex;
+  }
+  .des_toggle_content {
+    display: none;
+  }
+  .des_toggle_content.active {
+    display: block;
+  }
+  .description_heading-2 {
+    display: none;
+  }
+
+  .curated-price .price--on-sale .price-item--regular {
+    font-size: 1.2rem;
+  }
+
+  .curated-price .price {
+    font-size: 2rem;
+  }
 }
