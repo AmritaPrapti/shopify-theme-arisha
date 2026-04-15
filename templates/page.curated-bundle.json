@@ -186,7 +186,8 @@
       "settings": {
         "title": "What's inside every bundle",
         "heading_size": "h1",
-        "show_title_center": false,
+        "header_description": "<p>Each bundle includes our signature soups, nourishing snacks, and functional teas — thoughtfully crafted to support postpartum recovery.</p>",
+        "show_title_center": true,
         "image_ratio": "square",
         "show_description": false,
         "show_button": false,
