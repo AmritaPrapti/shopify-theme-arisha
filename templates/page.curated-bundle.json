@@ -24,7 +24,7 @@
           "type": "caption",
           "settings": {
             "link": "",
-            "caption": "Postpartum Nourishment Bundles",
+            "caption": "Postpartum Meal Delivery Bundles",
             "text_style": "caption-with-letter-spacing",
             "text_size": "medium",
             "font_weight": "400",
@@ -56,7 +56,7 @@
       "settings": {
         "section_url": "",
         "enable_text_link": false,
-        "image": "shopify://shop_images/4b67b17e9_ChatGPTImageFeb23202607_23_05PM.png",
+        "image": "shopify://shop_images/230329_888_f758ef56-4dd5-4f5b-9975-9bfd86d2fb67.jpg",
         "height": "medium",
         "height_mobile": "medium",
         "custom_media_height": 700,
@@ -83,10 +83,10 @@
           "type": "curated_product_block",
           "settings": {
             "product": "mini-bundle",
-            "color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
-            "heading": "Essential Care",
+            "color_scheme": "scheme-2fa3a363-95b8-4d07-9e42-14be7562f72f",
+            "heading": "Essentials",
             "subheading": "6 soups, plus a snack and tea",
-            "description": "<p>BEST FOR</p><p>Hospital stays, light recovery, or smaller households.</p><p>INCLUDES</p><h5>Soups</h5><ul><li>2 × Golden Chicken Turmeric Stew</li><li>2 × 5 Mushroom & Ume Plum Soup</li><li>2 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>1 × Rejuvenating Bites</li></ul><h5>Teas</h5><ul><li>1 × Recovery & Relax Blend</li></ul>",
+            "description": "<p>BEST FOR</p><p>Hospital bag, first night or two at home, or a light gift.</p><p>INCLUDES</p><h5>Soups</h5><ul><li>2 × Golden Chicken Turmeric Stew</li><li>2 × 5 Mushroom & Ume Plum Soup</li><li>2 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>1 × Rejuvenating Bites</li></ul><h5>Teas</h5><ul><li>1 × Recover & Relax Blend</li></ul>",
             "badge": "",
             "bg_color": "#cc858f",
             "color_text": "#ffffff"
@@ -96,10 +96,10 @@
           "type": "curated_product_block",
           "settings": {
             "product": "essentials-bundle",
-            "color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
-            "heading": "Complete Care",
+            "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
+            "heading": "Complete",
             "subheading": "9 soups, plus snacks and teas",
-            "description": "<p>BEST FOR</p><p>Balanced nourishment and variety during the early weeks postpartum.</p><p>INCLUDES</p><h5>Soups</h5><ul><li>3 × Golden Chicken Turmeric Stew</li><li>3 × 5 Mushroom & Ume Plum Soup</li><li>3 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>1 × Mother's Glow Brownies</li><li>1 × Rejuvenating Bites</li></ul><h5>Teas</h5><ul><li>1 × Mother's Chai Blend</li><li>1 × Recovery & Relax Blend</li><li>1 × Protect & Balance Blend</li></ul>",
+            "description": "<p>BEST FOR</p><p>Balanced nourishment for a week of recovery, and our most popular gift option.</p><p>INCLUDES</p><h5>Soups</h5><ul><li>3 × Golden Chicken Turmeric Stew</li><li>3 × 5 Mushroom & Ume Plum Soup</li><li>3 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>1 × Mother's Glow Brownies</li><li>1 × Rejuvenating Bites</li></ul><h5>Teas</h5><ul><li>1 × Mother's Chai Blend</li><li>1 × Recover & Relax Blend</li><li>1 × Protect & Balance Blend</li></ul>",
             "badge": "Most Popular",
             "bg_color": "#cc858f",
             "color_text": "#ffffff"
@@ -109,10 +109,10 @@
           "type": "curated_product_block",
           "settings": {
             "product": "full-care-bundle",
-            "color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
-            "heading": "Signature Care",
-            "subheading": "15 soups, plus snacks and teas",
-            "description": "<p>BEST FOR</p><p>Maximum support through the first month of postpartum recovery.</p><p>INCLUDES</p><h5>Soups</h5><ul><li>5 × Golden Chicken Turmeric Stew</li><li>5 × 5 Mushroom & Ume Plum Soup</li><li>5 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>2 × Mother's Glow Brownies</li><li>2 × Rejuvenating Bites</li></ul><h5>Teas</h5><ul><li>1 × Mother's Chai Blend</li><li>1 × Recovery & Relax Blend</li><li>1 × Protect & Balance Blend</li></ul>",
+            "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
+            "heading": "Signature",
+            "subheading": "15 soups, plus extra snacks and teas",
+            "description": "<p>BEST FOR</p><p>Sustained nourshishment for two weeks of postpartum recovery, or more to share with family.</p><p>INCLUDES</p><h5>Soups</h5><ul><li>5 × Golden Chicken Turmeric Stew</li><li>5 × 5 Mushroom & Ume Plum Soup</li><li>5 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>2 × Mother's Glow Brownies</li><li>2 × Rejuvenating Bites</li></ul><h5>Teas</h5><ul><li>1 × Mother's Chai Blend</li><li>1 × Recover & Relax Blend</li><li>1 × Protect & Balance Blend</li></ul>",
             "badge": "Best Value",
             "bg_color": "#8b7d74",
             "color_text": "#ffffff"
@@ -127,26 +127,44 @@
       "name": "Curated Bundle Blocks",
       "settings": {
         "columns_desktop": 3,
-        "columns_mobile": "2",
+        "columns_mobile": "1",
         "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "collections_set_CJaarA": {
+    "collections_set_yFWX36": {
       "type": "collections-set",
       "blocks": {
-        "collection_EcYJ4Y": {
+        "collection_ng8hq9": {
           "type": "collection",
           "settings": {
-            "title": "",
-            "description": "",
-            "collection": "bundles"
+            "title": "<h2>Signature Soups</h2>",
+            "description": "<p>Mineral-rich broths designed for warming postpartum nourishment.</p>",
+            "collection": "soups-and-meals"
+          }
+        },
+        "collection_a9JVQh": {
+          "type": "collection",
+          "settings": {
+            "title": "<h2>Nourishing Snacks</h2>",
+            "description": "<p>Energy-dense bites to sustain you through long days.</p>",
+            "collection": "snacks"
+          }
+        },
+        "collection_6CfbGE": {
+          "type": "collection",
+          "settings": {
+            "title": "<h2>Functional Teas</h2>",
+            "description": "<p>Herbal blends crafted to support balance and recovery.</p>",
+            "collection": "teas"
           }
         }
       },
       "block_order": [
-        "collection_EcYJ4Y"
+        "collection_ng8hq9",
+        "collection_a9JVQh",
+        "collection_6CfbGE"
       ],
       "name": "Collections Set",
       "settings": {
@@ -158,8 +176,10 @@
         "columns_mobile": "1",
         "block_background": "#ffffff",
         "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
+        "enable_quick_view": true,
+        "enable_add_to_cart": false,
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 72
       }
     },
     "multicolumn_horizontal_nNVFhU": {
@@ -169,7 +189,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/snow.svg",
-            "title": "<strong>Flash Frozen for Freshness</strong>",
+            "title": "<strong>Frozen immediately</strong>",
             "text": "<p>Sealed and frozen immediately to preserve nutrients and flavor.</p>",
             "link_label": "",
             "link": ""
@@ -214,7 +234,7 @@
       ],
       "name": "Multicolumn Horizontal",
       "settings": {
-        "title": "From our kitchen to yours",
+        "title": "Postpartum meal delivery, thoughtfully prepared",
         "heading_size": "h1",
         "text": "<p>Every order is carefully prepared, packaged, and shipped so nourishing meals are ready when you need them.</p>",
         "title_alignment": "center",
@@ -234,13 +254,66 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "apps_aYeUbJ": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_testimonials_carousel_9RnypQ": {
+          "type": "shopify://apps/judge-me-reviews/blocks/testimonials_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": true,
+            "reviews_selection": "all",
+            "products": [],
+            "star_rating": "5_star",
+            "max_reviews": 20,
+            "quote_marks_size": "small",
+            "product_name_text_size": "small",
+            "verified_badge_style": "icon",
+            "card_height": "medium",
+            "text_size": "extra_small",
+            "stars_size": "small",
+            "arrows_position": "bottom",
+            "max_width": 1100,
+            "corner_styling": "square",
+            "quote_marks_style": "serif",
+            "card_color": "#f3e7e4",
+            "stars_and_quote_marks_color": "#111111",
+            "text_color": "#111111",
+            "arrows_color": "#7a746f",
+            "show_border": false,
+            "border_color": "#108474",
+            "show_drop_shadow": false,
+            "transition_speed": 5,
+            "header_text": "",
+            "show_average_rating": true
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_testimonials_carousel_9RnypQ"
+      ],
+      "custom_css": [
+        "p {color: #333333;}",
+        ".jdgm-reviewer-name {color: #333333;}",
+        ".jdgm-reviewer-verified-icon {color: #333333;}",
+        ".jdgm-product-name {color: #333333;}",
+        ".jdgm-widget.jdgm-widget {padding-top: 0;}"
+      ],
+      "settings": {
+        "include_margins": false,
+        "heading": "Testimonials",
+        "heading_size": "h1",
+        "padding_top": 76,
+        "padding_bottom": 28
+      }
     }
   },
   "order": [
     "main",
     "image_with_text_TWYh8Q",
     "curated_product_blocks_GaEcHW",
-    "collections_set_CJaarA",
-    "multicolumn_horizontal_nNVFhU"
+    "collections_set_yFWX36",
+    "multicolumn_horizontal_nNVFhU",
+    "apps_aYeUbJ"
   ]
 }
