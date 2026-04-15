@@ -123,4 +123,7 @@
     .description_heading-2 {
         display: none;
     }
+    .curated-price .price--on-sale .price__container .price__sale {
+        gap: 0px;
+    }
 }
