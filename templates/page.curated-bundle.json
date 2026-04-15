@@ -52,6 +52,7 @@
         "heading_qpmjAt",
         "text_M3taJW"
       ],
+      "custom_css": [],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "section_url": "",
@@ -69,7 +70,7 @@
         "content_layout": "no-overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
+        "mobile_content_alignment": "center",
         "section_color_scheme": "",
         "color_scheme": "",
         "padding_top": 36,
