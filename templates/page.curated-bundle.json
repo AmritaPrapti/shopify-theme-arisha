@@ -72,7 +72,7 @@
         "content_layout": "no-overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
+        "mobile_content_alignment": "center",
         "section_color_scheme": "",
         "color_scheme": "",
         "padding_top": 36,
