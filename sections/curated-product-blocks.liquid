@@ -66,6 +66,7 @@
                                 {% if product.selected_or_first_available_variant.available == false %}
                                 disabled
                                 {% endif %}
+                                style="{% if block.settings.make_it_selected %}background-color: {{ block.settings.bg_color }}; color: {{ block.settings.color_text }};{% endif %}"
                             >
                                 <span>
                                 {%- if product.selected_or_first_available_variant.available -%}
@@ -160,6 +161,12 @@
                         "type": "product",
                         "id": "product",
                         "label": "Curated Product"
+                    },
+                    {
+                        "type": "checkbox",
+                        "id": "make_it_selected",
+                        "label": "Make It Selected",
+                        "default": false
                     },
                    
                     {
