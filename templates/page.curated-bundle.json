@@ -112,7 +112,7 @@
             "include_button_label": "See included items",
             "description_2": "<h5>Soups</h5><ul><li>3 × Golden Chicken Turmeric Stew</li><li>3 × 5 Mushroom & Ume Plum Soup</li><li>3 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>1 × Mother's Glow Brownies</li><li>1 × Rejuvenating Bites</li></ul><h5>Teas</h5><ul><li>1 × Mother's Chai Blend</li><li>1 × Recover & Relax Blend</li><li>1 × Protect & Balance Blend</li></ul>",
             "badge": "Most Popular",
-            "bg_color": "#b07a72",
+            "bg_color": "#cc858f",
             "color_text": "#ffffff"
           }
         },
@@ -145,6 +145,57 @@
         "columns_desktop": 3,
         "columns_mobile": "1",
         "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_izyKFr": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_jpgFA9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "soups-and-meals",
+            "custom_description": "",
+            "button_label": "Shop Now"
+          }
+        },
+        "featured_collection_kbwpjz": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "snacks",
+            "custom_description": "",
+            "button_label": "Shop Now"
+          }
+        },
+        "featured_collection_d66qFz": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "teas",
+            "custom_description": "",
+            "button_label": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_jpgFA9",
+        "featured_collection_kbwpjz",
+        "featured_collection_d66qFz"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "Collections",
+        "heading_size": "h1",
+        "show_title_center": false,
+        "image_ratio": "square",
+        "show_description": false,
+        "show_button": false,
+        "button_style": "primary",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -328,6 +379,7 @@
     "main",
     "image_with_text_TWYh8Q",
     "curated_product_blocks_GaEcHW",
+    "collection_list_izyKFr",
     "collections_set_yFWX36",
     "multicolumn_horizontal_nNVFhU",
     "apps_aYeUbJ"
