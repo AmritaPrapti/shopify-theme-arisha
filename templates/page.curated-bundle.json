@@ -149,6 +149,57 @@
         "padding_bottom": 36
       }
     },
+    "collection_list_4hTCJz": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_9TKhD3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "soups-and-meals",
+            "custom_description": "Mineral-rich broths rooted in traditional postpartum nourishment.",
+            "button_label": "Shop Now"
+          }
+        },
+        "featured_collection_79yM64": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "snacks",
+            "custom_description": "Energy-dense bites designed to provide quick nourishment throughout the day.",
+            "button_label": "Shop Now"
+          }
+        },
+        "featured_collection_qYLLck": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "teas",
+            "custom_description": "Herbal blends crafted to support warmth, digestion, and calm.",
+            "button_label": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_9TKhD3",
+        "featured_collection_79yM64",
+        "featured_collection_qYLLck"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "What's inside every bundle",
+        "heading_size": "h1",
+        "show_title_center": false,
+        "image_ratio": "square",
+        "show_description": false,
+        "show_button": false,
+        "button_style": "primary",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "collections_set_yFWX36": {
       "type": "collections-set",
       "blocks": {
@@ -328,6 +379,7 @@
     "main",
     "image_with_text_TWYh8Q",
     "curated_product_blocks_GaEcHW",
+    "collection_list_4hTCJz",
     "collections_set_yFWX36",
     "multicolumn_horizontal_nNVFhU",
     "apps_aYeUbJ"
