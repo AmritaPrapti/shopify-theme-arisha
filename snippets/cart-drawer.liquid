@@ -15,6 +15,77 @@
   .drawer {
     visibility: hidden;
   }
+
+  .bundle-includes__toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 4px 0 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.07rem;
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .bundle-includes__toggle:hover {
+    opacity: 0.7;
+  }
+
+  .bundle-includes__toggle .svg-wrapper {
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+    transform: rotate(-180deg);
+  }
+
+  .bundle-includes__toggle .svg-wrapper svg,
+  .bundle-includes__toggle .svg-wrapper img {
+    width: 12px;
+    height: 12px;
+  }
+
+  .bundle-includes__toggle[aria-expanded="false"] .svg-wrapper {
+    transform: rotate(0deg);
+  }
+
+  .bundle-includes [hidden] {
+    display: none;
+  }
+
+  .bundle-includes > div {
+    margin-top: 6px;
+  }
+
+  .bundle-includes ul {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    display: block;
+  }
+
+  .bundle-includes ul li {
+    padding: 2px 0 2px 14px;
+    font-size: 1rem;
+    color: rgb(var(--color-link));
+    position: relative;
+    width: 100%;
+    display: flex;
+  }
+
+  .bundle-includes ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: currentColor;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 </style>
 
 <cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">
@@ -154,13 +225,13 @@
                             {{- item.product.title | escape -}}
                           </a>
 
-                          {%- if item.original_price != item.final_price -%}
+                          {%- if item.variant.compare_at_price > item.final_price -%}
                             <div class="cart-item__discounted-prices">
                               <span class="visually-hidden">
                                 {{ 'products.product.price.regular_price' | t }}
                               </span>
                               <s class="cart-item__old-price product-option">
-                                {{- item.original_price | money -}}
+                                {{- item.variant.compare_at_price | money -}}
                               </s>
                               <span class="visually-hidden">
                                 {{ 'products.product.price.sale_price' | t }}
@@ -171,9 +242,39 @@
                             </div>
                           {%- else -%}
                             <div class="product-option">
-                              {{ item.original_price | money }}
+                              {{ item.final_price | money }}
                             </div>
                           {%- endif -%}
+                          {% if item.product.metafields.custom.bundle_list.value != blank %}
+                            <div class="product-option bundle-includes">
+                            <button
+                              type="button"
+                              class="bundle-includes__toggle"
+                              aria-expanded="false"
+                              onclick="
+                                var content = this.nextElementSibling;
+                                var expanded = this.getAttribute('aria-expanded') === 'true';
+                                this.setAttribute('aria-expanded', !expanded);
+                                content.hidden = expanded;
+                              "
+                            >
+                              What's included
+                              <span class="bundle-includes__arrow svg-wrapper">
+                                {{ 'icon-caret.svg' | inline_asset_content }}
+                              </span>
+                            </button>
+                            <div hidden>
+                              <ul>
+                                {%- for p in item.product.metafields.custom.bundle_list.value -%}
+                                    {%- assign p_title = p.title | escape -%}
+                                    {%- assign p_url = p.url -%}
+                                    <li><a href="{{ p_url }}" class="link" target="_blank">{{ p_title }}</a></li>
+                                {%- endfor -%}
+                                
+                              </ul>
+                            </div>
+                          </div>
+                          {% endif %}
 
                           {%- if item.product.has_only_default_variant == false
                             or item.properties.size != 0

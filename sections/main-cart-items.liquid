@@ -131,6 +131,37 @@
                         </div>
                       {%- endif -%}
 
+                         {% if item.product.metafields.custom.bundle_list.value != blank %}
+                            <div class="product-option bundle-includes">
+                            <button
+                              type="button"
+                              class="bundle-includes__toggle"
+                              aria-expanded="false"
+                              onclick="
+                                var content = this.nextElementSibling;
+                                var expanded = this.getAttribute('aria-expanded') === 'true';
+                                this.setAttribute('aria-expanded', !expanded);
+                                content.hidden = expanded;
+                              "
+                            >
+                              What's included
+                              <span class="bundle-includes__arrow svg-wrapper">
+                                {{ 'icon-caret.svg' | inline_asset_content }}
+                              </span>
+                            </button>
+                            <div hidden>
+                              <ul class="list-unstyled">
+                                {%- for p in item.product.metafields.custom.bundle_list.value -%}
+                                    {%- assign p_title = p.title | escape -%}
+                                    {%- assign p_url = p.url -%}
+                                    <li><a href="{{ p_url }}" class="link" target="_blank">{{ p_title }}</a></li>
+                                {%- endfor -%}
+                                
+                              </ul>
+                            </div>
+                          </div>
+                          {% endif %}
+
                       {%- if item.product.has_only_default_variant == false
                         or item.properties.size != 0
                         or item.selling_plan_allocation != null
