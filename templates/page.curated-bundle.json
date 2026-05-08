@@ -52,7 +52,10 @@
         "heading_qpmjAt",
         "text_M3taJW"
       ],
-      "custom_css": [],
+      "custom_css": [
+        "@media screen and (max-width: 749px) {.image-with-text__content {padding: 4rem 1.5rem 2rem; }}",
+        ".image-with-text__content {padding-left: 0; }"
+      ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "section_url": "",
