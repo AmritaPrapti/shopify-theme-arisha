@@ -54,7 +54,7 @@
       ],
       "custom_css": [
         "@media screen and (max-width: 749px) {.image-with-text__content {padding: 4rem 1.5rem 2rem; }}",
-        ".image-with-text__content {padding-left: 0; }"
+        ".image-with-text__content {padding-left: 0;}"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
@@ -95,7 +95,7 @@
             "description_1": "<p>Hospital bag, first night or two at home, or a light gift.</p>",
             "des_heading_2": "INCLUDES",
             "include_button_label": "See included items",
-            "description_2": "<h5>Soups</h5><ul><li>2 × Golden Chicken Turmeric Stew</li><li>2 × 5 Mushroom & Ume Plum Soup</li><li>2 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>1 × Rejuvenating Bites</li></ul><h5>Teas</h5><ul><li>1 × Recover & Relax Blend</li></ul>",
+            "description_2": "<h5>Soups</h5><ul><li>2 × Golden Chicken Turmeric Stew</li><li>2 × 5 Mushroom & Ume Plum Soup</li><li>2 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>1 × Rejuvenating Bars</li></ul><h5>Teas</h5><ul><li>1 × Recover & Relax Blend</li></ul>",
             "badge": "",
             "bg_color": "#cc858f",
             "color_text": "#ffffff"
@@ -113,7 +113,7 @@
             "description_1": "<p>Balanced nourishment for a week of recovery, and our most popular gift option.</p>",
             "des_heading_2": "INCLUDES",
             "include_button_label": "See included items",
-            "description_2": "<h5>Soups</h5><ul><li>3 × Golden Chicken Turmeric Stew</li><li>3 × 5 Mushroom & Ume Plum Soup</li><li>3 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>1 × Mother's Glow Brownies</li><li>1 × Rejuvenating Bites</li></ul><h5>Teas</h5><ul><li>1 × Mother's Chai Blend</li><li>1 × Recover & Relax Blend</li><li>1 × Protect & Balance Blend</li></ul>",
+            "description_2": "<h5>Soups</h5><ul><li>3 × Golden Chicken Turmeric Stew</li><li>3 × 5 Mushroom & Ume Plum Soup</li><li>3 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>1 × Mother's Glow Brownies</li><li>1 × Rejuvenating Bars</li></ul><h5>Teas</h5><ul><li>1 × Mother's Chai Blend</li><li>1 × Recover & Relax Blend</li><li>1 × Protect & Balance Blend</li></ul>",
             "badge": "Most Popular",
             "bg_color": "#b07a72",
             "color_text": "#ffffff"
@@ -131,7 +131,7 @@
             "description_1": "<p>Sustained nourshishment for two weeks of postpartum recovery, or more to share with family.</p>",
             "des_heading_2": "INCLUDES",
             "include_button_label": "See included items",
-            "description_2": "<h5>Soups</h5><ul><li>5 × Golden Chicken Turmeric Stew</li><li>5 × 5 Mushroom & Ume Plum Soup</li><li>5 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>2 × Mother's Glow Brownies</li><li>2 × Rejuvenating Bites</li></ul><h5>Teas</h5><ul><li>1 × Mother's Chai Blend</li><li>1 × Recover & Relax Blend</li><li>1 × Protect & Balance Blend</li></ul>",
+            "description_2": "<h5>Soups</h5><ul><li>5 × Golden Chicken Turmeric Stew</li><li>5 × 5 Mushroom & Ume Plum Soup</li><li>5 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>2 × Mother's Glow Brownies</li><li>2 × Rejuvenating Bars</li></ul><h5>Teas</h5><ul><li>1 × Mother's Chai Blend</li><li>1 × Recover & Relax Blend</li><li>1 × Protect & Balance Blend</li></ul>",
             "badge": "Best Value",
             "bg_color": "#8b7d74",
             "color_text": "#ffffff"
