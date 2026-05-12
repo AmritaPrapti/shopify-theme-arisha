@@ -19,11 +19,125 @@
   }
 {%- endstyle -%}
 
+<style>
+
+  .bundle-includes__toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 4px 0 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.07rem;
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .bundle-includes__toggle:hover {
+    opacity: 0.7;
+  }
+
+  .bundle-includes__toggle .svg-wrapper {
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+    transform: rotate(-180deg);
+  }
+
+  .bundle-includes__toggle .svg-wrapper svg,
+  .bundle-includes__toggle .svg-wrapper img {
+    width: 12px;
+    height: 12px;
+  }
+
+  .bundle-includes__toggle[aria-expanded="false"] .svg-wrapper {
+    transform: rotate(0deg);
+  }
+
+  .bundle-includes [hidden] {
+    display: none;
+  }
+
+  .bundle-includes > div {
+    margin-top: 6px;
+  }
+
+  .bundle-includes ul {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    display: block;
+  }
+
+  .bundle-includes ul li {
+    padding: 2px 0 2px 14px;
+    font-size: 1rem;
+    color: rgb(var(--color-link));
+    position: relative;
+    width: 100%;
+    display: flex;
+  }
+
+  .bundle-includes ul li  a {
+     font-size: 1.3rem;
+  }
+
+  .bundle-includes ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: currentColor;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+</style>
+
 {%- unless settings.cart_type == 'drawer' -%}
   <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 {%- endunless -%}
 
 <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+<script>
+  (function () {
+    var mobileQuery = window.matchMedia('(max-width: 749px)');
+
+    function applyBundleState() {
+      var isMobile = mobileQuery.matches;
+      document.querySelectorAll('.bundle-includes__toggle').forEach(function (btn) {
+        var content = btn.nextElementSibling;
+        if (isMobile) {
+          btn.setAttribute('aria-expanded', 'false');
+          if (content) content.hidden = true;
+        } else {
+          btn.setAttribute('aria-expanded', 'true');
+          if (content) content.hidden = false;
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', applyBundleState);
+    } else {
+      applyBundleState();
+    }
+
+    mobileQuery.addEventListener('change', applyBundleState);
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var cartItems = document.getElementById('main-cart-items');
+      if (cartItems) {
+        new MutationObserver(function () {
+          applyBundleState();
+        }).observe(cartItems, { childList: true, subtree: true });
+      }
+    });
+  })();
+</script>
 
 <cart-items class="gradient color-{{ section.settings.color_scheme }} isolate{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %}">
   <div class="page-width">
@@ -136,7 +250,7 @@
                             <button
                               type="button"
                               class="bundle-includes__toggle"
-                              aria-expanded="false"
+                              aria-expanded="true"
                               onclick="
                                 var content = this.nextElementSibling;
                                 var expanded = this.getAttribute('aria-expanded') === 'true';
@@ -149,7 +263,7 @@
                                 {{ 'icon-caret.svg' | inline_asset_content }}
                               </span>
                             </button>
-                            <div hidden>
+                            <div>
                               <ul class="list-unstyled">
                                 {%- for p in item.product.metafields.custom.bundle_list.value -%}
                                     {%- assign p_title = p.title | escape -%}

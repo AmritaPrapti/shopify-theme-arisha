@@ -10,6 +10,44 @@
 
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+<script>
+  (function () {
+    var mobileQuery = window.matchMedia('(max-width: 749px)');
+
+    function applyBundleState() {
+      var isMobile = mobileQuery.matches;
+      document.querySelectorAll('.bundle-includes__toggle').forEach(function (btn) {
+        var content = btn.nextElementSibling;
+        if (isMobile) {
+          btn.setAttribute('aria-expanded', 'false');
+          if (content) content.hidden = true;
+        } else {
+          btn.setAttribute('aria-expanded', 'true');
+          if (content) content.hidden = false;
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', applyBundleState);
+    } else {
+      applyBundleState();
+    }
+
+    // Re-apply on window resize
+    mobileQuery.addEventListener('change', applyBundleState);
+
+    // Re-apply after AJAX cart re-renders
+    document.addEventListener('DOMContentLoaded', function () {
+      var cartItems = document.getElementById('CartDrawer-CartItems');
+      if (cartItems) {
+        new MutationObserver(function () {
+          applyBundleState();
+        }).observe(cartItems, { childList: true, subtree: true });
+      }
+    });
+  })();
+</script>
 
 <style>
   .drawer {
@@ -76,6 +114,10 @@
     position: relative;
     width: 100%;
     display: flex;
+  }
+
+  .bundle-includes ul li  a {
+     font-size: 1.3rem;
   }
 
   .bundle-includes ul li::before {
@@ -250,7 +292,7 @@
                             <button
                               type="button"
                               class="bundle-includes__toggle"
-                              aria-expanded="false"
+                              aria-expanded="true"
                               onclick="
                                 var content = this.nextElementSibling;
                                 var expanded = this.getAttribute('aria-expanded') === 'true';
@@ -263,7 +305,7 @@
                                 {{ 'icon-caret.svg' | inline_asset_content }}
                               </span>
                             </button>
-                            <div hidden>
+                            <div>
                               <ul>
                                 {%- for p in item.product.metafields.custom.bundle_list.value -%}
                                     {%- assign p_title = p.title | escape -%}
