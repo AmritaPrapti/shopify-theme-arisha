@@ -76,6 +76,7 @@ if (!customElements.get('product-form')) {
                 CartPerformance.measureFromMarker('add:wait-for-subscribers', startMarker);
               });
             this.error = false;
+            this.trackKlaviyoAddedToCart();
             const quickAddModal = this.closest('quick-add-modal');
             if (quickAddModal) {
               document.body.addEventListener(
@@ -113,6 +114,54 @@ if (!customElements.get('product-form')) {
 
             CartPerformance.measureFromEvent("add:user-action", evt);
           });
+      }
+
+      async trackKlaviyoAddedToCart() {
+        try {
+          if (!window.klaviyo) return;
+
+          const response = await fetch('/cart.js');
+          const cart = await response.json();
+
+          if (!cart.items || !cart.items.length) return;
+
+          const latestItem = cart.items[cart.items.length - 1];
+
+          const cartItems = cart.items
+            .map((item) => `${item.variant_id}:${item.quantity}`)
+            .join(',');
+
+          const payload = {
+            CartURL: `${window.location.origin}/cart/${cartItems}`,
+
+            Items: cart.items.map((item) => ({
+              ProductName: item.product_title,
+              ProductID: item.product_id,
+              VariantID: item.variant_id,
+              SKU: item.sku,
+              Quantity: item.quantity,
+              Price: item.final_price / 100,
+              ImageURL: item.image,
+              URL: `${window.location.origin}${item.url}`,
+            })),
+
+            ProductName: latestItem.product_title,
+            ProductID: latestItem.product_id,
+            VariantID: latestItem.variant_id,
+            SKU: latestItem.sku,
+            Quantity: latestItem.quantity,
+            Price: latestItem.final_price / 100,
+            ImageURL: latestItem.image,
+            URL: `${window.location.origin}${latestItem.url}`,
+            $value: cart.total_price / 100,
+          };
+
+          window.klaviyo.track('Added to Cart', payload);
+
+          console.log('Klaviyo Added to Cart tracked', payload);
+        } catch (error) {
+          console.error('Klaviyo tracking error:', error);
+        }
       }
 
       handleErrorMessage(errorMessage = false) {

@@ -1003,28 +1003,80 @@ getProgressMessage(quantity) {
       const result = await response.json();
       console.log("Bundle added to cart:", result);
 
+       await this.trackKlaviyoAddedToCart();
+
       addToCartBtn.innerHTML = "✓ Added to Cart!";
       addToCartBtn.style.backgroundColor = this.settings.successColor;
 
+     
+
       // Redirect to cart page after a short delay
       setTimeout(() => {
-        window.location.href = "/cart";
+        // window.location.href = "/cart";
       }, 800);
-    } catch (error) {
-      console.error("Error adding bundle to cart:", error);
-      addToCartBtn.innerHTML = "✗ Error - Try Again";
-      addToCartBtn.style.backgroundColor = "#f44336";
+        } catch (error) {
+          console.error("Error adding bundle to cart:", error);
+          addToCartBtn.innerHTML = "✗ Error - Try Again";
+          addToCartBtn.style.backgroundColor = "#f44336";
 
-      // Re-enable controls on error
-      this.enableAllControls();
+          // Re-enable controls on error
+          this.enableAllControls();
 
-      setTimeout(() => {
-        addToCartBtn.innerHTML = originalContent;
-        addToCartBtn.style.backgroundColor = "";
-        addToCartBtn.disabled = false;
-      }, 2000);
-    }
+          setTimeout(() => {
+            addToCartBtn.innerHTML = originalContent;
+            addToCartBtn.style.backgroundColor = "";
+            addToCartBtn.disabled = false;
+          }, 2000);
+        }
   }
+
+  async trackKlaviyoAddedToCart() {
+  try {
+    if (!window.klaviyo) return;
+
+    const response = await fetch('/cart.js');
+    const cart = await response.json();
+
+    if (!cart.items || !cart.items.length) return;
+
+    const latestItem = cart.items[cart.items.length - 1];
+
+    const cartItems = cart.items
+      .map((item) => `${item.variant_id}:${item.quantity}`)
+      .join(',');
+
+    const payload = {
+      CartURL: `${window.location.origin}/cart/${cartItems}`,
+
+      Items: cart.items.map((item) => ({
+        ProductName: item.product_title,
+        ProductID: item.product_id,
+        VariantID: item.variant_id,
+        SKU: item.sku,
+        Quantity: item.quantity,
+        Price: item.final_price / 100,
+        ImageURL: item.image,
+        URL: `${window.location.origin}${item.url}`,
+      })),
+
+      ProductName: 'Custom Bundle',
+      ProductID: 'custom-bundle',
+      VariantID: 'custom-bundle',
+      SKU: 'custom-bundle',
+      Quantity: cart.item_count,
+      Price: cart.total_price / 100,
+      ImageURL: cart.items[0]?.image,
+      URL: `${window.location.origin}/cart`,
+      $value: cart.total_price / 100,
+    };
+
+    window.klaviyo.track('Added to Cart', payload);
+
+    console.log('Klaviyo bundle tracking fired', payload);
+  } catch (error) {
+    console.error('Klaviyo tracking error:', error);
+  }
+}
 
   disableAllControls() {
     // Disable all add buttons
