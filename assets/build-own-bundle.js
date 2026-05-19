@@ -1012,7 +1012,7 @@ getProgressMessage(quantity) {
 
       // Redirect to cart page after a short delay
       setTimeout(() => {
-        // window.location.href = "/cart";
+        window.location.href = "/cart";
       }, 800);
         } catch (error) {
           console.error("Error adding bundle to cart:", error);
