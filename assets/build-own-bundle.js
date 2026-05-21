@@ -1030,7 +1030,7 @@ getProgressMessage(quantity) {
         }
   }
 
-  async trackKlaviyoAddedToCart() {
+ async trackKlaviyoAddedToCart() {
   try {
     if (!window.klaviyo) return;
 
@@ -1059,14 +1059,14 @@ getProgressMessage(quantity) {
         URL: `${window.location.origin}${item.url}`,
       })),
 
-      ProductName: 'Custom Bundle',
-      ProductID: 'custom-bundle',
-      VariantID: 'custom-bundle',
-      SKU: 'custom-bundle',
-      Quantity: cart.item_count,
-      Price: cart.total_price / 100,
-      ImageURL: cart.items[0]?.image,
-      URL: `${window.location.origin}/cart`,
+      ProductName: latestItem.product_title,
+      ProductID: latestItem.product_id,
+      VariantID: latestItem.variant_id,
+      SKU: latestItem.sku,
+      Quantity: latestItem.quantity,
+      Price: latestItem.final_price / 100,
+      ImageURL: latestItem.image,
+      URL: `${window.location.origin}${latestItem.url}`,
       $value: cart.total_price / 100,
     };
 
