@@ -1039,7 +1039,7 @@ getProgressMessage(quantity) {
 
     if (!cart.items || !cart.items.length) return;
 
-    const latestItem = cart.items[cart.items.length - 1];
+    const latestItem = cart.items[0];
 
     const cartItems = cart.items
       .map((item) => `${item.variant_id}:${item.quantity}`)
