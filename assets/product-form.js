@@ -76,7 +76,8 @@ if (!customElements.get('product-form')) {
                 CartPerformance.measureFromMarker('add:wait-for-subscribers', startMarker);
               });
             this.error = false;
-            this.trackKlaviyoAddedToCart();
+            console.log('Product added to cart', formData.get('id'));
+            this.trackKlaviyoAddedToCart(formData.get('id'));
             const quickAddModal = this.closest('quick-add-modal');
             if (quickAddModal) {
               document.body.addEventListener(
@@ -116,7 +117,7 @@ if (!customElements.get('product-form')) {
           });
       }
 
-      async trackKlaviyoAddedToCart() {
+      async trackKlaviyoAddedToCart(addedVariantId = null) {
         try {
           if (!window.klaviyo) return;
 
@@ -125,7 +126,9 @@ if (!customElements.get('product-form')) {
 
           if (!cart.items || !cart.items.length) return;
 
-          const latestItem = cart.items[cart.items.length - 1];
+          const latestItem =
+            cart.items.find((item) => String(item.variant_id) === String(addedVariantId)) ||
+            cart.items[0];
 
           const cartItems = cart.items
             .map((item) => `${item.variant_id}:${item.quantity}`)
