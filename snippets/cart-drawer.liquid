@@ -101,33 +101,26 @@
   }
 
   .bundle-includes ul {
-    margin: 0;
-    padding-left: 0;
-    list-style: none;
+    list-style-position: inside;
+    padding-left: 0rem;
     display: block;
+    list-style-type: disc;
+    unicode-bidi: isolate;
   }
 
   .bundle-includes ul li {
-    padding: 2px 0 2px 14px;
-    font-size: 1rem;
+    padding: 2px 0 2px 5px;
+    font-size: 1.2rem;
     color: rgb(var(--color-link));
-    position: relative;
-    width: 100%;
-    display: flex;
+    list-style: inherit;
+    display: list-item;
   }
 
   .bundle-includes ul li  a {
-     font-size: 1.3rem;
+     font-size: 1.2rem;
   }
 
-  .bundle-includes ul li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: currentColor;
-    top: 50%;
-    transform: translateY(-50%);
-  }
+
 </style>
 
 <cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">
@@ -287,7 +280,7 @@
                               {{ item.final_price | money }}
                             </div>
                           {%- endif -%}
-                          {% if item.product.metafields.custom.bundle_list.value != blank %}
+                          {% if item.product.metafields.custom.cart_bundle_display != blank %}
                             <div class="product-option bundle-includes">
                             <button
                               type="button"
@@ -306,14 +299,15 @@
                               </span>
                             </button>
                             <div>
-                              <ul>
+                              {{ item.product.metafields.custom.cart_bundle_display | metafield_tag }}
+                              {% comment %} <ul>
                                 {%- for p in item.product.metafields.custom.bundle_list.value -%}
                                     {%- assign p_title = p.title | escape -%}
                                     {%- assign p_url = p.url -%}
                                     <li><a href="{{ p_url }}" class="link" target="_blank">{{ p_title }}</a></li>
                                 {%- endfor -%}
                                 
-                              </ul>
+                              </ul> {% endcomment %}
                             </div>
                           </div>
                           {% endif %}
