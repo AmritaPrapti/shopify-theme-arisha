@@ -4,7 +4,12 @@
 }
 
 .collection-list-title {
-  margin: 0;
+ margin: 5rem 0 2rem;
+ margin-top: 0rem;
+}
+
+.collection-list {
+  margin-top: 4rem;
 }
 
 
@@ -55,6 +60,10 @@
   .collection-list.slider .collection-list__item {
     max-width: 100%;
   }
+
+  .collection-list-title {
+          margin: 3rem 0 2rem;
+}
 }
 
 .collection-list-view-all {
