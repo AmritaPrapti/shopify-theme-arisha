@@ -200,8 +200,8 @@
         "show_view_all": false,
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 52,
-        "padding_bottom": 100
+        "padding_top": 36,
+        "padding_bottom": 72
       }
     },
     "collections_set_yFWX36": {
