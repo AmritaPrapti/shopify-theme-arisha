@@ -3,12 +3,18 @@
   margin-bottom: 2rem;
 }
 
+.multicolumn .image-with-text__text  {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
 .multicolumn.no-heading .title {
   display: none;
 }
 
 .multicolumn .title-wrapper-with-link {
   margin-top: 0;
+  margin-bottom: 4rem;
 }
 
 .multicolumn-card__image-wrapper--small-width {
