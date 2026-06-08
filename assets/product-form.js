@@ -117,52 +117,49 @@ if (!customElements.get('product-form')) {
           });
       }
 
-      async trackKlaviyoAddedToCart(addedVariantId = null) {
+     async trackKlaviyoAddedToCart(addedVariantId = null) {
         try {
           if (!window.klaviyo) return;
-          window._learnq = window._learnq || [];
+
 
           const response = await fetch('/cart.js');
           const cart = await response.json();
-
-          if (!cart.items || !cart.items.length) return;
-
-          const latestItem =
-            cart.items.find((item) => String(item.variant_id) === String(addedVariantId)) ||
-            cart.items[0];
-
           const cartItems = cart.items
-            .map((item) => `${item.variant_id}:${item.quantity}`)
-            .join(',');
+                .map((item) => `${item.variant_id}:${item.quantity}`)
+                .join(',');
 
-          const cartUrl = `${window.location.origin}/cart/${cartItems}?storefront=true`;
-
-          window._learnq.push([
-            'track',
-            'Added to Cart',
-            {
-              ProductName: latestItem.product_title,
-              ProductID: latestItem.product_id,
-              VariantID: latestItem.variant_id,
-              Quantity: latestItem.quantity,
-              Price: latestItem.final_price / 100,
-
-              // Custom properties
-              CartURL: cartUrl,
-              RebuildCartURL: cartUrl,
-              Source: 'custom_bundle_ajax_cart',
-
-              $value: cart.total_price / 100
-            }
-          ]);
-
-          console.log('Klaviyo tracking payload prepared:', cartUrl);
-
-          console.log('Tracking Klaviyo Added to Cart with payload:', window._learnq);
+          const payload = {
+       
+            CartURL: `${window.location.origin}/cart/${cartItems}?storefront=true`,
           
-          // window.klaviyo.track('Added to Cart', payload);
 
-          // console.log('Klaviyo Added to Cart tracked', payload);
+            Items: cart.items.map((item) => ({
+              ProductName: item.product_title,
+              ProductID: item.product_id,
+              VariantID: item.variant_id,
+              SKU: item.sku,
+              Quantity: item.quantity,
+              Price: item.final_price / 100,
+              ImageURL: item.image,
+              URL: `${window.location.origin}${item.url}`,
+            })),
+
+            ProductName: latestItem.product_title,
+            ProductID: latestItem.product_id,
+            VariantID: latestItem.variant_id,
+            SKU: latestItem.sku,
+            Quantity: latestItem.quantity,
+            Price: latestItem.final_price / 100,
+            ImageURL: latestItem.image,
+            URL: `${window.location.origin}${latestItem.url}`,
+            $value: cart.total_price / 100,
+          };
+
+          console.log('Tracking Klaviyo Added to Cart with payload:', window.klaviyo, payload);
+          window.klaviyo.track('Added to Cart', payload);
+
+
+          console.log('Klaviyo Added to Cart tracked', payload);
         } catch (error) {
           console.error('Klaviyo tracking error:', error);
         }
