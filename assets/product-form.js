@@ -156,7 +156,7 @@ if (!customElements.get('product-form')) {
             }
           ]);
 
-          console.log('Tracking Klaviyo Added to Cart with payload:', window.klaviyo, payload);
+          console.log('Tracking Klaviyo Added to Cart with payload:', window._learnq);
           
           // window.klaviyo.track('Added to Cart', payload);
 
