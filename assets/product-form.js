@@ -135,7 +135,7 @@ if (!customElements.get('product-form')) {
             .join(',');
 
           const payload = {
-            CartURL: `${window.location.origin}/cart/${cartItems}`,
+            CartURL: `${window.location.origin}/cart/${cartItems}?storefront=true`,
 
             Items: cart.items.map((item) => ({
               ProductName: item.product_title,
