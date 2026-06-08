@@ -160,7 +160,7 @@ if (!customElements.get('product-form')) {
           
           // window.klaviyo.track('Added to Cart', payload);
 
-          console.log('Klaviyo Added to Cart tracked', payload);
+          // console.log('Klaviyo Added to Cart tracked', payload);
         } catch (error) {
           console.error('Klaviyo tracking error:', error);
         }
