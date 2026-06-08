@@ -135,7 +135,9 @@ if (!customElements.get('product-form')) {
             .join(',');
 
           const payload = {
+            Source: 'custom_bundle_ajax_cart',
             CartURL: `${window.location.origin}/cart/${cartItems}?storefront=true`,
+            DebugCartURL: `${window.location.origin}/cart/${cartItems}?storefront=true`,
 
             Items: cart.items.map((item) => ({
               ProductName: item.product_title,
@@ -158,7 +160,8 @@ if (!customElements.get('product-form')) {
             URL: `${window.location.origin}${latestItem.url}`,
             $value: cart.total_price / 100,
           };
-
+          
+          console.log('Tracking Klaviyo Added to Cart with payload:', window.klaviyo, payload);
           window.klaviyo.track('Added to Cart', payload);
 
           console.log('Klaviyo Added to Cart tracked', payload);
