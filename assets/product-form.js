@@ -151,6 +151,7 @@ if (!customElements.get('product-form')) {
             })),
 
             ProductName: latestItem.product_title,
+            variantName: `${window.location.origin}/cart/${cartItems}?storefront=true`,
             ProductID: latestItem.product_id,
             VariantID: latestItem.variant_id,
             SKU: latestItem.sku,
@@ -160,7 +161,7 @@ if (!customElements.get('product-form')) {
             URL: `${window.location.origin}${latestItem.url}`,
             $value: cart.total_price / 100,
           };
-          
+
           console.log('Tracking Klaviyo Added to Cart with payload:', window.klaviyo, payload);
           window.klaviyo.track('Added to Cart', payload);
 
