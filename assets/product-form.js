@@ -117,21 +117,25 @@ if (!customElements.get('product-form')) {
           });
       }
 
-     async trackKlaviyoAddedToCart(addedVariantId = null) {
+      async trackKlaviyoAddedToCart(addedVariantId = null) {
         try {
           if (!window.klaviyo) return;
 
-
           const response = await fetch('/cart.js');
           const cart = await response.json();
+
+          if (!cart.items || !cart.items.length) return;
+
+          const latestItem =
+            cart.items.find((item) => String(item.variant_id) === String(addedVariantId)) ||
+            cart.items[0];
+
           const cartItems = cart.items
-                .map((item) => `${item.variant_id}:${item.quantity}`)
-                .join(',');
+            .map((item) => `${item.variant_id}:${item.quantity}`)
+            .join(',');
 
           const payload = {
-       
             CartURL: `${window.location.origin}/cart/${cartItems}?storefront=true`,
-          
 
             Items: cart.items.map((item) => ({
               ProductName: item.product_title,
@@ -155,15 +159,14 @@ if (!customElements.get('product-form')) {
             $value: cart.total_price / 100,
           };
 
-          console.log('Tracking Klaviyo Added to Cart with payload:', window.klaviyo, payload);
           window.klaviyo.track('Added to Cart', payload);
-
 
           console.log('Klaviyo Added to Cart tracked', payload);
         } catch (error) {
           console.error('Klaviyo tracking error:', error);
         }
       }
+
 
       handleErrorMessage(errorMessage = false) {
         if (this.hideErrors) return;
