@@ -100,25 +100,34 @@
     margin-top: 6px;
   }
 
-  .bundle-includes ul {
-    list-style-position: inside;
-    padding-left: 0rem;
-    display: block;
-    list-style-type: disc;
-    unicode-bidi: isolate;
-  }
+.bundle-includes ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
 
-  .bundle-includes ul li {
-    padding: 2px 0 2px 5px;
-    font-size: 1.2rem;
-    color: rgb(var(--color-link));
-    list-style: inherit;
-    display: list-item;
-  }
+.bundle-includes ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 2px 0;
+  font-size: 1.2rem;
+  color: rgb(var(--color-link));
+  line-height: 1.4;
+}
 
-  .bundle-includes ul li  a {
-     font-size: 1.2rem;
-  }
+.bundle-includes ul li::before {
+  content: "•";
+  flex: 0 0 auto;
+  color: rgb(var(--color-link));
+  line-height: 1.4;
+}
+
+.bundle-includes ul li a {
+  font-size: 1.2rem;
+  color: rgb(var(--color-link));
+  line-height: 1.4;
+}
 
 
 </style>
