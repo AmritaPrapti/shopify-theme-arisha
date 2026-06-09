@@ -54,6 +54,12 @@
     visibility: hidden;
   }
 
+  .cart-item__options--bundle {
+    grid-column: 2 / 5;
+    padding-top: 0rem !important;
+    margin-top: -1rem;
+  }
+
   .bundle-includes__toggle {
     display: flex;
     align-items: center;
@@ -70,6 +76,7 @@
     text-align: left;
     text-transform: uppercase;
   }
+
 
   .bundle-includes__toggle:hover {
     opacity: 0.7;
@@ -289,37 +296,7 @@
                               {{ item.final_price | money }}
                             </div>
                           {%- endif -%}
-                          {% if item.product.metafields.custom.cart_bundle_display != blank %}
-                            <div class="product-option bundle-includes">
-                            <button
-                              type="button"
-                              class="bundle-includes__toggle"
-                              aria-expanded="true"
-                              onclick="
-                                var content = this.nextElementSibling;
-                                var expanded = this.getAttribute('aria-expanded') === 'true';
-                                this.setAttribute('aria-expanded', !expanded);
-                                content.hidden = expanded;
-                              "
-                            >
-                              What's included
-                              <span class="bundle-includes__arrow svg-wrapper">
-                                {{ 'icon-caret.svg' | inline_asset_content }}
-                              </span>
-                            </button>
-                            <div>
-                              {{ item.product.metafields.custom.cart_bundle_display | metafield_tag }}
-                              {% comment %} <ul>
-                                {%- for p in item.product.metafields.custom.bundle_list.value -%}
-                                    {%- assign p_title = p.title | escape -%}
-                                    {%- assign p_url = p.url -%}
-                                    <li><a href="{{ p_url }}" class="link" target="_blank">{{ p_title }}</a></li>
-                                {%- endfor -%}
-                                
-                              </ul> {% endcomment %}
-                            </div>
-                          </div>
-                          {% endif %}
+                          
 
                           {%- if item.product.has_only_default_variant == false
                             or item.properties.size != 0
@@ -408,6 +385,41 @@
                             {%- endif -%}
                           </div>
                         </td>
+                        
+                          {% if item.product.metafields.custom.cart_bundle_display != blank %}
+                            <td class="cart-item__options cart-item__options--bundle" role="cell" >
+                            <div class="product-option bundle-includes">
+                            <button
+                              type="button"
+                              class="bundle-includes__toggle"
+                              aria-expanded="true"
+                              onclick="
+                                var content = this.nextElementSibling;
+                                var expanded = this.getAttribute('aria-expanded') === 'true';
+                                this.setAttribute('aria-expanded', !expanded);
+                                content.hidden = expanded;
+                              "
+                            >
+                              What's included
+                              <span class="bundle-includes__arrow svg-wrapper">
+                                {{ 'icon-caret.svg' | inline_asset_content }}
+                              </span>
+                            </button>
+                            <div>
+                              {{ item.product.metafields.custom.cart_bundle_display | metafield_tag }}
+                              {% comment %} <ul>
+                                {%- for p in item.product.metafields.custom.bundle_list.value -%}
+                                    {%- assign p_title = p.title | escape -%}
+                                    {%- assign p_url = p.url -%}
+                                    <li><a href="{{ p_url }}" class="link" target="_blank">{{ p_title }}</a></li>
+                                {%- endfor -%}
+                                
+                              </ul> {% endcomment %}
+                            </div>
+                          </div>
+                          </td>
+                          {% endif %}
+                        
                         {%- liquid
                           assign has_qty_rules = false
                           if item.variant.quantity_rule.increment > 1 or item.variant.quantity_rule.min > 1 or item.variant.quantity_rule.max != null
