@@ -508,9 +508,9 @@ class MenuDrawer extends HTMLElement {
 
     openDetailsElement === this.mainDetailsToggle
       ? this.closeMenuDrawer(
-          event,
-          this.mainDetailsToggle.querySelector("summary"),
-        )
+        event,
+        this.mainDetailsToggle.querySelector("summary"),
+      )
       : this.closeSubmenu(openDetailsElement);
   }
 
@@ -552,9 +552,9 @@ class MenuDrawer extends HTMLElement {
         !reducedMotion || reducedMotion.matches
           ? addTrapFocus()
           : summaryElement.nextElementSibling.addEventListener(
-              "transitionend",
-              addTrapFocus,
-            );
+            "transitionend",
+            addTrapFocus,
+          );
       }, 100);
     }
   }
@@ -661,9 +661,9 @@ class HeaderDrawer extends MenuDrawer {
     this.header = this.header || document.querySelector(".section-header");
     this.borderOffset =
       this.borderOffset ||
-      this.closest(".header-wrapper").classList.contains(
-        "header-wrapper--border-bottom",
-      )
+        this.closest(".header-wrapper").classList.contains(
+          "header-wrapper--border-bottom",
+        )
         ? 1
         : 0;
     document.documentElement.style.setProperty(
@@ -867,120 +867,347 @@ customElements.define("deferred-media", DeferredMedia);
 class SliderComponent extends HTMLElement {
   constructor() {
     super();
+
     this.slider = this.querySelector('[id^="Slider-"]');
     this.sliderItems = this.querySelectorAll('[id^="Slide-"]');
     this.enableSliderLooping = false;
+    this.isProgrammaticScroll = false;
+
+    this.currentPage = 1;
+    this.totalPages = 1;
+
     this.currentPageElement = this.querySelector(".slider-counter--current");
     this.pageTotalElement = this.querySelector(".slider-counter--total");
+
     this.prevButton = this.querySelector('button[name="previous"]');
     this.nextButton = this.querySelector('button[name="next"]');
+    this.bulletButtons = this.querySelectorAll(".slider-bullet");
 
-    if (!this.slider || !this.nextButton) return;
+    this.autoplayEnabled = this.dataset.autoplay === "true";
+    this.autoplaySpeed = Number(this.dataset.autoplaySpeed || 4) * 1000;
+
+    if (!this.slider) return;
 
     this.initPages();
-    const resizeObserver = new ResizeObserver((entries) => this.initPages());
+
+    const resizeObserver = new ResizeObserver(() => this.initPages());
     resizeObserver.observe(this.slider);
 
     this.slider.addEventListener("scroll", this.update.bind(this));
-    this.prevButton.addEventListener("click", this.onButtonClick.bind(this));
-    this.nextButton.addEventListener("click", this.onButtonClick.bind(this));
+
+    if (this.prevButton) {
+      this.prevButton.addEventListener("click", this.onButtonClick.bind(this));
+    }
+
+    if (this.nextButton) {
+      this.nextButton.addEventListener("click", this.onButtonClick.bind(this));
+    }
+
+    if (this.autoplayEnabled) {
+      this.startAutoplay();
+
+      this.addEventListener("mouseenter", this.stopAutoplay.bind(this));
+      this.addEventListener("mouseleave", this.startAutoplay.bind(this));
+      this.addEventListener("focusin", this.stopAutoplay.bind(this));
+      this.addEventListener("focusout", this.startAutoplay.bind(this));
+    }
   }
 
   initPages() {
     this.sliderItemsToShow = Array.from(this.sliderItems).filter(
-      (element) => element.clientWidth > 0,
+      (element) => element.clientWidth > 0
     );
-    if (this.sliderItemsToShow.length < 2) return;
+
+    if (this.sliderItemsToShow.length < 2) {
+      this.totalPages = 1;
+      this.renderBullets();
+      this.setActivePage(1);
+      this.updateButtons();
+      return;
+    }
+
     this.sliderItemOffset =
       this.sliderItemsToShow[1].offsetLeft -
       this.sliderItemsToShow[0].offsetLeft;
-    this.slidesPerPage = Math.floor(
-      (this.slider.clientWidth - this.sliderItemsToShow[0].offsetLeft) /
-        this.sliderItemOffset,
+
+    const maxScrollLeft = this.slider.scrollWidth - this.slider.clientWidth;
+
+    if (maxScrollLeft <= 2) {
+      this.totalPages = 1;
+    } else {
+      this.totalPages =
+        Math.ceil(maxScrollLeft / this.sliderItemOffset) + 1;
+    }
+
+    this.toggleControls();
+
+    this.currentPage = Math.max(
+      1,
+      Math.min(this.currentPage || 1, this.totalPages)
     );
-    this.totalPages = this.sliderItemsToShow.length - this.slidesPerPage + 1;
-    this.update();
+
+    this.updateCounter();
+    this.renderBullets();
+    this.setActivePage(this.currentPage);
+    this.updateButtons();
+  }
+
+  toggleControls() {
+    const hasMultiplePages = this.totalPages > 1;
+
+    if (this.prevButton) {
+      this.prevButton.style.display = hasMultiplePages ? "" : "none";
+    }
+
+    if (this.nextButton) {
+      this.nextButton.style.display = hasMultiplePages ? "" : "none";
+    }
+
+    const bulletsContainer = this.querySelector(".slider-bullets");
+    if (bulletsContainer) {
+      bulletsContainer.style.display = hasMultiplePages ? "flex" : "none";
+    }
+
+    const counter = this.querySelector(".slider-counter");
+    if (counter) {
+      counter.style.display = hasMultiplePages ? "flex" : "none";
+    }
+
+    const container = this.querySelector(".slider-with-side-arrows");
+    if (container && !hasMultiplePages) {
+      container.style.padding = "0";
+    }
   }
 
   resetPages() {
     this.sliderItems = this.querySelectorAll('[id^="Slide-"]');
+    this.bulletButtons = this.querySelectorAll(".slider-bullet");
     this.initPages();
   }
 
+  renderBullets() {
+    const bulletsContainer = this.querySelector(".slider-bullets");
+
+    if (!bulletsContainer) return;
+
+    bulletsContainer.innerHTML = "";
+
+    for (let i = 0; i < this.totalPages; i++) {
+      const bullet = document.createElement("button");
+
+      bullet.type = "button";
+      bullet.className = "slider-bullet";
+      bullet.dataset.slideIndex = i;
+      bullet.setAttribute("aria-label", `Go to slide ${i + 1}`);
+
+      bullet.addEventListener("click", this.onBulletClick.bind(this));
+
+      bulletsContainer.appendChild(bullet);
+    }
+
+    this.bulletButtons =
+      bulletsContainer.querySelectorAll(".slider-bullet");
+  }
+
   update() {
-    // Temporarily prevents unneeded updates resulting from variant changes
-    // This should be refactored as part of https://github.com/Shopify/dawn/issues/2057
-    if (!this.slider || !this.nextButton) return;
+    if (this.isProgrammaticScroll) return;
+    if (!this.slider || !this.sliderItemOffset) return;
 
     const previousPage = this.currentPage;
+
     this.currentPage =
       Math.round(this.slider.scrollLeft / this.sliderItemOffset) + 1;
 
-    if (this.currentPageElement && this.pageTotalElement) {
-      this.currentPageElement.textContent = this.currentPage;
-      this.pageTotalElement.textContent = this.totalPages;
-    }
+    this.currentPage = Math.max(
+      1,
+      Math.min(this.currentPage, this.totalPages)
+    );
 
-    if (this.currentPage != previousPage) {
+    this.updateCounter();
+    this.updateBullets();
+    this.updateButtons();
+
+    if (this.currentPage !== previousPage) {
       this.dispatchEvent(
         new CustomEvent("slideChanged", {
           detail: {
             currentPage: this.currentPage,
             currentElement: this.sliderItemsToShow[this.currentPage - 1],
           },
-        }),
+        })
       );
-    }
-
-    if (this.enableSliderLooping) return;
-
-    if (
-      this.isSlideVisible(this.sliderItemsToShow[0]) &&
-      this.slider.scrollLeft === 0
-    ) {
-      this.prevButton.setAttribute("disabled", "disabled");
-    } else {
-      this.prevButton.removeAttribute("disabled");
-    }
-
-    if (
-      this.isSlideVisible(
-        this.sliderItemsToShow[this.sliderItemsToShow.length - 1],
-      )
-    ) {
-      this.nextButton.setAttribute("disabled", "disabled");
-    } else {
-      this.nextButton.removeAttribute("disabled");
     }
   }
 
+  updateCounter() {
+    const hasMultiplePages = this.totalPages > 1;
+
+    const bulletsContainer = this.querySelector(".slider-bullets");
+    const counter = this.querySelector(".slider-counter");
+
+    if (bulletsContainer) {
+      bulletsContainer.style.display = hasMultiplePages ? "flex" : "none";
+    }
+
+    if (counter) {
+      counter.style.display = hasMultiplePages ? "flex" : "none";
+    }
+
+    if (this.currentPageElement) {
+      this.currentPageElement.textContent = this.currentPage;
+    }
+
+    if (this.pageTotalElement) {
+      this.pageTotalElement.textContent = this.totalPages;
+    }
+  }
+
+  updateBullets() {
+    if (!this.bulletButtons.length) return;
+
+    this.bulletButtons.forEach((button, index) => {
+      const isActive = index === this.currentPage - 1;
+
+      button.classList.toggle("slider-bullet--active", isActive);
+      button.setAttribute("aria-current", isActive ? "true" : "false");
+    });
+  }
+
+  updateButtons() {
+    const hasMultiplePages = this.totalPages > 1;
+
+    const bulletsContainer = this.querySelector(".slider-bullets");
+    const counter = this.querySelector(".slider-counter");
+
+    if (bulletsContainer) {
+      bulletsContainer.hidden = !hasMultiplePages;
+    }
+
+    if (counter) {
+      counter.hidden = !hasMultiplePages;
+    }
+
+    if (this.prevButton) {
+      this.prevButton.hidden = !hasMultiplePages;
+
+      if (this.currentPage <= 1) {
+        this.prevButton.setAttribute("disabled", "disabled");
+      } else {
+        this.prevButton.removeAttribute("disabled");
+      }
+    }
+
+    if (this.nextButton) {
+      this.nextButton.hidden = !hasMultiplePages;
+
+      if (this.currentPage >= this.totalPages) {
+        this.nextButton.setAttribute("disabled", "disabled");
+      } else {
+        this.nextButton.removeAttribute("disabled");
+      }
+    }
+  }
+
+  onButtonClick(event) {
+    event.preventDefault();
+
+    const direction = event.currentTarget.name === "next" ? 1 : -1;
+
+    const targetPage = Math.max(
+      1,
+      Math.min(this.currentPage + direction, this.totalPages)
+    );
+
+    const targetPosition = (targetPage - 1) * this.sliderItemOffset;
+
+    this.setActivePage(targetPage);
+    this.setSlidePosition(targetPosition, targetPage);
+  }
+
+  onBulletClick(event) {
+    event.preventDefault();
+
+    const slideIndex = Number(event.currentTarget.dataset.slideIndex);
+    const targetPage = slideIndex + 1;
+    const targetPosition = slideIndex * this.sliderItemOffset;
+
+    this.setActivePage(targetPage);
+    this.setSlidePosition(targetPosition, targetPage);
+  }
+
+  setActivePage(page) {
+    this.currentPage = Math.max(
+      1,
+      Math.min(page, this.totalPages)
+    );
+
+    this.updateCounter();
+    this.updateBullets();
+    this.updateButtons();
+  }
+
+  setSlidePosition(position, targetPage = null) {
+    this.isProgrammaticScroll = true;
+
+    this.slider.scrollTo({
+      left: position,
+      behavior: "smooth",
+    });
+
+    clearTimeout(this.scrollLockTimeout);
+
+    this.scrollLockTimeout = setTimeout(() => {
+      this.isProgrammaticScroll = false;
+
+      if (targetPage) {
+        this.setActivePage(targetPage);
+      } else {
+        this.update();
+      }
+    }, 650);
+  }
+
   isSlideVisible(element, offset = 0) {
+    if (!element) return false;
+
     const lastVisibleSlide =
       this.slider.clientWidth + this.slider.scrollLeft - offset;
+
     return (
       element.offsetLeft + element.clientWidth <= lastVisibleSlide &&
       element.offsetLeft >= this.slider.scrollLeft
     );
   }
 
-  onButtonClick(event) {
-    event.preventDefault();
-    const step = event.currentTarget.dataset.step || 1;
-    this.slideScrollPosition =
-      event.currentTarget.name === "next"
-        ? this.slider.scrollLeft + step * this.sliderItemOffset
-        : this.slider.scrollLeft - step * this.sliderItemOffset;
-    this.setSlidePosition(this.slideScrollPosition);
+  startAutoplay() {
+    if (!this.autoplayEnabled) return;
+
+    this.stopAutoplay();
+
+    this.autoplay = setInterval(() => {
+      this.goToNextSlide();
+    }, this.autoplaySpeed);
   }
 
-  setSlidePosition(position) {
-    this.slider.scrollTo({
-      left: position,
-    });
+  stopAutoplay() {
+    clearInterval(this.autoplay);
+  }
+
+  goToNextSlide() {
+    if (!this.sliderItemsToShow || !this.sliderItemsToShow.length) return;
+
+    const targetPage =
+      this.currentPage >= this.totalPages ? 1 : this.currentPage + 1;
+
+    const targetPosition = (targetPage - 1) * this.sliderItemOffset;
+
+    this.setActivePage(targetPage);
+    this.setSlidePosition(targetPosition, targetPage);
   }
 }
 
 customElements.define("slider-component", SliderComponent);
+
 
 class SlideshowComponent extends SliderComponent {
   constructor() {
@@ -1244,9 +1471,9 @@ class SlideshowComponent extends SliderComponent {
     const slideScrollPosition =
       this.slider.scrollLeft +
       this.sliderFirstItemNode.clientWidth *
-        (this.sliderControlLinksArray.indexOf(event.currentTarget) +
-          1 -
-          this.currentPage);
+      (this.sliderControlLinksArray.indexOf(event.currentTarget) +
+        1 -
+        this.currentPage);
     this.slider.scrollTo({
       left: slideScrollPosition,
     });
