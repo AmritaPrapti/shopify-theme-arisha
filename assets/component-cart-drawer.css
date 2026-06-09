@@ -204,7 +204,6 @@ cart-drawer-items {
   grid-template: repeat(2, auto) / repeat(4, 1fr);
   gap: 1rem;
   margin-bottom: 0;
-  row-gap: 0;
 }
 
 .cart-drawer .cart-item:last-child {
