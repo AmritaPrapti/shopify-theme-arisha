@@ -167,7 +167,7 @@
         "description_style": "body",
         "columns_desktop": 3,
         "enable_desktop_slider": true,
-        "show_bullet_pagination": false,
+        "show_bullet_pagination": true,
         "bullet_color": "#b07a72",
         "show_slider_arrows": true,
         "arrow_color": "#ffffff",
@@ -186,7 +186,7 @@
         "quick_add": "standard",
         "show_sale_amount": true,
         "sale_display_type": "percentage",
-        "columns_mobile": "2",
+        "columns_mobile": "1",
         "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
