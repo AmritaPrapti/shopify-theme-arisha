@@ -74,10 +74,9 @@
 }
 
 .bundle-includes ul li {
-  display: flex;
-  align-items: flex-start;
-  gap: 6px;
-  padding: 2px 0;
+  display: block;
+  position: relative;
+  padding: 2px 0 2px 14px;
   font-size: 1.2rem;
   color: rgb(var(--color-link));
   line-height: 1.4;
@@ -85,15 +84,15 @@
 
 .bundle-includes ul li::before {
   content: "•";
-  flex: 0 0 auto;
+  position: absolute;
+  left: 0px;
+  top: 2px;
   color: rgb(var(--color-link));
-  line-height: 1.4;
 }
 
 .bundle-includes ul li a {
-  font-size: 1.2rem;
+  display: inline;
   color: rgb(var(--color-link));
-  line-height: 1.4;
 }
 </style>
 

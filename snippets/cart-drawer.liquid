@@ -113,10 +113,9 @@
 }
 
 .bundle-includes ul li {
-  display: flex;
-  align-items: flex-start;
-  gap: 6px;
-  padding: 2px 0;
+  display: block;
+  position: relative;
+  padding: 2px 0 2px 14px;
   font-size: 1.2rem;
   color: rgb(var(--color-link));
   line-height: 1.4;
@@ -124,17 +123,16 @@
 
 .bundle-includes ul li::before {
   content: "•";
-  flex: 0 0 auto;
+  position: absolute;
+  left: 0px;
+  top: 2px;
   color: rgb(var(--color-link));
-  line-height: 1.4;
 }
 
 .bundle-includes ul li a {
-  font-size: 1.2rem;
+  display: inline;
   color: rgb(var(--color-link));
-  line-height: 1.4;
 }
-
 
 </style>
 
@@ -424,14 +422,6 @@
                             </button>
                             <div>
                               {{ item.product.metafields.custom.cart_bundle_display | metafield_tag }}
-                              {% comment %} <ul>
-                                {%- for p in item.product.metafields.custom.bundle_list.value -%}
-                                    {%- assign p_title = p.title | escape -%}
-                                    {%- assign p_url = p.url -%}
-                                    <li><a href="{{ p_url }}" class="link" target="_blank">{{ p_title }}</a></li>
-                                {%- endfor -%}
-                                
-                              </ul> {% endcomment %}
                             </div>
                           </div>
                           
