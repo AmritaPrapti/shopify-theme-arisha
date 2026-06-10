@@ -104,7 +104,7 @@
         "curated_product_block_AXLV3k": {
           "type": "curated_product_block",
           "settings": {
-            "product": "essentials-bundle",
+            "product": "complete-bundle",
             "make_it_selected": true,
             "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
             "heading": "Complete",
