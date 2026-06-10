@@ -326,7 +326,7 @@
       "disabled": true,
       "name": "t:sections.featured-product.presets.name",
       "settings": {
-        "product": "mini-bundle",
+        "product": "essentials-bundle",
         "color_scheme": "scheme-1",
         "secondary_background": false,
         "media_size": "medium",
