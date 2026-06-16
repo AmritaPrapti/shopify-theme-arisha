@@ -105,6 +105,9 @@
       "block_order": [
         "judge_me_reviews_review_widget_bcw6Hj"
       ],
+      "custom_css": [
+        "{display: flex; justify-content: center; align-items: center;}"
+      ],
       "settings": {
         "include_margins": true,
         "heading": "Testimonials",

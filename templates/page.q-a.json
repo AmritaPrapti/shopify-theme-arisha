@@ -202,7 +202,7 @@
           "settings": {
             "heading": "How does shipping work?",
             "icon": "none",
-            "row_content": "<p>All orders placed <strong>before Monday at noon (PST)</strong> will ship out on <strong>Wednesday</strong>.<br/><br/>We currently deliver only within <strong>California State</strong>. <br/>You will see your <strong>specific delivery date (Wednesday or Thursday) displayed at checkout </strong>after putting in your delivery address.<br/>Please be available to receive your order the day of delivery to prevent thawing. If no one answers, we will leave your delivery at the door. We cannot re-attempt delivery due to the nature of our products, so if your address is an office address with specific hours, please notify us upon ordering, via email. While we do our best to ensure items stay frozen, we cannot guarantee product quality once the delivery has been completed.</p><p>If you’re planning ahead for postpartum, we recommend ordering <strong>at least one month before your due date</strong>.</p>",
+            "row_content": "<p>All orders placed <strong>before Saturday at noon (PST)</strong> will ship out on <strong>Monday</strong>.All orders placed <strong>before Monday at noon (PST)</strong> will ship out on <strong>Wednesday</strong>.<br/><br/>We currently deliver only within <strong>California State</strong>. <br/>You will see your <strong>specific delivery date displayed at checkout </strong>after putting in your delivery address.<br/>Please be available to receive your order the day of delivery to prevent thawing. If no one answers, we will leave your delivery at the door. We cannot re-attempt delivery due to the nature of our products, so if your address is an office address with specific hours, please notify us upon ordering, via email. While we do our best to ensure items stay frozen, we cannot guarantee product quality once the delivery has been completed.</p><p>If you’re planning ahead for postpartum, we recommend ordering <strong>at least one month before your due date</strong>.</p>",
             "page": ""
           }
         },
@@ -211,7 +211,7 @@
           "settings": {
             "heading": "When do you deliver?",
             "icon": "none",
-            "row_content": "<p>All orders placed <strong>before Monday at noon (PST)</strong> will ship out on <strong>Wednesday</strong>.<br/><br/>We currently deliver only within <strong>California State</strong>. <br/>You will see your <strong>specific delivery date (Wednesday or Thursday) displayed at checkout </strong>after putting in your delivery address.<br/>Please be available to receive your order the day of delivery to prevent thawing. If no one answers, we will leave your delivery at the door. We cannot re-attempt delivery due to the nature of our products, so if your address is an office address with specific hours, please notify us upon ordering, via email. While we do our best to ensure items stay frozen, we cannot guarantee product quality once the delivery has been completed.</p><p>If you’re planning ahead for postpartum, we recommend ordering <strong>at least one month before your due date</strong>.</p>",
+            "row_content": "<p>All orders placed <strong>before Saturday at noon (PST)</strong> will ship out on <strong>Monday</strong>.All orders placed <strong>before Monday at noon (PST)</strong> will ship out on <strong>Wednesday</strong>.<br/><br/>We currently deliver only within <strong>California State</strong>. <br/>You will see your <strong>specific delivery date displayed at checkout </strong>after putting in your delivery address.<br/>Please be available to receive your order the day of delivery to prevent thawing. If no one answers, we will leave your delivery at the door. We cannot re-attempt delivery due to the nature of our products, so if your address is an office address with specific hours, please notify us upon ordering, via email. While we do our best to ensure items stay frozen, we cannot guarantee product quality once the delivery has been completed.</p><p>If you’re planning ahead for postpartum, we recommend ordering <strong>at least one month before your due date</strong>.</p>",
             "page": ""
           }
         },
@@ -220,7 +220,7 @@
           "settings": {
             "heading": "What is the cutoff time for shipping?",
             "icon": "none",
-            "row_content": "<p>All orders placed <strong>before Monday at noon (PST)</strong> will ship out on <strong>Wednesday</strong>.<br/><br/>We currently deliver only within <strong>California State</strong>. <br/>You will see your <strong>specific delivery date (Wednesday or Thursday) displayed at checkout </strong>after putting in your delivery address.<br/>Please be available to receive your order the day of delivery to prevent thawing. If no one answers, we will leave your delivery at the door. We cannot re-attempt delivery due to the nature of our products, so if your address is an office address with specific hours, please notify us upon ordering, via email. While we do our best to ensure items stay frozen, we cannot guarantee product quality once the delivery has been completed.</p><p>If you’re planning ahead for postpartum, we recommend ordering <strong>at least one month before your due date</strong>.</p><p>If you’re planning ahead for postpartum, we recommend ordering <strong>at least one month before your due date</strong>.</p>",
+            "row_content": "<p>All orders placed <strong>before Saturday at noon (PST)</strong> will ship out on <strong>Monday</strong>.All orders placed <strong>before Monday at noon (PST)</strong> will ship out on <strong>Wednesday</strong>.<br/><br/>We currently deliver only within <strong>California State</strong>. <br/>You will see your <strong>specific delivery date displayed at checkout </strong>after putting in your delivery address.<br/>Please be available to receive your order the day of delivery to prevent thawing. If no one answers, we will leave your delivery at the door. We cannot re-attempt delivery due to the nature of our products, so if your address is an office address with specific hours, please notify us upon ordering, via email. While we do our best to ensure items stay frozen, we cannot guarantee product quality once the delivery has been completed.</p><p>If you’re planning ahead for postpartum, we recommend ordering <strong>at least one month before your due date</strong>.</p>",
             "page": ""
           }
         },
@@ -230,15 +230,6 @@
             "heading": "When should I order?",
             "icon": "none",
             "row_content": "<p>If you plan to have our food ready for your baby’s arrival, we recommend placing your order <strong>about one month before your due date</strong>.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_XFQXEN": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Do I need to return the bags and ice packs?",
-            "icon": "none",
-            "row_content": "<p>While returns aren’t required, we’d deeply appreciate it if you could return your insulated bags and ice packs so we can <strong>reuse them and reduce waste</strong>. Please store them until our delivery staff can collect—either hand them back to our staff <strong>the same day</strong> or <strong>leave them outside your entrance when you expect your next</strong> delivery. <em>(For some areas where we use a courier, collection may not be available.)</em> Every small act helps us keep the planet a little cleaner.</p>",
             "page": ""
           }
         },
@@ -258,7 +249,6 @@
         "collapsible_row_QFbyMq",
         "collapsible_row_PQKXxb",
         "collapsible_row_KPgW4W",
-        "collapsible_row_XFQXEN",
         "collapsible_row_EVrWwM"
       ],
       "custom_css": [

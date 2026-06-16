@@ -365,6 +365,7 @@
         "judge_me_reviews_testimonials_carousel_9RnypQ"
       ],
       "custom_css": [
+        "{display: flex; justify-content: center; align-items: center;}",
         "p {color: #333333;}",
         ".jdgm-reviewer-name {color: #333333;}",
         ".jdgm-reviewer-verified-icon {color: #333333;}",
