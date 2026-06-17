@@ -197,7 +197,7 @@
           "type": "list",
           "settings": {
             "list_title": "Submit your order",
-            "list_description": "<p>Orders received by noon on Monday will be delivered on Wednesday or Thursday of the same week.</p>"
+            "list_description": "<p>Your specific delivery date is typically within a week, and will be displayed at checkout.</p>"
           }
         },
         "list_Y9xbqg": {
@@ -278,6 +278,7 @@
       "settings": {
         "title": "Shop by Category",
         "heading_size": "h1",
+        "header_description": "",
         "show_title_center": true,
         "image_ratio": "square",
         "show_description": true,
@@ -462,6 +463,7 @@
         "judge_me_reviews_testimonials_carousel_CwCGKh"
       ],
       "custom_css": [
+        "{display: flex; justify-content: center; align-items: center;}",
         "p {color: #333333;}",
         ".jdgm-reviewer-name {color: #333333;}",
         ".jdgm-reviewer-verified-icon {color: #333333;}",

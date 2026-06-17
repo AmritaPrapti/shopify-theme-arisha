@@ -86,7 +86,7 @@
         "curated_product_block_7i4Lcq": {
           "type": "curated_product_block",
           "settings": {
-            "product": "mini-bundle",
+            "product": "essentials-bundle",
             "make_it_selected": false,
             "color_scheme": "scheme-2fa3a363-95b8-4d07-9e42-14be7562f72f",
             "heading": "Essentials",
@@ -104,7 +104,7 @@
         "curated_product_block_AXLV3k": {
           "type": "curated_product_block",
           "settings": {
-            "product": "essentials-bundle",
+            "product": "complete-bundle",
             "make_it_selected": true,
             "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
             "heading": "Complete",
@@ -122,7 +122,7 @@
         "curated_product_block_g96eQW": {
           "type": "curated_product_block",
           "settings": {
-            "product": "full-care-bundle",
+            "product": "signature-bundle",
             "make_it_selected": false,
             "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
             "heading": "Signature",
@@ -365,6 +365,7 @@
         "judge_me_reviews_testimonials_carousel_9RnypQ"
       ],
       "custom_css": [
+        "{display: flex; justify-content: center; align-items: center;}",
         "p {color: #333333;}",
         ".jdgm-reviewer-name {color: #333333;}",
         ".jdgm-reviewer-verified-icon {color: #333333;}",
