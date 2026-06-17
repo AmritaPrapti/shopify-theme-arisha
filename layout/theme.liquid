@@ -396,6 +396,122 @@
         countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: '[count]' }}`,
       };
     </script>
+    <script>
+(function () {
+  if (window.__klaviyoCartAddInterceptorInstalled) return;
+  window.__klaviyoCartAddInterceptorInstalled = true;
+
+  function isCartAddUrl(url) {
+    try {
+      var path = new URL(url, window.location.origin).pathname;
+      return /\/cart\/add(\.js)?$/.test(path);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function wait(ms) {
+    return new Promise(function (resolve) {
+      setTimeout(resolve, ms);
+    });
+  }
+
+  async function trackKlaviyoAddedToCart() {
+    try {
+      await wait(250);
+
+      var cartResponse = await fetch('/cart.js', {
+        credentials: 'same-origin'
+      });
+
+      var cart = await cartResponse.json();
+
+      if (!cart.items || !cart.items.length) return;
+
+      var latestItem = cart.items[0];
+
+      var cartItems = cart.items
+        .map(function (item) {
+          return item.variant_id + ':' + item.quantity;
+        })
+        .join(',');
+
+      var payload = {
+        CartURL: window.location.origin + '/cart/' + cartItems + '?storefront=true',
+
+        Items: cart.items.map(function (item) {
+          return {
+            ProductName: item.product_title,
+            ProductID: item.product_id,
+            VariantID: item.variant_id,
+            SKU: item.sku,
+            Quantity: item.quantity,
+            Price: item.final_price / 100,
+            ImageURL: item.image,
+            URL: window.location.origin + item.url
+          };
+        }),
+
+        ProductName: latestItem.product_title,
+        ProductID: latestItem.product_id,
+        VariantID: latestItem.variant_id,
+        SKU: latestItem.sku,
+        Quantity: latestItem.quantity,
+        Price: latestItem.final_price / 100,
+        ImageURL: latestItem.image,
+        URL: window.location.origin + latestItem.url,
+        $value: cart.total_price / 100
+      };
+
+      if (window.klaviyo && typeof window.klaviyo.track === 'function') {
+        window.klaviyo.track('Added to Cart', payload);
+      } else {
+        window.klaviyo = window.klaviyo || [];
+        window.klaviyo.push(['track', 'Added to Cart', payload]);
+      }
+
+      console.log('Klaviyo custom Added to Cart tracked globally', payload);
+    } catch (error) {
+      console.error('Global Klaviyo Added to Cart tracking error:', error);
+    }
+  }
+
+  var originalFetch = window.fetch;
+
+  window.fetch = async function () {
+    var requestUrl = arguments[0] && arguments[0].url ? arguments[0].url : arguments[0];
+    var isAddToCart = isCartAddUrl(requestUrl);
+
+    var response = await originalFetch.apply(this, arguments);
+
+    if (isAddToCart && response && response.ok) {
+      trackKlaviyoAddedToCart();
+    }
+
+    return response;
+  };
+
+  var originalOpen = XMLHttpRequest.prototype.open;
+  var originalSend = XMLHttpRequest.prototype.send;
+
+  XMLHttpRequest.prototype.open = function (method, url) {
+    this.__isCartAddRequest = isCartAddUrl(url);
+    return originalOpen.apply(this, arguments);
+  };
+
+  XMLHttpRequest.prototype.send = function () {
+    if (this.__isCartAddRequest) {
+      this.addEventListener('load', function () {
+        if (this.status >= 200 && this.status < 300) {
+          trackKlaviyoAddedToCart();
+        }
+      });
+    }
+
+    return originalSend.apply(this, arguments);
+  };
+})();
+</script>
 
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>

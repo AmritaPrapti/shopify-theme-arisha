@@ -77,7 +77,7 @@ if (!customElements.get('product-form')) {
               });
             this.error = false;
             console.log('Product added to cart', formData.get('id'));
-            this.trackKlaviyoAddedToCart(formData.get('id'));
+            // this.trackKlaviyoAddedToCart(formData.get('id'));
             const quickAddModal = this.closest('quick-add-modal');
             if (quickAddModal) {
               document.body.addEventListener(

@@ -1003,7 +1003,7 @@ getProgressMessage(quantity) {
       const result = await response.json();
       console.log("Bundle added to cart:", result);
 
-       await this.trackKlaviyoAddedToCart();
+      //  await this.trackKlaviyoAddedToCart();
 
       addToCartBtn.innerHTML = "✓ Added to Cart!";
       addToCartBtn.style.backgroundColor = this.settings.successColor;
