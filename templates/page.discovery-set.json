@@ -229,7 +229,7 @@
           "settings": {
             "title": "<h2>Signature Soups</h2>",
             "description": "<p>Mineral-rich broths designed for warming postpartum nourishment.</p>",
-            "collection": "soups-and-meals"
+            "collection": "discovery-set-soups"
           }
         },
         "collection_pahkEy": {
@@ -257,7 +257,7 @@
       "name": "Collections Set",
       "settings": {
         "title": "What's included",
-        "text": "<p>Try one of each soups, snacks, and teas — thoughtfully selected to help you discover what feels most supportive during recovery. All ready in minutes — no preparation needed.</p>",
+        "text": "<p>Try a variety of our soups, snacks, and teas — thoughtfully selected to help you discover what feels most supportive during recovery. All ready in minutes — no preparation needed.</p>",
         "heading_size": "h1",
         "header_alignment": "center",
         "columns_desktop": 3,
