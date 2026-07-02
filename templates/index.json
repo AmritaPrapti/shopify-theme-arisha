@@ -455,7 +455,8 @@
             "show_drop_shadow": false,
             "transition_speed": 5,
             "header_text": "",
-            "show_average_rating": true
+            "show_average_rating": true,
+            "rating_display": "default"
           }
         }
       },
@@ -528,7 +529,7 @@
             "button_layout": "default",
             "button_label": "GET 10% OFF",
             "button_style": "primary",
-            "text": "<p>*Excludes Discovery Set. Applies to full-priced items only.</p>"
+            "text": "<p>*Applies to full-priced items only.</p>"
           }
         }
       },
