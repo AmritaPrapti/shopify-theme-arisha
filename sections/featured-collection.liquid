@@ -59,7 +59,7 @@
   endif
 
   assign show_desktop_slider = false
-  if section.settings.enable_desktop_slider and products_to_display > section.settings.columns_desktop
+  if section.settings.enable_desktop_slider 
     assign show_desktop_slider = true
   endif
 -%}

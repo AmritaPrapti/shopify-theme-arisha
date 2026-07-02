@@ -1,8 +1,16 @@
 slider-component {
-  --desktop-margin-left-first-item: max(
-    5rem,
-    calc((100vw - var(--page-width) + 10rem - var(--grid-desktop-horizontal-spacing)) / 2)
-  );
+  /*
+   * The card widths for the desktop slider are a function of this value
+   * (see `.slider--desktop.grid--N-col-desktop .grid__item`). The slider
+   * lives inside a `.slider-with-side-arrows.page-width` wrapper, so its
+   * width is capped at `--page-width`. A viewport-based value here would keep
+   * growing on screens wider than `--page-width`, shrinking the cards until
+   * the track no longer overflows — which hides the arrows/bullets (they only
+   * appear when `totalPages > 1`). Pinning it keeps card widths stable across
+   * all screen sizes. `5rem` is the value the old `max(...)` produced at the
+   * reference width, so this is a no-op on screens up to `--page-width`.
+   */
+  --desktop-margin-left-first-item: 5rem;
   position: relative;
   display: block;
 }
@@ -399,9 +407,6 @@ slider-component.slider-component-full-width {
   border-radius: 4px;
 }
 
-.slider-button:not([disabled]):hover {
-  color: rgb(var(--color-foreground));
-}
 
 .slider-button .icon {
   height: 0.6rem;

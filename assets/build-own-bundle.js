@@ -1205,36 +1205,35 @@ getProgressMessage(quantity) {
     });
   }
   setupSummaryVisibilityObserver() {
-    const footer = document.querySelector("footer");
     const summaryWrapper = document.querySelector(".selected-product-summary-wrapper");
 
-    if (!footer || !summaryWrapper) return;
+    if (!summaryWrapper) return;
+
+    // Show the summary only while the Build Your Own Bundle section is in the
+    // viewport; hide it whenever the user has scrolled away (above or below).
+    // `summary-wrapper--hidden` (display:none) is a mobile/tablet-only rule, so
+    // toggling it is a no-op on desktop, where the summary is sticky and lives
+    // inside the section already. On mobile the wrapper is a fixed bottom bar
+    // that would otherwise stay pinned to the screen everywhere on the page.
+    const section =
+      summaryWrapper.closest(".build-your-own-bundle") ||
+      document.querySelector(".build-your-own-bundle");
+
+    if (!section) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (window.innerWidth < 750) {
-            if (entry.isIntersecting) {
-              summaryWrapper.classList.add("summary-wrapper--hidden");
-            } else {
-              summaryWrapper.classList.remove("summary-wrapper--hidden");
-            }
-          }
+          summaryWrapper.classList.toggle(
+            "summary-wrapper--hidden",
+            !entry.isIntersecting
+          );
         });
       },
-      { 
-        threshold: 0,
-        rootMargin: "0px 0px -50% 0px"
-       }
+      { threshold: 0 }
     );
 
-    observer.observe(footer);
-
-    window.addEventListener("resize", () => {
-      if (window.innerWidth >= 750) {
-        summaryWrapper.classList.remove("summary-wrapper--hidden");
-      }
-    });
+    observer.observe(section);
   }
 }
 

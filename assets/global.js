@@ -972,11 +972,6 @@ class SliderComponent extends HTMLElement {
     if (counter) {
       counter.style.display = hasMultiplePages ? "flex" : "none";
     }
-
-    const container = this.querySelector(".slider-with-side-arrows");
-    if (container && !hasMultiplePages) {
-      container.style.padding = "0";
-    }
   }
 
   resetPages() {
