@@ -28,16 +28,16 @@
         "text_cX4ihw": {
           "type": "text",
           "settings": {
-            "text": "Try our postpartum meal delivery service rooted in Japanese tradition—including a variety of our soups, snacks, and teas.",
+            "text": "Try our postpartum meal delivery service rooted in Japanese tradition—including our most popular soups, snacks, and teas.",
             "text_style": "body"
           }
         },
         "welcomeprice_RJbxGU": {
           "type": "welcomeprice",
           "settings": {
-            "price_text": "Special Welcome Price",
-            "sale_price": "$85",
-            "regular_price": "$100"
+            "price_text": "",
+            "sale_price": "$100",
+            "regular_price": ""
           }
         },
         "buy_buttons_fmfCqF": {
@@ -257,7 +257,7 @@
       "name": "Collections Set",
       "settings": {
         "title": "What's included",
-        "text": "<p>Try a variety of our soups, snacks, and teas — thoughtfully selected to help you discover what feels most supportive during recovery. All ready in minutes — no preparation needed.</p>",
+        "text": "<p>Try our most popular soups, snacks, and teas — thoughtfully selected to help you discover what feels most supportive during recovery. All ready in minutes — no preparation needed.</p>",
         "heading_size": "h1",
         "header_alignment": "center",
         "columns_desktop": 3,
