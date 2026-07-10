@@ -189,24 +189,37 @@
             %}
           </div>
         </div>
-        {%- assign variant_available = card_product.selected_or_first_available_variant.available -%}
+        {%- liquid
+          assign card_variant = card_product.selected_or_first_available_variant
+          assign variant_available = card_variant.available
+          comment
+            Only expose a limit when Shopify tracks inventory and overselling is denied;
+            an empty attribute means "no limit" to the JS.
+          endcomment
+          assign inventory_quantity = ''
+          if card_variant.inventory_management == 'shopify' and card_variant.inventory_policy == 'deny'
+            assign inventory_quantity = card_variant.inventory_quantity
+          endif
+        -%}
+        <p class="inventory-limit-message hidden" role="alert"></p>
         <button
           class="button add-bundle{% unless variant_available %} sold-out{% endunless %}"
           style="--color-button: {{ settings.button_background }}; --color-button-text: {{ settings.button_text_color }}; border-color: {{ settings.button_background }};"
           data-product-id="{{ card_product.id }}"
-          data-variant-id="{{ card_product.selected_or_first_available_variant.id }}"
+          data-variant-id="{{ card_variant.id }}"
+          data-inventory-quantity="{{ inventory_quantity }}"
           {% unless variant_available %}disabled aria-disabled="true"{% endunless %}
         >
           {% if variant_available %}Add To Bundle{% else %}Sold Out{% endif %}
         </button>
-        <div class="custom-quantity-selector hidden"  data-product-id="{{ card_product.id }}" data-variant-id="{{ card_product.selected_or_first_available_variant.id }}">
-          <button>
+        <div class="custom-quantity-selector hidden"  data-product-id="{{ card_product.id }}" data-variant-id="{{ card_variant.id }}">
+          <button data-inventory-quantity="{{ inventory_quantity }}">
             <span class="svg-wrapper">
               {{- 'icon-minus.svg' | inline_asset_content -}}
             </span>
           </button>
           <input type="number" value="1" min="1">
-          <button>
+          <button data-inventory-quantity="{{ inventory_quantity }}">
             <span class="svg-wrapper">
               {{- 'icon-plus.svg' | inline_asset_content -}}
             </span>
@@ -274,26 +287,28 @@
                 data-variant-id="{{ card_product.selected_or_first_available_variant.id }}">
                 <p>Quantity</p>
                 <div class="quick-view-quantity-selector_inner">
-                  <button>
+                  <button data-inventory-quantity="{{ inventory_quantity }}">
                     <span class="svg-wrapper">
                       {{- 'icon-minus.svg' | inline_asset_content -}}
                     </span>
                   </button>
                   <input type="number" value="1" min="1">
-                  <button>
+                  <button data-inventory-quantity="{{ inventory_quantity }}">
                     <span class="svg-wrapper">
                       {{- 'icon-plus.svg' | inline_asset_content -}}
                     </span>
                   </button>
                 </div>
               </div>
+              <p class="inventory-limit-message hidden" role="alert"></p>
 
               <!-- Add button always visible -->
               <button
                 class="button add-bundle quick-view-add-bundle{% unless variant_available %} sold-out{% endunless %}"
                 style="--color-button: {{ settings.button_background }}; --color-button-text: {{ settings.button_text_color }}; border-color: {{ settings.button_background }};"
                 data-product-id="{{ card_product.id }}"
-                data-variant-id="{{ card_product.selected_or_first_available_variant.id }}"
+                data-variant-id="{{ card_variant.id }}"
+                data-inventory-quantity="{{ inventory_quantity }}"
                 {% unless variant_available %}disabled aria-disabled="true"{% endunless %}
               >
                 {% if variant_available %}Add To Bundle{% else %}Sold Out{% endif %}

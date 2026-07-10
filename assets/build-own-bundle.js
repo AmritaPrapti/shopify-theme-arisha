@@ -2,6 +2,7 @@ class BundleBuilder {
   constructor() {
     this.selectedProducts = [];
     this.discountTiers = [];
+    this.cartQuantities = {};
     this.settings = this.getSettings();
     this.init();
   }
@@ -57,6 +58,7 @@ class BundleBuilder {
 
   init() {
     this.discountTiers = this.settings.discountTiers;
+    this.refreshCartQuantities();
     this.setupProductListeners();
     this.setupQuickViewListeners(); 
     this.renderSummary();
@@ -142,6 +144,68 @@ class BundleBuilder {
     });
   }
 
+  // Shopify caps the TOTAL cart quantity per variant, so limits must account
+  // for what's already in the cart, not just the stock rendered at page load
+  async refreshCartQuantities() {
+    try {
+      const response = await fetch("/cart.js");
+      const cart = await response.json();
+      this.cartQuantities = {};
+      (cart.items || []).forEach((item) => {
+        this.cartQuantities[item.variant_id] =
+          (this.cartQuantities[item.variant_id] || 0) + item.quantity;
+      });
+    } catch (error) {
+      console.error("Error reading cart for inventory limits:", error);
+    }
+  }
+
+  // Empty/missing data-inventory-quantity means inventory is not tracked → no limit
+  getInventoryInfo(scope) {
+    const source = scope.querySelector("[data-inventory-quantity]");
+    const stock = parseInt(source?.dataset.inventoryQuantity);
+    if (Number.isNaN(stock)) {
+      return { stock: Infinity, inCart: 0, remaining: Infinity };
+    }
+    const variantId =
+      scope.querySelector("[data-variant-id]")?.dataset.variantId;
+    const inCart = this.cartQuantities[variantId] || 0;
+    return { stock, inCart, remaining: Math.max(stock - inCart, 0) };
+  }
+
+  // What can still be added on top of what's already in the cart
+  getInventoryLimit(scope) {
+    return this.getInventoryInfo(scope).remaining;
+  }
+
+  // Disables the plus button and toggles the stock message inside `scope`
+  // (a product card or a quick view modal) based on the given quantity
+  updateInventoryUI(scope, quantity) {
+    const { stock, inCart, remaining } = this.getInventoryInfo(scope);
+    const atLimit = Number.isFinite(remaining) && quantity >= remaining;
+    const plusBtn = scope.querySelector(
+      ".custom-quantity-selector button:last-child",
+    );
+    const message = scope.querySelector(".inventory-limit-message");
+
+    if (plusBtn) plusBtn.disabled = atLimit;
+    if (message) {
+      if (atLimit) {
+        if (remaining === 0 && inCart > 0) {
+          message.textContent = `All ${stock} in stock are already in your cart`;
+        } else if (inCart > 0) {
+          message.textContent = `Only ${remaining} more available (${inCart} already in your cart)`;
+        } else {
+          message.textContent = `Only ${remaining} in stock`;
+        }
+        message.classList.remove("hidden");
+      } else {
+        message.classList.add("hidden");
+      }
+    }
+    return atLimit;
+  }
+
   setupProductListeners() {
     const productCards = document.querySelectorAll(".card-wrapper");
 
@@ -162,7 +226,7 @@ class BundleBuilder {
         addButton.addEventListener("click", (e) => {
           e.preventDefault();
 
-          this.addProductToBundle(card, quantityInput.value);
+          if (!this.addProductToBundle(card, quantityInput.value)) return;
           // Toggle visibility using classes
           addButton.classList.add("hidden");
           if (quantitySelector) {
@@ -178,12 +242,14 @@ class BundleBuilder {
           if (currentValue > 1) {
             quantityInput.value = currentValue - 1;
             this.updateProductQuantityFromCard(card, currentValue - 1);
+            this.updateInventoryUI(card, currentValue - 1);
           } else {
             // Remove from bundle and show add button again
             this.removeProductFromCard(card);
             addButton.classList.remove("hidden");
             quantitySelector.classList.add("hidden");
             quantityInput.value = 1;
+            this.updateInventoryUI(card, 0);
           }
         });
       }
@@ -192,9 +258,16 @@ class BundleBuilder {
         plusBtn.addEventListener("click", (e) => {
           e.preventDefault();
           const currentValue = parseInt(quantityInput.value) || 1;
+          const limit = this.getInventoryLimit(card);
+
+          if (currentValue >= limit) {
+            this.updateInventoryUI(card, currentValue);
+            return;
+          }
 
           quantityInput.value = currentValue + 1;
           this.updateProductQuantityFromCard(card, currentValue + 1);
+          this.updateInventoryUI(card, currentValue + 1);
         });
       }
 
@@ -208,6 +281,14 @@ class BundleBuilder {
             newValue = 1;
             e.target.value = 1;
           }
+
+          // Cap at available inventory
+          const limit = this.getInventoryLimit(card);
+          if (newValue > limit) {
+            newValue = limit;
+            e.target.value = limit;
+          }
+          this.updateInventoryUI(card, newValue);
 
           // Check if product is already in bundle
           const variantId =
@@ -250,11 +331,23 @@ class BundleBuilder {
       (p) => p.variantId === variantId,
     );
 
+    const inventoryLimit = this.getInventoryLimit(card);
+    const requestedQuantity = parseInt(quantity) || 1;
+
     if (existingProductIndex >= 0) {
-      // Update quantity if product already exists
-      this.selectedProducts[existingProductIndex].quantity +=
-        parseInt(quantity);
+      // Update quantity if product already exists, capped at available inventory
+      this.selectedProducts[existingProductIndex].quantity = Math.min(
+        this.selectedProducts[existingProductIndex].quantity +
+          requestedQuantity,
+        inventoryLimit,
+      );
     } else {
+      const initialQuantity = Math.min(requestedQuantity, inventoryLimit);
+      if (initialQuantity <= 0) {
+        // Nothing can be added (e.g. all stock is already in the cart)
+        this.updateInventoryUI(card, 0);
+        return false;
+      }
       // Add new product
       this.selectedProducts.push({
         title: productTitle,
@@ -262,10 +355,21 @@ class BundleBuilder {
         image: productImage,
         price: productPrice,
         variantId: variantId,
-        quantity: parseInt(quantity),
+        quantity: initialQuantity,
+        inventoryLimit: inventoryLimit,
         card: card,
       });
     }
+
+    // Reflect the (possibly capped) quantity on the card
+    const finalQuantity = this.selectedProducts.find(
+      (p) => p.variantId === variantId,
+    ).quantity;
+    const cardQuantityInput = card.querySelector(
+      ".custom-quantity-selector input",
+    );
+    if (cardQuantityInput) cardQuantityInput.value = finalQuantity;
+    this.updateInventoryUI(card, finalQuantity);
 
     this.renderSummary();
     this.showAddedFeedback(card);
@@ -276,6 +380,7 @@ class BundleBuilder {
       0,
     );
     this.updateTierSteps(totalItems);
+    return true;
   }
 
   updateProductQuantityFromCard(card, newQuantity) {
@@ -287,7 +392,10 @@ class BundleBuilder {
     );
 
     if (existingProductIndex >= 0) {
-      this.selectedProducts[existingProductIndex].quantity = newQuantity;
+      this.selectedProducts[existingProductIndex].quantity = Math.min(
+        newQuantity,
+        this.getInventoryLimit(card),
+      );
       this.renderSummary();
 
       // Update tier steps immediately
@@ -335,6 +443,7 @@ class BundleBuilder {
       if (addButton) addButton.classList.remove("hidden");
       if (quantitySelector) quantitySelector.classList.add("hidden");
       if (quantityInput) quantityInput.value = 1;
+      this.updateInventoryUI(product.card, 0);
     }
 
     this.selectedProducts.splice(index, 1);
@@ -363,6 +472,7 @@ class BundleBuilder {
         if (addButton) addButton.classList.remove("hidden");
         if (quantitySelector) quantitySelector.classList.add("hidden");
         if (quantityInput) quantityInput.value = 1;
+        this.updateInventoryUI(product.card, 0);
       }
     });
 
@@ -376,10 +486,11 @@ class BundleBuilder {
     if (quantity <= 0) {
       this.removeProductFromBundle(index);
     } else {
-      this.selectedProducts[index].quantity = quantity;
+      const product = this.selectedProducts[index];
+      quantity = Math.min(quantity, product.inventoryLimit ?? Infinity);
+      product.quantity = quantity;
 
       // Update card quantity input if card reference exists
-      const product = this.selectedProducts[index];
       if (product && product.card) {
         const quantityInput = product.card.querySelector(
           ".custom-quantity-selector input",
@@ -387,6 +498,7 @@ class BundleBuilder {
         if (quantityInput) {
           quantityInput.value = quantity;
         }
+        this.updateInventoryUI(product.card, quantity);
       }
 
       this.renderSummary();
@@ -621,8 +733,11 @@ class BundleBuilder {
     const tierProgressBarsHTML = this.generateTierProgressBars(totalItems);
 
     const productsHTML = this.selectedProducts
-      .map(
-        (product, index) => `
+      .map((product, index) => {
+        const atLimit =
+          Number.isFinite(product.inventoryLimit) &&
+          product.quantity >= product.inventoryLimit;
+        return `
       <div class="summary-product-item" data-index="${index}">
         <div class="summary-product-image">
           <img src="${product.image}" alt="${product.title}">
@@ -633,8 +748,9 @@ class BundleBuilder {
           <div class="summary-quantity-controls" data-index="${index}">
             <button class="summary-qty-btn minus" data-index="${index}">−</button>
             <input type="number" class="summary-qty-value" value="${product.quantity}" min="1" data-index="${index}">
-            <button class="summary-qty-btn plus" data-index="${index}">+</button>
+            <button class="summary-qty-btn plus" data-index="${index}" ${atLimit ? "disabled" : ""}>+</button>
           </div>
+          ${atLimit ? `<p class="summary-inventory-note">Only ${product.inventoryLimit} in stock</p>` : ""}
         </div>
         <button class="summary-remove-btn" data-index="${index}">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -643,8 +759,8 @@ class BundleBuilder {
           </svg>
         </button>
       </div>
-    `,
-      )
+    `;
+      })
       .join("");
 
     const compactProductsHTML = this.selectedProducts
@@ -1113,8 +1229,8 @@ getProgressMessage(quantity) {
   }
 
   enableAllControls() {
-    // Enable all add buttons
-    document.querySelectorAll(".add-bundle").forEach((btn) => {
+    // Enable all add buttons (sold-out ones stay disabled)
+    document.querySelectorAll(".add-bundle:not(.sold-out)").forEach((btn) => {
       btn.disabled = false;
       btn.classList.remove("disabled");
     });
@@ -1140,6 +1256,13 @@ getProgressMessage(quantity) {
         btn.disabled = false;
         btn.classList.remove("disabled");
       });
+
+    // Re-apply inventory limits that the blanket enable above cleared
+    this.selectedProducts.forEach((product) => {
+      if (product.card) {
+        this.updateInventoryUI(product.card, product.quantity);
+      }
+    });
   }
 
   setupQuickViewListeners() {
@@ -1161,20 +1284,34 @@ getProgressMessage(quantity) {
       minusBtn?.addEventListener("click", (e) => {
         e.preventDefault();
         const current = parseInt(qtyInput?.value) || 1;
-        if (qtyInput && current > 1) qtyInput.value = current - 1;
+        if (qtyInput && current > 1) {
+          qtyInput.value = current - 1;
+          this.updateInventoryUI(modal, current - 1);
+        }
       });
 
-      // Plus only adjusts the input
+      // Plus only adjusts the input, capped at available inventory
       plusBtn?.addEventListener("click", (e) => {
         e.preventDefault();
         const current = parseInt(qtyInput?.value) || 1;
+        const limit = this.getInventoryLimit(modal);
+
+        if (current >= limit) {
+          this.updateInventoryUI(modal, current);
+          return;
+        }
+
         if (qtyInput) qtyInput.value = current + 1;
+        this.updateInventoryUI(modal, current + 1);
       });
 
       // Clamp manual input
       qtyInput?.addEventListener("change", (e) => {
         let val = parseInt(e.target.value) || 1;
         if (val < 1) { val = 1; e.target.value = 1; }
+        const limit = this.getInventoryLimit(modal);
+        if (val > limit) { val = limit; e.target.value = limit; }
+        this.updateInventoryUI(modal, val);
       });
 
       // Add button uses whatever quantity is in the input
@@ -1183,16 +1320,21 @@ getProgressMessage(quantity) {
         if (!card) return;
 
         const qty = parseInt(qtyInput?.value) || 1;
-        this.addProductToBundle(card, qty);
+        const added = this.addProductToBundle(card, qty);
 
-        // Sync the card quantity selector
+        // Reflect the (possibly capped) bundle total in the modal
+        const bundleQty =
+          this.selectedProducts.find((p) => p.variantId === variantId)
+            ?.quantity || 0;
+        this.updateInventoryUI(modal, bundleQty);
+        if (!added) return;
+
+        // Sync the card quantity selector (addProductToBundle sets the input value)
         const cardAddBtn = card.querySelector(".add-bundle");
         const cardQtySelector = card.querySelector(".custom-quantity-selector");
-        const cardQtyInput = card.querySelector(".custom-quantity-selector input");
 
         cardAddBtn?.classList.add("hidden");
         cardQtySelector?.classList.remove("hidden");
-        if (cardQtyInput) cardQtyInput.value = qty;
 
         // Visual feedback on the add button
         addBtn.textContent = "✓ Added!";
@@ -1310,6 +1452,7 @@ function syncModalWithCard(modal) {
   // Always reset to defaults when modal opens
   if (qtyInput) qtyInput.value = 1;
   if (addBtn) addBtn.textContent = "Add To Bundle";
+  if (window._bundleBuilder) window._bundleBuilder.updateInventoryUI(modal, 1);
 
 }
 
