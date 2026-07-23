@@ -276,7 +276,7 @@
         "heading_mLyY46": {
           "type": "heading",
           "settings": {
-            "heading": "Image with text",
+            "heading": "Make your gift even more meaningful.",
             "heading_size": "h1",
             "custom_font_size_desktop": 48,
             "custom_font_size_mobile": 32
@@ -285,7 +285,7 @@
         "text_dwhkFh": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text": "<p>Our reusable Furoshiki Gift Wrap, inspired by the Japanese tradition of furoshiki—the art of wrapping with cloth.\n</p>\n<p>Finished with a dried flower and your personalized message, it's designed to be kept long after the meals have been enjoyed.</p>",
             "text_style": "body",
             "text_color": "",
             "text_highlight": "",
@@ -294,19 +294,14 @@
             "custom_font_size_mobile": 15
           }
         },
-        "button_nFhpU9": {
-          "type": "button",
+        "icon_with_text_Y3t4iD": {
+          "type": "icon_with_text",
           "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_icon_position": "left",
-            "button_icon_size": 20,
-            "button_label2": "",
-            "button_link2": "",
-            "button_style_secondary2": false,
-            "button_icon_position2": "left",
-            "button_icon_size2": 20
+            "icon_alignment": "flex-start",
+            "icon_size": 48,
+            "icon_text_1": "",
+            "icon_text_2": "",
+            "icon_text_3": ""
           }
         }
       },
@@ -314,7 +309,7 @@
         "caption_e9LdaA",
         "heading_mLyY46",
         "text_dwhkFh",
-        "button_nFhpU9"
+        "icon_with_text_Y3t4iD"
       ],
       "name": "Gift Bundle Image with Text",
       "settings": {
