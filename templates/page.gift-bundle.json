@@ -30,11 +30,19 @@
             "heading": "She has plenty of gifts for baby.\n<br>\n<span>Give something that's for her.</span>",
             "heading_size": "hxl"
           }
+        },
+        "text_Vg4PwA": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Support her recovery with nourishing Japanese-inspired meals, snacks, and teas designed for the fourth trimester.</p>",
+            "text_style": "body"
+          }
         }
       },
       "block_order": [
         "caption_LhBq4J",
-        "heading_UhUmin"
+        "heading_UhUmin",
+        "text_Vg4PwA"
       ],
       "settings": {
         "section_url": "",
