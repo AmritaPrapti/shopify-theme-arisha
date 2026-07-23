@@ -30,7 +30,7 @@
           "type": "heading",
           "settings": {
             "heading": "She has plenty of <br> gifts for baby.\n<br>\n<span>Give something <br> that's for her.</span>",
-            "heading_size": "h0",
+            "heading_size": "h1",
             "custom_font_size_desktop": 48,
             "custom_font_size_mobile": 32
           }
@@ -127,7 +127,7 @@
           "type": "heading",
           "settings": {
             "heading": "The first few weeks <br> <span> are beautiful—and exhausting.</span>",
-            "heading_size": "h0",
+            "heading_size": "h1",
             "custom_font_size_desktop": 48,
             "custom_font_size_mobile": 32
           }
@@ -186,10 +186,10 @@
         "padding_bottom": 36
       }
     },
-    "multicolumn_NYxqgW": {
-      "type": "multicolumn",
+    "multicolumn_horizontal_AzWN89": {
+      "type": "multicolumn-horizontal",
       "blocks": {
-        "column_LiYHEw": {
+        "column_3WHX4C": {
           "type": "column",
           "settings": {
             "title": "Column",
@@ -198,7 +198,7 @@
             "link": ""
           }
         },
-        "column_9aaPn8": {
+        "column_tifTxp": {
           "type": "column",
           "settings": {
             "title": "Column",
@@ -207,7 +207,7 @@
             "link": ""
           }
         },
-        "column_4yGRUi": {
+        "column_nB8kKK": {
           "type": "column",
           "settings": {
             "title": "Column",
@@ -218,16 +218,18 @@
         }
       },
       "block_order": [
-        "column_LiYHEw",
-        "column_9aaPn8",
-        "column_4yGRUi"
+        "column_3WHX4C",
+        "column_tifTxp",
+        "column_nB8kKK"
       ],
-      "name": "t:sections.multicolumn.presets.name",
+      "name": "Multicolumn Horizontal",
       "settings": {
         "title": "Why It's Different",
         "heading_size": "h1",
+        "text": "",
         "title_alignment": "center",
         "image_width": "full",
+        "custom_width": "40",
         "image_ratio": "adapt",
         "image_background": "",
         "button_label": "Button label",
@@ -235,6 +237,7 @@
         "columns_desktop": 3,
         "column_alignment": "left",
         "background_style": "primary",
+        "block_background": "",
         "color_scheme": "",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
@@ -246,6 +249,6 @@
   "order": [
     "main",
     "gift_bundle_hero_NLrRmj",
-    "multicolumn_NYxqgW"
+    "multicolumn_horizontal_AzWN89"
   ]
 }
