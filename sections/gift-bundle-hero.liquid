@@ -12,6 +12,37 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .image-with-text__icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .image-with-text__icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .image-with-text__icon-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .image-with-text__icon-text {
+    font-size: 1.4rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .image-with-text__icons {
+      gap: 1rem;
+    }
+  }
 {%- endstyle -%}
 
 {%- liquid
@@ -125,23 +156,88 @@
                   {%- when '@app' -%}
                   {% render block %}
                 {%- when 'heading' -%}
+                  {%- if block.settings.heading_size == 'custom' -%}
+                    <style>
+                      #ImageWithText--{{ section.id }} .heading-custom-{{ block.id }} {
+                        font-size: {{ block.settings.custom_font_size_desktop }}px !important;
+                      }
+                      @media screen and (max-width: 749px) {
+                        #ImageWithText--{{ section.id }} .heading-custom-{{ block.id }} {
+                          font-size: {{ block.settings.custom_font_size_mobile }}px !important;
+                        }
+                      }
+                    </style>
+                  {%- endif -%}
                   <h2
-                    class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}"
+                    class="image-with-text__heading inline-richtext {% if block.settings.heading_size == 'custom' %}heading-custom-{{ block.id }}{% else %}{{ block.settings.heading_size }}{% endif %}"
                     {{ block.shopify_attributes }}
                   >
                     {{ block.settings.heading }}
                   </h2>
                 {%- when 'caption' -%}
+                  {%- if block.settings.text_size == 'custom' -%}
+                    <style>
+                      #ImageWithText--{{ section.id }} .caption-custom-{{ block.id }} {
+                        font-size: {{ block.settings.custom_font_size_desktop }}px !important;
+                      }
+                      @media screen and (max-width: 749px) {
+                        #ImageWithText--{{ section.id }} .caption-custom-{{ block.id }} {
+                          font-size: {{ block.settings.custom_font_size_mobile }}px !important;
+                        }
+                      }
+                    </style>
+                  {%- endif -%}
                   <p
-                    class="image-with-text__text image-with-text__text--caption {{ block.settings.text_style }}--{{ block.settings.text_size }} {{ block.settings.text_style }}"
+                    class="image-with-text__text image-with-text__text--caption {% if block.settings.text_size == 'custom' %}caption-custom-{{ block.id }}{% else %}{{ block.settings.text_style }}--{{ block.settings.text_size }}{% endif %} {{ block.settings.text_style }}"
                     {{ block.shopify_attributes }}
                     style="color: {{ block.settings.caption_color }}; --caption-highlight: {{ block.settings.caption_highlight }}; font-weight: {{ block.settings.font_weight }};"
                   >
-                   <a href="{{ block.settings.link }}">{{ block.settings.caption }}</a>  
+                   <a href="{{ block.settings.link }}">{{ block.settings.caption }}</a>
                   </p>
                 {%- when 'text' -%}
-                  <div class="image-with-text__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
+                  {%- if block.settings.text_size == 'custom' -%}
+                    <style>
+                      #ImageWithText--{{ section.id }} .text-custom-{{ block.id }} {
+                        font-size: {{ block.settings.custom_font_size_desktop }}px !important;
+                      }
+                      @media screen and (max-width: 749px) {
+                        #ImageWithText--{{ section.id }} .text-custom-{{ block.id }} {
+                          font-size: {{ block.settings.custom_font_size_mobile }}px !important;
+                        }
+                      }
+                    </style>
+                  {%- endif -%}
+                  <div class="image-with-text__text rte {{ block.settings.text_style }}{% if block.settings.text_size == 'custom' %} text-custom-{{ block.id }}{% endif %}" {{ block.shopify_attributes }}>
                     {{ block.settings.text }}
+                  </div>
+                {%- when 'icon_with_text' -%}
+                  <div
+                    class="image-with-text__icons icons-{{ block.id }}"
+                    style="justify-content: {{ block.settings.icon_alignment }};"
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- for i in (1..3) -%}
+                      {%- assign icon_key = 'icon_' | append: i -%}
+                      {%- assign text_key = 'icon_text_' | append: i -%}
+                      {%- assign icon_img = block.settings[icon_key] -%}
+                      {%- assign icon_text = block.settings[text_key] -%}
+                      {%- if icon_img != blank or icon_text != blank -%}
+                        <div class="image-with-text__icon-item">
+                          {%- if icon_img != blank -%}
+                            <div class="image-with-text__icon-media" style="width: {{ block.settings.icon_size }}px;">
+                              {{
+                                icon_img
+                                | image_url: width: 200
+                                | image_tag: widths: '60, 100, 200', loading: 'lazy', alt: icon_text
+                              }}
+                            </div>
+                          {%- endif -%}
+                          {%- if icon_text != blank -%}
+                            <div class="image-with-text__icon-text">{{ icon_text }}</div>
+                          {%- endif -%}
+                        </div>
+                      {%- endif -%}
+                    {%- endfor -%}
                   </div>
                 {%- when 'button' -%}
                   <div class="banner-button-wrap">
@@ -532,10 +628,36 @@
             {
               "value": "hxxl",
               "label": "t:sections.all.heading_size.options__5.label"
+            },
+            {
+              "value": "custom",
+              "label": "Custom"
             }
           ],
           "default": "h1",
           "label": "t:sections.all.heading_size.label"
+        },
+        {
+          "type": "range",
+          "id": "custom_font_size_desktop",
+          "min": 12,
+          "max": 120,
+          "step": 1,
+          "unit": "px",
+          "label": "Custom font size (Desktop)",
+          "default": 48,
+          "visible_if": "{{ block.settings.heading_size == 'custom' }}"
+        },
+        {
+          "type": "range",
+          "id": "custom_font_size_mobile",
+          "min": 12,
+          "max": 90,
+          "step": 1,
+          "unit": "px",
+          "label": "Custom font size (Mobile)",
+          "default": 32,
+          "visible_if": "{{ block.settings.heading_size == 'custom' }}"
         }
       ]
     },
@@ -546,7 +668,7 @@
         {
           "type": "url",
           "id": "link",
-          "label": "Caption Link URL",
+          "label": "Caption Link URL"
         },
         {
           "type": "textarea",
@@ -586,10 +708,36 @@
             {
               "value": "large",
               "label": "t:sections.image-with-text.blocks.caption.settings.caption_size.options__3.label"
+            },
+            {
+              "value": "custom",
+              "label": "Custom"
             }
           ],
           "default": "medium",
           "label": "t:sections.image-with-text.blocks.caption.settings.caption_size.label"
+        },
+        {
+          "type": "range",
+          "id": "custom_font_size_desktop",
+          "min": 10,
+          "max": 80,
+          "step": 1,
+          "unit": "px",
+          "label": "Custom font size (Desktop)",
+          "default": 20,
+          "visible_if": "{{ block.settings.text_size == 'custom' }}"
+        },
+        {
+          "type": "range",
+          "id": "custom_font_size_mobile",
+          "min": 10,
+          "max": 60,
+          "step": 1,
+          "unit": "px",
+          "label": "Custom font size (Mobile)",
+          "default": 16,
+          "visible_if": "{{ block.settings.text_size == 'custom' }}"
         },
         {
           "type": "select",
@@ -650,6 +798,44 @@
           ],
           "default": "body",
           "label": "t:sections.image-with-text.blocks.text.settings.text_style.label"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "custom",
+              "label": "Custom"
+            }
+          ],
+          "default": "default",
+          "label": "Text size"
+        },
+        {
+          "type": "range",
+          "id": "custom_font_size_desktop",
+          "min": 10,
+          "max": 80,
+          "step": 1,
+          "unit": "px",
+          "label": "Custom font size (Desktop)",
+          "default": 18,
+          "visible_if": "{{ block.settings.text_size == 'custom' }}"
+        },
+        {
+          "type": "range",
+          "id": "custom_font_size_mobile",
+          "min": 10,
+          "max": 60,
+          "step": 1,
+          "unit": "px",
+          "label": "Custom font size (Mobile)",
+          "default": 15,
+          "visible_if": "{{ block.settings.text_size == 'custom' }}"
         }
       ]
     },
@@ -692,6 +878,85 @@
           "id": "button_style_secondary2",
           "default": false,
           "label": "Outline Style for Button 2"
+        }
+      ]
+    },
+    {
+      "type": "icon_with_text",
+      "name": "Icon with text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_alignment",
+          "label": "Alignment",
+          "options": [
+            {
+              "value": "flex-start",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "flex-end",
+              "label": "Right"
+            }
+          ],
+          "default": "flex-start"
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "min": 20,
+          "max": 120,
+          "step": 2,
+          "unit": "px",
+          "label": "Icon size",
+          "default": 48
+        },
+        {
+          "type": "header",
+          "content": "Icon 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_1",
+          "label": "Icon 1"
+        },
+        {
+          "type": "text",
+          "id": "icon_text_1",
+          "label": "Text 1"
+        },
+        {
+          "type": "header",
+          "content": "Icon 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_2",
+          "label": "Icon 2"
+        },
+        {
+          "type": "text",
+          "id": "icon_text_2",
+          "label": "Text 2"
+        },
+        {
+          "type": "header",
+          "content": "Icon 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_3",
+          "label": "Icon 3"
+        },
+        {
+          "type": "text",
+          "id": "icon_text_3",
+          "label": "Text 3"
         }
       ]
     }
