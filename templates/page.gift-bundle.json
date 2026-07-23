@@ -186,86 +186,6 @@
         "padding_bottom": 36
       }
     },
-    "multicolumn_horizontal_AzWN89": {
-      "type": "multicolumn-horizontal",
-      "blocks": {
-        "column_3WHX4C": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/gift.svg",
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_tifTxp": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_nB8kKK": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_xJiMe8": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_DPjPiR": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_3WHX4C",
-        "column_tifTxp",
-        "column_nB8kKK",
-        "column_xJiMe8",
-        "column_DPjPiR"
-      ],
-      "name": "Multicolumn Horizontal",
-      "settings": {
-        "title": "Why It's Different",
-        "heading_size": "h1",
-        "text": "",
-        "title_alignment": "center",
-        "image_width": "custom",
-        "custom_width": "40",
-        "image_ratio": "adapt",
-        "image_background": "",
-        "button_label": "Button label",
-        "button_link": "",
-        "columns_desktop": 4,
-        "column_alignment": "left",
-        "background_style": "primary",
-        "block_background": "",
-        "color_scheme": "",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "multicolumn_dKb3NC": {
       "type": "multicolumn",
       "blocks": {
@@ -335,12 +255,81 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "gift_bundle_hero_99FM3h": {
+      "type": "gift-bundle-hero",
+      "blocks": {
+        "heading_mLyY46": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "heading_size": "h1",
+            "custom_font_size_desktop": 48,
+            "custom_font_size_mobile": 32
+          }
+        },
+        "text_dwhkFh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text_style": "body",
+            "text_color": "",
+            "text_highlight": "",
+            "text_size": "default",
+            "custom_font_size_desktop": 18,
+            "custom_font_size_mobile": 15
+          }
+        },
+        "button_nFhpU9": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_icon_position": "left",
+            "button_icon_size": 20,
+            "button_label2": "",
+            "button_link2": "",
+            "button_style_secondary2": false,
+            "button_icon_position2": "left",
+            "button_icon_size2": 20
+          }
+        }
+      },
+      "block_order": [
+        "heading_mLyY46",
+        "text_dwhkFh",
+        "button_nFhpU9"
+      ],
+      "name": "Gift Bundle Image with Text",
+      "settings": {
+        "section_url": "",
+        "enable_text_link": false,
+        "image": "shopify://shop_images/forher_food_april20_3247.jpg",
+        "height": "medium",
+        "height_mobile": "medium",
+        "custom_media_height": 700,
+        "custom_media_height_mobile": 700,
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "mobile_layout": "image_first",
+        "image_behavior": "none",
+        "enable_full_width": false,
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
     "gift_bundle_hero_NLrRmj",
-    "multicolumn_horizontal_AzWN89",
-    "multicolumn_dKb3NC"
+    "multicolumn_dKb3NC",
+    "gift_bundle_hero_99FM3h"
   ]
 }
