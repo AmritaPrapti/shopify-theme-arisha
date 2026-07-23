@@ -19,8 +19,10 @@
             "caption": "THOUGHTFUL GIFS FOR NEW MOMS",
             "text_style": "caption-with-letter-spacing",
             "text_size": "large",
+            "custom_font_size_desktop": 20,
+            "custom_font_size_mobile": 16,
             "font_weight": "600",
-            "caption_color": "#B07A72",
+            "caption_color": "#b07a72",
             "caption_highlight": ""
           }
         },
@@ -28,14 +30,21 @@
           "type": "heading",
           "settings": {
             "heading": "She has plenty of <br> gifts for baby.\n<br>\n<span>Give something <br> that's for her.</span>",
-            "heading_size": "h0"
+            "heading_size": "h0",
+            "custom_font_size_desktop": 48,
+            "custom_font_size_mobile": 32
           }
         },
         "text_Vg4PwA": {
           "type": "text",
           "settings": {
             "text": "<p>Support her recovery with nourishing Japanese-inspired meals, snacks, and teas designed for the fourth trimester.</p>",
-            "text_style": "body"
+            "text_style": "body",
+            "text_color": "",
+            "text_highlight": "",
+            "text_size": "default",
+            "custom_font_size_desktop": 18,
+            "custom_font_size_mobile": 15
           }
         },
         "button_LPGwzM": {
@@ -44,9 +53,26 @@
             "button_label": "Shop Gift Bundles",
             "button_link": "shopify://collections",
             "button_style_secondary": false,
+            "button_icon_position": "left",
+            "button_icon_size": 20,
             "button_label2": "",
             "button_link2": "",
-            "button_style_secondary2": false
+            "button_style_secondary2": false,
+            "button_icon_position2": "left",
+            "button_icon_size2": 20
+          }
+        },
+        "icon_with_text_fVQLwq": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon_alignment": "flex-start",
+            "icon_size": 30,
+            "icon_1": "shopify://shop_images/box.svg",
+            "icon_text_1": "Personalized gift message",
+            "icon_2": "shopify://shop_images/leaf_2.svg",
+            "icon_text_2": "Beautiful furoshiki gift wrapping",
+            "icon_3": "shopify://shop_images/check-mark.svg",
+            "icon_text_3": "Ready whenever she needs it"
           }
         }
       },
@@ -54,7 +80,8 @@
         "caption_LhBq4J",
         "heading_UhUmin",
         "text_Vg4PwA",
-        "button_LPGwzM"
+        "button_LPGwzM",
+        "icon_with_text_fVQLwq"
       ],
       "settings": {
         "section_url": "",
