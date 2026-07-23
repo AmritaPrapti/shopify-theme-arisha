@@ -30,11 +30,37 @@
       data-cascade
     {% endif %}
   >
-    {%- unless section.settings.title == blank -%}
+    {%- unless section.settings.title == blank and section.settings.caption == blank -%}
       <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin multicolumn__title">
+        {%- if section.settings.caption != blank -%}
+          {%- if section.settings.caption_size == 'custom' -%}
+            <style>
+              #Multicolumn-caption-{{ section.id }} {
+                font-size: {{ section.settings.caption_font_size_desktop }}px !important;
+              }
+              @media screen and (max-width: 749px) {
+                #Multicolumn-caption-{{ section.id }} {
+                  font-size: {{ section.settings.caption_font_size_mobile }}px !important;
+                }
+              }
+            </style>
+          {%- endif -%}
+          <p
+            id="Multicolumn-caption-{{ section.id }}"
+            class="multicolumn__caption subtitle{% if section.settings.caption_size != 'custom' %} caption-with-letter-spacing--{{ section.settings.caption_size }}{% endif %}"
+            style="text-align: {{ section.settings.title_alignment }}; width: 100%; font-weight: {{ section.settings.caption_font_weight }};{% if section.settings.caption_uppercase %} text-transform: uppercase; letter-spacing: 0.07rem;{% endif %}"
+          >
+            {{ section.settings.caption | escape }}
+          </p>
+        {%- endif -%}
         <h2 class="title inline-richtext {{ section.settings.heading_size }}" style="text-align: {{ section.settings.title_alignment }}; width: 100%;">
           {{ section.settings.title }}
         </h2>
+        {%- if section.settings.subtitle != blank -%}
+          <div class="multicolumn__subtitle rte" style="text-align: {{ section.settings.title_alignment }}; width: 100%;">
+            {{ section.settings.subtitle }}
+          </div>
+        {%- endif -%}
         {%- if section.settings.button_label != blank and show_mobile_slider -%}
           <a href="{{ section.settings.button_link }}" class="link underlined-link large-up-hide">
             {{- section.settings.button_label | escape -}}
@@ -205,6 +231,84 @@
   },
   "settings": [
     {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption",
+      "info": "Displayed above the title."
+    },
+    {
+      "type": "checkbox",
+      "id": "caption_uppercase",
+      "label": "Uppercase caption",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "caption_size",
+      "label": "Caption size",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "range",
+      "id": "caption_font_size_desktop",
+      "min": 10,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "label": "Caption font size (Desktop)",
+      "default": 18,
+      "visible_if": "{{ section.settings.caption_size == 'custom' }}"
+    },
+    {
+      "type": "range",
+      "id": "caption_font_size_mobile",
+      "min": 10,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Caption font size (Mobile)",
+      "default": 14,
+      "visible_if": "{{ section.settings.caption_size == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "caption_font_weight",
+      "label": "Caption font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        }
+      ],
+      "default": "400"
+    },
+    {
       "type": "inline_richtext",
       "id": "title",
       "default": "t:sections.multicolumn.settings.title.default",
@@ -237,6 +341,12 @@
       ],
       "default": "h1",
       "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "info": "Displayed below the title."
     },
     {
       "type": "select",
