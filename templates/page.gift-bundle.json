@@ -77,11 +77,11 @@
             "padding_vertical": 0,
             "padding_horizontal": 0,
             "icon_1": "shopify://shop_images/box.svg",
-            "icon_text_1": "Personalized gift message",
+            "icon_text_1": "<p>Personalized gift message</p>",
             "icon_2": "shopify://shop_images/leaf_2.svg",
-            "icon_text_2": "Beautiful furoshiki gift wrapping",
+            "icon_text_2": "<p>Beautiful furoshiki gift wrapping</p>",
             "icon_3": "shopify://shop_images/check-mark.svg",
-            "icon_text_3": "Ready whenever she needs it"
+            "icon_text_3": "<p>Ready whenever she needs it</p>"
           }
         }
       },
@@ -167,7 +167,7 @@
             "padding_vertical": 0,
             "padding_horizontal": 0,
             "icon_1": "shopify://shop_images/like_3899a206-ba61-41b5-8dd5-b63de4eb48cf.svg",
-            "icon_text_1": "A meaningful way to say, <br> <span> \"I'm thinking about you.\"</span>",
+            "icon_text_1": "<p>A meaningful way to say, <br/><em>  &lt;span&gt;\"I'm thinking about you.\"&lt;/span&gt;</em></p>",
             "icon_text_2": "",
             "icon_text_3": ""
           }
@@ -255,8 +255,15 @@
       ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
-        "title": "Multicolumn",
+        "caption": "WHY IT'S DIFFERENT",
+        "caption_uppercase": true,
+        "caption_size": "medium",
+        "caption_font_size_desktop": 18,
+        "caption_font_size_mobile": 14,
+        "caption_font_weight": "600",
+        "title": "Thoughtful food. Timeless traditions.",
         "heading_size": "h1",
+        "subtitle": "",
         "title_alignment": "center",
         "image_width": "small",
         "image_ratio": "square",
@@ -325,7 +332,7 @@
             "padding_vertical": 20,
             "padding_horizontal": 20,
             "icon_1": "shopify://shop_images/gift-bow.png",
-            "icon_text_1": "In Japanese, the character for \"to wrap\" (包む; tsutsumu) is said to originate from the image of a mother gently protecting her child in the womb. We couldn't imagine a more fitting symbol for a gift created to care for mothers.",
+            "icon_text_1": "<p>In Japanese, the character for \"to wrap\" (包む; tsutsumu) is said to originate from the image of a mother gently protecting her child in the womb. We couldn't imagine a more fitting symbol for a gift created to care for mothers.</p>",
             "icon_text_2": "",
             "icon_text_3": ""
           }
