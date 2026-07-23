@@ -247,9 +247,28 @@
                     {{ block.settings.text }}
                   </div>
                 {%- when 'icon_with_text' -%}
+                  {%- if block.settings.text_size == 'custom' or block.settings.text_highlight != blank -%}
+                    <style>
+                      {%- if block.settings.text_size == 'custom' -%}
+                        #ImageWithText--{{ section.id }} .icons-{{ block.id }} .image-with-text__icon-text {
+                          font-size: {{ block.settings.custom_font_size_desktop }}px !important;
+                        }
+                        @media screen and (max-width: 749px) {
+                          #ImageWithText--{{ section.id }} .icons-{{ block.id }} .image-with-text__icon-text {
+                            font-size: {{ block.settings.custom_font_size_mobile }}px !important;
+                          }
+                        }
+                      {%- endif -%}
+                      {%- if block.settings.text_highlight != blank -%}
+                        #ImageWithText--{{ section.id }} .icons-{{ block.id }} .image-with-text__icon-text span {
+                          color: {{ block.settings.text_highlight }};
+                        }
+                      {%- endif -%}
+                    </style>
+                  {%- endif -%}
                   <div
                     class="image-with-text__icons icons-{{ block.id }}"
-                    style="justify-content: {{ block.settings.icon_alignment }};"
+                    style="justify-content: {{ block.settings.icon_alignment }}; padding: {{ block.settings.padding_vertical }}px {{ block.settings.padding_horizontal }}px;{% if block.settings.background_color != blank %} background-color: {{ block.settings.background_color }};{% endif %}{% if block.settings.text_color != blank %} color: {{ block.settings.text_color }};{% endif %}"
                     {{ block.shopify_attributes }}
                   >
                     {%- for i in (1..3) -%}
@@ -1039,6 +1058,88 @@
           "unit": "px",
           "label": "Icon size",
           "default": 48
+        },
+        {
+          "type": "header",
+          "content": "Text style"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "custom",
+              "label": "Custom"
+            }
+          ],
+          "default": "default",
+          "label": "Text size"
+        },
+        {
+          "type": "range",
+          "id": "custom_font_size_desktop",
+          "min": 10,
+          "max": 80,
+          "step": 1,
+          "unit": "px",
+          "label": "Custom font size (Desktop)",
+          "default": 14,
+          "visible_if": "{{ block.settings.text_size == 'custom' }}"
+        },
+        {
+          "type": "range",
+          "id": "custom_font_size_mobile",
+          "min": 10,
+          "max": 60,
+          "step": 1,
+          "unit": "px",
+          "label": "Custom font size (Mobile)",
+          "default": 13,
+          "visible_if": "{{ block.settings.text_size == 'custom' }}"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color"
+        },
+        {
+          "type": "color",
+          "id": "text_highlight",
+          "label": "Highlight color",
+          "info": "Applied to any text wrapped in a <span> within the icon text."
+        },
+        {
+          "type": "header",
+          "content": "Background & padding"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background color"
+        },
+        {
+          "type": "range",
+          "id": "padding_vertical",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Vertical padding",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "padding_horizontal",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Horizontal padding",
+          "default": 0
         },
         {
           "type": "header",
