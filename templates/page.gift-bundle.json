@@ -257,7 +257,7 @@
         "title": "Multicolumn",
         "heading_size": "h1",
         "title_alignment": "center",
-        "image_width": "small",
+        "image_width": "third",
         "image_ratio": "square",
         "image_background": "",
         "button_label": "",
