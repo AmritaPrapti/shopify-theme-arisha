@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "gift-bundle-hero",
+      "settings": { "padding_top": 36, "padding_bottom": 36 }
+    }
+  },
+  "order": ["main"]
+}
