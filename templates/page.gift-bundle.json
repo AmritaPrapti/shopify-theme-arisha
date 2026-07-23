@@ -259,6 +259,20 @@
     "gift_bundle_hero_99FM3h": {
       "type": "gift-bundle-hero",
       "blocks": {
+        "caption_e9LdaA": {
+          "type": "caption",
+          "settings": {
+            "link": "",
+            "caption": "BEAUTIFULLY WRAPPED. THOUGHTFULLY GIVEN.",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "large",
+            "custom_font_size_desktop": 20,
+            "custom_font_size_mobile": 16,
+            "font_weight": "600",
+            "caption_color": "#B07A72",
+            "caption_highlight": ""
+          }
+        },
         "heading_mLyY46": {
           "type": "heading",
           "settings": {
@@ -297,6 +311,7 @@
         }
       },
       "block_order": [
+        "caption_e9LdaA",
         "heading_mLyY46",
         "text_dwhkFh",
         "button_nFhpU9"
