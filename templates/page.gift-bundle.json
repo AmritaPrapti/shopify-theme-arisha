@@ -27,7 +27,7 @@
         "heading_UhUmin": {
           "type": "heading",
           "settings": {
-            "heading": "She has plenty of gifts for baby.\n<br>\nGive something that's for her.",
+            "heading": "She has plenty of gifts for baby.\n<br>\n<span>Give something that's for her.</span>",
             "heading_size": "h1"
           }
         }
