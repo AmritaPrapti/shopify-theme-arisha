@@ -167,7 +167,7 @@
             "padding_vertical": 0,
             "padding_horizontal": 0,
             "icon_1": "shopify://shop_images/like_3899a206-ba61-41b5-8dd5-b63de4eb48cf.svg",
-            "icon_text_1": "<p>A meaningful way to say, <br/>  \"I'm thinking about you.\"</p>",
+            "icon_text_1": "<p>A meaningful way to say, <br/><em>  &lt;span&gt;\"I'm thinking about you.\"&lt;/span&gt;</em></p>",
             "icon_text_2": "",
             "icon_text_3": ""
           }
@@ -261,7 +261,7 @@
         "caption_font_size_desktop": 18,
         "caption_font_size_mobile": 14,
         "caption_font_weight": "600",
-        "title": "Multicolumn",
+        "title": "Thoughtful food. Timeless traditions.",
         "heading_size": "h1",
         "subtitle": "",
         "title_alignment": "center",
