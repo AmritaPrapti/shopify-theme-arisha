@@ -126,8 +126,8 @@
         "heading_f3Ybq9": {
           "type": "heading",
           "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1",
+            "heading": "The first few weeks <br> <span> are beautiful—and exhausting.</span>",
+            "heading_size": "h0",
             "custom_font_size_desktop": 48,
             "custom_font_size_mobile": 32
           }
