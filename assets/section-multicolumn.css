@@ -19,7 +19,7 @@
 
 .multicolumn-card__image-wrapper--small-width {
   width: 80px;
-  height: 80px;
+  /* height: 80px; */
 }
 
 .media--background {
