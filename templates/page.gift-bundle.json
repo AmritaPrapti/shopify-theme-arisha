@@ -27,8 +27,8 @@
         "heading_UhUmin": {
           "type": "heading",
           "settings": {
-            "heading": "She has plenty of gifts for baby.\n<br>\n<span>Give something that's for her.</span>",
-            "heading_size": "hxl"
+            "heading": "She has plenty of <br> gifts for baby.\n<br>\n<span>Give something <br> that's for her.</span>",
+            "heading_size": "h0"
           }
         },
         "text_Vg4PwA": {
