@@ -59,6 +59,7 @@
       "settings": {
         "section_url": "",
         "enable_text_link": false,
+        "image": "shopify://shop_images/230330_SO52427_2006_2nd_sRGB4000.jpg",
         "height": "adapt",
         "height_mobile": "medium",
         "custom_media_height": 700,
