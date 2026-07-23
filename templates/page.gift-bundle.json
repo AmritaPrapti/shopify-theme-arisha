@@ -23,10 +23,18 @@
             "caption_color": "#B07A72",
             "caption_highlight": ""
           }
+        },
+        "heading_UhUmin": {
+          "type": "heading",
+          "settings": {
+            "heading": "She has plenty of gifts for baby.\n<br>\nGive something that's for her.",
+            "heading_size": "h1"
+          }
         }
       },
       "block_order": [
-        "caption_LhBq4J"
+        "caption_LhBq4J",
+        "heading_UhUmin"
       ],
       "settings": {
         "section_url": "",
