@@ -37,12 +37,24 @@
             "text": "<p>Support her recovery with nourishing Japanese-inspired meals, snacks, and teas designed for the fourth trimester.</p>",
             "text_style": "body"
           }
+        },
+        "button_LPGwzM": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Gift Bundles",
+            "button_link": "shopify://collections",
+            "button_style_secondary": false,
+            "button_label2": "",
+            "button_link2": "",
+            "button_style_secondary2": false
+          }
         }
       },
       "block_order": [
         "caption_LhBq4J",
         "heading_UhUmin",
-        "text_Vg4PwA"
+        "text_Vg4PwA",
+        "button_LPGwzM"
       ],
       "settings": {
         "section_url": "",
