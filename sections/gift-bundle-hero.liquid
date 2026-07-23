@@ -15,17 +15,20 @@
 
   .image-with-text__icons {
     display: flex;
-    flex-wrap: wrap;
+    
     gap: 2rem;
-    margin-top: 1rem;
+    margin-top: 2.5rem;
   }
 
   .image-with-text__icon-item {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    text-align: center;
-    gap: 0.5rem;
+    gap: 1.5rem;
+  }
+
+  .image-with-text__icon-media {
+    flex-shrink: 0;
   }
 
   .image-with-text__icon-media img {
@@ -38,9 +41,31 @@
     font-size: 1.4rem;
   }
 
+  .button--with-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .button--icon-right {
+    flex-direction: row-reverse;
+  }
+
+  .button__icon {
+    display: inline-flex;
+    flex-shrink: 0;
+  }
+
+  .button__icon img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
   @media screen and (max-width: 749px) {
     .image-with-text__icons {
       gap: 1rem;
+      flex-wrap: wrap;
     }
   }
 {%- endstyle -%}
@@ -195,19 +220,30 @@
                    <a href="{{ block.settings.link }}">{{ block.settings.caption }}</a>
                   </p>
                 {%- when 'text' -%}
-                  {%- if block.settings.text_size == 'custom' -%}
+                  {%- if block.settings.text_size == 'custom' or block.settings.text_highlight != blank -%}
                     <style>
-                      #ImageWithText--{{ section.id }} .text-custom-{{ block.id }} {
-                        font-size: {{ block.settings.custom_font_size_desktop }}px !important;
-                      }
-                      @media screen and (max-width: 749px) {
+                      {%- if block.settings.text_size == 'custom' -%}
                         #ImageWithText--{{ section.id }} .text-custom-{{ block.id }} {
-                          font-size: {{ block.settings.custom_font_size_mobile }}px !important;
+                          font-size: {{ block.settings.custom_font_size_desktop }}px !important;
                         }
-                      }
+                        @media screen and (max-width: 749px) {
+                          #ImageWithText--{{ section.id }} .text-custom-{{ block.id }} {
+                            font-size: {{ block.settings.custom_font_size_mobile }}px !important;
+                          }
+                        }
+                      {%- endif -%}
+                      {%- if block.settings.text_highlight != blank -%}
+                        #ImageWithText--{{ section.id }} .text-block-{{ block.id }} span {
+                          color: {{ block.settings.text_highlight }};
+                        }
+                      {%- endif -%}
                     </style>
                   {%- endif -%}
-                  <div class="image-with-text__text rte {{ block.settings.text_style }}{% if block.settings.text_size == 'custom' %} text-custom-{{ block.id }}{% endif %}" {{ block.shopify_attributes }}>
+                  <div
+                    class="image-with-text__text rte {{ block.settings.text_style }} text-block-{{ block.id }}{% if block.settings.text_size == 'custom' %} text-custom-{{ block.id }}{% endif %}"
+                    {% if block.settings.text_color != blank %}style="color: {{ block.settings.text_color }};"{% endif %}
+                    {{ block.shopify_attributes }}
+                  >
                     {{ block.settings.text }}
                   </div>
                 {%- when 'icon_with_text' -%}
@@ -248,10 +284,15 @@
                       {% else %}
                         href="{{ block.settings.button_link }}"
                       {% endif %}
-                      class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                      class="button button--with-icon button--icon-{{ block.settings.button_icon_position }}{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
                       {{ block.shopify_attributes }}
                     >
-                      {{ block.settings.button_label | escape }}
+                      {%- if block.settings.button_icon != blank -%}
+                        <span class="button__icon" style="width: {{ block.settings.button_icon_size }}px;">
+                          {{ block.settings.button_icon | image_url: width: 120 | image_tag: widths: '30, 60, 120', loading: 'lazy', alt: block.settings.button_label }}
+                        </span>
+                      {%- endif -%}
+                      <span class="button__label">{{ block.settings.button_label | escape }}</span>
                     </a>
                   {%- endif -%}
                     {%- if block.settings.button_label2 != blank -%}
@@ -261,10 +302,15 @@
                       {% else %}
                         href="{{ block.settings.button_link2 }}"
                       {% endif %}
-                      class="button{% if block.settings.button_style_secondary2 %} button--secondary{% else %} button--primary{% endif %}"
+                      class="button button--with-icon button--icon-{{ block.settings.button_icon_position2 }}{% if block.settings.button_style_secondary2 %} button--secondary{% else %} button--primary{% endif %}"
                       {{ block.shopify_attributes }}
                     >
-                      {{ block.settings.button_label2 | escape }}
+                      {%- if block.settings.button_icon2 != blank -%}
+                        <span class="button__icon" style="width: {{ block.settings.button_icon_size2 }}px;">
+                          {{ block.settings.button_icon2 | image_url: width: 120 | image_tag: widths: '30, 60, 120', loading: 'lazy', alt: block.settings.button_label2 }}
+                        </span>
+                      {%- endif -%}
+                      <span class="button__label">{{ block.settings.button_label2 | escape }}</span>
                     </a>
                   {%- endif -%}
                   </div>
@@ -281,7 +327,7 @@
 
 {% schema %}
 {
-  "name": "t:sections.image-with-text.name",
+  "name": "Gift Image with Text",
   "class": "section",
   "disabled_on": {
     "groups": ["header", "footer"]
@@ -642,7 +688,7 @@
           "id": "custom_font_size_desktop",
           "min": 12,
           "max": 120,
-          "step": 1,
+          "step": 2,
           "unit": "px",
           "label": "Custom font size (Desktop)",
           "default": 48,
@@ -778,10 +824,11 @@
       "limit": 1,
       "settings": [
         {
-          "type": "richtext",
+          "type": "textarea",
           "id": "text",
           "default": "t:sections.image-with-text.blocks.text.settings.text.default",
-          "label": "t:sections.image-with-text.blocks.text.settings.text.label"
+          "label": "t:sections.image-with-text.blocks.text.settings.text.label",
+          "info": "Supports <span> tags for highlighting specific words."
         },
         {
           "type": "select",
@@ -798,6 +845,17 @@
           ],
           "default": "body",
           "label": "t:sections.image-with-text.blocks.text.settings.text_style.label"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color"
+        },
+        {
+          "type": "color",
+          "id": "text_highlight",
+          "label": "Highlight color",
+          "info": "Applied to any text wrapped in a <span> within the text."
         },
         {
           "type": "select",
@@ -863,6 +921,39 @@
           "label": "t:sections.image-with-text.blocks.button.settings.outline_button.label"
         },
         {
+          "type": "image_picker",
+          "id": "button_icon",
+          "label": "Button 1 Icon"
+        },
+        {
+          "type": "select",
+          "id": "button_icon_position",
+          "label": "Button 1 Icon position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "visible_if": "{{ block.settings.button_icon != blank }}"
+        },
+        {
+          "type": "range",
+          "id": "button_icon_size",
+          "min": 12,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "label": "Button 1 Icon size",
+          "default": 20,
+          "visible_if": "{{ block.settings.button_icon != blank }}"
+        },
+        {
           "type": "text",
           "id": "button_label2",
           "label": "Button 2 Label",
@@ -878,6 +969,39 @@
           "id": "button_style_secondary2",
           "default": false,
           "label": "Outline Style for Button 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "button_icon2",
+          "label": "Button 2 Icon"
+        },
+        {
+          "type": "select",
+          "id": "button_icon_position2",
+          "label": "Button 2 Icon position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "visible_if": "{{ block.settings.button_icon2 != blank }}"
+        },
+        {
+          "type": "range",
+          "id": "button_icon_size2",
+          "min": 12,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "label": "Button 2 Icon size",
+          "default": 20,
+          "visible_if": "{{ block.settings.button_icon2 != blank }}"
         }
       ]
     },
