@@ -135,7 +135,7 @@
         "text_GkNaCp": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text": "<p>Between feeding, healing, and sleepless nights, preparing nourishing meals often becomes one more thing to think about.</p>\n\n<p>Your gift provides comfort, nourishment, and one less thing on her to-do list.</p>",
             "text_style": "body",
             "text_color": "",
             "text_highlight": "",
@@ -144,19 +144,15 @@
             "custom_font_size_mobile": 15
           }
         },
-        "button_yxkg3e": {
-          "type": "button",
+        "icon_with_text_iA3Xkg": {
+          "type": "icon_with_text",
           "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_icon_position": "left",
-            "button_icon_size": 20,
-            "button_label2": "",
-            "button_link2": "",
-            "button_style_secondary2": false,
-            "button_icon_position2": "left",
-            "button_icon_size2": 20
+            "icon_alignment": "flex-start",
+            "icon_size": 48,
+            "icon_1": "shopify://shop_images/like_3899a206-ba61-41b5-8dd5-b63de4eb48cf.svg",
+            "icon_text_1": "A meaningful way to say,<br> <span>\"I'm thinking about you.\"</span>",
+            "icon_text_2": "",
+            "icon_text_3": ""
           }
         }
       },
@@ -164,7 +160,7 @@
         "caption_gbznr7",
         "heading_f3Ybq9",
         "text_GkNaCp",
-        "button_yxkg3e"
+        "icon_with_text_iA3Xkg"
       ],
       "name": "Gift Bundle Image with Text",
       "settings": {
