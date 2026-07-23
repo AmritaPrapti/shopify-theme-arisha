@@ -67,6 +67,14 @@
           "settings": {
             "icon_alignment": "flex-start",
             "icon_size": 30,
+            "text_size": "default",
+            "custom_font_size_desktop": 14,
+            "custom_font_size_mobile": 13,
+            "text_color": "",
+            "text_highlight": "",
+            "background_color": "",
+            "padding_vertical": 0,
+            "padding_horizontal": 0,
             "icon_1": "shopify://shop_images/box.svg",
             "icon_text_1": "Personalized gift message",
             "icon_2": "shopify://shop_images/leaf_2.svg",
@@ -119,7 +127,7 @@
             "custom_font_size_desktop": 20,
             "custom_font_size_mobile": 16,
             "font_weight": "600",
-            "caption_color": "#B07A72",
+            "caption_color": "#b07a72",
             "caption_highlight": ""
           }
         },
@@ -149,8 +157,16 @@
           "settings": {
             "icon_alignment": "flex-start",
             "icon_size": 48,
+            "text_size": "custom",
+            "custom_font_size_desktop": 20,
+            "custom_font_size_mobile": 13,
+            "text_color": "",
+            "text_highlight": "#B07A72",
+            "background_color": "",
+            "padding_vertical": 0,
+            "padding_horizontal": 0,
             "icon_1": "shopify://shop_images/like_3899a206-ba61-41b5-8dd5-b63de4eb48cf.svg",
-            "icon_text_1": "A meaningful way to say,<br> <span>\"I'm thinking about you.\"</span>",
+            "icon_text_1": "A meaningful way to say,<br> <span> \"I'm thinking about you.\"</span>",
             "icon_text_2": "",
             "icon_text_3": ""
           }
@@ -269,7 +285,7 @@
             "custom_font_size_desktop": 20,
             "custom_font_size_mobile": 16,
             "font_weight": "600",
-            "caption_color": "#B07A72",
+            "caption_color": "#b07a72",
             "caption_highlight": ""
           }
         },
@@ -299,6 +315,14 @@
           "settings": {
             "icon_alignment": "flex-start",
             "icon_size": 66,
+            "text_size": "default",
+            "custom_font_size_desktop": 14,
+            "custom_font_size_mobile": 13,
+            "text_color": "",
+            "text_highlight": "",
+            "background_color": "",
+            "padding_vertical": 0,
+            "padding_horizontal": 0,
             "icon_1": "shopify://shop_images/gift-bow.png",
             "icon_text_1": "In Japanese, the character for \"to wrap\" (包む; tsutsumu) is said to originate from the image of a mother gently protecting her child in the womb. We couldn't imagine a more fitting symbol for a gift created to care for mothers.",
             "icon_text_2": "",
