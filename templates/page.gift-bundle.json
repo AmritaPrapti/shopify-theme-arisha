@@ -167,7 +167,7 @@
             "padding_vertical": 0,
             "padding_horizontal": 0,
             "icon_1": "shopify://shop_images/like_3899a206-ba61-41b5-8dd5-b63de4eb48cf.svg",
-            "icon_text_1": "<p>A meaningful way to say, <br><span>\"I'm thinking about you.\"</span></p>",
+            "icon_text_1": "<p>A meaningful way to say, <br><span><i>\"I'm thinking about you.\"</i></span></p>",
             "icon_text_2": "",
             "icon_text_3": ""
           }
@@ -797,6 +797,11 @@
       "name": "Gift Bundle Blocks",
       "settings": {
         "eyebrow": "Choose the perfect gift",
+        "eyebrow_style": "caption-with-letter-spacing",
+        "eyebrow_size": "medium",
+        "eyebrow_weight": "500",
+        "eyebrow_color": "",
+        "eyebrow_highlight": "",
         "heading": "Find the right gift for her",
         "heading_size": "h1",
         "columns_desktop": 3,
@@ -811,6 +816,140 @@
         "padding_top": 52,
         "padding_bottom": 52
       }
+    },
+    "gift_bundle_faq_GCqPm3": {
+      "type": "gift-bundle-faq",
+      "blocks": {
+        "gift_faq_accordion_eeC7WG": {
+          "type": "gift_faq_accordion",
+          "name": "FAQ accordion",
+          "settings": {
+            "eyebrow": "Gifting FAQs",
+            "eyebrow_style": "caption-with-letter-spacing",
+            "eyebrow_size": "medium",
+            "eyebrow_weight": "600",
+            "eyebrow_color": "",
+            "eyebrow_highlight": "",
+            "heading": "Got questions? We've got answers.",
+            "heading_size": "h1",
+            "item_bg": "#f8f0ee",
+            "item_border": "#b07a72",
+            "question_color": "",
+            "answer_color": ""
+          },
+          "blocks": {
+            "gift_faq_item_h9HWWp": {
+              "type": "gift_faq_item",
+              "name": "FAQ item",
+              "settings": {
+                "question": "Can I include a personalized gift message?",
+                "answer": "<p>Yes — add a recipient email and a personal message right on the product card before adding it to your cart.</p>",
+                "open_by_default": true
+              },
+              "blocks": {}
+            },
+            "gift_faq_item_9aQt8C": {
+              "type": "gift_faq_item",
+              "name": "FAQ item",
+              "settings": {
+                "question": "Can I include a personalized gift message?",
+                "answer": "<p>Yes — add a recipient email and a personal message right on the product card before adding it to your cart.</p>",
+                "open_by_default": false
+              },
+              "blocks": {}
+            },
+            "gift_faq_item_kY77Vq": {
+              "type": "gift_faq_item",
+              "name": "FAQ item",
+              "settings": {
+                "question": "Can I include a personalized gift message?",
+                "answer": "<p>Yes — add a recipient email and a personal message right on the product card before adding it to your cart.</p>",
+                "open_by_default": false
+              },
+              "blocks": {}
+            },
+            "gift_faq_item_HUCztL": {
+              "type": "gift_faq_item",
+              "name": "FAQ item",
+              "settings": {
+                "question": "Can I include a personalized gift message?",
+                "answer": "<p>Yes — add a recipient email and a personal message right on the product card before adding it to your cart.</p>",
+                "open_by_default": false
+              },
+              "blocks": {}
+            },
+            "gift_faq_item_6dGUmD": {
+              "type": "gift_faq_item",
+              "name": "FAQ item",
+              "settings": {
+                "question": "Can I include a personalized gift message?",
+                "answer": "<p>Yes — add a recipient email and a personal message right on the product card before adding it to your cart.</p>",
+                "open_by_default": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "gift_faq_item_h9HWWp",
+            "gift_faq_item_9aQt8C",
+            "gift_faq_item_kY77Vq",
+            "gift_faq_item_HUCztL",
+            "gift_faq_item_6dGUmD"
+          ]
+        },
+        "gift_feature_panel_cm4cgQ": {
+          "type": "gift_feature_panel",
+          "name": "Feature panel",
+          "settings": {
+            "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
+            "background": "",
+            "text_color": "",
+            "image": "shopify://shop_images/forher_food_april20_3255.jpg",
+            "image_position": "left",
+            "image_size": "small"
+          },
+          "blocks": {
+            "gift_feature_text_CypHj4": {
+              "type": "gift_feature_text",
+              "name": "Feature text",
+              "settings": {
+                "title": "A thoughtful gift she'll use and remember.",
+                "title_tag": "h2",
+                "title_size": "h2",
+                "text": "<p>Give comfort, nourishment, and support when she needs it most.</p>"
+              },
+              "blocks": {}
+            },
+            "gift_feature_button_bWFWag": {
+              "type": "gift_feature_button",
+              "name": "Feature button",
+              "settings": {
+                "label": "Shop gift bundles",
+                "link": "",
+                "show_icon": true,
+                "button_bg": "#2b2b2b",
+                "button_text": "#ffffff"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "gift_feature_text_CypHj4",
+            "gift_feature_button_bWFWag"
+          ]
+        }
+      },
+      "block_order": [
+        "gift_faq_accordion_eeC7WG",
+        "gift_feature_panel_cm4cgQ"
+      ],
+      "name": "Gift Bundle FAQ",
+      "settings": {
+        "faq_column_width": 45,
+        "color_scheme": "",
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
@@ -818,6 +957,7 @@
     "gift_bundle_hero_NLrRmj",
     "multicolumn_dKb3NC",
     "gift_bundle_hero_99FM3h",
-    "gift_bundle_blocks_FkWTgi"
+    "gift_bundle_blocks_FkWTgi",
+    "gift_bundle_faq_GCqPm3"
   ]
 }
