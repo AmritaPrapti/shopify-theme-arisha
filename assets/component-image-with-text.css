@@ -468,6 +468,9 @@
     padding-left: 0;
     padding-right: 0;
   }
+  .image-with-text__content {
+    padding-inline: 2rem;
+  }
 }
 
 @media screen and (min-width: 750px) {
