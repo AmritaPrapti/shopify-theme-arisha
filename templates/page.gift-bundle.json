@@ -832,7 +832,7 @@
             "eyebrow_highlight": "",
             "heading": "Got questions? We've got answers.",
             "heading_size": "h2",
-            "item_bg": "",
+            "item_bg": "#F8F0EE",
             "item_border": "",
             "question_color": "",
             "answer_color": ""
@@ -844,7 +844,7 @@
               "settings": {
                 "question": "Can I include a personalized gift message?",
                 "answer": "<p>Yes — add a recipient email and a personal message right on the product card before adding it to your cart.</p>",
-                "open_by_default": false
+                "open_by_default": true
               },
               "blocks": {}
             },
