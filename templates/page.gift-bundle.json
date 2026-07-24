@@ -167,7 +167,7 @@
             "padding_vertical": 0,
             "padding_horizontal": 0,
             "icon_1": "shopify://shop_images/like_3899a206-ba61-41b5-8dd5-b63de4eb48cf.svg",
-            "icon_text_1": "<p>A meaningful way to say, <br/><em>  &lt;span&gt;\"I'm thinking about you.\"&lt;/span&gt;</em></p>",
+            "icon_text_1": "<p>A meaningful way to say, <br><span>\"I'm thinking about you.\"</span></p>",
             "icon_text_2": "",
             "icon_text_3": ""
           }
