@@ -82,16 +82,17 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    background: var(--gb-card-bg);
-    border: 1px solid var(--gb-card-border);
-    border-radius: 1.6rem;
+    background-color: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
+    border: 1px solid rgba(var(--color-foreground), 0.08);
+    border-radius: var(--gb-radius, 1.6rem);
     padding: 3.2rem 2.8rem;
     height: 100%;
   }
 
   .gift-bundle-card--highlight {
-    border-color: var(--gb-accent);
-    box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.06);
+    border-color: var(--gb-highlight, var(--gb-accent));
+    box-shadow: 0 1.2rem 3.2rem rgba(var(--color-shadow, 0, 0, 0), 0.12);
   }
 
   .gift-bundle-card__badge {
@@ -112,13 +113,25 @@
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
-    gap: 1.4rem;
+    gap: var(--gb-gap, 1.4rem);
   }
 
-  /* Push the last actionable blocks (price / cart / gift) to the bottom so
-     cards of differing content length still align their CTAs. */
+  /* Push the price (and everything after it — gift / cart) to the bottom so
+     cards of differing content length still align their action area. */
   .gift-bundle-card__form > .gb-price {
     margin-top: auto;
+  }
+
+  /* Per-block padding (with optional mobile override). */
+  .gb-block {
+    padding-top: var(--gb-pt, 0px);
+    padding-bottom: var(--gb-pb, 0px);
+  }
+  @media screen and (max-width: 749px) {
+    .gb-block {
+      padding-top: var(--gb-pt-m, var(--gb-pt, 0px));
+      padding-bottom: var(--gb-pb-m, var(--gb-pb, 0px));
+    }
   }
 
   /* ---- Title ---- */
@@ -188,7 +201,7 @@
   .gb-stat__num {
     font-size: 2.4rem;
     font-weight: 500;
-    color: var(--gb-accent);
+    color: var(--gb-highlight, var(--gb-accent));
     line-height: 1.2;
   }
   .gb-stat__label {
@@ -209,7 +222,7 @@
     font: inherit;
     font-weight: 600;
     color: inherit;
-    border-top: 1px solid var(--gb-card-border);
+    border-top: 1px solid rgba(var(--color-foreground), 0.12);
   }
   .gb-includes__toggle .svg-wrapper {
     display: inline-flex;
@@ -318,10 +331,11 @@
   .gb-gift__field textarea {
     width: 100%;
     padding: 1rem 1.2rem;
-    border: 1px solid var(--gb-card-border);
+    border: 1px solid rgba(var(--color-foreground), 0.2);
     border-radius: 0.6rem;
     font: inherit;
-    background: #fff;
+    background-color: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
   }
   .gb-gift__field textarea {
     resize: vertical;
@@ -353,7 +367,7 @@
 
     <div class="gift-bundle-grid">
       {% content_for 'blocks' %}
-      
+
     </div>
   </div>
 </div>
@@ -482,6 +496,7 @@
     }
   ],
   "blocks": [
+    { "type": "_text" },
     { "type": "gift_bundle_product" }
   ],
   "presets": [

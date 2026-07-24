@@ -1,0 +1,23 @@
+<div>
+    {{ block.settings.text }}
+</div>
+
+
+{% schema %}
+    {
+        "name": "text",
+        "settings": [
+            {
+                "type": "text",
+                "id": "text",
+                "label": "Text"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Text",
+                "category": "basic"
+            }
+        ]
+    }
+{% endschema %}

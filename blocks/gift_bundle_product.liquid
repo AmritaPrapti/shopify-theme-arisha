@@ -1,10 +1,21 @@
 {% comment %}
   Gift Bundle — Product (parent block)
 
-  Owns the product and opens the product <form>. All nested child blocks are
-  rendered by {% content_for 'blocks' %} INSIDE the form, so their inputs
-  (add-to-cart button, gift line-item-property fields) are collected by this
-  form automatically — the children never need the product variable themselves.
+  Owns the product and opens the product form. The TITLE and PRICE are rendered
+  here (not as nested blocks) because in this theme a nested block cannot read
+  the parent's product setting — so both are derived from this block's product,
+  needing only a single product selection.
+
+  The descriptive/action nested blocks are rendered by the blocks content tag
+  INSIDE the form, so their inputs (add-to-cart, gift line-item properties) are
+  collected by this form automatically. Visual order is controlled with CSS
+  `order` (see the section styles): title → nested blocks → price → gift → cart.
+
+  Note: the blocks content tag may only appear ONCE per file (Shopify parses it
+  statically — even mutually-exclusive if/else branches count as duplicates).
+  So the form is emitted as plain HTML strings that open in one branch and close
+  in another, wrapping a single content_for. A plain <form> is used instead of
+  the {% form 'product' %} tag for the same reason.
 {% endcomment %}
 
 {%- liquid
@@ -14,22 +25,35 @@
 -%}
 
 <div
-  class="gift-bundle-card{% if block.settings.highlight %} gift-bundle-card--highlight{% endif %}"
+  class="gift-bundle-card color-{{ block.settings.color_scheme }}{% if block.settings.highlight %} gift-bundle-card--highlight{% endif %}"
+  style="
+    --gb-radius: {{ block.settings.corner_radius }}px;
+    --gb-gap: {{ block.settings.block_gap }}px;
+    --gb-accent: rgb(var(--color-button));
+    --gb-accent-text: rgb(var(--color-button-text));
+    --gb-muted: rgba(var(--color-foreground), 0.62);
+    --gb-check: rgb(var(--color-button));
+    --gb-highlight: var(--color-highlight);
+  "
   {{ block.shopify_attributes }}
 >
   {%- if block.settings.badge != blank -%}
-    <span class="gift-bundle-card__badge">{{ block.settings.badge }}</span>
+    <span class="gift-bundle-card__badge ">{{ block.settings.badge }}</span>
   {%- endif -%}
 
   {%- if product != blank -%}
     <product-form data-section-id="{{ block.id }}">
-      {%- form 'product',
-        product,
-        id: form_id,
-        class: 'gift-bundle-card__form',
-        novalidate: 'novalidate',
-        data-type: 'add-to-cart-form'
-      -%}
+      <form
+        action="{{ routes.cart_add_url }}"
+        method="post"
+        enctype="multipart/form-data"
+        id="{{ form_id }}"
+        class="gift-bundle-card__form"
+        novalidate="novalidate"
+        data-type="add-to-cart-form"
+      >
+        <input type="hidden" name="form_type" value="product">
+        <input type="hidden" name="utf8" value="✓">
         <input
           type="hidden"
           name="id"
@@ -37,13 +61,16 @@
           class="product-variant-id"
           {% if variant.available == false %}disabled{% endif %}
         >
-
-        {% content_for 'blocks' %}
-      {%- endform -%}
-    </product-form>
   {%- else -%}
     <div class="gift-bundle-card__form">
-      {% content_for 'blocks' %}
+  {%- endif -%}
+
+    {% content_for 'blocks' %}
+
+  {%- if product != blank -%}
+      </form>
+    </product-form>
+  {%- else -%}
     </div>
     {%- if request.design_mode -%}
       <p class="gb-subtitle">Select a product for this card in the block settings.</p>
@@ -59,7 +86,7 @@
       "type": "product",
       "id": "product",
       "label": "Product",
-      "info": "Drives the add-to-cart variant. Card text and price are set in the nested blocks below."
+      "info": "Drives the add-to-cart variant, the title and the price."
     },
     {
       "type": "text",
@@ -72,6 +99,37 @@
       "id": "highlight",
       "label": "Highlight this card",
       "default": false
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "info": "Sets the card background, text and button colors.",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Corner radius",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "block_gap",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Space between blocks",
+      "default": 14
     }
   ],
   "blocks": [
@@ -86,7 +144,8 @@
   ],
   "presets": [
     {
-      "name": "Product card"
+      "name": "Product card",
+      "category": "Gift bundle"
     }
   ]
 }

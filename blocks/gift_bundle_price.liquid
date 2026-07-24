@@ -1,28 +1,36 @@
 {% comment %}
   Gift Bundle — Price
-  Manually entered so the merchant controls the displayed price, compare-at
-  price and savings badge (child blocks cannot read the parent's product).
+  Uses closest.product (the parent "Product card" block's product setting).
+  Price, compare-at price and the savings badge are all derived from it.
 {% endcomment %}
 {%- liquid
+  assign variant = closest.product.selected_or_first_available_variant
+  assign price_cents = variant.price
+  assign compare_cents = variant.compare_at_price
+  assign on_sale = false
+  if compare_cents > price_cents
+    assign on_sale = true
+  endif
+
   assign save_text = block.settings.save_text
-  if save_text == blank and block.settings.auto_save
-    assign current = block.settings.current_price | replace: ',', '' | replace: '$', '' | plus: 0.0
-    assign compare = block.settings.compare_price | replace: ',', '' | replace: '$', '' | plus: 0.0
-    if compare > 0 and current > 0 and compare > current
-      assign pct = compare | minus: current | times: 100.0 | divided_by: compare | round
-      assign save_text = 'Save ' | append: pct | append: '%'
-    endif
+  if save_text == blank and block.settings.show_save_badge and on_sale
+    assign pct = compare_cents | minus: price_cents | times: 100.0 | divided_by: compare_cents | round
+    assign save_text = 'Save ' | append: pct | append: '%'
   endif
 -%}
 
-<div class="gb-price" {{ block.shopify_attributes }}>
-  {%- if block.settings.current_price != blank -%}
-    <span class="gb-price__current">{{ block.settings.current_price }}</span>
+<div
+  class="gb-price gb-block"
+  style="--gb-pt: {{ block.settings.padding_top }}px; --gb-pb: {{ block.settings.padding_bottom }}px;{% if block.settings.padding_top_mobile > 0 %} --gb-pt-m: {{ block.settings.padding_top_mobile }}px;{% endif %}{% if block.settings.padding_bottom_mobile > 0 %} --gb-pb-m: {{ block.settings.padding_bottom_mobile }}px;{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  {%- if price_cents != blank -%}
+    <span class="gb-price__current">{{ price_cents | money }}</span>
   {%- endif -%}
-  {%- if block.settings.compare_price != blank -%}
-    <span class="gb-price__compare">{{ block.settings.compare_price }}</span>
+  {%- if on_sale -%}
+    <span class="gb-price__compare">{{ compare_cents | money }}</span>
   {%- endif -%}
-  {%- if save_text != blank -%}
+  {%- if save_text != blank and on_sale -%}
     <span class="gb-price__save">{{ save_text }}</span>
   {%- endif -%}
 </div>
@@ -32,31 +40,24 @@
   "name": "Price",
   "settings": [
     {
-      "type": "text",
-      "id": "current_price",
-      "label": "Price",
-      "default": "$265.00 USD"
-    },
-    {
-      "type": "text",
-      "id": "compare_price",
-      "label": "Compare-at price",
-      "info": "Shown with a strikethrough. Leave blank for none."
-    },
-    {
       "type": "checkbox",
-      "id": "auto_save",
-      "label": "Auto-calculate savings badge",
-      "info": "Uses price and compare-at price. Ignored if a custom badge is set below.",
+      "id": "show_save_badge",
+      "label": "Show savings badge",
+      "info": "Auto-calculates \"Save X%\" from the product's price and compare-at price.",
       "default": true
     },
     {
       "type": "text",
       "id": "save_text",
       "label": "Custom savings badge",
-      "info": "e.g. \"Save 10%\". Overrides auto-calculation."
-    }
+      "info": "e.g. \"Save 10%\". Overrides the auto-calculated value."
+    },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 60, "step": 2, "unit": "px", "label": "Top spacing", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 60, "step": 2, "unit": "px", "label": "Bottom spacing", "default": 0 },
+    { "type": "range", "id": "padding_top_mobile", "min": 0, "max": 60, "step": 2, "unit": "px", "label": "Top spacing (mobile)", "info": "0 = same as desktop.", "default": 0 },
+    { "type": "range", "id": "padding_bottom_mobile", "min": 0, "max": 60, "step": 2, "unit": "px", "label": "Bottom spacing (mobile)", "info": "0 = same as desktop.", "default": 0 }
   ],
-  "presets": [{ "name": "Price" }]
+  "presets": [{ "name": "Price", "category": "Gift bundle" }]
 }
 {% endschema %}
