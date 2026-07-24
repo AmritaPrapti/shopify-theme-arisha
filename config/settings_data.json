@@ -339,7 +339,7 @@
           "headline_color": "#111111",
           "text": "#333333",
           "highlight": "#b07a72",
-          "button": "#111111",
+          "button": "#B07A72",
           "button_label": "#ffffff",
           "secondary_button_label": "#b07a72",
           "shadow": "rgba(0,0,0,0)"
@@ -352,7 +352,7 @@
           "headline_color": "#111111",
           "text": "#333333",
           "highlight": "#b07a72",
-          "button": "#111111",
+          "button": "#B07A72",
           "button_label": "#ffffff",
           "secondary_button_label": "#b07a72",
           "shadow": "rgba(0,0,0,0)"
