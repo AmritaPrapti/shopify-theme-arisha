@@ -446,7 +446,7 @@
               "settings": {
                 "open_label": "See included items",
                 "close_label": "Hide included items",
-                "content": "<p>8 soups, 6 snacks, 3 teas beautifully packaged.</p>",
+                "content": "<h5>Soups</h5><ul><li>2 × Golden Chicken Turmeric Stew</li><li>2 × 5 Mushroom & Ume Plum Soup</li><li>2 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>1 × Rejuvenating Bars</li></ul><h5>Teas</h5><ul><li>1 × Recover & Relax Blend</li></ul>",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -585,7 +585,7 @@
               "settings": {
                 "open_label": "See included items",
                 "close_label": "Hide included items",
-                "content": "<p>8 soups, 6 snacks, 3 teas beautifully packaged.</p>",
+                "content": "<h5>Soups</h5><ul><li>2 × Golden Chicken Turmeric Stew</li><li>2 × 5 Mushroom & Ume Plum Soup</li><li>2 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>1 × Rejuvenating Bars</li></ul><h5>Teas</h5><ul><li>1 × Recover & Relax Blend</li></ul>",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -724,7 +724,7 @@
               "settings": {
                 "open_label": "See included items",
                 "close_label": "Hide included items",
-                "content": "<p>8 soups, 6 snacks, 3 teas beautifully packaged.</p>",
+                "content": "<h5>Soups</h5><ul><li>2 × Golden Chicken Turmeric Stew</li><li>2 × 5 Mushroom & Ume Plum Soup</li><li>2 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>1 × Rejuvenating Bars</li></ul><h5>Teas</h5><ul><li>1 × Recover & Relax Blend</li></ul>",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
