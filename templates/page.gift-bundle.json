@@ -848,6 +848,16 @@
               },
               "blocks": {}
             },
+            "gift_faq_item_9aQt8C": {
+              "type": "gift_faq_item",
+              "name": "FAQ item",
+              "settings": {
+                "question": "Can I include a personalized gift message?",
+                "answer": "<p>Yes — add a recipient email and a personal message right on the product card before adding it to your cart.</p>",
+                "open_by_default": false
+              },
+              "blocks": {}
+            },
             "gift_faq_item_kY77Vq": {
               "type": "gift_faq_item",
               "name": "FAQ item",
@@ -881,6 +891,7 @@
           },
           "block_order": [
             "gift_faq_item_h9HWWp",
+            "gift_faq_item_9aQt8C",
             "gift_faq_item_kY77Vq",
             "gift_faq_item_HUCztL",
             "gift_faq_item_6dGUmD"
