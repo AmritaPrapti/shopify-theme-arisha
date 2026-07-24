@@ -48,7 +48,7 @@
           <p
             id="Multicolumn-caption-{{ section.id }}"
             class="multicolumn__caption {% if section.settings.caption_size != 'custom' %} caption-with-letter-spacing--{{ section.settings.caption_size }}{% endif %}"
-            style="text-align: {{ section.settings.title_alignment }}; width: 100%; font-weight: {{ section.settings.caption_font_weight }};{% if section.settings.caption_uppercase %} text-transform: uppercase; letter-spacing: 0.07rem;{% endif %}"
+            style="text-align: {{ section.settings.title_alignment }}; width: 100%; font-weight: {{ section.settings.caption_font_weight }};{% if section.settings.caption_color != blank %} color: {{ section.settings.caption_color }};{% endif %}{% if section.settings.caption_uppercase %} text-transform: uppercase; letter-spacing: 0.07rem;{% endif %}"
           >
             {{ section.settings.caption | escape }}
           </p>
@@ -307,6 +307,11 @@
         }
       ],
       "default": "400"
+    },
+    {
+      "type": "color",
+      "id": "caption_color",
+      "label": "Custom caption color"
     },
     {
       "type": "inline_richtext",
