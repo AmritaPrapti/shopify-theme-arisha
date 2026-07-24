@@ -210,8 +210,8 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/leaf_2.svg",
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "title": "Designed for postpartum recovery",
+            "text": "<p>Recipes created to support healing, energy, and balance during the fourth trimester.</p>",
             "link_label": "",
             "link": ""
           }
@@ -220,8 +220,8 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/check-mark.svg",
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "title": "Japanese-inspired traditions",
+            "text": "<p>Rooted in the wisdom of Yakulzen and time-honored postpartum practices.</p>",
             "link_label": "",
             "link": ""
           }
@@ -230,8 +230,8 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/clock_b4783c17-a555-4787-ac9b-2e3d478b58e0.svg",
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "title": "Ready in minutes",
+            "text": "<p>Heat and enjoy in minutes—because rest is just as important.</p>",
             "link_label": "",
             "link": ""
           }
@@ -240,8 +240,8 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/leaf.svg",
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "title": "Chef-crafted with whole ingredients",
+            "text": "<p>Made with clean, nourishing ingredients your body will thank you for.</p>",
             "link_label": "",
             "link": ""
           }
