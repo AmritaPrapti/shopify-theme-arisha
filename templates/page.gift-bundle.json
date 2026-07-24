@@ -261,7 +261,7 @@
         "caption_font_size_desktop": 18,
         "caption_font_size_mobile": 14,
         "caption_font_weight": "600",
-        "caption_color": "#8A7A78",
+        "caption_color": "#8a7a78",
         "title": "Thoughtful food. Timeless traditions.",
         "heading_size": "h1",
         "subtitle": "",
@@ -821,6 +821,58 @@
         "padding_bottom": 52
       }
     },
+    "collection_list_Bfacr9": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_DGgPWw": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "soups-and-meals",
+            "custom_description": "Mineral-rich broths rooted in traditional postpartum nourishment",
+            "button_label": "Shop Now"
+          }
+        },
+        "featured_collection_MqJywD": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "snacks",
+            "custom_description": "Energy-dense bites designed to provide quick nourishment throughout the day.",
+            "button_label": "Shop Now"
+          }
+        },
+        "featured_collection_T7Pjpw": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "teas",
+            "custom_description": "Herbal blends crafted to support warmth, digestion, and calm.",
+            "button_label": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_DGgPWw",
+        "featured_collection_MqJywD",
+        "featured_collection_T7Pjpw"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "What's inside every bundle",
+        "heading_size": "h1",
+        "header_description": "<p>Each bundle includes our signature soups, nourishing snacks, and functional teas — thoughtfully crafted to support postpartum recovery.</p>",
+        "show_title_center": true,
+        "image_ratio": "square",
+        "show_description": false,
+        "show_button": false,
+        "button_style": "primary",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "gift_bundle_faq_GCqPm3": {
       "type": "gift-bundle-faq",
       "blocks": {
@@ -962,6 +1014,7 @@
     "multicolumn_dKb3NC",
     "gift_bundle_hero_99FM3h",
     "gift_bundle_blocks_FkWTgi",
+    "collection_list_Bfacr9",
     "gift_bundle_faq_GCqPm3"
   ]
 }
