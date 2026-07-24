@@ -1,0 +1,56 @@
+{% comment %}Gift FAQ — Feature title + text{% endcomment %}
+<div class="gb-feature-text" {{ block.shopify_attributes }}>
+  {%- if block.settings.title != blank -%}
+    <{{ block.settings.title_tag }} class="gb-feature-title {{ block.settings.title_size }}">
+      {{- block.settings.title -}}
+    </{{ block.settings.title_tag }}>
+  {%- endif -%}
+  {%- if block.settings.text != blank -%}
+    <div class="gb-feature-body">{{ block.settings.text }}</div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Feature text",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "A thoughtful gift she'll use and remember."
+    },
+    {
+      "type": "select",
+      "id": "title_tag",
+      "label": "Title tag (SEO)",
+      "options": [
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "p", "label": "Paragraph" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "label": "Title size",
+      "options": [
+        { "value": "h3", "label": "Small" },
+        { "value": "h2", "label": "Medium" },
+        { "value": "h1", "label": "Large" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Give comfort, nourishment, and support when she needs it most.</p>"
+    }
+  ],
+  "presets": [
+    { "name": "Feature text", "category": "Gift FAQ" }
+  ]
+}
+{% endschema %}

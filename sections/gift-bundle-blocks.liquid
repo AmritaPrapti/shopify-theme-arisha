@@ -52,10 +52,6 @@
   }
 
   .gift-bundle__eyebrow {
-    text-transform: uppercase;
-    letter-spacing: 0.25em;
-    font-size: 1.2rem;
-    font-weight: 600;
     color: var(--gb-muted);
     margin: 0 0 1.2rem;
   }
@@ -143,7 +139,7 @@
   /* ---- Subtitle ---- */
   .gb-subtitle {
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+   
     font-size: 14px;
     font-weight: 600;
     color: var(--gb-muted);
@@ -157,7 +153,7 @@
   .gb-best-for__label, .gb-includes__label {
     font-weight: 600;
     margin: 0 0 0.8rem;
-    font-size: 1.6rem;
+    font-size: 16px;
     text-transform: uppercase;
   }
 
@@ -216,6 +212,7 @@
   .gb-stat__label {
     font-size: 1.3rem;
     color: var(--gb-muted);
+    font-weight: 600;
   }
 
   /* ---- Includes (dropdown) ---- */
@@ -232,6 +229,7 @@
     font-weight: 600;
     color: inherit;
     border-top: 1px solid rgba(var(--color-foreground), 0.12);
+    padding-bottom: 0rem;
   }
   .gb-includes__toggle .svg-wrapper {
     display: inline-flex;
@@ -273,40 +271,8 @@
     border-radius: 999px;
   }
 
-  /* ---- Add to cart ---- */
-  .gb-cart__button {
-    width: 100%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-    padding: 1.3rem 1.6rem;
-    border-radius: 0.8rem;
-    border: 1px solid var(--gb-accent);
-    background: transparent;
-    color: var(--gb-accent);
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    font-size: 1.3rem;
-    cursor: pointer;
-    transition: background 0.15s ease, color 0.15s ease;
-  }
-  .gb-cart__button:hover {
-    background: var(--gb-accent);
-    color: var(--gb-accent-text);
-  }
-  .gb-cart__button--solid {
-    background: var(--gb-accent);
-    color: var(--gb-accent-text);
-  }
-  .gb-cart__button[disabled] {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  .gb-cart__button .loading__spinner {
-    margin-left: 0.4rem;
-  }
+
+
 
   /* ---- Send as a gift ---- */
   .gb-gift__toggle {
@@ -361,6 +327,11 @@
   .gb-gift__error.is-visible {
     display: block;
   }
+
+  .gb-includes__content h5, .gb-includes__content h6, .gb-includes__content h4, .gb-includes__content h3, .gb-includes__content h2, .gb-includes__content h1 {
+    margin: 10px 0;
+    font-weight: 600;
+  }
 {%- endstyle -%}
 
 <div class="color-{{ section.settings.color_scheme }} isolate gradient">
@@ -368,7 +339,10 @@
     {%- if section.settings.eyebrow != blank or section.settings.heading != blank -%}
       <div class="gift-bundle__header">
         {%- if section.settings.eyebrow != blank -%}
-          <p class="gift-bundle__eyebrow">{{ section.settings.eyebrow }}</p>
+          <p
+            class="gift-bundle__eyebrow {{ section.settings.eyebrow_style }}--{{ section.settings.eyebrow_size }} {{ section.settings.eyebrow_style }}"
+            style="{% if section.settings.eyebrow_color != blank %}color: {{ section.settings.eyebrow_color }};{% endif %} --caption-highlight: {{ section.settings.eyebrow_highlight }}; font-weight: {{ section.settings.eyebrow_weight }};"
+          >{{ section.settings.eyebrow }}</p>
         {%- endif -%}
         {%- if section.settings.heading != blank -%}
           <h2 class="gift-bundle__heading {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
@@ -393,7 +367,51 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "Choose the perfect gift"
+      "default": "Choose the perfect gift",
+      "info": "Supports <span> tags for highlighting specific words."
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_style",
+      "label": "Eyebrow text style",
+      "options": [
+        { "value": "subtitle", "label": "Subtitle" },
+        { "value": "caption-with-letter-spacing", "label": "Caption" }
+      ],
+      "default": "caption-with-letter-spacing"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_size",
+      "label": "Eyebrow size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_weight",
+      "label": "Eyebrow font weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi bold" }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow color"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_highlight",
+      "label": "Eyebrow highlight color",
+      "info": "Used for any text wrapped in a <span> within the eyebrow."
     },
     {
       "type": "inline_richtext",

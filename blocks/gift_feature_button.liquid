@@ -1,0 +1,59 @@
+{% comment %}Gift FAQ — Feature button{% endcomment %}
+{%- if block.settings.label != blank -%}
+  <div class="gb-feature-button" {{ block.shopify_attributes }}>
+    <a
+      class="gb-feature__btn"
+      href="{{ block.settings.link | default: '#' }}"
+      style="background-color: {{ block.settings.button_bg }}; color: {{ block.settings.button_text }};"
+    >
+      {%- if block.settings.show_icon -%}
+        <span class="svg-wrapper" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+            <path d="M20 12v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8M2 7h20v5H2zM12 21V7M12 7S9.5 3 7.5 3 5 5.5 7 7h5zM12 7s2.5-4 4.5-4S19 5.5 17 7h-5z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      {%- endif -%}
+      <span>{{ block.settings.label }}</span>
+    </a>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Feature button",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Button label",
+      "default": "Shop gift bundles"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Show gift icon",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background",
+      "default": "#2b2b2b"
+    },
+    {
+      "type": "color",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    { "name": "Feature button", "category": "Gift FAQ" }
+  ]
+}
+{% endschema %}

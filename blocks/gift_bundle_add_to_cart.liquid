@@ -2,19 +2,37 @@
   Gift Bundle — Add to cart
   Renders the submit button for the enclosing product form (opened by the
   parent "Product card" block). Must live inside a "Product card" block.
+
+  Availability is read from closest.product (the card's product) at render time,
+  so an out-of-stock product shows a disabled "Sold out" button that reflects the
+  live stock on each page load.
 {% endcomment %}
-{%- assign btn_id = 'gb-cart-' | append: block.id -%}
+{%- liquid
+  assign btn_id = 'gb-cart-' | append: block.id
+  assign variant = closest.product.selected_or_first_available_variant
+  assign available = false
+  if variant.available
+    assign available = true
+  endif
+-%}
 
 <div class="gb-cart gb-block" style="--gb-pt: {{ block.settings.padding_top }}px; --gb-pb: {{ block.settings.padding_bottom }}px;{% if block.settings.padding_top_mobile > 0 %} --gb-pt-m: {{ block.settings.padding_top_mobile }}px;{% endif %}{% if block.settings.padding_bottom_mobile > 0 %} --gb-pb-m: {{ block.settings.padding_bottom_mobile }}px;{% endif %}" {{ block.shopify_attributes }}>
   <button
     id="{{ btn_id }}"
     type="submit"
     name="add"
-    class="gb-cart__button{% if block.settings.style == 'solid' %} gb-cart__button--solid{% endif %}"
+    class="button gb-cart__button button--full-width {% if block.settings.style == 'solid' %} button--primary {% else %} button--secondary {% endif %}"
     aria-live="polite"
     data-sold-out-message="true"
+    {% unless available %}disabled aria-disabled="true"{% endunless %}
   >
-    <span>{{ block.settings.label | default: 'Add to cart' }}</span>
+    <span>
+      {%- if available -%}
+        {{ block.settings.label | default: 'Add to cart' }}
+      {%- else -%}
+        {{ 'products.product.sold_out' | t }}
+      {%- endif -%}
+    </span>
     <span class="sold-out-message hidden">{{ 'products.product.sold_out' | t }}</span>
     {%- render 'loading-spinner' -%}
   </button>

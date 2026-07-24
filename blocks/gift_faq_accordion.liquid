@@ -1,0 +1,130 @@
+{% comment %}
+  Gift FAQ — Accordion (left panel)
+  Eyebrow + heading, then a list of nested "FAQ item" blocks.
+{% endcomment %}
+
+<div
+  class="gb-faq"
+  style="{% if block.settings.item_bg != blank %}--gbf-item-bg: {{ block.settings.item_bg }};{% endif %}{% if block.settings.item_border != blank %}--gbf-item-border: {{ block.settings.item_border }};{% endif %}{% if block.settings.question_color != blank %}--gbf-q: {{ block.settings.question_color }};{% endif %}{% if block.settings.answer_color != blank %}--gbf-a: {{ block.settings.answer_color }};{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.eyebrow != blank -%}
+    <p
+      class="gb-faq__eyebrow {{ block.settings.eyebrow_style }}--{{ block.settings.eyebrow_size }} {{ block.settings.eyebrow_style }}"
+      style="{% if block.settings.eyebrow_color != blank %}color: {{ block.settings.eyebrow_color }};{% endif %} --caption-highlight: {{ block.settings.eyebrow_highlight }}; font-weight: {{ block.settings.eyebrow_weight }};"
+    >{{ block.settings.eyebrow }}</p>
+  {%- endif -%}
+  {%- if block.settings.heading != blank -%}
+    <h2 class="gb-faq__heading {{ block.settings.heading_size }}">{{ block.settings.heading }}</h2>
+  {%- endif -%}
+
+  <div class="gb-faq__list">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ accordion",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Gifting FAQs",
+      "info": "Supports <span> tags for highlighting specific words."
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_style",
+      "label": "Eyebrow text style",
+      "options": [
+        { "value": "subtitle", "label": "Subtitle" },
+        { "value": "caption-with-letter-spacing", "label": "Caption" }
+      ],
+      "default": "caption-with-letter-spacing"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_size",
+      "label": "Eyebrow size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_weight",
+      "label": "Eyebrow font weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi bold" }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow color"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_highlight",
+      "label": "Eyebrow highlight color",
+      "info": "Used for any text wrapped in a <span> within the eyebrow."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Got questions? We've got answers."
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h3", "label": "Small" },
+        { "value": "h2", "label": "Medium" },
+        { "value": "h1", "label": "Large" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "header",
+      "content": "FAQ item colors",
+      "info": "Applies to every FAQ item. Leave blank to use the theme's colors."
+    },
+    {
+      "type": "color",
+      "id": "item_bg",
+      "label": "Item background"
+    },
+    {
+      "type": "color",
+      "id": "item_border",
+      "label": "Item border"
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "Question text"
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Answer text"
+    }
+  ],
+  "blocks": [
+    { "type": "gift_faq_item" }
+  ],
+  "presets": [
+    { "name": "FAQ accordion", "category": "Gift FAQ" }
+  ]
+}
+{% endschema %}

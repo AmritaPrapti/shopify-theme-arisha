@@ -1,0 +1,96 @@
+{% comment %}
+  Gift FAQ — Feature panel (right)
+  Image-with-text card: the image fills the left column, and the nested
+  Title/Description and Button blocks stack in the right column. Use "Image
+  position" to flip the sides.
+{% endcomment %}
+
+<div
+  class="gb-feature color-{{ block.settings.color_scheme }} gb-feature--img-{{ block.settings.image_size }}{% if block.settings.image_position == 'right' %} gb-feature--image-right{% endif %}"
+  style="{% if block.settings.background != blank %}background-color: {{ block.settings.background }};{% endif %}{% if block.settings.text_color != blank %}color: {{ block.settings.text_color }};{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  <div class="gb-feature__media">
+    {%- if block.settings.image != blank -%}
+      {{
+        block.settings.image
+        | image_url: width: 1200
+        | image_tag:
+          loading: 'lazy',
+          sizes: '(min-width: 750px) 50vw, 100vw',
+          widths: '400, 600, 800, 1000, 1200',
+          alt: block.settings.image.alt
+      }}
+    {%- else -%}
+      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+
+  <div class="gb-feature__content">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Feature panel",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "info": "Sets the panel background and text. Use the overrides below for custom colors.",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background override"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text override"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position (desktop)",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "image_size",
+      "label": "Image size",
+      "info": "\"Adapt to image\" shows the whole image at its natural ratio; the others crop to a fixed height.",
+      "options": [
+        { "value": "adapt", "label": "Adapt to image" },
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    }
+  ],
+  "blocks": [
+    { "type": "gift_feature_text" },
+    { "type": "gift_feature_button" }
+  ],
+  "presets": [
+    { "name": "Feature panel", "category": "Gift FAQ" }
+  ]
+}
+{% endschema %}

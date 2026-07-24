@@ -1,0 +1,45 @@
+{% comment %}
+  Gift FAQ — Item (one question + answer). Uses native <details> (no JS).
+{% endcomment %}
+{%- if block.settings.question != blank or block.settings.answer != blank -%}
+  <details
+    class="gb-faq__item"
+    {% if block.settings.open_by_default %}open{% endif %}
+    {{ block.shopify_attributes }}
+  >
+    <summary class="gb-faq__q">
+      <span>{{ block.settings.question }}</span>
+      <span class="gb-faq__caret">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+    </summary>
+    <div class="gb-faq__a">{{ block.settings.answer }}</div>
+  </details>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "FAQ item",
+  "settings": [
+    {
+      "type": "text",
+      "id": "question",
+      "label": "Question",
+      "default": "Can I include a personalized gift message?"
+    },
+    {
+      "type": "richtext",
+      "id": "answer",
+      "label": "Answer",
+      "default": "<p>Yes — add a recipient email and a personal message right on the product card before adding it to your cart.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_by_default",
+      "label": "Open by default",
+      "default": false
+    }
+  ],
+  "presets": [
+    { "name": "FAQ item", "category": "Gift FAQ" }
+  ]
+}
+{% endschema %}
