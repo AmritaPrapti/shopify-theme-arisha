@@ -388,7 +388,7 @@
               "name": "Title",
               "settings": {
                 "title": "",
-                "heading_tag": "h3",
+                "heading_tag": "h2",
                 "heading_size": "h3",
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -527,7 +527,7 @@
               "name": "Title",
               "settings": {
                 "title": "",
-                "heading_tag": "h3",
+                "heading_tag": "h2",
                 "heading_size": "h3",
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -666,7 +666,7 @@
               "name": "Title",
               "settings": {
                 "title": "",
-                "heading_tag": "h3",
+                "heading_tag": "h2",
                 "heading_size": "h3",
                 "padding_top": 0,
                 "padding_bottom": 0,
