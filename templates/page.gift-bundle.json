@@ -261,6 +261,7 @@
         "caption_font_size_desktop": 18,
         "caption_font_size_mobile": 14,
         "caption_font_weight": "600",
+        "caption_color": "#8A7A78",
         "title": "Thoughtful food. Timeless traditions.",
         "heading_size": "h1",
         "subtitle": "",
