@@ -1,0 +1,46 @@
+{% comment %}
+  Gift Bundle — Stats (soup / snack / teas quantities)
+  Three fixed columns, each with an optional icon, a number and a label.
+{% endcomment %}
+<div class="gb-stats" {{ block.shopify_attributes }}>
+  {%- for i in (1..3) -%}
+    {%- assign icon_key = 'icon_' | append: i -%}
+    {%- assign num_key = 'number_' | append: i -%}
+    {%- assign label_key = 'label_' | append: i -%}
+    {%- assign icon = block.settings[icon_key] -%}
+    {%- assign number = block.settings[num_key] -%}
+    {%- assign label = block.settings[label_key] -%}
+    {%- if number != blank or label != blank -%}
+      <div class="gb-stat">
+        {%- if icon != blank -%}
+          <div class="gb-stat__icon">
+            {{ icon | image_url: width: 96 | image_tag: loading: 'lazy', alt: label }}
+          </div>
+        {%- endif -%}
+        {%- if number != blank -%}<div class="gb-stat__num">{{ number }}</div>{%- endif -%}
+        {%- if label != blank -%}<div class="gb-stat__label">{{ label }}</div>{%- endif -%}
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Stats",
+  "settings": [
+    { "type": "header", "content": "Column 1" },
+    { "type": "image_picker", "id": "icon_1", "label": "Icon" },
+    { "type": "text", "id": "number_1", "label": "Number", "default": "8" },
+    { "type": "text", "id": "label_1", "label": "Label", "default": "Soups" },
+    { "type": "header", "content": "Column 2" },
+    { "type": "image_picker", "id": "icon_2", "label": "Icon" },
+    { "type": "text", "id": "number_2", "label": "Number", "default": "6" },
+    { "type": "text", "id": "label_2", "label": "Label", "default": "Snacks" },
+    { "type": "header", "content": "Column 3" },
+    { "type": "image_picker", "id": "icon_3", "label": "Icon" },
+    { "type": "text", "id": "number_3", "label": "Number", "default": "3" },
+    { "type": "text", "id": "label_3", "label": "Label", "default": "Teas" }
+  ],
+  "presets": [{ "name": "Stats" }]
+}
+{% endschema %}

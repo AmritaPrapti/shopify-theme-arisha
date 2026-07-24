@@ -1,0 +1,62 @@
+{% comment %}
+  Gift Bundle — Price
+  Manually entered so the merchant controls the displayed price, compare-at
+  price and savings badge (child blocks cannot read the parent's product).
+{% endcomment %}
+{%- liquid
+  assign save_text = block.settings.save_text
+  if save_text == blank and block.settings.auto_save
+    assign current = block.settings.current_price | replace: ',', '' | replace: '$', '' | plus: 0.0
+    assign compare = block.settings.compare_price | replace: ',', '' | replace: '$', '' | plus: 0.0
+    if compare > 0 and current > 0 and compare > current
+      assign pct = compare | minus: current | times: 100.0 | divided_by: compare | round
+      assign save_text = 'Save ' | append: pct | append: '%'
+    endif
+  endif
+-%}
+
+<div class="gb-price" {{ block.shopify_attributes }}>
+  {%- if block.settings.current_price != blank -%}
+    <span class="gb-price__current">{{ block.settings.current_price }}</span>
+  {%- endif -%}
+  {%- if block.settings.compare_price != blank -%}
+    <span class="gb-price__compare">{{ block.settings.compare_price }}</span>
+  {%- endif -%}
+  {%- if save_text != blank -%}
+    <span class="gb-price__save">{{ save_text }}</span>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Price",
+  "settings": [
+    {
+      "type": "text",
+      "id": "current_price",
+      "label": "Price",
+      "default": "$265.00 USD"
+    },
+    {
+      "type": "text",
+      "id": "compare_price",
+      "label": "Compare-at price",
+      "info": "Shown with a strikethrough. Leave blank for none."
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_save",
+      "label": "Auto-calculate savings badge",
+      "info": "Uses price and compare-at price. Ignored if a custom badge is set below.",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "save_text",
+      "label": "Custom savings badge",
+      "info": "e.g. \"Save 10%\". Overrides auto-calculation."
+    }
+  ],
+  "presets": [{ "name": "Price" }]
+}
+{% endschema %}

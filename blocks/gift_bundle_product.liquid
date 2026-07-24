@@ -1,0 +1,93 @@
+{% comment %}
+  Gift Bundle — Product (parent block)
+
+  Owns the product and opens the product <form>. All nested child blocks are
+  rendered by {% content_for 'blocks' %} INSIDE the form, so their inputs
+  (add-to-cart button, gift line-item-property fields) are collected by this
+  form automatically — the children never need the product variable themselves.
+{% endcomment %}
+
+{%- liquid
+  assign product = block.settings.product
+  assign form_id = 'gift-bundle-' | append: block.id
+  assign variant = product.selected_or_first_available_variant
+-%}
+
+<div
+  class="gift-bundle-card{% if block.settings.highlight %} gift-bundle-card--highlight{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.badge != blank -%}
+    <span class="gift-bundle-card__badge">{{ block.settings.badge }}</span>
+  {%- endif -%}
+
+  {%- if product != blank -%}
+    <product-form data-section-id="{{ block.id }}">
+      {%- form 'product',
+        product,
+        id: form_id,
+        class: 'gift-bundle-card__form',
+        novalidate: 'novalidate',
+        data-type: 'add-to-cart-form'
+      -%}
+        <input
+          type="hidden"
+          name="id"
+          value="{{ variant.id }}"
+          class="product-variant-id"
+          {% if variant.available == false %}disabled{% endif %}
+        >
+
+        {% content_for 'blocks' %}
+      {%- endform -%}
+    </product-form>
+  {%- else -%}
+    <div class="gift-bundle-card__form">
+      {% content_for 'blocks' %}
+    </div>
+    {%- if request.design_mode -%}
+      <p class="gb-subtitle">Select a product for this card in the block settings.</p>
+    {%- endif -%}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Product card",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "info": "Drives the add-to-cart variant. Card text and price are set in the nested blocks below."
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge",
+      "info": "Shown top-right, e.g. \"Most Popular\". Leave blank for none."
+    },
+    {
+      "type": "checkbox",
+      "id": "highlight",
+      "label": "Highlight this card",
+      "default": false
+    }
+  ],
+  "blocks": [
+    { "type": "gift_bundle_title" },
+    { "type": "gift_bundle_subtitle" },
+    { "type": "gift_bundle_best_for" },
+    { "type": "gift_bundle_stats" },
+    { "type": "gift_bundle_includes" },
+    { "type": "gift_bundle_price" },
+    { "type": "gift_bundle_add_to_cart" },
+    { "type": "gift_bundle_gift" }
+  ],
+  "presets": [
+    {
+      "name": "Product card"
+    }
+  ]
+}
+{% endschema %}

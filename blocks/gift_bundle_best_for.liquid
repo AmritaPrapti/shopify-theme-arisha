@@ -1,0 +1,46 @@
+{% comment %}
+  Gift Bundle — Best for
+  A label plus a checkmark list. Enter one item per line.
+{% endcomment %}
+{%- assign items = block.settings.items | newline_to_br | split: '<br />' -%}
+
+<div class="gb-best-for" {{ block.shopify_attributes }}>
+  {%- if block.settings.label != blank -%}
+    <p class="gb-best-for__label">{{ block.settings.label }}</p>
+  {%- endif -%}
+  {%- if block.settings.items != blank -%}
+    <ul class="gb-best-for__list" role="list">
+      {%- for item in items -%}
+        {%- assign clean = item | strip -%}
+        {%- if clean != blank -%}
+          <li class="gb-best-for__item">
+            <span class="icon-checkmark">{{ 'icon-checkmark.svg' | inline_asset_content }}</span>
+            <span>{{ clean }}</span>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Best for",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Best for"
+    },
+    {
+      "type": "textarea",
+      "id": "items",
+      "label": "Items",
+      "info": "One item per line.",
+      "default": "Friends\nCoworkers\nBaby showers"
+    }
+  ],
+  "presets": [{ "name": "Best for" }]
+}
+{% endschema %}

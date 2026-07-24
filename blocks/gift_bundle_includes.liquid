@@ -1,0 +1,66 @@
+{% comment %}
+  Gift Bundle — Includes (expand/collapse dropdown)
+{% endcomment %}
+{%- assign panel_id = 'gb-includes-' | append: block.id -%}
+
+<div class="gb-includes" {{ block.shopify_attributes }}>
+  <button
+    type="button"
+    class="gb-includes__toggle"
+    aria-expanded="false"
+    aria-controls="{{ panel_id }}"
+    data-open-label="{{ block.settings.open_label | escape }}"
+    data-close-label="{{ block.settings.close_label | escape }}"
+  >
+    <span class="gb-includes__label">{{ block.settings.open_label }}</span>
+    <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+  </button>
+  <div class="gb-includes__content" id="{{ panel_id }}">
+    {{ block.settings.content }}
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.currentScript.previousElementSibling;
+    if (!root) return;
+    var btn = root.querySelector('.gb-includes__toggle');
+    var panel = root.querySelector('.gb-includes__content');
+    var label = root.querySelector('.gb-includes__label');
+    var caret = root.querySelector('.svg-wrapper');
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      panel.classList.toggle('is-open', !open);
+      caret.style.transform = open ? '' : 'rotate(180deg)';
+      label.textContent = open ? btn.dataset.openLabel : btn.dataset.closeLabel;
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Includes",
+  "settings": [
+    {
+      "type": "text",
+      "id": "open_label",
+      "label": "Label (collapsed)",
+      "default": "See included items"
+    },
+    {
+      "type": "text",
+      "id": "close_label",
+      "label": "Label (expanded)",
+      "default": "Hide included items"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>8 soups, 6 snacks, 3 teas beautifully packaged.</p>"
+    }
+  ],
+  "presets": [{ "name": "Includes" }]
+}
+{% endschema %}

@@ -1,0 +1,46 @@
+{% comment %}
+  Gift Bundle — Add to cart
+  Renders the submit button for the enclosing product form (opened by the
+  parent "Product card" block). Must live inside a "Product card" block.
+{% endcomment %}
+{%- assign btn_id = 'gb-cart-' | append: block.id -%}
+
+<div class="gb-cart" {{ block.shopify_attributes }}>
+  <button
+    id="{{ btn_id }}"
+    type="submit"
+    name="add"
+    class="gb-cart__button{% if block.settings.style == 'solid' %} gb-cart__button--solid{% endif %}"
+    aria-live="polite"
+    data-sold-out-message="true"
+  >
+    <span>{{ block.settings.label | default: 'Add to cart' }}</span>
+    <span class="sold-out-message hidden">{{ 'products.product.sold_out' | t }}</span>
+    {%- render 'loading-spinner' -%}
+  </button>
+</div>
+
+{% schema %}
+{
+  "name": "Add to cart",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Button label",
+      "default": "Gift the Complete Care Bundle"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "options": [
+        { "value": "outline", "label": "Outline" },
+        { "value": "solid", "label": "Solid" }
+      ],
+      "default": "outline"
+    }
+  ],
+  "presets": [{ "name": "Add to cart" }]
+}
+{% endschema %}

@@ -1,0 +1,192 @@
+{% comment %}
+  Gift Bundle — Send as a gift
+
+  A checkbox that reveals a recipient email input and a message textarea.
+  When ticked, the fields become required and are submitted as line item
+  properties on the enclosing product form (opened by the parent "Product
+  card" block):
+    properties[Send as gift]   = "Yes"
+    properties[Recipient email]
+    properties[Message]
+
+  When unticked the fields are disabled, so nothing is added to the line item.
+  Because product-form.js calls preventDefault() and builds FormData directly
+  (bypassing native "required" validation), this block validates on the form's
+  submit in the capture phase and stops the submit before the cart request.
+{% endcomment %}
+{%- liquid
+  assign uid = block.id
+  assign check_id = 'gb-gift-check-' | append: uid
+  assign email_id = 'gb-gift-email-' | append: uid
+  assign msg_id = 'gb-gift-msg-' | append: uid
+-%}
+
+<div
+  class="gb-gift"
+  data-gb-gift
+  data-require-message="{{ block.settings.require_message }}"
+  {{ block.shopify_attributes }}
+>
+  <label class="gb-gift__toggle" for="{{ check_id }}">
+    <input type="checkbox" id="{{ check_id }}" data-gb-gift-check>
+    <span>{{ block.settings.checkbox_label }}</span>
+  </label>
+
+  {%- comment -%} Hidden flag — enabled only while the box is ticked. {%- endcomment -%}
+  <input type="hidden" name="properties[Send as gift]" value="Yes" data-gb-gift-flag disabled>
+
+  <div class="gb-gift__fields" data-gb-gift-fields>
+    <div class="gb-gift__field">
+      <label for="{{ email_id }}">{{ block.settings.email_label }}</label>
+      <input
+        type="email"
+        id="{{ email_id }}"
+        name="properties[Recipient email]"
+        placeholder="{{ block.settings.email_placeholder }}"
+        autocomplete="email"
+        data-gb-gift-email
+        disabled
+      >
+    </div>
+
+    <div class="gb-gift__field">
+      <label for="{{ msg_id }}">{{ block.settings.message_label }}</label>
+      <textarea
+        id="{{ msg_id }}"
+        name="properties[Message]"
+        rows="4"
+        maxlength="500"
+        placeholder="{{ block.settings.message_placeholder }}"
+        data-gb-gift-message
+        disabled
+      ></textarea>
+    </div>
+
+    <p class="gb-gift__error" data-gb-gift-error role="alert">
+      {{ block.settings.error_text }}
+    </p>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.currentScript.previousElementSibling;
+    while (root && !(root.hasAttribute && root.hasAttribute('data-gb-gift'))) {
+      root = root.previousElementSibling;
+    }
+    if (!root) return;
+
+    var check = root.querySelector('[data-gb-gift-check]');
+    var fields = root.querySelector('[data-gb-gift-fields]');
+    var flag = root.querySelector('[data-gb-gift-flag]');
+    var email = root.querySelector('[data-gb-gift-email]');
+    var message = root.querySelector('[data-gb-gift-message]');
+    var error = root.querySelector('[data-gb-gift-error]');
+    var requireMessage = root.getAttribute('data-require-message') === 'true';
+    var form = root.closest('form');
+
+    function setEnabled(on) {
+      fields.classList.toggle('is-open', on);
+      // Disabled inputs are excluded from FormData, so nothing is sent when off.
+      flag.disabled = !on;
+      email.disabled = !on;
+      message.disabled = !on;
+      email.required = on;
+      message.required = on && requireMessage;
+      if (!on) hideError();
+    }
+
+    function showError(msg, focusEl) {
+      error.textContent = msg;
+      error.classList.add('is-visible');
+      if (focusEl) focusEl.focus();
+    }
+    function hideError() {
+      error.classList.remove('is-visible');
+    }
+
+    check.addEventListener('change', function () {
+      setEnabled(check.checked);
+    });
+
+    [email, message].forEach(function (el) {
+      el.addEventListener('input', hideError);
+    });
+
+    setEnabled(false);
+
+    if (form) {
+      // Capture phase runs before product-form.js's bubble-phase submit handler,
+      // so stopImmediatePropagation() here prevents the cart request on error.
+      form.addEventListener(
+        'submit',
+        function (evt) {
+          if (!check.checked) return;
+          var missingEmail = email.value.trim() === '' || !email.checkValidity();
+          var missingMessage = requireMessage && message.value.trim() === '';
+          if (missingEmail || missingMessage) {
+            evt.preventDefault();
+            evt.stopImmediatePropagation();
+            showError(
+              error.getAttribute('data-default') || error.textContent,
+              missingEmail ? email : message
+            );
+          }
+        },
+        true
+      );
+      error.setAttribute('data-default', error.textContent.trim());
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Send as a gift",
+  "settings": [
+    {
+      "type": "text",
+      "id": "checkbox_label",
+      "label": "Checkbox label",
+      "default": "Send as a gift"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "Recipient email"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "name@example.com"
+    },
+    {
+      "type": "text",
+      "id": "message_label",
+      "label": "Message label",
+      "default": "Gift message"
+    },
+    {
+      "type": "text",
+      "id": "message_placeholder",
+      "label": "Message placeholder",
+      "default": "Write a short note…"
+    },
+    {
+      "type": "checkbox",
+      "id": "require_message",
+      "label": "Require a message",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "error_text",
+      "label": "Validation message",
+      "default": "Please add a recipient email and message to send this as a gift."
+    }
+  ],
+  "presets": [{ "name": "Send as a gift" }]
+}
+{% endschema %}

@@ -1,0 +1,27 @@
+{% comment %}Gift Bundle — Subtitle{% endcomment %}
+{%- if block.settings.subtitle != blank -%}
+  <p class="gb-subtitle{% if block.settings.use_accent %} gb-subtitle--accent{% endif %}" {{ block.shopify_attributes }}>
+    {{ block.settings.subtitle }}
+  </p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Subtitle",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Perfect introduction"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_accent",
+      "label": "Use accent color",
+      "default": false
+    }
+  ],
+  "presets": [{ "name": "Subtitle" }]
+}
+{% endschema %}

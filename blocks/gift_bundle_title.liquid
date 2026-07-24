@@ -1,0 +1,43 @@
+{% comment %}Gift Bundle — Title{% endcomment %}
+{%- if block.settings.title != blank -%}
+  <{{ block.settings.heading_tag }} class="gb-title {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
+    {{ block.settings.title }}
+  </{{ block.settings.heading_tag }}>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Title",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "Complete Care Bundle"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading tag (SEO)",
+      "options": [
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "p", "label": "Paragraph" }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Text size",
+      "options": [
+        { "value": "h4", "label": "Small" },
+        { "value": "h3", "label": "Medium" },
+        { "value": "h2", "label": "Large" }
+      ],
+      "default": "h3"
+    }
+  ],
+  "presets": [{ "name": "Title" }]
+}
+{% endschema %}
