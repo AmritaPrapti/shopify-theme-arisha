@@ -367,12 +367,457 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "gift_bundle_blocks_FkWTgi": {
+      "type": "gift-bundle-blocks",
+      "blocks": {
+        "gift_bundle_product_JcA4jj": {
+          "type": "gift_bundle_product",
+          "name": "Product card",
+          "settings": {
+            "product": "discovery-set",
+            "badge": "",
+            "highlight": false,
+            "color_scheme": "scheme-3",
+            "corner_radius": 16,
+            "block_gap": 14
+          },
+          "blocks": {
+            "gift_bundle_title_dLAkr8": {
+              "type": "gift_bundle_title",
+              "name": "Title",
+              "settings": {
+                "title": "",
+                "heading_tag": "h3",
+                "heading_size": "h3",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_subtitle_4UTDJm": {
+              "type": "gift_bundle_subtitle",
+              "name": "Subtitle",
+              "settings": {
+                "subtitle": "Perfect introduction",
+                "use_accent": false,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_best_for_jnrb43": {
+              "type": "gift_bundle_best_for",
+              "name": "Best for",
+              "settings": {
+                "label": "Best for",
+                "items": "Friends\nCoworkers\nBaby showers",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_stats_nCnAAA": {
+              "type": "gift_bundle_stats",
+              "name": "Stats",
+              "settings": {
+                "number_1": "8",
+                "label_1": "Soups",
+                "number_2": "6",
+                "label_2": "Snacks",
+                "number_3": "3",
+                "label_3": "Teas",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_includes_RdQtmg": {
+              "type": "gift_bundle_includes",
+              "name": "Includes",
+              "settings": {
+                "open_label": "See included items",
+                "close_label": "Hide included items",
+                "content": "<p>8 soups, 6 snacks, 3 teas beautifully packaged.</p>",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_price_BVfkfB": {
+              "type": "gift_bundle_price",
+              "name": "Price",
+              "settings": {
+                "show_save_badge": true,
+                "save_text": "",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_gift_UtDFxj": {
+              "type": "gift_bundle_gift",
+              "name": "Send as a gift",
+              "settings": {
+                "checkbox_label": "Send as a gift",
+                "email_label": "Recipient email",
+                "email_placeholder": "name@example.com",
+                "message_label": "Gift message",
+                "message_placeholder": "Write a short note…",
+                "require_message": true,
+                "error_text": "Please add a recipient email and message to send this as a gift.",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_add_to_cart_hPTWbE": {
+              "type": "gift_bundle_add_to_cart",
+              "name": "Add to cart",
+              "settings": {
+                "label": "Gift the Complete Care Bundle",
+                "style": "outline",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "gift_bundle_title_dLAkr8",
+            "gift_bundle_subtitle_4UTDJm",
+            "gift_bundle_best_for_jnrb43",
+            "gift_bundle_stats_nCnAAA",
+            "gift_bundle_includes_RdQtmg",
+            "gift_bundle_price_BVfkfB",
+            "gift_bundle_gift_UtDFxj",
+            "gift_bundle_add_to_cart_hPTWbE"
+          ]
+        },
+        "gift_bundle_product_LFhkRD": {
+          "type": "gift_bundle_product",
+          "name": "Product card",
+          "settings": {
+            "product": "complete-bundle",
+            "badge": "Most Popular",
+            "highlight": true,
+            "color_scheme": "scheme-3",
+            "corner_radius": 16,
+            "block_gap": 14
+          },
+          "blocks": {
+            "gift_bundle_title_wRcMge": {
+              "type": "gift_bundle_title",
+              "name": "Title",
+              "settings": {
+                "title": "",
+                "heading_tag": "h3",
+                "heading_size": "h3",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_subtitle_hpXC3h": {
+              "type": "gift_bundle_subtitle",
+              "name": "Subtitle",
+              "settings": {
+                "subtitle": "Perfect introduction",
+                "use_accent": false,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_best_for_7XP9QQ": {
+              "type": "gift_bundle_best_for",
+              "name": "Best for",
+              "settings": {
+                "label": "Best for",
+                "items": "Friends\nCoworkers\nBaby showers",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_stats_A7yjLi": {
+              "type": "gift_bundle_stats",
+              "name": "Stats",
+              "settings": {
+                "number_1": "8",
+                "label_1": "Soups",
+                "number_2": "6",
+                "label_2": "Snacks",
+                "number_3": "3",
+                "label_3": "Teas",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_includes_XFPzAm": {
+              "type": "gift_bundle_includes",
+              "name": "Includes",
+              "settings": {
+                "open_label": "See included items",
+                "close_label": "Hide included items",
+                "content": "<p>8 soups, 6 snacks, 3 teas beautifully packaged.</p>",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_price_eqCbAf": {
+              "type": "gift_bundle_price",
+              "name": "Price",
+              "settings": {
+                "show_save_badge": true,
+                "save_text": "",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_gift_fXrBRt": {
+              "type": "gift_bundle_gift",
+              "name": "Send as a gift",
+              "settings": {
+                "checkbox_label": "Send as a gift",
+                "email_label": "Recipient email",
+                "email_placeholder": "name@example.com",
+                "message_label": "Gift message",
+                "message_placeholder": "Write a short note…",
+                "require_message": true,
+                "error_text": "Please add a recipient email and message to send this as a gift.",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_add_to_cart_GiAf7c": {
+              "type": "gift_bundle_add_to_cart",
+              "name": "Add to cart",
+              "settings": {
+                "label": "Gift the Complete Care Bundle",
+                "style": "outline",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "gift_bundle_title_wRcMge",
+            "gift_bundle_subtitle_hpXC3h",
+            "gift_bundle_best_for_7XP9QQ",
+            "gift_bundle_stats_A7yjLi",
+            "gift_bundle_includes_XFPzAm",
+            "gift_bundle_price_eqCbAf",
+            "gift_bundle_gift_fXrBRt",
+            "gift_bundle_add_to_cart_GiAf7c"
+          ]
+        },
+        "gift_bundle_product_zB7jwU": {
+          "type": "gift_bundle_product",
+          "name": "Product card",
+          "settings": {
+            "product": "essentials-bundle",
+            "badge": "Best value",
+            "highlight": false,
+            "color_scheme": "scheme-3",
+            "corner_radius": 16,
+            "block_gap": 14
+          },
+          "blocks": {
+            "gift_bundle_title_wXR8gf": {
+              "type": "gift_bundle_title",
+              "name": "Title",
+              "settings": {
+                "title": "",
+                "heading_tag": "h3",
+                "heading_size": "h3",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_subtitle_wHYfjk": {
+              "type": "gift_bundle_subtitle",
+              "name": "Subtitle",
+              "settings": {
+                "subtitle": "Perfect introduction",
+                "use_accent": false,
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_best_for_xzeyWt": {
+              "type": "gift_bundle_best_for",
+              "name": "Best for",
+              "settings": {
+                "label": "Best for",
+                "items": "Friends\nCoworkers\nBaby showers",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_stats_MtDVwf": {
+              "type": "gift_bundle_stats",
+              "name": "Stats",
+              "settings": {
+                "number_1": "8",
+                "label_1": "Soups",
+                "number_2": "6",
+                "label_2": "Snacks",
+                "number_3": "3",
+                "label_3": "Teas",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_includes_PrPc8H": {
+              "type": "gift_bundle_includes",
+              "name": "Includes",
+              "settings": {
+                "open_label": "See included items",
+                "close_label": "Hide included items",
+                "content": "<p>8 soups, 6 snacks, 3 teas beautifully packaged.</p>",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_price_4NKQ8C": {
+              "type": "gift_bundle_price",
+              "name": "Price",
+              "settings": {
+                "show_save_badge": true,
+                "save_text": "",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_gift_GT9b9V": {
+              "type": "gift_bundle_gift",
+              "name": "Send as a gift",
+              "settings": {
+                "checkbox_label": "Send as a gift",
+                "email_label": "Recipient email",
+                "email_placeholder": "name@example.com",
+                "message_label": "Gift message",
+                "message_placeholder": "Write a short note…",
+                "require_message": true,
+                "error_text": "Please add a recipient email and message to send this as a gift.",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            },
+            "gift_bundle_add_to_cart_HNgEyN": {
+              "type": "gift_bundle_add_to_cart",
+              "name": "Add to cart",
+              "settings": {
+                "label": "Gift the Complete Care Bundle",
+                "style": "outline",
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "gift_bundle_title_wXR8gf",
+            "gift_bundle_subtitle_wHYfjk",
+            "gift_bundle_best_for_xzeyWt",
+            "gift_bundle_stats_MtDVwf",
+            "gift_bundle_includes_PrPc8H",
+            "gift_bundle_price_4NKQ8C",
+            "gift_bundle_gift_GT9b9V",
+            "gift_bundle_add_to_cart_HNgEyN"
+          ]
+        }
+      },
+      "block_order": [
+        "gift_bundle_product_JcA4jj",
+        "gift_bundle_product_LFhkRD",
+        "gift_bundle_product_zB7jwU"
+      ],
+      "name": "Gift Bundle Blocks",
+      "settings": {
+        "eyebrow": "Choose the perfect gift",
+        "heading": "Find the right gift for her",
+        "heading_size": "h1",
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "color_scheme": "",
+        "accent_color": "#b23a48",
+        "accent_text_color": "#ffffff",
+        "card_bg_color": "#fdf3f2",
+        "card_border_color": "#f0dcda",
+        "check_color": "#cc858f",
+        "muted_text_color": "#8a7a78",
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "main",
     "gift_bundle_hero_NLrRmj",
     "multicolumn_dKb3NC",
-    "gift_bundle_hero_99FM3h"
+    "gift_bundle_hero_99FM3h",
+    "gift_bundle_blocks_FkWTgi"
   ]
 }
