@@ -144,7 +144,7 @@
   .gb-subtitle {
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    font-size: 1.3rem;
+    font-size: 14px;
     font-weight: 600;
     color: var(--gb-muted);
     margin: -0.6rem 0 0;
@@ -154,10 +154,15 @@
   }
 
   /* ---- Best for ---- */
-  .gb-best-for__label {
-    font-weight: 700;
+  .gb-best-for__label, .gb-includes__label {
+    font-weight: 600;
     margin: 0 0 0.8rem;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+  }
+
+  .gb-includes__label{
+    margin: 0;
   }
   .gb-best-for__list {
     list-style: none;
@@ -177,6 +182,7 @@
     height: 1.3rem;
     flex-shrink: 0;
     color: var(--gb-check);
+    display: inline-flex;
   }
 
   /* ---- Stats (soup / snack / teas) ---- */
@@ -199,10 +205,13 @@
     width: auto;
   }
   .gb-stat__num {
-    font-size: 2.4rem;
-    font-weight: 500;
-    color: var(--gb-highlight, var(--gb-accent));
+    font-size: 3.2rem;
+    font-weight: 700;
     line-height: 1.2;
+    /* Outline (hollow) text in the highlight color. */
+    color: transparent;
+    -webkit-text-stroke: 1px var(--gb-highlight, var(--gb-accent));
+    text-stroke: 1.4px var(--gb-highlight, var(--gb-accent));
   }
   .gb-stat__label {
     font-size: 1.3rem;
@@ -227,6 +236,8 @@
   .gb-includes__toggle .svg-wrapper {
     display: inline-flex;
     transition: transform 0.2s ease;
+    width: 1.6rem;
+    height: 1.6rem;
   }
   .gb-includes__content {
     display: none;
