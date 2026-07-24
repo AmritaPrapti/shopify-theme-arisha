@@ -239,7 +239,7 @@
         "column_RqMaVk": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/leaf.svg",
+            "image": "shopify://shop_images/natural-ingredients.png",
             "title": "Chef-crafted with whole ingredients",
             "text": "<p>Made with clean, nourishing ingredients your body will thank you for.</p>",
             "link_label": "",
