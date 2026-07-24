@@ -653,7 +653,7 @@
           "type": "gift_bundle_product",
           "name": "Product card",
           "settings": {
-            "product": "essentials-bundle",
+            "product": "signature-bundle",
             "badge": "Best value",
             "highlight": false,
             "color_scheme": "scheme-3",
