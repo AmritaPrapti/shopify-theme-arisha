@@ -767,7 +767,7 @@
               "type": "gift_bundle_add_to_cart",
               "name": "Add to cart",
               "settings": {
-                "label": "Gift the Complete Care Bundle",
+                "label": "Gift the signature Bundle",
                 "style": "outline",
                 "padding_top": 0,
                 "padding_bottom": 0,
