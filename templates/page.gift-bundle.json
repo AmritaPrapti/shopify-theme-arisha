@@ -831,9 +831,9 @@
             "eyebrow_color": "",
             "eyebrow_highlight": "",
             "heading": "Got questions? We've got answers.",
-            "heading_size": "h2",
+            "heading_size": "h1",
             "item_bg": "#F8F0EE",
-            "item_border": "",
+            "item_border": "#B07A72",
             "question_color": "",
             "answer_color": ""
           },
