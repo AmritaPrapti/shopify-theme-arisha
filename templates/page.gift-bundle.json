@@ -389,7 +389,7 @@
               "settings": {
                 "title": "",
                 "heading_tag": "h2",
-                "heading_size": "h3",
+                "heading_size": "h2",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -528,7 +528,7 @@
               "settings": {
                 "title": "",
                 "heading_tag": "h2",
-                "heading_size": "h3",
+                "heading_size": "h2",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -667,7 +667,7 @@
               "settings": {
                 "title": "",
                 "heading_tag": "h2",
-                "heading_size": "h3",
+                "heading_size": "h2",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
