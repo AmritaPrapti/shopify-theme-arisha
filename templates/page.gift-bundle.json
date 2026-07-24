@@ -179,6 +179,7 @@
         "text_GkNaCp",
         "icon_with_text_iA3Xkg"
       ],
+      "custom_css": [],
       "name": "Gift Bundle Image with Text",
       "settings": {
         "section_url": "",
@@ -344,6 +345,9 @@
         "heading_mLyY46",
         "text_dwhkFh",
         "icon_with_text_Y3t4iD"
+      ],
+      "custom_css": [
+        "@media screen and (max-width: 750px) {.image-with-text__icon-item {flex-direction: column; }}"
       ],
       "name": "Gift Bundle Image with Text",
       "settings": {
