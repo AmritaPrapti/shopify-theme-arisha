@@ -16,7 +16,7 @@
           "type": "caption",
           "settings": {
             "link": "",
-            "caption": "THOUGHTFUL GIFS FOR NEW MOMS",
+            "caption": "THOUGHTFUL GIFTS FOR NEW MOMS",
             "text_style": "caption-with-letter-spacing",
             "text_size": "large",
             "custom_font_size_desktop": 20,
@@ -29,8 +29,8 @@
         "heading_UhUmin": {
           "type": "heading",
           "settings": {
-            "heading": "She has plenty of <br> gifts for baby.\n<br>\n<span>Give something <br> that's for her.</span>",
-            "heading_size": "h1",
+            "heading": "She has plenty of gifts for baby.\n<br>\n<span>Give something that's for her.</span>",
+            "heading_size": "h0",
             "custom_font_size_desktop": 48,
             "custom_font_size_mobile": 32
           }
@@ -38,7 +38,7 @@
         "text_Vg4PwA": {
           "type": "text",
           "settings": {
-            "text": "<p>Support her recovery with nourishing Japanese-inspired meals, snacks, and teas designed for the fourth trimester.</p>",
+            "text": "<p>Support her postpartum recovery with nourishing Japanese-inspired meals, snacks, and teas designed for healing.</p>",
             "text_style": "body",
             "text_color": "",
             "text_highlight": "",
@@ -79,7 +79,7 @@
             "icon_1": "shopify://shop_images/box.svg",
             "icon_text_1": "<p>Personalized gift message</p>",
             "icon_2": "shopify://shop_images/leaf_2.svg",
-            "icon_text_2": "<p>Beautiful furoshiki gift wrapping</p>",
+            "icon_text_2": "<p>Beautiful gift wrapping</p>",
             "icon_3": "shopify://shop_images/check-mark.svg",
             "icon_text_3": "<p>Ready whenever she needs it</p>"
           }
@@ -221,8 +221,8 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/cherry-blossom_1.png",
-            "title": "Japanese-inspired traditions",
-            "text": "<p>Rooted in the wisdom of Yakulzen and time-honored postpartum practices.</p>",
+            "title": "Rooted in Japanese traditions",
+            "text": "<p>Our food combines Yakuzen and time-honored postpartum practices.</p>",
             "link_label": "",
             "link": ""
           }
@@ -258,7 +258,7 @@
       "settings": {
         "caption": "WHY IT'S DIFFERENT",
         "caption_uppercase": true,
-        "caption_size": "medium",
+        "caption_size": "large",
         "caption_font_size_desktop": 18,
         "caption_font_size_mobile": 14,
         "caption_font_weight": "600",
@@ -311,7 +311,7 @@
         "text_dwhkFh": {
           "type": "text",
           "settings": {
-            "text": "<p>Our reusable Furoshiki Gift Wrap, inspired by the Japanese tradition of furoshiki—the art of wrapping with cloth.\n</p>\n<p>Finished with a dried flower and your personalized message, it's designed to be kept long after the meals have been enjoyed.</p>",
+            "text": "<p>Our reusable gift wrap is inspired by the Japanese tradition of furoshiki—the art of wrapping with cloth.\n</p>\n<p>Finished with a dried flower and your personalized message, it's designed to be kept long after the meals have been enjoyed. The wrap can be used as a swaddle for newborns.</p>",
             "text_style": "body",
             "text_color": "",
             "text_highlight": "",
@@ -432,10 +432,9 @@
               "type": "gift_bundle_stats",
               "name": "Stats",
               "settings": {
-                "icon_1": "shopify://shop_images/hot-soup.png",
-                "number_1": "",
+                "number_1": "3",
                 "label_1": "Soups",
-                "number_2": "6",
+                "number_2": "2",
                 "label_2": "Snacks",
                 "number_3": "3",
                 "label_3": "Teas",
@@ -452,7 +451,7 @@
               "settings": {
                 "open_label": "See included items",
                 "close_label": "Hide included items",
-                "content": "<h5>Soups</h5><ul><li>2 × Golden Chicken Turmeric Stew</li><li>2 × 5 Mushroom & Ume Plum Soup</li><li>2 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>1 × Rejuvenating Bars</li></ul><h5>Teas</h5><ul><li>1 × Recover & Relax Blend</li></ul>",
+                "content": "<h5>Soups</h5><ul><li>1 × Golden Chicken Turmeric Stew</li><li>1 × 5 Mushroom & Ume Plum Soup</li><li>1 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>1 × Rejuvenating Bars</li><li>1 × Mother's Glow Brownies</li></ul><h5>Teas</h5><ul><li>1 × Recover & Relax Blend</li></ul>",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -572,8 +571,7 @@
               "type": "gift_bundle_stats",
               "name": "Stats",
               "settings": {
-                "icon_1": "shopify://shop_images/hot-soup.png",
-                "number_1": "",
+                "number_1": "6",
                 "label_1": "Soups",
                 "number_2": "6",
                 "label_2": "Snacks",
@@ -712,8 +710,7 @@
               "type": "gift_bundle_stats",
               "name": "Stats",
               "settings": {
-                "icon_1": "shopify://shop_images/hot-soup.png",
-                "number_1": "",
+                "number_1": "10",
                 "label_1": "Soups",
                 "number_2": "6",
                 "label_2": "Snacks",
