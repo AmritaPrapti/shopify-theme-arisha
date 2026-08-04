@@ -22,7 +22,7 @@
         "text_G3FMCC": {
           "type": "text",
           "settings": {
-            "text": "<p>Know someone who's expecting or newly postpartum? </p><p>Give them $10 off their first order, and when they purchase, you'll receive $10 in store credit as our thank you.</p>",
+            "text": "<p>Know someone who's expecting or newly postpartum? </p><p>Give them $10 off their first order, and when they purchase, you'll receive a $10 reward as our thank you.</p>",
             "text_style": "body"
           }
         },
@@ -79,7 +79,7 @@
             "section_order": "main-guide-reward",
             "guide_heading_size": "bloop_h1",
             "guide_text_color": "#1b1731",
-            "guide_primary_color": "#B07A72",
+            "guide_primary_color": "#b07a72",
             "guide_background_color": "#ffffff",
             "guide_padding_top": 40,
             "guide_padding_bottom": 40,
