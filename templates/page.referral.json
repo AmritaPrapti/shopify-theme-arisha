@@ -1,0 +1,47 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "apps": {
+      "type": "apps",
+      "blocks": {
+        "referral_page_block": {
+          "type": "shopify://apps/bloop-refer-aff/blocks/bss-referral-page/9d243b55-b2a4-42a8-aa2e-043240bb5d58",
+          "settings": {
+            "guide_heading_size": "bloop_h1",
+            "guide_text_color": "#1B1731",
+            "guide_primary_color": "#001584",
+            "guide_padding_top": 40,
+            "guide_padding_bottom": 40,
+            "main_heading_size": "bloop_h1",
+            "main_text_color": "#1B1731",
+            "main_primary_color": "#001584",
+            "main_padding_top": 40,
+            "main_padding_bottom": 40,
+            "border_radius": 10,
+            "reward_heading_size": "bloop_h1",
+            "reward_text_color": "#1B1731",
+            "reward_primary_color": "#001584",
+            "reward_background_color": "#F5F1FF",
+            "reward_padding_top": 40,
+            "reward_padding_bottom": 40
+          }
+        }
+      },
+      "block_order": [
+        "referral_page_block"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "apps"
+  ]
+}
