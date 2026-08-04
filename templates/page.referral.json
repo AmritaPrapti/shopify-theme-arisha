@@ -9,27 +9,91 @@
  */
 {
   "sections": {
+    "image_with_text_KExJTn": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_fDN4Jp": {
+          "type": "heading",
+          "settings": {
+            "heading": "Every new mom deserves a little extra care",
+            "heading_size": "h1"
+          }
+        },
+        "text_G3FMCC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Know someone who's expecting or newly postpartum? </p><p>Give them $10 off their first order, and when they purchase, you'll receive $10 in store credit as our thank you.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_qjkhKH": {
+          "type": "button",
+          "settings": {
+            "button_label": "JOIN REFERRAL PROGRAM",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label2": "",
+            "button_link2": "",
+            "button_style_secondary2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_fDN4Jp",
+        "text_G3FMCC",
+        "button_qjkhKH"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_url": "",
+        "enable_text_link": false,
+        "image": "shopify://shop_images/07.13.25_ForHer-130_cropped.jpg",
+        "height": "adapt",
+        "height_mobile": "medium",
+        "custom_media_height": 700,
+        "custom_media_height_mobile": 700,
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "mobile_layout": "image_first",
+        "image_behavior": "none",
+        "enable_full_width": false,
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "apps": {
       "type": "apps",
       "blocks": {
         "referral_page_block": {
           "type": "shopify://apps/bloop-refer-aff/blocks/bss-referral-page/9d243b55-b2a4-42a8-aa2e-043240bb5d58",
           "settings": {
+            "hide_main": true,
+            "hide_guide": false,
+            "hide_reward": false,
+            "section_order": "main-guide-reward",
             "guide_heading_size": "bloop_h1",
-            "guide_text_color": "#1B1731",
-            "guide_primary_color": "#001584",
+            "guide_text_color": "#1b1731",
+            "guide_primary_color": "#B07A72",
+            "guide_background_color": "#ffffff",
             "guide_padding_top": 40,
             "guide_padding_bottom": 40,
             "main_heading_size": "bloop_h1",
-            "main_text_color": "#1B1731",
-            "main_primary_color": "#001584",
+            "main_text_color": "#000000",
+            "main_primary_color": "#000000",
+            "main_background_color": "#ffffff",
             "main_padding_top": 40,
             "main_padding_bottom": 40,
-            "border_radius": 10,
+            "border_radius": 4,
             "reward_heading_size": "bloop_h1",
-            "reward_text_color": "#1B1731",
+            "reward_text_color": "#1b1731",
             "reward_primary_color": "#001584",
-            "reward_background_color": "#F5F1FF",
+            "reward_background_color": "#f5f1ff",
             "reward_padding_top": 40,
             "reward_padding_bottom": 40
           }
@@ -38,10 +102,17 @@
       "block_order": [
         "referral_page_block"
       ],
-      "settings": {}
+      "settings": {
+        "include_margins": true,
+        "heading": "",
+        "heading_size": "h2",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
     }
   },
   "order": [
+    "image_with_text_KExJTn",
     "apps"
   ]
 }
