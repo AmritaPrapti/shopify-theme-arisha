@@ -13,6 +13,15 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  {%- if section.settings.card_title_lines > 0 -%}
+    /* Reserve a consistent title height so every card's description
+       starts at the same vertical position. */
+    #shopify-section-{{ section.id }} .multicolumn-card__info h3 {
+      line-height: 1.3;
+      min-height: calc({{ section.settings.card_title_lines }} * 1.3em);
+    }
+  {%- endif -%}
 {%- endstyle -%}
 
 {%- liquid
@@ -107,9 +116,7 @@
                   {% assign spaced_image = true %}
                 {% endif %}
                 <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width {% if section.settings.image_width != 'full' or spaced_image %} multicolumn-card-spacing{% endif %}"
-                {% if section.settings.image_background != blank %}
-                      style="--media-bg: {{ section.settings.image_background }};"
-                    {% endif %}>
+                      style="{% if section.settings.image_background != blank %}--media-bg: {{ section.settings.image_background }};{% endif %}{% if section.settings.image_width == 'custom' %}max-width: {{ section.settings.image_width_custom }}px; width: 100%; margin-inline: auto;{% endif %}">
                   <div
                     class="media media--transparent media--{{ section.settings.image_ratio }} {% if section.settings.image_background != blank  %} media--background{% endif %}"
                     
@@ -396,10 +403,25 @@
         {
           "value": "full",
           "label": "t:sections.multicolumn.settings.image_width.options__3.label"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
         }
       ],
       "default": "full",
       "label": "t:sections.multicolumn.settings.image_width.label"
+    },
+    {
+      "type": "range",
+      "id": "image_width_custom",
+      "min": 40,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "label": "Custom image width",
+      "default": 200,
+      "visible_if": "{{ section.settings.image_width == 'custom' }}"
     },
     {
       "type": "select",
@@ -475,6 +497,16 @@
       ],
       "default": "left",
       "label": "t:sections.multicolumn.settings.column_alignment.label"
+    },
+    {
+      "type": "range",
+      "id": "card_title_lines",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "label": "Reserve card title lines",
+      "info": "Reserves space for this many title lines so every card's description starts at the same height. 0 = off.",
+      "default": 2
     },
     {
       "type": "select",

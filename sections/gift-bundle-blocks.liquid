@@ -24,7 +24,31 @@
 
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
+<script>
+  /* Smooth-scroll same-page anchor links without writing "#id" into the URL. */
+  (function () {
+    if (window.__gbSmoothAnchors) return;
+    window.__gbSmoothAnchors = true;
+    document.addEventListener('click', function (evt) {
+      var link = evt.target.closest('a[href^="#"]');
+      if (!link) return;
+      var id = link.getAttribute('href').slice(1);
+      if (!id) return;
+      var target = document.getElementById(id);
+      if (!target) return;
+      evt.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  })();
+</script>
+
 {%- style -%}
+  /* Smooth anchor scrolling + offset so targets clear the sticky header. */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height, 6rem);
+  }
+
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
@@ -334,7 +358,7 @@
   }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} isolate gradient">
+<div {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | handle }}"{% endif %} class="color-{{ section.settings.color_scheme }} isolate gradient">
   <div class="section-{{ section.id }}-padding page-width">
     {%- if section.settings.eyebrow != blank or section.settings.heading != blank -%}
       <div class="gift-bundle__header">
@@ -363,6 +387,13 @@
   "tag": "section",
   "class": "section",
   "settings": [
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "default": "gift-bundle",
+      "info": "Link to this section from a button with #your-id (letters, numbers and hyphens)."
+    },
     {
       "type": "text",
       "id": "eyebrow",

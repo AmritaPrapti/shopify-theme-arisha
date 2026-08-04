@@ -1,6 +1,26 @@
 {{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height, 6rem);
+  }
+
+  {%- if section.settings.image_fit == 'contain' -%}
+    /* Show the whole image (no crop). Leftover space uses the media background. */
+    #shopify-section-{{ section.id }} .image-with-text__media img {
+      object-fit: contain;
+    }
+  {%- endif -%}
+
+  {%- if section.settings.media_bg_color != blank -%}
+    /* Fill the container (incl. any letterbox space around a contained image). */
+    #shopify-section-{{ section.id }} .image-with-text__media {
+      background-color: {{ section.settings.media_bg_color }};
+      background-image: none;
+    }
+  {%- endif -%}
+
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
@@ -104,7 +124,24 @@
   </style>
 {% endif %}
 
-<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.section_color_scheme }}">
+<script>
+  (function () {
+    if (window.__gbSmoothAnchors) return;
+    window.__gbSmoothAnchors = true;
+    document.addEventListener('click', function (evt) {
+      var link = evt.target.closest('a[href^="#"]');
+      if (!link) return;
+      var id = link.getAttribute('href').slice(1);
+      if (!id) return;
+      var target = document.getElementById(id);
+      if (!target) return;
+      evt.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  })();
+</script>
+
+<div {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | handle }}"{% endif %} class="section-{{ section.id }}-padding gradient color-{{ section.settings.section_color_scheme }}">
   <div class="{% if section.settings.enable_full_width == true %}full-width{% else %}page-width{% endif %}">
     <div class="image-with-text image-with-text--{{ section.settings.content_layout }} isolate{% if settings.text_boxes_border_thickness > 0 and settings.text_boxes_border_opacity > 0 and settings.media_border_thickness > 0 and settings.media_border_opacity > 0 %} collapse-borders{% endif %}{% unless section.settings.color_scheme == section.settings.section_color_scheme and settings.media_border_thickness > 0 and settings.text_boxes_shadow_opacity == 0 and settings.text_boxes_border_thickness == 0 or settings.text_boxes_border_opacity == 0 %} collapse-corners{% endunless %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <div class="image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %} {% if section.settings.mobile_layout == 'text_first' %} image-with-text__grid-mob--reverse{% endif %}">
@@ -353,6 +390,12 @@
   },
   "settings": [
     {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "info": "Link to this section from a button with #your-id (letters, numbers and hyphens)."
+    },
+    {
       "type": "url",
       "id": "section_url",
       "label": "Image Link URL",
@@ -403,6 +446,23 @@
       ],
       "default": "adapt",
       "label": "t:sections.image-with-text.settings.height.label"
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image fit",
+      "info": "Cover fills the box and may crop (more on wide screens). Contain shows the whole image with no crop — pair it with a Small or Custom height. Ignored when height is \"Adapt to image\".",
+      "options": [
+        { "value": "cover", "label": "Cover (fill, may crop)" },
+        { "value": "contain", "label": "Contain (show whole image)" }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "color",
+      "id": "media_bg_color",
+      "label": "Image container background",
+      "info": "Fills the space around the image when using Contain. Leave blank to use the color scheme."
     },
     {
       "type": "select",

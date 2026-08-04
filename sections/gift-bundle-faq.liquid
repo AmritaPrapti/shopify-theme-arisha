@@ -13,6 +13,11 @@
 {% endcomment %}
 
 {%- style -%}
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height, 6rem);
+  }
+
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
@@ -164,7 +169,24 @@
   .gb-feature__btn .svg-wrapper { display: inline-flex; width: 1.6rem; height: 1.6rem; }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} isolate gradient">
+<script>
+  (function () {
+    if (window.__gbSmoothAnchors) return;
+    window.__gbSmoothAnchors = true;
+    document.addEventListener('click', function (evt) {
+      var link = evt.target.closest('a[href^="#"]');
+      if (!link) return;
+      var id = link.getAttribute('href').slice(1);
+      if (!id) return;
+      var target = document.getElementById(id);
+      if (!target) return;
+      evt.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  })();
+</script>
+
+<div {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | handle }}"{% endif %} class="color-{{ section.settings.color_scheme }} isolate gradient">
   <div class="section-{{ section.id }}-padding page-width">
     <div class="gb-faq-layout">
       {% content_for 'blocks' %}
@@ -178,6 +200,12 @@
   "tag": "section",
   "class": "section",
   "settings": [
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "info": "Link to this section from a button with #your-id (letters, numbers and hyphens)."
+    },
     {
       "type": "range",
       "id": "faq_column_width",
