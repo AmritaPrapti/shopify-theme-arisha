@@ -3771,14 +3771,22 @@ body {
 .small-text {
   font-size: 14px;
 }
-/* Keep Bloop's original layout, but visually hide its built-in copy */
-.bloop__referral--main .bloop__heading--content,
-.bloop__referral--main .bloop__subHeading--content {
-  visibility: hidden !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
+/* Hide the Bloop header only before the user joins */
+.bloop__referral:has(bloop-block-form) > bloop-content {
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Show the header after the referral link is generated */
+.bloop__referral:has(bloop-block-code) > bloop-content {
+    visibility: visible !important;
+    height: auto !important;
+    margin: initial !important;
+    padding: initial !important;
+    overflow: visible !important;
 }
 .bloop__referral--main bloop-main {
     margin-top: 24px !important;
