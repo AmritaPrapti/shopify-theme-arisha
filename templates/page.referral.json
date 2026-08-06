@@ -31,7 +31,7 @@
           "settings": {
             "main_heading_size": "bloop_h1",
             "main_text_color": "#1b1731",
-            "main_primary_color": "#001584",
+            "main_primary_color": "#000000",
             "main_background_color": "#ffffff",
             "main_heading": "",
             "main_sub_heading": "",
@@ -41,19 +41,19 @@
             "button_join_program": "Join program",
             "join_err": "You’re not eligible to join referral program",
             "join_err_one_order": "You need to purchase 1 order before joining the program",
-            "button_continue": "Continue",
+            "button_continue": "CONTINUE",
             "invalid_email_join": "Please enter valid email",
             "place_holder": "Enter your email",
             "sender_label": "Your friends’ emails",
             "sender_placeholder": "Separate each email with a comma",
             "invalid_email_sender": "Please enter valid emails, separated by commas",
             "message_label": "Your message",
-            "message_placeholder": "A personalized message for your friends. We will take care of adding the offer link for you :)",
+            "message_placeholder": "I wanted to share a $10 off coupon to for her. by Arisa so you can try their postpartum soups, snacks, and teas",
             "send_button": "Send",
             "email_sent": "Email(s) sent to your friends!",
             "main_padding_top": 40,
             "main_padding_bottom": 40,
-            "border_radius": 10
+            "border_radius": 4
           }
         }
       },
