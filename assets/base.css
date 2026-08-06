@@ -3787,3 +3787,9 @@ body {
     text-align: center !important;
     align-items: center !important;
 }
+.bss__bloop--guide-body {
+  width: 100% !important;
+  max-width: none !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  justify-content: center !important;
+}
