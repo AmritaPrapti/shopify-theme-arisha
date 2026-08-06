@@ -3771,3 +3771,23 @@ body {
 .small-text {
   font-size: 14px;
 }
+/* Make Bloop referral sections full width */
+[class*="bss__bloop--guide"],
+[class*="bss__bloop--reward"] {
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+}
+
+/* Make Bloop's custom elements fill their parent */
+bloop-guide-section,
+bloop-reward-section {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+@media screen and (min-width: 990px) {
+  bloop-guide-section {
+    --columns: 4;
+  }
+}
