@@ -3780,3 +3780,6 @@ body {
   padding: 0 !important;
   overflow: hidden !important;
 }
+.bloop__referral--main bloop-main {
+    margin-top: 24px !important;
+}
