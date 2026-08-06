@@ -3793,3 +3793,21 @@ body {
   grid-template-columns: repeat(4, 1fr) !important;
   justify-content: center !important;
 }
+/* Mobile: stack the How it works cards */
+@media screen and (max-width: 749px) {
+  .bss__bloop--guide-body {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    row-gap: 16px !important;
+  }
+
+  .bss__bloop--guide-item {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .bss__bloop--guide {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
