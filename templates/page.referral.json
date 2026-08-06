@@ -73,7 +73,7 @@
         "referral_page_block": {
           "type": "shopify://apps/bloop-refer-aff/blocks/bss-referral-page/9d243b55-b2a4-42a8-aa2e-043240bb5d58",
           "settings": {
-            "hide_main": true,
+            "hide_main": false,
             "hide_guide": false,
             "hide_reward": false,
             "section_order": "main-guide-reward",
@@ -84,6 +84,9 @@
             "guide_padding_top": 40,
             "guide_padding_bottom": 40,
             "main_heading_size": "bloop_h1",
+            "enable_image": false,
+            "image_position": "right",
+            "image_width": 50,
             "main_text_color": "#000000",
             "main_primary_color": "#000000",
             "main_background_color": "#ffffff",
@@ -95,7 +98,8 @@
             "reward_primary_color": "#001584",
             "reward_background_color": "#f5f1ff",
             "reward_padding_top": 40,
-            "reward_padding_bottom": 40
+            "reward_padding_bottom": 40,
+            "custom_css": ""
           }
         }
       },
