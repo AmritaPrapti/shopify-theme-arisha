@@ -3783,3 +3783,7 @@ body {
 .bloop__referral--main bloop-main {
     margin-top: 24px !important;
 }
+.bss__bloop--guide-header {
+    text-align: center !important;
+    align-items: center !important;
+}
