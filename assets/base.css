@@ -3771,35 +3771,12 @@ body {
 .small-text {
   font-size: 14px;
 }
-/* Hide Bloop's built-in heading and subheading */
-.bloop__referral--main .bloop__referral > bloop-content {
-  display: none !important;
-}
-
-/* Make the remaining form occupy the full Bloop container */
-.bloop__referral--main .bloop__referral > bloop-main {
-  display: block !important;
-  flex: 0 0 100% !important;
-  width: 100% !important;
-  max-width: 100% !important;
+/* Keep Bloop's original layout, but visually hide its built-in copy */
+.bloop__referral--main .bloop__heading--content,
+.bloop__referral--main .bloop__subHeading--content {
+  visibility: hidden !important;
+  height: 0 !important;
   margin: 0 !important;
-}
-
-/* Make the form, field, and button full width */
-.bloop__referral--main bloop-block-form {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: stretch !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  gap: 16px !important;
-}
-
-.bloop__referral--main bloop-block-form > input,
-.bloop__referral--main bloop-block-form > bloop-button {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  box-sizing: border-box !important;
-  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
 }
