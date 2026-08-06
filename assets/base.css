@@ -3776,26 +3776,33 @@ body {
   display: none !important;
 }
 
-/* Make the remaining form fill the column */
-.bloop__referral--main,
-.bloop__referral--main .bloop__referral,
-.bloop__referral--main bloop-main,
-.bloop__referral--main bloop-block-form {
-  width: 100% !important;
-  max-width: none !important;
+/* Let the form use the full width of the text column */
+.bloop__referral--main .bloop__referral {
+  display: block !important;
 }
 
-/* Stack the email input and button at full width */
+.bloop__referral--main bloop-main {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: 1 1 100% !important;
+}
+
+/* Stack and stretch the input and button */
 .bloop__referral--main bloop-block-form {
   display: flex !important;
   flex-direction: column !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  max-width: 100% !important;
   gap: 16px !important;
 }
 
-/* Full-width input and button */
 .bloop__referral--main bloop-block-form input,
 .bloop__referral--main bloop-block-form bloop-button {
+  display: block !important;
   width: 100% !important;
-  max-width: none !important;
+  max-width: 100% !important;
+  flex: none !important;
   box-sizing: border-box !important;
 }
