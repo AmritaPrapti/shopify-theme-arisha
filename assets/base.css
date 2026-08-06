@@ -3840,3 +3840,7 @@ body {
   font-size: 16px;
   line-height: 1.6;
 }
+/* Hide the share-state subheading */
+.bloop__referral:has(bloop-block-code) .bloop__subHeading--content {
+    display: none !important;
+}
