@@ -3771,3 +3771,8 @@ body {
 .small-text {
   font-size: 14px;
 }
+/* Referral landing page: hide Bloop's built-in join copy */
+.bloop__referral--main .bloop__heading--content,
+.bloop__referral--main .bloop__subheading--content {
+  display: none !important;
+}
