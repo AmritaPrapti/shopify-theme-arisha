@@ -103,7 +103,7 @@
         "referral_page_block"
       ],
       "settings": {
-        "include_margins": true,
+        "include_margins": false,
         "heading": "",
         "heading_size": "h2",
         "padding_top": 32,
