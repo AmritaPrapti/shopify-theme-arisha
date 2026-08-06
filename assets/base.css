@@ -3771,7 +3771,31 @@ body {
 .small-text {
   font-size: 14px;
 }
-/* Hide the entire Bloop header */
+/* Hide Bloop's built-in heading and subheading */
 .bloop__referral--main bloop-content {
-    display: none !important;
+  display: none !important;
+}
+
+/* Make the remaining form fill the column */
+.bloop__referral--main,
+.bloop__referral--main .bloop__referral,
+.bloop__referral--main bloop-main,
+.bloop__referral--main bloop-block-form {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Stack the email input and button at full width */
+.bloop__referral--main bloop-block-form {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+/* Full-width input and button */
+.bloop__referral--main bloop-block-form input,
+.bloop__referral--main bloop-block-form bloop-button {
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
 }
