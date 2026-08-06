@@ -67,49 +67,47 @@
         "padding_bottom": 36
       }
     },
-    "apps": {
+    "1786050715730ea5be": {
       "type": "apps",
       "blocks": {
-        "referral_page_block": {
-          "type": "shopify://apps/bloop-refer-aff/blocks/bss-referral-page/9d243b55-b2a4-42a8-aa2e-043240bb5d58",
+        "bloop_refer_aff_bss_referral_main_G6CbUA": {
+          "type": "shopify://apps/bloop-refer-aff/blocks/bss-referral-main/9d243b55-b2a4-42a8-aa2e-043240bb5d58",
           "settings": {
-            "hide_main": false,
-            "hide_guide": false,
-            "hide_reward": false,
-            "section_order": "main-guide-reward",
-            "guide_heading_size": "bloop_h1",
-            "guide_text_color": "#1b1731",
-            "guide_primary_color": "#b07a72",
-            "guide_background_color": "#ffffff",
-            "guide_padding_top": 40,
-            "guide_padding_bottom": 40,
             "main_heading_size": "bloop_h1",
-            "enable_image": false,
-            "image_position": "right",
-            "image_width": 50,
-            "main_text_color": "#000000",
-            "main_primary_color": "#000000",
-            "main_background_color": "#ffffff",
+            "main_text_color": "#1B1731",
+            "main_primary_color": "#001584",
+            "main_background_color": "#FFFFFF",
+            "main_heading": "Join referral program",
+            "main_sub_heading": "They'll get 20% off, and you'll receive $25 after they use the gift to make a purchase",
+            "main_heading_share": "Share with your friends",
+            "share_discount_code_label": "Your referral code",
+            "main_sub_heading_share": "Share this with your friends to give them 20% off, and you'll get $25 after they make a purchase with the gift",
+            "button_join_program": "Join program",
+            "join_err": "You’re not eligible to join referral program",
+            "join_err_one_order": "You need to purchase 1 order before joining the program",
+            "button_continue": "Continue",
+            "invalid_email_join": "Please enter valid email",
+            "place_holder": "Enter your email",
+            "sender_label": "Your friends’ emails",
+            "sender_placeholder": "Separate each email with a comma",
+            "invalid_email_sender": "Please enter valid emails, separated by commas",
+            "message_label": "Your message",
+            "message_placeholder": "A personalized message for your friends. We will take care of adding the offer link for you :)",
+            "send_button": "Send",
+            "email_sent": "Email(s) sent to your friends!",
             "main_padding_top": 40,
             "main_padding_bottom": 40,
-            "border_radius": 4,
-            "reward_heading_size": "bloop_h1",
-            "reward_text_color": "#1b1731",
-            "reward_primary_color": "#001584",
-            "reward_background_color": "#f5f1ff",
-            "reward_padding_top": 40,
-            "reward_padding_bottom": 40,
-            "custom_css": ""
+            "border_radius": 10
           }
         }
       },
       "block_order": [
-        "referral_page_block"
+        "bloop_refer_aff_bss_referral_main_G6CbUA"
       ],
       "settings": {
-        "include_margins": false,
-        "heading": "",
-        "heading_size": "h2",
+        "include_margins": true,
+        "heading": "Testimonials",
+        "heading_size": "h1",
         "padding_top": 32,
         "padding_bottom": 32
       }
@@ -117,6 +115,6 @@
   },
   "order": [
     "image_with_text_KExJTn",
-    "apps"
+    "1786050715730ea5be"
   ]
 }
