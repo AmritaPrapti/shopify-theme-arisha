@@ -3819,3 +3819,24 @@ body {
     padding-right: 20px !important;
   }
 }
+/* Replace Bloop's broken share-state heading */
+.bloop__referral:has(bloop-block-code) .bloop__heading--content {
+  font-size: 0 !important;
+}
+
+.bloop__referral:has(bloop-block-code) .bloop__heading--content::after {
+  content: "Share your referral link";
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+/* Replace Bloop's broken share-state subheading */
+.bloop__referral:has(bloop-block-code) .bloop__subHeading--content {
+  font-size: 0 !important;
+}
+
+.bloop__referral:has(bloop-block-code) .bloop__subHeading--content::after {
+  content: "Give a friend $10 off their first order. Once they purchase, you'll receive a $10 reward.";
+  font-size: 16px;
+  line-height: 1.6;
+}
