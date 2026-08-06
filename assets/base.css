@@ -3772,23 +3772,20 @@ body {
   font-size: 14px;
 }
 /* Hide Bloop's built-in heading and subheading */
-.bloop__referral--main bloop-content {
+.bloop__referral--main .bloop__referral > bloop-content {
   display: none !important;
 }
 
-/* Let the form use the full width of the text column */
-.bloop__referral--main .bloop__referral {
+/* Make the remaining form occupy the full Bloop container */
+.bloop__referral--main .bloop__referral > bloop-main {
   display: block !important;
-}
-
-.bloop__referral--main bloop-main {
-  display: block !important;
+  flex: 0 0 100% !important;
   width: 100% !important;
   max-width: 100% !important;
-  flex: 1 1 100% !important;
+  margin: 0 !important;
 }
 
-/* Stack and stretch the input and button */
+/* Make the form, field, and button full width */
 .bloop__referral--main bloop-block-form {
   display: flex !important;
   flex-direction: column !important;
@@ -3798,11 +3795,11 @@ body {
   gap: 16px !important;
 }
 
-.bloop__referral--main bloop-block-form input,
-.bloop__referral--main bloop-block-form bloop-button {
+.bloop__referral--main bloop-block-form > input,
+.bloop__referral--main bloop-block-form > bloop-button {
   display: block !important;
   width: 100% !important;
   max-width: 100% !important;
-  flex: none !important;
   box-sizing: border-box !important;
+  margin: 0 !important;
 }
