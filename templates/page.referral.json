@@ -22,7 +22,7 @@
         "text_G3FMCC": {
           "type": "text",
           "settings": {
-            "text": "<p>Know someone who's expecting or newly postpartum? </p><p>Give them $10 off their first order, and when they purchase, you'll receive a $10 reward as our thank you.</p>",
+            "text": "<p>Know someone who's expecting or newly postpartum? </p><p>Join our Referral Program to give them $10 off their first order, and when they purchase, you'll receive a $10 reward as our thank you.</p>",
             "text_style": "body"
           }
         },
@@ -41,7 +41,7 @@
             "button_join_program": "Join program",
             "join_err": "You’re not eligible to join referral program",
             "join_err_one_order": "You need to purchase 1 order before joining the program",
-            "button_continue": "CONTINUE",
+            "button_continue": "JOIN REFERRAL PROGRAM",
             "invalid_email_join": "Please enter valid email",
             "place_holder": "Enter your email",
             "sender_label": "Your friends’ emails",
@@ -97,15 +97,15 @@
             "guide_primary_color": "#001584",
             "guide_background_color": "#ffffff",
             "guide_heading": "How it works",
-            "guide_sub_heading": "Only 4 steps to earn your rewards!",
+            "guide_sub_heading": "Share the care and earn rewards with every successful referral.",
             "step_1_heading": "1. Join referral program",
-            "step_1_description": "Sign up and start giving your friends a reward, then claim yours when they make a purchase",
-            "step_2_heading": "2. Refer a friend",
-            "step_2_description": "Share your referral link/code directly with your friends or post it on social media",
-            "step_3_heading": "3. Your friend gets referred",
-            "step_3_description": "By clicking your referral link, your friend receives a discount, or they can apply your shared code to complete their purchase",
-            "step_4_heading": "4. Receive your reward",
-            "step_4_description": "After your friend places an order using your gift, you'll earn a discount as a reward",
+            "step_1_description": "Enter your email to get your personal referral link and start sharing with friends.",
+            "step_2_heading": "2. Share your referral link",
+            "step_2_description": "Send your unique referral link to friends by text, email, or social media.",
+            "step_3_heading": "3. Your friend saves $10",
+            "step_3_description": "When they use your referral link, they'll receive $10 off their first order.",
+            "step_4_heading": "4. Earn your $10 reward",
+            "step_4_description": "Once your friend places their first order, you'll receive a $10 reward to use on a future purchase.",
             "guide_padding_top": 40,
             "guide_padding_bottom": 40
           }
