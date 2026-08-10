@@ -51,7 +51,7 @@
             "message_placeholder": "I wanted to share a $10 off coupon to for her. by Arisa so you can try their postpartum soups, snacks, and teas",
             "send_button": "Send",
             "email_sent": "Email(s) sent to your friends!",
-            "main_padding_top": 0,
+            "main_padding_top": 40,
             "main_padding_bottom": 40,
             "border_radius": 4
           }
@@ -85,7 +85,7 @@
         "mobile_content_alignment": "left",
         "section_color_scheme": "",
         "color_scheme": "",
-        "padding_top": 36,
+        "padding_top": 40,
         "padding_bottom": 0
       }
     },
