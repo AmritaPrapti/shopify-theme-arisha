@@ -64,7 +64,7 @@
       ],
       "custom_css": [
         ".bloop__referral {padding: 0 !important;}",
-        ".bloop__referral--main {padding-top: 0 !important;}"
+        ".bloop__referral--main {padding-top: 0 !important; padding-bottom: 0 !important;}"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
