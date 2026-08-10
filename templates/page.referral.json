@@ -190,7 +190,7 @@
         "image_width_custom": 50,
         "image_ratio": "adapt",
         "image_background": "",
-        "button_label": "Button label",
+        "button_label": "",
         "button_link": "",
         "columns_desktop": 4,
         "column_alignment": "center",
@@ -200,7 +200,7 @@
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 64
       }
     }
   },
