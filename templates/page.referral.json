@@ -121,10 +121,87 @@
         "padding_top": 32,
         "padding_bottom": 32
       }
+    },
+    "multicolumn_cYCHWW": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_WEjdHB": {
+          "type": "column",
+          "settings": {
+            "title": "1. Join referral program",
+            "text": "<p>Enter your email to get your personal referral link and start sharing with friends.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_W8HP8m": {
+          "type": "column",
+          "settings": {
+            "title": "2. Share your referral link",
+            "text": "<p>Send your unique referral link to friends by text, email, or social media.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_yXJiBF": {
+          "type": "column",
+          "settings": {
+            "title": "3. Your friend saves $10",
+            "text": "<p>When they use your referral link, they'll receive $10 off their first order.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_pPMc4k": {
+          "type": "column",
+          "settings": {
+            "title": "4. Earn your $10 reward",
+            "text": "<p>Once your friend places their first order, you'll receive a $10 reward to use on a future purchase.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_WEjdHB",
+        "column_W8HP8m",
+        "column_yXJiBF",
+        "column_pPMc4k"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "caption": "",
+        "caption_uppercase": true,
+        "caption_size": "medium",
+        "caption_font_size_desktop": 18,
+        "caption_font_size_mobile": 14,
+        "caption_font_weight": "400",
+        "caption_color": "",
+        "title": "How it works",
+        "heading_size": "h1",
+        "subtitle": "",
+        "title_alignment": "left",
+        "image_width": "full",
+        "image_width_custom": 200,
+        "image_ratio": "adapt",
+        "image_background": "",
+        "button_label": "Button label",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "card_title_lines": 2,
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "image_with_text_KExJTn",
-    "17860507300f820b0f"
+    "17860507300f820b0f",
+    "multicolumn_cYCHWW"
   ]
 }
