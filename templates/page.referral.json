@@ -63,7 +63,8 @@
         "bloop_refer_aff_bss_referral_main_ywWjyB"
       ],
       "custom_css": [
-        ".bloop__referral {padding: 0 !important;}"
+        ".bloop__referral {padding: 0 !important;}",
+        ".bloop__referral--main {padding-top: 0 !important;}"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
