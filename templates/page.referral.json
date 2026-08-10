@@ -114,6 +114,7 @@
       "block_order": [
         "bloop_refer_aff_bss_referral_guide_tVYDeV"
       ],
+      "disabled": true,
       "settings": {
         "include_margins": true,
         "heading": "",
@@ -128,6 +129,7 @@
         "column_WEjdHB": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/share.png",
             "title": "1. Join referral program",
             "text": "<p>Enter your email to get your personal referral link and start sharing with friends.</p>",
             "link_label": "",
@@ -137,6 +139,7 @@
         "column_W8HP8m": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/share_1.png",
             "title": "2. Share your referral link",
             "text": "<p>Send your unique referral link to friends by text, email, or social media.</p>",
             "link_label": "",
@@ -146,6 +149,7 @@
         "column_yXJiBF": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/user-login.png",
             "title": "3. Your friend saves $10",
             "text": "<p>When they use your referral link, they'll receive $10 off their first order.</p>",
             "link_label": "",
@@ -180,8 +184,8 @@
         "caption_color": "",
         "title": "How it works",
         "heading_size": "h1",
-        "subtitle": "",
-        "title_alignment": "left",
+        "subtitle": "<p>Share the care and earn rewards with every successful referral.</p>",
+        "title_alignment": "center",
         "image_width": "custom",
         "image_width_custom": 50,
         "image_ratio": "adapt",
@@ -189,7 +193,7 @@
         "button_label": "Button label",
         "button_link": "",
         "columns_desktop": 4,
-        "column_alignment": "left",
+        "column_alignment": "center",
         "card_title_lines": 1,
         "background_style": "primary",
         "color_scheme": "",
