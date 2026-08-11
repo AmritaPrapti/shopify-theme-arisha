@@ -20,21 +20,21 @@
             "text_style": "caption-with-letter-spacing",
             "text_size": "medium",
             "font_weight": "400",
-            "caption_color": "#6B6662",
+            "caption_color": "#6b6662",
             "caption_highlight": ""
           }
         },
         "heading_fDN4Jp": {
           "type": "heading",
           "settings": {
-            "heading": "Every new mom deserves a little extra care",
+            "heading": "Keep sharing the support with other moms & get rewarded",
             "heading_size": "h1"
           }
         },
         "text_G3FMCC": {
           "type": "text",
           "settings": {
-            "text": "<p>Know someone who's expecting or newly postpartum? </p><p>Join our Referral Program to give them $10 off their first order, and when they purchase, you'll receive a $10 reward as our thank you.</p>",
+            "text": "<p>Enter the email you used to join the Referral Program below. Your unique referral link will appear along with easy sharing options so you can send $10 off with someone you care about.</p><p>When they make their first purchase, you’ll receive a $10 reward too!</p>",
             "text_style": "body"
           }
         },
@@ -53,7 +53,7 @@
             "button_join_program": "Join program",
             "join_err": "You’re not eligible to join referral program",
             "join_err_one_order": "You need to purchase 1 order before joining the program",
-            "button_continue": "JOIN REFERRAL PROGRAM",
+            "button_continue": "GET SHARING LINKS",
             "invalid_email_join": "Please enter valid email",
             "place_holder": "Enter your email",
             "sender_label": "Your friends’ emails",
@@ -83,8 +83,8 @@
       "settings": {
         "section_url": "",
         "enable_text_link": false,
-        "image": "shopify://shop_images/07.13.25_ForHer-130_cropped.jpg",
-        "height": "adapt",
+        "image": "shopify://shop_images/260714_TsS_1242_1st_sRGB_2400.jpg",
+        "height": "medium",
         "height_mobile": "medium",
         "custom_media_height": 700,
         "custom_media_height_mobile": 700,
