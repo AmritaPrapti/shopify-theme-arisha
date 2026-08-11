@@ -12,6 +12,18 @@
     "image_with_text_KExJTn": {
       "type": "image-with-text",
       "blocks": {
+        "caption_4PRwki": {
+          "type": "caption",
+          "settings": {
+            "link": "",
+            "caption": "FOR HER. BY ARISA REFERRAL PROGRAM",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium",
+            "font_weight": "400",
+            "caption_color": "#6B6662",
+            "caption_highlight": ""
+          }
+        },
         "heading_fDN4Jp": {
           "type": "heading",
           "settings": {
@@ -58,6 +70,7 @@
         }
       },
       "block_order": [
+        "caption_4PRwki",
         "heading_fDN4Jp",
         "text_G3FMCC",
         "bloop_refer_aff_bss_referral_main_ywWjyB"
