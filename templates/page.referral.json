@@ -219,11 +219,46 @@
         "padding_top": 36,
         "padding_bottom": 64
       }
+    },
+    "1786476966f61dc42f": {
+      "type": "apps",
+      "blocks": {
+        "bloop_refer_aff_bss_referral_reward_zeMwmw": {
+          "type": "shopify://apps/bloop-refer-aff/blocks/bss-referral-reward/9d243b55-b2a4-42a8-aa2e-043240bb5d58",
+          "settings": {
+            "reward_heading_size": "bloop_h1",
+            "reward_text_color": "#1B1731",
+            "reward_primary_color": "#001584",
+            "reward_background_color": "#F5F1FF",
+            "reward_heading": "Your rewards",
+            "reward_sub_heading": "Your earnings from referrals",
+            "no_rewards": "You have no rewards yet",
+            "copy": "Copy",
+            "apply": "Apply",
+            "used": "Used",
+            "expired": "Expired",
+            "reward_info": "Referred {email}",
+            "reward_padding_top": 40,
+            "reward_padding_bottom": 40
+          }
+        }
+      },
+      "block_order": [
+        "bloop_refer_aff_bss_referral_reward_zeMwmw"
+      ],
+      "settings": {
+        "include_margins": true,
+        "heading": "Testimonials",
+        "heading_size": "h1",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
     }
   },
   "order": [
     "image_with_text_KExJTn",
     "17860507300f820b0f",
-    "multicolumn_cYCHWW"
+    "multicolumn_cYCHWW",
+    "1786476966f61dc42f"
   ]
 }
