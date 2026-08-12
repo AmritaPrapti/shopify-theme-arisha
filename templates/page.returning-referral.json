@@ -227,9 +227,9 @@
           "type": "shopify://apps/bloop-refer-aff/blocks/bss-referral-reward/9d243b55-b2a4-42a8-aa2e-043240bb5d58",
           "settings": {
             "reward_heading_size": "bloop_h1",
-            "reward_text_color": "#1B1731",
+            "reward_text_color": "#1b1731",
             "reward_primary_color": "#001584",
-            "reward_background_color": "#F5F1FF",
+            "reward_background_color": "#f5f1ff",
             "reward_heading": "Your rewards",
             "reward_sub_heading": "Your earnings from referrals",
             "no_rewards": "You have no rewards yet",
@@ -245,6 +245,9 @@
       },
       "block_order": [
         "bloop_refer_aff_bss_referral_reward_zeMwmw"
+      ],
+      "custom_css": [
+        ".app-block-wrapper {display: flex; align-items: center; justify-content: center;}"
       ],
       "settings": {
         "include_margins": true,
