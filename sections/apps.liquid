@@ -42,13 +42,13 @@
   }
 
   /* Center the whole block (heading, subheading and app/image content). */
-  .section-app-{{ section.id }}-padding .app-block-wrapper {
+  .section-app-{{ section.id }}-padding .app-block-wrapper--center {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
-  .section-app-{{ section.id }}-padding .app-block-wrapper > * {
+  .section-app-{{ section.id }}-padding .app-block-wrapper--center > * {
     width: 100%;
   }
   .section-app-{{ section.id }}-padding .apps__subheading {
@@ -59,7 +59,7 @@
 {%- endstyle -%}
 
 <div class="section-app-{{ section.id }}-padding {% if section.settings.include_margins %} page-width{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-  <div class="app-block-wrapper">
+  <div class="app-block-wrapper{% if section.settings.center_block %} app-block-wrapper--center{% endif %}">
     
     {%- for block in section.blocks -%}
       
@@ -87,13 +87,12 @@
            {%- if section.settings.heading != blank -%}
              <h2 class="image-with-text__heading inline-richtext {{ section.settings.heading_size }}"
                       {{ section.shopify_attributes }}
-                      style="text-align: center;"
                     >
                       {{ section.settings.heading }}
                    </h2>
            {%- endif -%}
            {%- if section.settings.subheading != blank -%}
-             <div class="apps__subheading rte" style="text-align: center;">
+             <div class="apps__subheading rte">
                {{ section.settings.subheading }}
              </div>
            {%- endif -%}
@@ -155,6 +154,12 @@
       "id": "subheading",
       "label": "Subheading",
       "default": "<p>What our customers are saying</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "center_block",
+      "label": "Center the block",
+      "default": true
     },
     {
       "type": "header",
