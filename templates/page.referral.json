@@ -246,6 +246,9 @@
       "block_order": [
         "bloop_refer_aff_bss_referral_reward_zeMwmw"
       ],
+      "custom_css": [
+        ".app-block-wrapper {display: flex; align-items: center; justify-content: center;}"
+      ],
       "settings": {
         "include_margins": true,
         "heading": "Testimonials",
