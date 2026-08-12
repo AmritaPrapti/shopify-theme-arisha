@@ -336,6 +336,9 @@
             "show_sample_reviews": true,
             "reviews_selection": "all",
             "products": [],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
             "star_rating": "5_star",
             "max_reviews": 20,
             "quote_marks_size": "small",
@@ -357,7 +360,8 @@
             "show_drop_shadow": false,
             "transition_speed": 5,
             "header_text": "",
-            "show_average_rating": true
+            "show_average_rating": true,
+            "rating_display": "default"
           }
         }
       },
@@ -376,6 +380,8 @@
         "include_margins": false,
         "heading": "Testimonials",
         "heading_size": "h1",
+        "subheading": "",
+        "center_block": true,
         "padding_top": 76,
         "padding_bottom": 100
       }
