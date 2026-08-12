@@ -136,7 +136,7 @@
         "include_margins": true,
         "heading": "",
         "heading_size": "h1",
-        "subheading": "<p>What our customers are saying</p>",
+        "subheading": "",
         "center_block": false,
         "padding_top": 32,
         "padding_bottom": 32
