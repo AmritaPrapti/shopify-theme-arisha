@@ -31,18 +31,34 @@
   }
 
   @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
+    .section-app-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
 
-    .section-{{ section.id }}-padding .image_wrapper_app.custom-height {
+    .section-app-{{ section.id }}-padding .image_wrapper_app.custom-height {
       height: var(--desktop-height, 700px);
     }
   }
+
+  /* Center the whole block (heading, subheading and app/image content). */
+  .section-app-{{ section.id }}-padding .app-block-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .section-app-{{ section.id }}-padding .app-block-wrapper > * {
+    width: 100%;
+  }
+  .section-app-{{ section.id }}-padding .apps__subheading {
+    margin-top: 0.8rem;
+  }
+  .section-app-{{ section.id }}-padding .apps__subheading > :first-child { margin-top: 0; }
+  .section-app-{{ section.id }}-padding .apps__subheading > :last-child { margin-bottom: 0; }
 {%- endstyle -%}
 
-<div class="section-{{ section.id }}-padding {% if section.settings.include_margins %} page-width{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+<div class="section-app-{{ section.id }}-padding {% if section.settings.include_margins %} page-width{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
   <div class="app-block-wrapper">
     
     {%- for block in section.blocks -%}
@@ -68,12 +84,19 @@
         </div>
       {% else %}
          <div>
-           <h2 class="image-with-text__heading inline-richtext {{ section.settings.heading_size }}"
+           {%- if section.settings.heading != blank -%}
+             <h2 class="image-with-text__heading inline-richtext {{ section.settings.heading_size }}"
                       {{ section.shopify_attributes }}
                       style="text-align: center;"
                     >
                       {{ section.settings.heading }}
                    </h2>
+           {%- endif -%}
+           {%- if section.settings.subheading != blank -%}
+             <div class="apps__subheading rte" style="text-align: center;">
+               {{ section.settings.subheading }}
+             </div>
+           {%- endif -%}
                    {% render block %}
          </div>
       {% endif %}
@@ -126,6 +149,12 @@
       ],
       "default": "h1",
       "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>What our customers are saying</p>"
     },
     {
       "type": "header",
