@@ -229,7 +229,7 @@
             "reward_heading_size": "bloop_h1",
             "reward_text_color": "#1b1731",
             "reward_primary_color": "#001584",
-            "reward_background_color": "#f5f1ff",
+            "reward_background_color": "#F3E7E4",
             "reward_heading": "Your rewards",
             "reward_sub_heading": "Your earnings from referrals",
             "no_rewards": "You have no rewards yet",
