@@ -136,6 +136,7 @@
         "include_margins": true,
         "heading": "",
         "heading_size": "h1",
+        "subheading": "<p>What our customers are saying</p>",
         "padding_top": 32,
         "padding_bottom": 32
       }
@@ -230,8 +231,8 @@
             "reward_text_color": "#1b1731",
             "reward_primary_color": "#001584",
             "reward_background_color": "#f5f1ff",
-            "reward_heading": "Your rewards",
-            "reward_sub_heading": "Your earnings from referrals",
+            "reward_heading": "",
+            "reward_sub_heading": "",
             "no_rewards": "You have no rewards yet",
             "copy": "Copy",
             "apply": "Apply",
@@ -251,8 +252,9 @@
       ],
       "settings": {
         "include_margins": true,
-        "heading": "Testimonials",
+        "heading": "Your rewards",
         "heading_size": "h1",
+        "subheading": "<p>Your earnings from referrals</p>",
         "padding_top": 32,
         "padding_bottom": 32
       }
