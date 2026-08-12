@@ -1,0 +1,264 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_with_text_KExJTn": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_4PRwki": {
+          "type": "caption",
+          "settings": {
+            "link": "",
+            "caption": "FOR HER. BY ARISA REFERRAL PROGRAM",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium",
+            "font_weight": "400",
+            "caption_color": "#6b6662",
+            "caption_highlight": ""
+          }
+        },
+        "heading_fDN4Jp": {
+          "type": "heading",
+          "settings": {
+            "heading": "Keep sharing the support with other moms & get rewarded",
+            "heading_size": "h1"
+          }
+        },
+        "text_G3FMCC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If your referral link doesn't automatically appear below, enter the email you used to join the Referral Program to generate it. Your unique referral link will appear along with easy sharing options so you can send $10 off with someone you care about.</p><p>When they make their first purchase, you’ll receive a $10 reward too!</p>",
+            "text_style": "body"
+          }
+        },
+        "bloop_refer_aff_bss_referral_main_ywWjyB": {
+          "type": "shopify://apps/bloop-refer-aff/blocks/bss-referral-main/9d243b55-b2a4-42a8-aa2e-043240bb5d58",
+          "settings": {
+            "main_heading_size": "bloop_h1",
+            "main_text_color": "#1b1731",
+            "main_primary_color": "#000000",
+            "main_background_color": "#ffffff",
+            "main_heading": "",
+            "main_sub_heading": "",
+            "main_heading_share": "Share this link with your friends",
+            "share_discount_code_label": "Your referral code",
+            "main_sub_heading_share": "",
+            "button_join_program": "Join program",
+            "join_err": "You’re not eligible to join referral program",
+            "join_err_one_order": "You need to purchase 1 order before joining the program",
+            "button_continue": "GET SHARING LINKS",
+            "invalid_email_join": "Please enter valid email",
+            "place_holder": "Enter your email",
+            "sender_label": "Your friends’ emails",
+            "sender_placeholder": "Separate each email with a comma",
+            "invalid_email_sender": "Please enter valid emails, separated by commas",
+            "message_label": "Your message",
+            "message_placeholder": "I wanted to share a $10 off coupon to for her. by Arisa so you can try their postpartum soups, snacks, and teas",
+            "send_button": "Send",
+            "email_sent": "Email(s) sent to your friends!",
+            "main_padding_top": 40,
+            "main_padding_bottom": 40,
+            "border_radius": 4
+          }
+        }
+      },
+      "block_order": [
+        "caption_4PRwki",
+        "heading_fDN4Jp",
+        "text_G3FMCC",
+        "bloop_refer_aff_bss_referral_main_ywWjyB"
+      ],
+      "custom_css": [
+        ".bloop__referral {padding: 0 !important;}",
+        ".bloop__referral--main {padding-top: 0 !important; padding-bottom: 0 !important;}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_url": "",
+        "enable_text_link": false,
+        "image": "shopify://shop_images/260714_TsS_1242_1st_sRGB_2400.jpg",
+        "height": "medium",
+        "height_mobile": "medium",
+        "custom_media_height": 700,
+        "custom_media_height_mobile": 700,
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "mobile_layout": "image_first",
+        "image_behavior": "none",
+        "enable_full_width": false,
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "17860507300f820b0f": {
+      "type": "apps",
+      "blocks": {
+        "bloop_refer_aff_bss_referral_guide_tVYDeV": {
+          "type": "shopify://apps/bloop-refer-aff/blocks/bss-referral-guide/9d243b55-b2a4-42a8-aa2e-043240bb5d58",
+          "settings": {
+            "guide_heading_size": "bloop_h1",
+            "guide_text_color": "#1b1731",
+            "guide_primary_color": "#001584",
+            "guide_background_color": "#ffffff",
+            "guide_heading": "How it works",
+            "guide_sub_heading": "Share the care and earn rewards with every successful referral.",
+            "step_1_heading": "1. Join referral program",
+            "step_1_description": "Enter your email to get your personal referral link and start sharing with friends.",
+            "step_2_heading": "2. Share your referral link",
+            "step_2_description": "Send your unique referral link to friends by text, email, or social media.",
+            "step_3_heading": "3. Your friend saves $10",
+            "step_3_description": "When they use your referral link, they'll receive $10 off their first order.",
+            "step_4_heading": "4. Earn your $10 reward",
+            "step_4_description": "Once your friend places their first order, you'll receive a $10 reward to use on a future purchase.",
+            "guide_padding_top": 40,
+            "guide_padding_bottom": 40
+          }
+        }
+      },
+      "block_order": [
+        "bloop_refer_aff_bss_referral_guide_tVYDeV"
+      ],
+      "disabled": true,
+      "settings": {
+        "include_margins": true,
+        "heading": "",
+        "heading_size": "h1",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "multicolumn_cYCHWW": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_WEjdHB": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/share.png",
+            "title": "1. Join referral program",
+            "text": "<p>Enter your email to get your personal referral link and start sharing with friends.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_W8HP8m": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/share_1.png",
+            "title": "2. Share your referral link",
+            "text": "<p>Send your unique referral link to friends by text, email, or social media.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_yXJiBF": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/user-login.png",
+            "title": "3. Your friend saves $10",
+            "text": "<p>When they use your referral link, they'll receive $10 off their first order.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_pPMc4k": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/gift_1.png",
+            "title": "4. Earn your $10 reward",
+            "text": "<p>Once your friend places their first order, you'll receive a $10 reward to use on a future purchase.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_WEjdHB",
+        "column_W8HP8m",
+        "column_yXJiBF",
+        "column_pPMc4k"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "caption": "",
+        "caption_uppercase": true,
+        "caption_size": "medium",
+        "caption_font_size_desktop": 18,
+        "caption_font_size_mobile": 14,
+        "caption_font_weight": "400",
+        "caption_color": "",
+        "title": "How it works",
+        "heading_size": "h1",
+        "subtitle": "<p>Share the care and earn rewards with every successful referral.</p>",
+        "title_alignment": "center",
+        "image_width": "custom",
+        "image_width_custom": 50,
+        "image_ratio": "adapt",
+        "image_background": "",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "card_title_lines": 1,
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 64
+      }
+    },
+    "1786476966f61dc42f": {
+      "type": "apps",
+      "blocks": {
+        "bloop_refer_aff_bss_referral_reward_zeMwmw": {
+          "type": "shopify://apps/bloop-refer-aff/blocks/bss-referral-reward/9d243b55-b2a4-42a8-aa2e-043240bb5d58",
+          "settings": {
+            "reward_heading_size": "bloop_h1",
+            "reward_text_color": "#1B1731",
+            "reward_primary_color": "#001584",
+            "reward_background_color": "#F5F1FF",
+            "reward_heading": "Your rewards",
+            "reward_sub_heading": "Your earnings from referrals",
+            "no_rewards": "You have no rewards yet",
+            "copy": "Copy",
+            "apply": "Apply",
+            "used": "Used",
+            "expired": "Expired",
+            "reward_info": "Referred {email}",
+            "reward_padding_top": 40,
+            "reward_padding_bottom": 40
+          }
+        }
+      },
+      "block_order": [
+        "bloop_refer_aff_bss_referral_reward_zeMwmw"
+      ],
+      "settings": {
+        "include_margins": true,
+        "heading": "Testimonials",
+        "heading_size": "h1",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    }
+  },
+  "order": [
+    "image_with_text_KExJTn",
+    "17860507300f820b0f",
+    "multicolumn_cYCHWW",
+    "1786476966f61dc42f"
+  ]
+}
