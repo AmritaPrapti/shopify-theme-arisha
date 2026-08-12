@@ -230,7 +230,7 @@
             "reward_heading_size": "bloop_h1",
             "reward_text_color": "#1b1731",
             "reward_primary_color": "#001584",
-            "reward_background_color": "#f5f1ff",
+            "reward_background_color": "#F3E7E4",
             "reward_heading": "",
             "reward_sub_heading": "",
             "no_rewards": "You have no rewards yet",
@@ -239,7 +239,7 @@
             "used": "Used",
             "expired": "Expired",
             "reward_info": "Referred {email}",
-            "reward_padding_top": 40,
+            "reward_padding_top": 0,
             "reward_padding_bottom": 40
           }
         }
