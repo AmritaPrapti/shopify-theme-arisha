@@ -226,6 +226,10 @@
       ],
       "settings": {
         "include_margins": true,
+        "heading": "Testimonials",
+        "heading_size": "h1",
+        "subheading": "",
+        "center_block": true,
         "padding_top": 32,
         "padding_bottom": 32
       }
