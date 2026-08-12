@@ -137,6 +137,7 @@
         "heading": "",
         "heading_size": "h1",
         "subheading": "<p>What our customers are saying</p>",
+        "center_block": false,
         "padding_top": 32,
         "padding_bottom": 32
       }
@@ -230,7 +231,7 @@
             "reward_heading_size": "bloop_h1",
             "reward_text_color": "#1b1731",
             "reward_primary_color": "#001584",
-            "reward_background_color": "#F3E7E4",
+            "reward_background_color": "#f3e7e4",
             "reward_heading": "",
             "reward_sub_heading": "",
             "no_rewards": "You have no rewards yet",
@@ -247,14 +248,13 @@
       "block_order": [
         "bloop_refer_aff_bss_referral_reward_zeMwmw"
       ],
-      "custom_css": [
-        ".app-block-wrapper {display: flex; align-items: center; justify-content: center;}"
-      ],
+      "custom_css": [],
       "settings": {
         "include_margins": true,
         "heading": "Your rewards",
         "heading_size": "h1",
         "subheading": "<p>Your earnings from referrals</p>",
+        "center_block": true,
         "padding_top": 32,
         "padding_bottom": 32
       }
