@@ -239,7 +239,7 @@
             "used": "Used",
             "expired": "Expired",
             "reward_info": "Referred {email}",
-            "reward_padding_top": 0,
+            "reward_padding_top": 16,
             "reward_padding_bottom": 40
           }
         }
