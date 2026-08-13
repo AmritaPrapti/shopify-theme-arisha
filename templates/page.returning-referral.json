@@ -250,6 +250,7 @@
       "block_order": [
         "bloop_refer_aff_bss_referral_reward_zeMwmw"
       ],
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "include_margins": true,
