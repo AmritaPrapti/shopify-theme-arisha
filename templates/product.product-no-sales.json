@@ -30,6 +30,7 @@
         },
         "price": {
           "type": "price",
+          "disabled": true,
           "settings": {
             "show_sale_badge": false,
             "show_sale_amount": true,
@@ -42,10 +43,12 @@
         },
         "quantity_selector_wUgbAb": {
           "type": "quantity_selector",
+          "disabled": true,
           "settings": {}
         },
         "buy_buttons": {
           "type": "buy_buttons",
+          "disabled": true,
           "settings": {
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": true
@@ -59,6 +62,7 @@
         },
         "collapsible_tab_RKzFR6": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Ingredients",
             "icon": "leaf",
@@ -68,6 +72,7 @@
         },
         "collapsible_tab_Fyca3P": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Allergen Information",
             "icon": "clipboard",
@@ -77,6 +82,7 @@
         },
         "collapsible_tab_dntdRT": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Instructions",
             "icon": "serving_dish",
@@ -86,6 +92,7 @@
         },
         "collapsible_tab_KtGM8F": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Product Quantity",
             "icon": "bottle",
@@ -95,6 +102,7 @@
         },
         "collapsible_tab_aBrK94": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Package Size",
             "icon": "ruler",
@@ -239,6 +247,7 @@
         "collapsible_row_Ljz8yA",
         "collapsible_row_kfhBMk"
       ],
+      "disabled": true,
       "custom_css": [
         "h2 {color: #c37e78;}"
       ],
