@@ -77,7 +77,9 @@
       ],
       "custom_css": [
         ".bloop__referral {padding: 0 !important;}",
-        ".bloop__referral--main {padding-top: 0 !important; padding-bottom: 0 !important;}"
+        ".bloop__referral--main {padding-top: 0 !important; padding-bottom: 0 !important;}",
+        ".bloop__referral:has(bloop-block-code) .bloop__heading--content {letter-spacing: 0 !important; word-spacing: 0 !important; text-indent: 0 !important;}",
+        ".bloop__referral:has(bloop-block-code) .bloop__heading--content::after {display: block; letter-spacing: normal;}"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
