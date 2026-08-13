@@ -50,7 +50,7 @@
         "button_LPGwzM": {
           "type": "button",
           "settings": {
-            "button_label": "Shop Gift Bundles",
+            "button_label": "SHOP GIFT BUNDLES",
             "button_link": "#gift-bundle",
             "button_style_secondary": false,
             "button_icon": "shopify://shop_images/gift_27088eaa-1b18-47fe-972c-1a93ca9bed70.svg",
@@ -342,7 +342,7 @@
             "padding_vertical": 20,
             "padding_horizontal": 20,
             "icon_1": "shopify://shop_images/gift-bow.png",
-            "icon_text_1": "<p>In Japanese, the character for \"to wrap\" (包む; tsutsumu) is said to originate from the image of a mother gently protecting her child in the womb. We couldn't imagine a more fitting symbol for a gift created to care for mothers.</p>",
+            "icon_text_1": "<p>In Japanese, the character for \"to wrap\" (包む; tsutsumu) originates from the image of a mother gently protecting her child in the womb. We couldn't imagine a more fitting symbol for a gift created to care for mothers.</p>",
             "icon_text_2": "",
             "icon_text_3": ""
           }
