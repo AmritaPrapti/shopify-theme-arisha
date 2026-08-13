@@ -901,8 +901,8 @@
             "eyebrow_highlight": "",
             "heading": "Got questions? We've got answers.",
             "heading_size": "h1",
-            "item_bg": "#f8f0ee",
-            "item_border": "#b07a72",
+            "item_bg": "",
+            "item_border": "",
             "question_color": "",
             "answer_color": ""
           },
@@ -912,7 +912,7 @@
               "name": "FAQ item",
               "settings": {
                 "question": "Can I include a personalized gift message?",
-                "answer": "<p>Yes — add a recipient email and a personal message right on the product card before adding it to your cart.</p>",
+                "answer": "<p>Yes — click the buy button and add a recipient email and a personal message right on the product card before adding it to your cart.</p>",
                 "open_by_default": true
               },
               "blocks": {}
@@ -921,18 +921,8 @@
               "type": "gift_faq_item",
               "name": "FAQ item",
               "settings": {
-                "question": "Can I include a personalized gift message?",
-                "answer": "<p>Yes — add a recipient email and a personal message right on the product card before adding it to your cart.</p>",
-                "open_by_default": false
-              },
-              "blocks": {}
-            },
-            "gift_faq_item_kY77Vq": {
-              "type": "gift_faq_item",
-              "name": "FAQ item",
-              "settings": {
-                "question": "Can I include a personalized gift message?",
-                "answer": "<p>Yes — add a recipient email and a personal message right on the product card before adding it to your cart.</p>",
+                "question": "Can I choose the swaddle color or dry flower?",
+                "answer": "<p>Currently swaddle colors and dried flower varieties are selected at random, making each gift uniquely its own.</p>",
                 "open_by_default": false
               },
               "blocks": {}
@@ -941,18 +931,18 @@
               "type": "gift_faq_item",
               "name": "FAQ item",
               "settings": {
-                "question": "Can I include a personalized gift message?",
-                "answer": "<p>Yes — add a recipient email and a personal message right on the product card before adding it to your cart.</p>",
+                "question": "What are the dimentions and details of the swaddle wrapping?",
+                "answer": "<p>We use a 47\" × 47\" (120 × 120 cm) 100% cotton muslin swaddle.</p>",
                 "open_by_default": false
               },
               "blocks": {}
             },
-            "gift_faq_item_6dGUmD": {
+            "gift_faq_item_kY77Vq": {
               "type": "gift_faq_item",
               "name": "FAQ item",
               "settings": {
-                "question": "Can I include a personalized gift message?",
-                "answer": "<p>Yes — add a recipient email and a personal message right on the product card before adding it to your cart.</p>",
+                "question": "Can I gift wrap a custom bundle?",
+                "answer": "<p>Currently we do not offer this option for custom bundles. However, we are working on making this possible!</p>",
                 "open_by_default": false
               },
               "blocks": {}
@@ -961,9 +951,8 @@
           "block_order": [
             "gift_faq_item_h9HWWp",
             "gift_faq_item_9aQt8C",
-            "gift_faq_item_kY77Vq",
             "gift_faq_item_HUCztL",
-            "gift_faq_item_6dGUmD"
+            "gift_faq_item_kY77Vq"
           ]
         },
         "gift_feature_panel_cm4cgQ": {
