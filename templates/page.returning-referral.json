@@ -149,6 +149,7 @@
       "blocks": {
         "column_WEjdHB": {
           "type": "column",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/share.png",
             "title": "1. Join referral program",
@@ -161,7 +162,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/share_1.png",
-            "title": "2. Share your referral link",
+            "title": "1. Share your referral link",
             "text": "<p>Send your unique referral link to friends by text, email, or social media.</p>",
             "link_label": "",
             "link": ""
@@ -171,7 +172,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/user-login.png",
-            "title": "3. Your friend saves $10",
+            "title": "2. Your friend saves $10",
             "text": "<p>When they use your referral link, they'll receive $10 off their first order.</p>",
             "link_label": "",
             "link": ""
@@ -181,7 +182,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/gift_1.png",
-            "title": "4. Earn your $10 reward",
+            "title": "3. Earn your $10 reward",
             "text": "<p>Once your friend places their first order, you'll receive a $10 reward to use on a future purchase.</p>",
             "link_label": "",
             "link": ""
@@ -213,7 +214,7 @@
         "image_background": "",
         "button_label": "",
         "button_link": "",
-        "columns_desktop": 4,
+        "columns_desktop": 3,
         "column_alignment": "center",
         "card_title_lines": 1,
         "background_style": "primary",
