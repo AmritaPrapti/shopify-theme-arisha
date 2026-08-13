@@ -505,7 +505,7 @@
               "type": "gift_bundle_add_to_cart",
               "name": "Add to cart",
               "settings": {
-                "label": "Gift the discovery set",
+                "label": "GIFT THE DISCOVERY SET",
                 "style": "outline",
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -570,7 +570,7 @@
               "name": "Best for",
               "settings": {
                 "label": "Best for",
-                "items": "Friends\nRelatives\nBaby showers",
+                "items": "Relatives\nClose friends\nMeal Trains",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -626,11 +626,11 @@
               "type": "gift_bundle_gift",
               "name": "Send as a gift",
               "settings": {
-                "checkbox_label": "Send as a gift",
+                "checkbox_label": "Add a personalized message",
                 "email_label": "Recipient email",
                 "email_placeholder": "name@example.com",
                 "message_label": "Gift message",
-                "message_placeholder": "Write a short note…",
+                "message_placeholder": "This will be printed on the back of the gift card...",
                 "require_message": true,
                 "error_text": "Please add a recipient email and message to send this as a gift.",
                 "padding_top": 0,
@@ -644,7 +644,7 @@
               "type": "gift_bundle_add_to_cart",
               "name": "Add to cart",
               "settings": {
-                "label": "Gift the Complete Care Bundle",
+                "label": "GIFT THE ESSENTIALS BUNDLE",
                 "style": "solid",
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -709,7 +709,7 @@
               "name": "Best for",
               "settings": {
                 "label": "Best for",
-                "items": "Friends\nFamily\nMeal Trains",
+                "items": "Partners\nClose family\nGroup gifts",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -765,11 +765,11 @@
               "type": "gift_bundle_gift",
               "name": "Send as a gift",
               "settings": {
-                "checkbox_label": "Send as a gift",
+                "checkbox_label": "Add a personalized message",
                 "email_label": "Recipient email",
                 "email_placeholder": "name@example.com",
                 "message_label": "Gift message",
-                "message_placeholder": "Write a short note…",
+                "message_placeholder": "This will be printed on the back of the gift card...",
                 "require_message": true,
                 "error_text": "Please add a recipient email and message to send this as a gift.",
                 "padding_top": 0,
@@ -783,7 +783,7 @@
               "type": "gift_bundle_add_to_cart",
               "name": "Add to cart",
               "settings": {
-                "label": "Gift the signature Bundle",
+                "label": "GIFT THE COMPLETE BUNDLE",
                 "style": "outline",
                 "padding_top": 0,
                 "padding_bottom": 0,
