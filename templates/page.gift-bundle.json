@@ -487,11 +487,11 @@
               "type": "gift_bundle_gift",
               "name": "Send as a gift",
               "settings": {
-                "checkbox_label": "Send as a gift",
+                "checkbox_label": "Add a personalized message",
                 "email_label": "Recipient email",
                 "email_placeholder": "name@example.com",
                 "message_label": "Gift message",
-                "message_placeholder": "Write a short note…",
+                "message_placeholder": "This will be printed on the back of the gift card...",
                 "require_message": true,
                 "error_text": "Please add a recipient email and message to send this as a gift.",
                 "padding_top": 0,
@@ -570,7 +570,7 @@
               "name": "Best for",
               "settings": {
                 "label": "Best for",
-                "items": "Friends\nCoworkers\nBaby showers",
+                "items": "Friends\nRelatives\nBaby showers",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -584,7 +584,7 @@
               "settings": {
                 "number_1": "6",
                 "label_1": "Soups",
-                "number_2": "6",
+                "number_2": "2",
                 "label_2": "Snacks",
                 "number_3": "3",
                 "label_3": "Teas",
@@ -709,7 +709,7 @@
               "name": "Best for",
               "settings": {
                 "label": "Best for",
-                "items": "Friends\nCoworkers\nBaby showers",
+                "items": "Friends\nFamily\nMeal Trains",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -723,7 +723,7 @@
               "settings": {
                 "number_1": "10",
                 "label_1": "Soups",
-                "number_2": "6",
+                "number_2": "4",
                 "label_2": "Snacks",
                 "number_3": "3",
                 "label_3": "Teas",
