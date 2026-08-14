@@ -277,7 +277,7 @@
         "subtitle": "",
         "title_alignment": "center",
         "image_width": "custom",
-        "image_width_custom": 50,
+        "image_width_custom": 40,
         "image_ratio": "square",
         "image_background": "",
         "button_label": "",
@@ -358,7 +358,7 @@
         "icon_with_text_Y3t4iD"
       ],
       "custom_css": [
-        "@media screen and (max-width: 750px) {.image-with-text__icon-item {flex-direction: column; } h2 {font-size: 28px;}}"
+        "@media screen and (max-width: 750px) {.image-with-text__icon-item {flex-direction: column; } h2 {font-size: 28px; }}"
       ],
       "name": "Gift Bundle Image with Text",
       "settings": {
