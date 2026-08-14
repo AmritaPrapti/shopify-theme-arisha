@@ -420,7 +420,7 @@
               "type": "gift_bundle_subtitle",
               "name": "Subtitle",
               "settings": {
-                "subtitle": "Perfect introduction",
+                "subtitle": "A THOUGHTFUL GESTURE",
                 "use_accent": true,
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -566,7 +566,7 @@
               "type": "gift_bundle_subtitle",
               "name": "Subtitle",
               "settings": {
-                "subtitle": "Most popular gift",
+                "subtitle": "A MEANINGFUL GIFT",
                 "use_accent": true,
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -712,7 +712,7 @@
               "type": "gift_bundle_subtitle",
               "name": "Subtitle",
               "settings": {
-                "subtitle": "The ultimate gift",
+                "subtitle": "SOMETHING EXTRA SPECIAL",
                 "use_accent": true,
                 "padding_top": 0,
                 "padding_bottom": 0,
