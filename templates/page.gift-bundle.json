@@ -358,7 +358,7 @@
         "icon_with_text_Y3t4iD"
       ],
       "custom_css": [
-        "@media screen and (max-width: 750px) {.image-with-text__icon-item {flex-direction: column; }}"
+        "@media screen and (max-width: 750px) {.image-with-text__icon-item {flex-direction: column; } h2 {font-size: 28px;}}"
       ],
       "name": "Gift Bundle Image with Text",
       "settings": {
@@ -833,6 +833,9 @@
         "gift_bundle_product_JcA4jj",
         "gift_bundle_product_LFhkRD",
         "gift_bundle_product_zB7jwU"
+      ],
+      "custom_css": [
+        "@media screen and (max-width: 600px) {h2 {font-size: 30px; }}"
       ],
       "name": "Gift Bundle Blocks",
       "settings": {
