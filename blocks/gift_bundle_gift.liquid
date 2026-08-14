@@ -1,42 +1,49 @@
 {% comment %}
-  Gift Bundle — Send as a gift
+  Gift Bundle — Gift details (required)
 
-  A checkbox that reveals a recipient email input and a message textarea.
-  When ticked, the fields become required and are submitted as line item
-  properties on the enclosing product form (opened by the parent "Product
-  card" block):
+  There is no opt-in checkbox: the recipient details ARE the purchase flow. The
+  card's add-to-cart click is intercepted, the panel opens (a modal popup by
+  default, or expanded in-card), and the cart request only runs once the fields
+  validate. Values are submitted as line item properties on the enclosing
+  product form (opened by the parent "Product card" block):
     properties[Send as gift]   = "Yes"
     properties[Recipient email]
     properties[Message]
 
-  When unticked the fields are disabled, so nothing is added to the line item.
-  Because product-form.js calls preventDefault() and builds FormData directly
-  (bypassing native "required" validation), this block validates on the form's
-  submit in the capture phase and stops the submit before the cart request.
+  The popup is a native <dialog>: it paints in the top layer, so it clears the
+  sticky header even though the section wrapper is `isolate` (z-index: 0), while
+  its inputs stay inside the <form> and are still collected by FormData.
+
+  The click is intercepted in the capture phase on the form — an ancestor of the
+  button — so it always runs before the button's default submit, regardless of
+  when product-form.js upgrades the <product-form> element.
 {% endcomment %}
 {%- liquid
   assign uid = block.id
-  assign check_id = 'gb-gift-check-' | append: uid
   assign email_id = 'gb-gift-email-' | append: uid
   assign msg_id = 'gb-gift-msg-' | append: uid
+  assign title_id = 'gb-gift-title-' | append: uid
+  assign mode = block.settings.display_mode | default: 'popup'
 -%}
 
-<div
-  class="gb-gift gb-block"
-  data-gb-gift
-  data-require-message="{{ block.settings.require_message }}"
-  style="--gb-pt: {{ block.settings.padding_top }}px; --gb-pb: {{ block.settings.padding_bottom }}px;{% if block.settings.padding_top_mobile > 0 %} --gb-pt-m: {{ block.settings.padding_top_mobile }}px;{% endif %}{% if block.settings.padding_bottom_mobile > 0 %} --gb-pb-m: {{ block.settings.padding_bottom_mobile }}px;{% endif %}"
-  {{ block.shopify_attributes }}
->
-  <label class="gb-gift__toggle" for="{{ check_id }}">
-    <input type="checkbox" id="{{ check_id }}" data-gb-gift-check>
-    <span>{{ block.settings.checkbox_label }}</span>
-  </label>
+{%- capture gift_panel_inner -%}
+  <button
+    type="button"
+    class="gb-gift__close"
+    data-gb-gift-cancel
+    aria-label="{{ block.settings.close_label | default: 'Close' | escape }}"
+  >
+    {{- 'icon-close.svg' | inline_asset_content -}}
+  </button>
 
-  {%- comment -%} Hidden flag — enabled only while the box is ticked. {%- endcomment -%}
-  <input type="hidden" name="properties[Send as gift]" value="Yes" data-gb-gift-flag disabled>
+  {%- if block.settings.heading != blank -%}
+    <h3 class="gb-gift__heading" id="{{ title_id }}">{{ block.settings.heading }}</h3>
+  {%- endif -%}
+  {%- if block.settings.intro != blank -%}
+    <p class="gb-gift__intro">{{ block.settings.intro }}</p>
+  {%- endif -%}
 
-  <div class="gb-gift__fields" data-gb-gift-fields>
+  <div class="gb-gift__fields">
     <div class="gb-gift__field">
       <label for="{{ email_id }}">{{ block.settings.email_label }}</label>
       <input
@@ -45,28 +52,74 @@
         name="properties[Recipient email]"
         placeholder="{{ block.settings.email_placeholder }}"
         autocomplete="email"
+        required
         data-gb-gift-email
-        disabled
       >
     </div>
 
     <div class="gb-gift__field">
-      <label for="{{ msg_id }}">{{ block.settings.message_label }}</label>
+      <label for="{{ msg_id }}">
+        {{ block.settings.message_label }}
+        {%- unless block.settings.require_message -%}
+          <span class="gb-gift__optional">{{ block.settings.optional_label }}</span>
+        {%- endunless -%}
+      </label>
       <textarea
         id="{{ msg_id }}"
         name="properties[Message]"
         rows="4"
         maxlength="500"
         placeholder="{{ block.settings.message_placeholder }}"
+        {% if block.settings.require_message %}required{% endif %}
         data-gb-gift-message
-        disabled
       ></textarea>
     </div>
-
-    <p class="gb-gift__error" data-gb-gift-error role="alert">
-      {{ block.settings.error_text }}
-    </p>
   </div>
+
+  <p class="gb-gift__error" data-gb-gift-error role="alert"></p>
+
+  <div class="gb-gift__actions">
+    <button type="button" class="button button--full-width" data-gb-gift-confirm>
+      {{ block.settings.submit_label }}
+    </button>
+    <button type="button" class="gb-gift__cancel" data-gb-gift-cancel>
+      {{ block.settings.cancel_label }}
+    </button>
+  </div>
+{%- endcapture -%}
+
+<div
+  class="gb-gift gb-block gb-gift--{{ mode }}"
+  data-gb-gift
+  data-mode="{{ mode }}"
+  data-require-message="{{ block.settings.require_message }}"
+  style="--gb-pt: {{ block.settings.padding_top }}px; --gb-pb: {{ block.settings.padding_bottom }}px;{% if block.settings.padding_top_mobile > 0 %} --gb-pt-m: {{ block.settings.padding_top_mobile }}px;{% endif %}{% if block.settings.padding_bottom_mobile > 0 %} --gb-pb-m: {{ block.settings.padding_bottom_mobile }}px;{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  {%- comment -%} Gift details are mandatory, so the flag is always submitted. {%- endcomment -%}
+  <input type="hidden" name="properties[Send as gift]" value="Yes">
+
+  {%- if mode == 'inline' -%}
+    <div
+      class="gb-gift__panel"
+      data-gb-gift-panel
+      role="group"
+      tabindex="-1"
+      {% if block.settings.heading != blank %}aria-labelledby="{{ title_id }}"{% endif %}
+      hidden
+    >
+      {{ gift_panel_inner }}
+    </div>
+  {%- else -%}
+    <dialog
+      class="gb-gift__panel"
+      data-gb-gift-panel
+      tabindex="-1"
+      {% if block.settings.heading != blank %}aria-labelledby="{{ title_id }}"{% endif %}
+    >
+      {{ gift_panel_inner }}
+    </dialog>
+  {%- endif -%}
 </div>
 
 <script>
@@ -77,24 +130,54 @@
     }
     if (!root) return;
 
-    var check = root.querySelector('[data-gb-gift-check]');
-    var fields = root.querySelector('[data-gb-gift-fields]');
-    var flag = root.querySelector('[data-gb-gift-flag]');
+    var panel = root.querySelector('[data-gb-gift-panel]');
     var email = root.querySelector('[data-gb-gift-email]');
     var message = root.querySelector('[data-gb-gift-message]');
     var error = root.querySelector('[data-gb-gift-error]');
+    var confirmButton = root.querySelector('[data-gb-gift-confirm]');
     var requireMessage = root.getAttribute('data-require-message') === 'true';
+    var emailError = {{ block.settings.error_text | json }};
+    var messageError = {{ block.settings.message_error_text | json }};
     var form = root.closest('form');
+    if (!form || !panel) return;
 
-    function setEnabled(on) {
-      fields.classList.toggle('is-open', on);
-      // Disabled inputs are excluded from FormData, so nothing is sent when off.
-      flag.disabled = !on;
-      email.disabled = !on;
-      message.disabled = !on;
-      email.required = on;
-      message.required = on && requireMessage;
-      if (!on) hideError();
+    var mode = root.getAttribute('data-mode');
+    if (mode !== 'inline' && typeof panel.showModal !== 'function') mode = 'inline';
+
+    // One-shot: set only for the submit dispatched by the confirm button, so
+    // every other route to the cart has to go through the panel first.
+    var confirmed = false;
+    var opener = null;
+
+    function isOpen() {
+      return mode === 'inline' ? !panel.hidden : panel.open;
+    }
+
+    function open(triggerEl) {
+      if (isOpen()) return;
+      opener = triggerEl || null;
+      if (mode === 'inline') {
+        panel.hidden = false;
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        panel.showModal();
+      }
+      // Focus the panel, not the first field: showModal() would otherwise land on
+      // the close button, and focusing the email input pops the browser's autofill
+      // list over the form. Tab from here still reaches the fields in order.
+      panel.focus({ preventScroll: true });
+    }
+
+    function close() {
+      if (!isOpen()) return;
+      hideError();
+      if (mode === 'inline') {
+        panel.hidden = true;
+      } else {
+        panel.close();
+      }
+      if (opener && document.contains(opener)) opener.focus();
+      opener = null;
     }
 
     function showError(msg, focusEl) {
@@ -102,54 +185,161 @@
       error.classList.add('is-visible');
       if (focusEl) focusEl.focus();
     }
+
     function hideError() {
       error.classList.remove('is-visible');
+      error.textContent = '';
     }
 
-    check.addEventListener('change', function () {
-      setEnabled(check.checked);
-    });
+    function firstInvalidField() {
+      if (email.value.trim() === '' || !email.checkValidity()) {
+        return { field: email, message: emailError };
+      }
+      if (requireMessage && message.value.trim() === '') {
+        return { field: message, message: messageError };
+      }
+      return null;
+    }
 
     [email, message].forEach(function (el) {
       el.addEventListener('input', hideError);
     });
 
-    setEnabled(false);
+    confirmButton.addEventListener('click', function () {
+      var invalid = firstInvalidField();
+      if (invalid) {
+        showError(invalid.message, invalid.field);
+        return;
+      }
+      hideError();
+      close();
+      confirmed = true;
+      // Synchronous: product-form.js reads the form on this event, and the flag
+      // is cleared again before anything else can submit.
+      if (typeof form.requestSubmit === 'function') {
+        form.requestSubmit();
+      } else {
+        form.submit();
+      }
+      confirmed = false;
+    });
 
-    if (form) {
-      // Capture phase runs before product-form.js's bubble-phase submit handler,
-      // so stopImmediatePropagation() here prevents the cart request on error.
-      form.addEventListener(
-        'submit',
-        function (evt) {
-          if (!check.checked) return;
-          var missingEmail = email.value.trim() === '' || !email.checkValidity();
-          var missingMessage = requireMessage && message.value.trim() === '';
-          if (missingEmail || missingMessage) {
-            evt.preventDefault();
-            evt.stopImmediatePropagation();
-            showError(
-              error.getAttribute('data-default') || error.textContent,
-              missingEmail ? email : message
-            );
-          }
-        },
-        true
-      );
-      error.setAttribute('data-default', error.textContent.trim());
+    root.querySelectorAll('[data-gb-gift-cancel]').forEach(function (el) {
+      el.addEventListener('click', close);
+    });
+
+    panel.addEventListener('keydown', function (evt) {
+      // The fields belong to the product form, so Enter would otherwise trigger
+      // its implicit submission instead of confirming the gift details. Only the
+      // single-line input opts in — Enter is a newline in the textarea, and on the
+      // panel itself (where focus starts) it should do nothing.
+      if (evt.key === 'Enter' && evt.target.tagName === 'INPUT') {
+        evt.preventDefault();
+        confirmButton.click();
+        return;
+      }
+      // <dialog> handles Escape itself; the in-card panel does not.
+      if (evt.key === 'Escape' && mode === 'inline') {
+        evt.preventDefault();
+        close();
+      }
+    });
+
+    if (mode !== 'inline') {
+      // A click on ::backdrop targets the dialog itself.
+      panel.addEventListener('click', function (evt) {
+        if (evt.target === panel) close();
+      });
+      // Esc closes natively; keep the error state in sync.
+      panel.addEventListener('close', hideError);
     }
+
+    // Intercept the add-to-cart button on the way down to it.
+    form.addEventListener(
+      'click',
+      function (evt) {
+        if (confirmed) return;
+        var button = evt.target.closest('button[type="submit"], input[type="submit"]');
+        if (!button || !form.contains(button)) return;
+        evt.preventDefault();
+        evt.stopPropagation();
+        open(button);
+      },
+      true
+    );
+
+    // Belt and braces for a submit raised by anything other than that click.
+    form.addEventListener(
+      'submit',
+      function (evt) {
+        if (confirmed) return;
+        evt.preventDefault();
+        evt.stopImmediatePropagation();
+        open(form.querySelector('button[type="submit"]'));
+      },
+      true
+    );
+
+    function onReady(fn) {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fn, { once: true });
+      } else {
+        fn();
+      }
+    }
+
+    // Clear the recipient after a successful add so the next gift starts blank.
+    onReady(function () {
+      if (typeof subscribe !== 'function' || typeof PUB_SUB_EVENTS === 'undefined') return;
+      subscribe(PUB_SUB_EVENTS.cartUpdate, function (event) {
+        var variantInput = form.querySelector('[name="id"]');
+        if (event.source !== 'product-form' || !variantInput) return;
+        if (String(event.productVariantId) !== String(variantInput.value)) return;
+        email.value = '';
+        message.value = '';
+        hideError();
+      });
+    });
+
+    // Let merchants see the panel while the block is selected in the editor.
+    document.addEventListener('shopify:block:select', function (evt) {
+      if (root.contains(evt.target) || evt.target === root) open(null);
+    });
+    document.addEventListener('shopify:block:deselect', function (evt) {
+      if (root.contains(evt.target) || evt.target === root) close();
+    });
   })();
 </script>
 
 {% schema %}
 {
-  "name": "Send as a gift",
+  "name": "Gift details",
   "settings": [
     {
+      "type": "paragraph",
+      "content": "Recipient details are asked for when the buyer clicks the add-to-cart button, and must be filled in before the item can be added."
+    },
+    {
+      "type": "select",
+      "id": "display_mode",
+      "label": "How to ask",
+      "options": [
+        { "value": "popup", "label": "Popup over the page" },
+        { "value": "inline", "label": "Expand inside the card" }
+      ],
+      "default": "popup"
+    },
+    {
       "type": "text",
-      "id": "checkbox_label",
-      "label": "Checkbox label",
-      "default": "Send as a gift"
+      "id": "heading",
+      "label": "Heading",
+      "default": "Who is this gift for?"
+    },
+    {
+      "type": "text",
+      "id": "intro",
+      "label": "Description",
+      "default": "We'll email your gift note to them with the order."
     },
     {
       "type": "text",
@@ -184,17 +374,60 @@
     },
     {
       "type": "text",
+      "id": "optional_label",
+      "label": "\"Optional\" tag",
+      "info": "Shown next to the message label when a message isn't required.",
+      "default": "Optional"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "Confirm button",
+      "default": "Add to cart"
+    },
+    {
+      "type": "text",
+      "id": "cancel_label",
+      "label": "Cancel button",
+      "default": "Cancel"
+    },
+    {
+      "type": "text",
+      "id": "close_label",
+      "label": "Close button label",
+      "info": "Accessibility label for the popup's ✕ button.",
+      "default": "Close"
+    },
+    {
+      "type": "header",
+      "content": "Validation messages"
+    },
+    {
+      "type": "text",
       "id": "error_text",
-      "label": "Validation message",
-      "default": "Please add a recipient email to send this as a gift."
-    }
-    ,
+      "label": "Missing email",
+      "default": "Please add a valid recipient email to continue."
+    },
+    {
+      "type": "text",
+      "id": "message_error_text",
+      "label": "Missing message",
+      "default": "Please add a gift message to continue."
+    },
     { "type": "header", "content": "Spacing" },
+    {
+      "type": "paragraph",
+      "content": "Spacing applies to the in-card layout only."
+    },
     { "type": "range", "id": "padding_top", "min": 0, "max": 60, "step": 2, "unit": "px", "label": "Top spacing", "default": 0 },
     { "type": "range", "id": "padding_bottom", "min": 0, "max": 60, "step": 2, "unit": "px", "label": "Bottom spacing", "default": 0 },
     { "type": "range", "id": "padding_top_mobile", "min": 0, "max": 60, "step": 2, "unit": "px", "label": "Top spacing (mobile)", "info": "0 = same as desktop.", "default": 0 },
     { "type": "range", "id": "padding_bottom_mobile", "min": 0, "max": 60, "step": 2, "unit": "px", "label": "Bottom spacing (mobile)", "info": "0 = same as desktop.", "default": 0 }
   ],
-  "presets": [{ "name": "Send as a gift", "category": "Gift bundle" }]
+  "presets": [{ "name": "Gift details", "category": "Gift bundle" }]
 }
 {% endschema %}

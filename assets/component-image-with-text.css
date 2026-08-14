@@ -487,6 +487,20 @@
   }
 }
 
+@media screen and (min-width: 750px) {
+  /* Text first, image second: text sits on the left, so flush it to the outer edge */
+  .collapse-content-padding .image-with-text__grid--reverse .image-with-text__content {
+    padding-left: 0;
+  }
+
+  /* Image first, text second: text sits on the right, so flush it to the outer edge */
+  .collapse-content-padding
+    .image-with-text__grid:not(.image-with-text__grid--reverse)
+    .image-with-text__content {
+    padding-right: 0;
+  }
+}
+
 /* check for flexbox gap in older Safari versions */
 @supports not (inset: 10px) {
   .image-with-text .grid {

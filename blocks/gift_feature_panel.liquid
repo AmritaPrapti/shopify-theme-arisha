@@ -7,7 +7,7 @@
 
 <div
   class="gb-feature color-{{ block.settings.color_scheme }} gb-feature--img-{{ block.settings.image_size }}{% if block.settings.image_position == 'right' %} gb-feature--image-right{% endif %}"
-  style="{% if block.settings.background != blank %}background-color: {{ block.settings.background }};{% endif %}{% if block.settings.text_color != blank %}color: {{ block.settings.text_color }};{% endif %}"
+  style="--gbf-feature-radius: {{ block.settings.corner_radius }}px;{% if block.settings.background != blank %}background-color: {{ block.settings.background }};{% endif %}{% if block.settings.text_color != blank %}color: {{ block.settings.text_color }};{% endif %}"
   {{ block.shopify_attributes }}
 >
   <div class="gb-feature__media">
@@ -51,6 +51,16 @@
       "type": "color",
       "id": "text_color",
       "label": "Text override"
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Corner radius",
+      "default": 0
     },
     {
       "type": "header",

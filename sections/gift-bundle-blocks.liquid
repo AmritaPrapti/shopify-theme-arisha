@@ -298,29 +298,108 @@
 
 
 
-  /* ---- Send as a gift ---- */
-  .gb-gift__toggle {
+  /* ---- Gift details (opens from the add-to-cart button) ---- */
+
+  /* Popup mode has no in-card box of its own — the panel paints in the top
+     layer — so the block must not add a gap to the card's flex column. */
+  .gb-gift--popup {
+    display: contents;
+  }
+
+  .gb-gift__panel {
+    background-color: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
+    text-align: left;
+  }
+
+  dialog.gb-gift__panel {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    width: min(46rem, calc(100vw - 4rem));
+    max-height: calc(100vh - 4rem);
+    margin: auto;
+    overflow-y: auto;
+    padding: 3.2rem 2.8rem;
+    border: 1px solid rgba(var(--color-foreground), 0.1);
+    border-radius: var(--gb-radius, 1.6rem);
+    box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.25);
+  }
+  dialog.gb-gift__panel::backdrop {
+    background-color: rgba(0, 0, 0, 0.55);
+  }
+  dialog.gb-gift__panel[open] {
+    animation: gb-gift-panel-in 0.18s ease-out;
+  }
+  @keyframes gb-gift-panel-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.8rem);
+    }
+  }
+
+  .gb-gift--inline .gb-gift__panel {
+    padding-top: 1.6rem;
+    border-top: 1px solid rgba(var(--color-foreground), 0.12);
+  }
+  .gb-gift--inline .gb-gift__close {
+    display: none;
+  }
+
+  .gb-gift__heading {
+    margin: 0 0 0.4rem;
+    font-size: 2.4rem;
+    font-weight: 600;
+    padding-right: 3rem;
+  }
+  .gb-gift__intro {
+    margin: 0 0 1.8rem;
+    font-size: 1.4rem;
+    color: var(--gb-muted);
+  }
+  .gb-gift__close {
+    position: absolute;
+    top: 1.4rem;
+    right: 1.4rem;
     display: flex;
     align-items: center;
-    gap: 0.9rem;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    padding: 0.8rem;
+    background: none;
+    border: none;
+    color: inherit;
     cursor: pointer;
-    font-size: 1.4rem;
-    user-select: none;
   }
-  .gb-gift__toggle input {
-    width: 1.7rem;
-    height: 1.7rem;
-    accent-color: var(--gb-accent);
-    flex-shrink: 0;
+  .gb-gift__close svg {
+    width: 100%;
+    height: 100%;
   }
   .gb-gift__fields {
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 1.2rem;
-  }
-  .gb-gift__fields.is-open {
     display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .gb-gift__optional {
+    font-weight: 400;
+    color: var(--gb-muted);
+  }
+  .gb-gift__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 1.8rem;
+  }
+  .gb-gift__cancel {
+    padding: 0.8rem;
+    background: none;
+    border: none;
+    font: inherit;
+    font-size: 1.3rem;
+    color: var(--gb-muted);
+    text-decoration: underline;
+    cursor: pointer;
   }
   .gb-gift__field label {
     display: block;
@@ -337,6 +416,22 @@
     font: inherit;
     background-color: rgb(var(--color-background));
     color: rgb(var(--color-foreground));
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  /* The theme's global focus ring is a thick offset outline — too heavy for a
+     field sitting in a small panel. Hug the field instead. */
+  .gb-gift__field input:focus,
+  .gb-gift__field input:focus-visible,
+  .gb-gift__field textarea:focus,
+  .gb-gift__field textarea:focus-visible {
+    outline: none;
+    border-color: rgba(var(--color-foreground), 0.75);
+    box-shadow: 0 0 0 0.2rem rgba(var(--color-foreground), 0.08);
+  }
+  /* Focus lands on the panel when it opens; don't ring the whole box. */
+  .gb-gift__panel:focus,
+  .gb-gift__panel:focus-visible {
+    outline: none;
   }
   .gb-gift__field textarea {
     resize: vertical;
@@ -344,8 +439,8 @@
   }
   .gb-gift__error {
     color: var(--gb-accent);
-    font-size: 1.2rem;
-    margin-top: 0.4rem;
+    font-size: 1.3rem;
+    margin: 1.2rem 0 0;
     display: none;
   }
   .gb-gift__error.is-visible {
