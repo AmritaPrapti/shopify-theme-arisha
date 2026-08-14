@@ -858,6 +858,29 @@
         "padding_bottom": 52
       }
     },
+    "rich_text_aD8he3": {
+      "type": "rich-text",
+      "blocks": {
+        "text_GhgHgG": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Need a vegetarian/vegan option? Check out our <a href=\"/products/vegan-bundle-gift\" title=\"Vegan Gift Bundle\">Vegan Gift Bundle</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_GhgHgG"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "collection_list_Bfacr9": {
       "type": "collection-list",
       "blocks": {
@@ -1034,6 +1057,104 @@
         "padding_top": 52,
         "padding_bottom": 52
       }
+    },
+    "rich_text_zmWc47": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_6G63AU": {
+          "type": "heading",
+          "settings": {
+            "heading": "Not sure which bundle to choose?",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_6G63AU"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "featured_product_6LztYU": {
+      "type": "featured-product",
+      "blocks": {
+        "text_hVQyD9": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_mthFAt": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_UVMTUb": {
+          "type": "price",
+          "settings": {
+            "show_sale_badge": true,
+            "show_sale_amount": false,
+            "sale_display_type": "amount"
+          }
+        },
+        "variant_picker_3Wbyxy": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector_9KDzTa": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_zYHAaL": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_xMDynQ": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "text_hVQyD9",
+        "title_mthFAt",
+        "price_UVMTUb",
+        "variant_picker_3Wbyxy",
+        "quantity_selector_9KDzTa",
+        "buy_buttons_zYHAaL",
+        "share_xMDynQ"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "digital-gift-card",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -1042,7 +1163,10 @@
     "multicolumn_dKb3NC",
     "gift_bundle_hero_99FM3h",
     "gift_bundle_blocks_FkWTgi",
+    "rich_text_aD8he3",
     "collection_list_Bfacr9",
-    "gift_bundle_faq_GCqPm3"
+    "gift_bundle_faq_GCqPm3",
+    "rich_text_zmWc47",
+    "featured_product_6LztYU"
   ]
 }
