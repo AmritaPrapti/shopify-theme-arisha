@@ -93,7 +93,7 @@
         "icon_with_text_fVQLwq"
       ],
       "custom_css": [
-        "@media screen and (max-width: 600px) {h2 {font-size: 36px; }}"
+        "@media screen and (max-width: 600px) {h2 {font-size: 40px; }}"
       ],
       "settings": {
         "anchor_id": "",
