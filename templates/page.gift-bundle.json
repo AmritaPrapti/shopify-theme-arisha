@@ -395,7 +395,7 @@
             "badge": "",
             "highlight": false,
             "color_scheme": "scheme-2fa3a363-95b8-4d07-9e42-14be7562f72f",
-            "corner_radius": 16,
+            "corner_radius": 0,
             "block_gap": 14
           },
           "blocks": {
@@ -534,7 +534,7 @@
             "badge": "Most Popular",
             "highlight": true,
             "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
-            "corner_radius": 16,
+            "corner_radius": 0,
             "block_gap": 14
           },
           "blocks": {
@@ -673,7 +673,7 @@
             "badge": "Best value",
             "highlight": false,
             "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
-            "corner_radius": 16,
+            "corner_radius": 0,
             "block_gap": 14
           },
           "blocks": {
