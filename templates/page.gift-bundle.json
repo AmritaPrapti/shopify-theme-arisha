@@ -936,7 +936,7 @@
               "name": "FAQ item",
               "settings": {
                 "question": "Can I include a personalized gift message?",
-                "answer": "<p>Yes — click the buy button and add a recipient email and a personal message right on the product card before adding it to your cart.</p>",
+                "answer": "<p>Yes — it will be printed on the back of the gift card.</p><p>Click the buy button and add a recipient email and a personal message in the pop-up before adding it to your cart.</p>",
                 "open_by_default": true
               },
               "blocks": {}
@@ -946,7 +946,7 @@
               "name": "FAQ item",
               "settings": {
                 "question": "Can I choose the swaddle color or dry flower?",
-                "answer": "<p>Currently swaddle colors and dried flower varieties are selected at random from making each gift uniquely its own. We will choose from a variety of neutral and earthy solid-colors (Blush, Oatmeal, Chocolate, Copper and Matcha). We are working towards being able to choose colors. </p>",
+                "answer": "<p>Currently swaddle colors and dried flower varieties are selected at random from making each gift uniquely its own. We will choose swaddle colors from a variety of neutral and earthy solid-colors (Blush, Oatmeal, Chocolate, Copper and Matcha). We are working towards being able to choose colors. </p>",
                 "open_by_default": false
               },
               "blocks": {}
@@ -956,7 +956,7 @@
               "name": "FAQ item",
               "settings": {
                 "question": "What are the dimensions and details of the swaddle wrapping?",
-                "answer": "<p>We use a 47\" × 47\" (120 × 120 cm) 100% cotton muslin swaddle. We will choose randomly from a variety of neutral and earthy solid-colors (Blush, Oatmeal, Chocolate, Copper and Matcha). </p>",
+                "answer": "<p>We use a 47\" × 47\" (120 × 120 cm) 100% cotton muslin swaddle. Swaddle will be a  neutral and earthy solid-color (Blush, Oatmeal, Chocolate, Copper and Matcha). </p>",
                 "open_by_default": false
               },
               "blocks": {}
