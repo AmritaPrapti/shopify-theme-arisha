@@ -313,7 +313,7 @@
         "heading_mLyY46": {
           "type": "heading",
           "settings": {
-            "heading": "Make your gift even more meaningful.",
+            "heading": "A tradition of care, wrapped into every gift.",
             "heading_size": "h1",
             "custom_font_size_desktop": 48,
             "custom_font_size_mobile": 32
@@ -420,7 +420,7 @@
               "type": "gift_bundle_subtitle",
               "name": "Subtitle",
               "settings": {
-                "subtitle": "Perfect introduction",
+                "subtitle": "A THOUGHTFUL GESTURE",
                 "use_accent": true,
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -566,7 +566,7 @@
               "type": "gift_bundle_subtitle",
               "name": "Subtitle",
               "settings": {
-                "subtitle": "Most popular gift",
+                "subtitle": "A MEANINGFUL GIFT",
                 "use_accent": true,
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -712,7 +712,7 @@
               "type": "gift_bundle_subtitle",
               "name": "Subtitle",
               "settings": {
-                "subtitle": "The ultimate gift",
+                "subtitle": "SOMETHING EXTRA SPECIAL",
                 "use_accent": true,
                 "padding_top": 0,
                 "padding_bottom": 0,
