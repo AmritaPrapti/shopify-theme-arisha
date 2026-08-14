@@ -335,7 +335,7 @@
           "type": "icon_with_text",
           "settings": {
             "icon_alignment": "flex-start",
-            "icon_size": 66,
+            "icon_size": 40,
             "text_size": "default",
             "custom_font_size_desktop": 14,
             "custom_font_size_mobile": 13,
