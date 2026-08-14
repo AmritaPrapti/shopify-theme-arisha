@@ -191,7 +191,7 @@
         "anchor_id": "",
         "section_url": "",
         "enable_text_link": false,
-        "image": "shopify://shop_images/260715_TsS_4012_1st_sRGB_2400_1_2.png",
+        "image": "shopify://shop_images/260715_TsS_3996_1st_sRGB_2400.jpg",
         "height": "small",
         "image_fit": "cover",
         "media_bg_color": "",
@@ -289,8 +289,8 @@
         "color_scheme": "",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 52,
-        "padding_bottom": 52
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "gift_bundle_hero_99FM3h": {
@@ -313,7 +313,7 @@
         "heading_mLyY46": {
           "type": "heading",
           "settings": {
-            "heading": "A tradition of care, wrapped into every gift.",
+            "heading": "Make your gift even more meaningful.",
             "heading_size": "h1",
             "custom_font_size_desktop": 48,
             "custom_font_size_mobile": 32
@@ -365,7 +365,7 @@
         "anchor_id": "",
         "section_url": "",
         "enable_text_link": false,
-        "image": "shopify://shop_images/forher_food_april20_3247_dd5c0bbf-5b99-4b9f-8d3d-0270ad8aa1cc.jpg",
+        "image": "shopify://shop_images/forher_food_april20_3247.jpg",
         "height": "medium",
         "image_fit": "cover",
         "media_bg_color": "",
@@ -420,7 +420,7 @@
               "type": "gift_bundle_subtitle",
               "name": "Subtitle",
               "settings": {
-                "subtitle": "A THOUGHTFUL GESTURE",
+                "subtitle": "Perfect introduction",
                 "use_accent": true,
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -434,7 +434,7 @@
               "name": "Best for",
               "settings": {
                 "label": "Best for",
-                "items": "Friends\nCoworkers\nBaby showers",
+                "items": "A wide variety to sample our most popular flavors.",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -450,7 +450,7 @@
                 "label_1": "Soups",
                 "number_2": "2",
                 "label_2": "Snacks",
-                "number_3": "1",
+                "number_3": "3",
                 "label_3": "Teas",
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -492,7 +492,7 @@
               "settings": {
                 "display_mode": "popup",
                 "heading": "Who is this gift for?",
-                "intro": "We'll email them to let them know a shipment is on the way.",
+                "intro": "We'll email them to let them know a frozen shipment is on the way.",
                 "email_label": "Recipient email",
                 "email_placeholder": "name@example.com",
                 "message_label": "Gift message",
@@ -566,7 +566,7 @@
               "type": "gift_bundle_subtitle",
               "name": "Subtitle",
               "settings": {
-                "subtitle": "A MEANINGFUL GIFT",
+                "subtitle": "Most popular gift",
                 "use_accent": true,
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -580,7 +580,7 @@
               "name": "Best for",
               "settings": {
                 "label": "Best for",
-                "items": "Relatives\nClose friends\nMeal Trains",
+                "items": "Hospital bag, first night or two at home, or a light gift.",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -594,7 +594,7 @@
               "settings": {
                 "number_1": "6",
                 "label_1": "Soups",
-                "number_2": "1",
+                "number_2": "2",
                 "label_2": "Snacks",
                 "number_3": "1",
                 "label_3": "Tea",
@@ -638,7 +638,7 @@
               "settings": {
                 "display_mode": "popup",
                 "heading": "Who is this gift for?",
-                "intro": "We'll email them to let them know a shipment is on the way.",
+                "intro": "We'll email them to let them know a frozen shipment is on the way.",
                 "email_label": "Recipient email",
                 "email_placeholder": "name@example.com",
                 "message_label": "Gift message",
@@ -712,7 +712,7 @@
               "type": "gift_bundle_subtitle",
               "name": "Subtitle",
               "settings": {
-                "subtitle": "SOMETHING EXTRA SPECIAL",
+                "subtitle": "The ultimate gift",
                 "use_accent": true,
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -726,7 +726,7 @@
               "name": "Best for",
               "settings": {
                 "label": "Best for",
-                "items": "Partners\nClose family\nGroup gifts",
+                "items": "Balanced nourishment for a week of recovery, and our most popular gifts for partners.",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -738,9 +738,9 @@
               "type": "gift_bundle_stats",
               "name": "Stats",
               "settings": {
-                "number_1": "9",
+                "number_1": "10",
                 "label_1": "Soups",
-                "number_2": "2",
+                "number_2": "4",
                 "label_2": "Snacks",
                 "number_3": "3",
                 "label_3": "Teas",
@@ -784,7 +784,7 @@
               "settings": {
                 "display_mode": "popup",
                 "heading": "Who is this gift for?",
-                "intro": "We'll email them to let them know a shipment is on the way.",
+                "intro": "We'll email them to let them know a frozen shipment is on the way.",
                 "email_label": "Recipient email",
                 "email_placeholder": "name@example.com",
                 "message_label": "Gift message",
@@ -929,8 +929,8 @@
         "show_view_all": false,
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 48
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "gift_bundle_faq_GCqPm3": {
