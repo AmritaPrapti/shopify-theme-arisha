@@ -216,7 +216,7 @@
         "column_B4Bx4Q": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/blend.png",
+            "image": "shopify://shop_images/drink.png",
             "title": "Designed for postpartum recovery",
             "text": "<p>Recipes created to support healing, energy, and balance during the fourth trimester.</p>",
             "link_label": "",
@@ -226,7 +226,7 @@
         "column_kcEzK8": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/cherry-blossom_1.png",
+            "image": "shopify://shop_images/sakura.png",
             "title": "Rooted in Japanese traditions",
             "text": "<p>Our food combines Yakuzen and time-honored postpartum practices.</p>",
             "link_label": "",
@@ -236,7 +236,7 @@
         "column_W4h48E": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/clock_b4783c17-a555-4787-ac9b-2e3d478b58e0.svg",
+            "image": "shopify://shop_images/clock.png",
             "title": "Ready in minutes",
             "text": "<p>Heat and enjoy in minutes—because rest is just as important.</p>",
             "link_label": "",
