@@ -92,6 +92,9 @@
         "button_LPGwzM",
         "icon_with_text_fVQLwq"
       ],
+      "custom_css": [
+        "@media screen and (max-width: 600px) {h2 {font-size: 36px; }}"
+      ],
       "settings": {
         "anchor_id": "",
         "section_url": "",
