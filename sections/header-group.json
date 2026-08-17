@@ -38,7 +38,9 @@
     },
     "header": {
       "type": "header",
-      "custom_css": [],
+      "custom_css": [
+        "@media screen and (max-width: 600px) {h1 {font-size: 28px; }}"
+      ],
       "settings": {
         "logo_position": "middle-left",
         "mobile_logo_position": "center",

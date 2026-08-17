@@ -92,6 +92,9 @@
         "button_LPGwzM",
         "icon_with_text_fVQLwq"
       ],
+      "custom_css": [
+        "@media screen and (max-width: 600px) {h2 {font-size: 40px; }}"
+      ],
       "settings": {
         "anchor_id": "",
         "section_url": "",
@@ -188,7 +191,7 @@
         "anchor_id": "",
         "section_url": "",
         "enable_text_link": false,
-        "image": "shopify://shop_images/260715_TsS_3996_1st_sRGB_2400.jpg",
+        "image": "shopify://shop_images/260715_TsS_4012_1st_sRGB_2400_1_2.png",
         "height": "small",
         "image_fit": "cover",
         "media_bg_color": "",
@@ -274,7 +277,7 @@
         "subtitle": "",
         "title_alignment": "center",
         "image_width": "custom",
-        "image_width_custom": 50,
+        "image_width_custom": 40,
         "image_ratio": "square",
         "image_background": "",
         "button_label": "",
@@ -310,7 +313,7 @@
         "heading_mLyY46": {
           "type": "heading",
           "settings": {
-            "heading": "Make your gift even more meaningful.",
+            "heading": "A tradition of care, wrapped into every gift.",
             "heading_size": "h1",
             "custom_font_size_desktop": 48,
             "custom_font_size_mobile": 32
@@ -332,7 +335,7 @@
           "type": "icon_with_text",
           "settings": {
             "icon_alignment": "flex-start",
-            "icon_size": 66,
+            "icon_size": 40,
             "text_size": "default",
             "custom_font_size_desktop": 14,
             "custom_font_size_mobile": 13,
@@ -355,14 +358,14 @@
         "icon_with_text_Y3t4iD"
       ],
       "custom_css": [
-        "@media screen and (max-width: 750px) {.image-with-text__icon-item {flex-direction: column; }}"
+        "@media screen and (max-width: 750px) {.image-with-text__icon-item {flex-direction: column; } h2 {font-size: 28px; }}"
       ],
       "name": "Gift Bundle Image with Text",
       "settings": {
         "anchor_id": "",
         "section_url": "",
         "enable_text_link": false,
-        "image": "shopify://shop_images/forher_food_april20_3247.jpg",
+        "image": "shopify://shop_images/forher_food_april20_3247_dd5c0bbf-5b99-4b9f-8d3d-0270ad8aa1cc.jpg",
         "height": "medium",
         "image_fit": "cover",
         "media_bg_color": "",
@@ -395,7 +398,7 @@
             "badge": "",
             "highlight": false,
             "color_scheme": "scheme-2fa3a363-95b8-4d07-9e42-14be7562f72f",
-            "corner_radius": 0,
+            "corner_radius": 6,
             "block_gap": 14
           },
           "blocks": {
@@ -417,7 +420,7 @@
               "type": "gift_bundle_subtitle",
               "name": "Subtitle",
               "settings": {
-                "subtitle": "Perfect introduction",
+                "subtitle": "A THOUGHTFUL GESTURE",
                 "use_accent": true,
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -431,7 +434,7 @@
               "name": "Best for",
               "settings": {
                 "label": "Best for",
-                "items": "Friends\nCoworkers\nBaby showers",
+                "items": "A wide variety to sample our most popular flavors.",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -447,7 +450,7 @@
                 "label_1": "Soups",
                 "number_2": "2",
                 "label_2": "Snacks",
-                "number_3": "3",
+                "number_3": "1",
                 "label_3": "Teas",
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -487,13 +490,20 @@
               "type": "gift_bundle_gift",
               "name": "Send as a gift",
               "settings": {
-                "checkbox_label": "Add a personalized message",
+                "display_mode": "popup",
+                "heading": "Who is this gift for?",
+                "intro": "We'll email them to let them know a frozen shipment is on the way.",
                 "email_label": "Recipient email",
                 "email_placeholder": "name@example.com",
                 "message_label": "Gift message",
                 "message_placeholder": "This will be printed on the back of the gift card...",
-                "require_message": true,
-                "error_text": "Please add a recipient email and message to send this as a gift.",
+                "require_message": false,
+                "optional_label": "Optional",
+                "submit_label": "Add to cart",
+                "cancel_label": "Cancel",
+                "close_label": "Close",
+                "error_text": "Please add a recipient email to send this as a gift.",
+                "message_error_text": "Please add a gift message to continue.",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -534,7 +544,7 @@
             "badge": "Most Popular",
             "highlight": true,
             "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
-            "corner_radius": 0,
+            "corner_radius": 6,
             "block_gap": 14
           },
           "blocks": {
@@ -556,7 +566,7 @@
               "type": "gift_bundle_subtitle",
               "name": "Subtitle",
               "settings": {
-                "subtitle": "Most popular gift",
+                "subtitle": "A MEANINGFUL GIFT",
                 "use_accent": true,
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -570,7 +580,7 @@
               "name": "Best for",
               "settings": {
                 "label": "Best for",
-                "items": "Relatives\nClose friends\nMeal Trains",
+                "items": "Hospital bag, first couple nights at home, or a light gift.",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -584,10 +594,10 @@
               "settings": {
                 "number_1": "6",
                 "label_1": "Soups",
-                "number_2": "2",
+                "number_2": "1",
                 "label_2": "Snacks",
-                "number_3": "3",
-                "label_3": "Teas",
+                "number_3": "1",
+                "label_3": "Tea",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -626,13 +636,20 @@
               "type": "gift_bundle_gift",
               "name": "Send as a gift",
               "settings": {
-                "checkbox_label": "Add a personalized message",
+                "display_mode": "popup",
+                "heading": "Who is this gift for?",
+                "intro": "We'll email them to let them know a frozen shipment is on the way.",
                 "email_label": "Recipient email",
                 "email_placeholder": "name@example.com",
                 "message_label": "Gift message",
                 "message_placeholder": "This will be printed on the back of the gift card...",
-                "require_message": true,
-                "error_text": "Please add a recipient email and message to send this as a gift.",
+                "require_message": false,
+                "optional_label": "Optional",
+                "submit_label": "Add to cart",
+                "cancel_label": "Cancel",
+                "close_label": "Close",
+                "error_text": "Please add a recipient email to send this as a gift.",
+                "message_error_text": "Please add a gift message to continue.",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -673,7 +690,7 @@
             "badge": "Best value",
             "highlight": false,
             "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
-            "corner_radius": 0,
+            "corner_radius": 6,
             "block_gap": 14
           },
           "blocks": {
@@ -695,7 +712,7 @@
               "type": "gift_bundle_subtitle",
               "name": "Subtitle",
               "settings": {
-                "subtitle": "The ultimate gift",
+                "subtitle": "SOMETHING EXTRA SPECIAL",
                 "use_accent": true,
                 "padding_top": 0,
                 "padding_bottom": 0,
@@ -709,7 +726,7 @@
               "name": "Best for",
               "settings": {
                 "label": "Best for",
-                "items": "Partners\nClose family\nGroup gifts",
+                "items": "Balanced nourishment for a week of recovery.",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -721,9 +738,9 @@
               "type": "gift_bundle_stats",
               "name": "Stats",
               "settings": {
-                "number_1": "10",
+                "number_1": "9",
                 "label_1": "Soups",
-                "number_2": "4",
+                "number_2": "2",
                 "label_2": "Snacks",
                 "number_3": "3",
                 "label_3": "Teas",
@@ -765,13 +782,20 @@
               "type": "gift_bundle_gift",
               "name": "Send as a gift",
               "settings": {
-                "checkbox_label": "Add a personalized message",
+                "display_mode": "popup",
+                "heading": "Who is this gift for?",
+                "intro": "We'll email them to let them know a frozen shipment is on the way.",
                 "email_label": "Recipient email",
                 "email_placeholder": "name@example.com",
                 "message_label": "Gift message",
                 "message_placeholder": "This will be printed on the back of the gift card...",
-                "require_message": true,
-                "error_text": "Please add a recipient email and message to send this as a gift.",
+                "require_message": false,
+                "optional_label": "Optional",
+                "submit_label": "Add to cart",
+                "cancel_label": "Cancel",
+                "close_label": "Close",
+                "error_text": "Please add a recipient email to send this as a gift.",
+                "message_error_text": "Please add a gift message to continue.",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -810,16 +834,19 @@
         "gift_bundle_product_LFhkRD",
         "gift_bundle_product_zB7jwU"
       ],
+      "custom_css": [
+        "@media screen and (max-width: 600px) {h2 {font-size: 30px; }}"
+      ],
       "name": "Gift Bundle Blocks",
       "settings": {
         "anchor_id": "gift-bundle",
-        "eyebrow": "Choose the perfect gift",
-        "eyebrow_style": "caption-with-letter-spacing",
-        "eyebrow_size": "medium",
-        "eyebrow_weight": "600",
+        "eyebrow": "Find the right gift for her",
+        "eyebrow_style": "subtitle",
+        "eyebrow_size": "small",
+        "eyebrow_weight": "400",
         "eyebrow_color": "",
         "eyebrow_highlight": "",
-        "heading": "Find the right gift for her",
+        "heading": "All gift bundles arrive wrapped  and with a personalized gift card.",
         "heading_size": "h1",
         "columns_desktop": 3,
         "columns_mobile": "1",
@@ -832,6 +859,29 @@
         "muted_text_color": "#8a7a78",
         "padding_top": 52,
         "padding_bottom": 52
+      }
+    },
+    "rich_text_aD8he3": {
+      "type": "rich-text",
+      "blocks": {
+        "text_GhgHgG": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Need a vegetarian/vegan option? Check out our <a href=\"/products/vegan-bundle-gift\" title=\"Vegan Gift Bundle\">Vegan Gift Bundle</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_GhgHgG"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "collection_list_Bfacr9": {
@@ -912,7 +962,7 @@
               "name": "FAQ item",
               "settings": {
                 "question": "Can I include a personalized gift message?",
-                "answer": "<p>Yes — click the buy button and add a recipient email and a personal message right on the product card before adding it to your cart.</p>",
+                "answer": "<p>Yes — it will be printed on the back of the gift card.</p><p>Click the buy button and add a recipient email and a personal message in the pop-up before adding it to your cart.</p>",
                 "open_by_default": true
               },
               "blocks": {}
@@ -922,7 +972,7 @@
               "name": "FAQ item",
               "settings": {
                 "question": "Can I choose the swaddle color or dry flower?",
-                "answer": "<p>Currently swaddle colors and dried flower varieties are selected at random, making each gift uniquely its own.</p>",
+                "answer": "<p>Currently swaddle colors and dried flower varieties are selected at random from making each gift uniquely its own. We will choose swaddle colors from a variety of neutral and earthy solid-colors (Blush, Oatmeal, Chocolate, Copper and Matcha). We are working towards being able to choose colors. </p>",
                 "open_by_default": false
               },
               "blocks": {}
@@ -931,8 +981,8 @@
               "type": "gift_faq_item",
               "name": "FAQ item",
               "settings": {
-                "question": "What are the dimentions and details of the swaddle wrapping?",
-                "answer": "<p>We use a 47\" × 47\" (120 × 120 cm) 100% cotton muslin swaddle.</p>",
+                "question": "What are the dimensions and details of the swaddle wrapping?",
+                "answer": "<p>We use a 46 x 46 inches (116 x 116 cm) 100% cotton muslin swaddle. Swaddle will be a  neutral and earthy solid-color (Blush, Oatmeal, Chocolate, Copper and Matcha). </p>",
                 "open_by_default": false
               },
               "blocks": {}
@@ -962,7 +1012,8 @@
             "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
             "background": "",
             "text_color": "",
-            "image": "shopify://shop_images/forher_food_april20_3255.jpg",
+            "corner_radius": 0,
+            "image": "shopify://shop_images/forher_food_april20_3275.jpg",
             "image_position": "left",
             "image_size": "small"
           },
@@ -971,7 +1022,7 @@
               "type": "gift_feature_text",
               "name": "Feature text",
               "settings": {
-                "title": "A thoughtful gift she'll use and remember.",
+                "title": "Not sure what to choose?",
                 "title_tag": "h2",
                 "title_size": "h2",
                 "text": "<p>Give comfort, nourishment, and support when she needs it most.</p>"
@@ -982,8 +1033,8 @@
               "type": "gift_feature_button",
               "name": "Feature button",
               "settings": {
-                "label": "Shop gift bundles",
-                "link": "#gift-bundle",
+                "label": "SHOP GIFT CARDS",
+                "link": "shopify://products/digital-gift-card",
                 "show_icon": true,
                 "button_bg": "#2b2b2b",
                 "button_text": "#ffffff"
@@ -1017,6 +1068,7 @@
     "multicolumn_dKb3NC",
     "gift_bundle_hero_99FM3h",
     "gift_bundle_blocks_FkWTgi",
+    "rich_text_aD8he3",
     "collection_list_Bfacr9",
     "gift_bundle_faq_GCqPm3"
   ]
