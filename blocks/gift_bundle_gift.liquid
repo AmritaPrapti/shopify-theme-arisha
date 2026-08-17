@@ -7,6 +7,8 @@
   validate. Values are submitted as line item properties on the enclosing
   product form (opened by the parent "Product card" block):
     properties[Send as gift]   = "Yes"
+    properties[Recipient first name]
+    properties[Recipient last name]
     properties[Recipient email]
     properties[Message]
 
@@ -20,6 +22,8 @@
 {% endcomment %}
 {%- liquid
   assign uid = block.id
+  assign first_id = 'gb-gift-first-' | append: uid
+  assign last_id = 'gb-gift-last-' | append: uid
   assign email_id = 'gb-gift-email-' | append: uid
   assign msg_id = 'gb-gift-msg-' | append: uid
   assign title_id = 'gb-gift-title-' | append: uid
@@ -44,6 +48,39 @@
   {%- endif -%}
 
   <div class="gb-gift__fields">
+    <div class="gb-gift__row">
+      <div class="gb-gift__field">
+        <label for="{{ first_id }}">{{ block.settings.first_name_label }}</label>
+        <input
+          type="text"
+          id="{{ first_id }}"
+          name="properties[Recipient first name]"
+          placeholder="{{ block.settings.first_name_placeholder }}"
+          autocomplete="off"
+          required
+          data-gb-gift-first
+        >
+      </div>
+
+      <div class="gb-gift__field">
+        <label for="{{ last_id }}">
+          {{ block.settings.last_name_label }}
+          {%- unless block.settings.require_last_name -%}
+            <span class="gb-gift__optional">{{ block.settings.optional_label }}</span>
+          {%- endunless -%}
+        </label>
+        <input
+          type="text"
+          id="{{ last_id }}"
+          name="properties[Recipient last name]"
+          placeholder="{{ block.settings.last_name_placeholder }}"
+          autocomplete="off"
+          {% if block.settings.require_last_name %}required{% endif %}
+          data-gb-gift-last
+        >
+      </div>
+    </div>
+
     <div class="gb-gift__field">
       <label for="{{ email_id }}">{{ block.settings.email_label }}</label>
       <input
@@ -93,6 +130,7 @@
   data-gb-gift
   data-mode="{{ mode }}"
   data-require-message="{{ block.settings.require_message }}"
+  data-require-last-name="{{ block.settings.require_last_name }}"
   style="--gb-pt: {{ block.settings.padding_top }}px; --gb-pb: {{ block.settings.padding_bottom }}px;{% if block.settings.padding_top_mobile > 0 %} --gb-pt-m: {{ block.settings.padding_top_mobile }}px;{% endif %}{% if block.settings.padding_bottom_mobile > 0 %} --gb-pb-m: {{ block.settings.padding_bottom_mobile }}px;{% endif %}"
   {{ block.shopify_attributes }}
 >
@@ -131,11 +169,15 @@
     if (!root) return;
 
     var panel = root.querySelector('[data-gb-gift-panel]');
+    var first = root.querySelector('[data-gb-gift-first]');
+    var last = root.querySelector('[data-gb-gift-last]');
     var email = root.querySelector('[data-gb-gift-email]');
     var message = root.querySelector('[data-gb-gift-message]');
     var error = root.querySelector('[data-gb-gift-error]');
     var confirmButton = root.querySelector('[data-gb-gift-confirm]');
     var requireMessage = root.getAttribute('data-require-message') === 'true';
+    var requireLastName = root.getAttribute('data-require-last-name') === 'true';
+    var nameError = {{ block.settings.name_error_text | json }};
     var emailError = {{ block.settings.error_text | json }};
     var messageError = {{ block.settings.message_error_text | json }};
     var form = root.closest('form');
@@ -191,7 +233,15 @@
       error.textContent = '';
     }
 
+    // Checked in the same order the fields are shown, so the message always points
+    // at the topmost problem.
     function firstInvalidField() {
+      if (first.value.trim() === '') {
+        return { field: first, message: nameError };
+      }
+      if (requireLastName && last.value.trim() === '') {
+        return { field: last, message: nameError };
+      }
       if (email.value.trim() === '' || !email.checkValidity()) {
         return { field: email, message: emailError };
       }
@@ -201,7 +251,7 @@
       return null;
     }
 
-    [email, message].forEach(function (el) {
+    [first, last, email, message].forEach(function (el) {
       el.addEventListener('input', hideError);
     });
 
@@ -295,8 +345,9 @@
         var variantInput = form.querySelector('[name="id"]');
         if (event.source !== 'product-form' || !variantInput) return;
         if (String(event.productVariantId) !== String(variantInput.value)) return;
-        email.value = '';
-        message.value = '';
+        [first, last, email, message].forEach(function (el) {
+          el.value = '';
+        });
         hideError();
       });
     });
@@ -340,6 +391,37 @@
       "id": "intro",
       "label": "Description",
       "default": "We'll email your gift note to them with the order."
+    },
+    {
+      "type": "text",
+      "id": "first_name_label",
+      "label": "First name label",
+      "default": "Recipient first name"
+    },
+    {
+      "type": "text",
+      "id": "first_name_placeholder",
+      "label": "First name placeholder",
+      "default": "First name"
+    },
+    {
+      "type": "text",
+      "id": "last_name_label",
+      "label": "Last name label",
+      "default": "Recipient last name"
+    },
+    {
+      "type": "text",
+      "id": "last_name_placeholder",
+      "label": "Last name placeholder",
+      "default": "Last name"
+    },
+    {
+      "type": "checkbox",
+      "id": "require_last_name",
+      "label": "Require last name",
+      "info": "The first name is always required. When off, the last name is optional.",
+      "default": false
     },
     {
       "type": "text",
@@ -405,6 +487,12 @@
     {
       "type": "header",
       "content": "Validation messages"
+    },
+    {
+      "type": "text",
+      "id": "name_error_text",
+      "label": "Missing name",
+      "default": "Please add the recipient's name to continue."
     },
     {
       "type": "text",

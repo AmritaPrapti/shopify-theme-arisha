@@ -14,7 +14,7 @@
         {%- assign clean = item | strip -%}
         {%- if clean != blank -%}
           <li class="gb-best-for__item">
-            <span class="icon-checkmark">{{ 'icon-checkmark.svg' | inline_asset_content }}</span>
+            {% comment %} <span class="icon-checkmark">{{ 'icon-checkmark.svg' | inline_asset_content }}</span> {% endcomment %}
             <span>{{ clean }}</span>
           </li>
         {%- endif -%}

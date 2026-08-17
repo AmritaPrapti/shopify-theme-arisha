@@ -158,6 +158,7 @@
   .gb-title {
     margin: 0;
     line-height: 1.1;
+    padding-right: 7rem;
   }
 
   /* ---- Subtitle ---- */
@@ -379,6 +380,12 @@
   .gb-gift__fields {
     display: flex;
     flex-direction: column;
+    gap: 1.2rem;
+  }
+  /* First / last name side by side, collapsing to one column when too narrow. */
+  .gb-gift__row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
     gap: 1.2rem;
   }
   .gb-gift__optional {
