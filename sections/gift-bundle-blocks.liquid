@@ -81,7 +81,9 @@
   }
 
   .gift-bundle__heading {
-    margin: 0;
+    /* Auto side margins keep it centred inside the centred header. */
+    margin: 0 auto;
+    max-width: var(--gb-heading-max, 88rem);
   }
 
   .gift-bundle-grid {
