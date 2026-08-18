@@ -36,6 +36,21 @@ the order (see [`blocks/gift_bundle_gift.liquid`](../blocks/gift_bundle_gift.liq
 These are called **line item properties** — extra text attached to one product line in the
 order. It is only text. It does not send email and it does not create a customer.
 
+The same details are **also** saved as **cart attributes**, which become the order's note
+attributes. These are much easier to read in Shopify Flow and Klaviyo, and they appear in
+the order CSV export:
+
+| Attribute | Value |
+|---|---|
+| `Is gift order` | `Yes` |
+| `Gift recipient first name` / `last name` / `email` | from the popup |
+| `Gift message` | from the popup |
+| `Gift bundle name` / `Gift bundle URL` | the product title and link |
+
+**One limit:** a cart has only one set of attributes. On an order with two gifts for two
+people, these hold the **last** gift only. The line item properties stay correct for every
+gift, so use those when accuracy matters.
+
 The text is visible in the Shopify admin on the order page, under the product name. It is
 also on the packing slip and in the buyer's order confirmation email.
 

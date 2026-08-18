@@ -137,6 +137,23 @@
   {%- comment -%} Gift details are mandatory, so the flag is always submitted. {%- endcomment -%}
   <input type="hidden" name="properties[Send as gift]" value="Yes">
 
+  {%- comment -%}
+    The same gift details again as ORDER-level cart attributes, which become the order's
+    note attributes. Klaviyo, Shopify Flow and the order CSV export read note attributes
+    far more easily than per-line properties.
+
+    Caveat: a cart has only ONE set of attributes. If a buyer orders two bundles for two
+    different people, these hold the LAST gift confirmed. The line item properties above
+    stay correct for every gift, so treat those as the source of truth per item.
+
+    Values are copied from the fields when the buyer confirms the popup.
+  {%- endcomment -%}
+  <input type="hidden" name="attributes[Is gift order]" value="Yes">
+  <input type="hidden" name="attributes[Gift recipient first name]" value="" data-gb-gift-attr="first">
+  <input type="hidden" name="attributes[Gift recipient last name]" value="" data-gb-gift-attr="last">
+  <input type="hidden" name="attributes[Gift recipient email]" value="" data-gb-gift-attr="email">
+  <input type="hidden" name="attributes[Gift message]" value="" data-gb-gift-attr="message">
+
   {%- if mode == 'inline' -%}
     <div
       class="gb-gift__panel"
@@ -255,6 +272,51 @@
       el.addEventListener('input', hideError);
     });
 
+    // ---- Order-level cart attributes -------------------------------------------
+    // The hidden attributes[...] inputs are submitted with the add-to-cart request,
+    // but cart attributes are not part of the documented /cart/add payload, so they
+    // are also written explicitly with /cart/update.js once the item is in the cart.
+    var attrPairs = [
+      [first, root.querySelector('[data-gb-gift-attr="first"]')],
+      [last, root.querySelector('[data-gb-gift-attr="last"]')],
+      [email, root.querySelector('[data-gb-gift-attr="email"]')],
+      [message, root.querySelector('[data-gb-gift-attr="message"]')],
+    ];
+
+    function syncAttributes() {
+      attrPairs.forEach(function (pair) {
+        if (pair[1]) pair[1].value = pair[0].value.trim();
+      });
+    }
+
+    // Reads every attributes[...] input in the form, so the bundle name and URL added
+    // by the parent "Product card" block are included without naming them again here.
+    function pushAttributes() {
+      var payload = {};
+      form.querySelectorAll('input[name^="attributes["]').forEach(function (input) {
+        var key = input.name.slice(11, -1);
+        if (key) payload[key] = input.value;
+      });
+      var url = (window.routes && window.routes.cart_update_url) || '/cart/update';
+      fetch(url + '.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ attributes: payload }),
+      })
+        .then(function (response) {
+          if (!response.ok) throw new Error('cart/update.js responded ' + response.status);
+          return response.json();
+        })
+        .then(function (cart) {
+          console.log('[gift] cart attributes saved', cart.attributes);
+        })
+        .catch(function (e) {
+          // The add itself already succeeded, so this must not break the cart — but it
+          // has to be visible, or a silent failure looks like "the data is not saving".
+          console.warn('[gift] could not save cart attributes', payload, e);
+        });
+    }
+
     confirmButton.addEventListener('click', function () {
       var invalid = firstInvalidField();
       if (invalid) {
@@ -262,6 +324,7 @@
         return;
       }
       hideError();
+      syncAttributes();
       close();
       confirmed = true;
       // Synchronous: product-form.js reads the form on this event, and the flag
@@ -345,6 +408,9 @@
         var variantInput = form.querySelector('[name="id"]');
         if (event.source !== 'product-form' || !variantInput) return;
         if (String(event.productVariantId) !== String(variantInput.value)) return;
+        // Write the attributes before clearing — pushAttributes() builds its payload
+        // synchronously, so clearing straight after is safe.
+        pushAttributes();
         [first, last, email, message].forEach(function (el) {
           el.value = '';
         });

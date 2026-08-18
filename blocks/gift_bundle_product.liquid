@@ -61,6 +61,19 @@
           class="product-variant-id"
           {% if variant.available == false %}disabled{% endif %}
         >
+
+        {%- comment -%}
+          Order-level cart attributes for the bundle itself. They live here because a
+          nested block cannot read this block's product. The gift details are added as
+          attributes by the "Gift details" block; see its comment for the caveat about
+          multi-gift orders.
+        {%- endcomment -%}
+        <input type="hidden" name="attributes[Gift bundle name]" value="{{ product.title | escape }}">
+        <input
+          type="hidden"
+          name="attributes[Gift bundle URL]"
+          value="{{ product.url | prepend: request.origin | escape }}"
+        >
   {%- else -%}
     <div class="gift-bundle-card__form">
   {%- endif -%}

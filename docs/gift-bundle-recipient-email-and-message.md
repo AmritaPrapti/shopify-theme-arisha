@@ -59,6 +59,31 @@ Where this text is visible:
 - ❌ **Not** in Klaviyo as a person who can be emailed
 - ❌ **Not** in the normal Shopify order CSV export (please verify in the admin)
 
+### The same details are also saved as order-level attributes
+
+Because line item properties are awkward to read in Shopify Flow, Klaviyo and the CSV
+export, the theme **also** saves the gift details as **cart attributes**, which become the
+order's **note attributes**:
+
+| Attribute | Value |
+|---|---|
+| `Is gift order` | `Yes` |
+| `Gift recipient first name` | from the popup |
+| `Gift recipient last name` | from the popup |
+| `Gift recipient email` | from the popup |
+| `Gift message` | from the popup |
+| `Gift bundle name` | the product title |
+| `Gift bundle URL` | full link to the product page |
+
+Note attributes **are** included in the Shopify order CSV export (the "Note Attributes"
+column) and are easy to read in Shopify Flow, so this makes the Klaviyo work in section 4
+simpler.
+
+> **Important limit:** a cart has only **one** set of attributes. If a buyer orders two
+> bundles for two different people, these hold the **last** gift only. The line item
+> properties stay correct for every gift, so they remain the source of truth per item.
+> Use the attributes for convenience, the properties for accuracy.
+
 One more useful behaviour: if a buyer buys two bundles for two different people,
 Shopify keeps them as **two separate lines**, each with its own recipient and message,
 because their properties are different. So multi-gift orders already work correctly.
@@ -167,6 +192,11 @@ Create a workflow:
 - **Loop:** use Flow's *For each* action over the order's line items, so an order with
   two gifts sends two events.
 - **Action:** *Send HTTP request* to Klaviyo.
+
+Simpler alternative for single-gift orders: read the order's **note attributes**
+(`Gift recipient email`, `Gift message`, …) instead of looping the line items. It is much
+easier to set up in Flow, but remember the limit above — on a two-gift order the
+attributes only carry the last gift, so only the line item loop is fully correct.
 
 **Step 2 — the HTTP request to Klaviyo**
 
