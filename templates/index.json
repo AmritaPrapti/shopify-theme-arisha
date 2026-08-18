@@ -193,6 +193,58 @@
         "padding_bottom": 76
       }
     },
+    "collection_list_8VzpRY": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_pzN9Va": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "soups-and-meals",
+            "custom_description": "Nourishing broths and hearty stews designed to support postpartum healing.",
+            "button_label": "SHOP SOUPS"
+          }
+        },
+        "featured_collection_hDTcEV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "snacks",
+            "custom_description": "Wholesome, energizing bites to keep you nourished throughout the day.",
+            "button_label": "SHOP SNACKS"
+          }
+        },
+        "featured_collection_YFkA9h": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "teas",
+            "custom_description": "Calming herbal blends to support recovery and relaxation.",
+            "button_label": "SHOP TEAS"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_pzN9Va",
+        "featured_collection_hDTcEV",
+        "featured_collection_YFkA9h"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "Shop by Category",
+        "heading_size": "h1",
+        "header_description": "",
+        "show_title_center": true,
+        "image_ratio": "square",
+        "show_description": true,
+        "show_button": true,
+        "button_style": "primary",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 76,
+        "padding_bottom": 76
+      }
+    },
     "how_it_works_xiQ8ay": {
       "type": "how-it-works",
       "blocks": {
@@ -247,58 +299,6 @@
         "number_font": "bodoni_moda_i4",
         "font_size": "large",
         "color_scheme": "",
-        "padding_top": 76,
-        "padding_bottom": 76
-      }
-    },
-    "collection_list_8VzpRY": {
-      "type": "collection-list",
-      "blocks": {
-        "featured_collection_pzN9Va": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "soups-and-meals",
-            "custom_description": "Nourishing broths and hearty stews designed to support postpartum healing.",
-            "button_label": "SHOP SOUPS"
-          }
-        },
-        "featured_collection_hDTcEV": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "snacks",
-            "custom_description": "Wholesome, energizing bites to keep you nourished throughout the day.",
-            "button_label": "SHOP SNACKS"
-          }
-        },
-        "featured_collection_YFkA9h": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "teas",
-            "custom_description": "Calming herbal blends to support recovery and relaxation.",
-            "button_label": "SHOP TEAS"
-          }
-        }
-      },
-      "block_order": [
-        "featured_collection_pzN9Va",
-        "featured_collection_hDTcEV",
-        "featured_collection_YFkA9h"
-      ],
-      "name": "t:sections.collection-list.presets.name",
-      "settings": {
-        "title": "Shop by Category",
-        "heading_size": "h1",
-        "header_description": "",
-        "show_title_center": true,
-        "image_ratio": "square",
-        "show_description": true,
-        "show_button": true,
-        "button_style": "primary",
-        "columns_desktop": 3,
-        "color_scheme": "",
-        "show_view_all": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
         "padding_top": 76,
         "padding_bottom": 76
       }
@@ -620,8 +620,8 @@
     "image_with_text_nXe8UN",
     "trust_bar_CD8bzz",
     "multicolumn_3ABAmn",
-    "how_it_works_xiQ8ay",
     "collection_list_8VzpRY",
+    "how_it_works_xiQ8ay",
     "image_with_text_NRaG6K",
     "image_with_text_ALULxa",
     "176610496544f20ae1",
