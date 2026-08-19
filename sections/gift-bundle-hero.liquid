@@ -257,7 +257,11 @@
                     {{ block.shopify_attributes }}
                     style="color: {{ block.settings.caption_color }}; --caption-highlight: {{ block.settings.caption_highlight }}; font-weight: {{ block.settings.font_weight }};"
                   >
-                   <a href="{{ block.settings.link }}">{{ block.settings.caption }}</a>
+                    {%- if block.settings.link != blank -%}
+                      <a href="{{ block.settings.link }}">{{ block.settings.caption }}</a>
+                    {%- else -%}
+                      {{ block.settings.caption }}
+                    {%- endif -%}
                   </p>
                 {%- when 'text' -%}
                   {%- if block.settings.text_size == 'custom' or block.settings.text_highlight != blank -%}

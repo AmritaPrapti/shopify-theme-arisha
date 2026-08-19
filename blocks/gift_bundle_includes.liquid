@@ -28,12 +28,29 @@
     var panel = root.querySelector('.gb-includes__content');
     var label = root.querySelector('.gb-includes__label');
     var caret = root.querySelector('.svg-wrapper');
+
+    // Every card in this section opens and closes together. The grid stretches all
+    // cards to the tallest one, so opening a single card would leave the others with
+    // a tall empty gap at the bottom.
+    var scope = root.closest('[id^="shopify-section-"]') || document;
+    var EVENT = 'gb:includes-toggle';
+
+    function apply(open) {
+      btn.setAttribute('aria-expanded', String(open));
+      panel.classList.toggle('is-open', open);
+      caret.style.transform = open ? 'rotate(180deg)' : '';
+      label.textContent = open ? btn.dataset.closeLabel : btn.dataset.openLabel;
+    }
+
+    // The click only announces the new state; every card (this one included) reacts
+    // through the listener below, so they can never drift apart.
     btn.addEventListener('click', function () {
-      var open = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!open));
-      panel.classList.toggle('is-open', !open);
-      caret.style.transform = open ? '' : 'rotate(180deg)';
-      label.textContent = open ? btn.dataset.openLabel : btn.dataset.closeLabel;
+      var next = btn.getAttribute('aria-expanded') !== 'true';
+      scope.dispatchEvent(new CustomEvent(EVENT, { detail: { open: next } }));
+    });
+
+    scope.addEventListener(EVENT, function (evt) {
+      apply(evt.detail.open);
     });
   })();
 </script>
