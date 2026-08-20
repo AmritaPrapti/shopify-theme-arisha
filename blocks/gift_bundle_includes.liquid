@@ -29,11 +29,17 @@
     var label = root.querySelector('.gb-includes__label');
     var caret = root.querySelector('.svg-wrapper');
 
-    // Every card in this section opens and closes together. The grid stretches all
-    // cards to the tallest one, so opening a single card would leave the others with
-    // a tall empty gap at the bottom.
+    // Every card in this section opens and closes together, because the grid stretches
+    // them all to the tallest one and a single open card would leave the others with a
+    // tall empty gap at the bottom.
     var scope = root.closest('[id^="shopify-section-"]') || document;
     var EVENT = 'gb:includes-toggle';
+
+    // ...but only while the cards actually sit side by side. 990px is the grid's
+    // desktop breakpoint; below it the cards are stacked, there is no shared height
+    // to keep tidy, and expanding all of them would just bury the one that was
+    // tapped under the others.
+    var sideBySide = window.matchMedia('(min-width: 990px)');
 
     function apply(open) {
       btn.setAttribute('aria-expanded', String(open));
@@ -42,15 +48,27 @@
       label.textContent = open ? btn.dataset.closeLabel : btn.dataset.openLabel;
     }
 
-    // The click only announces the new state; every card (this one included) reacts
-    // through the listener below, so they can never drift apart.
     btn.addEventListener('click', function () {
       var next = btn.getAttribute('aria-expanded') !== 'true';
-      scope.dispatchEvent(new CustomEvent(EVENT, { detail: { open: next } }));
+      if (sideBySide.matches) {
+        // Only announce the new state; every card (this one included) reacts through
+        // the listener below, so they can never drift apart.
+        scope.dispatchEvent(new CustomEvent(EVENT, { detail: { open: next } }));
+      } else {
+        apply(next);
+      }
     });
 
     scope.addEventListener(EVENT, function (evt) {
       apply(evt.detail.open);
+    });
+
+    // Rotating a tablet into the side-by-side layout with this card already open
+    // would recreate the ragged gap, so bring the other cards up to match.
+    sideBySide.addEventListener('change', function (evt) {
+      if (evt.matches && btn.getAttribute('aria-expanded') === 'true') {
+        scope.dispatchEvent(new CustomEvent(EVENT, { detail: { open: true } }));
+      }
     });
   })();
 </script>

@@ -141,6 +141,17 @@
     white-space: nowrap;
   }
 
+  /* <product-form> sits between the card and the form. It is a custom element with
+     no default styling, so it stays at content height and the form inside it never
+     receives the card's spare height — which is what `margin-top: auto` below needs
+     to push the price and button down. Without this the buttons sit at whatever
+     height the content happens to end, so cards with shorter lists end higher. */
+  .gift-bundle-card > product-form {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+  }
+
   .gift-bundle-card__form {
     display: flex;
     flex-direction: column;
@@ -148,9 +159,13 @@
     gap: var(--gb-gap, 1.4rem);
   }
 
-  /* Push the price (and everything after it — gift / cart) to the bottom so
-     cards of differing content length still align their action area. */
-  .gift-bundle-card__form > .gb-price {
+  /* Push the price (and everything after it — gift / cart) to the bottom so cards of
+     differing content length still align their action area.
+
+     Shopify wraps every theme block in <div class="shopify-block">, so the form's
+     direct children are those wrappers and .gb-price is only a grandchild. The auto
+     margin therefore has to go on the wrapper — it is the actual flex item. */
+  .gift-bundle-card__form > .shopify-block:has(> .gb-price) {
     margin-top: auto;
   }
 
@@ -163,6 +178,15 @@
     .gb-block {
       padding-top: var(--gb-pt-m, var(--gb-pt, 0px));
       padding-bottom: var(--gb-pb-m, var(--gb-pb, 0px));
+    }
+    .gb-cart__button {
+      padding: 0 1.5rem;
+    }
+  }
+
+  @media screen and (max-width: 400px) {  
+    .gb-cart__button {
+      font-size: 1.4rem;
     }
   }
 
