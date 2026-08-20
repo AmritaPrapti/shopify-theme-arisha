@@ -271,7 +271,7 @@
         "caption_font_size_desktop": 18,
         "caption_font_size_mobile": 14,
         "caption_font_weight": "600",
-        "caption_color": "#B07A72",
+        "caption_color": "#b07a72",
         "title": "Thoughtful food. Timeless traditions.",
         "heading_size": "h1",
         "subtitle": "",
@@ -358,7 +358,7 @@
         "icon_with_text_Y3t4iD"
       ],
       "custom_css": [
-        "@media screen and (max-width: 750px) {.image-with-text__icon-item {flex-direction: column; } h2 {font-size: 28px; }}"
+        "@media screen and (max-width: 750px) {.image-with-text__icon-item {flex-direction: column; gap: 0; } h2 {font-size: 28px; }}"
       ],
       "name": "Gift Bundle Image with Text",
       "settings": {
