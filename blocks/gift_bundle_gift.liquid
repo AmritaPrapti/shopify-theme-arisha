@@ -194,8 +194,8 @@
     var confirmButton = root.querySelector('[data-gb-gift-confirm]');
     var requireMessage = root.getAttribute('data-require-message') === 'true';
     var requireLastName = root.getAttribute('data-require-last-name') === 'true';
-    var nameError = {{ block.settings.name_error_text | json }};
-    var emailError = {{ block.settings.error_text | json }};
+    var contactError = {{ block.settings.contact_error_text | json }};
+    var invalidEmailError = {{ block.settings.invalid_email_error_text | json }};
     var messageError = {{ block.settings.message_error_text | json }};
     var form = root.closest('form');
     if (!form || !panel) return;
@@ -254,13 +254,18 @@
     // at the topmost problem.
     function firstInvalidField() {
       if (first.value.trim() === '') {
-        return { field: first, message: nameError };
+        return { field: first, message: contactError };
       }
       if (requireLastName && last.value.trim() === '') {
-        return { field: last, message: nameError };
+        return { field: last, message: contactError };
       }
-      if (email.value.trim() === '' || !email.checkValidity()) {
-        return { field: email, message: emailError };
+      // An empty email is part of "we still need your details"; a typed-but-broken one
+      // needs to say what is actually wrong with it.
+      if (email.value.trim() === '') {
+        return { field: email, message: contactError };
+      }
+      if (!email.checkValidity()) {
+        return { field: email, message: invalidEmailError };
       }
       if (requireMessage && message.value.trim() === '') {
         return { field: message, message: messageError };
@@ -556,15 +561,16 @@
     },
     {
       "type": "text",
-      "id": "name_error_text",
-      "label": "Missing name",
-      "default": "Please add the recipient's name to continue."
+      "id": "contact_error_text",
+      "label": "Missing name or email",
+      "default": "Please add recipient's name and email address to continue."
     },
     {
       "type": "text",
-      "id": "error_text",
-      "label": "Missing email",
-      "default": "Please add a valid recipient email to continue."
+      "id": "invalid_email_error_text",
+      "label": "Invalid email",
+      "info": "Shown when an email is typed but is not a valid address.",
+      "default": "Please add a valid email address to continue."
     },
     {
       "type": "text",
