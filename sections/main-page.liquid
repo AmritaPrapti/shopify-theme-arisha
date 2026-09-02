@@ -12,9 +12,27 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  {%- if section.settings.center_text -%}
+    .main-page--center {
+      text-align: center;
+    }
+    /* Centred list text leaves the bullets hanging out on the left, so pull the
+       markers inside and drop the indent that was making room for them. */
+    .main-page--center .rte ul,
+    .main-page--center .rte ol {
+      list-style-position: inside;
+      padding-left: 0;
+    }
+    .main-page--center .rte img,
+    .main-page--center .rte table {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  {%- endif -%}
 {%- endstyle -%}
 
-<div class="page-width page-width--narrow section-{{ section.id }}-padding">
+<div class="page-width page-width--narrow section-{{ section.id }}-padding{% if section.settings.center_text %} main-page--center{% endif %}">
   <h1 class="main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
     {{ page.title | escape }}
   </h1>
@@ -29,6 +47,12 @@
   "tag": "section",
   "class": "section",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "center_text",
+      "label": "Center title and content",
+      "default": false
+    },
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
