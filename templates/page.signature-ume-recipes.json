@@ -15,6 +15,7 @@
         "h1 {font-size: calc(var(--font-heading-scale) * 3rem);}"
       ],
       "settings": {
+        "center_text": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
