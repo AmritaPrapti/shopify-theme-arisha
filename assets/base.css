@@ -3846,4 +3846,8 @@ body {
 }
 
 
+.ume-pdf-embed { width: 100%; }
+.page-width:has(.ume-pdf-embed) { max-width: 1300px; }
+
+
 @media (max-width: 749px) { .ume-pdf-embed { display: none; } }
