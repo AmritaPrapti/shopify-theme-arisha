@@ -3844,3 +3844,6 @@ body {
 .bloop__referral:has(bloop-block-code) .bloop__subHeading--content {
     display: none !important;
 }
+
+
+@media (max-width: 749px) { .ume-pdf-embed { display: none; } }
