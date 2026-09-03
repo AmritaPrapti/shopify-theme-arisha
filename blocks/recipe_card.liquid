@@ -1,0 +1,89 @@
+{% comment %}
+  Recipe card — one recipe inside the "Recipe Book" section.
+
+  The layout mirrors the printed cookbook page: photo, then the recipe name, then
+  two columns divided by a dotted rule — yield / ingredients / serving idea on the
+  left, instructions on the right. On mobile the columns stack in reading order and
+  the dividers become horizontal rules.
+
+  The heading gets an id derived from the title so a recipe can be linked directly.
+{% endcomment %}
+{%- liquid
+  assign anchor = block.settings.title | handle
+-%}
+
+<article
+  class="recipe-card"
+  {% if anchor != blank %}id="{{ anchor }}"{% endif %}
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.image != blank -%}
+    <div class="recipe-card__media">
+      {{
+        block.settings.image
+        | image_url: width: 1600
+        | image_tag:
+          loading: 'lazy',
+          sizes: '(min-width: 750px) 82rem, 100vw',
+          widths: '400, 600, 800, 1000, 1200, 1600',
+          alt: block.settings.title
+      }}
+    </div>
+  {%- endif -%}
+
+  {%- if block.settings.title != blank -%}
+    <h3 class="recipe-card__title">{{ block.settings.title | escape }}</h3>
+  {%- endif -%}
+
+  <div class="recipe-card__cols">
+    <div class="recipe-card__main">
+      {%- if block.settings.yield != blank -%}
+        <p class="recipe-card__yield">{{ block.settings.yield | escape }}</p>
+      {%- endif -%}
+
+      {%- if block.settings.ingredients != blank -%}
+        <div class="recipe-card__group">
+          <h4 class="recipe-card__label">{{ block.settings.ingredients_label | escape }}</h4>
+          <div class="recipe-card__rte">{{ block.settings.ingredients }}</div>
+        </div>
+      {%- endif -%}
+
+      {%- if block.settings.note != blank -%}
+        <div class="recipe-card__group recipe-card__group--ruled">
+          {%- if block.settings.note_label != blank -%}
+            <h4 class="recipe-card__label">{{ block.settings.note_label | escape }}</h4>
+          {%- endif -%}
+          <div class="recipe-card__rte">{{ block.settings.note }}</div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if block.settings.instructions != blank -%}
+      <div class="recipe-card__steps">
+        <h4 class="recipe-card__label">{{ block.settings.instructions_label | escape }}</h4>
+        <div class="recipe-card__rte recipe-card__rte--steps">{{ block.settings.instructions }}</div>
+      </div>
+    {%- endif -%}
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Recipe",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Recipe name", "default": "Recipe name" },
+    { "type": "text", "id": "yield", "label": "Yield", "info": "For example \"Makes 2 servings\". Leave empty to hide." },
+    { "type": "image_picker", "id": "image", "label": "Photo" },
+    { "type": "header", "content": "Ingredients" },
+    { "type": "text", "id": "ingredients_label", "label": "Label", "default": "Ingredients" },
+    { "type": "richtext", "id": "ingredients", "label": "Ingredients", "info": "Use a bulleted list." },
+    { "type": "header", "content": "Instructions" },
+    { "type": "text", "id": "instructions_label", "label": "Label", "default": "Instructions" },
+    { "type": "richtext", "id": "instructions", "label": "Instructions", "info": "Use a numbered list. The steps print without numbers, like the PDF." },
+    { "type": "header", "content": "Note" },
+    { "type": "text", "id": "note_label", "label": "Label", "default": "Serving idea" },
+    { "type": "richtext", "id": "note", "label": "Note", "info": "Leave empty to hide this whole block." }
+  ],
+  "presets": [{ "name": "Recipe" }]
+}
+{% endschema %}

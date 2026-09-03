@@ -1,0 +1,351 @@
+{% comment %}
+  Recipe Book
+  -----------
+  Renders a cookbook as real HTML — readable on a phone, indexable by Google —
+  with an optional "Download PDF" button for the printable version.
+
+  Structure:
+    section (this file)
+      └─ recipe_card  (one block per recipe)
+{% endcomment %}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  #shopify-section-{{ section.id }} {
+    --rb-muted: rgba(var(--color-foreground), 0.62);
+    --rb-rule: rgba(var(--color-foreground), 0.32);
+  }
+
+  .recipe-book__intro {
+    max-width: 68rem;
+    margin: 0 auto 5.6rem;
+    text-align: center;
+  }
+  .recipe-book__intro > :first-child { margin-top: 0; }
+  .recipe-book__intro > :last-child { margin-bottom: 0; }
+
+  .recipe-book__pdf {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.4rem;
+  }
+
+  /* With a cover photo the intro becomes cover + opening page, side by side. The
+     text stops being centred, because centred prose next to a photo reads badly. */
+  .recipe-book__opening {
+    max-width: 82rem;
+    margin: 0 auto 6.4rem;
+    display: grid;
+    gap: 3.2rem;
+  }
+  .recipe-book__opening .recipe-book__intro {
+    max-width: none;
+    margin: 0;
+    text-align: left;
+  }
+  .recipe-book__opening .recipe-book__pdf {
+    justify-content: flex-start;
+  }
+  .recipe-book__cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  @media screen and (max-width: 749px) {
+    /* A full 2:3 cover would fill the whole first screen on a phone, so crop it. */
+    .recipe-book__cover img {
+      max-height: 46vh;
+      object-fit: cover;
+    }
+  }
+  @media screen and (min-width: 750px) {
+    .recipe-book__opening {
+      grid-template-columns: 0.8fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+  }
+
+  /* One column: a recipe is read top to bottom. Each card is a page of the book,
+     so they are separated by space rather than a rule. */
+  .recipe-book__list {
+    display: grid;
+    gap: 7.2rem;
+    max-width: 82rem;
+    margin: 0 auto;
+  }
+
+  .recipe-card__media {
+    margin: 0 0 3.2rem;
+  }
+  .recipe-card__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Set wide and light like the printed page. */
+  .recipe-card__title {
+    margin: 0 0 2rem;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .recipe-card__cols {
+    border-top: 1px dotted var(--rb-rule);
+    padding-top: 2rem;
+    display: grid;
+    gap: 2.4rem;
+  }
+  @media screen and (min-width: 750px) {
+    .recipe-card__cols {
+      /* The printed page gives roughly two thirds to the ingredients column. */
+      grid-template-columns: 1.7fr 1fr;
+      gap: 0;
+      align-items: start;
+    }
+    .recipe-card__main {
+      padding-right: 3.2rem;
+    }
+    .recipe-card__steps {
+      border-left: 1px dotted var(--rb-rule);
+      padding-left: 3.2rem;
+    }
+  }
+  /* Stacked, the vertical divider becomes a horizontal one. */
+  @media screen and (max-width: 749px) {
+    .recipe-card__steps {
+      border-top: 1px dotted var(--rb-rule);
+      padding-top: 2rem;
+    }
+  }
+
+  .recipe-card__yield {
+    margin: 0;
+    padding-bottom: 1.6rem;
+    border-bottom: 1px dotted var(--rb-rule);
+    font-size: 1.6rem;
+  }
+
+  .recipe-card__group {
+    margin-top: 2rem;
+  }
+  .recipe-card__group--ruled {
+    border-top: 1px dotted var(--rb-rule);
+    padding-top: 2rem;
+  }
+
+  .recipe-card__label {
+    margin: 0 0 1.2rem;
+    /* The theme renders h4 in the heading font at a light weight, which reads faint
+       at this size. The printed page sets these labels in the body font. */
+    font-family: var(--font-body-family);
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+    color: rgb(var(--color-foreground));
+  }
+
+  .recipe-card__rte {
+    font-size: 1.5rem;
+    line-height: 1.6;
+  }
+  .recipe-card__rte > :first-child { margin-top: 0; }
+  .recipe-card__rte > :last-child { margin-bottom: 0; }
+  .recipe-card__rte ul {
+    margin: 0;
+    padding-left: 2rem;
+    display: grid;
+    gap: 0.8rem;
+  }
+  /* The printed steps read as spaced paragraphs, not a numbered list. Kept as an
+     <ol> so the order stays meaningful to screen readers and to search engines. */
+  .recipe-card__rte--steps ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 1.6rem;
+  }
+  .recipe-card__rte p {
+    margin: 0 0 1.2rem;
+  }
+
+{%- endstyle -%}
+
+<div
+  {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | handle }}"{% endif %}
+  class="color-{{ section.settings.color_scheme }} isolate gradient"
+>
+  <div class="section-{{ section.id }}-padding page-width">
+    {%- if section.settings.heading != blank
+      or section.settings.intro != blank
+      or section.settings.pdf_url != blank
+      or section.settings.cover_image != blank
+    -%}
+      {%- if section.settings.cover_image != blank -%}
+        <div class="recipe-book__opening">
+          <div class="recipe-book__cover">
+            {{
+              section.settings.cover_image
+              | image_url: width: 1200
+              | image_tag:
+                loading: 'eager',
+                sizes: '(min-width: 750px) 36rem, 100vw',
+                widths: '400, 600, 800, 1000, 1200',
+                alt: section.settings.cover_image.alt | default: shop.name
+            }}
+          </div>
+      {%- endif -%}
+
+      <div class="recipe-book__intro">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="{{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.intro != blank -%}
+          {{ section.settings.intro }}
+        {%- endif -%}
+        {%- if section.settings.pdf_url != blank -%}
+          <div class="recipe-book__pdf">
+            <a
+              class="button{% if section.settings.pdf_button_style == 'outline' %} button--secondary{% else %} button--primary{% endif %}"
+              href="{{ section.settings.pdf_url }}"
+              target="_blank"
+              rel="noopener"
+            >
+              {{ section.settings.pdf_label | default: 'Download the PDF' }}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.cover_image != blank -%}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    <div class="recipe-book__list">
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Recipe Book",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "info": "Link to this section from a button with #your-id (letters, numbers and hyphens)."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Introduction"
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "Cover photo",
+      "info": "Shown beside the introduction on desktop, above it on mobile. Leave empty for a centered introduction with no photo."
+    },
+    {
+      "type": "header",
+      "content": "PDF download"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url",
+      "label": "PDF file",
+      "info": "Upload the PDF under Content > Files, then paste its link here. Leave empty to hide the button."
+    },
+    {
+      "type": "text",
+      "id": "pdf_label",
+      "label": "Button label",
+      "default": "Download the PDF"
+    },
+    {
+      "type": "select",
+      "id": "pdf_button_style",
+      "label": "Button style",
+      "options": [
+        { "value": "solid", "label": "Solid" },
+        { "value": "outline", "label": "Outline" }
+      ],
+      "default": "solid"
+    },
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    { "type": "recipe_card" },
+    { "type": "_text" }
+  ],
+  "presets": [
+    { "name": "Recipe Book" }
+  ]
+}
+{% endschema %}
