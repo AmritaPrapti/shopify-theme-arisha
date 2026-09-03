@@ -13,6 +13,7 @@
       "type": "main-page",
       "disabled": true,
       "settings": {
+        "center_text": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -85,6 +86,14 @@
             "custom_title": ""
           }
         },
+        "collection_BzcpBJ": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "traditional-staples",
+            "custom_title": ""
+          }
+        },
         "discount_tier_8EhhKG": {
           "type": "discount_tier",
           "settings": {
@@ -104,6 +113,7 @@
         "collection_mLPide",
         "collection_7mjgHR",
         "collection_JhETtY",
+        "collection_BzcpBJ",
         "discount_tier_8EhhKG",
         "discount_tier_HeC6VH"
       ],
@@ -293,16 +303,26 @@
       ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
+        "caption": "",
+        "caption_uppercase": true,
+        "caption_size": "medium",
+        "caption_font_size_desktop": 18,
+        "caption_font_size_mobile": 14,
+        "caption_font_weight": "400",
+        "caption_color": "",
         "title": "",
         "heading_size": "h2",
+        "subtitle": "",
         "title_alignment": "left",
         "image_width": "third",
+        "image_width_custom": 200,
         "image_ratio": "adapt",
         "image_background": "",
         "button_label": "",
         "button_link": "",
         "columns_desktop": 2,
         "column_alignment": "center",
+        "card_title_lines": 2,
         "background_style": "none",
         "color_scheme": "scheme-1",
         "columns_mobile": "2",
