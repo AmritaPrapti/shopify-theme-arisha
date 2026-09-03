@@ -1,9 +1,24 @@
 {% comment %}
   Gift Bundle — Stats (soup / snack / teas quantities)
-  Three fixed columns, each with an optional icon, a number and a label.
+  Up to four columns, each with an optional icon, a number and a label. A column is
+  skipped when both its number and label are empty, and the grid is told how many
+  survived so the filled ones always share the row evenly.
 {% endcomment %}
-<div class="gb-stats gb-block gb-stats--{{ block.settings.number_style | default: 'filled' }}" style="--gb-stat-stroke: {{ block.settings.stroke_width }}px; --gb-pt: {{ block.settings.padding_top }}px; --gb-pb: {{ block.settings.padding_bottom }}px;{% if block.settings.padding_top_mobile > 0 %} --gb-pt-m: {{ block.settings.padding_top_mobile }}px;{% endif %}{% if block.settings.padding_bottom_mobile > 0 %} --gb-pb-m: {{ block.settings.padding_bottom_mobile }}px;{% endif %}" {{ block.shopify_attributes }}>
-  {%- for i in (1..3) -%}
+{%- liquid
+  assign stat_columns = 0
+  for i in (1..4)
+    assign num_key = 'number_' | append: i
+    assign label_key = 'label_' | append: i
+    if block.settings[num_key] != blank or block.settings[label_key] != blank
+      assign stat_columns = stat_columns | plus: 1
+    endif
+  endfor
+  if stat_columns == 0
+    assign stat_columns = 1
+  endif
+-%}
+<div class="gb-stats gb-block gb-stats--{{ block.settings.number_style | default: 'filled' }}" style="--gb-stats-cols: {{ stat_columns }}; --gb-stat-stroke: {{ block.settings.stroke_width }}px; --gb-pt: {{ block.settings.padding_top }}px; --gb-pb: {{ block.settings.padding_bottom }}px;{% if block.settings.padding_top_mobile > 0 %} --gb-pt-m: {{ block.settings.padding_top_mobile }}px;{% endif %}{% if block.settings.padding_bottom_mobile > 0 %} --gb-pb-m: {{ block.settings.padding_bottom_mobile }}px;{% endif %}" {{ block.shopify_attributes }}>
+  {%- for i in (1..4) -%}
     {%- assign icon_key = 'icon_' | append: i -%}
     {%- assign num_key = 'number_' | append: i -%}
     {%- assign label_key = 'label_' | append: i -%}
@@ -61,7 +76,12 @@
     { "type": "header", "content": "Column 3" },
     { "type": "image_picker", "id": "icon_3", "label": "Icon" },
     { "type": "text", "id": "number_3", "label": "Number", "default": "3" },
-    { "type": "text", "id": "label_3", "label": "Label", "default": "Teas" }
+    { "type": "text", "id": "label_3", "label": "Label", "default": "Teas" },
+    { "type": "header", "content": "Column 4" },
+    { "type": "paragraph", "content": "Leave the number and label empty to hide this column." },
+    { "type": "image_picker", "id": "icon_4", "label": "Icon" },
+    { "type": "text", "id": "number_4", "label": "Number" },
+    { "type": "text", "id": "label_4", "label": "Label" }
     ,
     { "type": "header", "content": "Spacing" },
     { "type": "range", "id": "padding_top", "min": 0, "max": 60, "step": 2, "unit": "px", "label": "Top spacing", "default": 0 },

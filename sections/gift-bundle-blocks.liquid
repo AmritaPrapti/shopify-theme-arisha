@@ -242,7 +242,8 @@
   /* ---- Stats (soup / snack / teas) ---- */
   .gb-stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* The Stats block sets --gb-stats-cols to however many columns it actually filled. */
+    grid-template-columns: repeat(var(--gb-stats-cols, 3), minmax(0, 1fr));
     gap: 1rem;
     text-align: center;
   }
