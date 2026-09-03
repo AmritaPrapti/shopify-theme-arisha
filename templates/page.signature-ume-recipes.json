@@ -28,91 +28,105 @@
           "settings": {
             "title": "Ume Butter Rice",
             "yield": "Makes 2 servings",
+            "image": "shopify://shop_images/ume-butter-rice.jpg",
             "ingredients_label": "Ingredients",
             "ingredients": "<ul><li>½ handmade umezuke, pitted</li><li>1 teaspoon salted butter, softened</li><li>½ teaspoon maple syrup</li><li>About 2 cups warm cooked rice</li><li>Salt, to taste (optional)</li></ul>",
             "instructions_label": "Instructions",
             "instructions": "<ol><li>Remove the pit from the umezuke and mash it finely with a fork.</li><li>In a small dish, combine the mashed umezuke, softened butter, and maple syrup.</li><li>Add the ume butter mixture to the warm rice. Gently fold with a rice paddle or spoon until evenly distributed.</li><li>Taste and add a small pinch of salt if needed.</li></ol>",
             "note_label": "Serving idea",
             "note": "<p>Serve warm alongside your favorite dishes, or shape the rice into onigiri.</p>"
-          }
+          },
+          "blocks": {}
         },
         "recipe_creamy_dip": {
           "type": "recipe_card",
           "settings": {
             "title": "Creamy Ume Dip",
             "yield": "Makes 1 cup",
+            "image": "shopify://shop_images/creamy-ume-dip.jpg",
             "ingredients_label": "Ingredients",
             "ingredients": "<ul><li>½ cup Greek yogurt or unsweetened vegan yogurt</li><li>1 handmade umezuke, pitted</li><li>2 teaspoons maple syrup</li><li>1 teaspoon extra-virgin olive oil</li><li>¼ teaspoon garlic powder</li><li>Black pepper, to taste</li><li>Salt, to taste (optional)</li></ul>",
             "instructions_label": "Instructions",
             "instructions": "<ol><li>Combine all the ingredients and blend with an immersion blender for about 20 seconds, until creamy and smooth.</li><li>If you do not have a blender, mash the umezuke very finely with a fork, then whisk everything together in a small bowl.</li></ol>",
             "note_label": "Serving idea",
             "note": "<p>Serve with vegetable sticks, tortilla chips and salsa, roasted potatoes, spring rolls, French fries, or nuggets.</p>"
-          }
+          },
+          "blocks": {}
         },
         "recipe_teriyaki": {
           "type": "recipe_card",
           "settings": {
             "title": "Ume Teriyaki Sauce",
             "yield": "Makes ½ cup",
+            "image": "shopify://shop_images/ume-teriyaki-sauce.jpg",
             "ingredients_label": "Ingredients",
             "ingredients": "<ul><li>4 tablespoons soy sauce</li><li>4 tablespoons maple syrup</li><li>1 handmade umezuke, pitted</li><li>½ teaspoon garlic powder</li><li>½ teaspoon grated fresh ginger</li></ul>",
             "instructions_label": "Instructions",
             "instructions": "<ol><li>Remove the pit from the umezuke and place it in a blender with the soy sauce, maple syrup, garlic powder, and grated ginger.</li><li>Blend for about 20 seconds, until the ume is finely incorporated and the sauce is smooth.</li><li>Pour the mixture into a small saucepan and bring it to a gentle simmer over medium-low heat.</li><li>Cook for 3–5 minutes, stirring occasionally, until the flavors are combined and the sauce has slightly thickened.</li><li>Remove from the heat and allow the sauce to cool. It will continue to thicken slightly as it cools.</li></ol>",
             "note_label": "Serving idea",
             "note": "<p>Use as a marinade or glaze for chicken, white fish, tofu, or roasted vegetables. It can also be spooned over steamed chicken, rice bowls, or noodles.</p><p><strong>No blender?</strong> Mash the umezuke very finely with a fork, then whisk it together with the remaining ingredients before simmering.</p>"
-          }
+          },
+          "blocks": {}
         },
         "recipe_avocado_toast": {
           "type": "recipe_card",
           "settings": {
             "title": "Ume Avocado Toast",
             "yield": "Serves 2",
+            "image": "shopify://shop_images/ume-avocado-toast.jpg",
             "ingredients_label": "Ingredients",
             "ingredients": "<ul><li>2 slices sourdough or whole-grain bread</li><li>½ ripe avocado</li><li>1 handmade umezuke, pitted</li><li>1 teaspoon extra-virgin olive oil, plus more for finishing</li><li>Black pepper, to taste</li><li>Salt, to taste (optional)</li><li>1 teaspoon hemp seeds</li></ul>",
             "instructions_label": "Instructions",
             "instructions": "<ol><li>Toast the bread until lightly crisp.</li><li>Scoop the avocado into a bowl. Add the pitted umezuke and mash them together with a fork.</li><li>Mix in the olive oil and black pepper.</li><li>Spread the mixture evenly over the toast.</li><li>Finish with the hemp seeds, an additional drizzle of olive oil, and salt if needed.</li></ol>",
             "note_label": "Note",
             "note": "<p>Umezuke adds plenty of brightness and savory flavor, so taste the avocado mixture before adding salt.</p>"
-          }
+          },
+          "blocks": {}
         },
         "recipe_hydration": {
           "type": "recipe_card",
           "settings": {
             "title": "Ume Ginger Hydration Drink",
             "yield": "Makes approximately 17 fl oz / 500 ml",
+            "image": "shopify://shop_images/ume-ginger-hydration-drink.jpg",
             "ingredients_label": "Ingredients",
             "ingredients": "<ul><li>1 handmade umezuke, pitted</li><li>2 cups / 500 milliliters water or coconut water</li><li>1 tablespoon honey, or maple syrup for a vegan version</li><li>2 teaspoons fresh lemon juice</li><li>1 teaspoon fresh ginger juice</li></ul>",
             "instructions_label": "Instructions",
             "instructions": "<ol><li>Combine all the ingredients in a blender.</li><li>Blend for about 20 seconds, until fully combined.</li><li>If you prefer a completely smooth drink, strain it through a fine-mesh sieve before serving.</li></ol>",
             "note_label": "Serving idea",
             "note": "<p>Serve chilled or over ice. Stir before drinking if the ume settles.</p>"
-          }
+          },
+          "blocks": {}
         },
         "recipe_dijon": {
           "type": "recipe_card",
           "settings": {
             "title": "Ume Dijon Dressing",
             "yield": "",
+            "image": "shopify://shop_images/ume-dijon-dressing.jpg",
             "ingredients_label": "Ingredients",
             "ingredients": "<ul><li>2 handmade umezuke, pitted</li><li>1 teaspoon soy sauce</li><li>2 tablespoons apple cider vinegar</li><li>1 teaspoon Dijon mustard</li><li>2 tablespoons maple syrup</li><li>4 tablespoons extra-virgin olive oil</li><li>¼ teaspoon black pepper</li></ul>",
             "instructions_label": "Instructions",
             "instructions": "<ol><li>Combine all the ingredients and blend with an immersion blender for about 20 seconds, until smooth and emulsified.</li><li>Taste and add a splash of water if you prefer a lighter consistency.</li></ol>",
             "note_label": "Serving idea",
             "note": "<p>Serve with tender greens, cucumber, radish, roasted vegetables, grain bowls, or cold noodles.</p>"
-          }
+          },
+          "blocks": {}
         },
         "recipe_sesame": {
           "type": "recipe_card",
           "settings": {
             "title": "Ume Ginger Sesame Dressing",
             "yield": "",
+            "image": "shopify://shop_images/ume-ginger-sesame-dressing.jpg",
             "ingredients_label": "Ingredients",
             "ingredients": "<ul><li>2 handmade umezuke, pitted</li><li>2 tablespoons soy sauce</li><li>2 tablespoons apple cider vinegar</li><li>4 tablespoons toasted sesame oil</li><li>2 tablespoons maple syrup</li><li>¼ small onion, approximately 50 grams, roughly chopped</li><li>1 teaspoon grated fresh ginger</li><li>1 tablespoon water</li></ul>",
             "instructions_label": "Instructions",
             "instructions": "<ol><li>Combine all the ingredients and blend with an immersion blender for about 20 seconds, until smooth and creamy.</li><li>Taste and add another teaspoon of water if needed to achieve your preferred consistency.</li></ol>",
             "note_label": "Serving idea",
             "note": "<p>Serve with crisp salads, tofu bowls, steamed vegetables, shredded cabbage, or soba noodles.</p>"
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
