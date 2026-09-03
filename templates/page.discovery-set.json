@@ -28,7 +28,7 @@
         "text_cX4ihw": {
           "type": "text",
           "settings": {
-            "text": "Try our postpartum meal delivery service rooted in Japanese tradition—including our most popular soups, snacks, and teas.",
+            "text": "Try our postpartum meal delivery service rooted in Japanese tradition—including our most popular soups, snacks, teas and ume.",
             "text_style": "body"
           }
         },
@@ -247,17 +247,26 @@
             "description": "<p>Herbal blends crafted to support balance and recovery.</p>",
             "collection": "teas"
           }
+        },
+        "collection_G4zgU3": {
+          "type": "collection",
+          "settings": {
+            "title": "<h2>Traditional Staples</h2>",
+            "description": "<p>Japanese superfoods to accompany meals and snacks.</p>",
+            "collection": "traditional-staples"
+          }
         }
       },
       "block_order": [
         "collection_iTWcjd",
         "collection_pahkEy",
-        "collection_rxKEBJ"
+        "collection_rxKEBJ",
+        "collection_G4zgU3"
       ],
       "name": "Collections Set",
       "settings": {
         "title": "What's included",
-        "text": "<p>Try our most popular soups, snacks, and teas — thoughtfully selected to help you discover what feels most supportive during recovery. All ready in minutes — no preparation needed.</p>",
+        "text": "<p>Try our most popular soups, snacks, teas and ume— thoughtfully selected to help you discover what feels most supportive during recovery. All ready in minutes — no preparation needed.</p>",
         "heading_size": "h1",
         "header_alignment": "center",
         "columns_desktop": 3,
