@@ -88,7 +88,6 @@
         },
         "collection_BzcpBJ": {
           "type": "collection",
-          "disabled": true,
           "settings": {
             "collection": "traditional-staples",
             "custom_title": ""
