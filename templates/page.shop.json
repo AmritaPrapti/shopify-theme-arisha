@@ -440,6 +440,14 @@
             "custom_title": ""
           }
         },
+        "collection_wVBJ7q": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "traditional-staples",
+            "custom_title": ""
+          }
+        },
         "discount_tier_dmq7KW": {
           "type": "discount_tier",
           "settings": {
@@ -459,6 +467,7 @@
         "collection_CWhcqx",
         "collection_CedMTP",
         "collection_mxbD6W",
+        "collection_wVBJ7q",
         "discount_tier_dmq7KW",
         "discount_tier_fBpwCF"
       ],
