@@ -13,6 +13,7 @@
       "type": "main-page",
       "disabled": true,
       "settings": {
+        "center_text": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -108,12 +109,12 @@
             "make_it_selected": true,
             "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
             "heading": "Complete",
-            "subheading": "9 soups, plus snacks and teas",
+            "subheading": "10 soups, plus snacks, teas and pantry",
             "des_heading_1": "BEST FOR",
             "description_1": "<p>Balanced nourishment for a week of recovery.</p>",
             "des_heading_2": "INCLUDES",
             "include_button_label": "See included items",
-            "description_2": "<h5>Soups</h5><ul><li>3 × Golden Chicken Turmeric Stew</li><li>3 × 5 Mushroom & Ume Plum Soup</li><li>3 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>1 × Mother's Glow Brownies</li><li>1 × Rejuvenating Bars</li></ul><h5>Teas</h5><ul><li>1 × Mother's Chai Blend</li><li>1 × Recover & Relax Blend</li><li>1 × Protect & Balance Blend</li></ul>",
+            "description_2": "<h5>Soups</h5><ul><li>2 × Golden Chicken and Turmeric Stew</li><li>2 × 5 Mushroom & Ume Plum Soup</li><li>2 × Signature Seaweed Soup</li><li>2 × Vegan Seaweed Soup</li><li>2 × Satsumaimo Red Miso Beef Stew</li></ul><h5>Snacks</h5><ul><li>1 × Mother's Glow Brownies</li><li>1 × Rejuvenating Bars</li></ul><h5>Teas</h5><ul><li>1 × Mother's Chai Blend</li><li>1 × Recover & Relax Blend</li><li>1 × Protect & Balance Blend</li></ul><h5>Staples</h5><ul><li>1 × Signature Ume</li></ul>",
             "badge": "Most Popular",
             "bg_color": "#b07a72",
             "color_text": "#ffffff"
@@ -126,12 +127,12 @@
             "make_it_selected": false,
             "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
             "heading": "Signature",
-            "subheading": "15 soups, plus extra snacks and teas",
+            "subheading": "15 soups, plus snacks, teas and pantry",
             "des_heading_1": "BEST FOR",
             "description_1": "<p>Sustained nourshishment for two weeks of postpartum recovery, or more to share with family.</p>",
             "des_heading_2": "INCLUDES",
             "include_button_label": "See included items",
-            "description_2": "<h5>Soups</h5><ul><li>5 × Golden Chicken Turmeric Stew</li><li>5 × 5 Mushroom & Ume Plum Soup</li><li>5 × Signature Korean Seaweed Soup</li></ul><h5>Snacks</h5><ul><li>2 × Mother's Glow Brownies</li><li>2 × Rejuvenating Bars</li></ul><h5>Teas</h5><ul><li>1 × Mother's Chai Blend</li><li>1 × Recover & Relax Blend</li><li>1 × Protect & Balance Blend</li></ul>",
+            "description_2": "<h5>Soups</h5><ul><li>3 × Golden Chicken and Turmeric Stew</li><li>3 × 5 Mushroom & Ume Plum Soup</li><li>3 × Signature Seaweed Soup</li><li>3 × Vegan Seaweed Soup</li><li>3 × Satsumaimo Red Miso Beef Stew</li></ul><h5>Snacks</h5><ul><li>2 × Mother's Glow Brownies</li><li>2 × Rejuvenating Bars</li></ul><h5>Teas</h5><ul><li>1 × Mother's Chai Blend</li><li>1 × Recover & Relax Blend</li><li>1 × Protect & Balance Blend</li></ul><h5>Staples</h5><ul><li>1 × Signature Ume</li></ul>",
             "badge": "Best Value",
             "bg_color": "#8b7d74",
             "color_text": "#ffffff"
