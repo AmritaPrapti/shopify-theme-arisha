@@ -1,0 +1,193 @@
+{% comment %}
+  Testimonial card
+  ----------------
+  One review card. Rendered twice by the testimonials section:
+
+    - mode: 'static'   — a card the merchant typed into a block, or a skeleton.
+    - mode: 'template' — inside a <template>, with every hook emitted and left
+                         empty. testimonials-judgeme.js clones it per review and
+                         removes the hooks it has no data for.
+
+  Because both paths come through here, a change to the markup lands on the
+  Judge.me reviews and the hand-written ones at the same time.
+
+  Accepts:
+    mode          - 'static' (default) or 'template'
+    block         - the section block, for theme-editor attributes
+    rating        - 0-5
+    title         - review headline
+    body          - review text (richtext or string)
+    author        - reviewer name
+    location      - reviewer location
+    date          - display date
+    date_iso      - machine-readable date for <time datetime>
+    product_title - product the review is about
+    product_url   - link to that product
+    verified      - truthy for the verified-buyer badge
+{% endcomment %}
+
+{%- liquid
+  assign s = section.settings
+  assign is_template = false
+  if mode == 'template'
+    assign is_template = true
+  endif
+
+  assign show_stars = false
+  if is_template
+    assign show_stars = true
+  elsif s.show_card_stars and rating > 0
+    assign show_stars = true
+  endif
+
+  assign show_title = false
+  if is_template
+    assign show_title = true
+  elsif s.show_card_title and title != blank
+    assign show_title = true
+  endif
+
+  assign show_verified = false
+  if is_template
+    assign show_verified = true
+  elsif s.show_verified and verified
+    assign show_verified = true
+  endif
+
+  assign show_date = false
+  if is_template
+    assign show_date = true
+  elsif s.show_date and date != blank
+    assign show_date = true
+  endif
+
+  assign show_product = false
+  if is_template
+    assign show_product = true
+  elsif s.show_product and product_title != blank
+    assign show_product = true
+  endif
+
+  assign show_location = false
+  if is_template
+    assign show_location = true
+  elsif location != blank
+    assign show_location = true
+  endif
+
+  assign star_rating = rating
+  if star_rating == blank or star_rating == 0
+    assign star_rating = 5
+  endif
+
+  assign body_class = 'jm-review__body'
+  if s.clamp_body
+    assign body_class = 'jm-review__body jm-review__body--clamped'
+  endif
+-%}
+
+<div class="jm-slider__slide"{% if block %} {{ block.shopify_attributes }}{% endif %}>
+  <figure class="jm-review">
+    {%- comment -%}
+      Drawn, not typed. A text quote mark drags along its font's full line box
+      and em advance, so it reserved far more space than the mark itself
+      occupied — and no line-height could take that back.
+
+      Icon: "quote-left" from Font Awesome Free 7.3.1, CC BY 4.0
+      (https://fontawesome.com, https://fontawesome.com/license/free),
+      Copyright Fonticons, Inc.
+
+      The viewBox is tightened to the path's own bounding box. Font Awesome
+      ships it centred in a 640x640 square that is 65% empty, which would have
+      reintroduced exactly the padding this SVG replaced.
+    {%- endcomment -%}
+    {%- if s.show_quote_mark and s.quote_mark_image != blank -%}
+      {%- comment -%}
+        A merchant-supplied mark. The wrapper carries the size and is marked
+        decorative, so a filename never reaches a screen reader whatever alt
+        text the image was uploaded with. The mark tops out at 12rem, so 360w
+        covers it on a 3x screen.
+      {%- endcomment -%}
+      {%- capture quote_sizes -%}{{ s.quote_mark_size | times: 10 | round }}px{%- endcapture -%}
+      <span class="jm-review__quote-mark" aria-hidden="true">
+        {{
+          s.quote_mark_image
+          | image_url: width: 360
+          | image_tag:
+            widths: '40, 80, 120, 180, 240, 360',
+            sizes: quote_sizes,
+            class: 'jm-review__quote-image',
+            alt: ''
+        }}
+      </span>
+    {%- elsif s.show_quote_mark -%}
+      <svg
+        class="jm-review__quote-mark"
+        viewBox="96 160 448 320"
+        fill="currentColor"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M96 280C96 213.7 149.7 160 216 160L224 160C241.7 160 256 174.3 256 192C256 209.7 241.7 224 224 224L216 224C185.1 224 160 249.1 160 280L160 288L224 288C259.3 288 288 316.7 288 352L288 416C288 451.3 259.3 480 224 480L160 480C124.7 480 96 451.3 96 416L96 280zM352 280C352 213.7 405.7 160 472 160L480 160C497.7 160 512 174.3 512 192C512 209.7 497.7 224 480 224L472 224C441.1 224 416 249.1 416 280L416 288L480 288C515.3 288 544 316.7 544 352L544 416C544 451.3 515.3 480 480 480L416 480C380.7 480 352 451.3 352 416L352 280z"/>
+      </svg>
+    {%- endif -%}
+
+    {%- if show_stars -%}
+      <span
+        class="jm-review__stars jm-testimonials__stars"
+        style="--jm-star-rating: {{ star_rating }};"
+        role="img"
+        aria-label="{{ star_rating }} out of 5 stars"
+        data-jm-card-stars
+      ></span>
+    {%- endif -%}
+
+    {%- if show_title -%}
+      <p class="jm-review__title" data-jm-title>{{ title }}</p>
+    {%- endif -%}
+
+    <blockquote class="{{ body_class }}" data-jm-body>{{ body }}</blockquote>
+
+    <figcaption class="jm-review__footer">
+      <div class="jm-review__meta">
+        {%- if s.show_author -%}
+          <p class="jm-review__author" data-jm-author>{{ author }}</p>
+        {%- endif -%}
+
+        <span class="jm-review__sub" data-jm-sub>
+          {%- if show_verified -%}
+            <span class="jm-review__verified" data-jm-verified>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+                <circle cx="8" cy="8" r="8" fill="currentColor" />
+                <path
+                  d="M4.6 8.3l2.1 2.1 4.7-4.7"
+                  stroke="var(--jm-card-background, #fff)"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              {{ s.verified_label }}
+            </span>
+          {%- endif -%}
+
+          {%- if show_location -%}
+            <span data-jm-location>{{ location }}</span>
+          {%- endif -%}
+
+          {%- if show_product -%}
+            <a
+              class="jm-review__product"
+              href="{{ product_url | default: '#' }}"
+              data-jm-product
+            >{{ product_title }}</a>
+          {%- endif -%}
+
+          {%- if show_date -%}
+            <time class="jm-review__date" datetime="{{ date_iso }}" data-jm-date>{{ date }}</time>
+          {%- endif -%}
+        </span>
+      </div>
+    </figcaption>
+  </figure>
+</div>

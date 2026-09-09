@@ -1,0 +1,516 @@
+/* Testimonials (Judge.me)
+   ------------------------
+   Left column carries the pitch (eyebrow, heading, average rating, link);
+   right column is a scroll-snap track of review cards. All tunables arrive as
+   custom properties set inline by the section, so one stylesheet serves every
+   configuration. */
+
+.jm-testimonials {
+  display: grid;
+  gap: var(--jm-row-gap, 3.2rem);
+}
+
+@media screen and (min-width: 990px) {
+  .jm-testimonials--split {
+    grid-template-columns: var(--jm-aside-width, 34%) 1fr;
+    gap: var(--jm-column-gap, 4.8rem);
+    align-items: var(--jm-align-items, center);
+  }
+
+  /* Text on the right: the aside is second in the source order so the reviews
+     stay first for screen readers and for the stacked mobile layout. */
+  .jm-testimonials--split.jm-testimonials--reverse {
+    grid-template-columns: 1fr var(--jm-aside-width, 34%);
+  }
+  .jm-testimonials--split.jm-testimonials--reverse .jm-testimonials__aside {
+    order: 2;
+  }
+  .jm-testimonials--split.jm-testimonials--reverse .jm-testimonials__main {
+    order: 1;
+  }
+}
+
+/* ---------------------------------------------------------------- aside */
+
+.jm-testimonials__aside {
+  text-align: var(--jm-aside-alignment, left);
+}
+
+.jm-testimonials__eyebrow {
+  margin: 0 0 1.2rem;
+  font-size: var(--jm-eyebrow-size, 1.2rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--jm-eyebrow-color, rgb(var(--color-foreground)));
+}
+
+.jm-testimonials__heading {
+  margin: 0;
+  color: var(--jm-heading-color, rgb(var(--color-foreground)));
+}
+
+.jm-testimonials__heading + .jm-testimonials__rating,
+.jm-testimonials__heading + .jm-testimonials__aside-text,
+.jm-testimonials__heading + .jm-testimonials__link {
+  margin-top: 2rem;
+}
+
+.jm-testimonials__rating {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: var(--jm-aside-items, flex-start);
+}
+
+.jm-testimonials__rating-text {
+  margin: 0;
+  font-size: var(--jm-rating-text-size, 1.4rem);
+  /* This text is usually two separate statements on two lines, so it needs more
+     leading than a running paragraph would. */
+  line-height: var(--jm-rating-text-line-height, 1.7);
+  color: rgba(var(--color-foreground));
+  max-width: 22ch;
+}
+.jm-testimonials__rating-text > :first-child { margin-top: 0; }
+.jm-testimonials__rating-text > :last-child { margin-bottom: 0; }
+
+.jm-testimonials__aside-text {
+  color: rgba(var(--color-foreground));
+}
+.jm-testimonials__aside-text > :first-child { margin-top: 0; }
+.jm-testimonials__aside-text > :last-child { margin-bottom: 0; }
+
+.jm-testimonials__link {
+  /* inline-block, not inline-flex: text-decoration is not painted across a flex
+     gap, which split the rule into two dashes. */
+  display: inline-block;
+  margin-top: 1.6rem;
+  font-size: var(--jm-link-size, 1.4rem);
+  color: var(--jm-link-color, rgb(var(--color-link)));
+  text-decoration: underline;
+  text-decoration-thickness: 0.1rem;
+  text-underline-offset: 0.4rem;
+}
+/* Thickness, unlike a border, changes without nudging the text. */
+.jm-testimonials__link:hover {
+  text-decoration-thickness: 0.2rem;
+}
+
+/* Star row. Built from a text gradient so a fractional average (4.96) renders
+   as a partly filled star instead of being rounded away. */
+.jm-testimonials__stars {
+  --jm-star-percent: calc(var(--jm-star-rating, 5) / 5 * 100%);
+  font-family: Times, 'Times New Roman', serif;
+  font-size: var(--jm-star-size, 2.2rem);
+  letter-spacing: 0.2em;
+  line-height: 1;
+  display: block;
+}
+
+.jm-testimonials__stars::before {
+  content: '★★★★★';
+  background: linear-gradient(
+    90deg,
+    var(--jm-star-color, rgb(var(--color-foreground))) var(--jm-star-percent),
+    rgba(var(--color-foreground), 0.16) var(--jm-star-percent)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+@media (forced-colors: active) {
+  .jm-testimonials__stars::before {
+    -webkit-text-fill-color: currentColor;
+    color: currentColor;
+  }
+}
+
+/* App blocks the merchant drops in (a Judge.me rating badge, for instance). */
+.jm-testimonials__app-blocks {
+  margin-top: 2rem;
+}
+.jm-testimonials__app-block + .jm-testimonials__app-block {
+  margin-top: 1.2rem;
+}
+.jm-testimonials__app-blocks--below {
+  margin-top: 3.2rem;
+}
+
+/* --------------------------------------------------------------- slider */
+
+.jm-testimonials__main {
+  min-width: 0; /* lets the track shrink inside the grid instead of overflowing */
+}
+
+.jm-slider {
+  position: relative;
+  /* flow-root, not block: the track's negative margins would otherwise collapse
+     through and make this box match the track's border edge instead of the
+     card's. The overlaid arrows are positioned against this box, so that
+     collapse is what let them drift outside the card. */
+  display: flow-root;
+}
+
+.jm-slider__track {
+  display: flex;
+  gap: var(--jm-slide-gap, 2rem);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  /* Room for the focus ring of anything focusable inside a card, clawed back
+     with a matching negative margin. The scroll-padding keeps the snap points
+     aligned with the slide offsets despite that inset. */
+  padding: 0.4rem;
+  margin: -0.4rem;
+  scroll-padding-inline: 0.4rem;
+  list-style: none;
+  scrollbar-width: none;
+}
+.jm-slider__track::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .jm-slider__track { scroll-behavior: auto; }
+}
+
+.jm-slider__slide {
+  flex: 0 0
+    calc(
+      (100% - (var(--jm-per-view, 1) - 1) * var(--jm-slide-gap, 2rem)) / var(--jm-per-view, 1)
+    );
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+@media screen and (max-width: 989px) {
+  .jm-slider__slide {
+    flex-basis: calc(
+      (100% - (var(--jm-per-view-mobile, 1) - 1) * var(--jm-slide-gap, 2rem)) /
+        var(--jm-per-view-mobile, 1)
+    );
+  }
+}
+
+/* Fade mode stacks the slides and cross-fades them; native scrolling is off, so
+   the buttons are the only way through. Single slide per view only. */
+.jm-slider--fade .jm-slider__track {
+  display: grid;
+  overflow: hidden;
+  scroll-snap-type: none;
+}
+.jm-slider--fade .jm-slider__slide {
+  grid-area: 1 / 1;
+  flex-basis: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--jm-fade-duration, 400ms) ease;
+}
+.jm-slider--fade .jm-slider__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+@media (prefers-reduced-motion: reduce) {
+  .jm-slider--fade .jm-slider__slide { transition: none; }
+}
+
+/* ----------------------------------------------------------------- card */
+
+.jm-review {
+  /* <figure> carries a UA margin of 1em 40px. Left unreset it shrinks the card
+     inside its slide, and since the overlaid arrows are anchored to the slider
+     rather than the card, they end up hanging past the card's edge. */
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  min-height: var(--jm-card-min-height, 0);
+  padding: var(--jm-card-padding, 3.2rem);
+  border-radius: var(--jm-card-radius, 1.6rem);
+  background: var(--jm-card-background, rgba(var(--color-foreground), 0.04));
+  color: var(--jm-card-color, rgb(var(--color-foreground)));
+  text-align: var(--jm-card-alignment, left);
+  border: var(--jm-card-border-width, 0) solid var(--jm-card-border-color, transparent);
+  box-shadow: var(--jm-card-shadow, none);
+}
+
+.jm-review__quote-mark {
+  /* An <svg>, so the box is exactly the mark: no font line box, no em advance.
+     The explicit width also keeps the flex column from stretching it. */
+  display: block;
+  width: var(--jm-quote-size, 4.8rem);
+  height: auto;
+  flex: 0 0 auto;
+  margin-bottom: 1.6rem;
+  color: var(--jm-quote-color, currentColor);
+}
+
+/* A merchant-supplied mark: the wrapper above is what carries the width, so the
+   image just fills it and keeps its own aspect ratio. */
+.jm-review__quote-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.jm-review__stars {
+  margin-bottom: 1.6rem;
+}
+
+.jm-review__title {
+  margin: 0 0 1rem;
+  font-size: var(--jm-review-title-size, 1.8rem);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.jm-review__body {
+  /* base.css styles every <blockquote> italic, dimmed and with a rule down its
+     left edge. A review card is not a pull quote, so those are all reset here
+     and the slant is left to a setting instead. */
+  margin: 0;
+  border-left: 0;
+  padding-left: 0;
+  color: inherit;
+  font-style: var(--jm-review-style, normal);
+  font-size: var(--jm-review-size, 1.8rem);
+  line-height: var(--jm-review-line-height, 1.6);
+  /* Keeps every card the same height when the quotes differ in length. */
+  flex: 1 1 auto;
+}
+.jm-review__body > :first-child { margin-top: 0; }
+.jm-review__body > :last-child { margin-bottom: 0; }
+
+/* Clamps long reviews so one rambling entry cannot stretch the whole track. */
+.jm-review__body--clamped {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--jm-review-clamp, 6);
+  line-clamp: var(--jm-review-clamp, 6);
+  overflow: hidden;
+  flex: 0 1 auto;
+}
+
+.jm-review__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.6rem 2rem;
+  /* Sits on the card's bottom edge however short the quote is. Cards in a row
+     stretch to the tallest one, and trimming the body stops it from growing to
+     fill the slack, so the footer has to claim the leftover space itself. */
+  margin-top: auto;
+  /* padding-top: 2.4rem; */
+}
+
+.jm-review__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.jm-review__author {
+  margin: 0;
+  font-size: var(--jm-author-size, 1.4rem);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+
+.jm-review__sub {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: var(--jm-author-meta-size, 1.2rem);
+  line-height: 1.3;
+  color: var(--jm-card-meta-color, currentColor);
+  opacity: 0.72;
+}
+
+.jm-review__verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  opacity: 1;
+  color: var(--jm-verified-color, currentColor);
+}
+.jm-review__verified svg {
+  width: 1.3rem;
+  height: 1.3rem;
+  flex: 0 0 auto;
+}
+
+.jm-review__product {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+/* -------------------------------------------------------------- controls */
+
+.jm-slider__controls {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+/* Tucked into the card footer, as in the reference design. */
+.jm-review__footer .jm-slider__controls {
+  margin-left: auto;
+}
+
+.jm-slider__controls--below {
+  justify-content: var(--jm-controls-justify, flex-start);
+  margin-top: 2.4rem;
+}
+
+.jm-slider__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--jm-button-size, 4rem);
+  height: var(--jm-button-size, 4rem);
+  flex: 0 0 auto;
+  padding: 0;
+  border-radius: 50%;
+  border: 0.1rem solid var(--jm-button-border, rgba(var(--color-foreground), 0.3));
+  background: var(--jm-button-background, transparent);
+  color: var(--jm-button-color, rgb(var(--color-foreground)));
+  cursor: pointer;
+  transition: background var(--duration-short, 100ms) ease, opacity var(--duration-short, 100ms) ease;
+}
+.jm-slider__button:hover:not(:disabled) {
+  background: var(--jm-button-background-hover, rgba(var(--color-foreground), 0.07));
+}
+.jm-slider__button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.jm-slider__button svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+.jm-slider__button--prev svg { transform: rotate(180deg); }
+
+.jm-slider__counter {
+  font-size: var(--jm-counter-size, 1.3rem);
+  font-variant-numeric: tabular-nums;
+  color: var(--jm-counter-color, rgba(var(--color-foreground), 0.7));
+  min-width: 4ch;
+  text-align: center;
+}
+
+/* Dots as an alternative to the numeric counter. */
+.jm-slider__dots {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.jm-slider__dot {
+  width: 0.8rem;
+  height: 0.8rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(var(--color-foreground), 0.25);
+  cursor: pointer;
+  transition: background var(--duration-short, 100ms) ease, transform var(--duration-short, 100ms) ease;
+}
+.jm-slider__dot[aria-current='true'] {
+  background: var(--jm-dot-active-color, rgb(var(--color-foreground)));
+  transform: scale(1.35);
+}
+
+/* -------------------------------------------------------- loading states */
+
+.jm-testimonials__status {
+  font-size: 1.4rem;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+/* Skeleton shown while the Judge.me request is in flight, so the section does
+   not collapse and shove the rest of the page around. */
+.jm-review--skeleton {
+  pointer-events: none;
+}
+.jm-review--skeleton .jm-skeleton-line {
+  height: 1.4rem;
+  margin-bottom: 1rem;
+  border-radius: 0.4rem;
+  background: currentColor;
+  opacity: 0.12;
+  animation: jm-pulse 1.4s ease-in-out infinite;
+}
+.jm-review--skeleton .jm-skeleton-line:nth-child(2) { width: 92%; animation-delay: 0.1s; }
+.jm-review--skeleton .jm-skeleton-line:nth-child(3) { width: 78%; animation-delay: 0.2s; }
+.jm-review--skeleton .jm-skeleton-line:last-child { width: 40%; margin-bottom: 0; }
+
+@keyframes jm-pulse {
+  0%, 100% { opacity: 0.09; }
+  50% { opacity: 0.2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jm-review--skeleton .jm-skeleton-line { animation: none; }
+}
+
+/* ------------------------------------------------- controls in the card */
+
+/* `arrows_position: card` puts the controls in the bottom corner of the card,
+   as in the reference design. They live outside the track (one set, not one per
+   slide) and are overlaid, with matching reserve space in the card footer so
+   the reviewer's name never runs underneath them. */
+.jm-slider--controls-card {
+  --jm-controls-inset: var(--jm-card-padding, 3.2rem);
+}
+.jm-slider__controls--overlay {
+  position: absolute;
+  right: var(--jm-controls-inset, 3.2rem);
+  bottom: var(--jm-controls-inset, 3.2rem);
+  z-index: 1;
+}
+.jm-slider--controls-card .jm-review__footer {
+  padding-right: calc(var(--jm-button-size, 4rem) * 2 + 8rem);
+  min-height: var(--jm-button-size, 4rem);
+}
+
+@media screen and (max-width: 749px) {
+  /* Two buttons plus a counter beside a name is too much for a narrow card, so
+     the controls drop onto their own row. */
+  .jm-slider--controls-card {
+    --jm-controls-inset: auto;
+  }
+  .jm-slider--controls-card .jm-slider__controls--overlay {
+    position: static;
+    justify-content: center;
+    margin-top: 2.4rem;
+  }
+  .jm-slider--controls-card .jm-review__footer {
+    padding-right: 0;
+  }
+}
+
+/* Nothing to page through: keep the layout, drop the affordances. */
+.jm-slider--static .jm-review__footer {
+  padding-right: 0;
+}
+
+/* Full width drops the page-width max, but keeps its gutters — text running
+   into the viewport edge is never what "full width" means here. */
+.jm-testimonials-section__wide {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .jm-testimonials-section__wide {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}

@@ -1,0 +1,1182 @@
+{% comment %}
+  Testimonials (Judge.me)
+  -----------------------
+  An aside that carries the pitch and the shop's average rating, beside a
+  carousel of individual reviews.
+
+  Where the reviews come from
+  ---------------------------
+  Liquid cannot call an API, so real Judge.me data has to arrive one of two
+  ways: through Judge.me's own app blocks, or through a request from the
+  browser. Judge.me's `/api/v1/reviews` list endpoint is private-token only, so
+  it cannot be used here — the token would be readable in the page source. Its
+  *widget* endpoint, `/api/v1/widgets/all_reviews_page.json`, does accept the
+  shop's public token and does send CORS headers, so the storefront can call it
+  directly. It replies with the widget's own markup, and every field we want is
+  on a data attribute or a `jdgm-rev__*` class. testimonials-judgeme.js parses
+  that and re-renders the reviews through snippets/testimonial-card.liquid, so
+  the section keeps this theme's design rather than Judge.me's.
+
+  The public token is in Judge.me under Settings > Integrations > Judge.me API.
+  It is a read-only, browser-safe token; Judge.me publishes it for exactly this
+  use. Leave the shop domain blank to use this store's own .myshopify.com domain.
+
+  Blocks
+  ------
+    testimonial - a review written by hand. Used on its own, or as the fallback
+                  if Judge.me cannot be reached.
+    @app        - any app block, so a Judge.me average-rating badge (or any
+                  other app's block) can sit in the aside or below the section.
+{% endcomment %}
+
+{{ 'testimonials-judgeme.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'testimonials-judgeme.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign s = section.settings
+
+  assign jm_domain = s.judgeme_shop_domain | strip | default: shop.permanent_domain
+  assign jm_token = s.judgeme_api_token | strip
+
+  assign manual_blocks = section.blocks | where: 'type', 'testimonial'
+  assign app_blocks = section.blocks | where: 'type', '@app'
+
+  # No token means no reviews to fetch, whatever the source says.
+  assign source = s.review_source
+  if source != 'manual' and jm_token == blank
+    assign source = 'manual'
+  endif
+
+  assign product_handle = ''
+  if s.judgeme_product != blank
+    assign product_handle = s.judgeme_product.handle
+  endif
+
+  # Fade cross-fades one card at a time, so it ignores the per-view settings.
+  assign per_view = s.per_view
+  assign per_view_mobile = s.per_view_mobile
+  if s.transition == 'fade'
+    assign per_view = 1
+    assign per_view_mobile = 1
+  endif
+-%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ s.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ s.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ s.padding_top }}px;
+      padding-bottom: {{ s.padding_bottom }}px;
+    }
+  }
+
+  /* Every tunable is a custom property, so the stylesheet stays static and
+     cacheable while each section instance styles itself. Colours are guarded:
+     a cleared colour setting must fall through to the stylesheet default, and
+     an empty `var()` value would not. */
+  #shopify-section-{{ section.id }} .jm-testimonials {
+    --jm-aside-width: {{ s.aside_width }}%;
+    --jm-column-gap: {{ s.column_gap }}px;
+    --jm-row-gap: {{ s.row_gap }}px;
+    --jm-align-items: {{ s.vertical_alignment }};
+    --jm-aside-alignment: {{ s.aside_alignment }};
+    --jm-aside-items: {% if s.aside_alignment == 'center' %}center{% elsif s.aside_alignment == 'right' %}flex-end{% else %}flex-start{% endif %};
+
+    --jm-eyebrow-size: {{ s.eyebrow_size }}rem;
+    --jm-rating-text-size: {{ s.rating_text_size }}rem;
+    --jm-rating-text-line-height: {{ s.rating_text_line_height }};
+    --jm-link-size: {{ s.link_size }}rem;
+    --jm-star-size: {{ s.star_size }}rem;
+    {% if s.eyebrow_color != blank %}--jm-eyebrow-color: {{ s.eyebrow_color }};{% endif %}
+    {% if s.heading_color != blank %}--jm-heading-color: {{ s.heading_color }};{% endif %}
+    {% if s.link_color != blank %}--jm-link-color: {{ s.link_color }};{% endif %}
+    {% if s.star_color != blank %}--jm-star-color: {{ s.star_color }};{% endif %}
+
+    --jm-per-view: {{ per_view }};
+    --jm-per-view-mobile: {{ per_view_mobile }};
+    --jm-slide-gap: {{ s.slide_gap }}px;
+    --jm-fade-duration: {{ s.fade_duration }}ms;
+
+    --jm-card-radius: {{ s.card_radius }}px;
+    --jm-card-padding: {{ s.card_padding }}px;
+    --jm-card-min-height: {{ s.card_min_height }}px;
+    --jm-card-alignment: {{ s.card_alignment }};
+    --jm-card-border-width: {{ s.card_border_width }}px;
+    {% if s.card_background != blank %}--jm-card-background: {{ s.card_background }};{% endif %}
+    {% if s.card_text_color != blank %}--jm-card-color: {{ s.card_text_color }};{% endif %}
+    {% if s.card_border_color != blank %}--jm-card-border-color: {{ s.card_border_color }};{% endif %}
+    {% if s.card_shadow %}--jm-card-shadow: 0 {{ s.card_shadow_offset }}px {{ s.card_shadow_blur }}px rgba(var(--color-shadow), {{ s.card_shadow_opacity | divided_by: 100.0 }});{% endif %}
+
+    --jm-quote-size: {{ s.quote_mark_size }}rem;
+    {% if s.quote_mark_color != blank %}--jm-quote-color: {{ s.quote_mark_color }};{% endif %}
+
+    --jm-review-size: {{ s.review_text_size }}rem;
+    --jm-review-style: {% if s.review_italic %}italic{% else %}normal{% endif %};
+    --jm-review-line-height: {{ s.review_line_height }};
+    --jm-review-clamp: {{ s.review_clamp_lines }};
+    --jm-review-title-size: {{ s.review_title_size }}rem;
+    --jm-author-size: {{ s.author_size }}rem;
+    --jm-author-meta-size: {{ s.author_meta_size }}rem;
+    {% if s.verified_color != blank %}--jm-verified-color: {{ s.verified_color }};{% endif %}
+
+    --jm-button-size: {{ s.arrow_size }}px;
+    --jm-counter-size: {{ s.counter_size }}rem;
+    {% if s.arrow_color != blank %}--jm-button-color: {{ s.arrow_color }};{% endif %}
+    {% if s.arrow_border_color != blank %}--jm-button-border: {{ s.arrow_border_color }};{% endif %}
+    {% if s.arrow_background != blank %}--jm-button-background: {{ s.arrow_background }};{% endif %}
+    {% if s.counter_color != blank %}--jm-counter-color: {{ s.counter_color }}; --jm-dot-active-color: {{ s.counter_color }};{% endif %}
+    --jm-controls-justify: {% if s.controls_alignment == 'center' %}center{% elsif s.controls_alignment == 'right' %}flex-end{% else %}flex-start{% endif %};
+  }
+{%- endstyle -%}
+
+{%- capture controls -%}
+  <div
+    class="jm-slider__controls{% if s.arrows_position == 'card' %} jm-slider__controls--overlay{% else %} jm-slider__controls--below{% endif %}"
+    data-jm-controls
+  >
+    {%- if s.show_arrows -%}
+      <button
+        type="button"
+        class="jm-slider__button jm-slider__button--prev"
+        aria-label="{{ s.previous_label | escape }}"
+        data-jm-prev
+      >
+        <svg viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
+          <path d="M4.5 1.5L10 7l-5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    {%- endif -%}
+
+    {%- if s.pagination_style == 'counter' -%}
+      <span class="jm-slider__counter" aria-live="polite" data-jm-counter></span>
+    {%- elsif s.pagination_style == 'dots' -%}
+      <div class="jm-slider__dots" role="tablist" aria-label="{{ s.pagination_label | escape }}" data-jm-dots></div>
+    {%- endif -%}
+
+    {%- if s.show_arrows -%}
+      <button
+        type="button"
+        class="jm-slider__button jm-slider__button--next"
+        aria-label="{{ s.next_label | escape }}"
+        data-jm-next
+      >
+        <svg viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
+          <path d="M4.5 1.5L10 7l-5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    {%- endif -%}
+  </div>
+{%- endcapture -%}
+
+{%- capture app_block_markup -%}
+  {%- for block in app_blocks -%}
+    <div class="jm-testimonials__app-block" {{ block.shopify_attributes }}>
+      {%- render block -%}
+    </div>
+  {%- endfor -%}
+{%- endcapture -%}
+
+<div
+  class="jm-testimonials-section color-{{ s.color_scheme }} gradient"
+  {% if s.anchor_id != blank %}id="{{ s.anchor_id | escape }}"{% endif %}
+>
+  <div class="{% if s.full_width == false %}page-width{% else %}jm-testimonials-section__wide{% endif %} section-{{ section.id }}-padding{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    <judgeme-testimonials
+      class="jm-testimonials{% if s.layout != 'stacked' %} jm-testimonials--split{% endif %}{% if s.layout == 'text_right' %} jm-testimonials--reverse{% endif %}"
+      aria-roledescription="carousel"
+      {% if s.eyebrow != blank %}aria-label="{{ s.eyebrow | strip_html | escape }}"{% endif %}
+    >
+      <script type="application/json" data-jm-config>
+        {
+          "source": {{ source | json }},
+          "shopDomain": {{ jm_domain | json }},
+          "apiToken": {{ jm_token | json }},
+          "maxReviews": {{ s.max_reviews | json }},
+          "minRating": {{ s.min_rating | json }},
+          "verifiedOnly": {{ s.verified_only | json }},
+          "minChars": {{ s.min_chars | json }},
+          "maxChars": {{ s.max_chars | json }},
+          "productHandle": {{ product_handle | json }},
+          "sort": {{ s.review_sort | json }},
+          "cacheMinutes": {{ s.cache_minutes | json }},
+          "syncSummary": {{ s.sync_summary | json }},
+          "showCardStars": {{ s.show_card_stars | json }},
+          "showTitle": {{ s.show_card_title | json }},
+          "showVerified": {{ s.show_verified | json }},
+          "showDate": {{ s.show_date | json }},
+          "showProduct": {{ s.show_product | json }},
+          "transition": {{ s.transition | json }},
+          "autoplay": {{ s.autoplay | json }},
+          "autoplaySpeed": {{ s.autoplay_speed | json }},
+          "loop": {{ s.loop | json }},
+          "counterFormat": {{ s.counter_format | json }},
+          "anonymousLabel": {{ s.anonymous_label | json }},
+          "outOfFiveLabel": "out of 5 stars",
+          "slideLabel": {{ s.slide_label | json }},
+          "goToLabel": {{ s.pagination_label | json }},
+          "locale": {{ request.locale.iso_code | json }}
+        }
+      </script>
+
+      {%- comment -%} ------------------------------------------- aside {%- endcomment -%}
+      <div class="jm-testimonials__aside">
+        {%- if s.eyebrow != blank -%}
+          <p class="jm-testimonials__eyebrow">{{ s.eyebrow }}</p>
+        {%- endif -%}
+
+        {%- if s.heading != blank -%}
+          <h2 class="jm-testimonials__heading inline-richtext {{ s.heading_size }}">
+            {{ s.heading }}
+          </h2>
+        {%- endif -%}
+
+        {%- if s.show_summary -%}
+          <div class="jm-testimonials__rating">
+            {%- if s.show_summary_stars -%}
+              <span
+                class="jm-testimonials__stars"
+                style="--jm-star-rating: {{ s.rating_value }};"
+                role="img"
+                aria-label="{{ s.rating_value }} out of 5 stars"
+                data-jm-summary-stars
+              ></span>
+            {%- endif -%}
+
+            {%- if s.rating_text != blank -%}
+              {%- liquid
+                assign average_markup = '<span data-jm-summary-average>' | append: s.rating_value | append: '</span>'
+                assign count_markup = '<span data-jm-summary-count>' | append: s.rating_count | append: '</span>'
+                assign rating_text = s.rating_text | escape | replace: '[average]', average_markup | replace: '[count]', count_markup | newline_to_br
+              -%}
+              <p class="jm-testimonials__rating-text">{{ rating_text }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if s.aside_text != blank -%}
+          <div class="jm-testimonials__aside-text rte">{{ s.aside_text }}</div>
+        {%- endif -%}
+
+        {%- if s.link_label != blank -%}
+          {%- comment -%}
+            Label and arrow are one text run, deliberately. The gap is a
+            non-breaking space because text-decoration paints across a space
+            but not across padding, a margin or a flex gap — and nbsp also
+            stops the arrow being orphaned on its own line. Wrapping the arrow
+            in a span would open a second inline box, and the browser then
+            paints the rule in two segments with a visible seam between them.
+            aria-label keeps the arrow out of the link's accessible name
+            without needing that wrapper.
+          {%- endcomment -%}
+          <a
+            class="jm-testimonials__link"
+            href="{{ s.link_url | default: '#' }}"
+            aria-label="{{ s.link_label | escape }}"
+          >
+            {{- s.link_label -}}&nbsp;&rarr;
+          </a>
+        {%- endif -%}
+
+        {%- if app_blocks.size > 0 and s.app_blocks_position == 'aside' -%}
+          <div class="jm-testimonials__app-blocks">{{ app_block_markup }}</div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} ------------------------------------------ reviews {%- endcomment -%}
+      <div class="jm-testimonials__main">
+        <div
+          class="jm-slider{% if s.transition == 'fade' %} jm-slider--fade{% endif %}{% if s.arrows_position == 'card' %} jm-slider--controls-card{% endif %}"
+          data-jm-slider
+        >
+          <div class="jm-slider__track" data-jm-track>
+            {%- if manual_blocks.size > 0 -%}
+              {%- for block in manual_blocks -%}
+                {%- render 'testimonial-card',
+                  block: block,
+                  rating: block.settings.rating,
+                  title: block.settings.title,
+                  body: block.settings.body,
+                  author: block.settings.author,
+                  location: block.settings.location,
+                  date: block.settings.date,
+                  product_title: block.settings.product.title,
+                  product_url: block.settings.product.url,
+                  verified: block.settings.verified
+                -%}
+              {%- endfor -%}
+            {%- endif -%}
+
+            {%- comment -%}
+              Nothing written by hand and reviews still to fetch: hold the space
+              with skeletons so the rest of the page does not jump when they
+              land. JS removes them either way.
+            {%- endcomment -%}
+            {%- if manual_blocks.size == 0 and source != 'manual' -%}
+              {%- assign skeleton_count = per_view | at_least: 1 -%}
+              {%- for i in (1..skeleton_count) -%}
+                <div class="jm-slider__slide" data-jm-skeleton data-jm-status>
+                  <div class="jm-review jm-review--skeleton" aria-hidden="true">
+                    <span class="jm-skeleton-line"></span>
+                    <span class="jm-skeleton-line"></span>
+                    <span class="jm-skeleton-line"></span>
+                    <span class="jm-skeleton-line"></span>
+                  </div>
+                </div>
+              {%- endfor -%}
+            {%- endif -%}
+          </div>
+
+          {%- if s.arrows_position == 'card' -%}
+            {{ controls }}
+          {%- endif -%}
+        </div>
+
+        {%- if s.arrows_position == 'below' -%}
+          {{ controls }}
+        {%- endif -%}
+      </div>
+
+      {%- comment -%}
+        The blueprint the JS clones for each fetched review. Rendered through the
+        same snippet as the hand-written cards so the two cannot drift apart.
+      {%- endcomment -%}
+      {%- if source != 'manual' -%}
+        <template data-jm-slide-template>
+          {%- render 'testimonial-card', mode: 'template' -%}
+        </template>
+      {%- endif -%}
+    </judgeme-testimonials>
+
+    {%- if app_blocks.size > 0 and s.app_blocks_position == 'below' -%}
+      <div class="jm-testimonials__app-blocks jm-testimonials__app-blocks--below">
+        {{ app_block_markup }}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Testimonials (Judge.me)",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 24,
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "info": "Link to this section from a button with #your-id (letters, numbers and hyphens)."
+    },
+
+    { "type": "header", "content": "Reviews" },
+    {
+      "type": "select",
+      "id": "review_source",
+      "label": "Where reviews come from",
+      "options": [
+        { "value": "judgeme", "label": "Judge.me (live)" },
+        { "value": "both", "label": "Written by hand, then Judge.me" },
+        { "value": "manual", "label": "Written by hand only" }
+      ],
+      "default": "judgeme",
+      "info": "Live reviews are fetched in the browser from Judge.me's public widget API. If Judge.me cannot be reached, any Testimonial blocks you have added are shown instead."
+    },
+    {
+      "type": "text",
+      "id": "judgeme_api_token",
+      "label": "Judge.me public API token",
+      "info": "Judge.me admin > Settings > Integrations > Judge.me API. Use the PUBLIC token — it is read-only and safe in a storefront. Never paste the private token here.",
+      "visible_if": "{{ section.settings.review_source != 'manual' }}"
+    },
+    {
+      "type": "text",
+      "id": "judgeme_shop_domain",
+      "label": "Shop domain",
+      "info": "Leave blank to use this store's .myshopify.com domain. Only set this to pull reviews from a different store.",
+      "visible_if": "{{ section.settings.review_source != 'manual' }}"
+    },
+    {
+      "type": "range",
+      "id": "max_reviews",
+      "label": "Number of reviews",
+      "min": 1,
+      "max": 24,
+      "step": 1,
+      "default": 6,
+      "visible_if": "{{ section.settings.review_source != 'manual' }}"
+    },
+    {
+      "type": "select",
+      "id": "review_sort",
+      "label": "Order",
+      "options": [
+        { "value": "recent", "label": "Most recent" },
+        { "value": "rating", "label": "Highest rated" },
+        { "value": "longest", "label": "Longest first" },
+        { "value": "shortest", "label": "Shortest first" },
+        { "value": "random", "label": "Random" }
+      ],
+      "default": "recent",
+      "visible_if": "{{ section.settings.review_source != 'manual' }}"
+    },
+    {
+      "type": "range",
+      "id": "min_rating",
+      "label": "Minimum star rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4,
+      "visible_if": "{{ section.settings.review_source != 'manual' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "verified_only",
+      "label": "Verified buyers only",
+      "default": false,
+      "visible_if": "{{ section.settings.review_source != 'manual' }}"
+    },
+    {
+      "type": "range",
+      "id": "min_chars",
+      "label": "Skip reviews shorter than",
+      "min": 0,
+      "max": 300,
+      "step": 10,
+      "unit": "ch",
+      "default": 40,
+      "info": "Keeps one-word reviews out of a section built around a long quote.",
+      "visible_if": "{{ section.settings.review_source != 'manual' }}"
+    },
+    {
+      "type": "range",
+      "id": "max_chars",
+      "label": "Skip reviews longer than",
+      "min": 0,
+      "max": 1000,
+      "step": 50,
+      "unit": "ch",
+      "default": 400,
+      "info": "0 for no limit.",
+      "visible_if": "{{ section.settings.review_source != 'manual' }}"
+    },
+    {
+      "type": "product",
+      "id": "judgeme_product",
+      "label": "Only reviews of this product",
+      "info": "Leave empty for reviews of every product. Ignored when reviews are written by hand."
+    },
+    {
+      "type": "range",
+      "id": "cache_minutes",
+      "label": "Cache reviews for",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "min",
+      "default": 30,
+      "info": "Reviews are remembered for the rest of the visitor's session, so Judge.me is called once rather than on every page. 0 to always refetch.",
+      "visible_if": "{{ section.settings.review_source != 'manual' }}"
+    },
+
+    { "type": "header", "content": "Layout" },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "text_left", "label": "Text left, reviews right" },
+        { "value": "text_right", "label": "Reviews left, text right" },
+        { "value": "stacked", "label": "Text above reviews" }
+      ],
+      "default": "text_left"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "aside_width",
+      "label": "Text column width",
+      "min": 20,
+      "max": 55,
+      "step": 1,
+      "unit": "%",
+      "default": 34,
+      "visible_if": "{{ section.settings.layout != 'stacked' }}"
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Space between columns",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48,
+      "visible_if": "{{ section.settings.layout != 'stacked' }}"
+    },
+    {
+      "type": "range",
+      "id": "row_gap",
+      "label": "Space between rows",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Vertical alignment",
+      "options": [
+        { "value": "start", "label": "Top" },
+        { "value": "center", "label": "Middle" },
+        { "value": "stretch", "label": "Stretch" }
+      ],
+      "default": "center",
+      "visible_if": "{{ section.settings.layout != 'stacked' }}"
+    },
+
+    { "type": "header", "content": "Text column" },
+    {
+      "type": "select",
+      "id": "aside_alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Loved by postpartum mothers"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size",
+      "label": "Eyebrow size",
+      "min": 1,
+      "max": 2.4,
+      "step": 0.1,
+      "unit": "rem",
+      "default": 1.2
+    },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow colour", "default": "#cc859a" },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Real stories from real moms"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" },
+        { "value": "hxl", "label": "Extra large" }
+      ],
+      "default": "h1"
+    },
+    { "type": "color", "id": "heading_color", "label": "Heading colour" },
+    {
+      "type": "richtext",
+      "id": "aside_text",
+      "label": "Body text"
+    },
+
+    { "type": "header", "content": "Average rating" },
+    {
+      "type": "checkbox",
+      "id": "show_summary",
+      "label": "Show average rating",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "sync_summary",
+      "label": "Use the live Judge.me average",
+      "default": true,
+      "info": "Replaces the values below with the shop's real average and review count once Judge.me answers.",
+      "visible_if": "{{ section.settings.show_summary and section.settings.review_source != 'manual' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_summary_stars",
+      "label": "Show stars",
+      "default": true,
+      "visible_if": "{{ section.settings.show_summary }}"
+    },
+    {
+      "type": "range",
+      "id": "rating_value",
+      "label": "Average rating",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "default": 4.9,
+      "visible_if": "{{ section.settings.show_summary }}"
+    },
+    {
+      "type": "text",
+      "id": "rating_count",
+      "label": "Review count",
+      "default": "650",
+      "visible_if": "{{ section.settings.show_summary }}"
+    },
+    {
+      "type": "textarea",
+      "id": "rating_text",
+      "label": "Rating text",
+      "default": "[average]/5 from [count]+\nverified customers",
+      "info": "[average] and [count] are replaced with the values above — or with the live Judge.me figures. Line breaks are kept.",
+      "visible_if": "{{ section.settings.show_summary }}"
+    },
+    {
+      "type": "range",
+      "id": "rating_text_size",
+      "label": "Rating text size",
+      "min": 1.1,
+      "max": 2.2,
+      "step": 0.1,
+      "unit": "rem",
+      "default": 1.4,
+      "visible_if": "{{ section.settings.show_summary }}"
+    },
+    {
+      "type": "range",
+      "id": "rating_text_line_height",
+      "label": "Rating text line height",
+      "min": 1.1,
+      "max": 2.2,
+      "step": 0.1,
+      "default": 1.7,
+      "visible_if": "{{ section.settings.show_summary }}"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star colour",
+      "default": "#cc859a",
+      "visible_if": "{{ section.settings.show_summary }}"
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "label": "Star size",
+      "min": 1.2,
+      "max": 4,
+      "step": 0.1,
+      "unit": "rem",
+      "default": 2.2,
+      "visible_if": "{{ section.settings.show_summary }}"
+    },
+
+    { "type": "header", "content": "Link" },
+    { "type": "text", "id": "link_label", "label": "Label", "default": "See all reviews" },
+    { "type": "url", "id": "link_url", "label": "Link" },
+    {
+      "type": "range",
+      "id": "link_size",
+      "label": "Size",
+      "min": 1.1,
+      "max": 2.2,
+      "step": 0.1,
+      "unit": "rem",
+      "default": 1.4
+    },
+    { "type": "color", "id": "link_color", "label": "Colour", "default": "#cc859a" },
+
+    { "type": "header", "content": "Review card" },
+    { "type": "color", "id": "card_background", "label": "Background", "default": "#f7eae8" },
+    { "type": "color", "id": "card_text_color", "label": "Text", "default": "#111111" },
+    {
+      "type": "select",
+      "id": "card_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Padding",
+      "min": 12,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "card_min_height",
+      "label": "Minimum height",
+      "min": 0,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "default": 240,
+      "info": "Stops the section resizing as reviews of different lengths come round."
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 6,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Border colour",
+      "visible_if": "{{ section.settings.card_border_width > 0 }}"
+    },
+    { "type": "checkbox", "id": "card_shadow", "label": "Drop shadow", "default": false },
+    {
+      "type": "range",
+      "id": "card_shadow_opacity",
+      "label": "Shadow opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 10,
+      "visible_if": "{{ section.settings.card_shadow }}"
+    },
+    {
+      "type": "range",
+      "id": "card_shadow_blur",
+      "label": "Shadow blur",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 24,
+      "visible_if": "{{ section.settings.card_shadow }}"
+    },
+    {
+      "type": "range",
+      "id": "card_shadow_offset",
+      "label": "Shadow offset",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8,
+      "visible_if": "{{ section.settings.card_shadow }}"
+    },
+
+    { "type": "header", "content": "Quote mark" },
+    { "type": "checkbox", "id": "show_quote_mark", "label": "Show quote mark", "default": true },
+    {
+      "type": "image_picker",
+      "id": "quote_mark_image",
+      "label": "Custom image",
+      "info": "Optional. Replaces the built-in quote mark. Leave empty to use the built-in one.",
+      "visible_if": "{{ section.settings.show_quote_mark }}"
+    },
+    {
+      "type": "range",
+      "id": "quote_mark_size",
+      "label": "Width",
+      "min": 2,
+      "max": 12,
+      "step": 0.2,
+      "unit": "rem",
+      "default": 4.8,
+      "visible_if": "{{ section.settings.show_quote_mark }}"
+    },
+    {
+      "type": "color",
+      "id": "quote_mark_color",
+      "label": "Colour",
+      "default": "#cc859a",
+      "info": "Applies to the built-in mark only.",
+      "visible_if": "{{ section.settings.show_quote_mark and section.settings.quote_mark_image == blank }}"
+    },
+
+    { "type": "header", "content": "What the card shows" },
+    { "type": "checkbox", "id": "show_card_stars", "label": "Star rating", "default": false },
+    { "type": "checkbox", "id": "show_card_title", "label": "Review headline", "default": false },
+    {
+      "type": "range",
+      "id": "review_title_size",
+      "label": "Headline size",
+      "min": 1.2,
+      "max": 3,
+      "step": 0.1,
+      "unit": "rem",
+      "default": 1.8,
+      "visible_if": "{{ section.settings.show_card_title }}"
+    },
+    {
+      "type": "range",
+      "id": "review_text_size",
+      "label": "Review text size",
+      "min": 1.2,
+      "max": 3.2,
+      "step": 0.1,
+      "unit": "rem",
+      "default": 1.9
+    },
+    {
+      "type": "checkbox",
+      "id": "review_italic",
+      "label": "Italic review text",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "review_line_height",
+      "label": "Review line height",
+      "min": 1.1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.6
+    },
+    {
+      "type": "checkbox",
+      "id": "clamp_body",
+      "label": "Trim long reviews",
+      "default": true,
+      "info": "Cuts the quote off after a set number of lines so one long review cannot stretch the section."
+    },
+    {
+      "type": "range",
+      "id": "review_clamp_lines",
+      "label": "Lines before trimming",
+      "min": 2,
+      "max": 16,
+      "step": 1,
+      "default": 6,
+      "visible_if": "{{ section.settings.clamp_body }}"
+    },
+    { "type": "checkbox", "id": "show_author", "label": "Reviewer name", "default": true },
+    {
+      "type": "text",
+      "id": "anonymous_label",
+      "label": "Name to use when the review has none",
+      "default": "Verified customer",
+      "visible_if": "{{ section.settings.show_author }}"
+    },
+    {
+      "type": "range",
+      "id": "author_size",
+      "label": "Name size",
+      "min": 1.1,
+      "max": 2.4,
+      "step": 0.1,
+      "unit": "rem",
+      "default": 1.4,
+      "visible_if": "{{ section.settings.show_author }}"
+    },
+    { "type": "checkbox", "id": "show_verified", "label": "Verified buyer badge", "default": true },
+    {
+      "type": "text",
+      "id": "verified_label",
+      "label": "Badge text",
+      "default": "Verified Buyer",
+      "visible_if": "{{ section.settings.show_verified }}"
+    },
+    {
+      "type": "color",
+      "id": "verified_color",
+      "label": "Badge colour",
+      "default": "#cc859a",
+      "visible_if": "{{ section.settings.show_verified }}"
+    },
+    { "type": "checkbox", "id": "show_product", "label": "Product reviewed", "default": false },
+    { "type": "checkbox", "id": "show_date", "label": "Review date", "default": false },
+    {
+      "type": "range",
+      "id": "author_meta_size",
+      "label": "Badge, product and date size",
+      "min": 1,
+      "max": 1.8,
+      "step": 0.1,
+      "unit": "rem",
+      "default": 1.2
+    },
+
+    { "type": "header", "content": "Slider" },
+    {
+      "type": "select",
+      "id": "transition",
+      "label": "Transition",
+      "options": [
+        { "value": "slide", "label": "Slide (swipeable)" },
+        { "value": "fade", "label": "Fade" }
+      ],
+      "default": "slide",
+      "info": "Slide uses native scrolling, so visitors can swipe on a phone. Fade shows one review at a time and is stepped with the arrows."
+    },
+    {
+      "type": "range",
+      "id": "fade_duration",
+      "label": "Fade duration",
+      "min": 100,
+      "max": 1200,
+      "step": 50,
+      "unit": "ms",
+      "default": 400,
+      "visible_if": "{{ section.settings.transition == 'fade' }}"
+    },
+    {
+      "type": "range",
+      "id": "per_view",
+      "label": "Reviews per view on desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 1,
+      "visible_if": "{{ section.settings.transition == 'slide' }}"
+    },
+    {
+      "type": "select",
+      "id": "per_view_mobile",
+      "label": "Reviews per view on mobile",
+      "options": [
+        { "value": "1", "label": "One" },
+        { "value": "2", "label": "Two" }
+      ],
+      "default": "1",
+      "visible_if": "{{ section.settings.transition == 'slide' }}"
+    },
+    {
+      "type": "range",
+      "id": "slide_gap",
+      "label": "Space between reviews",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 20,
+      "visible_if": "{{ section.settings.transition == 'slide' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop",
+      "default": true,
+      "info": "Off means the arrows grey out at each end."
+    },
+    { "type": "checkbox", "id": "autoplay", "label": "Advance automatically", "default": false },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Change every",
+      "min": 2,
+      "max": 15,
+      "step": 1,
+      "unit": "s",
+      "default": 5,
+      "visible_if": "{{ section.settings.autoplay }}"
+    },
+
+    { "type": "header", "content": "Slider controls" },
+    { "type": "checkbox", "id": "show_arrows", "label": "Show arrows", "default": true },
+    {
+      "type": "select",
+      "id": "arrows_position",
+      "label": "Controls position",
+      "options": [
+        { "value": "card", "label": "Inside the card" },
+        { "value": "below", "label": "Below the slider" }
+      ],
+      "default": "card"
+    },
+    {
+      "type": "select",
+      "id": "controls_alignment",
+      "label": "Controls alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center",
+      "visible_if": "{{ section.settings.arrows_position == 'below' }}"
+    },
+    {
+      "type": "range",
+      "id": "arrow_size",
+      "label": "Arrow button size",
+      "min": 28,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 40,
+      "visible_if": "{{ section.settings.show_arrows }}"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Arrow colour",
+      "default": "#7a746f",
+      "visible_if": "{{ section.settings.show_arrows }}"
+    },
+    {
+      "type": "color",
+      "id": "arrow_border_color",
+      "label": "Arrow border colour",
+      "default": "#c9bfb9",
+      "visible_if": "{{ section.settings.show_arrows }}"
+    },
+    {
+      "type": "color",
+      "id": "arrow_background",
+      "label": "Arrow background",
+      "visible_if": "{{ section.settings.show_arrows }}"
+    },
+    {
+      "type": "select",
+      "id": "pagination_style",
+      "label": "Position indicator",
+      "options": [
+        { "value": "counter", "label": "Counter (2 / 6)" },
+        { "value": "dots", "label": "Dots" },
+        { "value": "none", "label": "None" }
+      ],
+      "default": "counter"
+    },
+    {
+      "type": "text",
+      "id": "counter_format",
+      "label": "Counter format",
+      "default": "[current] / [total]",
+      "visible_if": "{{ section.settings.pagination_style == 'counter' }}"
+    },
+    {
+      "type": "range",
+      "id": "counter_size",
+      "label": "Counter size",
+      "min": 1,
+      "max": 2.4,
+      "step": 0.1,
+      "unit": "rem",
+      "default": 1.3,
+      "visible_if": "{{ section.settings.pagination_style == 'counter' }}"
+    },
+    {
+      "type": "color",
+      "id": "counter_color",
+      "label": "Indicator colour",
+      "default": "#7a746f",
+      "visible_if": "{{ section.settings.pagination_style != 'none' }}"
+    },
+
+    { "type": "header", "content": "App blocks" },
+    {
+      "type": "select",
+      "id": "app_blocks_position",
+      "label": "Where app blocks appear",
+      "options": [
+        { "value": "aside", "label": "In the text column" },
+        { "value": "below", "label": "Below the section" }
+      ],
+      "default": "aside",
+      "info": "Add an app block below — a Judge.me rating badge, for instance — and it renders here."
+    },
+
+    { "type": "header", "content": "Accessibility labels" },
+    { "type": "text", "id": "previous_label", "label": "Previous button", "default": "Previous review" },
+    { "type": "text", "id": "next_label", "label": "Next button", "default": "Next review" },
+    { "type": "text", "id": "pagination_label", "label": "Go to review", "default": "Go to review" },
+    { "type": "text", "id": "slide_label", "label": "Slide role description", "default": "review" },
+
+    { "type": "header", "content": "Section" },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:sections.all.padding.padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding.padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Used on its own, or as the fallback if Judge.me cannot be reached."
+        },
+        { "type": "textarea", "id": "body", "label": "Review", "default": "Everything was so easy to heat up when I barely had time to think about food. It truly made my recovery so much smoother." },
+        { "type": "text", "id": "title", "label": "Headline" },
+        { "type": "text", "id": "author", "label": "Reviewer name", "default": "Megan R." },
+        { "type": "text", "id": "location", "label": "Location" },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Star rating",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        { "type": "checkbox", "id": "verified", "label": "Verified buyer", "default": true },
+        { "type": "product", "id": "product", "label": "Product reviewed" },
+        { "type": "text", "id": "date", "label": "Date", "info": "Shown as typed." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials (Judge.me)"
+    }
+  ]
+}
+{% endschema %}
