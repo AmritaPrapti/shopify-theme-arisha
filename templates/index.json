@@ -230,12 +230,21 @@
             "custom_description": "Calming herbal blends to support recovery and relaxation.",
             "button_label": "SHOP TEAS"
           }
+        },
+        "featured_collection_6rgT8V": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "traditional-staples",
+            "custom_description": "Japanese super-foods to serve along side meals.",
+            "button_label": "SHOP STAPLES"
+          }
         }
       },
       "block_order": [
         "featured_collection_pzN9Va",
         "featured_collection_hDTcEV",
-        "featured_collection_YFkA9h"
+        "featured_collection_YFkA9h",
+        "featured_collection_6rgT8V"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
@@ -247,7 +256,7 @@
         "show_description": true,
         "show_button": true,
         "button_style": "primary",
-        "columns_desktop": 3,
+        "columns_desktop": 4,
         "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
         "show_view_all": false,
         "columns_mobile": "1",
