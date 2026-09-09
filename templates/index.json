@@ -152,12 +152,23 @@
             "link_label": "",
             "link": ""
           }
+        },
+        "column_rhRCbq": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/cherry-blossom_1.png",
+            "title": "Rooted in Tradition",
+            "text": "<p>Inspired by the Japanese tradition of Yakuzen — food as medicine.</p>",
+            "link_label": "",
+            "link": ""
+          }
         }
       },
       "block_order": [
         "column_NydbTx",
         "column_NJDwfG",
-        "column_aBx6aR"
+        "column_aBx6aR",
+        "column_rhRCbq"
       ],
       "custom_css": [
         "h3 {font-family: inter; font-weight: normal;}",
@@ -182,7 +193,7 @@
         "image_background": "rgba(0,0,0,0)",
         "button_label": "SHOP DISCOVERY SET",
         "button_link": "shopify://products/discovery-set",
-        "columns_desktop": 3,
+        "columns_desktop": 4,
         "column_alignment": "center",
         "card_title_lines": 2,
         "background_style": "none",
@@ -237,7 +248,7 @@
         "show_button": true,
         "button_style": "primary",
         "columns_desktop": 3,
-        "color_scheme": "",
+        "color_scheme": "scheme-2d4edae9-a474-4bd0-b33f-0c21b59d796e",
         "show_view_all": false,
         "columns_mobile": "1",
         "swipe_on_mobile": false,
