@@ -461,9 +461,9 @@
       "settings": {
         "anchor_id": "",
         "review_source": "judgeme",
-        "judgeme_api_token": "",
+        "judgeme_api_token": "L7biCamctSjpZfl0eTxBuXgVmkQ",
         "judgeme_shop_domain": "",
-        "max_reviews": 6,
+        "max_reviews": 10,
         "review_sort": "recent",
         "min_rating": 4,
         "verified_only": false,
