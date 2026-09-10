@@ -316,7 +316,7 @@
         "card_radius": 4,
         "card_padding": 36,
         "card_min_height": 260,
-        "card_min_height_mobile": 240,
+        "card_min_height_mobile": 190,
         "card_border_width": 0,
         "card_border_color": "",
         "card_shadow": false,
