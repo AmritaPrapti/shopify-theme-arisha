@@ -85,6 +85,8 @@
     --jm-align-items: {{ s.vertical_alignment }};
     --jm-aside-alignment: {{ s.aside_alignment }};
     --jm-aside-items: {% if s.aside_alignment == 'center' %}center{% elsif s.aside_alignment == 'right' %}flex-end{% else %}flex-start{% endif %};
+    --jm-aside-alignment-mobile: {{ s.aside_alignment_mobile }};
+    --jm-aside-items-mobile: {% if s.aside_alignment_mobile == 'center' %}center{% elsif s.aside_alignment_mobile == 'right' %}flex-end{% else %}flex-start{% endif %};
 
     --jm-eyebrow-size: {{ s.eyebrow_size }}rem;
     --jm-rating-text-size: {{ s.rating_text_size }}rem;
@@ -104,6 +106,7 @@
     --jm-card-radius: {{ s.card_radius }}px;
     --jm-card-padding: {{ s.card_padding }}px;
     --jm-card-min-height: {{ s.card_min_height }}px;
+    --jm-card-min-height-mobile: {{ s.card_min_height_mobile }}px;
     --jm-card-alignment: {{ s.card_alignment }};
     --jm-card-border-width: {{ s.card_border_width }}px;
     {% if s.card_background != blank %}--jm-card-background: {{ s.card_background }};{% endif %}
@@ -261,7 +264,11 @@
           <div class="jm-testimonials__aside-text rte">{{ s.aside_text }}</div>
         {%- endif -%}
 
-        {%- if s.link_label != blank -%}
+        {%- comment -%}
+          Both halves are required: a label with nowhere to go would render a
+          link that does nothing, so a blank URL hides it entirely.
+        {%- endcomment -%}
+        {%- if s.link_label != blank and s.link_url != blank -%}
           {%- comment -%}
             Label and arrow are one text run, deliberately. The gap is a
             non-breaking space because text-decoration paints across a space
@@ -274,7 +281,7 @@
           {%- endcomment -%}
           <a
             class="jm-testimonials__link"
-            href="{{ s.link_url | default: '#' }}"
+            href="{{ s.link_url }}"
             aria-label="{{ s.link_label | escape }}"
           >
             {{- s.link_label -}}&nbsp;&rarr;
@@ -551,13 +558,25 @@
     {
       "type": "select",
       "id": "aside_alignment",
-      "label": "Alignment",
+      "label": "Alignment on desktop",
       "options": [
         { "value": "left", "label": "Left" },
         { "value": "center", "label": "Center" },
         { "value": "right", "label": "Right" }
       ],
       "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "aside_alignment_mobile",
+      "label": "Alignment on mobile",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center",
+      "info": "Applies once the two columns stack, below 990px."
     },
     {
       "type": "inline_richtext",
@@ -690,7 +709,12 @@
 
     { "type": "header", "content": "Link" },
     { "type": "text", "id": "link_label", "label": "Label", "default": "See all reviews" },
-    { "type": "url", "id": "link_url", "label": "Link" },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link",
+      "info": "Leave empty to hide the link. The Judge.me all-reviews page is https://judge.me/reviews/stores/YOUR-SHOP.myshopify.com"
+    },
     {
       "type": "range",
       "id": "link_size",
@@ -746,6 +770,17 @@
       "unit": "px",
       "default": 240,
       "info": "Stops the section resizing as reviews of different lengths come round."
+    },
+    {
+      "type": "range",
+      "id": "card_min_height_mobile",
+      "label": "Minimum height on mobile",
+      "min": 0,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "default": 240,
+      "info": "Applies below 750px."
     },
     {
       "type": "range",
@@ -992,7 +1027,13 @@
       "default": true,
       "info": "Off means the arrows grey out at each end."
     },
-    { "type": "checkbox", "id": "autoplay", "label": "Advance automatically", "default": false },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto-rotate",
+      "default": false,
+      "info": "Stops as soon as a visitor hovers, focuses or swipes the slider, and never runs for visitors who ask for reduced motion."
+    },
     {
       "type": "range",
       "id": "autoplay_speed",

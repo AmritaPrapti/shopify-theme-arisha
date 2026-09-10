@@ -97,6 +97,18 @@
   text-decoration-thickness: 0.2rem;
 }
 
+/* Once the columns stack the aside is no longer a side column, so from here
+   down its alignment gets its own setting. This must sit after the base aside
+   and rating rules — at equal specificity the later rule wins. */
+@media screen and (max-width: 989px) {
+  .jm-testimonials__aside {
+    text-align: var(--jm-aside-alignment-mobile, var(--jm-aside-alignment, left));
+  }
+  .jm-testimonials__rating {
+    align-items: var(--jm-aside-items-mobile, var(--jm-aside-items, flex-start));
+  }
+}
+
 /* Star row. Built from a text gradient so a fractional average (4.96) renders
    as a partly filled star instead of being rounded away. */
 .jm-testimonials__stars {
@@ -237,6 +249,14 @@
   box-shadow: var(--jm-card-shadow, none);
 }
 
+/* A phone-width card wraps more, so it usually wants a different floor than
+   the desktop one. */
+@media screen and (max-width: 749px) {
+  .jm-review {
+    min-height: var(--jm-card-min-height-mobile, var(--jm-card-min-height, 0));
+  }
+}
+
 .jm-review__quote-mark {
   /* An <svg>, so the box is exactly the mark: no font line box, no em advance.
      The explicit width also keeps the flex column from stretching it. */
@@ -304,7 +324,7 @@
      stretch to the tallest one, and trimming the body stops it from growing to
      fill the slack, so the footer has to claim the leftover space itself. */
   margin-top: auto;
-  /* padding-top: 2.4rem; */
+  padding-top: 2rem;
 }
 
 .jm-review__meta {
@@ -350,6 +370,11 @@
   color: inherit;
   text-decoration: underline;
   text-underline-offset: 0.2rem;
+}
+/* A shop review names no product, so the anchor has no href. Without one it is
+   not a link, and it should not look like one. */
+.jm-review__product:not([href]) {
+  text-decoration: none;
 }
 
 /* -------------------------------------------------------------- controls */

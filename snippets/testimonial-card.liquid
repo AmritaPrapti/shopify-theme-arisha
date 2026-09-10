@@ -176,9 +176,14 @@
           {%- endif -%}
 
           {%- if show_product -%}
+            {%- comment -%}
+              No href rather than href="#" when the product link is missing —
+              a Judge.me shop review has no product to point at. The JS fills
+              the href in when the review does carry one.
+            {%- endcomment -%}
             <a
               class="jm-review__product"
-              href="{{ product_url | default: '#' }}"
+              {%- if product_url != blank %} href="{{ product_url }}"{% endif %}
               data-jm-product
             >{{ product_title }}</a>
           {%- endif -%}
