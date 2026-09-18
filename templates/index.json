@@ -279,7 +279,6 @@
         "verified_only": false,
         "min_chars": 40,
         "max_chars": 400,
-        "judgeme_product": "",
         "cache_minutes": 30,
         "layout": "text_left",
         "full_width": false,
