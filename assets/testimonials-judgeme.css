@@ -562,7 +562,13 @@
   z-index: 1;
 }
 .jm-slider--controls-card .jm-review__footer {
-  padding-right: calc(var(--jm-button-size, 4rem) * 2 + 8rem);
+  --jm-footer-reserve: calc(var(--jm-button-size, 4rem) * 2 + 8rem);
+  padding-right: var(--jm-footer-reserve);
+  /* Centred content has to keep the card's own centre line. Reserving room for
+     the arrows on the right only would shift the footer's content box — and so
+     the name, badge and product — left by half that reserve. The multiplier is
+     1 for a centred card and 0 otherwise. */
+  padding-left: calc(var(--jm-footer-reserve) * var(--jm-footer-reserve-both, 0));
   min-height: var(--jm-button-size, 4rem);
 }
 
@@ -579,12 +585,14 @@
   }
   .jm-slider--controls-card .jm-review__footer {
     padding-right: 0;
+    padding-left: 0;
   }
 }
 
 /* Nothing to page through: keep the layout, drop the affordances. */
 .jm-slider--static .jm-review__footer {
   padding-right: 0;
+  padding-left: 0;
 }
 
 /* Full width drops the page-width max, but keeps its gutters — text running

@@ -121,6 +121,7 @@
     --jm-card-min-height-mobile: {{ s.card_min_height_mobile }}px;
     --jm-card-alignment: {{ s.card_alignment }};
     --jm-card-justify: {% if s.card_alignment == 'center' %}center{% else %}flex-start{% endif %};
+    --jm-footer-reserve-both: {% if s.card_alignment == 'center' %}1{% else %}0{% endif %};
     --jm-card-content-position: {% if s.card_content_position == 'center' %}center{% else %}flex-start{% endif %};
     --jm-card-footer-push: {% if s.card_content_position == 'spread' %}auto{% else %}0{% endif %};
     --jm-card-border-width: {{ s.card_border_width }}px;
