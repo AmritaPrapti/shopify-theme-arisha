@@ -412,6 +412,7 @@
     },
     "testimonials_judgeme_NALXQA": {
       "type": "testimonials-judgeme",
+      "disabled": true,
       "name": "Testimonials (Judge.me)",
       "settings": {
         "anchor_id": "",
@@ -490,7 +491,7 @@
         "author_inline": false,
         "verified_label": "Verified Buyer",
         "verified_color": "#cc859a",
-        "show_product": false,
+        "show_product": true,
         "show_date": false,
         "author_meta_size": 1.2,
         "transition": "slide",
