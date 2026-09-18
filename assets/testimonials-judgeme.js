@@ -107,7 +107,7 @@ class JudgemeTestimonials extends HTMLElement {
   /* ------------------------------------------------------------ reviews */
 
   get cacheKey() {
-    const { shopDomain, maxReviews, minRating, verifiedOnly, minChars, maxChars, productHandle, sort } =
+    const { shopDomain, maxReviews, minRating, verifiedOnly, minChars, maxChars, productHandles, sort } =
       this.config;
     return `${JM_CACHE_PREFIX}${[
       shopDomain,
@@ -116,7 +116,7 @@ class JudgemeTestimonials extends HTMLElement {
       verifiedOnly,
       minChars,
       maxChars,
-      productHandle,
+      (productHandles || []).join(','),
       sort,
     ].join('|')}`;
   }
@@ -186,7 +186,8 @@ class JudgemeTestimonials extends HTMLElement {
   }
 
   filterReviews(reviews) {
-    const { minRating, verifiedOnly, minChars, maxChars, productHandle, maxReviews, sort } = this.config;
+    const { minRating, verifiedOnly, minChars, maxChars, productHandles, maxReviews, sort } = this.config;
+    const handles = productHandles || [];
 
     let list = reviews.filter((review) => {
       if (!review.body) return false;
@@ -194,9 +195,10 @@ class JudgemeTestimonials extends HTMLElement {
       if (verifiedOnly && !review.verified) return false;
       if (minChars && review.body.length < minChars) return false;
       if (maxChars && review.body.length > maxChars) return false;
-      // Compared as a whole path segment: a substring test would let the
-      // handle "discovery" match /products/discovery-set as well.
-      if (productHandle && jmHandleOf(review.productUrl) !== productHandle) return false;
+      // Compared as whole path segments: a substring test would let the handle
+      // "discovery" match /products/discovery-set as well. An empty list means
+      // every product, which is the default.
+      if (handles.length && !handles.includes(jmHandleOf(review.productUrl))) return false;
       return true;
     });
 

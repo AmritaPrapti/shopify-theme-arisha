@@ -166,6 +166,36 @@
   display: flow-root;
 }
 
+/* Arrows flanking the track. They are real grid columns rather than absolutely
+   positioned elements, so they can never overhang the page gutter and cause
+   sideways scrolling — the track simply gets narrower to make room. Overrides
+   the flow-root above, which grid also provides. */
+.jm-slider--controls-sides {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--jm-side-arrow-gap, 1.2rem);
+}
+.jm-slider--controls-sides > .jm-slider__arrow--prev {
+  grid-column: 1;
+  grid-row: 1;
+}
+.jm-slider--controls-sides > .jm-slider__track {
+  grid-column: 2;
+  grid-row: 1;
+}
+.jm-slider--controls-sides > .jm-slider__arrow--next {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+@media screen and (max-width: 749px) {
+  /* Every pixel the arrows take is a pixel off the card on a phone. */
+  .jm-slider--controls-sides {
+    column-gap: 0.6rem;
+  }
+}
+
 .jm-slider__track {
   display: flex;
   gap: var(--jm-slide-gap, 2rem);
@@ -245,6 +275,7 @@
   background: var(--jm-card-background, rgba(var(--color-foreground), 0.04));
   color: var(--jm-card-color, rgb(var(--color-foreground)));
   text-align: var(--jm-card-alignment, left);
+  justify-content: var(--jm-card-content-position, flex-start);
   border: var(--jm-card-border-width, 0) solid var(--jm-card-border-color, transparent);
   box-shadow: var(--jm-card-shadow, none);
 }
@@ -298,11 +329,21 @@
   font-style: var(--jm-review-style, normal);
   font-size: var(--jm-review-size, 1.8rem);
   line-height: var(--jm-review-line-height, 1.6);
-  /* Keeps every card the same height when the quotes differ in length. */
-  flex: 1 1 auto;
+  /* Never grows: where a card's spare height goes is decided by the footer's
+     margin and the card's justify-content, not by the review stretching. */
+  flex: 0 1 auto;
 }
 .jm-review__body > :first-child { margin-top: 0; }
 .jm-review__body > :last-child { margin-bottom: 0; }
+
+/* Quotation marks drawn by CSS, so they survive the JS writing the review in as
+   a text node and are never read out by a screen reader. */
+.jm-review__body--quoted::before {
+  content: '\201C';
+}
+.jm-review__body--quoted::after {
+  content: '\201D';
+}
 
 /* Clamps long reviews so one rambling entry cannot stretch the whole track. */
 .jm-review__body--clamped {
@@ -318,12 +359,15 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
-  justify-content: space-between;
+  /* Follows the card's text alignment. The footer's contents are flex children,
+     so a centred card left them stuck at the start until this was wired up. */
+  justify-content: var(--jm-card-justify, flex-start);
   gap: 1.6rem 2rem;
-  /* Sits on the card's bottom edge however short the quote is. Cards in a row
-     stretch to the tallest one, and trimming the body stops it from growing to
-     fill the slack, so the footer has to claim the leftover space itself. */
-  margin-top: auto;
+  /* Cards in a row stretch to the tallest one; where that slack lands is the
+     "Content position" setting. auto pushes it onto the footer so the name sits
+     on the bottom edge (the default); 0 leaves it below, so the content groups
+     at the top or centre. */
+  margin-top: var(--jm-card-footer-push, auto);
   padding-top: 2rem;
 }
 
@@ -332,6 +376,22 @@
   flex-direction: column;
   gap: 0.3rem;
   min-width: 0;
+  align-items: var(--jm-card-justify, flex-start);
+}
+
+/* Name and badge: stacked by default, side by side when asked for. */
+.jm-review__byline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: var(--jm-card-justify, flex-start);
+}
+.jm-review__byline--inline {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.9rem;
+  justify-content: var(--jm-card-justify, flex-start);
 }
 
 .jm-review__author {
@@ -346,6 +406,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: var(--jm-card-justify, flex-start);
   gap: 0.5rem;
   font-size: var(--jm-author-meta-size, 1.2rem);
   line-height: 1.3;

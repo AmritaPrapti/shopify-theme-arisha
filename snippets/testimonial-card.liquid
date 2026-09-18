@@ -82,7 +82,10 @@
 
   assign body_class = 'jm-review__body'
   if s.clamp_body
-    assign body_class = 'jm-review__body jm-review__body--clamped'
+    assign body_class = body_class | append: ' jm-review__body--clamped'
+  endif
+  if s.wrap_in_quotes
+    assign body_class = body_class | append: ' jm-review__body--quoted'
   endif
 -%}
 
@@ -132,7 +135,7 @@
       </svg>
     {%- endif -%}
 
-    {%- if show_stars -%}
+    {%- capture star_row -%}
       <span
         class="jm-review__stars jm-testimonials__stars"
         style="--jm-star-rating: {{ star_rating }};"
@@ -140,6 +143,10 @@
         aria-label="{{ star_rating }} out of 5 stars"
         data-jm-card-stars
       ></span>
+    {%- endcapture -%}
+
+    {%- if show_stars and s.stars_position != 'below' -%}
+      {{ star_row }}
     {%- endif -%}
 
     {%- if show_title -%}
@@ -148,13 +155,18 @@
 
     <blockquote class="{{ body_class }}" data-jm-body>{{ body }}</blockquote>
 
+    {%- if show_stars and s.stars_position == 'below' -%}
+      {{ star_row }}
+    {%- endif -%}
+
     <figcaption class="jm-review__footer">
       <div class="jm-review__meta">
-        {%- if s.show_author -%}
-          <p class="jm-review__author" data-jm-author>{{ author }}</p>
-        {%- endif -%}
+        <div class="jm-review__byline{% if s.author_inline %} jm-review__byline--inline{% endif %}">
+          {%- if s.show_author -%}
+            <p class="jm-review__author" data-jm-author>{{ author }}</p>
+          {%- endif -%}
 
-        <span class="jm-review__sub" data-jm-sub>
+          <span class="jm-review__sub" data-jm-sub>
           {%- if show_verified -%}
             <span class="jm-review__verified" data-jm-verified>
               <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
@@ -175,23 +187,27 @@
             <span data-jm-location>{{ location }}</span>
           {%- endif -%}
 
-          {%- if show_product -%}
-            {%- comment -%}
-              No href rather than href="#" when the product link is missing —
-              a Judge.me shop review has no product to point at. The JS fills
-              the href in when the review does carry one.
-            {%- endcomment -%}
-            <a
-              class="jm-review__product"
-              {%- if product_url != blank %} href="{{ product_url }}"{% endif %}
-              data-jm-product
-            >{{ product_title }}</a>
-          {%- endif -%}
+            {%- if show_date -%}
+              <time class="jm-review__date" datetime="{{ date_iso }}" data-jm-date>{{ date }}</time>
+            {%- endif -%}
+          </span>
+        </div>
 
-          {%- if show_date -%}
-            <time class="jm-review__date" datetime="{{ date_iso }}" data-jm-date>{{ date }}</time>
-          {%- endif -%}
-        </span>
+        {%- comment -%}
+          The product sits outside the byline so it always takes its own line,
+          whether the name and badge are stacked or side by side.
+
+          No href rather than href="#" when the product link is missing — a
+          Judge.me shop review has no product to point at. The JS fills the
+          href in when the review does carry one.
+        {%- endcomment -%}
+        {%- if show_product -%}
+          <a
+            class="jm-review__product"
+            {%- if product_url != blank %} href="{{ product_url }}"{% endif %}
+            data-jm-product
+          >{{ product_title }}</a>
+        {%- endif -%}
       </div>
     </figcaption>
   </figure>

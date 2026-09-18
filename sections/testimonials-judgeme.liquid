@@ -47,10 +47,22 @@
     assign source = 'manual'
   endif
 
-  assign product_handle = ''
-  if s.judgeme_product != blank
-    assign product_handle = s.judgeme_product.handle
-  endif
+  # Handles of every product the merchant limited the reviews to. Empty means
+  # all products, which is the default.
+  assign product_handles = ''
+  for jm_product in s.judgeme_products
+    assign product_handles = product_handles | append: jm_product.handle
+    unless forloop.last
+      assign product_handles = product_handles | append: ','
+    endunless
+  endfor
+
+  # App blocks normally sit in the text column. With that hidden they have
+  # nowhere to go, so they move below the section instead of disappearing.
+  assign app_blocks_position = s.app_blocks_position
+  unless s.show_aside
+    assign app_blocks_position = 'below'
+  endunless
 
   # Fade cross-fades one card at a time, so it ignores the per-view settings.
   assign per_view = s.per_view
@@ -108,6 +120,9 @@
     --jm-card-min-height: {{ s.card_min_height }}px;
     --jm-card-min-height-mobile: {{ s.card_min_height_mobile }}px;
     --jm-card-alignment: {{ s.card_alignment }};
+    --jm-card-justify: {% if s.card_alignment == 'center' %}center{% else %}flex-start{% endif %};
+    --jm-card-content-position: {% if s.card_content_position == 'center' %}center{% else %}flex-start{% endif %};
+    --jm-card-footer-push: {% if s.card_content_position == 'spread' %}auto{% else %}0{% endif %};
     --jm-card-border-width: {{ s.card_border_width }}px;
     {% if s.card_background != blank %}--jm-card-background: {{ s.card_background }};{% endif %}
     {% if s.card_text_color != blank %}--jm-card-color: {{ s.card_text_color }};{% endif %}
@@ -127,6 +142,7 @@
     {% if s.verified_color != blank %}--jm-verified-color: {{ s.verified_color }};{% endif %}
 
     --jm-button-size: {{ s.arrow_size }}px;
+    --jm-side-arrow-gap: {{ s.side_arrow_gap }}px;
     --jm-counter-size: {{ s.counter_size }}rem;
     {% if s.arrow_color != blank %}--jm-button-color: {{ s.arrow_color }};{% endif %}
     {% if s.arrow_border_color != blank %}--jm-button-border: {{ s.arrow_border_color }};{% endif %}
@@ -136,6 +152,26 @@
   }
 {%- endstyle -%}
 
+{%- comment -%}
+  The arrow glyph, captured once and reused by every control position.
+{%- endcomment -%}
+{%- capture arrow_icon -%}
+  <svg viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
+    <path d="M4.5 1.5L10 7l-5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+{%- endcapture -%}
+
+{%- capture indicator -%}
+  {%- if s.pagination_style == 'counter' -%}
+    <span class="jm-slider__counter" aria-live="polite" data-jm-counter></span>
+  {%- elsif s.pagination_style == 'dots' -%}
+    <div class="jm-slider__dots" role="tablist" aria-label="{{ s.pagination_label | escape }}" data-jm-dots></div>
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- comment -%}
+  card and below: one row carrying the arrows with the indicator between them.
+{%- endcomment -%}
 {%- capture controls -%}
   <div
     class="jm-slider__controls{% if s.arrows_position == 'card' %} jm-slider__controls--overlay{% else %} jm-slider__controls--below{% endif %}"
@@ -147,18 +183,10 @@
         class="jm-slider__button jm-slider__button--prev"
         aria-label="{{ s.previous_label | escape }}"
         data-jm-prev
-      >
-        <svg viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
-          <path d="M4.5 1.5L10 7l-5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
+      >{{ arrow_icon }}</button>
     {%- endif -%}
 
-    {%- if s.pagination_style == 'counter' -%}
-      <span class="jm-slider__counter" aria-live="polite" data-jm-counter></span>
-    {%- elsif s.pagination_style == 'dots' -%}
-      <div class="jm-slider__dots" role="tablist" aria-label="{{ s.pagination_label | escape }}" data-jm-dots></div>
-    {%- endif -%}
+    {{ indicator }}
 
     {%- if s.show_arrows -%}
       <button
@@ -166,13 +194,39 @@
         class="jm-slider__button jm-slider__button--next"
         aria-label="{{ s.next_label | escape }}"
         data-jm-next
-      >
-        <svg viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
-          <path d="M4.5 1.5L10 7l-5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
+      >{{ arrow_icon }}</button>
     {%- endif -%}
   </div>
+{%- endcapture -%}
+
+{%- comment -%}
+  sides: each arrow becomes its own grid column flanking the track, with the
+  indicator on a row of its own underneath.
+{%- endcomment -%}
+{%- capture side_arrow_prev -%}
+  <button
+    type="button"
+    class="jm-slider__button jm-slider__button--prev jm-slider__arrow jm-slider__arrow--prev"
+    aria-label="{{ s.previous_label | escape }}"
+    data-jm-prev
+    data-jm-controls
+  >{{ arrow_icon }}</button>
+{%- endcapture -%}
+
+{%- capture side_arrow_next -%}
+  <button
+    type="button"
+    class="jm-slider__button jm-slider__arrow jm-slider__arrow--next"
+    aria-label="{{ s.next_label | escape }}"
+    data-jm-next
+    data-jm-controls
+  >{{ arrow_icon }}</button>
+{%- endcapture -%}
+
+{%- capture side_indicator -%}
+  {%- if s.pagination_style != 'none' -%}
+    <div class="jm-slider__controls jm-slider__controls--below" data-jm-controls>{{ indicator }}</div>
+  {%- endif -%}
 {%- endcapture -%}
 
 {%- capture app_block_markup -%}
@@ -189,7 +243,7 @@
 >
   <div class="{% if s.full_width == false %}page-width{% else %}jm-testimonials-section__wide{% endif %} section-{{ section.id }}-padding{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
     <judgeme-testimonials
-      class="jm-testimonials{% if s.layout != 'stacked' %} jm-testimonials--split{% endif %}{% if s.layout == 'text_right' %} jm-testimonials--reverse{% endif %}"
+      class="jm-testimonials{% if s.layout != 'stacked' and s.show_aside %} jm-testimonials--split{% endif %}{% if s.layout == 'text_right' and s.show_aside %} jm-testimonials--reverse{% endif %}"
       aria-roledescription="carousel"
       {% if s.eyebrow != blank %}aria-label="{{ s.eyebrow | strip_html | escape }}"{% endif %}
     >
@@ -203,7 +257,7 @@
           "verifiedOnly": {{ s.verified_only | json }},
           "minChars": {{ s.min_chars | json }},
           "maxChars": {{ s.max_chars | json }},
-          "productHandle": {{ product_handle | json }},
+          "productHandles": {% if product_handles == blank %}[]{% else %}{{ product_handles | split: ',' | json }}{% endif %},
           "sort": {{ s.review_sort | json }},
           "cacheMinutes": {{ s.cache_minutes | json }},
           "syncSummary": {{ s.sync_summary | json }},
@@ -226,6 +280,7 @@
       </script>
 
       {%- comment -%} ------------------------------------------- aside {%- endcomment -%}
+      {%- if s.show_aside -%}
       <div class="jm-testimonials__aside">
         {%- if s.eyebrow != blank -%}
           <p class="jm-testimonials__eyebrow">{{ s.eyebrow }}</p>
@@ -288,17 +343,22 @@
           </a>
         {%- endif -%}
 
-        {%- if app_blocks.size > 0 and s.app_blocks_position == 'aside' -%}
+        {%- if app_blocks.size > 0 and app_blocks_position == 'aside' -%}
           <div class="jm-testimonials__app-blocks">{{ app_block_markup }}</div>
         {%- endif -%}
       </div>
+      {%- endif -%}
 
       {%- comment -%} ------------------------------------------ reviews {%- endcomment -%}
       <div class="jm-testimonials__main">
         <div
-          class="jm-slider{% if s.transition == 'fade' %} jm-slider--fade{% endif %}{% if s.arrows_position == 'card' %} jm-slider--controls-card{% endif %}"
+          class="jm-slider{% if s.transition == 'fade' %} jm-slider--fade{% endif %}{% if s.arrows_position == 'card' %} jm-slider--controls-card{% elsif s.arrows_position == 'sides' %} jm-slider--controls-sides{% endif %}"
           data-jm-slider
         >
+          {%- if s.arrows_position == 'sides' and s.show_arrows -%}
+            {{ side_arrow_prev }}
+          {%- endif -%}
+
           <div class="jm-slider__track" data-jm-track>
             {%- if manual_blocks.size > 0 -%}
               {%- for block in manual_blocks -%}
@@ -337,6 +397,10 @@
             {%- endif -%}
           </div>
 
+          {%- if s.arrows_position == 'sides' and s.show_arrows -%}
+            {{ side_arrow_next }}
+          {%- endif -%}
+
           {%- if s.arrows_position == 'card' -%}
             {{ controls }}
           {%- endif -%}
@@ -344,6 +408,10 @@
 
         {%- if s.arrows_position == 'below' -%}
           {{ controls }}
+        {%- endif -%}
+
+        {%- if s.arrows_position == 'sides' -%}
+          {{ side_indicator }}
         {%- endif -%}
       </div>
 
@@ -358,7 +426,7 @@
       {%- endif -%}
     </judgeme-testimonials>
 
-    {%- if app_blocks.size > 0 and s.app_blocks_position == 'below' -%}
+    {%- if app_blocks.size > 0 and app_blocks_position == 'below' -%}
       <div class="jm-testimonials__app-blocks jm-testimonials__app-blocks--below">
         {{ app_block_markup }}
       </div>
@@ -473,10 +541,11 @@
       "visible_if": "{{ section.settings.review_source != 'manual' }}"
     },
     {
-      "type": "product",
-      "id": "judgeme_product",
-      "label": "Only reviews of this product",
-      "info": "Leave empty for reviews of every product. Ignored when reviews are written by hand."
+      "type": "product_list",
+      "id": "judgeme_products",
+      "label": "Limit to these products",
+      "limit": 20,
+      "info": "Leave empty for reviews of every product — pick the bundles here to show only their reviews. Ignored when reviews are written by hand."
     },
     {
       "type": "range",
@@ -556,6 +625,13 @@
 
     { "type": "header", "content": "Text column" },
     {
+      "type": "checkbox",
+      "id": "show_aside",
+      "label": "Show the text column",
+      "default": true,
+      "info": "Off hides the eyebrow, heading, average rating and link, and gives the reviews the full width."
+    },
+    {
       "type": "select",
       "id": "aside_alignment",
       "label": "Alignment on desktop",
@@ -564,7 +640,8 @@
         { "value": "center", "label": "Center" },
         { "value": "right", "label": "Right" }
       ],
-      "default": "left"
+      "default": "left",
+      "visible_if": "{{ section.settings.show_aside }}"
     },
     {
       "type": "select",
@@ -576,13 +653,15 @@
         { "value": "right", "label": "Right" }
       ],
       "default": "center",
-      "info": "Applies once the two columns stack, below 990px."
+      "info": "Applies once the two columns stack, below 990px.",
+      "visible_if": "{{ section.settings.show_aside }}"
     },
     {
       "type": "inline_richtext",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "Loved by postpartum mothers"
+      "default": "Loved by postpartum mothers",
+      "visible_if": "{{ section.settings.show_aside }}"
     },
     {
       "type": "range",
@@ -592,14 +671,18 @@
       "max": 2.4,
       "step": 0.1,
       "unit": "rem",
-      "default": 1.2
+      "default": 1.2,
+      "visible_if": "{{ section.settings.show_aside }}"
     },
-    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow colour", "default": "#cc859a" },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow colour", "default": "#cc859a",
+      "visible_if": "{{ section.settings.show_aside }}"
+    },
     {
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Real stories from real moms"
+      "default": "Real stories from real moms",
+      "visible_if": "{{ section.settings.show_aside }}"
     },
     {
       "type": "select",
@@ -611,13 +694,17 @@
         { "value": "h0", "label": "Large" },
         { "value": "hxl", "label": "Extra large" }
       ],
-      "default": "h1"
+      "default": "h1",
+      "visible_if": "{{ section.settings.show_aside }}"
     },
-    { "type": "color", "id": "heading_color", "label": "Heading colour" },
+    { "type": "color", "id": "heading_color", "label": "Heading colour",
+      "visible_if": "{{ section.settings.show_aside }}"
+    },
     {
       "type": "richtext",
       "id": "aside_text",
-      "label": "Body text"
+      "label": "Body text",
+      "visible_if": "{{ section.settings.show_aside }}"
     },
 
     { "type": "header", "content": "Average rating" },
@@ -625,7 +712,8 @@
       "type": "checkbox",
       "id": "show_summary",
       "label": "Show average rating",
-      "default": true
+      "default": true,
+      "visible_if": "{{ section.settings.show_aside }}"
     },
     {
       "type": "checkbox",
@@ -633,14 +721,14 @@
       "label": "Use the live Judge.me average",
       "default": true,
       "info": "Replaces the values below with the shop's real average and review count once Judge.me answers.",
-      "visible_if": "{{ section.settings.show_summary and section.settings.review_source != 'manual' }}"
+      "visible_if": "{{ section.settings.show_aside and section.settings.show_summary and section.settings.review_source != 'manual' }}"
     },
     {
       "type": "checkbox",
       "id": "show_summary_stars",
       "label": "Show stars",
       "default": true,
-      "visible_if": "{{ section.settings.show_summary }}"
+      "visible_if": "{{ section.settings.show_aside and section.settings.show_summary }}"
     },
     {
       "type": "range",
@@ -650,14 +738,14 @@
       "max": 5,
       "step": 0.1,
       "default": 4.9,
-      "visible_if": "{{ section.settings.show_summary }}"
+      "visible_if": "{{ section.settings.show_aside and section.settings.show_summary }}"
     },
     {
       "type": "text",
       "id": "rating_count",
       "label": "Review count",
       "default": "650",
-      "visible_if": "{{ section.settings.show_summary }}"
+      "visible_if": "{{ section.settings.show_aside and section.settings.show_summary }}"
     },
     {
       "type": "textarea",
@@ -665,7 +753,7 @@
       "label": "Rating text",
       "default": "[average]/5 from [count]+\nverified customers",
       "info": "[average] and [count] are replaced with the values above — or with the live Judge.me figures. Line breaks are kept.",
-      "visible_if": "{{ section.settings.show_summary }}"
+      "visible_if": "{{ section.settings.show_aside and section.settings.show_summary }}"
     },
     {
       "type": "range",
@@ -676,7 +764,7 @@
       "step": 0.1,
       "unit": "rem",
       "default": 1.4,
-      "visible_if": "{{ section.settings.show_summary }}"
+      "visible_if": "{{ section.settings.show_aside and section.settings.show_summary }}"
     },
     {
       "type": "range",
@@ -686,14 +774,14 @@
       "max": 2.2,
       "step": 0.1,
       "default": 1.7,
-      "visible_if": "{{ section.settings.show_summary }}"
+      "visible_if": "{{ section.settings.show_aside and section.settings.show_summary }}"
     },
     {
       "type": "color",
       "id": "star_color",
       "label": "Star colour",
       "default": "#cc859a",
-      "visible_if": "{{ section.settings.show_summary }}"
+      "visible_if": "{{ section.settings.show_aside and section.settings.show_summary }}"
     },
     {
       "type": "range",
@@ -704,16 +792,19 @@
       "step": 0.1,
       "unit": "rem",
       "default": 2.2,
-      "visible_if": "{{ section.settings.show_summary }}"
+      "visible_if": "{{ section.settings.show_aside and section.settings.show_summary }}"
     },
 
     { "type": "header", "content": "Link" },
-    { "type": "text", "id": "link_label", "label": "Label", "default": "See all reviews" },
+    { "type": "text", "id": "link_label", "label": "Label", "default": "See all reviews",
+      "visible_if": "{{ section.settings.show_aside }}"
+    },
     {
       "type": "url",
       "id": "link_url",
       "label": "Link",
-      "info": "Leave empty to hide the link. The Judge.me all-reviews page is https://judge.me/reviews/stores/YOUR-SHOP.myshopify.com"
+      "info": "Leave empty to hide the link. The Judge.me all-reviews page is https://judge.me/reviews/stores/YOUR-SHOP.myshopify.com",
+      "visible_if": "{{ section.settings.show_aside }}"
     },
     {
       "type": "range",
@@ -723,9 +814,12 @@
       "max": 2.2,
       "step": 0.1,
       "unit": "rem",
-      "default": 1.4
+      "default": 1.4,
+      "visible_if": "{{ section.settings.show_aside }}"
     },
-    { "type": "color", "id": "link_color", "label": "Colour", "default": "#cc859a" },
+    { "type": "color", "id": "link_color", "label": "Colour", "default": "#cc859a",
+      "visible_if": "{{ section.settings.show_aside }}"
+    },
 
     { "type": "header", "content": "Review card" },
     { "type": "color", "id": "card_background", "label": "Background", "default": "#f7eae8" },
@@ -739,6 +833,18 @@
         { "value": "center", "label": "Center" }
       ],
       "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "card_content_position",
+      "label": "Content position",
+      "options": [
+        { "value": "spread", "label": "Name pinned to the bottom" },
+        { "value": "top", "label": "Grouped at the top" },
+        { "value": "center", "label": "Centred" }
+      ],
+      "default": "spread",
+      "info": "Cards stretch to match the tallest review. This decides where the spare height goes."
     },
     {
       "type": "range",
@@ -864,6 +970,23 @@
 
     { "type": "header", "content": "What the card shows" },
     { "type": "checkbox", "id": "show_card_stars", "label": "Star rating", "default": false },
+    {
+      "type": "select",
+      "id": "stars_position",
+      "label": "Star rating position",
+      "options": [
+        { "value": "above", "label": "Above the review" },
+        { "value": "below", "label": "Below the review" }
+      ],
+      "default": "above",
+      "visible_if": "{{ section.settings.show_card_stars }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "wrap_in_quotes",
+      "label": "Wrap the review in quotation marks",
+      "default": false
+    },
     { "type": "checkbox", "id": "show_card_title", "label": "Review headline", "default": false },
     {
       "type": "range",
@@ -938,6 +1061,12 @@
       "visible_if": "{{ section.settings.show_author }}"
     },
     { "type": "checkbox", "id": "show_verified", "label": "Verified buyer badge", "default": true },
+    {
+      "type": "checkbox",
+      "id": "author_inline",
+      "label": "Name and badge on one line",
+      "default": false
+    },
     {
       "type": "text",
       "id": "verified_label",
@@ -1054,9 +1183,22 @@
       "label": "Controls position",
       "options": [
         { "value": "card", "label": "Inside the card" },
-        { "value": "below", "label": "Below the slider" }
+        { "value": "below", "label": "Below the slider" },
+        { "value": "sides", "label": "Either side of the slider" }
       ],
-      "default": "card"
+      "default": "card",
+      "info": "Either side puts an arrow left and right of the reviews, with the dots or counter on their own row underneath."
+    },
+    {
+      "type": "range",
+      "id": "side_arrow_gap",
+      "label": "Space between arrows and reviews",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 12,
+      "visible_if": "{{ section.settings.arrows_position == 'sides' }}"
     },
     {
       "type": "select",
@@ -1068,7 +1210,7 @@
         { "value": "right", "label": "Right" }
       ],
       "default": "center",
-      "visible_if": "{{ section.settings.arrows_position == 'below' }}"
+      "visible_if": "{{ section.settings.arrows_position == 'below' or section.settings.arrows_position == 'sides' }}"
     },
     {
       "type": "range",
