@@ -402,7 +402,6 @@
     },
     "testimonials_judgeme_mKEcUJ": {
       "type": "testimonials-judgeme",
-      "disabled": true,
       "name": "Testimonials (Judge.me)",
       "settings": {
         "anchor_id": "",
