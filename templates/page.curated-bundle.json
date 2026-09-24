@@ -392,6 +392,7 @@
       "block_order": [
         "judge_me_reviews_testimonials_carousel_9RnypQ"
       ],
+      "disabled": true,
       "custom_css": [
         "{display: flex; justify-content: center; align-items: center;}",
         "p {color: #333333;}",
@@ -412,7 +413,6 @@
     },
     "testimonials_judgeme_NALXQA": {
       "type": "testimonials-judgeme",
-      "disabled": true,
       "name": "Testimonials (Judge.me)",
       "settings": {
         "anchor_id": "",
@@ -439,7 +439,7 @@
         "eyebrow": "Loved by postpartum mothers",
         "eyebrow_size": 1.2,
         "eyebrow_color": "#cc859a",
-        "heading": "Real stories from real moms",
+        "heading": "Nourishment mothers look forward to",
         "heading_size": "h1",
         "heading_color": "",
         "aside_text": "",
@@ -447,7 +447,7 @@
         "sync_summary": true,
         "show_summary_stars": true,
         "rating_value": 4.9,
-        "rating_count": "650",
+        "rating_count": "",
         "rating_text": "[average]/5 from [count]+\nverified customers",
         "rating_text_size": 1.4,
         "rating_text_line_height": 1.7,
