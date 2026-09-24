@@ -192,7 +192,7 @@
         "image_ratio": "circle",
         "image_background": "rgba(0,0,0,0)",
         "button_label": "SHOP DISCOVERY SET",
-        "button_link": "shopify://products/discovery-set",
+        "button_link": "shopify://pages/discovery-set",
         "columns_desktop": 4,
         "column_alignment": "center",
         "card_title_lines": 2,
