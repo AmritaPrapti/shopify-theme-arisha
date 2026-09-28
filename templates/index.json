@@ -44,8 +44,8 @@
             "button_label": "SHOP DISCOVERY SET",
             "button_link": "shopify://pages/discovery-set",
             "button_style_secondary": false,
-            "button_label2": "SHOP ALL",
-            "button_link2": "shopify://pages/shop",
+            "button_label2": "SHOP BUNDLES",
+            "button_link2": "shopify://pages/curated-bundles",
             "button_style_secondary2": true
           }
         },
