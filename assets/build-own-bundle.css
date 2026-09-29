@@ -1848,9 +1848,22 @@ section:has(.bundle-products-container) > *,
   stroke: white;
 }
 
-.card__inner:hover .quick-view-overlay, .card:hover .quick-view-overlay {
-  opacity: 1;
-  visibility: visible;
+/* Hover reveal only for real mouse devices. On touch screens a :hover rule that
+   changes visibility makes iOS spend the first tap on "hover", so the Add To
+   Bundle button inside the card needed 2-3 taps. */
+@media (hover: hover) and (pointer: fine) {
+  .card__inner:hover .quick-view-overlay, .card:hover .quick-view-overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Touch screens: overlay stays invisible but tappable, so tapping the image
+   opens quick view in one tap */
+@media (hover: none), (pointer: coarse) {
+  .quick-view-overlay {
+    visibility: visible;
+  }
 }
 
 .bundle-product-grid .card__heading a::after {
