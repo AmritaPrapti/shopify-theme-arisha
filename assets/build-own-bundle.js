@@ -1342,27 +1342,42 @@ setupMobileExpand() {
 
     if (!section) return;
 
+    // Track the product cards rather than the whole section: the bar stays while
+    // any card is at least 25% on screen, and hides once only a sliver of the
+    // last row is left (so it doesn't cover the next sections / footer).
+    const cards = section.querySelectorAll(".bundle-product-card");
+    const visibleCards = new Set();
+
+    const setBarVisible = (visible) => {
+      summaryWrapper.classList.toggle("summary-wrapper--hidden", !visible);
+      // Lets the CSS hide floating app widgets that overlap the mobile bar
+      document.body.classList.toggle("bundle-bar-visible", visible);
+    };
+
+    if (cards.length === 0) {
+      // No products rendered: fall back to the section itself
+      new IntersectionObserver(
+        (entries) => entries.forEach((entry) => setBarVisible(entry.isIntersecting)),
+        { threshold: 0 }
+      ).observe(section);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          summaryWrapper.classList.toggle(
-            "summary-wrapper--hidden",
-            !entry.isIntersecting
-          );
-          // Lets the CSS hide floating app widgets that overlap the mobile bar
-          document.body.classList.toggle(
-            "bundle-bar-visible",
-            entry.isIntersecting
-          );
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.25) {
+            visibleCards.add(entry.target);
+          } else {
+            visibleCards.delete(entry.target);
+          }
         });
+        setBarVisible(visibleCards.size > 0);
       },
-      // Only the bottom 15% of the viewport (where the fixed bar sits) counts,
-      // so the bar hides as soon as the products scroll up past it instead of
-      // waiting for the whole section to leave the top of the screen
-      { threshold: 0, rootMargin: "-85% 0px 0px 0px" }
+      { threshold: [0, 0.25] }
     );
 
-    observer.observe(section);
+    cards.forEach((card) => observer.observe(card));
   }
 }
 
