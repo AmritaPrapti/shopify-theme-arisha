@@ -1356,7 +1356,10 @@ setupMobileExpand() {
           );
         });
       },
-      { threshold: 0 }
+      // Only the bottom 15% of the viewport (where the fixed bar sits) counts,
+      // so the bar hides as soon as the products scroll up past it instead of
+      // waiting for the whole section to leave the top of the screen
+      { threshold: 0, rootMargin: "-85% 0px 0px 0px" }
     );
 
     observer.observe(section);
