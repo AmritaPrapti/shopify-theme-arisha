@@ -2139,6 +2139,14 @@ section:has(.bundle-products-container) > *,
 }
 
 @media screen and (max-width: 990px) {
+  /* Floating app widgets (BLOOP referral, Klaviyo teaser) sit on top of the
+     fixed bundle bar; hide them while the bar is on screen. The Klaviyo
+     class suffix is per-form, so match on the prefix. */
+  body.bundle-bar-visible .bloop-launcher,
+  body.bundle-bar-visible [class*="kl-teaser-"] {
+    display: none !important;
+  }
+
   /* Compact empty state so the fixed bottom bar doesn't cover the products */
   .summary-empty {
     padding: 12px 16px 10px;

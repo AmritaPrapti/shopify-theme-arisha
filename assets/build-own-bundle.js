@@ -1349,6 +1349,11 @@ setupMobileExpand() {
             "summary-wrapper--hidden",
             !entry.isIntersecting
           );
+          // Lets the CSS hide floating app widgets that overlap the mobile bar
+          document.body.classList.toggle(
+            "bundle-bar-visible",
+            entry.isIntersecting
+          );
         });
       },
       { threshold: 0 }
