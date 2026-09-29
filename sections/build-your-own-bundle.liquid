@@ -57,6 +57,17 @@
 
 
 
+{%- capture discount_tiers_json -%}
+  [{%- assign first_discount = true -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'discount_tier' -%}
+      {%- unless first_discount -%},{%- endunless -%}
+      {"minAmount":{{ block.settings.min_amount | default: 0 }},"discountPercent":{{ block.settings.discount_percent | default: 0 }},"discountText":{{ block.settings.discount_text | json }}}
+      {%- assign first_discount = false -%}
+    {%- endif -%}
+  {%- endfor -%}]
+{%- endcapture -%}
+
 <section class="color-{{ section.settings.color_scheme }} build-your-own-bundle" style="--quantity-button:{{ section.settings.quantity_button_color}};">
   <div class="section-{{ section.id }}-padding page-width" 
     data-progress-bar-color="{{ section.settings.progress_bar_color }}"
@@ -69,7 +80,9 @@
     data-add-to-cart-text="{{ section.settings.add_to_cart_text }}"
     data-review-box-text="{{ section.settings.review_box_text }}"
     data-add-bundle-cart-text="{{ section.settings.add_bundle_cart_text }}"
-    data-discount-tiers='{% assign first_discount = true %}[{% for block in section.blocks %}{% if block.type == 'discount_tier' %}{% if first_discount == false %},{% endif %}{"minQuantity":{{ block.settings.min_quantity }},"discountText":"{{ block.settings.discount_text }}"}{% assign first_discount = false %}{% endif %}{% endfor %}]'>
+    data-minimum-order="{{ section.settings.minimum_order_amount | default: 0 }}"
+    data-block-below-minimum="{{ section.settings.block_below_minimum }}"
+    data-discount-tiers="{{ discount_tiers_json | escape }}">
 
     <div class="bundle-header">
       {% if section.settings.heading != blank %}
@@ -91,9 +104,10 @@
       {% for block in section.blocks %}
           {% if block.type == 'discount_tier' %}
             <div class="tier-step-connector"></div>
-            <div class="tier-step" data-min-quantity="{{ block.settings.min_quantity }}">
-              <div class="tier-step-circle">{{ block.settings.min_quantity }}</div>
-              <div class="tier-step-label">{{ block.settings.min_quantity }}+ Products</div>
+            {%- assign tier_min_cents = block.settings.min_amount | default: 0 | times: 100 -%}
+            <div class="tier-step" data-min-amount="{{ tier_min_cents }}">
+              <div class="tier-step-circle">{{ tier_min_cents | money_without_trailing_zeros }}</div>
+              <div class="tier-step-label">{{ tier_min_cents | money_without_trailing_zeros }}+</div>
               <div class="tier-step-discount">{{ block.settings.discount_text }}</div>
             </div>
           {% endif %}
@@ -306,6 +320,23 @@
     },
     {
       "type": "header",
+      "content": "Order minimum"
+    },
+    {
+      "type": "number",
+      "id": "minimum_order_amount",
+      "label": "Minimum order amount ($)",
+      "default": 100,
+      "info": "Store-wide minimum order (before discounts and shipping). Items already in the cart count toward it. Set to 0 to hide."
+    },
+    {
+      "type": "checkbox",
+      "id": "block_below_minimum",
+      "label": "Disable Add to Cart until minimum is reached",
+      "default": true
+    },
+    {
+      "type": "header",
       "content": "Spacing settings"
     },
     {
@@ -336,10 +367,17 @@
       "settings": [
         {
           "type": "number",
-          "id": "min_quantity",
-          "label": "Minimum Quantity",
-          "default": 14,
-          "info": "Minimum number of products required for this discount tier."
+          "id": "min_amount",
+          "label": "Minimum Amount ($)",
+          "default": 300,
+          "info": "Bundle subtotal (before discount) required for this discount tier. Must match the discount set up in Shopify."
+        },
+        {
+          "type": "number",
+          "id": "discount_percent",
+          "label": "Discount Percent",
+          "default": 10,
+          "info": "Used to show the discounted total (e.g. 10 for 10% off)."
         },
         {
           "type": "text",
@@ -377,14 +415,16 @@
         {
           "type": "discount_tier",
           "settings": {
-            "min_quantity": 14,
+            "min_amount": 300,
+            "discount_percent": 10,
             "discount_text": "10% off"
           }
         },
         {
           "type": "discount_tier",
           "settings": {
-            "min_quantity": 22,
+            "min_amount": 400,
+            "discount_percent": 15,
             "discount_text": "15% off"
           }
         }

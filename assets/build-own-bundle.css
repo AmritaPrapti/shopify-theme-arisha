@@ -2077,3 +2077,111 @@ section:has(.bundle-products-container) > *,
     height: 100%;
   }
 }
+
+/* ── Bundle $ totals (original struck out, discounted total) ── */
+.bundle-totals {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2px 12px;
+  margin-bottom: 12px;
+}
+
+.bundle-totals__label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.bundle-totals__prices {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.bundle-totals__original {
+  font-size: 15px;
+  color: #999;
+}
+
+.bundle-totals__final {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+}
+
+.bundle-totals__savings {
+  width: 100%;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--quantity-button);
+}
+
+/* ── Store-wide order minimum ── */
+.bundle-min-order {
+  margin: 0 0 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #fdf3f4;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #666;
+  text-align: center;
+}
+
+.bundle-min-order-hint {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+}
+
+@media screen and (max-width: 990px) {
+  /* Compact empty state so the fixed bottom bar doesn't cover the products */
+  .summary-empty {
+    padding: 12px 16px 10px;
+  }
+
+  .summary-empty h3 {
+    font-size: 15px;
+    margin: 0 0 4px;
+  }
+
+  .summary-empty p {
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .summary-empty .bundle-min-order-hint {
+    margin-top: 4px;
+    font-size: 12px;
+  }
+
+  .mobile-tier-progress .bundle-min-order {
+    margin: 10px 0 0;
+  }
+
+  .mobile-review-section {
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .mobile-review-section .bundle-totals {
+    flex: 1;
+    justify-content: flex-start;
+    margin-bottom: 0;
+  }
+
+  .mobile-review-section .bundle-totals__savings {
+    text-align: left;
+    font-size: 12px;
+  }
+
+  .mobile-review-section .bundle-totals__final {
+    font-size: 18px;
+  }
+}

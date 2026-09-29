@@ -23,6 +23,9 @@ class BundleBuilder {
         addToCartText: "#FFFFFF",
         reviewBoxText: "Review Your Care Box",
         addBundleCartText: "Add Bundle to Cart",
+        discountTiers: [],
+        minimumOrder: 0,
+        blockBelowMinimum: false,
       };
     }
 
@@ -34,8 +37,19 @@ class BundleBuilder {
       console.error("Error parsing discount tiers:", e);
     }
 
-    // Sort tiers by minimum quantity
-    tiers.sort((a, b) => a.minQuantity - b.minQuantity);
+    // Tier thresholds are entered in dollars; everything in JS works in cents.
+    // Discount percent falls back to the number in the text (e.g. "10% off").
+    tiers = tiers.map((tier) => ({
+      minAmount: Math.round((parseFloat(tier.minAmount) || 0) * 100),
+      discountText: tier.discountText,
+      discountPercent:
+        parseFloat(tier.discountPercent) ||
+        parseFloat((tier.discountText || "").match(/(\d+(?:\.\d+)?)\s*%/)?.[1]) ||
+        0,
+    }));
+
+    // Sort tiers by minimum amount
+    tiers.sort((a, b) => a.minAmount - b.minAmount);
 
     return {
       progressBarColor: container.dataset.progressBarColor || "#4caf50",
@@ -53,20 +67,92 @@ class BundleBuilder {
       addBundleCartText:
         container.dataset.addBundleCartText || "Add Bundle to Cart",
       discountTiers: tiers,
+      minimumOrder: Math.round(
+        (parseFloat(container.dataset.minimumOrder) || 0) * 100,
+      ),
+      blockBelowMinimum: container.dataset.blockBelowMinimum === "true",
     };
   }
 
   init() {
     this.discountTiers = this.settings.discountTiers;
-    this.refreshCartQuantities();
+    this.cartSubtotal = 0;
+    // Re-render once the cart is known so the order minimum counts existing items
+    this.refreshCartQuantities().then(() => this.renderSummary());
     this.setupProductListeners();
-    this.setupQuickViewListeners(); 
+    this.setupQuickViewListeners();
     this.renderSummary();
-    this.updateTierSteps(0);
     this.setupSummaryVisibilityObserver();
   }
 
-  updateTierSteps(totalItems) {
+  getTotalItems() {
+    return this.selectedProducts.reduce((sum, p) => sum + p.quantity, 0);
+  }
+
+  // Pre-discount bundle subtotal in cents
+  getBundleSubtotal() {
+    return this.selectedProducts.reduce(
+      (sum, p) => sum + (p.priceCents || 0) * p.quantity,
+      0,
+    );
+  }
+
+  // Whole amounts drop the decimals ("$300") unless forced, others keep them ("$45.50")
+  formatMoney(cents, forceDecimals = false) {
+    const amount = cents / 100;
+    const currency = window.Shopify?.currency?.active || "USD";
+    const decimals = forceDecimals || cents % 100 !== 0 ? 2 : 0;
+    try {
+      return new Intl.NumberFormat(document.documentElement.lang || "en", {
+        style: "currency",
+        currency,
+        currencyDisplay: "narrowSymbol",
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+      }).format(amount);
+    } catch (e) {
+      return `$${amount.toFixed(decimals)}`;
+    }
+  }
+
+  // Amount still needed to reach the store-wide order minimum,
+  // counting what is already in the cart (0 when met or disabled)
+  getMinimumOrderRemaining(subtotal) {
+    if (!this.settings.minimumOrder) return 0;
+    return Math.max(
+      this.settings.minimumOrder - this.cartSubtotal - subtotal,
+      0,
+    );
+  }
+
+  getMinimumOrderHTML(subtotal) {
+    const remaining = this.getMinimumOrderRemaining(subtotal);
+    if (remaining <= 0) return "";
+    return `
+      <p class="bundle-min-order">
+        ${this.formatMoney(this.settings.minimumOrder)} minimum order (before discounts &amp; shipping).
+        Add <strong>${this.formatMoney(remaining)}</strong> more to check out.
+      </p>`;
+  }
+
+  // Subtotal with the current tier's discount applied, original price struck out
+  getTotalsHTML(subtotal) {
+    const tier = this.getCurrentTier(subtotal);
+    const percent = tier?.discountPercent || 0;
+    const discounted = Math.round(subtotal * (1 - percent / 100));
+
+    return `
+      <div class="bundle-totals">
+        <span class="bundle-totals__label">Total</span>
+        <span class="bundle-totals__prices">
+          ${percent > 0 ? `<s class="bundle-totals__original">${this.formatMoney(subtotal, true)}</s>` : ""}
+          <span class="bundle-totals__final">${this.formatMoney(discounted, true)}</span>
+        </span>
+        ${percent > 0 ? `<span class="bundle-totals__savings">You save ${this.formatMoney(subtotal - discounted, true)} (${tier.discountText})</span>` : ""}
+      </div>`;
+  }
+
+  updateTierSteps(subtotal) {
     const tierSteps = document.querySelectorAll(".tier-step");
     const connectors = document.querySelectorAll(".tier-step-connector");
 
@@ -83,57 +169,57 @@ class BundleBuilder {
     });
 
     // Find current tier
-    const currentTier = this.getCurrentTier(totalItems);
+    const currentTier = this.getCurrentTier(subtotal);
 
     // Mark steps and connectors based on progress
     tierSteps.forEach((step, index) => {
-      const minQuantity = parseInt(step.dataset.minQuantity) || 0;
+      const minAmount = parseInt(step.dataset.minAmount) || 0;
 
       // Step 0 (Start) - always completed if we have any products
-      if (minQuantity === 0) {
-        if (totalItems > 0) {
+      if (minAmount === 0) {
+        if (subtotal > 0) {
           step.classList.add("completed");
         } else {
           step.classList.add("active");
         }
       }
       // Steps that are completed (tier reached)
-      else if (totalItems >= minQuantity) {
+      else if (subtotal >= minAmount) {
         step.classList.add("completed");
         // Mark the highest completed tier as active
-        if (currentTier && minQuantity === currentTier.minQuantity) {
+        if (currentTier && minAmount === currentTier.minAmount) {
           step.classList.add("active");
         }
       }
       // Steps in progress (between current and next tier)
-      else if (totalItems > 0) {
+      else if (subtotal > 0) {
         // Check if this is the next tier to reach
         const prevStepMinQuantity =
           index > 0
-            ? parseInt(tierSteps[index - 1].dataset.minQuantity) || 0
+            ? parseInt(tierSteps[index - 1].dataset.minAmount) || 0
             : 0;
-        if (totalItems > prevStepMinQuantity && totalItems < minQuantity) {
+        if (subtotal > prevStepMinQuantity && subtotal < minAmount) {
           step.classList.add("in-progress");
         }
       }
 
       // Activate and set width for connectors with progressive fill
       if (index > 0 && connectors[index - 1]) {
-        const currentStepMin = minQuantity;
+        const currentStepMin = minAmount;
         const prevStepMin =
           index > 0
-            ? parseInt(tierSteps[index - 1].dataset.minQuantity) || 0
+            ? parseInt(tierSteps[index - 1].dataset.minAmount) || 0
             : 0;
 
         // Connector is fully active if we've reached or passed this step
-        if (totalItems >= currentStepMin && currentStepMin > 0) {
+        if (subtotal >= currentStepMin && currentStepMin > 0) {
           connectors[index - 1].classList.add("active");
           connectors[index - 1].style.setProperty("--fill-width", "100%");
         }
         // Partial fill for connectors between steps
-        else if (totalItems > prevStepMin) {
+        else if (subtotal > prevStepMin) {
           const range = currentStepMin - prevStepMin;
-          const progress = totalItems - prevStepMin;
+          const progress = subtotal - prevStepMin;
           const percentage = Math.min((progress / range) * 100, 100);
           connectors[index - 1].style.setProperty(
             "--fill-width",
@@ -150,6 +236,8 @@ class BundleBuilder {
     try {
       const response = await fetch("/cart.js");
       const cart = await response.json();
+      // Pre-discount value already in the cart, for the order minimum
+      this.cartSubtotal = cart.original_total_price || 0;
       this.cartQuantities = {};
       (cart.items || []).forEach((item) => {
         this.cartQuantities[item.variant_id] =
@@ -326,6 +414,11 @@ class BundleBuilder {
     const variantId =
       card.querySelector(".add-bundle")?.dataset.variantId ||
       card.querySelector(".custom-quantity-selector")?.dataset.variantId;
+    // Variant price in cents; fall back to parsing the displayed price
+    const priceCents =
+      parseInt(card.querySelector(".add-bundle")?.dataset.price) ||
+      Math.round(parseFloat((productPrice || "").replace(/[^0-9.]/g, "")) * 100) ||
+      0;
 
     const existingProductIndex = this.selectedProducts.findIndex(
       (p) => p.variantId === variantId,
@@ -354,6 +447,7 @@ class BundleBuilder {
         link: productLink,
         image: productImage,
         price: productPrice,
+        priceCents: priceCents,
         variantId: variantId,
         quantity: initialQuantity,
         inventoryLimit: inventoryLimit,
@@ -373,13 +467,6 @@ class BundleBuilder {
 
     this.renderSummary();
     this.showAddedFeedback(card);
-
-    // Update tier steps immediately
-    const totalItems = this.selectedProducts.reduce(
-      (sum, p) => sum + p.quantity,
-      0,
-    );
-    this.updateTierSteps(totalItems);
     return true;
   }
 
@@ -397,13 +484,6 @@ class BundleBuilder {
         this.getInventoryLimit(card),
       );
       this.renderSummary();
-
-      // Update tier steps immediately
-      const totalItems = this.selectedProducts.reduce(
-        (sum, p) => sum + p.quantity,
-        0,
-      );
-      this.updateTierSteps(totalItems);
     }
   }
 
@@ -418,13 +498,6 @@ class BundleBuilder {
     if (existingProductIndex >= 0) {
       this.selectedProducts.splice(existingProductIndex, 1);
       this.renderSummary();
-
-      // Update tier steps immediately
-      const totalItems = this.selectedProducts.reduce(
-        (sum, p) => sum + p.quantity,
-        0,
-      );
-      this.updateTierSteps(totalItems);
     }
   }
 
@@ -448,13 +521,6 @@ class BundleBuilder {
 
     this.selectedProducts.splice(index, 1);
     this.renderSummary();
-
-    // Update tier steps immediately
-    const totalItems = this.selectedProducts.reduce(
-      (sum, p) => sum + p.quantity,
-      0,
-    );
-    this.updateTierSteps(totalItems);
   }
 
   removeAllProducts() {
@@ -479,7 +545,6 @@ class BundleBuilder {
     // Clear all products
     this.selectedProducts = [];
     this.renderSummary();
-    this.updateTierSteps(0);
   }
 
   updateProductQuantity(index, quantity) {
@@ -502,113 +567,74 @@ class BundleBuilder {
       }
 
       this.renderSummary();
-
-      // Update tier steps immediately
-      const totalItems = this.selectedProducts.reduce(
-        (sum, p) => sum + p.quantity,
-        0,
-      );
-      this.updateTierSteps(totalItems);
     }
   }
 
-  generateTierProgressBars(totalItems) {
+  // Shared tier state for the desktop and mobile progress bars (max 3 tiers).
+  // Labels read "Under $300", "$300+", "$400+".
+  getTierBars(subtotal) {
+    const allTiers = [
+      { minAmount: 0, discountText: "No discount" },
+      ...this.discountTiers,
+    ].slice(0, 3);
+
+    return allTiers.map((tier, index) => {
+      const next = allTiers[index + 1];
+      const label =
+        index === 0 && next
+          ? `Under ${this.formatMoney(next.minAmount)}`
+          : `${this.formatMoney(tier.minAmount)}+`;
+
+      const isCurrentTier =
+        subtotal >= tier.minAmount && (!next || subtotal < next.minAmount);
+      const isCompleted = Boolean(next) && subtotal >= next.minAmount;
+
+      let progressPercentage = 0;
+      if (isCompleted) {
+        progressPercentage = 100;
+      } else if (isCurrentTier) {
+        if (next) {
+          // There's a next tier - calculate progress towards it
+          const range = next.minAmount - tier.minAmount;
+          const progress = subtotal - tier.minAmount;
+          progressPercentage = Math.min((progress / range) * 100, 100);
+        } else {
+          // This is the highest tier and we're in it - 100%
+          progressPercentage = 100;
+        }
+      }
+
+      return {
+        label,
+        discountText: tier.discountText,
+        isCurrentTier,
+        isCompleted,
+        progressPercentage,
+      };
+    });
+  }
+
+  generateTierProgressBars(subtotal) {
     if (this.discountTiers.length === 0) {
       return "";
     }
 
-    // Create array with starting tier (0 items, no discount)
-    const allTiers = [
-      { minQuantity: 0, discountText: "No discount" },
-      ...this.discountTiers,
-    ];
-
-    // Find current tier
-    const currentTier = this.getCurrentTier(totalItems);
-
-    // Get current discount text
-    const currentDiscountText = currentTier
-      ? currentTier.discountText
-      : "No discount";
-
-    // Find next tier
-    console.log("totalItems:", allTiers);
-
-    let hideMesage = true;
-    // if we are at first tier and remaining item less than 5 then hide message
-    let remainQuantity = allTiers[1].minQuantity - totalItems;
-
-    if (remainQuantity <= 5) {
-      hideMesage = false;
-    }
-
-    console.log("hideMesage:", hideMesage);
-    
-    const nextTier = this.getNextTier(totalItems);
-    let addMoreText = '';
-    
-    if (!hideMesage) {
-      addMoreText = this.getProgressMessage(totalItems);
-    }
-
-    // Generate progress bars for display (limit to 3 tiers max for UI)
-    const progressBarsHTML = allTiers
-      .slice(0, Math.min(3, allTiers.length))
-      .map((tier, index) => {
-        // Determine the end range
-        let endRange;
-        let displayRange;
-        if (index === 2 || index === allTiers.length - 1) {
-          // Last displayed tier shows "+"
-          endRange = "+";
-          displayRange = `${tier.minQuantity}+`;
-        } else if (allTiers[index + 1]) {
-          // Show one less than next tier's min
-          endRange = allTiers[index + 1].minQuantity - 1;
-          displayRange = `${tier.minQuantity} - ${endRange}`;
-        } else {
-          endRange = "+";
-          displayRange = `${tier.minQuantity}+`;
-        }
-
-        const isCurrentTier =
-          totalItems >= tier.minQuantity &&
-          (index === allTiers.length - 1 ||
-            totalItems < allTiers[index + 1]?.minQuantity);
-        const isCompleted =
-          index < allTiers.length - 1 &&
-          totalItems >= allTiers[index + 1]?.minQuantity;
-
-        // Calculate progress percentage
-        let progressPercentage = 0;
-        if (isCompleted) {
-          progressPercentage = 100;
-        } else if (isCurrentTier) {
-          if (allTiers[index + 1]) {
-            // There's a next tier - calculate progress towards it
-            const range = allTiers[index + 1].minQuantity - tier.minQuantity;
-            const progress = totalItems - tier.minQuantity;
-            progressPercentage = Math.min((progress / range) * 100, 100);
-          } else {
-            // This is the highest tier and we're in it - 100%
-            progressPercentage = 100;
-          }
-        }
-
-        return `
-        <div class="tier-bar-item ${isCurrentTier ? "active" : ""} ${isCompleted ? "completed" : ""}">
+    const progressBarsHTML = this.getTierBars(subtotal)
+      .map(
+        (bar) => `
+        <div class="tier-bar-item ${bar.isCurrentTier ? "active" : ""} ${bar.isCompleted ? "completed" : ""}">
           <div class="tier-bar-header">
-            <span class="tier-bar-range">${displayRange} items</span>
+            <span class="tier-bar-range">${bar.label}</span>
           </div>
           <div class="tier-bar-wrapper">
-            <div class="tier-bar-fill" style="width: ${progressPercentage}%; background-color: ${this.settings.progressBarColor}"></div>
+            <div class="tier-bar-fill" style="width: ${bar.progressPercentage}%; background-color: ${this.settings.progressBarColor}"></div>
           </div>
           <div class="tier-bar-footer">
-            <span class="tier-bar-discount">${tier.discountText}</span>
+            <span class="tier-bar-discount">${bar.discountText}</span>
           </div>
         </div>
-      `;
-      })
+      `,
+      )
       .join("");
 
     return `
@@ -617,72 +643,30 @@ class BundleBuilder {
         <div class="tier-bars-row">
           ${progressBarsHTML}
         </div>
-        <div class="next-tier-status ${hideMesage ? "hidden" : "visible"}">
-            ${addMoreText}
+        <div class="next-tier-status visible">
+            ${this.getProgressMessage(subtotal)}
           </div>
       </div>
     `;
   }
 
-  generateMobileTierBars(totalItems) {
+  generateMobileTierBars(subtotal) {
     if (this.discountTiers.length === 0) {
       return "";
     }
 
-    const allTiers = [
-      { minQuantity: 0, discountText: "No discount" },
-      ...this.discountTiers,
-    ];
-
-    const progressBarsHTML = allTiers
-      .slice(0, Math.min(3, allTiers.length))
-      .map((tier, index) => {
-        let endRange;
-        let displayRange;
-        if (index === 2 || index === allTiers.length - 1) {
-          endRange = "+";
-          displayRange = `${tier.minQuantity}+`;
-        } else if (allTiers[index + 1]) {
-          endRange = allTiers[index + 1].minQuantity - 1;
-          displayRange = `${tier.minQuantity}-${endRange}`;
-        } else {
-          endRange = "+";
-          displayRange = `${tier.minQuantity}+`;
-        }
-
-        const isCurrentTier =
-          totalItems >= tier.minQuantity &&
-          (index === allTiers.length - 1 ||
-            totalItems < allTiers[index + 1]?.minQuantity);
-        const isCompleted =
-          index < allTiers.length - 1 &&
-          totalItems >= allTiers[index + 1]?.minQuantity;
-
-        let progressPercentage = 0;
-        if (isCompleted) {
-          progressPercentage = 100;
-        } else if (isCurrentTier) {
-          if (allTiers[index + 1]) {
-            // There's a next tier - calculate progress towards it
-            const range = allTiers[index + 1].minQuantity - tier.minQuantity;
-            const progress = totalItems - tier.minQuantity;
-            progressPercentage = Math.min((progress / range) * 100, 100);
-          } else {
-            // This is the highest tier and we're in it - 100%
-            progressPercentage = 100;
-          }
-        }
-
-        return `
-        <div class="mobile-tier-bar ${isCurrentTier ? "active" : ""} ${isCompleted ? "completed" : ""}">
-          <span class="mobile-tier-range">${displayRange} items</span>
+    const progressBarsHTML = this.getTierBars(subtotal)
+      .map(
+        (bar) => `
+        <div class="mobile-tier-bar ${bar.isCurrentTier ? "active" : ""} ${bar.isCompleted ? "completed" : ""}">
+          <span class="mobile-tier-range">${bar.label}</span>
           <div class="mobile-tier-bar-bg">
-            <div class="mobile-tier-bar-fill" style="width: ${progressPercentage}%; background-color: ${this.settings.progressBarColor}"></div>
+            <div class="mobile-tier-bar-fill" style="width: ${bar.progressPercentage}%; background-color: ${this.settings.progressBarColor}"></div>
           </div>
-          <span class="mobile-tier-discount">${tier.discountText}</span>
+          <span class="mobile-tier-discount">${bar.discountText}</span>
         </div>
-      `;
-      })
+      `,
+      )
       .join("");
 
     return `<div class="mobile-tier-bars-row">${progressBarsHTML}</div>`;
@@ -697,12 +681,10 @@ class BundleBuilder {
     );
     if (!summaryContainer) return;
 
-    const totalItems = this.selectedProducts.reduce(
-      (sum, p) => sum + p.quantity,
-      0,
-    );
-    const currentTier = this.getCurrentTier(totalItems);
-    const nextTier = this.getNextTier(totalItems); // ADD THIS LINE - was missing!
+    const totalItems = this.getTotalItems();
+    const subtotal = this.getBundleSubtotal();
+    const belowMinimum = this.getMinimumOrderRemaining(subtotal) > 0;
+    const disableAddToCart = belowMinimum && this.settings.blockBelowMinimum;
 
     if (this.selectedProducts.length === 0) {
       if (summaryWrapper) {
@@ -718,7 +700,7 @@ class BundleBuilder {
           </svg>
           <h3 style="color: ${this.settings.emptyHeadingColor}">${this.settings.emptyHeadingText}</h3>
           <p style="color: ${this.settings.emptySubtitleColor}">${this.settings.emptySubtitleText}</p>
-          
+          ${this.settings.minimumOrder ? `<p class="bundle-min-order-hint">Minimum order: ${this.formatMoney(this.settings.minimumOrder)}</p>` : ""}
         </div>
       `;
       this.updateTierSteps(0);
@@ -730,7 +712,9 @@ class BundleBuilder {
     }
 
     // Generate tier progress bars HTML
-    const tierProgressBarsHTML = this.generateTierProgressBars(totalItems);
+    const tierProgressBarsHTML = this.generateTierProgressBars(subtotal);
+    const totalsHTML = this.getTotalsHTML(subtotal);
+    const minimumOrderHTML = this.getMinimumOrderHTML(subtotal);
 
     const productsHTML = this.selectedProducts
       .map((product, index) => {
@@ -785,16 +769,11 @@ class BundleBuilder {
       <div class="summary-mobile-compact">
         <!-- Mobile Progress Section -->
         <div class="mobile-tier-progress">
-          ${this.generateMobileTierBars(totalItems)}
+          ${this.generateMobileTierBars(subtotal)}
           <div class="mobile-tier-status-row">
-            ${(() => {
-              if (this.discountTiers.length === 0) return '';
-              const remaining = this.discountTiers[0].minQuantity - totalItems;
-              const hide = remaining > 5;
-              return `<div class="next-tier-status ${hide ? 'hidden' : 'visible'}">${this.getProgressMessage(totalItems)}</div>`;
-            })()}
+            ${this.discountTiers.length > 0 ? `<div class="next-tier-status visible">${this.getProgressMessage(subtotal)}</div>` : ""}
           </div>
-          
+          ${minimumOrderHTML}
         </div>
         
         <div class="compact-header">
@@ -823,6 +802,7 @@ class BundleBuilder {
         </div>
 
         <div class="mobile-review-section">
+          ${totalsHTML}
           <button class="mobile-expand-toggle" aria-label="Expand bundle summary">
             <span class="expand-count">${totalItems}</span>
             <svg class="expand-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -864,7 +844,9 @@ class BundleBuilder {
         </div>
         
         <div class="summary-footer">
-          <button class="summary-add-to-cart-btn" style="background-color: ${this.settings.addToCartBg}; color: ${this.settings.addToCartText}">
+          ${totalsHTML}
+          ${minimumOrderHTML}
+          <button class="summary-add-to-cart-btn" style="background-color: ${this.settings.addToCartBg}; color: ${this.settings.addToCartText}" ${disableAddToCart ? "disabled" : ""}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="9" cy="21" r="1"></circle>
               <circle cx="20" cy="21" r="1"></circle>
@@ -878,7 +860,7 @@ class BundleBuilder {
 
     this.attachSummaryListeners();
     this.setupMobileExpand();
-    this.updateTierSteps(totalItems);
+    this.updateTierSteps(subtotal);
   }
 
   attachSummaryListeners() {
@@ -991,56 +973,52 @@ setupMobileExpand() {
   }
 }
 
-  getCurrentTier(quantity) {
+  getCurrentTier(subtotal) {
     if (this.discountTiers.length === 0) return null;
 
-    // Find the highest tier the quantity qualifies for
+    // Find the highest tier the bundle subtotal qualifies for
     let currentTier = null;
     for (let tier of this.discountTiers) {
-      if (quantity >= tier.minQuantity) {
+      if (subtotal >= tier.minAmount) {
         currentTier = tier;
       }
     }
     return currentTier;
   }
 
-
-
-  getNextTier(quantity) {
+  getNextTier(subtotal) {
     if (this.discountTiers.length === 0) return null;
 
-    // Find the next tier above current quantity
+    // Find the next tier above the current subtotal
     for (let tier of this.discountTiers) {
-      if (quantity < tier.minQuantity) {
+      if (subtotal < tier.minAmount) {
         return tier;
       }
     }
     return null; // Already at highest tier
   }
 
-getProgressMessage(quantity) {
-    const currentTier = this.getCurrentTier(quantity);
-    const nextTier = this.getNextTier(quantity);
+  getProgressMessage(subtotal) {
+    const currentTier = this.getCurrentTier(subtotal);
+    const nextTier = this.getNextTier(subtotal);
 
     if (currentTier && nextTier) {
-      const remaining = nextTier.minQuantity - quantity;
-      const showNudge = remaining <= 5;
+      const remaining = this.formatMoney(nextTier.minAmount - subtotal);
       return `
         <span class="tier-message tier-message--middle">
           <span class="tier-message__unlocked">
             🎉 <strong>${currentTier.discountText}</strong> unlocked!
           </span>
-          ${showNudge ? `
           <span class="tier-message__divider">·</span>
           <span class="tier-message__nudge">
             🔥 Add <strong>${remaining}</strong> more for <strong>${nextTier.discountText}</strong>
-          </span>` : ''}
+          </span>
         </span>`;
 
     } else if (nextTier) {
       // First tier — not unlocked yet
-      const remaining = nextTier.minQuantity - quantity;
-      return `<span class="next-tier-status first"> 🔥 Add ${remaining} more for ${nextTier.discountText}</span>`;
+      const remaining = this.formatMoney(nextTier.minAmount - subtotal);
+      return `<span class="next-tier-status first"> 🔥 Add <strong>${remaining}</strong> more for ${nextTier.discountText}</span>`;
 
     } else if (currentTier) {
       // ✅ HIGHEST TIER — max discount achieved
@@ -1052,14 +1030,8 @@ getProgressMessage(quantity) {
           </span>
         </span>`;
 
-    } else {
-      if (this.discountTiers.length > 0) {
-        const firstTier = this.discountTiers[0];
-        const remaining = firstTier.minQuantity - quantity;
-        return `<span class="next-tier-status first"> 🔥 Add ${remaining} more for ${firstTier.discountText}</span>`;
-      }
-      return "<span>Build your bundle</span>";
     }
+    return "<span>Build your bundle</span>";
   }
 
   showAddedFeedback(card) {
@@ -1081,6 +1053,13 @@ getProgressMessage(quantity) {
 
     if (this.selectedProducts.length === 0) {
       alert("Please add products to your bundle first");
+      return;
+    }
+
+    if (
+      this.settings.blockBelowMinimum &&
+      this.getMinimumOrderRemaining(this.getBundleSubtotal()) > 0
+    ) {
       return;
     }
 

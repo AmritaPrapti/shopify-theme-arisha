@@ -36,14 +36,16 @@
         "discount_tier_eDtJiJ": {
           "type": "discount_tier",
           "settings": {
-            "min_quantity": 14,
+            "min_amount": 300,
+            "discount_percent": 10,
             "discount_text": "10% off"
           }
         },
         "discount_tier_t4DVVp": {
           "type": "discount_tier",
           "settings": {
-            "min_quantity": 22,
+            "min_amount": 400,
+            "discount_percent": 15,
             "discount_text": "15% off"
           }
         }
@@ -73,7 +75,7 @@
         "add_to_cart_bg": "#cc858f",
         "add_to_cart_text": "#ffffff",
         "empty_heading_text": "Your Bundle is Empty",
-        "empty_subtitle_text": "Add 14 items or more for 10% off, and 22 items or more for 15% off",
+        "empty_subtitle_text": "Spend $300 or more for 10% off, and $400 or more for 15% off",
         "add_to_cart_label": "Add bundle to Cart",
         "review_box_text": "Review Your Care Box",
         "add_bundle_cart_text": "Add Bundle to Cart",

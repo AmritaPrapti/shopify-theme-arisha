@@ -207,6 +207,7 @@
           style="--color-button: {{ settings.button_background }}; --color-button-text: {{ settings.button_text_color }}; border-color: {{ settings.button_background }};"
           data-product-id="{{ card_product.id }}"
           data-variant-id="{{ card_variant.id }}"
+          data-price="{{ card_variant.price }}"
           data-inventory-quantity="{{ inventory_quantity }}"
           {% unless variant_available %}disabled aria-disabled="true"{% endunless %}
         >
