@@ -17,7 +17,7 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Orders through 1/12 (Mon) Noon to be shipped on our first delivery day: 1/14 (Wed)!",
+            "text": "10% off orders $300+ | 15% off orders $400+",
             "link": ""
           }
         }
@@ -26,10 +26,13 @@
         "announcement-bar-0"
       ],
       "disabled": true,
+      "custom_css": [
+        ".announcement-bar__message {font-family: \"Inter\"; font-weight: 100; font-size: 11.5px;}"
+      ],
       "settings": {
         "auto_rotate": false,
         "change_slides_speed": 5,
-        "color_scheme": "scheme-3",
+        "color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
         "show_line_separator": false,
         "show_social": false,
         "enable_country_selector": false,
