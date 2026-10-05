@@ -25,14 +25,13 @@
       "block_order": [
         "announcement-bar-0"
       ],
-      "disabled": true,
       "custom_css": [
         ".announcement-bar__message {font-family: \"Inter\"; font-weight: 100; font-size: 11.5px;}"
       ],
       "settings": {
         "auto_rotate": false,
         "change_slides_speed": 5,
-        "color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
+        "color_scheme": "scheme-8b1f75f1-9056-4a40-a191-bbf3848f034b",
         "show_line_separator": false,
         "show_social": false,
         "enable_country_selector": false,
