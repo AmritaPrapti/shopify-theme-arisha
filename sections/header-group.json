@@ -25,9 +25,7 @@
       "block_order": [
         "announcement-bar-0"
       ],
-      "custom_css": [
-        ".announcement-bar__message {font-family: \"Inter\"; font-weight: 100; font-size: 11.5px;}"
-      ],
+      "custom_css": [],
       "settings": {
         "auto_rotate": false,
         "change_slides_speed": 5,
