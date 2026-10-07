@@ -17,7 +17,7 @@
           "settings": {
             "text": "AFFILIATE PROGRAM",
             "text_style": "caption-with-letter-spacing",
-            "caption_size": "medium"
+            "caption_size": "large"
           }
         },
         "heading_hero": {
@@ -31,7 +31,8 @@
           "type": "text",
           "settings": {
             "text": "Join our Affiliate Circle and earn 10% commission on referred orders while helping more mothers discover intentional nourishment for postpartum care.",
-            "text_style": "body"
+            "text_style": "body",
+            "caption_size": "small"
           }
         },
         "button_hero": {
