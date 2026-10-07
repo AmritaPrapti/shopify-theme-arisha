@@ -132,7 +132,7 @@
               {{ block.settings.heading }}
             </h2>
           {%- when 'text' -%}
-            <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
+            <div class="banner__text rte {{ block.settings.text_style }}{% if block.settings.text_style == 'caption-with-letter-spacing' and block.settings.caption_size != 'small' %} caption-with-letter-spacing--{{ block.settings.caption_size }}{% endif %}" {{ block.shopify_attributes }}>
               <p>{{ block.settings.text }}</p>
             </div>
           {%- when 'buttons' -%}
@@ -443,6 +443,18 @@
           ],
           "default": "body",
           "label": "t:sections.image-banner.blocks.text.settings.text_style.label"
+        },
+        {
+          "type": "select",
+          "id": "caption_size",
+          "label": "Caption size",
+          "options": [
+            { "value": "small", "label": "Small" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "large", "label": "Large" }
+          ],
+          "default": "small",
+          "visible_if": "{{ block.settings.text_style == 'caption-with-letter-spacing' }}"
         }
       ]
     },

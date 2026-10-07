@@ -45,8 +45,11 @@
       border: 1.5px solid {{ section.settings.step_color }};
       border-radius: 50%;
       color: {{ section.settings.step_color }};
-      font-family: var(--font-heading-family);
-      font-size: 2rem;
+      /* body font: the heading font's old-style numerals are too small to read */
+      font-family: var(--font-body-family);
+      font-size: 1.8rem;
+      font-weight: 500;
+      font-variant-numeric: lining-nums;
       line-height: 1;
     }
     #shopify-section-{{ section.id }} .how-it-works__step-title {

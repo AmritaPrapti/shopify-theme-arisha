@@ -16,7 +16,8 @@
           "type": "text",
           "settings": {
             "text": "AFFILIATE PROGRAM",
-            "text_style": "caption-with-letter-spacing"
+            "text_style": "caption-with-letter-spacing",
+            "caption_size": "medium"
           }
         },
         "heading_hero": {
