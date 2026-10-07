@@ -147,7 +147,7 @@
           "type": "heading",
           "settings": {
             "heading": "Who It's For",
-            "heading_size": "h2"
+            "heading_size": "h1"
           }
         },
         "text_who": {
@@ -219,7 +219,7 @@
       ],
       "settings": {
         "title": "How It Works",
-        "heading_size": "h2",
+        "heading_size": "h1",
         "subtitle": "",
         "header_alignment": "center",
         "layout": "steps",
@@ -284,7 +284,7 @@
       "settings": {
         "include_margins": true,
         "heading": "Apply to Join",
-        "heading_size": "h2",
+        "heading_size": "h1",
         "subheading": "<p>We'd love to learn more about you and your work. Fill out the form and we'll be in touch soon.</p>",
         "center_block": false,
         "layout": "side",
@@ -352,7 +352,7 @@
       "settings": {
         "caption": "",
         "heading": "Frequently Asked Questions",
-        "heading_size": "h2",
+        "heading_size": "h1",
         "heading_alignment": "left",
         "heading_position": "left",
         "row_border": "bottom",
