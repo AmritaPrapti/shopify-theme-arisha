@@ -9,31 +9,61 @@
  */
 {
   "sections": {
-    "affiliate_apply": {
-      "type": "apps",
+    "affiliate_hero": {
+      "type": "image-banner",
       "blocks": {
-        "bloop_affiliate_form": {
-          "type": "shopify://apps/bloop-refer-aff/blocks/affiliate-rf/9d243b55-b2a4-42a8-aa2e-043240bb5d58",
+        "caption_hero": {
+          "type": "text",
           "settings": {
-            "section_width": 100,
-            "padding_top": 40,
-            "padding_bottom": 40
+            "text": "AFFILIATE PROGRAM",
+            "text_style": "caption-with-letter-spacing"
+          }
+        },
+        "heading_hero": {
+          "type": "heading",
+          "settings": {
+            "heading": "Share nourishment you believe in.",
+            "heading_size": "h1"
+          }
+        },
+        "text_hero": {
+          "type": "text",
+          "settings": {
+            "text": "Join our Affiliate Circle and earn 10% commission on referred orders while helping more mothers discover intentional nourishment for postpartum care.",
+            "text_style": "body"
+          }
+        },
+        "button_hero": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Apply to join →",
+            "button_link_1": "#apply-to-join",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
-        "bloop_affiliate_form"
+        "caption_hero",
+        "heading_hero",
+        "text_hero",
+        "button_hero"
       ],
       "settings": {
-        "include_margins": true,
-        "heading": "Apply to Join",
-        "heading_size": "h2",
-        "subheading": "<p>We'd love to learn more about you and your work. Fill out the form and we'll be in touch soon.</p>",
-        "center_block": false,
-        "layout": "side",
-        "anchor_id": "apply-to-join",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "image": "shopify://shop_images/230330_SO52427_1931_2nd_sRGB4000.jpg",
+        "section_url": "",
+        "image_overlay_opacity": 20,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-6fb1a60d-07bc-422e-bc89-f2a152813558",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "left",
+        "show_text_below": true
       }
     },
     "affiliate_benefits": {
@@ -77,16 +107,24 @@
       ],
       "settings": {
         "caption": "",
+        "caption_uppercase": true,
+        "caption_size": "medium",
+        "caption_font_size_desktop": 18,
+        "caption_font_size_mobile": 14,
+        "caption_font_weight": "400",
+        "caption_color": "",
         "title": "",
+        "heading_size": "h1",
         "subtitle": "",
         "title_alignment": "center",
         "image_width": "custom",
         "image_width_custom": 60,
-        "image_ratio": "adapt",
         "icon_color": "#b07a72",
         "icon_size": 56,
         "show_dividers": true,
         "divider_color": "#e3c9c4",
+        "image_ratio": "adapt",
+        "image_background": "",
         "button_label": "",
         "button_link": "",
         "columns_desktop": 3,
@@ -186,6 +224,7 @@
         "step_color": "#b07a72",
         "image_position": "second",
         "list_style": "rounded",
+        "number_font": "quattrocento_sans_n4",
         "font_size": "medium",
         "color_scheme": "scheme-2fa3a363-95b8-4d07-9e42-14be7562f72f",
         "padding_top": 60,
@@ -224,6 +263,34 @@
         "padding_bottom": 48
       }
     },
+    "affiliate_apply": {
+      "type": "apps",
+      "blocks": {
+        "bloop_affiliate_form": {
+          "type": "shopify://apps/bloop-refer-aff/blocks/affiliate-rf/9d243b55-b2a4-42a8-aa2e-043240bb5d58",
+          "settings": {
+            "section_width": 100,
+            "padding_top": 40,
+            "padding_bottom": 40,
+            "custom_css": ""
+          }
+        }
+      },
+      "block_order": [
+        "bloop_affiliate_form"
+      ],
+      "settings": {
+        "include_margins": true,
+        "heading": "Apply to Join",
+        "heading_size": "h2",
+        "subheading": "<p>We'd love to learn more about you and your work. Fill out the form and we'll be in touch soon.</p>",
+        "center_block": false,
+        "layout": "side",
+        "anchor_id": "apply-to-join",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "affiliate_faq": {
       "type": "collapsible-content",
       "blocks": {
@@ -232,7 +299,8 @@
           "settings": {
             "heading": "How much is the commission?",
             "icon": "none",
-            "row_content": "<p>You earn 10% commission on orders placed through your unique affiliate link.</p>"
+            "row_content": "<p>You earn 10% commission on orders placed through your unique affiliate link.</p>",
+            "page": ""
           }
         },
         "faq_payout": {
@@ -240,7 +308,8 @@
           "settings": {
             "heading": "How will I receive my commissions?",
             "icon": "none",
-            "row_content": "<p>Your commissions are tracked in your personal affiliate dashboard. [Add payout method and schedule here.]</p>"
+            "row_content": "<p>Your commissions are tracked in your personal affiliate dashboard. [Add payout method and schedule here.]</p>",
+            "page": ""
           }
         },
         "faq_resources": {
@@ -248,7 +317,8 @@
           "settings": {
             "heading": "What resources will I get?",
             "icon": "none",
-            "row_content": "<p>Once approved, you'll receive your unique affiliate link and resources to share with your community.</p>"
+            "row_content": "<p>Once approved, you'll receive your unique affiliate link and resources to share with your community.</p>",
+            "page": ""
           }
         },
         "faq_social": {
@@ -256,7 +326,8 @@
           "settings": {
             "heading": "Can I share on social media?",
             "icon": "none",
-            "row_content": "<p>Yes. You can share your affiliate link on social media, in your newsletter, or directly with the mothers you support.</p>"
+            "row_content": "<p>Yes. You can share your affiliate link on social media, in your newsletter, or directly with the mothers you support.</p>",
+            "page": ""
           }
         },
         "faq_response": {
@@ -264,7 +335,8 @@
           "settings": {
             "heading": "When will I hear back after applying?",
             "icon": "none",
-            "row_content": "<p>[Add how long it usually takes to review an application.]</p>"
+            "row_content": "<p>[Add how long it usually takes to review an application.]</p>",
+            "page": ""
           }
         }
       },
@@ -281,6 +353,9 @@
         "heading_size": "h2",
         "heading_alignment": "left",
         "heading_position": "left",
+        "row_border": "box",
+        "row_border_color": "#e5ddd8",
+        "row_border_width": 1,
         "layout": "row",
         "container_color_scheme": "scheme-1",
         "color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
@@ -288,66 +363,7 @@
         "image_ratio": "adapt",
         "desktop_layout": "image_second",
         "padding_top": 60,
-        "padding_bottom": 60,
-        "row_border": "box",
-        "row_border_color": "#e5ddd8",
-        "row_border_width": 1
-      }
-    },
-    "affiliate_hero": {
-      "type": "image-banner",
-      "blocks": {
-        "caption_hero": {
-          "type": "text",
-          "settings": {
-            "text": "AFFILIATE PROGRAM",
-            "text_style": "caption-with-letter-spacing"
-          }
-        },
-        "heading_hero": {
-          "type": "heading",
-          "settings": {
-            "heading": "Share nourishment you believe in.",
-            "heading_size": "h1"
-          }
-        },
-        "text_hero": {
-          "type": "text",
-          "settings": {
-            "text": "Join our Affiliate Circle and earn 10% commission on referred orders while helping more mothers discover intentional nourishment for postpartum care.",
-            "text_style": "body"
-          }
-        },
-        "button_hero": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Apply to join →",
-            "button_link_1": "/pages/partnerships#apply-to-join",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "caption_hero",
-        "heading_hero",
-        "text_hero",
-        "button_hero"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/230330_SO52427_1931_2nd_sRGB4000.jpg",
-        "image_overlay_opacity": 0,
-        "image_height": "large",
-        "image_behavior": "none",
-        "desktop_content_position": "middle-left",
-        "desktop_content_alignment": "left",
-        "show_text_box": false,
-        "color_scheme": "scheme-2fa3a363-95b8-4d07-9e42-14be7562f72f",
-        "stack_images_on_mobile": true,
-        "mobile_content_alignment": "left",
-        "show_text_below": true
+        "padding_bottom": 60
       }
     }
   },
