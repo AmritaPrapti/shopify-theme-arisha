@@ -163,7 +163,9 @@ class JudgemeTestimonials extends HTMLElement {
     url.searchParams.set('page', '1');
 
     try {
-      const response = await fetch(url, { headers: { Accept: 'application/json' } });
+      // Pass a string, not the URL object: apps that wrap window.fetch (e.g.
+      // ShipFare order protection) call string methods on it and throw.
+      const response = await fetch(url.toString(), { headers: { Accept: 'application/json' } });
       if (!response.ok) throw new Error(`Judge.me responded ${response.status}`);
 
       const data = await response.json();
