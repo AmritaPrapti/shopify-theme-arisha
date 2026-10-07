@@ -19,6 +19,64 @@
     --counter-font: {{ number_font.family }}, {{ number_font.fallback_families }};
 
    }
+
+  {%- if section.settings.layout == 'steps' -%}
+    /* Horizontal steps: numbered circles in a row with arrows between them */
+    #shopify-section-{{ section.id }} .how-it-works__steps {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.6rem;
+      margin-top: 3.2rem;
+    }
+    #shopify-section-{{ section.id }} .how-it-works__step {
+      flex: 1 1 0;
+      min-width: 0;
+      max-width: 32rem;
+      text-align: center;
+    }
+    #shopify-section-{{ section.id }} .how-it-works__step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 4.8rem;
+      height: 4.8rem;
+      margin-bottom: 1.2rem;
+      border: 1.5px solid {{ section.settings.step_color }};
+      border-radius: 50%;
+      color: {{ section.settings.step_color }};
+      font-family: var(--font-heading-family);
+      font-size: 2rem;
+      line-height: 1;
+    }
+    #shopify-section-{{ section.id }} .how-it-works__step-title {
+      margin: 0 0 0.8rem;
+      font-size: 2.4rem;
+    }
+    #shopify-section-{{ section.id }} .how-it-works__step-description > :first-child {
+      margin-top: 0;
+    }
+    #shopify-section-{{ section.id }} .how-it-works__step-arrow {
+      flex: none;
+      width: 2.4rem;
+      height: 2.4rem;
+      color: {{ section.settings.step_color }};
+      transform: rotate(90deg);
+    }
+    @media screen and (min-width: 750px) {
+      #shopify-section-{{ section.id }} .how-it-works__steps {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 2.4rem;
+      }
+      #shopify-section-{{ section.id }} .how-it-works__step-arrow {
+        /* line up with the middle of the number circles */
+        margin-top: 1.2rem;
+        transform: none;
+      }
+    }
+  {%- endif -%}
 {%- endstyle -%}
 
 <section class="gradiant color-{{ section.settings.color_scheme }}">
@@ -37,6 +95,26 @@
                 <p class="how-it-works__subtitle">{{ section.settings.subtitle }}</p>
             {% endif %}
         </div>
+        {%- if section.settings.layout == 'steps' -%}
+        <div class="how-it-works__steps">
+            {%- for block in section.blocks -%}
+                <div class="how-it-works__step {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" {{ block.shopify_attributes }}>
+                    <span class="how-it-works__step-number">{{ forloop.index }}</span>
+                    {%- if block.settings.list_title != blank -%}
+                        <h3 class="how-it-works__step-title">{{ block.settings.list_title }}</h3>
+                    {%- endif -%}
+                    {%- if block.settings.list_description != blank -%}
+                        <div class="how-it-works__step-description rte">{{ block.settings.list_description }}</div>
+                    {%- endif -%}
+                </div>
+                {%- unless forloop.last -%}
+                    <svg class="how-it-works__step-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <path d="M4 12h16M14 6l6 6-6 6"/>
+                    </svg>
+                {%- endunless -%}
+            {%- endfor -%}
+        </div>
+        {%- else -%}
         <div class="how-it-works__inner-wrapper">
             
             <div class="how-it-works__image-wrapper how-it-works__image-wrapper--{{ section.settings.image_position }} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in-right{% endif %}">
@@ -59,6 +137,7 @@
                 {% endfor %}
             </div>
         </div>
+        {%- endif -%}
 
     </div>
 
@@ -130,9 +209,34 @@
                 "default": "center"
             },
             {
+                "type": "select",
+                "id": "layout",
+                "label": "Layout",
+                "options": [
+                    {
+                    "value": "image",
+                    "label": "Vertical list with image"
+                    },
+                    {
+                    "value": "steps",
+                    "label": "Horizontal steps"
+                    }
+                ],
+                "default": "image",
+                "info": "Horizontal steps shows numbered circles in a row with arrows, without the image."
+            },
+            {
+                "type": "color",
+                "id": "step_color",
+                "label": "Step accent color",
+                "default": "#b07a72",
+                "visible_if": "{{ section.settings.layout == 'steps' }}"
+            },
+            {
                 "type": "image_picker",
                 "id": "image",
-                "label": "Image"
+                "label": "Image",
+                "visible_if": "{{ section.settings.layout != 'steps' }}"
             },
             {
                 "type": "select",
@@ -149,7 +253,8 @@
                     }
                 ],
                 "default": "second",
-                "info": "Choose whether the image appears before or after the text content on desktop."
+                "info": "Choose whether the image appears before or after the text content on desktop.",
+                "visible_if": "{{ section.settings.layout != 'steps' }}"
             },
             {
                 "type": "select",

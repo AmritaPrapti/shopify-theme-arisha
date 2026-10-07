@@ -22,6 +22,31 @@
       min-height: calc({{ section.settings.card_title_lines }} * 1.3em);
     }
   {%- endif -%}
+
+  /* Fallback icon, shown when a column has no image */
+  #shopify-section-{{ section.id }} .multicolumn-card__icon {
+    display: block;
+    width: {{ section.settings.icon_size }}px;
+    height: {{ section.settings.icon_size }}px;
+    margin: 0 0 1.6rem;
+    color: {{ section.settings.icon_color }};
+  }
+  #shopify-section-{{ section.id }} .multicolumn-list__item.center .multicolumn-card__icon {
+    margin-inline: auto;
+  }
+  #shopify-section-{{ section.id }} .multicolumn-card__icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  {%- if section.settings.show_dividers -%}
+    /* Thin vertical line between columns on desktop */
+    @media screen and (min-width: 990px) {
+      #shopify-section-{{ section.id }} .multicolumn-list__item + .multicolumn-list__item {
+        border-left: 1px solid {{ section.settings.divider_color }};
+      }
+    }
+  {%- endif -%}
 {%- endstyle -%}
 
 {%- liquid
@@ -155,6 +180,10 @@
                     }}
                   </div>
                 </div>
+              {%- elsif block.settings.icon != blank and block.settings.icon != 'none' -%}
+                <span class="multicolumn-card__icon multicolumn-card-spacing">
+                  {%- render 'multicolumn-icon', icon: block.settings.icon -%}
+                </span>
               {%- endif -%}
               <div class="multicolumn-card__info">
                 {%- if block.settings.title != blank -%}
@@ -424,6 +453,37 @@
       "visible_if": "{{ section.settings.image_width == 'custom' }}"
     },
     {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Fallback icon color",
+      "default": "#b07a72",
+      "info": "Used by columns that have a fallback icon and no image."
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 24,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Fallback icon size",
+      "default": 56
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dividers",
+      "label": "Show dividers between columns",
+      "default": false,
+      "info": "Desktop only."
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#e3c9c4",
+      "visible_if": "{{ section.settings.show_dividers }}"
+    },
+    {
       "type": "select",
       "id": "image_ratio",
       "options": [
@@ -590,6 +650,23 @@
           "type": "image_picker",
           "id": "image",
           "label": "t:sections.multicolumn.blocks.column.settings.image.label"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Fallback icon",
+          "info": "Shown when no image is selected.",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "dollar", "label": "Dollar" },
+            { "value": "gift", "label": "Gift" },
+            { "value": "chart", "label": "Chart" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "star", "label": "Star" },
+            { "value": "people", "label": "People" }
+          ],
+          "default": "none"
         },
         {
           "type": "inline_richtext",

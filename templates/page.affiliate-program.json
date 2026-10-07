@@ -1,0 +1,354 @@
+{
+  "sections": {
+    "affiliate_apply": {
+      "type": "apps",
+      "blocks": {
+        "bloop_affiliate_form": {
+          "type": "shopify://apps/bloop-refer-aff/blocks/affiliate-rf/9d243b55-b2a4-42a8-aa2e-043240bb5d58",
+          "settings": {
+            "section_width": 100,
+            "padding_top": 40,
+            "padding_bottom": 40
+          }
+        }
+      },
+      "block_order": [
+        "bloop_affiliate_form"
+      ],
+      "settings": {
+        "include_margins": true,
+        "heading": "Apply to Join",
+        "heading_size": "h2",
+        "subheading": "<p>We'd love to learn more about you and your work. Fill out the form and we'll be in touch soon.</p>",
+        "center_block": false,
+        "layout": "side",
+        "anchor_id": "apply-to-join",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "affiliate_benefits": {
+      "type": "multicolumn",
+      "blocks": {
+        "benefit_commission": {
+          "type": "column",
+          "settings": {
+            "icon": "dollar",
+            "title": "10% commission",
+            "text": "<p>on orders placed through your affiliate link.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "benefit_gift": {
+          "type": "column",
+          "settings": {
+            "icon": "gift",
+            "title": "Free gift for clients",
+            "text": "<p>Clients you refer receive a complimentary product with a purchase of $100 or more.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "benefit_tracking": {
+          "type": "column",
+          "settings": {
+            "icon": "chart",
+            "title": "Track your earnings",
+            "text": "<p>Access to a personal dashboard to view referrals and payouts.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "benefit_commission",
+        "benefit_gift",
+        "benefit_tracking"
+      ],
+      "settings": {
+        "caption": "",
+        "title": "",
+        "subtitle": "",
+        "title_alignment": "center",
+        "image_width": "custom",
+        "image_width_custom": 60,
+        "image_ratio": "adapt",
+        "icon_color": "#b07a72",
+        "icon_size": 56,
+        "show_dividers": true,
+        "divider_color": "#e3c9c4",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "card_title_lines": 0,
+        "background_style": "none",
+        "color_scheme": "scheme-2fa3a363-95b8-4d07-9e42-14be7562f72f",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "affiliate_who": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_who": {
+          "type": "heading",
+          "settings": {
+            "heading": "Who It's For",
+            "heading_size": "h2"
+          }
+        },
+        "text_who": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our affiliate program is designed for postpartum professionals and aligned practitioners, including:</p><ul><li>Doulas and birth workers</li><li>Lactation consultants (IBCLCs)</li><li>Postpartum care providers</li><li>Wellness practitioners (e.g. acupuncturists, herbalists, nutritionists)</li><li>Therapists and coaches who support mothers</li><li>Other aligned professionals who share our values</li></ul><p>If you support mothers through pregnancy, postpartum, or early motherhood, we'd love to partner with you.</p>",
+            "text_style": "body",
+            "list_style": "check",
+            "list_icon_color": "#b07a72"
+          }
+        }
+      },
+      "block_order": [
+        "heading_who",
+        "text_who"
+      ],
+      "settings": {
+        "section_url": "",
+        "enable_text_link": false,
+        "image": "shopify://shop_images/07.13.25_ForHer-130_cropped.jpg",
+        "height": "medium",
+        "height_mobile": "medium",
+        "custom_media_height": 600,
+        "custom_media_height_mobile": 400,
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "mobile_layout": "image_first",
+        "image_behavior": "none",
+        "enable_full_width": true,
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
+        "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "affiliate_how": {
+      "type": "how-it-works",
+      "blocks": {
+        "step_apply": {
+          "type": "list",
+          "settings": {
+            "list_title": "Apply",
+            "list_description": "<p>Tell us a bit about yourself and your work.</p>"
+          }
+        },
+        "step_share": {
+          "type": "list",
+          "settings": {
+            "list_title": "Share",
+            "list_description": "<p>Once approved, you'll get your unique link and resources to share with your community.</p>"
+          }
+        },
+        "step_earn": {
+          "type": "list",
+          "settings": {
+            "list_title": "Earn",
+            "list_description": "<p>You'll earn 10% commission on referred orders.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_apply",
+        "step_share",
+        "step_earn"
+      ],
+      "settings": {
+        "title": "How It Works",
+        "heading_size": "h2",
+        "subtitle": "",
+        "header_alignment": "center",
+        "layout": "steps",
+        "step_color": "#b07a72",
+        "image_position": "second",
+        "list_style": "rounded",
+        "font_size": "medium",
+        "color_scheme": "scheme-2fa3a363-95b8-4d07-9e42-14be7562f72f",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "affiliate_quote": {
+      "type": "rich-text",
+      "blocks": {
+        "quote_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "<em>“It’s such a gift to be able to share something so intentional and rooted in tradition with the mothers I support.”</em>",
+            "heading_size": "h2"
+          }
+        },
+        "quote_author": {
+          "type": "text",
+          "settings": {
+            "text": "<p>— Postpartum Doula</p>"
+          }
+        }
+      },
+      "block_order": [
+        "quote_heading",
+        "quote_author"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "background_image_position": "left center",
+        "background_image_opacity": 100,
+        "color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
+        "full_width": true,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "affiliate_faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "faq_commission": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How much is the commission?",
+            "icon": "none",
+            "row_content": "<p>You earn 10% commission on orders placed through your unique affiliate link.</p>"
+          }
+        },
+        "faq_payout": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How will I receive my commissions?",
+            "icon": "none",
+            "row_content": "<p>Your commissions are tracked in your personal affiliate dashboard. [Add payout method and schedule here.]</p>"
+          }
+        },
+        "faq_resources": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What resources will I get?",
+            "icon": "none",
+            "row_content": "<p>Once approved, you'll receive your unique affiliate link and resources to share with your community.</p>"
+          }
+        },
+        "faq_social": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I share on social media?",
+            "icon": "none",
+            "row_content": "<p>Yes. You can share your affiliate link on social media, in your newsletter, or directly with the mothers you support.</p>"
+          }
+        },
+        "faq_response": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "When will I hear back after applying?",
+            "icon": "none",
+            "row_content": "<p>[Add how long it usually takes to review an application.]</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_commission",
+        "faq_payout",
+        "faq_resources",
+        "faq_social",
+        "faq_response"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "Frequently Asked Questions",
+        "heading_size": "h2",
+        "heading_alignment": "left",
+        "heading_position": "left",
+        "layout": "row",
+        "container_color_scheme": "scheme-1",
+        "color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "row_border": "box",
+        "row_border_color": "#e5ddd8",
+        "row_border_width": 1
+      }
+    },
+    "affiliate_hero": {
+      "type": "image-banner",
+      "blocks": {
+        "caption_hero": {
+          "type": "text",
+          "settings": {
+            "text": "AFFILIATE PROGRAM",
+            "text_style": "caption-with-letter-spacing"
+          }
+        },
+        "heading_hero": {
+          "type": "heading",
+          "settings": {
+            "heading": "Share nourishment you believe in.",
+            "heading_size": "h1"
+          }
+        },
+        "text_hero": {
+          "type": "text",
+          "settings": {
+            "text": "Join our Affiliate Circle and earn 10% commission on referred orders while helping more mothers discover intentional nourishment for postpartum care.",
+            "text_style": "body"
+          }
+        },
+        "button_hero": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Apply to join →",
+            "button_link_1": "/pages/partnerships#apply-to-join",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "caption_hero",
+        "heading_hero",
+        "text_hero",
+        "button_hero"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/230330_SO52427_1931_2nd_sRGB4000.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-2fa3a363-95b8-4d07-9e42-14be7562f72f",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "left",
+        "show_text_below": true
+      }
+    }
+  },
+  "order": [
+    "affiliate_hero",
+    "affiliate_benefits",
+    "affiliate_who",
+    "affiliate_how",
+    "affiliate_quote",
+    "affiliate_apply",
+    "affiliate_faq"
+  ]
+}

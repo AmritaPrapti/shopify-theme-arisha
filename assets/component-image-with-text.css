@@ -34,6 +34,15 @@
   /* padding-right: max(var(--page-padding), calc((100vw - var(--page-width)) / 2 + var(--page-padding))); */
 }
 
+/* Image first (text on the right): line the text up with the page edge on the
+   right instead, otherwise the left padding above leaves a big gap next to the image */
+@media screen and (min-width: 750px) {
+  .full-width .image-with-text__grid:not(.image-with-text__grid--reverse) .image-with-text__content {
+    padding-left: var(--page-padding);
+    padding-right: max(var(--page-padding), calc((100vw - var(--page-width)) / 2 + var(--page-padding)));
+  }
+}
+
 .banner-button-wrap {
   display: flex;
   gap: 1rem;

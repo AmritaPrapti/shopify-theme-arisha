@@ -60,9 +60,56 @@
   }
   .section-app-{{ section.id }}-padding .apps__subheading > :first-child { margin-top: 0; }
   .section-app-{{ section.id }}-padding .apps__subheading > :last-child { margin-bottom: 0; }
+
+  /* "Text beside the app" layout: heading + subheading left, app blocks right */
+  .section-app-{{ section.id }}-padding.apps--side {
+    scroll-margin-top: 10rem;
+  }
+  .section-app-{{ section.id }}-padding .apps-side {
+    display: grid;
+    gap: 3.2rem;
+  }
+  .section-app-{{ section.id }}-padding .apps-side__intro .image-with-text__heading {
+    margin-top: 0;
+  }
+  /* Same heading-to-text gap as the Image with text sections */
+  .section-app-{{ section.id }}-padding .apps-side__intro .apps__subheading {
+    margin-top: 2.5rem;
+  }
+  @media screen and (min-width: 990px) {
+    .section-app-{{ section.id }}-padding .apps-side {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+      gap: 8rem;
+      align-items: start;
+    }
+  }
 {%- endstyle -%}
 
-<div class="section-app-{{ section.id }}-padding {% if section.settings.include_margins %} page-width{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+{%- liquid
+  assign side_layout = false
+  if section.settings.layout == 'side'
+    assign side_layout = true
+  endif
+-%}
+<div
+  {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | handleize }}"{% endif %}
+  class="section-app-{{ section.id }}-padding {% if section.settings.include_margins %} page-width{% endif %}{% if side_layout %} apps--side{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+>
+  {%- if side_layout -%}
+    <div class="apps-side">
+      <div class="apps-side__intro">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="image-with-text__heading inline-richtext {{ section.settings.heading_size }}" {{ section.shopify_attributes }}>
+            {{ section.settings.heading }}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <div class="apps__subheading rte">
+            {{ section.settings.subheading }}
+          </div>
+        {%- endif -%}
+      </div>
+  {%- endif -%}
   <div class="app-block-wrapper{% if section.settings.center_block %} app-block-wrapper--center{% endif %}">
     
     {%- for block in section.blocks -%}
@@ -88,14 +135,14 @@
         </div>
       {% else %}
          <div>
-           {%- if section.settings.heading != blank -%}
+           {%- if side_layout == false and section.settings.heading != blank -%}
              <h2 class="image-with-text__heading inline-richtext {{ section.settings.heading_size }}"
                       {{ section.shopify_attributes }}
                     >
                       {{ section.settings.heading }}
                    </h2>
            {%- endif -%}
-           {%- if section.settings.subheading != blank -%}
+           {%- if side_layout == false and section.settings.subheading != blank -%}
              <div class="apps__subheading rte">
                {{ section.settings.subheading }}
              </div>
@@ -105,6 +152,9 @@
       {% endif %}
     {%- endfor -%}
   </div>
+  {%- if side_layout -%}
+    </div>
+  {%- endif -%}
 </div>
 
 {% schema %}
@@ -163,6 +213,23 @@
       "id": "center_block",
       "label": "Center the block",
       "default": false
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "stacked", "label": "Heading above the app" },
+        { "value": "side", "label": "Text beside the app" }
+      ],
+      "default": "stacked",
+      "info": "\"Text beside the app\" puts the heading and subheading in a left column on desktop."
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "info": "Optional. Link to this section with #your-id (e.g. apply-to-join)."
     },
     {
       "type": "header",

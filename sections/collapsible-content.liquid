@@ -13,30 +13,68 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  {%- liquid
+    assign row_border = section.settings.row_border
+    assign row_border_line = section.settings.row_border_width | append: 'px solid ' | append: section.settings.row_border_color
+  -%}
+  {%- if row_border == 'box' -%}
+    #shopify-section-{{ section.id }} .accordion {
+      border: {{ row_border_line }};
+    }
+  {%- elsif row_border == 'bottom' -%}
+    #shopify-section-{{ section.id }} .accordion {
+      border: 0;
+      border-bottom: {{ row_border_line }};
+    }
+  {%- elsif row_border == 'none' -%}
+    #shopify-section-{{ section.id }} .accordion {
+      border: 0;
+    }
+  {%- endif -%}
 {%- endstyle -%}
+
+{%- liquid
+  # "Left" heading only applies without an image; with an image the image takes that column
+  assign heading_left = false
+  if section.settings.heading_position == 'left' and section.settings.image == blank
+    assign heading_left = true
+  endif
+-%}
+
+{%- capture collapsible_header -%}
+  <div
+    class="collapsible-content__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+    style="text-align: {{ section.settings.heading_alignment }};"
+  >
+    {%- if section.settings.caption != blank -%}
+      <p class="caption-with-letter-spacing">
+        {{ section.settings.caption | escape }}
+      </p>
+    {% endif %}
+    {%- if section.settings.heading != blank -%}
+      <h2 class="collapsible-content__heading inline-richtext {{ section.settings.heading_size }}">
+        {{ section.settings.heading }}
+      </h2>
+    {%- else -%}
+      <h2 class="visually-hidden">{{ 'accessibility.collapsible_content_title' | t }}</h2>
+    {% endif %}
+  </div>
+{%- endcapture -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <div class="collapsible-content collapsible-{{ section.settings.layout }}-layout isolate{% if section.settings.layout == 'section' %} page-width{% elsif section.settings.layout == 'none' %} content-container content-container--full-width{% endif %}">
     <div class="collapsible-content__wrapper section-{{ section.id }}-padding{% if section.settings.layout == 'section' %} content-container color-{{ section.settings.container_color_scheme }} gradient{% endif %}">
-      <div class="{% if section.settings.image == blank %}collapsible-content-wrapper-narrow{% else %}page-width{% endif %}">
-        <div
-          class="collapsible-content__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-          style="text-align: {{ section.settings.heading_alignment }};"
-        >
-          {%- if section.settings.caption != blank -%}
-            <p class="caption-with-letter-spacing">
-              {{ section.settings.caption | escape }}
-            </p>
-          {% endif %}
-          {%- if section.settings.heading != blank -%}
-            <h2 class="collapsible-content__heading inline-richtext {{ section.settings.heading_size }}">
-              {{ section.settings.heading }}
-            </h2>
-          {%- else -%}
-            <h2 class="visually-hidden">{{ 'accessibility.collapsible_content_title' | t }}</h2>
-          {% endif %}
-        </div>
-        <div class="grid grid--1-col grid--2-col-tablet collapsible-content__grid{% if section.settings.desktop_layout == 'image_second' %} collapsible-content__grid--reverse{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <div class="{% if section.settings.image == blank and heading_left == false %}collapsible-content-wrapper-narrow{% else %}page-width{% endif %}">
+        {%- unless heading_left -%}
+          {{ collapsible_header }}
+        {%- endunless -%}
+        <div class="grid grid--1-col grid--2-col-tablet collapsible-content__grid{% if section.settings.desktop_layout == 'image_second' and heading_left == false %} collapsible-content__grid--reverse{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          {%- if heading_left -%}
+            <div class="grid__item collapsible-content__grid-item collapsible-content__intro">
+              {{ collapsible_header }}
+            </div>
+          {%- endif -%}
           {%- if section.settings.image != blank -%}
             <div class="grid__item collapsible-content__grid-item">
               <div
@@ -178,6 +216,47 @@
       "type": "header",
       "content": "t:sections.collapsible_content.settings.layout_header.content"
     },    
+    {
+      "type": "select",
+      "id": "heading_position",
+      "label": "Heading position",
+      "options": [
+        { "value": "top", "label": "Above the rows" },
+        { "value": "left", "label": "Left of the rows" }
+      ],
+      "default": "top",
+      "info": "\"Left of the rows\" puts the heading in its own column on tablet and desktop. Only used when no image is selected."
+    },
+    {
+      "type": "select",
+      "id": "row_border",
+      "label": "Row border",
+      "options": [
+        { "value": "theme", "label": "Theme default" },
+        { "value": "box", "label": "Full border" },
+        { "value": "bottom", "label": "Bottom border only" },
+        { "value": "none", "label": "None" }
+      ],
+      "default": "theme"
+    },
+    {
+      "type": "color",
+      "id": "row_border_color",
+      "label": "Row border color",
+      "default": "#e5ddd8",
+      "visible_if": "{{ section.settings.row_border == 'box' or section.settings.row_border == 'bottom' }}"
+    },
+    {
+      "type": "range",
+      "id": "row_border_width",
+      "label": "Row border thickness",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1,
+      "visible_if": "{{ section.settings.row_border == 'box' or section.settings.row_border == 'bottom' }}"
+    },
     {
       "type": "select",
       "id": "layout",

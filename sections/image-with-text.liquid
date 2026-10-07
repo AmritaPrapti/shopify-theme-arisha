@@ -12,6 +12,28 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  /* Optional "Check icons" list style for text blocks */
+  #shopify-section-{{ section.id }} .image-with-text__text--checklist ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  #shopify-section-{{ section.id }} .image-with-text__text--checklist li {
+    position: relative;
+    padding-left: 3rem;
+    margin: 0.6rem 0;
+  }
+  #shopify-section-{{ section.id }} .image-with-text__text--checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.15em;
+    width: 1.8rem;
+    height: 1.8rem;
+    background-color: var(--list-icon-color, #b07a72);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M7.5 12.5l3 3 6-6.5'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M7.5 12.5l3 3 6-6.5'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
 {%- endstyle -%}
 
 {%- liquid
@@ -148,7 +170,11 @@
                    <a href="{{ block.settings.link }}">{{ block.settings.caption }}</a>  
                   </p>
                 {%- when 'text' -%}
-                  <div class="image-with-text__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
+                  <div
+                    class="image-with-text__text rte {{ block.settings.text_style }}{% if block.settings.list_style == 'check' %} image-with-text__text--checklist{% endif %}"
+                    {% if block.settings.list_style == 'check' %}style="--list-icon-color: {{ block.settings.list_icon_color }};"{% endif %}
+                    {{ block.shopify_attributes }}
+                  >
                     {{ block.settings.text }}
                   </div>
                 {%- when 'button' -%}
@@ -658,6 +684,23 @@
           ],
           "default": "body",
           "label": "t:sections.image-with-text.blocks.text.settings.text_style.label"
+        },
+        {
+          "type": "select",
+          "id": "list_style",
+          "label": "List style",
+          "options": [
+            { "value": "default", "label": "Default bullets" },
+            { "value": "check", "label": "Check icons" }
+          ],
+          "default": "default"
+        },
+        {
+          "type": "color",
+          "id": "list_icon_color",
+          "label": "List icon color",
+          "default": "#b07a72",
+          "visible_if": "{{ block.settings.list_style == 'check' }}"
         }
       ]
     },
