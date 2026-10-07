@@ -367,12 +367,25 @@
       },
       "scheme-8b1f75f1-9056-4a40-a191-bbf3848f034b": {
         "settings": {
-          "background": "#3F3A38",
+          "background": "#3f3a38",
+          "background_gradient": "",
+          "headline_color": "#ffffff",
+          "text": "#ffffff",
+          "highlight": "#b07a72",
+          "button": "#111111",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#b07a72",
+          "shadow": "rgba(0,0,0,0)"
+        }
+      },
+      "scheme-6fb1a60d-07bc-422e-bc89-f2a152813558": {
+        "settings": {
+          "background": "rgba(0,0,0,0)",
           "background_gradient": "",
           "headline_color": "#FFFFFF",
           "text": "#FFFFFF",
           "highlight": "#b07a72",
-          "button": "#111111",
+          "button": "#B07A72",
           "button_label": "#ffffff",
           "secondary_button_label": "#b07a72",
           "shadow": "rgba(0,0,0,0)"
