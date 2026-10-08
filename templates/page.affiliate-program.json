@@ -20,7 +20,7 @@
             "text_style": "caption-with-letter-spacing",
             "text_size": "large",
             "font_weight": "600",
-            "caption_color": "#B07A72",
+            "caption_color": "#b07a72",
             "caption_highlight": ""
           }
         },
@@ -44,7 +44,7 @@
         "button_hero": {
           "type": "button",
           "settings": {
-            "button_label": "Apply to join",
+            "button_label": "APPLY TO JOIN",
             "button_link": "#apply-to-join",
             "button_style_secondary": false,
             "button_label2": "",
@@ -62,7 +62,7 @@
       "settings": {
         "section_url": "",
         "enable_text_link": false,
-        "image": "shopify://shop_images/230330_SO52427_1931_2nd_sRGB4000.jpg",
+        "image": "shopify://shop_images/forher_food_april20_3193_1.jpg",
         "height": "medium",
         "height_mobile": "medium",
         "custom_media_height": 700,
@@ -89,8 +89,8 @@
           "type": "column",
           "settings": {
             "icon": "dollar",
-            "title": "10% commission",
-            "text": "<p>on orders placed through your affiliate link.</p>",
+            "title": "10% commission on sales",
+            "text": "<p>Earn 10% commission on orders placed through your affiliate link.</p>",
             "link_label": "",
             "link": ""
           }
@@ -99,8 +99,8 @@
           "type": "column",
           "settings": {
             "icon": "gift",
-            "title": "Free gift for clients",
-            "text": "<p>Clients you refer receive a complimentary product with a purchase of $100 or more.</p>",
+            "title": "&nbsp;10% off first orders",
+            "text": "<p>Clients you refer receive 10% off their first order when they purchase through your link.</p>",
             "link_label": "",
             "link": ""
           }
@@ -182,7 +182,7 @@
       "settings": {
         "section_url": "",
         "enable_text_link": false,
-        "image": "shopify://shop_images/07.13.25_ForHer-130_cropped.jpg",
+        "image": "shopify://shop_images/230330_SO52427_1936_2nd_sRGB4000.jpg",
         "height": "medium",
         "height_mobile": "medium",
         "custom_media_height": 600,
