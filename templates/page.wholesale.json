@@ -1,22 +1,13 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "affiliate_hero": {
+    "wholesale_hero": {
       "type": "image-with-text",
       "blocks": {
         "caption_hero": {
           "type": "caption",
           "settings": {
             "link": "",
-            "caption": "AFFILIATE PROGRAM",
+            "caption": "WHOLESALE",
             "text_style": "caption-with-letter-spacing",
             "text_size": "large",
             "font_weight": "400",
@@ -27,14 +18,14 @@
         "heading_hero": {
           "type": "heading",
           "settings": {
-            "heading": "Share nourishment you believe in.",
+            "heading": "Nourishment for more mothers.",
             "heading_size": "h1"
           }
         },
         "text_hero": {
           "type": "text",
           "settings": {
-            "text": "<p>Join our Affiliate Circle and earn 10% commission on referred orders while helping more mothers discover intentional nourishment for postpartum care.</p>",
+            "text": "<p>Partner with for her. by Arisa to bring thoughtful, traditional nourishment to the mothers you serve.</p>",
             "text_style": "body",
             "list_style": "default",
             "list_icon_color": "#b07a72",
@@ -44,8 +35,8 @@
         "button_hero": {
           "type": "button",
           "settings": {
-            "button_label": "Apply to join →",
-            "button_link": "#apply-to-join",
+            "button_label": "Inquire about wholesale →",
+            "button_link": "#wholesale-inquiry",
             "button_style_secondary": false,
             "button_label2": "",
             "button_link2": "",
@@ -82,44 +73,44 @@
         "padding_bottom": 36
       }
     },
-    "affiliate_benefits": {
+    "wholesale_benefits": {
       "type": "multicolumn",
       "blocks": {
-        "benefit_commission": {
+        "benefit_pricing": {
           "type": "column",
           "settings": {
-            "icon": "dollar",
-            "title": "10% commission",
-            "text": "<p>on orders placed through your affiliate link.</p>",
+            "icon": "tag",
+            "title": "Wholesale pricing",
+            "text": "<p>Preferred pricing designed for professional and retail partners.</p>",
             "link_label": "",
             "link": ""
           }
         },
-        "benefit_gift": {
+        "benefit_selection": {
           "type": "column",
           "settings": {
-            "icon": "gift",
-            "title": "Free gift for clients",
-            "text": "<p>Clients you refer receive a complimentary product with a purchase of $100 or more.</p>",
+            "icon": "box",
+            "title": "Curated product selection",
+            "text": "<p>Customize your order with products and quantities that fit your clients' needs.</p>",
             "link_label": "",
             "link": ""
           }
         },
-        "benefit_tracking": {
+        "benefit_support": {
           "type": "column",
           "settings": {
-            "icon": "chart",
-            "title": "Track your earnings",
-            "text": "<p>Access to a personal dashboard to view referrals and payouts.</p>",
+            "icon": "people",
+            "title": "Dedicated partner support",
+            "text": "<p>Ongoing guidance and resources from our team.</p>",
             "link_label": "",
             "link": ""
           }
         }
       },
       "block_order": [
-        "benefit_commission",
-        "benefit_gift",
-        "benefit_tracking"
+        "benefit_pricing",
+        "benefit_selection",
+        "benefit_support"
       ],
       "settings": {
         "caption": "",
@@ -154,7 +145,7 @@
         "padding_bottom": 48
       }
     },
-    "affiliate_who": {
+    "wholesale_who": {
       "type": "image-with-text",
       "blocks": {
         "heading_who": {
@@ -167,7 +158,7 @@
         "text_who": {
           "type": "text",
           "settings": {
-            "text": "<p>Our affiliate program is designed for postpartum professionals and aligned practitioners, including:</p><ul><li>Doulas and birth workers</li><li>Lactation consultants (IBCLCs)</li><li>Postpartum care providers</li><li>Wellness practitioners (e.g. acupuncturists, herbalists, nutritionists)</li><li>Therapists and coaches who support mothers</li><li>Other aligned professionals who share our values</li></ul><p>If you support mothers through pregnancy, postpartum, or early motherhood, we'd love to partner with you.</p>",
+            "text": "<p>We partner with organizations that care for and support mothers throughout fertility, pregnancy, postpartum, and beyond, including:</p><ul><li>Birth centers &amp; postpartum practices</li><li>Doulas &amp; lactation consultants</li><li>Wellness clinics &amp; integrative healthcare providers</li><li>Yoga, fitness &amp; wellness studios</li><li>Specialty retailers &amp; boutiques</li><li>Hospitals &amp; maternal health organizations</li><li>Corporate wellness programs &amp; gifting</li></ul>",
             "text_style": "body",
             "list_style": "check",
             "list_icon_color": "#b07a72",
@@ -202,38 +193,38 @@
         "padding_bottom": 0
       }
     },
-    "affiliate_how": {
+    "wholesale_how": {
       "type": "how-it-works",
       "blocks": {
-        "step_apply": {
+        "step_inquire": {
           "type": "list",
           "settings": {
-            "list_title": "Apply",
-            "list_description": "<p>Tell us a bit about yourself and your work.</p>"
+            "list_title": "Inquire",
+            "list_description": "<p>Tell us about your organization and your needs.</p>"
           }
         },
-        "step_share": {
+        "step_connect": {
           "type": "list",
           "settings": {
-            "list_title": "Share",
-            "list_description": "<p>Once approved, you'll get your unique link and resources to share with your community.</p>"
+            "list_title": "Connect",
+            "list_description": "<p>We'll follow up with wholesale details, product recommendations, and next steps.</p>"
           }
         },
-        "step_earn": {
+        "step_partner": {
           "type": "list",
           "settings": {
-            "list_title": "Earn",
-            "list_description": "<p>You'll earn 10% commission on referred orders.</p>"
+            "list_title": "Partner",
+            "list_description": "<p>Place your order and start sharing for her. with your community.</p>"
           }
         }
       },
       "block_order": [
-        "step_apply",
-        "step_share",
-        "step_earn"
+        "step_inquire",
+        "step_connect",
+        "step_partner"
       ],
       "settings": {
-        "title": "How It Works",
+        "title": "How Wholesale Works",
         "heading_size": "h1",
         "subtitle": "",
         "header_alignment": "center",
@@ -248,121 +239,178 @@
         "padding_bottom": 60
       }
     },
-    "affiliate_quote": {
-      "type": "rich-text",
+    "wholesale_trusted": {
+      "type": "image-with-text",
       "blocks": {
-        "quote_heading": {
-          "type": "heading",
+        "caption_trusted": {
+          "type": "caption",
           "settings": {
-            "heading": "<em>“It’s such a gift to be able to share something so intentional and rooted in tradition with the mothers I support.”</em>",
-            "heading_size": "h2"
+            "link": "",
+            "caption": "TRUSTED BY POSTPARTUM PROFESSIONALS",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium",
+            "font_weight": "500",
+            "caption_color": "#b07a72",
+            "caption_highlight": ""
           }
         },
-        "quote_author": {
+        "heading_trusted": {
+          "type": "heading",
+          "settings": {
+            "heading": "Trusted by those who know postpartum care",
+            "heading_size": "h1"
+          }
+        },
+        "text_trusted": {
           "type": "text",
           "settings": {
-            "text": "<p>— Postpartum Doula</p>"
+            "text": "<p>For Her by Arisa is trusted by Sanhu House to help nourish the mothers in its care. Sanhu House is a postpartum care provider offering luxury retreats, in-home care, and overnight support rooted in both Eastern healing traditions and Western maternal healthcare. Their trust in our meals reflects a shared belief in the importance of thoughtful nourishment throughout postpartum recovery.</p>",
+            "text_style": "body",
+            "list_style": "default",
+            "list_icon_color": "#b07a72",
+            "list_indent": 24
+          }
+        },
+        "caption_served": {
+          "type": "caption",
+          "settings": {
+            "link": "",
+            "caption": "PROUDLY SERVED AT",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "small",
+            "font_weight": "500",
+            "caption_color": "#b07a72",
+            "caption_highlight": ""
+          }
+        },
+        "logo_sanhu": {
+          "type": "logo",
+          "settings": {
+            "width": 160
           }
         }
       },
       "block_order": [
-        "quote_heading",
-        "quote_author"
+        "caption_trusted",
+        "heading_trusted",
+        "text_trusted",
+        "caption_served",
+        "logo_sanhu"
       ],
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "background_image_position": "left center",
-        "background_image_opacity": 100,
+        "section_url": "",
+        "enable_text_link": false,
+        "image": "shopify://shop_images/FullSizeRender_VSCO_1.jpg",
+        "height": "medium",
+        "height_mobile": "medium",
+        "custom_media_height": 600,
+        "custom_media_height_mobile": 400,
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "mobile_layout": "image_first",
+        "image_behavior": "none",
+        "enable_full_width": false,
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
         "color_scheme": "scheme-2da0e828-72cb-4603-b0a6-84434a31a57c",
-        "full_width": true,
-        "padding_top": 48,
-        "padding_bottom": 48
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
-    "affiliate_apply": {
+    "wholesale_inquiry": {
       "type": "apps",
       "blocks": {
-        "bloop_affiliate_form": {
-          "type": "shopify://apps/bloop-refer-aff/blocks/affiliate-rf/9d243b55-b2a4-42a8-aa2e-043240bb5d58",
+        "forms_wholesale": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
           "settings": {
-            "section_width": 100,
-            "padding_top": 40,
-            "padding_bottom": 40,
-            "custom_css": ""
+            "form_id": "795132",
+            "text_color": "#505655",
+            "button_background_color": "#c37e78",
+            "button_label_color": "#ffffff",
+            "links_color": "#1878b9",
+            "errors_color": "#e02229",
+            "text_alignment": "left",
+            "form_alignment": "left",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_right": 0,
+            "padding_left": 0
           }
         }
       },
       "block_order": [
-        "bloop_affiliate_form"
+        "forms_wholesale"
       ],
       "settings": {
         "include_margins": true,
-        "heading": "Apply to Join",
+        "heading": "Wholesale Inquiry",
         "heading_size": "h1",
-        "subheading": "<p>We'd love to learn more about you and your work. Fill out the form and we'll be in touch soon.</p>",
+        "subheading": "<p>Tell us a little about your organization and we'll be in touch with wholesale details.</p>",
         "center_block": false,
         "layout": "side",
-        "anchor_id": "apply-to-join",
+        "anchor_id": "wholesale-inquiry",
         "padding_top": 60,
         "padding_bottom": 60
       }
     },
-    "affiliate_faq": {
+    "wholesale_faq": {
       "type": "collapsible-content",
       "blocks": {
-        "faq_commission": {
+        "faq_eligible": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "How much is the commission?",
+            "heading": "Who is eligible for wholesale?",
             "icon": "none",
-            "row_content": "<p>You earn 10% commission on orders placed through your unique affiliate link.</p>",
+            "row_content": "<p>[Add who can apply for a wholesale account.]</p>",
             "page": ""
           }
         },
-        "faq_payout": {
+        "faq_products": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "How will I receive my commissions?",
+            "heading": "What products are available for wholesale?",
             "icon": "none",
-            "row_content": "<p>Your commissions are tracked in your personal affiliate dashboard. [Add payout method and schedule here.]</p>",
+            "row_content": "<p>[Add which products are available for wholesale.]</p>",
             "page": ""
           }
         },
-        "faq_resources": {
+        "faq_minimum": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "What resources will I get?",
+            "heading": "Is there a minimum order?",
             "icon": "none",
-            "row_content": "<p>Once approved, you'll receive your unique affiliate link and resources to share with your community.</p>",
+            "row_content": "<p>[Add the minimum order quantity or amount.]</p>",
             "page": ""
           }
         },
-        "faq_social": {
+        "faq_shipping": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Can I share on social media?",
+            "heading": "Where do you currently ship?",
             "icon": "none",
-            "row_content": "<p>Yes. You can share your affiliate link on social media, in your newsletter, or directly with the mothers you support.</p>",
+            "row_content": "<p>[Add where wholesale orders can be shipped.]</p>",
             "page": ""
           }
         },
-        "faq_response": {
+        "faq_order": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "When will I hear back after applying?",
+            "heading": "How do I place an order?",
             "icon": "none",
-            "row_content": "<p>[Add how long it usually takes to review an application.]</p>",
+            "row_content": "<p>[Add how approved partners place wholesale orders.]</p>",
             "page": ""
           }
         }
       },
       "block_order": [
-        "faq_commission",
-        "faq_payout",
-        "faq_resources",
-        "faq_social",
-        "faq_response"
+        "faq_eligible",
+        "faq_products",
+        "faq_minimum",
+        "faq_shipping",
+        "faq_order"
       ],
       "settings": {
         "caption": "",
@@ -385,12 +433,12 @@
     }
   },
   "order": [
-    "affiliate_hero",
-    "affiliate_benefits",
-    "affiliate_who",
-    "affiliate_how",
-    "affiliate_quote",
-    "affiliate_apply",
-    "affiliate_faq"
+    "wholesale_hero",
+    "wholesale_benefits",
+    "wholesale_who",
+    "wholesale_how",
+    "wholesale_trusted",
+    "wholesale_inquiry",
+    "wholesale_faq"
   ]
 }

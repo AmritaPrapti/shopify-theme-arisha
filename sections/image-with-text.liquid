@@ -13,10 +13,14 @@
     }
   }
 
+  #shopify-section-{{ section.id }} .image-with-text__content--desktop-center .image-with-text__logo {
+    margin-inline: auto;
+  }
+
   /* Optional "Check icons" list style for text blocks */
   #shopify-section-{{ section.id }} .image-with-text__text--checklist ul {
     list-style: none;
-    padding-left: 0;
+    padding-left: var(--list-indent, 0);
   }
   #shopify-section-{{ section.id }} .image-with-text__text--checklist li {
     position: relative;
@@ -172,11 +176,25 @@
                 {%- when 'text' -%}
                   <div
                     class="image-with-text__text rte {{ block.settings.text_style }}{% if block.settings.list_style == 'check' %} image-with-text__text--checklist{% endif %}"
-                    {% if block.settings.list_style == 'check' %}style="--list-icon-color: {{ block.settings.list_icon_color }};"{% endif %}
+                    {% if block.settings.list_style == 'check' %}style="--list-icon-color: {{ block.settings.list_icon_color }}; --list-indent: {{ block.settings.list_indent }}px;"{% endif %}
                     {{ block.shopify_attributes }}
                   >
                     {{ block.settings.text }}
                   </div>
+                {%- when 'logo' -%}
+                  {%- if block.settings.image != blank -%}
+                    <div class="image-with-text__logo" style="max-width: {{ block.settings.width }}px;" {{ block.shopify_attributes }}>
+                      {{
+                        block.settings.image
+                        | image_url: width: 800
+                        | image_tag:
+                          widths: '200, 400, 800',
+                          sizes: '400px',
+                          loading: 'lazy',
+                          style: 'display: block; width: 100%; height: auto;'
+                      }}
+                    </div>
+                  {%- endif -%}
                 {%- when 'button' -%}
                   <div class="banner-button-wrap">
                     {%- if block.settings.button_label != blank -%}
@@ -701,6 +719,40 @@
           "label": "List icon color",
           "default": "#b07a72",
           "visible_if": "{{ block.settings.list_style == 'check' }}"
+        },
+        {
+          "type": "range",
+          "id": "list_indent",
+          "label": "List indent",
+          "min": 0,
+          "max": 80,
+          "step": 4,
+          "unit": "px",
+          "default": 24,
+          "info": "Moves only the list to the right; paragraphs stay aligned.",
+          "visible_if": "{{ block.settings.list_style == 'check' }}"
+        }
+      ]
+    },
+    {
+      "type": "logo",
+      "name": "Logo",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Logo image"
+        },
+        {
+          "type": "range",
+          "id": "width",
+          "label": "Logo width",
+          "min": 60,
+          "max": 400,
+          "step": 10,
+          "unit": "px",
+          "default": 160
         }
       ]
     },

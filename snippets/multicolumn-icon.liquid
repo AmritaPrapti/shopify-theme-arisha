@@ -3,7 +3,7 @@
   Strokes use currentColor, so the colour comes from the wrapper.
 
   Accepts:
-  - icon: {String} dollar | gift | chart | heart | leaf | star | people
+  - icon: {String} dollar | gift | chart | heart | leaf | star | people | tag | box
 
   Usage:
   {% render 'multicolumn-icon', icon: block.settings.icon %}
@@ -46,5 +46,13 @@
       <path d="M6 39c0-7 5.4-12 12-12s12 5 12 12"/>
       <circle cx="34" cy="18" r="5"/>
       <path d="M32 27.2c5.6-.9 10 3.6 10 9.8"/>
+    {%- when 'tag' -%}
+      <path d="M26 6h14a2 2 0 0 1 2 2v14L22 42 6 26 26 6z"/>
+      <circle cx="34" cy="14" r="3"/>
+    {%- when 'box' -%}
+      <path d="M24 5l17 8v22l-17 8-17-8V13l17-8z"/>
+      <path d="M7 13l17 8 17-8"/>
+      <path d="M24 21v22"/>
+      <path d="M15.5 9l17 8v7"/>
   {%- endcase -%}
 </svg>

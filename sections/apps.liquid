@@ -76,10 +76,36 @@
   .section-app-{{ section.id }}-padding .apps-side__intro .apps__subheading {
     margin-top: 2.5rem;
   }
-  @media screen and (min-width: 990px) {
+  /* Let the app fill its column: base.css makes the wrapper a flex row (so the
+     app shrinks to its content) and adds 15px side padding to app blocks */
+  .section-app-{{ section.id }}-padding .apps-side .app-block-wrapper {
+    display: block;
+  }
+  .section-app-{{ section.id }}-padding .apps-side .app-block-wrapper .shopify-block {
+    padding: 0;
+  }
+  /* BLOOP affiliate form: it centres a fixed-width form in a 2-column grid
+     even with its info column turned off, so stretch it to the column edges */
+  .section-app-{{ section.id }}-padding .apps-side af-rf-main {
+    flex: 1 1 auto;
+  }
+  .section-app-{{ section.id }}-padding .apps-side af-rf-main > .af-form {
+    grid-column: 1 / -1;
+  }
+  .section-app-{{ section.id }}-padding .apps-side .af-form > form {
+    flex: 1 1 auto;
+  }
+  /* Shopify Forms caps the form at 450px via a variable on its :host; a rule on
+     the host element overrides it so the form fills the column */
+  .section-app-{{ section.id }}-padding .apps-side shopify-forms-embed {
+    --inline-container-max-width: 100%;
+  }
+  /* Same 50/50 columns and gap as Collapsible content, so the app lines up
+     with FAQ rows (or any other two-column section) below it */
+  @media screen and (min-width: 750px) {
     .section-app-{{ section.id }}-padding .apps-side {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
-      gap: 8rem;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      column-gap: var(--grid-desktop-horizontal-spacing);
       align-items: start;
     }
   }

@@ -40,9 +40,17 @@
   }
 
   {%- if section.settings.show_dividers -%}
-    /* Thin vertical line between columns on desktop */
+    /* Thin vertical line between columns on desktop, centred in the column gap */
     @media screen and (min-width: 990px) {
       #shopify-section-{{ section.id }} .multicolumn-list__item + .multicolumn-list__item {
+        position: relative;
+      }
+      #shopify-section-{{ section.id }} .multicolumn-list__item + .multicolumn-list__item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: calc(var(--grid-desktop-horizontal-spacing) / -2);
         border-left: 1px solid {{ section.settings.divider_color }};
       }
     }
@@ -664,7 +672,9 @@
             { "value": "heart", "label": "Heart" },
             { "value": "leaf", "label": "Leaf" },
             { "value": "star", "label": "Star" },
-            { "value": "people", "label": "People" }
+            { "value": "people", "label": "People" },
+            { "value": "tag", "label": "Tag" },
+            { "value": "box", "label": "Box" }
           ],
           "default": "none"
         },
