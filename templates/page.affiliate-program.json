@@ -44,7 +44,7 @@
         "button_hero": {
           "type": "button",
           "settings": {
-            "button_label": "Apply to join →",
+            "button_label": "Apply to join",
             "button_link": "#apply-to-join",
             "button_style_secondary": false,
             "button_label2": "",
