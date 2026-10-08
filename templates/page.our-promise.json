@@ -13,6 +13,7 @@
       "type": "main-page",
       "disabled": true,
       "settings": {
+        "center_text": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -31,7 +32,8 @@
           "type": "text",
           "settings": {
             "text": "Our products were developed through a collaborative process led by a small group of culinary experts, all of whom are mothers, who shaped the recipes and approach behind the food.",
-            "text_style": "body"
+            "text_style": "body",
+            "caption_size": "small"
           }
         }
       },
@@ -94,6 +96,8 @@
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
+        "background_image_position": "center",
+        "background_image_opacity": 100,
         "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
         "full_width": true,
         "padding_top": 40,
@@ -122,6 +126,8 @@
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
+        "background_image_position": "center",
+        "background_image_opacity": 100,
         "color_scheme": "scheme-1",
         "full_width": true,
         "padding_top": 40,
@@ -154,7 +160,9 @@
           "type": "text",
           "settings": {
             "text": "<p>Rachael is a US-based postpartum doula and chef whose work centers on supporting mothers through nourishment during recovery.</p><p>She developed the original soup recipes for for her. by Arisa, grounding them in postpartum needs, comfort, and ease of digestion. Her approach shaped the foundation of how our soups are meant to feel during the early postpartum period.</p>",
-            "text_style": "body"
+            "text_style": "body",
+            "list_style": "default",
+            "list_icon_color": "#b07a72"
           }
         }
       },
@@ -214,7 +222,9 @@
           "type": "text",
           "settings": {
             "text": "<p>Yumiko Izawa is a Tokyo-based culinary expert specializing in Chinese medicine and Yakuzen cooking. Her work focuses on balance, seasonality, and how ingredients support the body through food.</p><p>She worked closely with the recipes, bringing Yakuzen principles and traditional Japanese ingredients into the development process. Her perspective adds cultural depth, intention, and care to how the soups are composed.</p>",
-            "text_style": "body"
+            "text_style": "body",
+            "list_style": "default",
+            "list_icon_color": "#b07a72"
           }
         }
       },
@@ -273,7 +283,9 @@
           "type": "text",
           "settings": {
             "text": "<p>Seiko is a Los Angeles-based chef with a background in holistic wellness and Japanese fermentation.</p><p>She played a key role in adapting the recipes for American mothers, ensuring the soups remained true to their original intention while fitting local ingredients, tastes, and everyday needs. Her work helps the soups feel both nourishing and approachable.</p>",
-            "text_style": "body"
+            "text_style": "body",
+            "list_style": "default",
+            "list_icon_color": "#b07a72"
           }
         }
       },
@@ -332,7 +344,9 @@
           "type": "text",
           "settings": {
             "text": "<p>Sarah is a culinary professional with a Master’s in Gastronomy and over a decade of experience in cooking and recipe development. Raised between Japanese and American cultures and fluent in Japanese, her approach to food is shaped by tradition, balance, and care.</p><p>At <em>for her. by Arisa</em>, Sarah developed our snack menu using her bicultural perspective. She now serves as our Lead Production Cook in the Fullerton kitchen, ensuring quality and consistency in every recipe we share.</p><p>As a mother of two, Sarah is closely connected to our mission of supporting mothers, bringing both professional expertise and lived experience to the food we make.</p>",
-            "text_style": "body"
+            "text_style": "body",
+            "list_style": "default",
+            "list_icon_color": "#b07a72"
           }
         }
       },
@@ -345,7 +359,7 @@
       "settings": {
         "section_url": "",
         "enable_text_link": false,
-        "image": "shopify://shop_images/IMG_1052.jpg",
+        "image": "shopify://shop_images/IMG_9052.jpg",
         "height": "adapt",
         "height_mobile": "medium",
         "custom_media_height": 700,
