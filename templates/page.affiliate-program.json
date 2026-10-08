@@ -287,7 +287,7 @@
           "type": "shopify://apps/bloop-refer-aff/blocks/affiliate-rf/9d243b55-b2a4-42a8-aa2e-043240bb5d58",
           "settings": {
             "section_width": 100,
-            "padding_top": 40,
+            "padding_top": 0,
             "padding_bottom": 40,
             "custom_css": ""
           }
