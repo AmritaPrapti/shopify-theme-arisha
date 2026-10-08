@@ -19,8 +19,8 @@
             "caption": "AFFILIATE PROGRAM",
             "text_style": "caption-with-letter-spacing",
             "text_size": "large",
-            "font_weight": "400",
-            "caption_color": "",
+            "font_weight": "600",
+            "caption_color": "#B07A72",
             "caption_highlight": ""
           }
         },
