@@ -96,9 +96,11 @@
     flex: 1 1 auto;
   }
   /* Shopify Forms caps the form at 450px via a variable on its :host; a rule on
-     the host element overrides it so the form fills the column */
+     the host element overrides it so the form fills the column. Minus 4px for
+     the container's own 2px margin, otherwise its overflow:hidden wrapper cuts
+     off the fields' right border */
   .section-app-{{ section.id }}-padding .apps-side shopify-forms-embed {
-    --inline-container-max-width: 100%;
+    --inline-container-max-width: calc(100% - 4px);
   }
   /* Same 50/50 columns and gap as Collapsible content, so the app lines up
      with FAQ rows (or any other two-column section) below it */
