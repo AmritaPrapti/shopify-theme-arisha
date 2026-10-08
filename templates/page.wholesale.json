@@ -44,7 +44,7 @@
         "button_hero": {
           "type": "button",
           "settings": {
-            "button_label": "Inquire about wholesale →",
+            "button_label": "Inquire about wholesale",
             "button_link": "#wholesale-inquiry",
             "button_style_secondary": false,
             "button_label2": "",
