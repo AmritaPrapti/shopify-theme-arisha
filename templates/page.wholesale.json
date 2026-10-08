@@ -20,21 +20,21 @@
             "text_style": "caption-with-letter-spacing",
             "text_size": "large",
             "font_weight": "600",
-            "caption_color": "#B07A72",
+            "caption_color": "#b07a72",
             "caption_highlight": ""
           }
         },
         "heading_hero": {
           "type": "heading",
           "settings": {
-            "heading": "Nourishment for more mothers.",
+            "heading": "Bring postpartum care to the mothers you serve",
             "heading_size": "h0"
           }
         },
         "text_hero": {
           "type": "text",
           "settings": {
-            "text": "<p>Partner with for her. by Arisa to bring thoughtful, traditional nourishment to the mothers you serve.</p>",
+            "text": "<p>Partner with for her. by Arisa to sell nourishing Japanese postpartum soups, snacks, and teas through your practice, organization, or retail space.</p>",
             "text_style": "body",
             "list_style": "default",
             "list_icon_color": "#b07a72",
@@ -44,7 +44,7 @@
         "button_hero": {
           "type": "button",
           "settings": {
-            "button_label": "Inquire about wholesale",
+            "button_label": "INQUIRE ABOUT WHOLESALE",
             "button_link": "#wholesale-inquiry",
             "button_style_secondary": false,
             "button_label2": "",
