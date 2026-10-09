@@ -14,6 +14,17 @@
     }
   }
 
+  /* Heading left of the rows stacks on mobile: drop the heading's own margin so
+     the title-to-rows gap is just the grid spacing, like other sections */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .collapsible-content__intro .collapsible-content__heading {
+      margin-bottom: 0;
+    }
+    #shopify-section-{{ section.id }} .collapsible-content__intro + .grid__item > .accordion:first-child {
+      margin-top: 0;
+    }
+  }
+
   {%- liquid
     assign row_border = section.settings.row_border
     assign row_border_line = section.settings.row_border_width | append: 'px solid ' | append: section.settings.row_border_color
