@@ -305,7 +305,7 @@
         "layout": "center",
         "content_max_width": 720,
         "anchor_id": "apply-to-join",
-        "padding_top": 100,
+        "padding_top": 60,
         "padding_bottom": 60
       }
     },
