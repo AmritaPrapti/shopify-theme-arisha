@@ -27,7 +27,7 @@
         "heading_hero": {
           "type": "heading",
           "settings": {
-            "heading": "Bring postpartum care to the mothers you serve",
+            "heading": "Bring postpartum care <br> to <span> the mothers </span>  you serve",
             "heading_size": "h0"
           }
         },
@@ -360,10 +360,10 @@
         "subheading": "",
         "center_block": false,
         "layout": "center",
+        "content_max_width": 720,
         "anchor_id": "wholesale-inquiry",
         "padding_top": 60,
-        "padding_bottom": 60,
-        "content_max_width": 720
+        "padding_bottom": 60
       }
     },
     "wholesale_faq": {
