@@ -167,7 +167,7 @@
         "text_who": {
           "type": "text",
           "settings": {
-            "text": "<p>We partner with organizations that care for and support mothers throughout fertility, pregnancy, postpartum, and beyond, including:</p><ul><li>Birth centers &amp; postpartum practices</li><li>Doulas &amp; lactation consultants</li><li>Wellness clinics &amp; integrative healthcare providers</li><li>Yoga, fitness &amp; wellness studios</li><li>Specialty retailers &amp; boutiques</li><li>Hospitals &amp; maternal health organizations</li><li>Corporate wellness programs &amp; gifting</li></ul>",
+            "text": "<p>We partner with organizations that care for and support mothers throughout fertility, pregnancy, postpartum, and beyond, including:</p><ul><li>Birth centers & postpartum practices</li><li>Doulas & lactation consultants</li><li>Wellness clinics & integrative healthcare providers</li><li>Yoga, fitness & wellness studios</li><li>Specialty retailers & boutiques</li><li>Hospitals & maternal health organizations</li><li>Corporate wellness programs & gifting</li><li>Boutique grocery shops or stores</li></ul>",
             "text_style": "body",
             "list_style": "check",
             "list_icon_color": "#b07a72",
