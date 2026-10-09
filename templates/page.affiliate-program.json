@@ -27,7 +27,7 @@
         "heading_hero": {
           "type": "heading",
           "settings": {
-            "heading": "Share nourishment <br> you <span> believe </span> in.",
+            "heading": "Share nourishment you believe in.",
             "heading_size": "h0"
           }
         },
@@ -209,14 +209,14 @@
           "type": "list",
           "settings": {
             "list_title": "Apply",
-            "list_description": "<p>Tell us a bit about yourself and your work.</p>"
+            "list_description": "<p>Fill out our super simple form and send payment info.</p>"
           }
         },
         "step_share": {
           "type": "list",
           "settings": {
             "list_title": "Share",
-            "list_description": "<p>Once approved, you'll get your unique link and resources to share with your community.</p>"
+            "list_description": "<p>Once approved, you'll get your unique link to share with your community.</p>"
           }
         },
         "step_earn": {
@@ -287,8 +287,8 @@
           "type": "shopify://apps/bloop-refer-aff/blocks/affiliate-rf/9d243b55-b2a4-42a8-aa2e-043240bb5d58",
           "settings": {
             "section_width": 100,
-            "padding_top": 32,
-            "padding_bottom": 0,
+            "padding_top": 0,
+            "padding_bottom": 40,
             "custom_css": ""
           }
         }
@@ -305,7 +305,7 @@
         "layout": "center",
         "content_max_width": 720,
         "anchor_id": "apply-to-join",
-        "padding_top": 60,
+        "padding_top": 100,
         "padding_bottom": 60
       }
     },
@@ -326,7 +326,7 @@
           "settings": {
             "heading": "How will I receive my commissions?",
             "icon": "none",
-            "row_content": "<p>Your commissions are tracked in your personal affiliate dashboard. [Add payout method and schedule here.]</p>",
+            "row_content": "<p>Your commissions are tracked in your personal affiliate dashboard. Once you have added you bank account info and have sent your W-9, we will transfer your payout on a monthly basis to your bank account.</p>",
             "page": ""
           }
         },
@@ -335,7 +335,7 @@
           "settings": {
             "heading": "What resources will I get?",
             "icon": "none",
-            "row_content": "<p>Once approved, you'll receive your unique affiliate link and resources to share with your community.</p>",
+            "row_content": "<p>Once approved, you'll receive your unique affiliate link to share with your community. Please let us know if you would like anything such as unique coupon codes, logos, photos, etc. for promotion.</p>",
             "page": ""
           }
         },
@@ -353,7 +353,7 @@
           "settings": {
             "heading": "When will I hear back after applying?",
             "icon": "none",
-            "row_content": "<p>[Add how long it usually takes to review an application.]</p>",
+            "row_content": "<p>You should hear back within 5 business days after applying.</p>",
             "page": ""
           }
         }
