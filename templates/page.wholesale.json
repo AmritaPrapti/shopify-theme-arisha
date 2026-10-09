@@ -357,12 +357,13 @@
         "include_margins": true,
         "heading": "Wholesale Inquiry",
         "heading_size": "h1",
-        "subheading": "<p>Tell us a little about your organization and we'll be in touch with wholesale details.</p>",
+        "subheading": "",
         "center_block": false,
-        "layout": "side",
+        "layout": "center",
         "anchor_id": "wholesale-inquiry",
         "padding_top": 60,
-        "padding_bottom": 60
+        "padding_bottom": 60,
+        "content_max_width": 720
       }
     },
     "wholesale_faq": {

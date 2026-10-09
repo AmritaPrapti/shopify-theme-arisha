@@ -95,6 +95,14 @@
   .section-app-{{ section.id }}-padding .apps-side .af-form > form {
     flex: 1 1 auto;
   }
+  /* BLOOP's first/last name row keeps the inputs at their natural width */
+  .section-app-{{ section.id }}-padding .apps-side .af-form-grid > div:first-child > div {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .section-app-{{ section.id }}-padding .apps-side .af-form-grid > div:first-child .af-input {
+    width: 100%;
+  }
   /* Shopify Forms caps the form at 450px via a variable on its :host; a rule on
      the host element overrides it so the form fills the column. Minus 4px for
      the container's own 2px margin, otherwise its overflow:hidden wrapper cuts
@@ -105,17 +113,30 @@
   /* Same 50/50 columns and gap as Collapsible content, so the app lines up
      with FAQ rows (or any other two-column section) below it */
   @media screen and (min-width: 750px) {
-    .section-app-{{ section.id }}-padding .apps-side {
+    .section-app-{{ section.id }}-padding .apps-side:not(.apps-side--center) {
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       column-gap: var(--grid-desktop-horizontal-spacing);
       align-items: start;
     }
   }
+
+  /* "Centered above the app": heading centred, app in a centred column */
+  .section-app-{{ section.id }}-padding .apps-side--center {
+    justify-items: center;
+  }
+  .section-app-{{ section.id }}-padding .apps-side--center .apps-side__intro {
+    text-align: center;
+  }
+  .section-app-{{ section.id }}-padding .apps-side--center .app-block-wrapper {
+    width: 100%;
+    max-width: {{ section.settings.content_max_width }}px;
+  }
 {%- endstyle -%}
 
 {%- liquid
+  # 'side' and 'center' share the intro + app markup; 'center' just stacks it
   assign side_layout = false
-  if section.settings.layout == 'side'
+  if section.settings.layout == 'side' or section.settings.layout == 'center'
     assign side_layout = true
   endif
 -%}
@@ -124,7 +145,7 @@
   class="section-app-{{ section.id }}-padding {% if section.settings.include_margins %} page-width{% endif %}{% if side_layout %} apps--side{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
 >
   {%- if side_layout -%}
-    <div class="apps-side">
+    <div class="apps-side{% if section.settings.layout == 'center' %} apps-side--center{% endif %}">
       <div class="apps-side__intro">
         {%- if section.settings.heading != blank -%}
           <h2 class="image-with-text__heading inline-richtext {{ section.settings.heading_size }}" {{ section.shopify_attributes }}>
@@ -248,10 +269,22 @@
       "label": "Layout",
       "options": [
         { "value": "stacked", "label": "Heading above the app" },
-        { "value": "side", "label": "Text beside the app" }
+        { "value": "side", "label": "Text beside the app" },
+        { "value": "center", "label": "Centered above the app" }
       ],
       "default": "stacked",
       "info": "\"Text beside the app\" puts the heading and subheading in a left column on desktop."
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Form width",
+      "min": 400,
+      "max": 1200,
+      "step": 20,
+      "unit": "px",
+      "default": 720,
+      "visible_if": "{{ section.settings.layout == 'center' }}"
     },
     {
       "type": "text",

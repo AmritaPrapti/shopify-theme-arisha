@@ -300,12 +300,13 @@
         "include_margins": true,
         "heading": "Apply to Join",
         "heading_size": "h1",
-        "subheading": "<p>We'd love to learn more about you and your work. Fill out the form and we'll be in touch soon.</p>",
+        "subheading": "",
         "center_block": false,
-        "layout": "side",
+        "layout": "center",
         "anchor_id": "apply-to-join",
         "padding_top": 60,
-        "padding_bottom": 60
+        "padding_bottom": 60,
+        "content_max_width": 720
       }
     },
     "affiliate_faq": {
