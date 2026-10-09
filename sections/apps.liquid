@@ -207,6 +207,27 @@
   {%- endif -%}
 </div>
 
+{%- if section.settings.anchor_id != blank -%}
+  <script>
+    // Links to this section's anchor on the same page scroll to it without
+    // adding #anchor to the URL; links from other pages still navigate.
+    (() => {
+      const anchorId = {{ section.settings.anchor_id | handleize | json }};
+      document.addEventListener('click', (event) => {
+        const link = event.target.closest('a[href*="#"]');
+        if (!link) return;
+        const url = new URL(link.getAttribute('href'), window.location.href);
+        if (url.hash !== '#' + anchorId || url.pathname !== window.location.pathname) return;
+        const target = document.getElementById(anchorId);
+        if (!target) return;
+        event.preventDefault();
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      });
+    })();
+  </script>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "t:sections.apps.name",
