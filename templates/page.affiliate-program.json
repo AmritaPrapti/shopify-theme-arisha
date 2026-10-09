@@ -27,7 +27,7 @@
         "heading_hero": {
           "type": "heading",
           "settings": {
-            "heading": "Share nourishment you believe in.",
+            "heading": "Share nourishment <br> you <span> believe </span> in.",
             "heading_size": "h0"
           }
         },
