@@ -221,8 +221,18 @@
         const target = document.getElementById(anchorId);
         if (!target) return;
         event.preventDefault();
+        // Land the heading near the top of the screen rather than the section's
+        // top edge (its padding would leave the previous section in view).
+        // Ignore the reveal-on-scroll slide offset, and leave room for the
+        // header only when it stays visible while scrolling down.
+        const heading = target.querySelector('h2') || target;
+        const slideOffset = new DOMMatrixReadOnly(getComputedStyle(target).transform).m42 || 0;
+        const stickyHeader = document.querySelector('sticky-header');
+        const headerStays = stickyHeader && stickyHeader.dataset.stickyType && stickyHeader.dataset.stickyType !== 'on-scroll-up';
+        const headerOffset = headerStays ? stickyHeader.offsetHeight : 0;
+        const top = heading.getBoundingClientRect().top + window.scrollY - slideOffset - headerOffset - 24;
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+        window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
       });
     })();
   </script>
