@@ -209,7 +209,7 @@
           "type": "list",
           "settings": {
             "list_title": "Apply",
-            "list_description": "<p>Fill out our super simple form and provide your information for payments.</p>"
+            "list_description": "<p>Fill out our simple form and provide your information for payments.</p>"
           }
         },
         "step_share": {
