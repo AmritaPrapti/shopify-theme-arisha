@@ -167,7 +167,7 @@
         "text_who": {
           "type": "text",
           "settings": {
-            "text": "<p>We partner with organizations that care for and support mothers throughout fertility, pregnancy, postpartum, and beyond, including:</p><ul><li>Birth centers & postpartum practices</li><li>Doulas & lactation consultants</li><li>Wellness clinics & integrative healthcare providers</li><li>Yoga, fitness & wellness studios</li><li>Specialty retailers & boutiques</li><li>Hospitals & maternal health organizations</li><li>Corporate wellness programs & gifting</li><li>Boutique grocery shops or stores</li></ul>",
+            "text": "<p>We partner with organizations that care for and support mothers throughout fertility, pregnancy, postpartum, and beyond, including:</p><ul><li>Birth centers & postpartum practices</li><li>Doulas & lactation consultants</li><li>Wellness clinics & integrative healthcare providers</li><li>Yoga, fitness & wellness studios</li><li>Specialty retailers & boutiques</li><li>Hospitals & maternal health organizations</li><li>Corporate wellness programs & gifting</li></ul><p></p>",
             "text_style": "body",
             "list_style": "check",
             "list_icon_color": "#b07a72",
@@ -374,7 +374,7 @@
           "settings": {
             "heading": "Who is eligible for wholesale?",
             "icon": "none",
-            "row_content": "<p>[Add who can apply for a wholesale account.]</p>",
+            "row_content": "",
             "page": ""
           }
         },
