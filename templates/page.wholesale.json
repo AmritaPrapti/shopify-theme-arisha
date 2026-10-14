@@ -306,6 +306,7 @@
         "caption_served",
         "logo_sanhu"
       ],
+      "disabled": true,
       "settings": {
         "section_url": "",
         "enable_text_link": false,
@@ -422,6 +423,7 @@
         "faq_shipping",
         "faq_order"
       ],
+      "disabled": true,
       "settings": {
         "caption": "",
         "heading": "Frequently Asked Questions",
