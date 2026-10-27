@@ -27,6 +27,24 @@
   #Banner-{{ section.id }}::after {
     opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
   }
+
+  /* Buttons block layout option ("Auto" keeps the theme's wrapping behaviour) */
+  @media screen and (min-width: 750px) {
+    /* one row of equal-width buttons, each as wide as the longest label */
+    #Banner-{{ section.id }} .banner__buttons--side {
+      display: inline-grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+      max-width: none;
+    }
+    #Banner-{{ section.id }} .banner__buttons--side > * {
+      min-width: 22rem;
+      white-space: nowrap;
+    }
+  }
+  #Banner-{{ section.id }} .banner__buttons--stacked {
+    flex-direction: column;
+  }
 {%- endstyle -%}
 
 {%- liquid
@@ -137,7 +155,7 @@
             </div>
           {%- when 'buttons' -%}
             <div
-              class="banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %}"
+              class="banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %}{% if block.settings.button_layout == 'side' %} banner__buttons--side{% elsif block.settings.button_layout == 'stacked' %} banner__buttons--stacked{% endif %}"
               {{ block.shopify_attributes }}
             >
               {%- if block.settings.button_label_1 != blank -%}
@@ -506,6 +524,18 @@
           "id": "button_style_secondary_2",
           "default": false,
           "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_2.label"
+        },
+        {
+          "type": "select",
+          "id": "button_layout",
+          "label": "Button layout",
+          "options": [
+            { "value": "auto", "label": "Auto" },
+            { "value": "side", "label": "Side by side" },
+            { "value": "stacked", "label": "Stacked" }
+          ],
+          "default": "auto",
+          "info": "Side by side applies on tablet and desktop; buttons stack on mobile."
         }
       ]
     }

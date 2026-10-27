@@ -657,7 +657,8 @@
             "button_style_secondary_1": false,
             "button_label_2": "WHOLESALE",
             "button_link_2": "shopify://pages/wholesale",
-            "button_style_secondary_2": false
+            "button_style_secondary_2": false,
+            "button_layout": "side"
           }
         }
       },
