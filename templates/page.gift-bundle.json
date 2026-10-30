@@ -38,7 +38,7 @@
         "text_Vg4PwA": {
           "type": "text",
           "settings": {
-            "text": "<p>Support her postpartum recovery with nourishing Japanese-inspired meals, snacks, and teas designed for healing.</p>",
+            "text": "<p>Support her postpartum recovery with nourishing gift bundles containing Japanese-inspired meals, snacks, and teas designed for healing.</p>",
             "text_style": "body",
             "text_color": "",
             "text_highlight": "",
@@ -118,272 +118,58 @@
         "section_color_scheme": "",
         "color_scheme": "",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 0
       }
     },
-    "gift_bundle_hero_NLrRmj": {
-      "type": "gift-bundle-hero",
+    "collection_list_Bfacr9": {
+      "type": "collection-list",
       "blocks": {
-        "caption_gbznr7": {
-          "type": "caption",
+        "featured_collection_DGgPWw": {
+          "type": "featured_collection",
           "settings": {
-            "link": "",
-            "caption": "Why This Gift Matters",
-            "text_style": "caption-with-letter-spacing",
-            "text_size": "large",
-            "custom_font_size_desktop": 20,
-            "custom_font_size_mobile": 16,
-            "font_weight": "600",
-            "caption_color": "#b07a72",
-            "caption_highlight": ""
+            "collection": "soups-and-meals",
+            "custom_description": "Mineral-rich broths rooted in traditional postpartum nourishment",
+            "button_label": "Shop Now"
           }
         },
-        "heading_f3Ybq9": {
-          "type": "heading",
+        "featured_collection_MqJywD": {
+          "type": "featured_collection",
           "settings": {
-            "heading": "The first few weeks <br> <span> are beautiful—and exhausting.</span>",
-            "heading_size": "h1",
-            "custom_font_size_desktop": 48,
-            "custom_font_size_mobile": 32
+            "collection": "snacks",
+            "custom_description": "Energy-dense bites designed to provide quick nourishment throughout the day.",
+            "button_label": "Shop Now"
           }
         },
-        "text_GkNaCp": {
-          "type": "text",
+        "featured_collection_T7Pjpw": {
+          "type": "featured_collection",
           "settings": {
-            "text": "<p>Between feeding, healing, and sleepless nights, preparing nourishing meals often becomes one more thing to think about.</p>\n\n<p>Your gift provides comfort, nourishment, and one less thing on her to-do list.</p>",
-            "text_style": "body",
-            "text_color": "",
-            "text_highlight": "",
-            "text_size": "default",
-            "custom_font_size_desktop": 18,
-            "custom_font_size_mobile": 15
-          }
-        },
-        "icon_with_text_iA3Xkg": {
-          "type": "icon_with_text",
-          "settings": {
-            "icon_alignment": "flex-start",
-            "icon_size": 48,
-            "text_size": "custom",
-            "custom_font_size_desktop": 18,
-            "custom_font_size_mobile": 14,
-            "text_color": "",
-            "text_highlight": "#b07a72",
-            "background_color": "",
-            "padding_vertical": 0,
-            "padding_horizontal": 0,
-            "icon_1": "shopify://shop_images/like_3899a206-ba61-41b5-8dd5-b63de4eb48cf.svg",
-            "icon_text_1": "<p>A meaningful way to say, <br><span><i>\"I'm thinking about you.\"</i></span></p>",
-            "icon_text_2": "",
-            "icon_text_3": ""
+            "collection": "teas",
+            "custom_description": "Herbal blends crafted to support warmth, digestion, and calm.",
+            "button_label": "Shop Now"
           }
         }
       },
       "block_order": [
-        "caption_gbznr7",
-        "heading_f3Ybq9",
-        "text_GkNaCp",
-        "icon_with_text_iA3Xkg"
+        "featured_collection_DGgPWw",
+        "featured_collection_MqJywD",
+        "featured_collection_T7Pjpw"
       ],
-      "custom_css": [],
-      "name": "Gift Bundle Image with Text",
+      "name": "t:sections.collection-list.presets.name",
       "settings": {
-        "anchor_id": "",
-        "section_url": "",
-        "enable_text_link": false,
-        "image": "shopify://shop_images/260715_TsS_4012_1st_sRGB_2400_1_2.png",
-        "height": "small",
-        "image_fit": "cover",
-        "media_bg_color": "",
-        "height_mobile": "medium",
-        "custom_media_height": 700,
-        "custom_media_height_mobile": 700,
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "mobile_layout": "image_first",
-        "image_behavior": "none",
-        "enable_full_width": false,
-        "content_layout": "no-overlap",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "center",
-        "section_color_scheme": "scheme-3",
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn_dKb3NC": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_B4Bx4Q": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/drink.png",
-            "title": "Designed for postpartum recovery",
-            "text": "<p>Recipes created to support healing, energy, and balance during the fourth trimester.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_kcEzK8": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/sakura.png",
-            "title": "Rooted in Japanese traditions",
-            "text": "<p>Our food combines Yakuzen and time-honored postpartum practices.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_W4h48E": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/clock.png",
-            "title": "Ready in minutes",
-            "text": "<p>Heat and enjoy in minutes—because rest is just as important.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_RqMaVk": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/natural-ingredients.png",
-            "title": "Chef-crafted with whole ingredients",
-            "text": "<p>Made with clean, nourishing ingredients your body will thank you for.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_B4Bx4Q",
-        "column_kcEzK8",
-        "column_W4h48E",
-        "column_RqMaVk"
-      ],
-      "name": "t:sections.multicolumn.presets.name",
-      "settings": {
-        "caption": "WHY IT'S DIFFERENT",
-        "caption_uppercase": true,
-        "caption_size": "large",
-        "caption_font_size_desktop": 18,
-        "caption_font_size_mobile": 14,
-        "caption_font_weight": "600",
-        "caption_color": "#b07a72",
-        "title": "Thoughtful food. Timeless traditions.",
+        "title": "What's inside every bundle",
         "heading_size": "h1",
-        "subtitle": "",
-        "title_alignment": "center",
-        "image_width": "custom",
-        "image_width_custom": 40,
+        "header_description": "<p>Each bundle includes our signature soups, nourishing snacks, and functional teas — thoughtfully crafted to support postpartum recovery.</p>",
+        "show_title_center": true,
         "image_ratio": "square",
-        "image_background": "",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 4,
-        "column_alignment": "center",
-        "card_title_lines": 2,
-        "background_style": "primary",
+        "show_description": false,
+        "show_button": false,
+        "button_style": "primary",
+        "columns_desktop": 3,
         "color_scheme": "",
+        "show_view_all": false,
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "gift_bundle_hero_99FM3h": {
-      "type": "gift-bundle-hero",
-      "blocks": {
-        "caption_e9LdaA": {
-          "type": "caption",
-          "settings": {
-            "link": "",
-            "caption": "BEAUTIFULLY WRAPPED. THOUGHTFULLY GIVEN.",
-            "text_style": "caption-with-letter-spacing",
-            "text_size": "large",
-            "custom_font_size_desktop": 20,
-            "custom_font_size_mobile": 16,
-            "font_weight": "600",
-            "caption_color": "#b07a72",
-            "caption_highlight": ""
-          }
-        },
-        "heading_mLyY46": {
-          "type": "heading",
-          "settings": {
-            "heading": "A tradition of care, wrapped into every gift.",
-            "heading_size": "h1",
-            "custom_font_size_desktop": 48,
-            "custom_font_size_mobile": 32
-          }
-        },
-        "text_dwhkFh": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Our reusable gift wrap is inspired by the Japanese tradition of furoshiki—the art of wrapping with cloth.\n</p>\n<p>Finished with a dried flower and your personalized message, it's designed to be kept long after the meals have been enjoyed. The wrap can be used as a swaddle for newborns.</p>",
-            "text_style": "body",
-            "text_color": "",
-            "text_highlight": "",
-            "text_size": "default",
-            "custom_font_size_desktop": 18,
-            "custom_font_size_mobile": 15
-          }
-        },
-        "icon_with_text_Y3t4iD": {
-          "type": "icon_with_text",
-          "settings": {
-            "icon_alignment": "flex-start",
-            "icon_size": 40,
-            "text_size": "default",
-            "custom_font_size_desktop": 14,
-            "custom_font_size_mobile": 13,
-            "text_color": "",
-            "text_highlight": "",
-            "background_color": "#fbe4e0",
-            "padding_vertical": 20,
-            "padding_horizontal": 20,
-            "icon_1": "shopify://shop_images/gift-bow.png",
-            "icon_text_1": "<p>In Japanese, the character for \"to wrap\" (包む; tsutsumu) originates from the image of a mother gently protecting her child in the womb. We couldn't imagine a more fitting symbol for a gift created to care for mothers.</p>",
-            "icon_text_2": "",
-            "icon_text_3": ""
-          }
-        }
-      },
-      "block_order": [
-        "caption_e9LdaA",
-        "heading_mLyY46",
-        "text_dwhkFh",
-        "icon_with_text_Y3t4iD"
-      ],
-      "custom_css": [
-        "@media screen and (max-width: 750px) {.image-with-text__icon-item {flex-direction: column; gap: 0; } h2 {font-size: 28px; }}"
-      ],
-      "name": "Gift Bundle Image with Text",
-      "settings": {
-        "anchor_id": "",
-        "section_url": "",
-        "enable_text_link": false,
-        "image": "shopify://shop_images/forher_food_april20_3247_dd5c0bbf-5b99-4b9f-8d3d-0270ad8aa1cc.jpg",
-        "height": "medium",
-        "image_fit": "cover",
-        "media_bg_color": "",
-        "height_mobile": "medium",
-        "custom_media_height": 700,
-        "custom_media_height_mobile": 700,
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "mobile_layout": "image_first",
-        "image_behavior": "none",
-        "enable_full_width": false,
-        "content_layout": "no-overlap",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "center",
-        "section_color_scheme": "scheme-3",
-        "color_scheme": "",
-        "padding_top": 36,
+        "padding_top": 0,
         "padding_bottom": 36
       }
     },
@@ -878,7 +664,7 @@
         "eyebrow_highlight": "",
         "heading": "Find the right gift for her",
         "heading_size": "h1",
-        "subheading": "<p>All gift bundles arrive wrapped  and with a personalized gift card.</p>",
+        "subheading": "<p>All gift bundles arrive wrapped &nbsp;and with a personalized gift card.</p>",
         "columns_desktop": 3,
         "columns_mobile": "1",
         "color_scheme": "",
@@ -888,7 +674,7 @@
         "card_border_color": "#f0dcda",
         "check_color": "#cc858f",
         "muted_text_color": "#8a7a78",
-        "padding_top": 52,
+        "padding_top": 0,
         "padding_bottom": 52
       }
     },
@@ -909,60 +695,284 @@
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
+        "background_image_position": "center",
+        "background_image_opacity": 100,
         "color_scheme": "",
         "full_width": true,
         "padding_top": 0,
-        "padding_bottom": 0
+        "padding_bottom": 36
       }
     },
-    "collection_list_Bfacr9": {
-      "type": "collection-list",
+    "multicolumn_dKb3NC": {
+      "type": "multicolumn",
       "blocks": {
-        "featured_collection_DGgPWw": {
-          "type": "featured_collection",
+        "column_B4Bx4Q": {
+          "type": "column",
           "settings": {
-            "collection": "soups-and-meals",
-            "custom_description": "Mineral-rich broths rooted in traditional postpartum nourishment",
-            "button_label": "Shop Now"
+            "image": "shopify://shop_images/drink.png",
+            "icon": "none",
+            "title": "Designed for postpartum recovery",
+            "text": "<p>Recipes created to support healing, energy, and balance during the fourth trimester.</p>",
+            "link_label": "",
+            "link": ""
           }
         },
-        "featured_collection_MqJywD": {
-          "type": "featured_collection",
+        "column_kcEzK8": {
+          "type": "column",
           "settings": {
-            "collection": "snacks",
-            "custom_description": "Energy-dense bites designed to provide quick nourishment throughout the day.",
-            "button_label": "Shop Now"
+            "image": "shopify://shop_images/sakura.png",
+            "icon": "none",
+            "title": "Rooted in Japanese traditions",
+            "text": "<p>Our food combines Yakuzen and time-honored postpartum practices.</p>",
+            "link_label": "",
+            "link": ""
           }
         },
-        "featured_collection_T7Pjpw": {
-          "type": "featured_collection",
+        "column_W4h48E": {
+          "type": "column",
           "settings": {
-            "collection": "teas",
-            "custom_description": "Herbal blends crafted to support warmth, digestion, and calm.",
-            "button_label": "Shop Now"
+            "image": "shopify://shop_images/clock.png",
+            "icon": "none",
+            "title": "Ready in minutes",
+            "text": "<p>Heat and enjoy in minutes—because rest is just as important.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_RqMaVk": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/natural-ingredients.png",
+            "icon": "none",
+            "title": "Chef-crafted with whole ingredients",
+            "text": "<p>Made with clean, nourishing ingredients your body will thank you for.</p>",
+            "link_label": "",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "featured_collection_DGgPWw",
-        "featured_collection_MqJywD",
-        "featured_collection_T7Pjpw"
+        "column_B4Bx4Q",
+        "column_kcEzK8",
+        "column_W4h48E",
+        "column_RqMaVk"
       ],
-      "name": "t:sections.collection-list.presets.name",
+      "name": "t:sections.multicolumn.presets.name",
       "settings": {
-        "title": "What's inside every bundle",
+        "caption": "WHY IT'S DIFFERENT",
+        "caption_uppercase": true,
+        "caption_size": "large",
+        "caption_font_size_desktop": 18,
+        "caption_font_size_mobile": 14,
+        "caption_font_weight": "600",
+        "caption_color": "#b07a72",
+        "title": "Thoughtful food. Timeless traditions.",
         "heading_size": "h1",
-        "header_description": "<p>Each bundle includes our signature soups, nourishing snacks, and functional teas — thoughtfully crafted to support postpartum recovery.</p>",
-        "show_title_center": true,
+        "subtitle": "",
+        "title_alignment": "center",
+        "image_width": "custom",
+        "image_width_custom": 40,
+        "icon_color": "#b07a72",
+        "icon_size": 56,
+        "show_dividers": false,
+        "divider_color": "#e3c9c4",
         "image_ratio": "square",
-        "show_description": false,
-        "show_button": false,
-        "button_style": "primary",
-        "columns_desktop": 3,
-        "color_scheme": "",
-        "show_view_all": false,
+        "image_background": "",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "card_title_lines": 2,
+        "background_style": "primary",
+        "color_scheme": "scheme-3",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "gift_bundle_hero_99FM3h": {
+      "type": "gift-bundle-hero",
+      "blocks": {
+        "caption_e9LdaA": {
+          "type": "caption",
+          "settings": {
+            "link": "",
+            "caption": "BEAUTIFULLY WRAPPED. THOUGHTFULLY GIVEN.",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "large",
+            "custom_font_size_desktop": 20,
+            "custom_font_size_mobile": 16,
+            "font_weight": "600",
+            "caption_color": "#b07a72",
+            "caption_highlight": ""
+          }
+        },
+        "heading_mLyY46": {
+          "type": "heading",
+          "settings": {
+            "heading": "A tradition of care, wrapped into every gift.",
+            "heading_size": "h1",
+            "custom_font_size_desktop": 48,
+            "custom_font_size_mobile": 32
+          }
+        },
+        "text_dwhkFh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our reusable gift wrap is inspired by the Japanese tradition of furoshiki—the art of wrapping with cloth.\n</p>\n<p>Finished with a dried flower and your personalized message, it's designed to be kept long after the meals have been enjoyed. The wrap can be used as a swaddle for newborns.</p>",
+            "text_style": "body",
+            "text_color": "",
+            "text_highlight": "",
+            "text_size": "default",
+            "custom_font_size_desktop": 18,
+            "custom_font_size_mobile": 15
+          }
+        },
+        "icon_with_text_Y3t4iD": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon_alignment": "flex-start",
+            "icon_size": 40,
+            "text_size": "default",
+            "custom_font_size_desktop": 14,
+            "custom_font_size_mobile": 13,
+            "text_color": "",
+            "text_highlight": "",
+            "background_color": "#fbe4e0",
+            "padding_vertical": 20,
+            "padding_horizontal": 20,
+            "icon_1": "shopify://shop_images/gift-bow.png",
+            "icon_text_1": "<p>In Japanese, the character for \"to wrap\" (包む; tsutsumu) originates from the image of a mother gently protecting her child in the womb. We couldn't imagine a more fitting symbol for a gift created to care for mothers.</p>",
+            "icon_text_2": "",
+            "icon_text_3": ""
+          }
+        }
+      },
+      "block_order": [
+        "caption_e9LdaA",
+        "heading_mLyY46",
+        "text_dwhkFh",
+        "icon_with_text_Y3t4iD"
+      ],
+      "custom_css": [
+        "@media screen and (max-width: 750px) {.image-with-text__icon-item {flex-direction: column; gap: 0; } h2 {font-size: 28px; }}"
+      ],
+      "name": "Gift Bundle Image with Text",
+      "settings": {
+        "anchor_id": "",
+        "section_url": "",
+        "enable_text_link": false,
+        "image": "shopify://shop_images/forher_food_april20_3247_dd5c0bbf-5b99-4b9f-8d3d-0270ad8aa1cc.jpg",
+        "height": "medium",
+        "image_fit": "cover",
+        "media_bg_color": "",
+        "height_mobile": "medium",
+        "custom_media_height": 700,
+        "custom_media_height_mobile": 700,
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "mobile_layout": "image_first",
+        "image_behavior": "none",
+        "enable_full_width": false,
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-3",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "gift_bundle_hero_NLrRmj": {
+      "type": "gift-bundle-hero",
+      "blocks": {
+        "caption_gbznr7": {
+          "type": "caption",
+          "settings": {
+            "link": "",
+            "caption": "Why This Gift Matters",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "large",
+            "custom_font_size_desktop": 20,
+            "custom_font_size_mobile": 16,
+            "font_weight": "600",
+            "caption_color": "#b07a72",
+            "caption_highlight": ""
+          }
+        },
+        "heading_f3Ybq9": {
+          "type": "heading",
+          "settings": {
+            "heading": "The first few weeks <br> <span> are beautiful—and exhausting.</span>",
+            "heading_size": "h1",
+            "custom_font_size_desktop": 48,
+            "custom_font_size_mobile": 32
+          }
+        },
+        "text_GkNaCp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Between feeding, healing, and sleepless nights, preparing nourishing meals often becomes one more thing to think about.</p>\n\n<p>Your gift provides comfort, nourishment, and one less thing on her to-do list.</p>",
+            "text_style": "body",
+            "text_color": "",
+            "text_highlight": "",
+            "text_size": "default",
+            "custom_font_size_desktop": 18,
+            "custom_font_size_mobile": 15
+          }
+        },
+        "icon_with_text_iA3Xkg": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon_alignment": "flex-start",
+            "icon_size": 48,
+            "text_size": "custom",
+            "custom_font_size_desktop": 18,
+            "custom_font_size_mobile": 14,
+            "text_color": "",
+            "text_highlight": "#b07a72",
+            "background_color": "",
+            "padding_vertical": 0,
+            "padding_horizontal": 0,
+            "icon_1": "shopify://shop_images/like_3899a206-ba61-41b5-8dd5-b63de4eb48cf.svg",
+            "icon_text_1": "<p>A meaningful way to say, <br><span><i>\"I'm thinking about you.\"</i></span></p>",
+            "icon_text_2": "",
+            "icon_text_3": ""
+          }
+        }
+      },
+      "block_order": [
+        "caption_gbznr7",
+        "heading_f3Ybq9",
+        "text_GkNaCp",
+        "icon_with_text_iA3Xkg"
+      ],
+      "custom_css": [],
+      "name": "Gift Bundle Image with Text",
+      "settings": {
+        "anchor_id": "",
+        "section_url": "",
+        "enable_text_link": false,
+        "image": "shopify://shop_images/260715_TsS_4012_1st_sRGB_2400_1_2.png",
+        "height": "small",
+        "image_fit": "cover",
+        "media_bg_color": "",
+        "height_mobile": "medium",
+        "custom_media_height": 700,
+        "custom_media_height_mobile": 700,
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "mobile_layout": "image_first",
+        "image_behavior": "none",
+        "enable_full_width": false,
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -970,6 +980,48 @@
     "gift_bundle_faq_GCqPm3": {
       "type": "gift-bundle-faq",
       "blocks": {
+        "gift_feature_panel_cm4cgQ": {
+          "type": "gift_feature_panel",
+          "name": "Feature panel",
+          "settings": {
+            "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
+            "background": "",
+            "text_color": "",
+            "corner_radius": 0,
+            "image": "shopify://shop_images/forher_food_april20_3275.jpg",
+            "image_position": "left",
+            "image_size": "small"
+          },
+          "blocks": {
+            "gift_feature_text_CypHj4": {
+              "type": "gift_feature_text",
+              "name": "Feature text",
+              "settings": {
+                "title": "Not sure which bundle to choose?",
+                "title_tag": "h2",
+                "title_size": "h2",
+                "text": "<p>Give a gift card and let her pick the comfort, nourishment, and support she needs.</p>"
+              },
+              "blocks": {}
+            },
+            "gift_feature_button_bWFWag": {
+              "type": "gift_feature_button",
+              "name": "Feature button",
+              "settings": {
+                "label": "SHOP GIFT CARDS",
+                "link": "shopify://products/digital-gift-card",
+                "show_icon": true,
+                "button_bg": "#2b2b2b",
+                "button_text": "#ffffff"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "gift_feature_text_CypHj4",
+            "gift_feature_button_bWFWag"
+          ]
+        },
         "gift_faq_accordion_eeC7WG": {
           "type": "gift_faq_accordion",
           "name": "FAQ accordion",
@@ -1035,53 +1087,11 @@
             "gift_faq_item_HUCztL",
             "gift_faq_item_kY77Vq"
           ]
-        },
-        "gift_feature_panel_cm4cgQ": {
-          "type": "gift_feature_panel",
-          "name": "Feature panel",
-          "settings": {
-            "color_scheme": "scheme-4b568235-d2f3-4d67-b134-6b6f6d84c70a",
-            "background": "",
-            "text_color": "",
-            "corner_radius": 0,
-            "image": "shopify://shop_images/forher_food_april20_3275.jpg",
-            "image_position": "left",
-            "image_size": "small"
-          },
-          "blocks": {
-            "gift_feature_text_CypHj4": {
-              "type": "gift_feature_text",
-              "name": "Feature text",
-              "settings": {
-                "title": "Not sure what to choose?",
-                "title_tag": "h2",
-                "title_size": "h2",
-                "text": "<p>Give comfort, nourishment, and support when she needs it most.</p>"
-              },
-              "blocks": {}
-            },
-            "gift_feature_button_bWFWag": {
-              "type": "gift_feature_button",
-              "name": "Feature button",
-              "settings": {
-                "label": "SHOP GIFT CARDS",
-                "link": "shopify://products/digital-gift-card",
-                "show_icon": true,
-                "button_bg": "#2b2b2b",
-                "button_text": "#ffffff"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "gift_feature_text_CypHj4",
-            "gift_feature_button_bWFWag"
-          ]
         }
       },
       "block_order": [
-        "gift_faq_accordion_eeC7WG",
-        "gift_feature_panel_cm4cgQ"
+        "gift_feature_panel_cm4cgQ",
+        "gift_faq_accordion_eeC7WG"
       ],
       "name": "Gift Bundle FAQ",
       "settings": {
@@ -1095,12 +1105,12 @@
   },
   "order": [
     "main",
-    "gift_bundle_hero_NLrRmj",
-    "multicolumn_dKb3NC",
-    "gift_bundle_hero_99FM3h",
+    "collection_list_Bfacr9",
     "gift_bundle_blocks_FkWTgi",
     "rich_text_aD8he3",
-    "collection_list_Bfacr9",
+    "multicolumn_dKb3NC",
+    "gift_bundle_hero_99FM3h",
+    "gift_bundle_hero_NLrRmj",
     "gift_bundle_faq_GCqPm3"
   ]
 }
