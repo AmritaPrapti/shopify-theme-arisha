@@ -2357,6 +2357,11 @@ input[type='checkbox'] {
   z-index: initial;
 }
 
+/* Keep the open menu drawer above the announcement bar */
+.section-header:has(.menu-drawer-container[open]) {
+  z-index: 5;
+}
+
 /* Main Header Layout */
 .header-wrapper {
   display: block;
