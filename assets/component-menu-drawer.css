@@ -198,7 +198,7 @@ details[open].menu-opening > .menu-drawer__submenu {
   display: none;
   margin: 0;
   padding: 2rem 3rem;
-  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+  /* border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08); */
 }
 
 .menu-drawer__cross-button .svg-wrapper {
