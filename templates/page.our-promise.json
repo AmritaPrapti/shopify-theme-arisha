@@ -162,7 +162,8 @@
             "text": "<p>Rachael is a US-based postpartum doula and chef whose work centers on supporting mothers through nourishment during recovery.</p><p>She developed the original soup recipes for for her. by Arisa, grounding them in postpartum needs, comfort, and ease of digestion. Her approach shaped the foundation of how our soups are meant to feel during the early postpartum period.</p>",
             "text_style": "body",
             "list_style": "default",
-            "list_icon_color": "#b07a72"
+            "list_icon_color": "#b07a72",
+            "list_indent": 24
           }
         }
       },
@@ -203,7 +204,7 @@
           "type": "caption",
           "settings": {
             "link": "",
-            "caption": "Yakuzen and Chinese medicine culinary expert",
+            "caption": "Yakuzen and Chinese culinary expert",
             "text_style": "caption-with-letter-spacing",
             "text_size": "small",
             "font_weight": "400",
@@ -221,10 +222,11 @@
         "text_P7cf97": {
           "type": "text",
           "settings": {
-            "text": "<p>Yumiko Izawa is a Tokyo-based culinary expert specializing in Chinese medicine and Yakuzen cooking. Her work focuses on balance, seasonality, and how ingredients support the body through food.</p><p>She worked closely with the recipes, bringing Yakuzen principles and traditional Japanese ingredients into the development process. Her perspective adds cultural depth, intention, and care to how the soups are composed.</p>",
+            "text": "<p>Yumiko Izawa is a Tokyo-based culinary expert specializing in Chinese traditional principles and Yakuzen cooking. Her work focuses on balance, seasonality, and how ingredients support the body through food.</p><p>She worked closely with the recipes, bringing Yakuzen principles and traditional Japanese ingredients into the development process. Her perspective adds cultural depth, intention, and care to how the soups are composed.</p>",
             "text_style": "body",
             "list_style": "default",
-            "list_icon_color": "#b07a72"
+            "list_icon_color": "#b07a72",
+            "list_indent": 24
           }
         }
       },
@@ -285,7 +287,8 @@
             "text": "<p>Seiko is a Los Angeles-based chef with a background in holistic wellness and Japanese fermentation.</p><p>She played a key role in adapting the recipes for American mothers, ensuring the soups remained true to their original intention while fitting local ingredients, tastes, and everyday needs. Her work helps the soups feel both nourishing and approachable.</p>",
             "text_style": "body",
             "list_style": "default",
-            "list_icon_color": "#b07a72"
+            "list_icon_color": "#b07a72",
+            "list_indent": 24
           }
         }
       },
@@ -346,7 +349,8 @@
             "text": "<p>Sarah is a culinary professional with a Master’s in Gastronomy and over a decade of experience in cooking and recipe development. Raised between Japanese and American cultures and fluent in Japanese, her approach to food is shaped by tradition, balance, and care.</p><p>At <em>for her. by Arisa</em>, Sarah developed our snack menu using her bicultural perspective. She now serves as our Lead Production Cook in the Fullerton kitchen, ensuring quality and consistency in every recipe we share.</p><p>As a mother of two, Sarah is closely connected to our mission of supporting mothers, bringing both professional expertise and lived experience to the food we make.</p>",
             "text_style": "body",
             "list_style": "default",
-            "list_icon_color": "#b07a72"
+            "list_icon_color": "#b07a72",
+            "list_indent": 24
           }
         }
       },
