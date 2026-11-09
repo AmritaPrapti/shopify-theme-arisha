@@ -34,7 +34,7 @@
         "text_e4n4Cz": {
           "type": "text",
           "settings": {
-            "text": "<p>Simple, tasty, and nutritious meals for new mothers. Rooted in Eastern medicine through the Japanese tradition of Yakuzen.</p>",
+            "text": "<p>Simple, tasty, and nutritious meals for new mothers. Rooted in the Japanese tradition of Yakuzen.</p>",
             "text_style": "body",
             "list_style": "default",
             "list_icon_color": "#b07a72",
@@ -165,7 +165,7 @@
             "image": "shopify://shop_images/cherry-blossom_1.png",
             "icon": "none",
             "title": "Rooted in Tradition",
-            "text": "<p>Inspired by the Japanese tradition of Yakuzen — food as medicine.</p>",
+            "text": "<p>Inspired by the Japanese tradition of Yakuzen.</p>",
             "link_label": "",
             "link": ""
           }
