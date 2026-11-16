@@ -269,6 +269,8 @@
               "settings": {
                 "show_save_badge": true,
                 "save_text": "",
+                "custom_price": "",
+                "custom_compare_at_price": "",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -425,6 +427,8 @@
               "settings": {
                 "show_save_badge": true,
                 "save_text": "",
+                "custom_price": "",
+                "custom_compare_at_price": "",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
@@ -581,6 +585,8 @@
               "settings": {
                 "show_save_badge": true,
                 "save_text": "",
+                "custom_price": "325.00",
+                "custom_compare_at_price": "360.00",
                 "padding_top": 0,
                 "padding_bottom": 0,
                 "padding_top_mobile": 0,
