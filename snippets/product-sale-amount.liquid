@@ -1,7 +1,8 @@
 {%- liquid
   assign selected_variant = product_resource.selected_or_first_available_variant
-  assign price = selected_variant.price
-  assign compare_at_price = selected_variant.compare_at_price
+  # price / compare_at_price can be passed in to override the variant's (custom display pricing)
+  assign price = price | default: selected_variant.price
+  assign compare_at_price = compare_at_price | default: selected_variant.compare_at_price
 
   assign show_sale_badge = false
   assign sale_percentage = 0
@@ -17,12 +18,18 @@
       assign show_sale_badge = true
     endif
   endif
+
+  if badge_text != blank
+    assign show_sale_badge = true
+  endif
 -%}
 
 {%- if show_sale_badge -%}
   <div class="sale-amount-badge badge color-{{ settings.sale_amount_badge_color_scheme }}" style="--badge-corner-radius: {{ settings.sale_amount_badge_corner_radius | default: 4 }}px;">
     <span class="sale-amount-text">
-      {%- if display_type == 'amount' -%}
+      {%- if badge_text != blank -%}
+        {{ badge_text | escape }}
+      {%- elsif display_type == 'amount' -%}
         Save {{ discount_amount | money }}
       {%- else -%}
         Save {{ sale_percentage }}%

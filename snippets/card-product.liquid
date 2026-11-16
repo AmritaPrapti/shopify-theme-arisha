@@ -39,6 +39,21 @@
     if ratio == 0 or ratio == null
       assign ratio = 1
     endif
+
+    assign card_on_sale = false
+    if card_product.compare_at_price > card_product.price
+      assign card_on_sale = true
+    endif
+
+    # Custom display pricing from product metafields (shop currency only)
+    if card_product.metafields.custom.display_price != blank and cart.currency.iso_code == shop.currency
+      assign display_price = card_product.metafields.custom.display_price.value | times: 100 | round
+      assign display_compare_at_price = card_product.metafields.custom.display_compare_at_price.value | times: 100 | round
+      assign card_on_sale = false
+      if display_compare_at_price > display_price
+        assign card_on_sale = true
+      endif
+    endif
   -%}
   <div class="card-wrapper product-card-wrapper underline-links-hover">
     <div
@@ -132,7 +147,7 @@
               >
                 {{- 'products.product.sold_out' | t -}}
               </span>
-            {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+            {%- elsif card_on_sale and card_product.available -%}
               <span
                 id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
                 class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
@@ -556,7 +571,7 @@
             >
               {{- 'products.product.sold_out' | t -}}
             </span>
-          {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+          {%- elsif card_on_sale and card_product.available -%}
             <span
               id="Badge-{{ section_id }}-{{ card_product.id }}"
               class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"

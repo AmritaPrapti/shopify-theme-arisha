@@ -539,7 +539,10 @@
                     show_badges: block.settings.show_sale_badge,
                     price_class: 'price--large',
                     show_sale_amount: block.settings.show_sale_amount, 
-                    sale_display_type: block.settings.sale_display_type
+                    sale_display_type: block.settings.sale_display_type,
+                    custom_price: block.settings.custom_price,
+                    custom_compare_at_price: block.settings.custom_compare_at_price,
+                    custom_badge: block.settings.custom_badge
                   -%}
                 </div>
                 {%- if product.quantity_price_breaks_configured? -%}
@@ -1302,6 +1305,31 @@
               "label": "Percentage"
             }
           ]
+        },
+        {
+          "type": "header",
+          "content": "Custom price display"
+        },
+        {
+          "type": "text",
+          "id": "custom_price",
+          "label": "Custom price",
+          "placeholder": "189.00",
+          "info": "Shown instead of the product price on every product using this template. Leave blank to use the product price."
+        },
+        {
+          "type": "text",
+          "id": "custom_compare_at_price",
+          "label": "Custom compare-at price",
+          "placeholder": "210.00",
+          "info": "Shown crossed out. Only used when a custom price is set."
+        },
+        {
+          "type": "text",
+          "id": "custom_badge",
+          "label": "Custom discount badge",
+          "placeholder": "Save 10%",
+          "info": "Replaces the auto-calculated sale amount badge."
         }
       ]
     },

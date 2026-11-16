@@ -9,6 +9,9 @@
   - price_class: {String} Adds a price class to the price element (optional)
   - show_compare_at_price: {Boolean} Renders the compare at price if the product matches the condition (optional)
   - show_sale_amount: {Boolean} Renders the sale amount if the product matches the condition (optional)
+  - custom_price: {String} Display price, e.g. "189.00"; overrides the product metafields (optional)
+  - custom_compare_at_price: {String} Display compare-at price, used with custom_price (optional)
+  - custom_badge: {String} Text for the sale amount badge, e.g. "Save 10%" (optional)
 
   Usage:
   {% render 'price', product: product %}
@@ -27,6 +30,24 @@
   assign price_min = product.price_min
   assign price_max = product.price_max
   assign available = target.available | default: false
+
+  # Custom display pricing: settings passed in first, then product metafields (shop currency only)
+  assign badge_text = custom_badge
+  if cart.currency.iso_code == shop.currency
+    if custom_price != blank
+      assign price = custom_price | remove: '$' | remove: ',' | times: 100 | round
+      assign compare_at_price = custom_compare_at_price | remove: '$' | remove: ',' | times: 100 | round
+      assign price_min = price
+      assign price_max = price
+    elsif product.metafields.custom.display_price != blank
+      assign price = product.metafields.custom.display_price.value | times: 100 | round
+      assign compare_at_price = product.metafields.custom.display_compare_at_price.value | times: 100 | round
+      assign price_min = price
+      assign price_max = price
+      assign badge_text = custom_badge | default: product.metafields.custom.display_badge.value
+    endif
+  endif
+
   assign money_price = price | money
   assign money_price_min = price_min | money
   assign money_price_max = price_max | money
@@ -122,8 +143,15 @@
         {{ 'products.product.sold_out' | t }}
       </span>
     {%- endif -%}
-    {%- if show_sale_amount and compare_at_price > price -%}
-      {% render 'product-sale-amount', product_resource: product, display_type: sale_display_type %}
+    {%- if show_sale_amount and badge_text != blank -%}
+      {% render 'product-sale-amount', product_resource: product, badge_text: badge_text %}
+    {%- elsif show_sale_amount and compare_at_price > price -%}
+      {% render 'product-sale-amount',
+        product_resource: product,
+        display_type: sale_display_type,
+        price: price,
+        compare_at_price: compare_at_price
+      %}
     {%- endif -%}
   </div>
 {% endunless %}

@@ -7,12 +7,26 @@
   assign variant = closest.product.selected_or_first_available_variant
   assign price_cents = variant.price
   assign compare_cents = variant.compare_at_price
+  assign custom_badge = block.settings.save_text
+
+  # Custom display pricing: block settings first, then product metafields (shop currency only)
+  if cart.currency.iso_code == shop.currency
+    if block.settings.custom_price != blank
+      assign price_cents = block.settings.custom_price | remove: '$' | remove: ',' | times: 100 | round
+      assign compare_cents = block.settings.custom_compare_at_price | remove: '$' | remove: ',' | times: 100 | round
+    elsif closest.product.metafields.custom.display_price != blank
+      assign price_cents = closest.product.metafields.custom.display_price.value | times: 100 | round
+      assign compare_cents = closest.product.metafields.custom.display_compare_at_price.value | times: 100 | round
+      assign custom_badge = custom_badge | default: closest.product.metafields.custom.display_badge.value
+    endif
+  endif
+
   assign on_sale = false
   if compare_cents > price_cents
     assign on_sale = true
   endif
 
-  assign save_text = block.settings.save_text
+  assign save_text = custom_badge
   if save_text == blank and block.settings.show_save_badge and on_sale
     assign pct = compare_cents | minus: price_cents | times: 100.0 | divided_by: compare_cents | round
     assign save_text = 'Save ' | append: pct | append: '%'
@@ -30,7 +44,7 @@
   {%- if on_sale -%}
     <span class="gb-price__compare">{{ compare_cents | money }}</span>
   {%- endif -%}
-  {%- if save_text != blank and on_sale -%}
+  {%- if save_text != blank and on_sale or custom_badge != blank -%}
     <span class="gb-price__save">{{ save_text }}</span>
   {%- endif -%}
 </div>
@@ -51,6 +65,21 @@
       "id": "save_text",
       "label": "Custom savings badge",
       "info": "e.g. \"Save 10%\". Overrides the auto-calculated value."
+    },
+    { "type": "header", "content": "Custom price display" },
+    {
+      "type": "text",
+      "id": "custom_price",
+      "label": "Custom price",
+      "placeholder": "189.00",
+      "info": "Only changes the price shown on this card. Leave blank to use the product price."
+    },
+    {
+      "type": "text",
+      "id": "custom_compare_at_price",
+      "label": "Custom compare-at price",
+      "placeholder": "210.00",
+      "info": "Shown crossed out. Only used when a custom price is set."
     },
     { "type": "header", "content": "Spacing" },
     { "type": "range", "id": "padding_top", "min": 0, "max": 60, "step": 2, "unit": "px", "label": "Top spacing", "default": 0 },
