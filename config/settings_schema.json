@@ -1301,6 +1301,58 @@
     ]
   },
   {
+    "name": "Sale price display",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Shows every product's price crossed out with the sale price next to it. This only changes what the site displays. The discount itself still has to be set up in Shopify Discounts."
+      },
+      {
+        "type": "checkbox",
+        "id": "sale_display_enabled",
+        "label": "Show sale prices",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "sale_display_percent",
+        "min": 1,
+        "max": 90,
+        "step": 1,
+        "unit": "%",
+        "label": "Discount",
+        "default": 30
+      },
+      {
+        "type": "text",
+        "id": "sale_display_badge",
+        "label": "Badge text",
+        "placeholder": "30% OFF",
+        "info": "Leave blank to show the discount, e.g. \"30% OFF\"."
+      },
+      {
+        "type": "header",
+        "content": "Schedule (optional)"
+      },
+      {
+        "type": "paragraph",
+        "content": "Use the format 2026-11-27 00:00, in your store's time zone (Settings > General). Leave both blank to show sale prices for as long as \"Show sale prices\" is on."
+      },
+      {
+        "type": "text",
+        "id": "sale_display_start",
+        "label": "Start",
+        "placeholder": "2026-11-27 00:00"
+      },
+      {
+        "type": "text",
+        "id": "sale_display_end",
+        "label": "End",
+        "placeholder": "2026-12-01 23:59"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.brand_information.name",
     "settings": [
       {

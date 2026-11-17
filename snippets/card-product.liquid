@@ -54,6 +54,19 @@
         assign card_on_sale = true
       endif
     endif
+
+    # Sale price display (Theme settings): show the Sale badge too, only while the schedule is active
+    capture card_sale_display
+      render 'sale-display-modes', product: card_product
+    endcapture
+    assign card_sale_display = card_sale_display | strip
+    assign card_sale_badge_scheduled = false
+    if card_on_sale == false and card_sale_display != 'off'
+      assign card_on_sale = true
+      if card_sale_display contains 'off'
+        assign card_sale_badge_scheduled = true
+      endif
+    endif
   -%}
   <div class="card-wrapper product-card-wrapper underline-links-hover">
     <div
@@ -148,12 +161,14 @@
                 {{- 'products.product.sold_out' | t -}}
               </span>
             {%- elsif card_on_sale and card_product.available -%}
+              {%- if card_sale_badge_scheduled %}<span class="sale-display-on">{% endif -%}
               <span
                 id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
                 class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
               >
                 {{- 'products.product.on_sale' | t -}}
               </span>
+              {%- if card_sale_badge_scheduled %}</span>{% endif -%}
             {%- endif -%}
           </div>
         </div>
@@ -572,12 +587,14 @@
               {{- 'products.product.sold_out' | t -}}
             </span>
           {%- elsif card_on_sale and card_product.available -%}
+            {%- if card_sale_badge_scheduled %}<span class="sale-display-on">{% endif -%}
             <span
               id="Badge-{{ section_id }}-{{ card_product.id }}"
               class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
             >
               {{- 'products.product.on_sale' | t -}}
             </span>
+            {%- if card_sale_badge_scheduled %}</span>{% endif -%}
           {%- endif -%}
         </div>
       </div>

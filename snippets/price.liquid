@@ -13,9 +13,15 @@
   - custom_compare_at_price: {String} Display compare-at price, used with custom_price (optional)
   - custom_badge: {String} Text for the sale amount badge, e.g. "Save 10%" (optional)
 
+  While the "Sale price display" theme setting is on, the real price is shown crossed out
+  with the sale price next to it, ignoring the custom display pricing above.
+
   Usage:
   {% render 'price', product: product %}
 {% endcomment %}
+{%- capture sale_display_modes -%}{% render 'sale-display-modes', product: product %}{%- endcapture -%}
+{%- assign sale_display_modes = sale_display_modes | strip | split: ',' -%}
+{%- for sale_display_mode in sale_display_modes -%}
 {%- liquid
   if use_variant
     assign target = product.selected_or_first_available_variant
@@ -31,9 +37,30 @@
   assign price_max = product.price_max
   assign available = target.available | default: false
 
-  # Custom display pricing: settings passed in first, then product metafields (shop currency only)
+  assign hide_compare = false
+  if product.price_varies == false and product.compare_at_price_varies
+    assign hide_compare = true
+  endif
+
   assign badge_text = custom_badge
-  if cart.currency.iso_code == shop.currency
+
+  # Sale price display: real price crossed out, sale price = price minus the rounded discount
+  if sale_display_mode == 'on'
+    assign compare_at_price = price
+    assign sale_discount = price | times: settings.sale_display_percent | divided_by: 100.0 | round
+    assign price = price | minus: sale_discount
+    assign sale_discount = price_min | times: settings.sale_display_percent | divided_by: 100.0 | round
+    assign price_min = price_min | minus: sale_discount
+    assign sale_discount = price_max | times: settings.sale_display_percent | divided_by: 100.0 | round
+    assign price_max = price_max | minus: sale_discount
+    assign hide_compare = false
+    assign badge_text = settings.sale_display_badge
+    if badge_text == blank
+      assign badge_text = settings.sale_display_percent | append: '% OFF'
+    endif
+
+  # Custom display pricing: settings passed in first, then product metafields (shop currency only)
+  elsif cart.currency.iso_code == shop.currency
     if custom_price != blank
       assign price = custom_price | remove: '$' | remove: ',' | times: 100 | round
       assign compare_at_price = custom_compare_at_price | remove: '$' | remove: ',' | times: 100 | round
@@ -63,6 +90,7 @@
 -%}
 
 {%- unless target == null and placeholder == null -%}
+  {%- if sale_display_modes.size > 1 %}<div class="sale-display-{{ sale_display_mode }}">{% endif -%}
   <div
     class="
       price
@@ -70,7 +98,7 @@
       {%- if available == false %} price--sold-out{% endif -%}
       {%- if compare_at_price > price and product.quantity_price_breaks_configured? != true %} price--on-sale{% endif -%}
       {%- if compare_at_price > price and product.quantity_price_breaks_configured? %} volume-pricing--sale-badge{% endif -%}
-      {%- if product.price_varies == false and product.compare_at_price_varies %} price--no-compare{% endif -%}
+      {%- if hide_compare %} price--no-compare{% endif -%}
       {%- if show_badges %} price--show-badge{% endif -%}
     "
   >
@@ -83,7 +111,7 @@
       <div class="price__regular">
         {%- if product.quantity_price_breaks_configured? -%}
           {%- if show_compare_at_price and compare_at_price -%}
-            {%- unless product.price_varies == false and product.compare_at_price_varies %}
+            {%- unless hide_compare %}
               <span class="visually-hidden visually-hidden--inline">
                 {{- 'products.product.price.regular_price' | t -}}
               </span>
@@ -113,7 +141,7 @@
         {%- endif -%}
       </div>
       <div class="price__sale">
-        {%- unless product.price_varies == false and product.compare_at_price_varies %}
+        {%- unless hide_compare %}
           <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
           <span>
             <s class="price-item price-item--regular">
@@ -154,4 +182,6 @@
       %}
     {%- endif -%}
   </div>
+  {%- if sale_display_modes.size > 1 %}</div>{% endif -%}
 {% endunless %}
+{%- endfor -%}

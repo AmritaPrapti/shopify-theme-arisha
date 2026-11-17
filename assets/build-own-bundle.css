@@ -2206,3 +2206,11 @@ section:has(.bundle-products-container) > *,
     font-size: 18px;
   }
 }
+
+/* Sale price display (Theme settings): hide the discount tiers while the sale runs, it doesn't combine with them */
+html.sale-display-active #discount-tiers-steps,
+html.sale-display-active .compact-tier-progress,
+html.sale-display-active .mobile-tier-bars-row,
+html.sale-display-active .mobile-tier-status-row {
+  display: none;
+}

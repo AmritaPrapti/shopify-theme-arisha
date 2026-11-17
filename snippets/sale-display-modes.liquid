@@ -1,0 +1,26 @@
+{% comment %}
+  Outputs which price versions to render for the "Sale price display" theme settings:
+  - off: normal price only
+  - on: sale price only
+  - on,off: both; the script in theme.liquid shows the right one for the schedule
+
+  Gift cards are skipped because Shopify discounts never apply to them.
+
+  Accepts:
+  - product: {Object} Product Liquid object
+
+  Usage:
+  {%- capture sale_display_modes -%}{% render 'sale-display-modes', product: product %}{%- endcapture -%}
+  {%- assign sale_display_modes = sale_display_modes | strip | split: ',' -%}
+{% endcomment %}
+{%- liquid
+  if settings.sale_display_enabled and product and product.gift_card? == false and cart.currency.iso_code == shop.currency
+    if settings.sale_display_start != blank or settings.sale_display_end != blank
+      echo 'on,off'
+    else
+      echo 'on'
+    endif
+  else
+    echo 'off'
+  endif
+-%}

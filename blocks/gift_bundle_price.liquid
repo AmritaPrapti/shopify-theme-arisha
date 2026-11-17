@@ -3,50 +3,66 @@
   Uses closest.product (the parent "Product card" block's product setting).
   Price, compare-at price and the savings badge are all derived from it.
 {% endcomment %}
-{%- liquid
-  assign variant = closest.product.selected_or_first_available_variant
-  assign price_cents = variant.price
-  assign compare_cents = variant.compare_at_price
-  assign custom_badge = block.settings.save_text
-
-  # Custom display pricing: block settings first, then product metafields (shop currency only)
-  if cart.currency.iso_code == shop.currency
-    if block.settings.custom_price != blank
-      assign price_cents = block.settings.custom_price | remove: '$' | remove: ',' | times: 100 | round
-      assign compare_cents = block.settings.custom_compare_at_price | remove: '$' | remove: ',' | times: 100 | round
-    elsif closest.product.metafields.custom.display_price != blank
-      assign price_cents = closest.product.metafields.custom.display_price.value | times: 100 | round
-      assign compare_cents = closest.product.metafields.custom.display_compare_at_price.value | times: 100 | round
-      assign custom_badge = custom_badge | default: closest.product.metafields.custom.display_badge.value
-    endif
-  endif
-
-  assign on_sale = false
-  if compare_cents > price_cents
-    assign on_sale = true
-  endif
-
-  assign save_text = custom_badge
-  if save_text == blank and block.settings.show_save_badge and on_sale
-    assign pct = compare_cents | minus: price_cents | times: 100.0 | divided_by: compare_cents | round
-    assign save_text = 'Save ' | append: pct | append: '%'
-  endif
--%}
+{%- capture sale_display_modes -%}{% render 'sale-display-modes', product: closest.product %}{%- endcapture -%}
+{%- assign sale_display_modes = sale_display_modes | strip | split: ',' -%}
 
 <div
   class="gb-price gb-block"
   style="--gb-pt: {{ block.settings.padding_top }}px; --gb-pb: {{ block.settings.padding_bottom }}px;{% if block.settings.padding_top_mobile > 0 %} --gb-pt-m: {{ block.settings.padding_top_mobile }}px;{% endif %}{% if block.settings.padding_bottom_mobile > 0 %} --gb-pb-m: {{ block.settings.padding_bottom_mobile }}px;{% endif %}"
   {{ block.shopify_attributes }}
 >
-  {%- if price_cents != blank -%}
-    <span class="gb-price__current">{{ price_cents | money }}</span>
-  {%- endif -%}
-  {%- if on_sale -%}
-    <span class="gb-price__compare">{{ compare_cents | money }}</span>
-  {%- endif -%}
-  {%- if save_text != blank and on_sale or custom_badge != blank -%}
-    <span class="gb-price__save">{{ save_text }}</span>
-  {%- endif -%}
+  {%- for sale_display_mode in sale_display_modes -%}
+    {%- liquid
+      assign variant = closest.product.selected_or_first_available_variant
+      assign price_cents = variant.price
+      assign compare_cents = variant.compare_at_price
+      assign custom_badge = block.settings.save_text
+
+      # Sale price display: real price crossed out, sale price = price minus the rounded discount
+      if sale_display_mode == 'on'
+        assign compare_cents = price_cents
+        assign sale_discount = price_cents | times: settings.sale_display_percent | divided_by: 100.0 | round
+        assign price_cents = price_cents | minus: sale_discount
+        assign custom_badge = settings.sale_display_badge
+        if custom_badge == blank
+          assign custom_badge = settings.sale_display_percent | append: '% OFF'
+        endif
+
+      # Custom display pricing: block settings first, then product metafields (shop currency only)
+      elsif cart.currency.iso_code == shop.currency
+        if block.settings.custom_price != blank
+          assign price_cents = block.settings.custom_price | remove: '$' | remove: ',' | times: 100 | round
+          assign compare_cents = block.settings.custom_compare_at_price | remove: '$' | remove: ',' | times: 100 | round
+        elsif closest.product.metafields.custom.display_price != blank
+          assign price_cents = closest.product.metafields.custom.display_price.value | times: 100 | round
+          assign compare_cents = closest.product.metafields.custom.display_compare_at_price.value | times: 100 | round
+          assign custom_badge = custom_badge | default: closest.product.metafields.custom.display_badge.value
+        endif
+      endif
+
+      assign on_sale = false
+      if compare_cents > price_cents
+        assign on_sale = true
+      endif
+
+      assign save_text = custom_badge
+      if save_text == blank and block.settings.show_save_badge and on_sale
+        assign pct = compare_cents | minus: price_cents | times: 100.0 | divided_by: compare_cents | round
+        assign save_text = 'Save ' | append: pct | append: '%'
+      endif
+    -%}
+    {%- if sale_display_modes.size > 1 %}<span class="sale-display-{{ sale_display_mode }}">{% endif -%}
+    {%- if price_cents != blank -%}
+      <span class="gb-price__current">{{ price_cents | money }}</span>
+    {%- endif -%}
+    {%- if on_sale -%}
+      <span class="gb-price__compare">{{ compare_cents | money }}</span>
+    {%- endif -%}
+    {%- if save_text != blank and on_sale or custom_badge != blank -%}
+      <span class="gb-price__save">{{ save_text }}</span>
+    {%- endif -%}
+    {%- if sale_display_modes.size > 1 %}</span>{% endif -%}
+  {%- endfor -%}
 </div>
 
 {% schema %}

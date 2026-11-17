@@ -148,9 +148,24 @@
                     
                   </h2>
                   {%- when 'welcomeprice' -%}
+                    {%- capture sale_display_modes -%}{% render 'sale-display-modes', product: product %}{%- endcapture -%}
+                    {%- assign sale_display_modes = sale_display_modes | strip | split: ',' -%}
                     <div>
                       <p class="price-header">{{ block.settings.price_text }}</p>
-                      <p class="price-value"><span class="sale-price">{{ block.settings.sale_price }}</span> <span class="regular-price">{{ block.settings.regular_price }}</span></p>
+                      <p class="price-value">
+                        {%- for sale_display_mode in sale_display_modes -%}
+                          {%- if sale_display_modes.size > 1 %}<span class="sale-display-{{ sale_display_mode }}">{% endif -%}
+                          {%- if sale_display_mode == 'on' -%}
+                            {%- comment %} Sale price display: the product's real price crossed out, with the sale price {% endcomment -%}
+                            {%- assign sale_regular_price = product.selected_or_first_available_variant.price -%}
+                            {%- assign sale_discount = sale_regular_price | times: settings.sale_display_percent | divided_by: 100.0 | round -%}
+                            <span class="sale-price">{{ sale_regular_price | minus: sale_discount | money_without_trailing_zeros }}</span> <span class="regular-price">{{ sale_regular_price | money_without_trailing_zeros }}</span>
+                          {%- else -%}
+                            <span class="sale-price">{{ block.settings.sale_price }}</span> <span class="regular-price">{{ block.settings.regular_price }}</span>
+                          {%- endif -%}
+                          {%- if sale_display_modes.size > 1 %}</span>{% endif -%}
+                        {%- endfor -%}
+                      </p>
                     </div>
                   
                 {%- when 'price' -%}

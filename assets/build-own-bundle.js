@@ -135,11 +135,26 @@ class BundleBuilder {
       </p>`;
   }
 
-  // Subtotal with the current tier's discount applied, original price struck out
+  // Bundle subtotal with the sale price display discount taken off each item, rounded like the product cards
+  getSaleSubtotal(percent) {
+    return this.selectedProducts.reduce((sum, p) => {
+      const priceCents = p.priceCents || 0;
+      return sum + (priceCents - Math.round((priceCents * percent) / 100)) * p.quantity;
+    }, 0);
+  }
+
+  // Subtotal with the current tier's discount applied, original price struck out.
+  // While the theme's sale price display is active (window.saleDisplay, set in theme.liquid) and its
+  // discount is bigger, that is used instead: the sale doesn't combine with the tier discounts.
   getTotalsHTML(subtotal) {
     const tier = this.getCurrentTier(subtotal);
-    const percent = tier?.discountPercent || 0;
-    const discounted = Math.round(subtotal * (1 - percent / 100));
+    const sale = window.saleDisplay;
+    const useSale = !!sale && sale.percent > (tier?.discountPercent || 0);
+    const percent = useSale ? sale.percent : tier?.discountPercent || 0;
+    const discountText = useSale ? sale.badge : tier?.discountText;
+    const discounted = useSale
+      ? this.getSaleSubtotal(sale.percent)
+      : Math.round(subtotal * (1 - percent / 100));
 
     return `
       <div class="bundle-totals">
@@ -148,7 +163,7 @@ class BundleBuilder {
           ${percent > 0 ? `<s class="bundle-totals__original">${this.formatMoney(subtotal, true)}</s>` : ""}
           <span class="bundle-totals__final">${this.formatMoney(discounted, true)}</span>
         </span>
-        ${percent > 0 ? `<span class="bundle-totals__savings">You save ${this.formatMoney(subtotal - discounted, true)} (${tier.discountText})</span>` : ""}
+        ${percent > 0 ? `<span class="bundle-totals__savings">You save ${this.formatMoney(subtotal - discounted, true)} (${discountText})</span>` : ""}
       </div>`;
   }
 
@@ -408,9 +423,14 @@ class BundleBuilder {
       ?.textContent.trim();
     const productLink = card.querySelector(".card__heading a")?.href;
     const productImage = card.querySelector(".card__media img")?.src;
-    const productPrice = card
-      .querySelector(".price-item--regular")
-      ?.textContent.trim();
+    // Cards render both sale and normal prices when the sale display is scheduled; read the visible one
+    const saleDisplayScope = document.documentElement.classList.contains("sale-display-active")
+      ? ".sale-display-on"
+      : ".sale-display-off";
+    const productPrice = (
+      card.querySelector(`${saleDisplayScope} .price-item--regular`) ||
+      card.querySelector(".price-item--regular")
+    )?.textContent.trim();
     const variantId =
       card.querySelector(".add-bundle")?.dataset.variantId ||
       card.querySelector(".custom-quantity-selector")?.dataset.variantId;
