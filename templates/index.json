@@ -14,14 +14,13 @@
       "blocks": {
         "caption_fwNaVg": {
           "type": "caption",
-          "disabled": true,
           "settings": {
             "link": "",
-            "caption": "Black Friday Sale",
-            "text_style": "subtitle",
-            "text_size": "large",
+            "caption": "for her. by Arisa",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium",
             "font_weight": "400",
-            "caption_color": "#111111",
+            "caption_color": "#6B6662",
             "caption_highlight": ""
           }
         },
@@ -35,7 +34,7 @@
         "text_e4n4Cz": {
           "type": "text",
           "settings": {
-            "text": "<p>Postpartum nourishment, made simple. Discover tasty, nutritious meals for new mothers. Rooted in Japanese medicinal food tradition of Yakuzen.</p>",
+            "text": "<p>Postpartum nourishment, made simple. Discover tasty, nutritious meals for new mothers. Rooted in the Japanese medicinal food tradition of Yakuzen.</p>",
             "text_style": "body",
             "list_style": "default",
             "list_icon_color": "#b07a72",

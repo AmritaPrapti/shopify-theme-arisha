@@ -109,6 +109,7 @@
     "sale_badge_color_scheme": "scheme-4",
     "sold_out_badge_color_scheme": "scheme-4",
     "sale_amount_badge_color_scheme": "scheme-4",
+    "sale_display_enabled": true,
     "brand_headline": "",
     "brand_description": "",
     "brand_image_width": 100,

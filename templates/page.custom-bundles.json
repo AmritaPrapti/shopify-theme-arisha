@@ -56,6 +56,8 @@
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
+        "background_image_position": "center",
+        "background_image_opacity": 100,
         "color_scheme": "scheme-1",
         "full_width": true,
         "padding_top": 100,
@@ -140,6 +142,8 @@
         "add_to_cart_label": "ADD BUNDLE TO CART",
         "review_box_text": "REVIEW YOUR BUNDLE",
         "add_bundle_cart_text": "ADD BUNDLE TO CART",
+        "minimum_order_amount": 100,
+        "block_below_minimum": true,
         "padding_top": 0,
         "padding_bottom": 36
       }
@@ -281,6 +285,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/values04.png",
+            "icon": "none",
             "title": "",
             "text": "<p>Developed alongside postpartum professionals and mothers.</p>",
             "link_label": "",
@@ -291,6 +296,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/values01.png",
+            "icon": "none",
             "title": "",
             "text": "<p>Inspired by Japanese culinary philosophy and made with care.</p>",
             "link_label": "",
@@ -317,6 +323,10 @@
         "title_alignment": "left",
         "image_width": "third",
         "image_width_custom": 200,
+        "icon_color": "#b07a72",
+        "icon_size": 56,
+        "show_dividers": false,
+        "divider_color": "#e3c9c4",
         "image_ratio": "adapt",
         "image_background": "",
         "button_label": "",
